@@ -72,7 +72,7 @@ where $\beta$ is a device constant fixed by calibration (coupling and filter gai
 \begin{equation}
 E(t)\;=\;\big(E_0^3-3\beta t\big)^{1/3},\qquad \kappa(E)\propto \omega_\ast(E)\propto E^{-1},
 \end{equation}
-valid until $E$ exits the negative-$C_\mu$ window or hits the spectral floor. This makes the BH/lab dictionary explicit: $T,\kappa\propto 1/E$ and $P\propto 1/E^2$.
+ In Fig.~\\ref{fig:PofE} we calibrate the device constant $\\beta$ from the bh-evaporator/main.tex(E)$ slope; with that value fixed, Fig.~\\ref{fig:EtTraj} overlays the parameter-free trajectory from Eq.~\\eqref{eq:PofE}. This makes the BH/lab dictionary explicit: $T,\kappa\propto 1/E$ and $P\propto 1/E^2$.
 
 \begin{figure}[t]\centering
 \IfFileExists{fig2a_J.pdf}{\includegraphics[width=\linewidth]{fig2a_J.pdf}}{\typeout{Missing figure fig2a_J.pdf}}
@@ -155,12 +155,14 @@ Loss/leakage (leakage $\Rightarrow$ trace-distance error per bin $\lesssim \epsi
 \section{Theory highlights and quantitative predictions}
 \begin{figure}[t]\centering
 \IfFileExists{fig3_P.pdf}{\includegraphics[width=\linewidth]{fig3_P.pdf}}{\typeout{Missing figure fig3_P.pdf}}
-\caption{Engineered power law \texorpdfstring{$P(E)\propto 1/E^2$}{P(E) ~ 1/E^2}.}
+\caption{Engineered power law \texorpdfstring{$P(E)\propto 1/E^2$}{P(E) ~ 1/E^2}. The slope fixes a single device constant $\beta$ used parameter-free in Fig.~\ref{fig:EtTraj}.}
+\label{fig:PofE}
 \end{figure}
 
 \begin{figure}[t]\centering
 \IfFileExists{fig4_Et.pdf}{\includegraphics[width=\linewidth]{fig4_Et.pdf}}{\typeout{Missing figure fig4_Et.pdf}}
-\caption{Energy trajectory \texorpdfstring{$E(t)$}{E(t)} for \texorpdfstring{$P\propto 1/E^2$}{P ~ 1/E^2}.}
+\caption{Energy trajectory \texorpdfstring{$E(t)$}{E(t)}. Solid line: solution \texorpdfstring{$E(t)=(E_0^3-3\beta t)^{1/3}$}{E(t)=(E0^3-3 beta t)^(1/3)} using $\beta$ from Fig.~\ref{fig:PofE}; points: data. No extra fit parameters.}
+\label{fig:EtTraj}
 \end{figure}
 
 \begin{figure}[t]\centering
@@ -256,6 +258,7 @@ Core: fully connected XXZ with weak disorder, $N\in[12,16]$, edge $X=\frac{1}{\s
 \\bibitem{Hackermueller2004} L. Hackerm\"uller \emph{et al.}, Nature \\textbf{427}, 711 (2004).
 
 \end{document}
+
 
 
 
