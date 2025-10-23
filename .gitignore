@@ -1,0 +1,28 @@
+# General
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.next/
+.nuxt/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Dotenv and secrets
+.env
+.env.*
+
+# IDEs and editors
+.vscode/
+.idea/
+*.code-workspace
+
