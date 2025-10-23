@@ -21,6 +21,25 @@
       "problemMatcher": []
     },
     {
+      "label": "Open Latest PDF",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "$p='${workspaceFolder}\\bh-evaporator'; if (Test-Path \"$p\\main_build.pdf\") { Start-Process \"$p\\main_build.pdf\" } elseif (Test-Path \"$p\\main.pdf\") { Start-Process \"$p\\main.pdf\" } else { Write-Host 'No PDF found' }"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Build + Open PDF",
+      "dependsOn": [
+        "Build LaTeX PDF",
+        "Open Latest PDF"
+      ],
+      "dependsOrder": "sequence"
+    },
+    {
       "label": "Open PDF",
       "type": "process",
       "command": "powershell",
@@ -49,4 +68,3 @@
     }
   ]
 }
-
