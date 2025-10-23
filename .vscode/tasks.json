@@ -14,10 +14,6 @@
       "options": {
         "cwd": "${workspaceFolder}\\bh-evaporator"
       },
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
       "problemMatcher": []
     },
     {
@@ -37,7 +33,11 @@
         "Build LaTeX PDF",
         "Open Latest PDF"
       ],
-      "dependsOrder": "sequence"
+      "dependsOrder": "sequence",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     },
     {
       "label": "Open PDF",

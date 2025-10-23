@@ -60,3 +60,8 @@ __pycache__/
 # Local PDF outputs (keep figures tracked)
 bh-evaporator/main.pdf
 bh-evaporator/main_build.pdf
+
+# Ignore accidental literal jobname outputs (keep sources)
+bh-evaporator/$job*
+bh-evaporator/main_buildNotes.bib
+
