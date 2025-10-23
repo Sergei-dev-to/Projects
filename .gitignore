@@ -26,3 +26,37 @@ __pycache__/
 .idea/
 *.code-workspace
 
+
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex*
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.brf
+*.ilg
+*.ind
+*.idx
+*.glo
+*.gls
+*.ist
+*.acn
+*.acr
+*.alg
+*.dvi
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.xmpi
+*.run.xml
+
+# Local PDF outputs (keep figures tracked)
+bh-evaporator/main.pdf
+bh-evaporator/main_build.pdf
