@@ -22,7 +22,10 @@ Laboratory Page Curve, Surface-Gravity Analogue, and a Mapping to Black-Hole Isl
 \date{\today}
 
 \begin{abstract}
-We propose and analyze a minimal non-gravitational quantum system that emulates key features of black-hole (BH) evaporation: (i) a negative heat-capacity window in which the emitter heats up as it loses energy, (ii) a near-thermal outgoing spectrum with a tunable surface-gravity analogue $\kappa(E)$, (iii) an evaporation law $P(E)\propto 1/E^2$ yielding an accelerating trajectory $E(t)=(E_0^3-3\beta t)^{1/3}$, and (iv) a Page-like turnover of the radiation entropy measurable via randomized measurements as a R\'enyi-2 lower bound. Our ``scaling dictionary'' (a ``Rosetta stone'') maps exponents controlling temperature, typical emission frequency, and in-band spectral slope to the evaporation exponent, reproducing the Schwarzschild $dM/dt\propto -1/M^2$ scaling. We formulate a precise ``lab paradox'' theorem for exact thermality + CP-divisible dynamics, show how our device departs at late times (microstate dependence and non-Markovian backflow), and outline a decoding task analogous to entanglement-wedge reconstruction. We emphasize pre-Planckian BH comparisons and avoid geometric claims.
+We introduce a geometry-free, unitary quantum ``evaporator'': a fast-scrambling core coupled to a single bright emission channel, featuring a finite microcanonical negative-heat-capacity window.
+Within a calibrated band we establish the scaling dictionary $\omega_\ast(E)\!\sim\!1/E$ and $J(\omega)\!\sim\!\omega$ $\Rightarrow$ $P(E)\!\propto\!1/E^2$ and $E(t)\!=\!(E_0^3\!-3\beta t)^{1/3}$; an operational surface-gravity analogue follows from edge KMS/response, $\kappa(E)\!\propto\!1/E$.
+Information-theoretically, expected R\'enyi-2 of radiation is monotone under CP-divisible (unital) dynamics; the observed Page-like turnover thus diagnoses late-time microstate dependence and CP-indivisible backflow.
+Exact-diagonalization validates the ingredients (convex intruder, $\omega_\ast$ scaling); we calibrate $\beta$ from $P(E)$ and overlay the parameter-free $E(t)$ trajectory. We outline measurement/decoding protocols and feasible realizations (cQED, photonics, ultracold).
 \end{abstract}
 
 \maketitle
@@ -72,7 +75,7 @@ where $\beta$ is a device constant fixed by calibration (coupling and filter gai
 \begin{equation}
 E(t)\;=\;\big(E_0^3-3\beta t\big)^{1/3},\qquad \kappa(E)\propto \omega_\ast(E)\propto E^{-1},
 \end{equation}
- In Fig.~\\ref{fig:PofE} we calibrate the device constant $\\beta$ from the bh-evaporator/main.tex(E)$ slope; with that value fixed, Fig.~\\ref{fig:EtTraj} overlays the parameter-free trajectory from Eq.~\\eqref{eq:PofE}. This makes the BH/lab dictionary explicit: $T,\kappa\propto 1/E$ and $P\propto 1/E^2$.
+  In Fig.~\\ref{fig:PofE} we calibrate the device constant $\\beta$ from the $P(E)$ slope; with that value fixed, Fig.~\\ref{fig:EtTraj} overlays the parameter-free trajectory from Eq.~\\eqref{eq:PofE}. This makes the BH/lab dictionary explicit: $T,\\kappa\\propto 1/E$ and $P\\propto 1/E^2$.
 
 \begin{figure}[t]\centering
 \IfFileExists{fig2a_J.pdf}{\includegraphics[width=\linewidth]{fig2a_J.pdf}}{\typeout{Missing figure fig2a_J.pdf}}
@@ -84,6 +87,14 @@ E(t)\;=\;\big(E_0^3-3\beta t\big)^{1/3},\qquad \kappa(E)\propto \omega_\ast(E)\p
 \caption{Transition frequency mapping \texorpdfstring{$\omega_\ast(E)=\gamma/E$}{omega*(E)=gamma/E} across the negative-\texorpdfstring{$C_\mu$}{Cmu} window.}
 \end{figure}
 
+\\subsection{Operational extraction of $\\kappa(E)$}
+We estimate $\\kappa(E)$ from near-KMS edge response. Let $X$ be the bright-channel coupling operator at the core edge and define $S_X(\\omega;E)=\\int \\mathrm{d}t\\,e^{i \\omega t}\\,\\langle X(t) X^{\\dagger}(0)\\rangle_E$. In a near-stationary bin one has the KMS ratio $S_X(-\\omega;E)/S_X(+\\omega;E)\\approx e^{-\\hbar\\omega/(k_B T_\\mu(E))}$; a linear fit of $\\log[ S_X(-\\omega;E)/S_X(+\\omega;E) ]$ over a small window about $\\omega_\\ast(E)$ yields $T_\\mu(E)$ and hence
+\\begin{equation}
+\\kappa(E)=\\frac{2\\pi k_B}{\\hbar}\\,T_\\mu(E),\\qquad \\text{with error from the fit slope and bin width.}
+\\end{equation}
+This defines $\\kappa(E)$ operationally without geometric input and matches the $1/E$ scaling within the calibrated band.
+
+\\subsection{Page curve timing}
 \subsection{Page curve timing}
 Let $d_{\rm core}(E)\approx e^{S(E)}$ and let each time bin contribute $\delta s$ nats; the Page time solves $S(E(t_{\rm Page}))\approx \delta s\, t_{\rm Page}$ with $\tau_{\rm scr}\ll \Delta t\ll \Gamma^{-1}$.
 
@@ -119,6 +130,9 @@ We emulate $T\propto 1/E$, $\kappa\propto 1/E$, $P\propto 1/E^2$, and a Page-lik
 \section{Measurement protocols}
 \subsection{Monotonicity and non-Markovianity}
 Under CP-divisible (Markovian) reduced dynamics with unitality in the relevant subspace, the expected R\'enyi-2 of radiation obeys a data-processing inequality and is nondecreasing; see App.~D. A Page-like turnover therefore implies a breakdown of these hypotheses (late-time microstate dependence and CP-indivisible backflow). We quantify non-Markovianity via a BLP-type witness $\mathcal{N}=\int_{\dot D>0}\!\dot D\,\mathrm{d}t$ using distinguishability $D(t)$ for optimized pairs.
+
+\noindent\textbf{Theorem 1 (R\'enyi-2 monotonicity).} If the reduced dynamics of the radiation is CP-divisible and unital in the relevant subspace, then $\mathbb{E}[S^{(2)}_{\rm rad}(t+\Delta t)]\ge \mathbb{E}[S^{(2)}_{\rm rad}(t)]$ for all coarse-grained bins $\Delta t$.
+\emph{Sketch.} CP-divisibility implies a CPTP map between bins; unitality ensures data-processing of collision entropy. Taking expectation over the scrambling ensemble yields the stated monotonicity. Full proofs are given in App.~D.
 
 \paragraph*{What we certify (R\'enyi-2 vs.\ von Neumann).}
 We measure $S^{(2)}$ via randomized measurements. Since $S\ge S^{(2)}$, a turnover of $S^{(2)}_{\rm rad}(t)$ certifies a turnover of a lower bound to $S_{\rm rad}(t)$. We also report von Neumann estimates on small subsystems via shadow spectrum reconstruction (see App.~E).
