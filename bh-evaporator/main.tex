@@ -40,6 +40,9 @@ Hawking radiation and Bekenstein entropy are standard~\cite{Hawking1975,Bekenste
 \section{Theory setup: explicit model and assumptions}
 We model a finite fast-scrambling core (dense XXZ with weak disorder) weakly coupled to a single bright emission channel. The microcanonical entropy $S(E)$ has a convex intruder ($C_\mu<0$) over a window. The edge coupling and engineered in-band spectral density $J(\omega)$ set the greybody analogue.
 
+\noindent\textbf{Validity and assumptions.}
+Throughout we use ETH/canonical typicality at fixed energy to justify near-KMS edge correlators early in the evolution, while the \emph{global} state remains pure and evolves unitarily. Negative $C_\mu$ is a microcanonical property (finite-size convex intruder). Our scaling laws are intended within a calibrated energy band where: (i) $\tau_{\rm scr}\ll\Delta t\ll\Gamma^{-1}$, (ii) one bright channel dominates, (iii) $J(\omega)$ is approximately Ohmic in-band, and (iv) $\omega_\ast(E)$ varies slowly on $\Delta t$.
+
 \paragraph*{Thermal-like pure states.}
 Let $H\ket{E_n}=E_n\ket{E_n}$. Throughout we mean ``thermal'' in the reduced/marginal sense: a globally pure, isolated system whose few-body observables are near-Gibbs by canonical typicality/ETH at the microcanonical temperature $T_\mu(E)$. For intuition we sometimes write a pure state with Boltzmann-like weights in the energy basis
 \begin{equation}
@@ -59,6 +62,17 @@ We diagonalize an $N{=}16$ fully connected XXZ core with weak disorder and a col
 
 \section{Evaporation dynamics and design rules}
 Let the typical transition scale as $\omega_\ast(E)\propto 1/E$ and $J(\omega)\propto \omega$ (Ohmic) in band; then $P(E)\propto \omega_\ast J(\omega_\ast)\propto E^{-2}$ and $E(t)=(E_0^3-3\beta t)^{1/3}$.
+
+\subsection{Scaling derivation (concise)}
+Denote the emission power by $P(E)$ and take the typical transition frequency from the microcanonical spectral function, $\omega_\ast(E)\sim E^{-1}$ in-band. With an engineered in-band density $J(\omega)\propto\omega$ and Golden-rule scaling, we write
+\begin{equation}
+P(E)\;\equiv\; -\frac{\mathrm{d}E}{\mathrm{d}t}\;=\; \beta\,\omega_\ast(E)\,J\big(\omega_\ast(E)\big)\;\simeq\; \frac{\beta}{E^2},\label{eq:PofE}
+\end{equation}
+where $\beta$ is a device constant fixed by calibration (coupling and filter gain). Integrating \eqref{eq:PofE} yields
+\begin{equation}
+E(t)\;=\;\big(E_0^3-3\beta t\big)^{1/3},\qquad \kappa(E)\propto \omega_\ast(E)\propto E^{-1},
+\end{equation}
+valid until $E$ exits the negative-$C_\mu$ window or hits the spectral floor. This makes the BH/lab dictionary explicit: $T,\kappa\propto 1/E$ and $P\propto 1/E^2$.
 
 \begin{figure}[t]\centering
 \IfFileExists{fig2a_J.pdf}{\includegraphics[width=\linewidth]{fig2a_J.pdf}}{\typeout{Missing figure fig2a_J.pdf}}
@@ -103,6 +117,9 @@ We emulate $T\propto 1/E$, $\kappa\propto 1/E$, $P\propto 1/E^2$, and a Page-lik
 \end{figure}
 
 \section{Measurement protocols}
+\subsection{Monotonicity and non-Markovianity}
+Under CP-divisible (Markovian) reduced dynamics with unitality in the relevant subspace, the expected R\'enyi-2 of radiation obeys a data-processing inequality and is nondecreasing; see App.~D. A Page-like turnover therefore implies a breakdown of these hypotheses (late-time microstate dependence and CP-indivisible backflow). We quantify non-Markovianity via a BLP-type witness $\mathcal{N}=\int_{\dot D>0}\!\dot D\,\mathrm{d}t$ using distinguishability $D(t)$ for optimized pairs.
+
 \paragraph*{What we certify (R\'enyi-2 vs.\ von Neumann).}
 We measure $S^{(2)}$ via randomized measurements. Since $S\ge S^{(2)}$, a turnover of $S^{(2)}_{\rm rad}(t)$ certifies a turnover of a lower bound to $S_{\rm rad}(t)$. We also report von Neumann estimates on small subsystems via shadow spectrum reconstruction (see App.~E).
 
@@ -159,6 +176,29 @@ Our turnover mirrors gravity at the level of information flow: in gravity, a QES
 
 \section{Conclusion}
 We introduced a geometry-free quantum evaporator that reproduces BH-like scalings ($T,\kappa,P$) and a laboratory Page-like turnover with decoding. The lab paradox is dissolved by late-time microstate dependence and non-Markovian backflow.
+
+\begin{table}[t]
+\centering
+\caption{Notation used (symbols and operational meaning).}
+\label{tab:notation}
+\begin{tabular}{ll}
+\toprule
+Symbol & Meaning \\
+\midrule
+$E$ & Core energy (lab analogue of BH mass) \\
+$S(E)$ & Microcanonical entropy, $S=\log\Omega$ \\
+$T_\mu(E)$ & Microcanonical temperature $(\partial_E S)^{-1}$ \\
+$C_\mu(E)$ & Microcanonical heat capacity $-T_\mu^2/\partial_E^2 S$ \\
+$\omega_\ast(E)$ & Typical transition frequency from edge spectral function \\
+$J(\omega)$ & Engineered in-band spectral density (greybody analogue) \\
+$P(E)$ & Emission power $= -\mathrm{d}E/\mathrm{d}t$ \\
+$\kappa(E)$ & Surface-gravity analogue from edge KMS/response \\
+$\tau_{\rm scr}$ & Scrambling time of the core \\
+$\Delta t$ & Emission bin (coarse-graining) \\
+$\Gamma^{-1}$ & Mean waiting time between emissions \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \appendix
 
