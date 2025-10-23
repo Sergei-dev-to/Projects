@@ -38,6 +38,17 @@ Hawking radiation and Bekenstein entropy are standard~\cite{Hawking1975,Bekenste
 \section{Theory setup: explicit model and assumptions}
 We model a finite fast-scrambling core (dense XXZ with weak disorder) weakly coupled to a single bright emission channel. The microcanonical entropy $S(E)$ has a convex intruder ($C_\mu<0$) over a window. The edge coupling and engineered in-band spectral density $J(\omega)$ set the greybody analogue.
 
+\paragraph*{Thermal-like pure states.}
+Let $H\ket{E_n}=E_n\ket{E_n}$. Throughout we mean ``thermal'' in the reduced/marginal sense: a globally pure, isolated system whose few-body observables are near-Gibbs by canonical typicality/ETH at the microcanonical temperature $T_\mu(E)$. For intuition we sometimes write a pure state with Boltzmann-like weights in the energy basis
+\begin{equation}
+\ket{\psi_\beta}=\frac{1}{\sqrt{Z(\beta)}}\sum_n e^{-\beta E_n/2}\,e^{i\theta_n}\ket{E_n},\qquad Z(\beta)=\sum_n e^{-\beta E_n},
+\end{equation}
+so that $|\braket{E_n|\psi_\beta}|^2=e^{-\beta E_n}/Z(\beta)$ while the global state remains pure. For comparison, a microcanonical window state
+\begin{equation}
+\ket{\psi_{E_0,\Delta}}=\frac{1}{\sqrt{N}}\sum_{|E_n-E_0|\le \Delta} e^{i\theta_n}\ket{E_n}
+\end{equation}
+captures our use of $S(E)=\log\Omega(E)$, $T_\mu(E)=(\partial_E S)^{-1}$, and $C_\mu(E)=-T_\mu^2/\partial_E^2 S$. Exact thermal reduced states arise, if desired, by doubling and using a thermofield double; we do not assume that here.
+
 \paragraph*{Assumptions used in our theorems.}
 (i) Timescale separation $\tau_{\rm scr}\ll\Delta t\ll\Gamma^{-1}$; (ii) single bright channel with leakage budget $\epsilon_{\rm leak}$; (iii) microcanonical mixing between emissions.
 
