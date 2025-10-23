@@ -1,0 +1,52 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build LaTeX PDF",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy", "Bypass",
+        "-File",
+        "${workspaceFolder}\\bh-evaporator\\build.ps1"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}\\bh-evaporator"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Open PDF",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "Start-Process '${workspaceFolder}\\bh-evaporator\\main.pdf'"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Clean LaTeX Aux",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy", "Bypass",
+        "-File",
+        "${workspaceFolder}\\bh-evaporator\\build.ps1",
+        "-Clean"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}\\bh-evaporator"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
+
