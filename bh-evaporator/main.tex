@@ -22,10 +22,9 @@ Laboratory Page Curve, Surface-Gravity Analogue, and a Mapping to Black-Hole Isl
 \date{\today}
 
 \begin{abstract}
-We introduce a geometry-free, unitary quantum ``evaporator'': a fast-scrambling core coupled to a single bright emission channel, featuring a finite microcanonical negative-heat-capacity window.
-Within a calibrated band we establish the scaling dictionary $\omega_\ast(E)\!\sim\!1/E$ and $J(\omega)\!\sim\!\omega$ $\Rightarrow$ $P(E)\!\propto\!1/E^2$ and $E(t)\!=\!(E_0^3\!-3\beta t)^{1/3}$; an operational surface-gravity analogue follows from edge KMS/response, $\kappa(E)\!\propto\!1/E$.
-Information-theoretically, expected R\'enyi-2 of radiation is monotone under CP-divisible (unital) dynamics; the observed Page-like turnover thus diagnoses late-time microstate dependence and CP-indivisible backflow.
-Exact-diagonalization validates the ingredients (convex intruder, $\omega_\ast$ scaling); we calibrate $\beta$ from $P(E)$ and overlay the parameter-free $E(t)$ trajectory. We outline measurement/decoding protocols and feasible realizations (cQED, photonics, ultracold).
+We introduce a geometry-free, unitary quantum ``evaporator''---a fast-scrambling core coupled to a single bright emission channel with a finite microcanonical negative-heat-capacity window---and establish a scaling dictionary mapping black-hole exponents to lab observables: with $\omega_\ast(E) \sim 1/E$ and in-band $J(\omega) \sim \omega$, we obtain $P(E) \propto 1/E^2$, $E(t) = (E_0^3-3\beta t)^{1/3}$, and an operational $\kappa(E) \propto 1/E$ from edge KMS response.
+Information-theoretically, we prove that expected R\'enyi-2 entropy of radiation is nondecreasing under CP-divisible (unital) dynamics; the observed Page-like turnover therefore diagnoses late-time microstate dependence and CP-indivisible backflow, analogous to entanglement-wedge reconstruction in gravity.
+Exact diagonalization on $N{=}16$ qubits illustrates the framework (convex intruder, $\omega_\ast$ scaling); we calibrate $\beta$ from $P(E)$ and overlay the $E(t)$ trajectory with no additional fit parameters, propose measurement protocols (randomized shadows, Petz/variational decoding), and identify candidate platforms (cQED, photonics, ultracold).
 \end{abstract}
 
 \maketitle
@@ -37,7 +36,19 @@ Black holes radiate at $T_H=\hbar\kappa/(2\pi k_B)$ and evaporate; the fine-grai
 
 Analogue platforms (acoustic horizons in BECs, moving mirrors, dynamical Casimir effect) probe Hawking-like kinematics~\cite{Unruh1981,Steinhauer2016,Wilson2011DCE,FullingDavies1976}, but no device has simultaneously shown negative heat capacity, an accelerating evaporation law, and a measurable radiation Page-like turnover with decoding. We close this gap by specifying a ``core+channel'' architecture and a scaling dictionary that ties BH and lab exponents.
 
-\\paragraph*{Contributions.}\n\\begin{itemize}[leftmargin=*]\n\\item \\textbf{Unitary evaporator architecture:} fast-scrambling core + single bright channel with a finite microcanonical negative-\\mu$ window; early near-KMS edge correlators despite global purity.\n\\item \\textbf{Scaling dictionary and evaporation law:} with $\\omega_\\ast(E) \\sim 1/E$ and in-band (\\omega) \\sim \\omega$, we obtain bh-evaporator/main.tex(E) \\propto 1/E^2$ and (t)=(E_0^3-3\\beta t)^{1/3}$; we define an operational $\\kappa(E)$ from edge KMS/response. Calibration of $\\beta$ from Fig.~\\ref{fig:PofE} yields a parameter-free overlay for Fig.~\\ref{fig:EtTraj} (Eq.~\\eqref{eq:PofE}).\n\\item \\textbf{Information-theoretic monotonicity vs. turnover:} we state that expected R\\'enyi-2 is nondecreasing under CP-divisible (unital) dynamics; the observed Page-like turnover arises from late-time microstate dependence and CP-indivisible backflow.\n\\item \\textbf{Measurement and decoding:} randomized measurements/shadows for ^{(2)}$; distinguishability (t)$ and a BLP-type witness; decoding via Petz/twirled-Petz/variational methods with sample complexity vs. detection efficiency $\\eta$.\n\\item \\textbf{Validation and robustness:} ED of a small-$ XXZ core (convex intruder, $\\omega_\\ast$ scaling); sensitivity to (\\omega)$, coupling, and $.\n\\item \\textbf{Experimental blueprint:} Purcell/two-pole filters to realize (\\omega) \\sim \\omega$ and isolate a single bright channel via impedance matching; viable platforms (cQED, photonics, ultracold) and controls/failure modes.\\end{itemize}\n\n
+\paragraph*{Scope: theoretical framework with numerical illustration.}
+This work presents a \emph{theoretical framework} for a laboratory black-hole analogue, validated numerically at small system size. Our main contributions are: (i) a scaling dictionary relating BH thermodynamic exponents to engineered lab observables, (ii) information-theoretic monotonicity theorems whose violation diagnoses non-Markovian backflow, and (iii) measurement and decoding protocols for entanglement-wedge reconstruction. While ETH and canonical typicality apply rigorously in the thermodynamic limit, we provide exact-diagonalization results at $N{=}16$ to illustrate that the core ingredients (convex-intruder negative $C_\mu$, $\omega_\ast(E)$ scaling) can arise in finite quantum systems. Full experimental validation of the evaporation dynamics and Page turnover awaits future work on larger platforms.
+
+\paragraph*{Contributions.}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Unitary evaporator architecture:} fast-scrambling core + single bright channel with a finite microcanonical negative-$C_\mu$ window; early near-KMS edge correlators despite global purity.
+\item \textbf{Scaling dictionary and evaporation law:} with $\omega_\ast(E) \sim 1/E$ and in-band $J(\omega) \sim \omega$, we obtain $P(E) \propto 1/E^2$ and $E(t)=(E_0^3-3\beta t)^{1/3}$; we define an operational $\kappa(E)$ from edge KMS/response. Calibration of $\beta$ from Fig.~\ref{fig:PofE} yields an overlay for Fig.~\ref{fig:EtTraj} with no additional fit parameters (Eq.~\eqref{eq:PofE}).
+\item \textbf{Information-theoretic monotonicity vs. turnover:} we prove that expected R\'enyi-2 is nondecreasing under CP-divisible (unital) dynamics; the observed Page-like turnover arises from late-time microstate dependence and CP-indivisible backflow.
+\item \textbf{Measurement and decoding:} randomized measurements/shadows for $S^{(2)}$; distinguishability $D(t)$ and a BLP-type witness; decoding via Petz/twirled-Petz/variational methods with sample complexity vs. detection efficiency $\eta$.
+\item \textbf{Validation and robustness:} ED of a small-$N$ XXZ core (convex intruder, $\omega_\ast$ scaling); sensitivity to $J(\omega)$, coupling, and $N$.
+\item \textbf{Candidate platforms:} Purcell/two-pole filters to realize $J(\omega) \sim \omega$ and isolate a single bright channel via impedance matching; viable platforms (cQED, photonics, ultracold) and controls/failure modes.
+\end{itemize}
+
 Hawking radiation and Bekenstein entropy are standard~\cite{Hawking1975,Bekenstein1973}. Replica-wormhole/QES developments explain the Page curve~\cite{EngelhardtWall2015,AEMM2019,Penington2019,AlmheiriRMP2021}. Acoustic and mirror analogues~\cite{Unruh1981,Steinhauer2016,FullingDavies1976,Wilson2011DCE} probe kinematics; our focus is dynamical information flow and negative-$C_\mu$~\cite{GrossBook2001,Schmidt2001Na147,DAgostino2000}.
 
 \section{Theory setup: explicit model and assumptions}
@@ -87,14 +98,13 @@ E(t)\;=\;\big(E_0^3-3\beta t\big)^{1/3},\qquad \kappa(E)\propto \omega_\ast(E)\p
 \caption{Transition frequency mapping \texorpdfstring{$\omega_\ast(E)=\gamma/E$}{omega*(E)=gamma/E} across the negative-\texorpdfstring{$C_\mu$}{Cmu} window.}
 \end{figure}
 
-\\subsection{Operational extraction of $\\kappa(E)$}
-We estimate $\\kappa(E)$ from near-KMS edge response. Let $X$ be the bright-channel coupling operator at the core edge and define $S_X(\\omega;E)=\\int \\mathrm{d}t\\,e^{i \\omega t}\\,\\langle X(t) X^{\\dagger}(0)\\rangle_E$. In a near-stationary bin one has the KMS ratio $S_X(-\\omega;E)/S_X(+\\omega;E)\\approx e^{-\\hbar\\omega/(k_B T_\\mu(E))}$; a linear fit of $\\log[ S_X(-\\omega;E)/S_X(+\\omega;E) ]$ over a small window about $\\omega_\\ast(E)$ yields $T_\\mu(E)$ and hence
-\\begin{equation}
-\\kappa(E)=\\frac{2\\pi k_B}{\\hbar}\\,T_\\mu(E),\\qquad \\text{with error from the fit slope and bin width.}
-\\end{equation}
-This defines $\\kappa(E)$ operationally without geometric input and matches the $1/E$ scaling within the calibrated band.
+\subsection{Operational extraction of $\kappa(E)$}
+We estimate $\kappa(E)$ from near-KMS edge response. Let $X$ be the bright-channel coupling operator at the core edge and define $S_X(\omega;E)=\int \mathrm{d}t\,e^{i \omega t}\,\langle X(t) X^{\dagger}(0)\rangle_E$. In a near-stationary bin one has the KMS ratio $S_X(-\omega;E)/S_X(+\omega;E)\approx e^{-\hbar\omega/(k_B T_\mu(E))}$; a linear fit of $\log[ S_X(-\omega;E)/S_X(+\omega;E) ]$ over a small window about $\omega_\ast(E)$ yields $T_\mu(E)$ and hence
+\begin{equation}
+\kappa(E)=\frac{2\pi k_B}{\hbar}\,T_\mu(E),\qquad \text{with error from the fit slope and bin width.}
+\end{equation}
+This defines $\kappa(E)$ operationally without geometric input and matches the $1/E$ scaling within the calibrated band.
 
-\\subsection{Page curve timing}
 \subsection{Page curve timing}
 Let $d_{\rm core}(E)\approx e^{S(E)}$ and let each time bin contribute $\delta s$ nats; the Page time solves $S(E(t_{\rm Page}))\approx \delta s\, t_{\rm Page}$ with $\tau_{\rm scr}\ll \Delta t\ll \Gamma^{-1}$.
 
@@ -109,13 +119,44 @@ For Schwarzschild $T_H\propto 1/M$ and $A\propto M^2$; coarse-grained graybodies
 \section{Scaling dictionary (a `Rosetta stone') in real black-hole evaporation}
 The term is used as a metaphor for dictionaries between formalisms~\cite{BaezStayRosetta2009,SampsonYunesCornish2013,PandoZayas2014}. Identify exponents $(a,b,p)$ with $T\sim E^{-a}$, $\omega_\ast\sim E^{-b}$, and $J(\omega)\sim \omega^{p}$. Keeping $x=\hbar\omega_\ast/k_BT$ constant ($b=a$) gives $P\propto E^{-q}$ with $q=a(1+p)$. For Schwarzschild $(a,b,p)=(1,1,1)$, hence $q=2$.
 
-\section{Information paradox in the lab: theorem and resolution}
-\noindent\textbf{Theorem D.1 (Unital Markovianity $\Rightarrow$ $S$-monotonicity).} Adding a fixed $\sigma_k$ each step and evolving the accumulated radiation by a unital CP-divisible map makes $S(\rho_{\rm rad})$ nondecreasing.\\
-\noindent\textbf{Theorem D.2 (R\'enyi-2 monotonicity in expectation under scrambling).} With exact $\sigma_k$, independent unitary 2-design scrambling on the core, and CP-divisible radiation dynamics, $\mathbb{E}[S^{(2)}_{\rm rad}]$ is nondecreasing (concentration bounds apply).\\
-\noindent\textbf{Resolution.} Our model violates exact thermality and CP-divisibility at late times (microstate dependence, backflow), enabling the Page-like turnover and decoding.
+\section{Information flow and non-Markovianity}
+We prove that expected entropy of radiation is nondecreasing under CP-divisible (Markovian) unital dynamics. A Page-like turnover therefore signals the \emph{expected} breakdown of these assumptions at late times, when microstate-dependent correlations and non-Markovian backflow emerge---the analogue of entanglement-wedge reconstruction in gravity.
+
+\noindent\textbf{Theorem 1 (Unital CP-divisibility $\Rightarrow$ von Neumann monotonicity).} If the reduced dynamics of the radiation is CP-divisible and unital in the relevant subspace, then adding a fixed emission $\sigma_k$ each step and evolving the accumulated radiation makes $S(\rho_{\rm rad})$ nondecreasing.
+
+\emph{Proof sketch.} Let $\rho_{\rm rad}^{(n)}$ be the radiation state after $n$ emissions. At each step we append the new emission $\sigma_k$ to obtain $\rho_{\rm rad}^{(n)} \otimes \sigma_k$, then apply a CPTP map $\Phi_n$ to the full radiation system. CP-divisibility means $\Phi_n = \Lambda_n \circ \Phi_{n-1}$ for some CPTP $\Lambda_n$, so we can write $\rho_{\rm rad}^{(n+1)} = \Lambda_n(\rho_{\rm rad}^{(n)} \otimes \sigma_k)$. By the data-processing inequality for von Neumann entropy applied to CPTP maps, $S(\Lambda[\rho]) \ge S(\rho)$ if $\Lambda$ is unital on the support of $\rho$. Since appending $\sigma_k$ increases entropy (subadditivity) and $\Lambda_n$ is unital, we have $S(\rho_{\rm rad}^{(n+1)}) \ge S(\rho_{\rm rad}^{(n)} \otimes \sigma_k) \ge S(\rho_{\rm rad}^{(n)})$, establishing monotonicity. Full details and conditions in App.~D. \hfill$\square$
+
+\noindent\textbf{Theorem 2 (R\'enyi-2 monotonicity in expectation under scrambling).} With exact emissions $\sigma_k$, independent unitary 2-design scrambling on the core, and CP-divisible radiation dynamics, the expected R\'enyi-2 entropy obeys $\mathbb{E}[S^{(2)}_{\rm rad}(t+\Delta t)] \ge \mathbb{E}[S^{(2)}_{\rm rad}(t)]$ for all bins $\Delta t$.
+
+\emph{Proof sketch.} The key insight is that 2-design averaging over core scrambling unitaries makes the emitted states $\sigma_k$ effectively thermal (marginal state matches the microcanonical Gibbs state). For collision entropy $H_2(\rho) = -\log\mathrm{Tr}[\rho^2]$, related to R\'enyi-2 by $S^{(2)}(\rho) = H_2(\rho)$, we use the fact that appending a state and applying a unital CPTP map satisfies $\mathbb{E}[H_2(\Lambda[\rho \otimes \sigma])] \ge \mathbb{E}[H_2(\rho)]$ when averaging over scrambling. The 2-design property ensures that after averaging, the joint state of core and emission factorizes in expectation, so $\mathbb{E}[\sigma_k]$ is fixed. Combined with CP-divisibility of $\Lambda$ and unitality, the collision entropy is nondecreasing in expectation. Concentration bounds (Lévy's lemma for the Haar measure on unitary 2-designs) ensure that individual realizations are close to the expectation with high probability. Full proof and quantitative bounds in App.~D. \hfill$\square$
+
+\paragraph*{Interpretation.}
+For a globally unitary system, CP-divisibility of the reduced radiation dynamics is expected early (when core--radiation correlations are negligible) but \emph{breaks down} at late times as microstate information becomes encoded in radiation. This is not a paradox but the expected signature of non-Markovian information flow. The observed turnover diagnoses this transition and enables radiation-only decoding, mirroring the QES phase transition in gravitational Page curves.
 
 \section{Similarities/differences with BHs and other analogues}
 We emulate $T\propto 1/E$, $\kappa\propto 1/E$, $P\propto 1/E^2$, and a Page-like turnover with decoding. We do not claim geometry or horizons; greybody factors $\leftrightarrow J(\omega)$.
+
+\subsection{Scope of the analogy}
+We clarify what aspects of black-hole physics our evaporator does and does not capture.
+
+\paragraph*{What IS captured (thermodynamic \& informational).}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Thermodynamic scaling laws:} $T_\mu(E) \propto 1/E$ (analogous to $T_H \propto 1/M$), operational $\kappa(E) \propto 1/E$ from edge KMS response (analogous to surface gravity), and $P(E) \propto 1/E^2$ (analogous to $dM/dt \propto 1/M^2$).
+\item \textbf{Information-flow dynamics:} Page-like turnover of radiation entropy, late-time microstate dependence, non-Markovian backflow enabling radiation-only reconstruction.
+\item \textbf{Operational diagnostics:} KMS response at the edge (thermal-like correlators from a pure state), distinguishability witnesses, BLP non-Markovianity proxies, decoding protocols (Petz/variational).
+\item \textbf{Negative heat capacity:} Finite microcanonical window with $C_\mu < 0$, a hallmark of self-gravitating systems.
+\end{itemize}
+
+\paragraph*{What is NOT captured (geometric \& causal).}
+\begin{itemize}[leftmargin=*]
+\item \textbf{No spacetime geometry:} Our system has no metric, curvature, or Einstein equations. The ``evaporator'' is a many-body quantum system, not a gravitational field configuration.
+\item \textbf{No event horizon:} There is no causal boundary or trapped surface. The ``edge'' is simply the coupling location for emissions.
+\item \textbf{No replica wormholes or quantum extremal surfaces:} The Page turnover arises from non-Markovian backflow in unitary quantum dynamics, not from gravitational saddle-point contributions or QES phase transitions.
+\item \textbf{No gravitational backreaction:} The core energy $E$ decreases via emissions, but this is not coupled to spacetime curvature.
+\end{itemize}
+
+\paragraph*{The nature of the mapping.}
+Our ``Rosetta stone'' (Sec.~5) translates thermodynamic exponents and information-flow signatures, not spacetime structure. The analogy operates at the level of \emph{scaling laws} (power-law relationships between observables) and \emph{operational protocols} (how information is encoded, scrambled, and decoded). It does not claim a holographic dual or emergent geometry. The value lies in demonstrating that key information-theoretic features---negative heat capacity, accelerating evaporation, Page turnover, radiation-only decoding---can be realized in controlled quantum platforms without invoking gravity.
 
 \begin{figure}[t]\centering
 \IfFileExists{fig1a_SE.pdf}{\includegraphics[width=\linewidth]{fig1a_SE.pdf}}{\typeout{Missing figure fig1a_SE.pdf}}
@@ -129,10 +170,7 @@ We emulate $T\propto 1/E$, $\kappa\propto 1/E$, $P\propto 1/E^2$, and a Page-lik
 
 \section{Measurement protocols}
 \subsection{Monotonicity and non-Markovianity}
-Under CP-divisible (Markovian) reduced dynamics with unitality in the relevant subspace, the expected R\'enyi-2 of radiation obeys a data-processing inequality and is nondecreasing; see App.~D. A Page-like turnover therefore implies a breakdown of these hypotheses (late-time microstate dependence and CP-indivisible backflow). We quantify non-Markovianity via a BLP-type witness $\mathcal{N}=\int_{\dot D>0}\!\dot D\,\mathrm{d}t$ using distinguishability $D(t)$ for optimized pairs.
-
-\noindent\textbf{Theorem 1 (R\'enyi-2 monotonicity).} If the reduced dynamics of the radiation is CP-divisible and unital in the relevant subspace, then $\mathbb{E}[S^{(2)}_{\rm rad}(t+\Delta t)]\ge \mathbb{E}[S^{(2)}_{\rm rad}(t)]$ for all coarse-grained bins $\Delta t$.
-\emph{Sketch.} CP-divisibility implies a CPTP map between bins; unitality ensures data-processing of collision entropy. Taking expectation over the scrambling ensemble yields the stated monotonicity. Full proofs are given in App.~D.
+Under CP-divisible (Markovian) reduced dynamics with unitality in the relevant subspace, the expected R\'enyi-2 of radiation obeys a data-processing inequality and is nondecreasing (Theorem 2, Sec.~6). A Page-like turnover therefore signals the breakdown of these hypotheses at late times due to microstate-dependent correlations and non-Markovian backflow. We quantify non-Markovianity via a BLP-type witness $\mathcal{N}=\int_{\dot D>0}\!\dot D\,\mathrm{d}t$ using distinguishability $D(t)$ for optimized pairs.
 
 \paragraph*{What we certify (R\'enyi-2 vs.\ von Neumann).}
 We measure $S^{(2)}$ via randomized measurements. Since $S\ge S^{(2)}$, a turnover of $S^{(2)}_{\rm rad}(t)$ certifies a turnover of a lower bound to $S_{\rm rad}(t)$. We also report von Neumann estimates on small subsystems via shadow spectrum reconstruction (see App.~E).
@@ -268,8 +306,10 @@ Core: fully connected XXZ with weak disorder, $N\in[12,16]$, edge $X=\frac{1}{\s
 \bibitem{SampsonYunesCornish2013} L. Sampson, N. Yunes, and N. Cornish, Phys. Rev. D \textbf{88}, 064056 (2013).
 \bibitem{PandoZayas2014} L. A. Pando Zayas, IJMPD \textbf{23}, 1442013 (2014); arXiv:1405.3655.
 
-\\bibitem{Arndt1999} M. Arndt \emph{et al.}, Nature \\textbf{401}, 680 (1999).
-\\bibitem{Hackermueller2004} L. Hackerm\"uller \emph{et al.}, Nature \\textbf{427}, 711 (2004).
+\bibitem{Arndt1999} M. Arndt \emph{et al.}, Nature \textbf{401}, 680 (1999).
+\bibitem{Hackermueller2004} L. Hackerm\"uller \emph{et al.}, Nature \textbf{427}, 711 (2004).
+
+\end{thebibliography}
 
 \end{document}
 
