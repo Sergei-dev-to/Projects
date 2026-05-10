@@ -1,0 +1,344 @@
+\documentclass[aps,prd,onecolumn,nofootinbib,superscriptaddress]{revtex4-2}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{hyperref}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+
+\title{Per-End Monopole Rigidity in Two-Ended Wormholes}
+
+\author{Sergei Slobodov}
+\email{sergei@slobodov.com}
+
+\date{\today}
+
+\begin{abstract}
+Several recent wormhole phenomenology papers treat a source-position-dependent opposite-end monopole as a genuine dynamical signal. We argue that this inference fails. In the Maxwell case, the asymptotic end charges $Q_\pm$ are separately conserved under any smooth evolution for which no charge crosses either asymptotic boundary; the proof uses only Amp\`ere--Maxwell on one asymptotic end and is independent of throat geometry or matter content. In the gravitational case, the analogous statement is obtained as a Hamiltonian corollary in the standard multi-end Regge--Teitelboim framework: under the usual asymptotic falloff assumptions, in the absence of additional internal boundary terms, and assuming admissibility of end-selecting lapse functions, the endwise ADM energies $M_\pm^{\mathrm{ADM}}$ are separately conserved. The wormhole-specific input enters only through the source-free harmonic-flux label $Q_{\mathrm{wh}}$ on the standard slice $\Sigma \cong \mathbb{R}\times S^2$. This label is fixed under source motion confined to one asymptotic region, but shifts under actual throat transit by the transported charge; in either case the asymptotic end charges remain fixed. Applied to the Dai--Stojkovic construction, this shows that the published source-position-dependent monopole family is a static family of differently-sectored boundary-value problems, not the dynamical history of a single wormhole. A supplementary cylindrical-throat model indicates that the surviving higher-multipole channels are evanescent in long thin throats.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+
+The recent observational wormhole literature contains a specific and strong claim: matter moving on one side of a traversable wormhole can generate a time-varying far-zone monopole signal on the other side.\cite{DaiStojkovic2019Observing,DaiStojkovic2020ReplyObserving,SimonettiEtAl2021SensitiveSearches,BaoHouZhang2023GWScattering,BambiStojkovic2021AstrophysicalWormholes} In the electrostatic toy model the claimed signal is a source-position-dependent opposite-end charge. In the gravitational phenomenology the same idea reappears as a source-position-dependent opposite-end monopole potential or ADM-like mass contribution. The attraction of the claim is obvious: if correct, it would provide a direct asymptotic diagnostic of hidden matter on the far side of a wormhole.
+
+The purpose of this paper is to argue that the monopole inference is wrong. The obstruction is not a detailed feature of a particular wormhole metric. It is a per-end conservation law. In Maxwell theory the relevant quantity is the asymptotic end charge. In gravity it is the endwise ADM energy. In neither case should ordinary interior motion promote an asymptotic boundary charge into a time-dependent bulk response coefficient.
+
+The Maxwell statement is fully rigorous in the setting relevant here. If no charge crosses an asymptotic boundary, the asymptotic charge at that end cannot change. This already kills the electrostatic monopole-induction mechanism. The gravitational statement is slightly more delicate because ADM energy is a Hamiltonian boundary charge rather than a direct flux of a local current. What we can defend cleanly is the following: in the standard multi-end Regge--Teitelboim framework, for asymptotically flat initial data with no additional internal boundary terms and admitting end-selecting lapse functions, the endwise ADM Hamiltonians commute weakly and the corresponding ADM energies are separately conserved. This is the gravity statement relevant to the wormhole phenomenology.
+
+The wormhole topology enters only through one source-free label. On the standard two-ended slice $\Sigma \cong \mathbb{R}\times S^2$, the space of source-free Maxwell flux sectors is one-dimensional and may be parameterized by a harmonic-flux label $Q_{\mathrm{wh}}$. This is Wheeler's ``charge without charge.'' The crucial distinction is that $Q_{\mathrm{wh}}$ is not the same object as the asymptotic end charges $Q_\pm$. Under source motion confined to one end, $Q_{\mathrm{wh}}$ is fixed. Under actual throat transit it shifts by the transported charge. In both situations the asymptotic end charges remain fixed. The literature mistake is to slide between these two kinds of data and then reinterpret a static family of differently-sectored solutions as a dynamical trajectory.
+
+\subsection*{Position relative to the literature}
+
+The Maxwell-side intuition is not new from scratch. Krasnikov already isolated a fixed source-free wormhole flux parameter in electrostatics and emphasized that it does not change under quasistatic source motion.\cite{Krasnikov2008ElectrostaticInteraction,Krasnikov2020CommentObserving} What we add is a direct per-end formulation, a sharper diagnosis of the Dai--Stojkovic construction, a careful separation between asymptotic end charges and the harmonic sector, and a gravity-side Hamiltonian corollary stated at the strongest level we think the current argument supports.
+
+The paper is organized as follows. Section~\ref{sec:setup} states the arena and the quantities to be tracked. Section~\ref{sec:maxwell} proves per-end Maxwell conservation. Section~\ref{sec:adm} gives the gravitational Hamiltonian corollary under standard Regge--Teitelboim assumptions. Section~\ref{sec:topology} isolates the harmonic sector and clarifies its relation to transit. Section~\ref{sec:ds} applies the package to Dai--Stojkovic. Section~\ref{sec:attenuation} adds a model-dependent higher-multipole attenuation estimate. Sections~\ref{sec:quasilocal} and \ref{sec:discussion} explain what the result does and does not rule out. The appendices collect the topological lemma and the transit bookkeeping on the standard two-ended slice.
+
+\section{Set-Up}
+\label{sec:setup}
+
+Let $\mathcal{M}$ be a $(3+1)$-dimensional spacetime with two asymptotically flat ends $E_+$ and $E_-$. We assume a foliation by spacelike slices $\Sigma_t$, each asymptotically flat at both ends. In the wormhole applications of interest we further specialize to the standard topology
+\begin{equation}
+\Sigma_t \cong \mathbb{R}\times S^2.
+\end{equation}
+We do not assume staticity, axial symmetry, or any specific matter model supporting the throat.
+
+For each end let $S_\pm(R)$ be a large coordinate sphere in that end, with $R\to\infty$ understood. The asymptotic end charges are
+\begin{equation}
+Q_\pm(t) \equiv \frac{1}{4\pi}\lim_{R\to\infty}\int_{S_\pm(R)} \star F(t).
+\end{equation}
+The asymptotic ADM energies are
+\begin{equation}
+M_\pm^{\mathrm{ADM}}(t) \equiv \frac{1}{16\pi G}\lim_{R\to\infty}\oint_{S_\pm(R)}
+\big(\partial_j h_{ij}-\partial_i h_{jj}\big)\, dS_i,
+\end{equation}
+with the usual asymptotically Cartesian conventions.\cite{ArnowittDeserMisner1962Dynamics,ReggeTeitelboim1974SurfaceIntegrals}
+
+The asymptotic hypotheses are:
+\begin{enumerate}
+    \item each end admits standard asymptotically Cartesian coordinates with Regge--Teitelboim falloff/parity conditions for gravity and the standard finite-charge falloff for Maxwell;\cite{ReggeTeitelboim1974SurfaceIntegrals,Wald1984GeneralRelativity}
+    \item no charge or matter crosses either asymptotic boundary during the interval of interest;
+    \item the evolution preserves the same asymptotic class throughout;
+    \item unless stated otherwise, no additional physical boundary components are introduced into the Hamiltonian problem besides the asymptotic ends.
+\end{enumerate}
+
+The wormhole-specific source-free Maxwell datum will be denoted by $Q_{\mathrm{wh}}$. It is defined only once the standard two-ended topology is assumed and is distinct from the asymptotic end charges $Q_\pm$. Section~\ref{sec:topology} makes this distinction precise.
+
+\section{Per-End Conservation in Maxwell Theory}
+\label{sec:maxwell}
+
+\begin{theorem}[Per-end Maxwell conservation]
+\label{thm:maxwell}
+Let $(F(t),\rho(t),\bm{j}(t))$ be a smooth one-parameter family of Maxwell data on $\Sigma_t$, with $\bm{B}$ falling off rapidly enough that the flux of $\nabla\times\bm{B}$ through $S_\pm(\infty)$ vanishes. If no charge crosses either asymptotic boundary, then
+\begin{equation}
+\frac{dQ_\pm}{dt}=0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Fix one end, say $E_+$, and choose a large sphere $S_+(R)$ lying entirely in the asymptotic region of that end. Integrating Amp\`ere--Maxwell over $S_+(R)$ gives
+\begin{equation}
+\frac{d}{dt}\oint_{S_+(R)} \bm{E}\cdot d\bm{A}
+=
+\oint_{S_+(R)} (\nabla\times \bm{B})\cdot d\bm{A}
+-4\pi \oint_{S_+(R)} \bm{j}\cdot d\bm{A}.
+\end{equation}
+The current term vanishes because no charge crosses that asymptotic boundary. The curl term vanishes by the divergence theorem applied to the exterior region of that end, together with $\nabla\cdot(\nabla\times\bm{B})\equiv 0$ and the assumed falloff of $\bm{B}$. Hence
+\begin{equation}
+\frac{d}{dt}\oint_{S_+(R)} \bm{E}\cdot d\bm{A}=0.
+\end{equation}
+Taking $R\to\infty$ yields $dQ_+/dt=0$. The proof at $E_-$ is identical.
+\end{proof}
+
+\begin{remark}
+The proof is asymptotic and does not use the throat geometry, the matter supporting the wormhole, or any statement about horizons or traversability. The theorem therefore applies equally to in-end source motion and to actual throat transit. What changes under transit is not the asymptotic end charge but the decomposition of the field into source-attached and source-free pieces.
+\end{remark}
+
+\section{Per-End ADM Conservation as a Hamiltonian Corollary}
+\label{sec:adm}
+
+The gravitational statement is the one the wormhole phenomenology actually wants. We state it at the level we think the present proof supports.
+
+\begin{proposition}[Per-end ADM conservation in the multi-end RT class]
+\label{prop:adm}
+Consider asymptotically flat initial data with two ends satisfying the standard Regge--Teitelboim falloff/parity conditions and no additional physical boundary components besides the asymptotic ends. Assume further that:
+\begin{enumerate}
+    \item smooth end-selecting lapse functions $N_\pm$ are admissible in the multi-end Regge--Teitelboim phase space, with $N_+\to 1$ on $E_+$ and $0$ on $E_-$, and vice versa for $N_-$;
+    \item the improved Hamiltonians $H_\pm := H[N_\pm,0]$ are differentiable and reduce on the constraint surface to the endwise ADM energies $M_\pm^{\mathrm{ADM}}$;
+    \item the evolution preserves the same asymptotic class.
+\end{enumerate}
+Then
+\begin{equation}
+\frac{dM_\pm^{\mathrm{ADM}}}{dt}=0.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+In the Regge--Teitelboim framework the Hamiltonian is
+\begin{equation}
+H[N,N^i]
+=
+\int_\Sigma \big(N\mathcal{H}+N^i\mathcal{H}_i\big)\, d^3x
++B[N,N^i],
+\end{equation}
+with $B$ the sum of asymptotic boundary terms needed for differentiability.\cite{ReggeTeitelboim1974SurfaceIntegrals}
+
+For end-selecting lapses $N_a$, $N_b$ and vanishing shifts, the hypersurface deformation algebra gives
+\begin{equation}
+\{H[N_a,0],H[N_b,0]\}=H[0,\beta_{ab}],
+\qquad
+\beta_{ab}^i
+=
+h^{ij}(N_a\partial_j N_b-N_b\partial_j N_a).
+\end{equation}
+\cite{HojmanKucharTeitelboim1976Geometrodynamics}
+
+Because $N_a$ and $N_b$ tend to constants on each end, their gradients vanish asymptotically. More explicitly, in an asymptotically flat chart on end $E_a$ one has
+\begin{equation}
+h_{ij}=O(r^{-1}),
+\qquad
+\pi^{ij}=O(r^{-2}),
+\qquad
+N_a=1+O(r^{-1}),
+\qquad
+N_b=O(r^{-1}),
+\end{equation}
+and therefore
+\begin{equation}
+\partial_j N_a=O(r^{-2}),
+\qquad
+\partial_j N_b=O(r^{-2}),
+\qquad
+\beta_{ab}^i=O(r^{-2}).
+\end{equation}
+The Regge--Teitelboim momentum boundary term has schematic form
+\begin{equation}
+B[0,\beta] \sim \oint_{S_\infty}\pi^i{}_j \beta^j dS_i.
+\end{equation}
+Since $\pi^i{}_j\beta^j=O(r^{-4})$ and $dS_i=O(r^2)$, the integrand contributes $O(r^{-2})$ and therefore vanishes in the $r\to\infty$ limit. Thus $H[0,\beta_{ab}]$ carries no asymptotic boundary charge. Under the standing assumption that there are no additional internal boundary terms, it vanishes weakly on the constraint surface:
+\begin{equation}
+\{H_a,H_b\}\approx 0.
+\end{equation}
+
+Now let the evolution Hamiltonian be
+\begin{equation}
+H_{\mathrm{evol}}=\sum_{b=\pm} c_b H_b + H_{\mathrm{gauge}},
+\end{equation}
+where the constants $c_b$ encode the asymptotic time translations at the ends and $H_{\mathrm{gauge}}$ is generated by asymptotically trivial lapse/shift data. Then
+\begin{equation}
+\frac{dM_a^{\mathrm{ADM}}}{dt}
+=
+\{H_a,H_{\mathrm{evol}}\}
+=
+\sum_b c_b \{H_a,H_b\}+\{H_a,H_{\mathrm{gauge}}\}
+\approx 0.
+\end{equation}
+Hence the endwise ADM energies are separately conserved.
+\end{proof}
+
+\begin{remark}
+This is the gravity statement needed for the wormhole application, but it is conditional on the admissibility/differentiability of end-selecting lapses in the multi-end Regge--Teitelboim class. We have not promoted that input beyond an assumption. We also do not treat formulations with explicit internal boundary terms such as horizons or shells as boundaries of the Hamiltonian region. The point relevant to the phenomenology is narrower: under the standard asymptotic Hamiltonian assumptions, the opposite-end ADM monopole is not a dynamical response coefficient.
+\end{remark}
+
+\begin{remark}[ADM versus Bondi]
+The proposition concerns ADM energy at spatial infinity, not Bondi mass at null infinity. Bondi mass can decrease by radiation without contradicting per-end ADM conservation.\cite{BondiVanderBurgMetzner1962Gravitational,Sachs1962Asymptotic}
+\end{remark}
+
+\section{The Harmonic Sector and What Transit Actually Changes}
+\label{sec:topology}
+
+For the standard two-ended topology $\Sigma\cong\mathbb{R}\times S^2$, the source-free part of $\star F$ is classified by a single real parameter because
+\begin{equation}
+H^2(\Sigma;\mathbb{R})\cong \mathbb{R}.
+\end{equation}
+Appendix~\ref{app:topology} records the elementary topological proof. Choosing a normalized generator $h$ with
+\begin{equation}
+\frac{1}{4\pi}\int_{S_+(\infty)} h = +1,
+\qquad
+\frac{1}{4\pi}\int_{S_-(\infty)} h = -1,
+\end{equation}
+one may write
+\begin{equation}
+\star F = \star F_{\mathrm{src}} + 4\pi Q_{\mathrm{wh}}\, h.
+\end{equation}
+
+The important point is that $Q_{\mathrm{wh}}$ is not the measured charge of either end. It is the source-free harmonic-flux label. Its behavior is:
+\begin{enumerate}
+    \item for source motion confined to one asymptotic region, $Q_{\mathrm{wh}}$ is fixed;
+    \item for actual throat transit of charge $q$, $Q_{\mathrm{wh}}$ shifts by $\pm q$;
+    \item in either case, the asymptotic end charges $Q_\pm$ remain fixed.
+\end{enumerate}
+
+So transit does \emph{not} transfer asymptotic monopole charge from one end to the other. What it changes is the decomposition between the explicit transported source and the source-free wormhole sector. After transit, the object and the mouth may each look locally monopolar if they are well separated, but the far-zone asymptotic charge of each end is the same as before.
+
+\section{The Dai--Stojkovic Construction Revisited}
+\label{sec:ds}
+
+The electrostatic calculation of Dai and Stojkovic is easiest to understand in the cut-and-paste short-throat geometry.\cite{DaiStojkovic2019Observing} Two copies of flat $\mathbb{R}^3$ are joined across identified spheres of radius $R$. A point charge $q$ is placed at radius $A>R$ on side $+$. Solving the static matching problem yields a family of static solutions with opposite-end monopole coefficient
+\begin{equation}
+Q_-^{\mathrm{DS}}(A)=\frac{qR}{2A}.
+\end{equation}
+As a static boundary-value family, this is legitimate.
+
+The failure comes in the next step: interpreting the family parameter $A$ as a dynamical time parameter for a single wormhole under slow source motion. Theorem~\ref{thm:maxwell} forbids that interpretation immediately, because the end charge $Q_-$ cannot vary under such motion. The source may move from $A_0$ to $A_1$, but the physical end state has the same $Q_-$ it had initially, not the value obtained by substituting $A_1$ into the static family.
+
+The difference between the published static family and the dynamically reachable family is exactly a source-free harmonic piece:
+\begin{equation}
+\star F^{\mathrm{dyn}}_{A_1}-\star F^{\mathrm{DS}}_{A_1}
+=
+4\pi \Delta Q_{\mathrm{wh}}\, h.
+\end{equation}
+Thus the Dai--Stojkovic family is a family of static problems with source position and harmonic sector varying together. It is not the history of a fixed-sector system.
+
+Figure~\ref{fig:fieldlines} shows the side-$-$ response in a fixed-sector electrostatic calculation. The induced field is dipolar, not monopolar. Figure~\ref{fig:multipoles} displays the same point in multipole language: once $Q_-$ is pinned, the varying response begins at $\ell=1$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig1_fieldlines.pdf}
+\caption{Electrostatic equipotentials on a meridional slice of each side of a short-throat wormhole, for three source positions on side $+$. The side-$-$ response remains dipolar in the fixed-sector theory: the induced field changes with source position, but it does not develop a varying $\ell=0$ term.}
+\label{fig:fieldlines}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.88\textwidth]{fig2_multipoles.pdf}
+\caption{Side-$-$ multipole coefficients as functions of source position in the short-throat model. Per-end conservation pins the varying monopole coefficient to zero; the response is carried by $\ell\ge 1$ multipoles.}
+\label{fig:multipoles}
+\end{figure}
+
+The gravitational claim in the same literature is structurally identical. It replaces $Q_-$ by an opposite-end mass parameter and treats a static family of different asymptotic monopoles as a dynamical trajectory. Proposition~\ref{prop:adm}, under its stated Hamiltonian assumptions, blocks the same inference.
+
+\section{A Model-Dependent Higher-Multipole Supplement}
+\label{sec:attenuation}
+
+The rigidity result kills the monopole channel. It does not rule out higher multipoles. For long thin throats, however, the simplest model suggests that these channels are strongly suppressed.
+
+Consider a uniform cylindrical throat of length $L$ and radius $R$. For a scalar or electrostatic mode
+\begin{equation}
+\Phi(z,\theta,\varphi)=\sum_{\ell,m} f_{\ell m}(z) Y_{\ell m}(\theta,\varphi),
+\end{equation}
+the Laplace equation gives
+\begin{equation}
+\frac{d^2 f_{\ell m}}{dz^2} - \frac{\ell(\ell+1)}{R^2} f_{\ell m}=0.
+\end{equation}
+Hence for $\ell\ge 1$ the modes are evanescent, with decay rate
+\begin{equation}
+k_\ell = \frac{\sqrt{\ell(\ell+1)}}{R},
+\end{equation}
+and transmission bounded schematically by
+\begin{equation}
+e^{-\sqrt{\ell(\ell+1)}L/R}
+\end{equation}
+up to $O(1)$ matching-dependent prefactors.
+
+\begin{remark}
+This is a scalar/electrostatic proxy, not a full tensor perturbation theorem for gravitational waves or static spin-2 perturbations. Its role is narrower: to show that once the monopole channel is removed, the surviving channels are plausibly small in long thin throats. We do not use this section to prove the gravitational rigidity statement.
+\end{remark}
+
+\section{Finite-Radius Effects Are Not Asymptotic Monopoles}
+\label{sec:quasilocal}
+
+One might object that an observer on side $-$ at finite radius can still measure a changing gravitational pull or electrostatic force as the hidden source moves on side $+$. That is true and not in conflict with the present claim.
+
+What changes at finite radius are the higher multipoles and near-zone field configuration. A finite-radius observer who fits the entire instantaneous field to an ``effective monopole'' without separating the leading asymptotic term from the subleading multipoles can infer an apparent varying charge or mass. That is a fitting error, not a changing asymptotic monopole.
+
+This is why we do \emph{not} claim that every quasi-local diagnostic is rigid. We claim only that the asymptotic end charges and, under Proposition~\ref{prop:adm}, the asymptotic end ADM energies are rigid. Those are the quantities the monopole-induction interpretation actually needs.
+
+\section{Discussion}
+\label{sec:discussion}
+
+The core lesson is simple. The presence of a second asymptotically flat end enlarges the space of static boundary-value problems, but it does not turn an asymptotic boundary charge into a time-dependent bulk response coefficient. In Maxwell theory this is a theorem. In gravity it is, under the standard multi-end Regge--Teitelboim assumptions isolated above, a Hamiltonian corollary. Either way, the opposite-end monopole is not something ordinary source motion gets to modulate.
+
+This is enough to defeat the specific Dai--Stojkovic phenomenology at the level it is actually sold. The observational signal in that literature is a time-varying far-zone monopole induced by hidden motion on the other side of a wormhole. That signal requires the system to move through a family of distinct asymptotic sectors. The conservation laws forbid exactly that.
+
+What survives is not nothing. Wormholes can carry nontrivial source-free sectors. Higher multipoles can respond to remote source motion. Finite-radius fields can change. But the asymptotic monopole does not. If one wants a viable observational program, it has to target something other than a varying opposite-end $1/r$ or $1/r^2$ term.
+
+\appendix
+
+\section{Topological Input on the Standard Two-Ended Slice}
+\label{app:topology}
+
+\begin{lemma}
+Let $\Sigma \cong \mathbb{R}\times S^2$ be the standard two-ended wormhole slice. Then
+\begin{equation}
+H_2(\Sigma;\mathbb{R}) \cong H^2(\Sigma;\mathbb{R}) \cong \mathbb{R},
+\end{equation}
+and the two large end spheres represent opposite generators:
+\begin{equation}
+[S_+] = -[S_-].
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$\mathbb{R}$ is contractible, so $\Sigma$ is homotopy equivalent to $S^2$. The homology and cohomology groups therefore coincide with those of $S^2$ in degree two. The relation between the two end spheres follows from the compact slab $[-L,L]\times S^2$, whose boundary is the difference of the two cross-sections.
+\end{proof}
+
+\section{Transit Bookkeeping}
+\label{app:transit}
+
+The transit accounting can be summarized in one line. If a charge $q$ traverses the throat from $+$ to $-$, then
+\begin{equation}
+\Delta Q_+ = 0,
+\qquad
+\Delta Q_- = 0,
+\qquad
+\Delta Q_{\mathrm{wh}} = \pm q,
+\end{equation}
+with sign fixed by orientation convention. The transported source and the harmonic sector exchange bookkeeping roles so that the asymptotic end charges remain fixed.
+
+\bibliographystyle{apsrev4-2}
+\bibliography{references}
+
+\end{document}

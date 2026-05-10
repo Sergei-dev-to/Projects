@@ -1,0 +1,445 @@
+\documentclass[aps,prd,onecolumn,nofootinbib,superscriptaddress]{revtex4-2}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{hyperref}
+\usepackage{bm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+
+\title{Topological Rigidity of Asymptotic Charges in Two-Ended Wormholes}
+\author{Sergei Slobodov}
+\date{\today}
+
+\begin{abstract}
+We study asymptotic monopole rigidity in two-ended wormholes, with the Maxwell case on the standard slice $\Sigma\cong\mathbb{R}\times S^2$ as the main rigorous result. For fixed asymptotic boundary data and fixed source-free flux sector, ordinary continuous motion of localized charge does not change the asymptotic end charges, and the varying opposite-end response has no $\ell=0$ term. The correct distinction is between source motion, which can modify only subleading asymptotic structure, and changes of global flux or boundary sector, which alone can alter monopole data. This sharpens the interpretation of source-position-dependent opposite-end monopole families in the wormhole literature: such families may exist as formal boundary-value families, but they are not dynamically reachable by continuous fixed-sector evolution. We then outline, but do not prove, the analogous Hamiltonian statement for gravitational monopoles.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+It is not difficult to see why one is led, at first sight, to expect a monopole effect across a wormhole. If a charged particle moves through or toward one mouth, field lines may thread the throat and reorganize on the other side; and if one can write a static exterior solution on that side with a $1/r$ term whose coefficient depends on the source position, it is natural to ask why slow source motion should not simply carry the system through that family of solutions.\cite{MorrisThorne1988Wormholes,Visser1995LorentzianWormholes} Indeed, an observer who remains entirely in the opposite asymptotic region and infers the field only from far-zone measurements might well say: if the best large-$r$ fit at each instant contains a source-position-dependent $1/r$ piece, in what operational sense is this not a changing effective charge?
+
+The purpose of the present paper is to argue that this natural inference is nevertheless incorrect. In the Maxwell problem on a two-ended wormhole with fixed asymptotic boundary conditions, asymptotic monopole data are not produced or varied by ordinary interior source motion. What source motion can change is the non-monopole response: dipole and higher multipoles, together with near-throat field structure. Any genuine change of asymptotic monopole data requires a change in the global flux sector or in the boundary data at infinity.
+
+The principal distinction on which everything turns is the distinction between the \emph{existence} of a formal family of boundary-value solutions and the \emph{dynamical reachability} of that family by continuous source motion. In a two-ended geometry, the monopole mode is not an ordinary response coefficient to be freely adjusted by local matching near the throat. It is fixed by the end charges themselves. Once that sector is held fixed, the source-dependent response at the opposite end has vanishing varying $\ell=0$ mode and begins at higher multipoles. One may therefore write down a family of formal exterior solutions with different monopole coefficients, and yet still be unable to realize that family by ordinary continuous source motion in a single fixed-sector system.
+
+There are, as it seems to us, two reasons why this distinction is easily overlooked. First, the potential near a mouth can have a nonzero constant mode even when the induced mouth flux has zero angular average. Secondly, the sourceless-side exterior problem always admits a formal $\ell=0$ solution, so that if this coefficient is left free during matching it is tempting to let local source data determine it. The argument of the paper is that this temptation must be resisted: the varying source-induced mouth data carry no monopole flux, whereas the asymptotic monopole label is fixed independently.
+
+The immediate motivation is to sharpen the interpretation of claims in the wormhole literature that moving remote sources can induce a changing opposite-end monopole.\cite{DaiStojkovic2019Observing,DaiStojkovic2020ReplyObserving,SimonettiEtAl2021SensitiveSearches} On the Maxwell side, the closest technical precursor is Krasnikov's electrostatic analysis, which already isolates a source-free wormhole flux parameter fixed under quasistatic motion.\cite{Krasnikov2008ElectrostaticInteraction} Our aim is not to replace that insight, but to reformulate it in asymptotic end-charge language, connect it directly to the vanishing of the varying opposite-end monopole coefficient, and apply it to the later Dai--Stojkovic interpretation. If the latter were correct at the level of genuine asymptotic charge or mass, then one could in principle distinguish a black hole from a wormhole by a changing far-zone monopole signal sourced by hidden matter on the other side. Our aim is to make precise why that further inference does not follow.
+
+\subsection*{Roadmap for the skeptical reader}
+
+The quickest way to read the paper is:
+\begin{enumerate}
+    \item start with Theorem~\ref{thm:fixed-sector}, which is just the precise end-charge conservation statement;
+    \item then read the far-source electrostatic expansion, where the mouth flux is shown to have zero varying $\ell=0$ component even though the potential has a constant term;
+    \item only then read the cohomological discussion, whose role is to identify and fix the remaining source-free monopole sector.
+\end{enumerate}
+
+This order matters. The paper does \emph{not} deny cross-throat influence. It denies only a dynamically generated varying opposite-end monopole under ordinary fixed-sector evolution. We have found it useful to state this restriction repeatedly, because it is easy to mistake the present claim for a denial of all influence across the throat, whereas it is only the monopole inference that is at issue.
+
+\section{Set-Up and Definitions}
+
+Let $\Sigma$ be a smooth spacelike slice of a static or quasistatic \emph{standard} two-ended wormhole geometry, with asymptotic ends $E_{+}$ and $E_{-}$ and topology
+\begin{equation}
+\Sigma \cong \mathbb{R}\times S^2.
+\end{equation}
+Let $S_{+}(R)$ and $S_{-}(R)$ be large coordinate spheres in the two ends, taken to $R \to \infty$.
+
+For the Maxwell field, define the end charges by
+\begin{equation}
+Q_{\pm} \equiv \frac{1}{4\pi}\lim_{R\to\infty}\int_{S_{\pm}(R)} \star F,
+\end{equation}
+with orientation chosen consistently on $\Sigma$.
+
+For the standard topology $\Sigma\cong\mathbb{R}\times S^2$, Appendix~\ref{lem:standard-topology} gives
+\begin{equation}
+H^2(\Sigma;\mathbb{R})\cong \mathbb{R}.
+\end{equation}
+Choose once and for all a smooth closed representative two-form $h$ of the generator, normalized by
+\begin{equation}
+\frac{1}{4\pi}\int_{S_{+}(\infty)} h = 1,
+\qquad
+\frac{1}{4\pi}\int_{S_{-}(\infty)} h = -1.
+\end{equation}
+The corresponding source-free flux label will be denoted by $Q_{\mathrm{wh}}$.
+
+The working assumptions are:
+\begin{enumerate}
+    \item the asymptotic structure of each end is fixed,
+    \item no charge escapes through either asymptotic boundary during the process of interest,
+    \item the global flux sector is fixed unless explicitly stated otherwise,
+    \item the source motion is ordinary local dynamics of compactly supported matter, not a change of asymptotic boundary conditions.
+\end{enumerate}
+
+The central distinction is between:
+\begin{itemize}
+    \item \emph{asymptotic monopole data}, meaning the $\ell=0$ coefficients determined by the end charges themselves, and
+    \item \emph{source motion}, which may change the source-dependent field configuration while leaving those end charges fixed.
+\end{itemize}
+
+\subsection*{Literature Position}
+
+The paper sits between two already visible strands in the literature.
+
+First, Krasnikov's electrostatic analysis already isolates the fixed source-free wormhole flux as a separate ingredient of the solution and emphasizes that it remains unchanged under quasistatic transport.\cite{Krasnikov2008ElectrostaticInteraction} In that sense the present paper is not introducing the Maxwell-side rigidity idea from nothing. What we add is a reformulation in asymptotic end-charge language, an explicit multipole consequence, and a direct application to later monopole-induction claims.
+
+Secondly, Dai and Stojkovic explicitly promote the opposite conclusion in the observational context. In the electrostatic model they say that ``the monopole effect will change according to the particle's location,'' while in the gravitational reply they characterize their signal as an ``acceleration variation'' produced by an elliptic orbit on the other side.\cite{DaiStojkovic2019Observing,DaiStojkovic2020ReplyObserving} Krasnikov's comment responds that within their approximation ``the effect is, in fact, unobservable,''\cite{Krasnikov2020CommentObserving} but the observational line did not stop there: Simonetti \emph{et al.} then proposed looking for orbital perturbations caused by ``an object on the other side of the wormhole.''\cite{SimonettiEtAl2021SensitiveSearches}
+
+Our claim is therefore narrower than a general critique of wormhole phenomenology and broader than a comment on one calculation. We argue that, in the Maxwell problem on the standard two-ended slice, the moving-source monopole family is not dynamically reachable at fixed sector. That conclusion is close in spirit to Krasnikov's fixed-flux analysis, but it is directed at the later interpretation and observational use of the Dai--Stojkovic mechanism.
+
+\section{Main Theorem}
+
+\begin{theorem}[Fixed-sector monopole rigidity]
+\label{thm:fixed-sector}
+Let $\Sigma$ be a spacelike slice of the standard two-ended wormhole geometry with asymptotically flat ends $E_+$ and $E_-$. Consider a smooth one-parameter family of Maxwell data $(F(t),\rho(t),\bm{j}(t))$ on $\Sigma$, with $t\in [t_1,t_2]$, and assume:
+\begin{enumerate}
+    \item for each $t$, the charge/current support is contained in a fixed compact interior region $K\subset \Sigma$, so no charge crosses either asymptotic end;
+    \item the asymptotic boundary conditions at $E_\pm$ are fixed throughout the evolution;
+    \item the source-free flux label $Q_{\mathrm{wh}}$ along the unique generator $h$ of Appendix~\ref{lem:standard-topology} is fixed throughout the evolution.
+\end{enumerate}
+Then the asymptotic end charges
+\begin{equation}
+Q_{\pm}(t)\equiv \frac{1}{4\pi}\lim_{R\to\infty}\int_{S_{\pm}(R)} \star F(t)
+\end{equation}
+are independent of $t$. Equivalently,
+\begin{equation}
+\frac{dQ_\pm}{dt}=0.
+\end{equation}
+In particular, if one compares two configurations in the same fixed sector and differing only by continuous motion of localized sources in the interior, then the varying opposite-end response has no $\ell=0$ term in its asymptotic multipole expansion.
+\end{theorem}
+
+\begin{proof}
+Fix one end, say $E_-$. For sufficiently large $R$, let $\mathrm{ext}_-(R)\subset \Sigma$ denote the exterior region beyond the large sphere $S_-(R)$, chosen so that $K\cap \mathrm{ext}_-(R)=\varnothing$. Since no charged matter reaches that end, charge conservation in $\mathrm{ext}_-(R)$ gives
+\begin{equation}
+\frac{d}{dt}\int_{\mathrm{ext}_-(R)} \rho\, d^3x
+=-\int_{S_-(R)} \bm{j}\cdot d\bm{A}.
+\end{equation}
+The right-hand side vanishes by assumption, so the total charge in $\mathrm{ext}_-(R)$ is time-independent. Gauss' law on $\mathrm{ext}_-(R)$ identifies that exterior charge with the flux through $S_-(R)$,
+\begin{equation}
+\int_{\mathrm{ext}_-(R)} \rho\, d^3x
+=\frac{1}{4\pi}\int_{S_-(R)} \star F,
+\end{equation}
+and therefore
+\begin{equation}
+\frac{d}{dt}\int_{S_-(R)} \star F=0.
+\end{equation}
+Taking $R\to\infty$ yields $dQ_-/dt=0$. The same argument applies at $E_+$.
+
+Now compare two times $t_a,t_b$ and form the difference
+\begin{equation}
+\delta(\star F)\equiv \star F(t_b)-\star F(t_a).
+\end{equation}
+The preceding flux argument gives
+\begin{equation}
+\int_{S_\pm(\infty)} \delta(\star F)=0.
+\end{equation}
+Assumption (3) says that the source-free flux label does not change, so $\delta(\star F)$ has no component along the unique source-free flux generator $h$. But that generator carries the only independent monopole flux datum on the standard two-ended slice. Therefore the varying part carries no asymptotic monopole flux at either end. When translated into the usual exterior multipole expansion, this says that the varying $1/r$ coefficient vanishes and the varying response begins at $\ell\ge 1$.
+\end{proof}
+
+\begin{remark}
+For readers suspicious of the theorem's conclusion, the key sanity check is operational: a genuinely varying opposite-end $1/r$ coefficient would amount to a varying asymptotic charge at that end. In gravity, the analogous statement would be a varying ADM mass. Those are exactly the quantities that ordinary interior source motion should \emph{not} be able to modulate at fixed asymptotic sector.
+\end{remark}
+
+\begin{remark}[Load-bearing assumptions]
+The Maxwell argument rests on four genuinely load-bearing assumptions.
+\begin{enumerate}
+    \item \emph{Asymptotically flat ends and standard end charges.} The charges $Q_\pm$ are defined by flux integrals over large spheres at the two ends. If one changes the asymptotic notion of charge, one changes the statement.
+    \item \emph{No charge transport through infinity.} The endwise conservation step fails if charged matter is allowed to cross the asymptotic spheres.
+    \item \emph{Fixed source-free flux sector.} The theorem compares continuous source motion inside a fixed global sector. If one changes the harmonic flux label by hand, the monopole data can change because one is comparing different sectors rather than one evolution.
+    \item \emph{Standard two-ended topology.} The one-dimensional flux sector used below is specific to the ordinary two-ended wormhole slice. With more ends or additional independent 2-cycles, one must fix all corresponding flux labels. The proof strategy is the same, but the sector space is larger.
+\end{enumerate}
+What is \emph{not} assumed is equally important: no spherical symmetry, no staticity of the source position, and no denial of higher-multipole or near-zone cross-throat effects.
+\end{remark}
+
+\begin{remark}
+The intended gravitational analogue is that ordinary remote source motion cannot change the ADM mass of an asymptotic end. The role of the Maxwell theorem is not to prove the full gravitational statement by analogy alone, but to isolate the asymptotic logic that any gravitational monopole-induction claim would also have to evade.
+\end{remark}
+
+\begin{corollary}
+Any source-position-dependent family of opposite-end monopole solutions, if parameterized by the location of a localized source while the asymptotic sector is held fixed, cannot represent the actual dynamical evolution of a single physical configuration under ordinary continuous source motion.
+\end{corollary}
+
+One may nevertheless feel, even after the theorem, that an asymptotic conservation statement leaves open a more practical field-theoretic objection: perhaps the conserved charge is fixed, but the opposite-end field still acquires a source-position-dependent monopole \emph{appearance} when expanded at large radius. The next explicit electrostatic calculation is meant to answer exactly this concern.
+
+\section{Topological Calculation in the Maxwell Case}
+
+This is the section that should carry the real weight of the paper. The current draft records the calculation in its leanest form. Earlier wormhole electrostatics analyses already contain part of the relevant structure, especially the distinction between source-generated and source-free contributions.\cite{KhusnutdinovBakhmatov2007SelfForce,Krasnikov2008ElectrostaticInteraction}
+
+\subsection{Flux conservation on a two-ended slice}
+
+On $\Sigma$, the Maxwell constraint is
+\begin{equation}
+d \star F = 4\pi j,
+\end{equation}
+or, in electrostatics, $\nabla \cdot \bm{E} = 4\pi \rho$.
+
+Let $\Omega \subset \Sigma$ be a compact region bounded by two large spheres $S_{+}(R)$ and $S_{-}(R)$ together with small boundaries around localized charged bodies. Integrating the constraint gives
+\begin{equation}
+\int_{S_{+}(R)} \star F + \int_{S_{-}(R)} \star F + \sum_i \int_{\partial W_i} \star F = 4\pi \int_{\Omega} j.
+\end{equation}
+
+For quasistatic source motion confined away from the asymptotic boundaries, no charge crosses $S_{\pm}(R)$ as $R \to \infty$. Hence the end fluxes can change only if charge is sent through an asymptotic boundary or if one changes the source-free sector by hand. The theorem above is the precise endwise statement of this elementary flux conservation.
+
+\subsection{Decomposition into sector data and source response}
+
+The right decomposition is a decomposition of the flux two-form, not of the scalar potential. Write
+\begin{equation}
+\star F = \omega_{\mathrm{src}} + 4\pi Q_{\mathrm{wh}}\, h,
+\end{equation}
+where $\omega_{\mathrm{src}}$ is the source-dependent part at fixed sector and $h$ is the normalized generator of the unique source-free flux sector.
+
+The key point is that the $h$-term carries the source-independent monopole data associated with the flux sector. Once that sector is fixed, the varying part of the solution belongs to the complementary space with zero varying monopole flux at each end.
+
+For the standard two-ended wormhole topology, this sector is one-dimensional for a purely topological reason. The precise statement is proved in Appendix~\ref{lem:standard-topology}: for $\Sigma\cong \mathbb{R}\times S^2$ one has
+\begin{equation}
+H_2(\Sigma;\mathbb{R})\cong \mathbb{R},
+\qquad
+H^2(\Sigma;\mathbb{R})\cong \mathbb{R},
+\end{equation}
+and the two end spheres represent opposite generators. Thus there is exactly one source-free flux label. Choose a representative two-form $h$ of the generator, normalized so that
+\begin{equation}
+\frac{1}{4\pi}\int_{S_{+}(\infty)} h = 1,
+\qquad
+\frac{1}{4\pi}\int_{S_{-}(\infty)} h = -1.
+\end{equation}
+In Krasnikov's language, $Q_{\mathrm{wh}}$ is precisely the source-free wormhole flux parameter that remains fixed under quasistatic motion and is encoded by the flux through the throat.\cite{Krasnikov2008ElectrostaticInteraction}
+
+Now compare two field configurations with the same asymptotic boundary data and the same global sector, but with the localized sources moved quasistatically in the interior. Their difference in flux two-form satisfies
+\begin{equation}
+\delta Q_{\mathrm{wh}} = 0,
+\qquad
+[\delta(\star F)] = 0 \in H^2(\Sigma).
+\end{equation}
+Thus the varying part of the field has no component along the unique generator $h$ of the flux sector. In particular, its flux through either asymptotic end vanishes,
+\begin{equation}
+\int_{S_{\pm}(\infty)} \delta(\star F)=0.
+\end{equation}
+This is the topological reason the varying source-driven response cannot acquire a new asymptotic monopole. Put differently: the theorem fixes the end charges under ordinary evolution, while the cohomological statement explains why the only remaining source-free monopole datum is also fixed.
+
+\subsection{Multipole consequence}
+
+Only at this stage is it useful to introduce the potential. On the opposite end, the source-dependent correction must solve the homogeneous exterior Maxwell equation and therefore has the asymptotic expansion
+\begin{equation}
+\delta \Phi_{-}(r,\Omega)
+= \frac{\delta Q_{-}}{r}
++ \sum_{\ell \ge 1}\sum_m \frac{a_{\ell m}Y_{\ell m}(\Omega)}{r^{\ell+1}}.
+\end{equation}
+Here $\delta Q_-$ is not an arbitrary coefficient: by Gauss' law it is exactly the varying end flux divided by $4\pi$. Since the preceding argument gives $\delta Q_{-}=0$, the varying source-response has no monopole term:
+\begin{equation}
+\delta \Phi_{-}(r,\Omega)
+= \sum_{\ell \ge 1}\sum_m \frac{a_{\ell m}Y_{\ell m}(\Omega)}{r^{\ell+1}}.
+\end{equation}
+Therefore the source-motion signal begins at $\ell \ge 1$.
+
+This is the sharp place where any contrary matching calculation must fail: if a local matching procedure allows the moving source to determine a changing opposite-end $\ell=0$ coefficient, then it has allowed the asymptotic charge sector itself to float. The resulting expressions may still define a mathematically consistent family of boundary-value solutions, but that family is not dynamically reachable by continuous fixed-sector motion of the source.
+
+\section{Explicit Electrostatic Example}
+
+The cleanest worked example should be quasistatic electrostatics in a symmetric wormhole with two asymptotically flat ends. This is also the regime in which the prior electrostatics literature is most directly comparable.\cite{Krasnikov2008ElectrostaticInteraction,KhusnutdinovBakhmatov2007SelfForce} The target computation is:
+\begin{enumerate}
+    \item place a point charge far from one mouth,
+    \item expand the field near the mouth in spherical harmonics about that mouth,
+    \item propagate the induced boundary data through the throat at fixed flux sector,
+    \item show that the opposite-end varying response starts at dipole order, with no varying monopole term.
+\end{enumerate}
+
+Take a charge $q$ located on the symmetry axis at coordinate distance $A$ from the center of one mouth, with $A \gg R$ and $R$ the mouth radius. In the source-free neighborhood of the mouth, the Coulomb potential admits the standard interior expansion
+\begin{equation}
+\Phi_{\mathrm{near}}(r,\theta)
+= \frac{q}{\sqrt{A^2+r^2-2Ar\cos\theta}}
+= \frac{q}{A}\sum_{\ell=0}^{\infty}
+\left(\frac{r}{A}\right)^\ell P_\ell(\cos\theta),
+\qquad r<A.
+\end{equation}
+Keeping the first few terms,
+\begin{equation}
+\Phi_{\mathrm{near}}(r,\theta)
+= \frac{q}{A}
++ \frac{q r}{A^2}\cos\theta
++ \frac{q r^2}{2A^3}\left(3\cos^2\theta-1\right)
++ O\!\left(\frac{r^3}{A^4}\right).
+\end{equation}
+
+The relevant source data for the transmitted field are not the constant part of the potential, but the normal electric flux through the mouth sphere. Differentiating at $r=R$ gives
+\begin{equation}
+E_r(R,\theta)
+= -\partial_r \Phi_{\mathrm{near}}(R,\theta)
+= -\frac{q}{A^2}\cos\theta
+- \frac{qR}{A^3}\left(3\cos^2\theta-1\right)
++ O\!\left(\frac{R^2}{A^4}\right).
+\end{equation}
+The angular average vanishes:
+\begin{equation}
+\int_{S_R} E_r(R,\theta)\, dA = 0.
+\end{equation}
+Equivalently, the mouth data induced by the distant charge have no monopole flux. The leading nonzero term is dipolar, proportional to $\cos\theta$, followed by quadrupole and higher moments.
+
+At fixed wormhole sector, the opposite-end response is sourced by these flux data. Since their $\ell=0$ component vanishes, the transmitted varying field at the opposite infinity has the form
+\begin{equation}
+\delta \Phi_{-}(r,\theta,\varphi)
+= \frac{p_m n^m}{r^2}
++ O(r^{-3}),
+\end{equation}
+with no varying $1/r$ term. Thus a slowly moved distant charge can communicate dipole and higher multipoles through the throat, but it cannot generate a new opposite-end monopole.
+
+This is also where the common mistake becomes visible. The near-mouth expansion of the \emph{potential} contains a constant term $q/A$, but the near-mouth expansion of the \emph{flux} has no $\ell=0$ component. Treating the potential zero mode as if it were a freely transmissible source for an opposite-end $1/r$ field is exactly to confuse a gauge-sensitive matching datum with the asymptotic charge sector. For a skeptical reader, this is the first concrete place to check the paper's logic: the potential zero mode looks suggestive, but the flux zero mode, which is the invariant quantity relevant for monopole charge, is absent.
+
+\section{Why the Monopole Family Is Not Dynamically Reachable}
+
+The likely error pattern is now clear. One writes the opposite-end solution as a general homogeneous multipole expansion and leaves the $\ell=0$ coefficient unconstrained. One then fixes that coefficient by matching to source-dependent near-throat data. But the $\ell=0$ coefficient is not an ordinary response coefficient. It is fixed by the end charge itself, equivalently by the global flux sector and asymptotic boundary data.
+
+That is the entire point of the present paper in one sentence: a source-position-dependent monopole family may exist as a formal family of solutions to differently fixed boundary-value problems, but it is not the continuous time evolution of one fixed-sector wormhole configuration. The distinction between formal solvability and dynamical reachability is therefore not a verbal subtlety. It marks, as we think, the precise place at which the natural but misleading intuition enters.
+
+\section{Application to the Dai--Stojkovic Construction}
+
+The preceding sections were written without committing to a particular target in the literature. We now explain how Theorem~\ref{thm:fixed-sector} applies to the Dai--Stojkovic construction.\cite{DaiStojkovic2019Observing,Krasnikov2020CommentObserving,DaiStojkovic2020ReplyObserving}
+
+\subsection{What their electrostatic toy model computes}
+
+In the flat-space toy model, one solves Laplace's equation on two exterior regions joined at a spherical throat and writes the potentials on the two sides as multipole expansions. The sourceless side is expanded as a homogeneous exterior solution,
+\begin{equation}
+\Phi_{2}(r,\theta)=\sum_{\ell=0}^{\infty}\frac{B_\ell P_\ell(\cos\theta)}{r^{\ell+1}},
+\end{equation}
+while the source side contains the Coulomb field of the point charge plus a homogeneous correction. Matching the potentials and their radial derivatives at the throat then determines the coefficients $B_\ell$ as functions of the source position.
+
+More specifically, Dai and Stojkovic impose continuity of the potential and of the radial derivative at the throat,
+\begin{equation}
+V_1(R)=V_2(R),
+\qquad
+r_1 \partial_{r_1}V_1|_{r_1=R}=-\,r_2\partial_{r_2}V_2|_{r_2=R},
+\end{equation}
+their Eqs.~(5)--(6), and from this obtain explicit coefficients $T_\ell$ and $B_\ell$, their Eqs.~(7)--(8).\cite{DaiStojkovic2019Observing} The opposite-side Gaussian charge is then read off from the $\ell=0$ coefficient as
+\begin{equation}
+Q_2=\lim_{r_2\to\infty}\left(-\frac{r_2^2}{4\pi}\int_{S^2}\partial_{r_2}V_2\, d\Omega\right)= \frac{qR}{2A},
+\end{equation}
+their Eq.~(9), with the companion charge
+\begin{equation}
+Q_1 = q-\frac{qR}{2A},
+\end{equation}
+their Eq.~(10).\cite{DaiStojkovic2019Observing}
+
+Taken purely as a boundary-value construction, there is nothing formally wrong with this procedure. It produces a family of static solutions labeled by the source position and, crucially, by the coefficient $B_0$ of the opposite-end $1/r$ term. From this point of view it is quite understandable that one might interpret $B_0(A)$ as an induced effective charge seen by an observer on the sourceless side.
+
+\subsection{What the construction does not represent}
+
+The problem is not the existence of such a formal family. The problem is the claim that ordinary continuous source motion dynamically moves a single physical wormhole configuration through that family.
+
+From the point of view of Theorem~\ref{thm:fixed-sector}, the coefficient $B_0$ is not an ordinary response coefficient on the same footing as $B_1,B_2,\dots$. It is the opposite-end monopole label. Equivalently, it is fixed by the asymptotic charge sector. Once one imposes fixed asymptotic boundary data and fixed global flux sector, the allowed source-dependent evolution satisfies
+\begin{equation}
+\delta B_0 = 0.
+\end{equation}
+Therefore the family with $B_0=B_0(A)$, where $A$ is the source position, may exist as a family of static solutions to differently fixed boundary-value problems, but it cannot be the dynamical trajectory of a single fixed-sector system.
+
+\subsection{Where the spurious monopole enters}
+
+The mechanism is now transparent. Dai and Stojkovic treat $B_0$ as one more matching coefficient to be determined from the throat conditions. But $B_0$ is not on the same footing as $B_1,B_2,\dots$: it is the opposite-end monopole label. If one matches the full potential across the throat while leaving the sourceless-side $\ell=0$ coefficient free, the constant mode in the near-mouth potential is allowed to determine $B_0$. That is exactly the step that converts a fixed-sector problem into a family of differently fixed boundary-value problems. The constant mode of the potential is not the invariant datum; the invariant datum is the flux sector, and the varying source-induced mouth flux has zero angular average.
+
+So the Dai--Stojkovic family is best understood as follows:
+\begin{enumerate}
+    \item one writes a general homogeneous opposite-side exterior solution including a free monopole term,
+    \item one matches it to local source-dependent data near the throat,
+    \item one thereby obtains a source-position-dependent opposite-side monopole coefficient,
+    \item one then interprets that coefficient as dynamically induced by source motion.
+\end{enumerate}
+The invalid step is the last one. The family so obtained is not dynamically reachable under continuous fixed-sector evolution.
+
+\subsection{What survives of the physical effect}
+
+Once the asymptotic sector is held fixed, the varying opposite-end response begins at higher multipoles. This still permits genuine cross-throat influence. In particular, dipole and higher moments can depend on the source position and can lead to time-dependent signals if the source moves. What is ruled out is the stronger claim that ordinary source motion generates a changing opposite-end monopole.
+
+This distinction is exactly what matters for later observational proposals based on a hidden perturber on the other side of a wormhole.\cite{SimonettiEtAl2021SensitiveSearches,BaoHouZhang2023GWScattering} Such proposals need a dynamically generated varying monopole channel. The present argument says that this channel is not available under ordinary fixed-sector evolution.
+
+\section{Gravitational Analogue}
+
+The gravitational statement should be phrased more carefully but with the same logic. A varying opposite-end monopole mass would amount to a varying ADM mass at that end. Ordinary motion of compact sources in the interior should not produce such a variation. What may vary are subleading asymptotic fields, subject to the usual caveats about gauge and center-of-mass frame.
+
+The natural Hamiltonian formulation is the following. On a two-ended asymptotically flat Cauchy slice one may define separate endwise generators by choosing lapse functions that approach $1$ on one end and $0$ on the other. The Regge--Teitelboim analysis shows that asymptotic Poincar\'e motions require boundary terms, and the relevant boundary term for asymptotic time translation is precisely the ADM energy.\cite{ReggeTeitelboim1974SurfaceIntegrals} In a multi-ended setting the same logic suggests one Hamiltonian boundary charge for each end. On the constraint surface the bulk term vanishes, leaving only the selected end's boundary integral. If this end-localized Hamiltonian flow is well defined and the asymptotic structure is held fixed, then each end ADM mass should be separately conserved. In that formulation throat transit changes only interior or quasi-local bookkeeping; it does not by itself furnish a mechanism for varying the opposite-end ADM monopole.
+
+This paragraph is offered as a proof strategy rather than as a completed theorem. The Maxwell result is the clean theorem. The gravitational discussion should be presented as the natural analogue plus a diagnosis of why a changing opposite-end monopole mass would be suspicious from the outset. The burden here is not to deny that one can write static metrics with different asymptotic masses, but to deny that ordinary motion of hidden matter dynamically drives a fixed system through such a family.\cite{Chrusciel2020ConstraintEquations}
+
+\section{Discussion}
+
+The main lesson is not that wormholes have no observable influence across the throat. They may transmit nontrivial field information, and there is no reason in general to deny source-dependent higher multipoles or near-zone effects. The lesson is rather that one must distinguish these from rigid asymptotic monopole data.
+
+This distinction matters both conceptually and phenomenologically. Conceptually, it clarifies the meaning of Wheeler's ``charge without charge'': the relevant monopole data belong to a source-free flux sector, not to an induced effective charge created by ordinary source transport.\cite{Misner1960WormholeInitialConditions,Krasnikov2008ElectrostaticInteraction,GuendelmanEtAl2011HidingCharge} Phenomenologically, it blocks a class of proposed monopole-level observational signatures and pushes the physically relevant signal into higher multipoles. If our argument is correct, then some observational ideas remain perfectly intelligible in a weaker form, but the monopole channel on which they were most strongly advertised is unavailable.
+
+Stated differently, the paper is not committed to the claim that every source-position-dependent monopole formula written in the literature is algebraically meaningless. The claim is sharper: such formulas, when they appear, should be interpreted as describing different sectors or differently fixed boundary problems, not the continuous evolution of one fixed-sector wormhole configuration under ordinary source motion. We have returned to this distinction more than once because it is the paper's main conceptual burden: many readers, ourselves included at the outset, are naturally inclined toward the opposite inference.
+
+For that reason, the argument has been arranged in cumulative form. The conservation law fixes the end charges under ordinary evolution. The cohomological discussion then shows that the remaining source-free monopole datum is likewise fixed. The explicit far-source expansion finally exhibits, in the simplest possible setting, how a potential zero mode can coexist with vanishing monopole flux. Taken separately, each point may appear modest; taken together, they leave no room for a dynamically generated varying opposite-end monopole in the fixed-sector problem considered here.
+
+\appendix
+
+\section{Topological Input for the Standard Two-Ended Slice}
+
+This appendix isolates the topological fact used implicitly in the Maxwell proof. The paper only needs the standard two-ended wormhole topology, and it is better to say that explicitly than to hide it behind overgeneral language.
+
+\begin{lemma}
+\label{lem:standard-topology}
+Let $\Sigma$ be a standard two-ended wormhole slice with topology
+\begin{equation}
+\Sigma \cong \mathbb{R}\times S^2.
+\end{equation}
+Then
+\begin{equation}
+H_2(\Sigma;\mathbb{R})\cong \mathbb{R},
+\qquad
+H^2(\Sigma;\mathbb{R})\cong \mathbb{R}.
+\end{equation}
+Moreover, any two sufficiently large spheres $S_+$ and $S_-$ surrounding the two ends represent opposite generators:
+\begin{equation}
+[S_+] = -[S_-] \in H_2(\Sigma;\mathbb{R}).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Since $\mathbb{R}$ is contractible, $\Sigma$ is homotopy equivalent to $S^2$. Homotopy invariance of singular homology therefore gives
+\begin{equation}
+H_2(\Sigma;\mathbb{R})\cong H_2(S^2;\mathbb{R})\cong \mathbb{R}.
+\end{equation}
+The corresponding cohomology statement follows from the same homotopy equivalence:
+\begin{equation}
+H^2(\Sigma;\mathbb{R})\cong H^2(S^2;\mathbb{R})\cong \mathbb{R}.
+\end{equation}
+
+To identify the end spheres, choose a compact slab
+\begin{equation}
+K=[-L,L]\times S^2 \subset \mathbb{R}\times S^2
+\end{equation}
+with boundary
+\begin{equation}
+\partial K = (\{L\}\times S^2)\sqcup (-\{-L\}\times S^2).
+\end{equation}
+As the boundary of a compact oriented 3-chain, $\partial K$ is null-homologous. Hence
+\begin{equation}
+[\{L\}\times S^2]-[\{-L\}\times S^2]=0,
+\end{equation}
+which is exactly the stated relation after identifying these cross-sections with large spheres $S_+$ and $S_-$ near the two ends.
+\end{proof}
+
+\begin{corollary}
+\label{cor:one-flux-label}
+For the standard topology $\Sigma\cong\mathbb{R}\times S^2$, there is exactly one independent source-free flux label. Equivalently, the harmonic/source-free part of $\star F$ has a single monopole parameter.
+\end{corollary}
+
+\begin{proof}
+The flux sector is classified by $H^2(\Sigma;\mathbb{R})$, which is one-dimensional by Lemma~\ref{lem:standard-topology}. Hence every source-free flux sector is a multiple of one chosen generator.
+\end{proof}
+
+\begin{remark}
+Nothing essential in the flux proof depends on the sector space being one-dimensional. For a wormhole slice with more ends or extra independent two-cycles, the same argument goes through after fixing \emph{all} independent flux labels. The standard two-ended case is singled out here only because it is the case relevant to the present paper and to the Dai--Stojkovic construction.
+\end{remark}
+
+\bibliographystyle{apsrev4-2}
+\bibliography{references}
+
+\end{document}

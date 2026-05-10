@@ -1,0 +1,110 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{enumitem}
+\geometry{margin=1in}
+
+\title{Topological Rigidity of Asymptotic Charges in Wormhole Geometries}
+\author{Sergei Slobodov}
+\date{\today}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We show that in a two-ended wormhole geometry, the asymptotic monopole charge measured at each end is fixed by the global flux sector and cannot be changed by ordinary transport of charge through the throat. Local dynamics may rearrange field-line geometry and induce higher multipoles, but they do not continuously change the asymptotic monopole data unless the topological sector or boundary data are changed. We formulate this claim precisely, illustrate it in an explicit electrostatic example, and clarify its implications for ``charge without charge'' interpretations and wormhole phenomenology.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection*{Target opening}
+In wormhole spacetimes, it is easy to draw field lines suggesting that transporting a charged particle through the throat dynamically induces a new asymptotic monopole charge at one mouth. We argue that this intuition is incorrect. The asymptotic monopole charge at each end is topological sector data, fixed by the global flux configuration and boundary conditions, and cannot be changed by ordinary interior transport of charge.
+
+\subsection*{What this paper does}
+This paper has three goals:
+\begin{enumerate}[label=\arabic*.]
+    \item state a precise rigidity result for asymptotic monopole charges in a two-ended wormhole,
+    \item provide an explicit electrostatic example showing what actually happens to the field,
+    \item distinguish true sector change from mere deformation of field lines or higher multipoles.
+\end{enumerate}
+
+\subsection*{What this paper does not claim}
+We do not claim that every wormhole paper in the literature is wrong. We claim only that a specific and recurrent intuition---that ordinary charge transport through a throat can create a new asymptotic monopole at an end---is misleading or incorrect unless accompanied by a change of global flux sector or boundary data.
+
+\section{Setup and definitions}
+
+Specify:
+\begin{itemize}
+    \item the wormhole geometry or class of geometries,
+    \item the relevant asymptotic ends,
+    \item the gauge field sector,
+    \item the definition of asymptotic charge at each end by flux integrals,
+    \item the distinction between local source motion and sector change.
+\end{itemize}
+
+\section{General rigidity statement}
+
+\begin{proposition}[Asymptotic monopole rigidity, provisional]
+Consider a two-ended wormhole geometry with fixed asymptotic boundary conditions and fixed global flux sector. Then ordinary transport of localized charge through the throat cannot change the asymptotic monopole charge measured at either end. Any change in the asymptotic monopole data requires a change in the global sector, boundary conditions, or an operation equivalent to threading additional flux.
+\end{proposition}
+
+\subsection*{Proof strategy}
+Possible ingredients:
+\begin{itemize}
+    \item Gauss law on a nontrivial topology,
+    \item decomposition of field configurations into source-supported and harmonic/topological pieces,
+    \item invariance of flux integrals under continuous local dynamics at fixed sector.
+\end{itemize}
+
+\section{Explicit electrostatic example}
+
+Candidate tasks:
+\begin{itemize}
+    \item choose a tractable static wormhole slice,
+    \item place a point charge on the symmetry axis,
+    \item compute the potential/field as the charge approaches and passes the throat,
+    \item plot field lines on a 2D section,
+    \item show that while field lines rearrange, the asymptotic monopole data remain unchanged.
+\end{itemize}
+
+\section{What can change: higher multipoles}
+
+Explain:
+\begin{itemize}
+    \item higher multipoles may be induced,
+    \item throat length/diameter may attenuate multipolar influence,
+    \item monopole and multipole effects must not be conflated.
+\end{itemize}
+
+\section{Literature diagnosis}
+
+This section should:
+\begin{itemize}
+    \item identify exact papers or exact claims worth correcting,
+    \item distinguish ambiguous intuition-pump language from genuine technical error,
+    \item stay restrained and specific.
+\end{itemize}
+
+\section{Discussion}
+
+Points to emphasize:
+\begin{itemize}
+    \item what ``charge without charge'' properly means,
+    \item why field-line pictures can mislead,
+    \item implications for phenomenology and observational claims,
+    \item limitations and possible extensions.
+\end{itemize}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}

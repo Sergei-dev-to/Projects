@@ -1,0 +1,14 @@
+grid_width: 24
+grid_height: 12
+steps: 40
+snapshot_interval: 5
+seed: 7
+initial_population: 64
+region_center_x: 12
+region_center_y: 6
+region_radius: 3
+disturbance_radius: 6
+disturbance_start: 6
+disturbance_end: 12
+damage_step: 18
+damage_fraction: 0.4

@@ -65,3 +65,48 @@ bh-evaporator/main_build.pdf
 bh-evaporator/$job*
 bh-evaporator/main_buildNotes.bib
 
+# Local assistant/browser exports and unrelated media
+Claude.html
+Claude_files/
+*.mp3
+*.mp4
+
+# Private/local project data that should not be committed here
+corp-tax-2025/
+.claude/settings.local.json
+
+# Generated data/metrics; scripts remain tracked
+bh-evaporator/sim/data/
+bh-evaporator/figs/metrics.tex
+bh-evaporator/figs/metrics_macros.tex
+half_energy_page_time/*.pdf
+lexlife/swarm_viz.html
+pilot_responses.json
+
+# Wormhole generated/preflight outputs
+wormhole/*.png
+wormhole/*.gif
+wormhole/*.pdf
+wormhole/*.eps
+wormhole/*.svg
+!wormhole/fig_channel_schematic.pdf
+!wormhole/fig_thinshell_zero_flux_field.pdf
+!wormhole/fig_worldtube_stokes.pdf
+wormhole/*_page*.png
+wormhole/pdf_page*.png
+wormhole/section3_*.png
+wormhole/worldtube_*.png
+wormhole/*_finalcheck.png
+wormhole/*_updated.png
+wormhole/*_preview.png
+wormhole/__pycache__/
+wormhole/*.raw
+wormhole/_*
+wormhole/s2_*
+wormhole/FrolovNovikov1990*.txt
+wormhole/wormhole_paper*.txt
+
+# Extracted/downloaded arXiv and source scratch folders with malformed filenames.
+# Keep manuscript source and reproducible scripts instead.
+wormhole/_*_src/
+

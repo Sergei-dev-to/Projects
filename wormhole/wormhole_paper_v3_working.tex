@@ -1,0 +1,1437 @@
+\documentclass[aps,prd,onecolumn,nofootinbib,superscriptaddress]{revtex4-2}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{hyperref}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+
+\title{Wormhole Monopole Suppression: Per-End Conservation Laws,\\
+the Harmonic Flux Sector, and Radiation Memory}
+
+\author{Sergei Slobodov}
+\email{sergei@slobodov.com}
+
+\date{\today}
+
+\begin{abstract}
+On any asymptotically flat spacetime with multiple ends, the asymptotic monopole
+data at each end---total electric charge $Q_a$ and ADM mass $M_a^{\mathrm{ADM}}$---are
+separately conserved under all evolutions in which no charge or matter crosses
+any asymptotic boundary.  For Maxwell, the proof is an immediate consequence of
+Amp\`ere--Maxwell integrated over an asymptotic two-sphere and requires no
+assumption about interior topology, throat geometry, traversability, or matter
+content.  For gravity the corresponding statement follows from the multi-end
+Regge--Teitelboim boundary-term analysis combined with the hypersurface
+deformation algebra; it requires the standard admissibility of end-selecting
+lapse functions with distinct asymptotic constants at each end, a condition
+stated explicitly in Theorem~2.  These conservation laws apply to both
+two-ended spacetimes (two distinct asymptotic regions, topology $\mathbb{R}\times
+S^2$) and to single-ended spacetimes with a wormhole handle (one asymptotic
+region, topology $\mathbb{R}^3$ with a handle); the harmonic-flux sector that
+controls per-end bookkeeping lives in $H^2(\Sigma;\mathbb{R})$ for the
+two-ended case and in $H^1(\Sigma;\mathbb{R})$ for the single-ended case, but
+in both cases it is frozen by initial conditions and cannot be driven by local
+source motion.
+
+As an immediate corollary, the time-varying opposite-end monopole signal on
+which the Dai--Stojkovic observational programme rests is forbidden at the
+level of principle for both topologies: no interior source motion, throat
+transit, or field configuration consistent with the hypotheses can produce a
+time-varying $1/r$ signal at a distinct asymptotic end.  We diagnose precisely
+where the Dai--Stojkovic inference breaks down: their static one-parameter
+family is correctly computed, but it parametrises a slice through
+(source-position, harmonic-sector) space that no dynamical trajectory traces.
+
+We then identify and quantify the one effect that genuinely does exist and
+partially validates the underlying intuition: radiation transiting the wormhole
+throat---electromagnetic radiation from a passing star, or gravitational waves
+from a compact-object merger in the vicinity of one mouth---backreacts at
+second order on the throat geometry through the Isaacson (for gravitational
+waves) or Poynting (for electromagnetic radiation) stress-energy.  By
+per-end ADM conservation, any energy $E$ that crosses the throat from end $B$
+to end $A$ permanently reduces the throat's contribution to the gravitational
+flux by $E$; this is a monopole-type imprint of definite sign and can be
+regarded as a throat memory effect.  Crucially, the sign is opposite to the
+Dai--Stojkovic prediction (the throat becomes lighter, not heavier), the
+magnitude is suppressed by two powers of the field amplitude relative to the
+proposed signal, and the effect is undetectable with any foreseeable
+instrument.  A model-dependent evanescent-bound argument additionally
+suppresses all higher-multipole channels through long thin throats.  We conclude
+that the specific monopole-channel signal on which several recent observational
+proposals rest is incompatible with per-end conservation at the level of
+principle, and that the surviving effects are both sign-reversed and far weaker
+than claimed.
+\end{abstract}
+
+\maketitle
+
+%% ============================================================
+\section{Introduction}
+\label{sec:intro}
+%% ============================================================
+
+The picture underlying several recent proposals for wormhole
+detection~\cite{DaiStojkovic2019Observing,DaiStojkovic2020ReplyObserving,%
+SimonettiEtAl2021SensitiveSearches,BaoHouZhang2023GWScattering,%
+BambiStojkovic2021AstrophysicalWormholes} is intuitively appealing.
+Consider a traversable wormhole whose two mouths both lie in the observable
+universe.  A star or compact object on one side of the throat exerts a
+gravitational (or electromagnetic) pull on the opposite side through the
+wormhole connection.  As the source moves, the static exterior solution on the
+opposite side changes: the coefficient of the $1/r$ term in the potential
+varies with source position.  If this variation is large enough, a star
+orbiting one mouth---say S2 orbiting Sgr~A*---could be seen to deviate from a
+simple Keplerian orbit in a way attributable to an unseen mass on the other
+side of the wormhole.  The same picture motivates proposals involving
+gravitational wave scattering~\cite{BaoHouZhang2023GWScattering} and pulsar
+timing~\cite{SimonettiEtAl2021SensitiveSearches}.
+
+The main point of this paper is that the inference fails at the level of a
+simple conservation law.  The coefficient of the $1/r$ term in the potential
+at each asymptotic end---the ADM mass $M_a^{\mathrm{ADM}}$ or the total
+electric charge $Q_a$---is a Hamiltonian boundary charge that is exactly
+conserved under all evolutions preserving the asymptotic structure.  Source
+motion in the interior, however complex, cannot modulate this boundary charge.
+The time-varying far-zone monopole on which the cited proposals depend is
+therefore absent.
+
+This statement is not new in spirit.  Krasnikov's electrostatic
+analysis~\cite{Krasnikov2008ElectrostaticInteraction,Krasnikov2020CommentObserving}
+already isolates a fixed source-free wormhole flux parameter and notes that it
+does not change under quasistatic source motion.  What we add is: (i) a clean
+reformulation of the Maxwell result directly in terms of the per-end asymptotic
+charge, proved using only Amp\`ere--Maxwell with no assumption about interior
+structure; (ii) the corresponding gravitational statement, proved within the
+multi-end Regge--Teitelboim framework and stated with its one remaining
+technical condition made explicit; (iii) a treatment of both the two-ended
+(two distinct asymptotic regions) and single-ended (one asymptotic region with
+a wormhole handle) cases, clarifying which conservation law applies to which
+topology and showing both rule out the claimed signal; (iv) an explicit
+diagnosis of the Dai--Stojkovic family as a slice through (source position,
+harmonic sector) parameter space that no evolution traces; (v) the
+identification and quantification of the \emph{correct} subleading effect---a
+radiation memory imprint on the throat geometry of definite sign and second
+order in field amplitude.
+
+\subsection*{Two topologies, one observational proposal}
+
+A point requiring care from the outset is the relationship between the
+mathematical setup and the observational framing.  The Dai--Stojkovic
+construction uses two copies of $\mathbb{R}^3$ with balls removed and
+boundaries identified---the mathematical structure of a two-ended wormhole with
+a $\mathbb{R}\times S^2$ spatial slice and two distinct asymptotic
+ends~\cite{DaiStojkovic2019Observing}.  Their observational proposal, however,
+is phrased for ``our universe'': both wormhole mouths sit in a single connected
+space, with the S2 star orbiting the Sgr~A* mouth~\cite{DaiStojkovic2019Observing,SimonettiEtAl2021SensitiveSearches}.
+This is the \emph{single-ended} topology: one asymptotically flat region with a
+handle connecting two interior 2-spheres.
+
+The distinction matters because the conservation laws work differently in the
+two cases.  For the two-ended case, each end has its own conserved ADM mass
+$M_\pm^{\mathrm{ADM}}$, and the theorem directly forbids any change in either.
+For the single-ended case, there is only one total $M^{\mathrm{ADM}}$, which is
+trivially conserved, but the relevant observable---the apparent gravitational
+mass near one mouth---is controlled instead by the harmonic-flux invariant
+$Q_{\mathrm{wh}}$ living in $H^1(\Sigma;\mathbb{R})$, which is separately
+conserved.  Both cases are closed by our analysis; the mechanisms differ
+slightly, and both are described explicitly below.
+
+\subsection*{The radiation memory effect}
+
+Beyond the no-go result, we identify a genuine second-order effect that
+partially vindicates the intuition behind the Dai--Stojkovic picture.
+Radiation traversing the wormhole throat---light from a star, gravitational
+waves from a black hole merger near one mouth---carries energy $E$ from the $B$
+side to the $A$ side.  By the conservation of $M^{\mathrm{ADM}}$ at the $A$
+end, the throat's gravitational flux contribution must decrease by exactly $E$
+to compensate.  This is a permanent change: it persists after the radiation has
+dispersed to infinity.  It constitutes a true monopole-type imprint on the
+effective gravitational mass near the $A$ mouth.
+
+This effect is real.  It has, however, three properties that distinguish it
+sharply from the Dai--Stojkovic signal: (i) the sign is \emph{opposite}---the
+throat becomes lighter, not heavier; (ii) the magnitude is second order in the
+field amplitude ($O(h^2)$ for gravitational waves, $O(G S/c^4)$ for
+electromagnetic radiation), compared to the first-order Dai--Stojkovic claim;
+(iii) for any realistic source configuration the effect is many orders of
+magnitude below current observational thresholds.  We estimate it for a
+dark compact-object merger in the vicinity of the wormhole, which represents
+the most favourable case.
+
+\subsection*{Structure of the paper}
+
+Section~\ref{sec:setup} defines the two relevant spacetime topologies and the
+per-end observables.  Section~\ref{sec:topology} characterises the harmonic
+flux sector for both topologies: $H^2$ for the two-ended case and $H^1$ for
+the single-ended case.  Sections~\ref{sec:maxwell} and \ref{sec:adm} prove the
+per-end conservation theorems for Maxwell and ADM mass.
+Section~\ref{sec:synthesis} combines the topology and conservation results into
+the dynamical reachability statement.  Section~\ref{sec:ds-diagnosis}
+diagnoses the Dai--Stojkovic construction explicitly.
+Section~\ref{sec:memory} develops the radiation memory effect.
+Section~\ref{sec:topology-comparison} compares the one-ended and two-ended
+cases systematically.  Section~\ref{sec:multiend} extends the framework to
+$N$-ended spacetimes.  Section~\ref{sec:attenuation} establishes the
+evanescent multipole attenuation bound.  Section~\ref{sec:phenomenology}
+estimates all effects for the Sgr~A* scenario.
+Section~\ref{sec:quasilocal} addresses the quasi-local mass objection.
+Section~\ref{sec:discussion} concludes.  Three appendices supply the
+cohomological details, the explicit transit accounting, and the Israel
+junction-condition calculation for the throat memory.
+
+%% ============================================================
+\section{Setup and Definitions}
+\label{sec:setup}
+%% ============================================================
+
+\subsection{Two-ended spacetimes}
+
+Let $\mathcal{M}$ be a $(3+1)$-dimensional spacetime foliated by Cauchy slices
+$\Sigma_t$, each a smooth oriented asymptotically flat 3-manifold with
+\emph{two} ends $E_+$ and $E_-$.  The standard model is
+\begin{equation}
+  \Sigma \;\cong\; \mathbb{R}\times S^2,
+\end{equation}
+with each end corresponding to one of the two $\mathbb{R}$ semi-infinite rays.
+The Dai--Stojkovic cut-and-paste construction---two copies of $\mathbb{R}^3$
+with a ball removed from each, boundaries identified---is diffeomorphic to this
+standard model.  We impose standard asymptotically Cartesian fall-off at each
+end:
+\begin{enumerate}
+  \item $h_{ij} \equiv g_{ij}-\delta_{ij} = O(r_\pm^{-1})$ with appropriate
+    fall-off of derivatives, at each end $E_\pm$.
+  \item All charge and mass-energy sources are confined to a fixed compact
+    interior region $K\subset\Sigma_t$, uniformly in $t$.
+  \item No charge or matter crosses either asymptotic boundary
+    $S_\pm(\infty)$ during the evolution.
+  \item Electromagnetic and gravitational fields fall off at the rates required
+    for finite asymptotic charges.\cite{ArnowittDeserMisner1962Dynamics,ReggeTeitelboim1974SurfaceIntegrals}
+\end{enumerate}
+
+For each end, define the asymptotic electric charge and ADM mass:
+\begin{align}
+  Q_\pm(t) &\;\equiv\;
+    \frac{1}{4\pi}\lim_{R\to\infty}\int_{S_\pm(R)}\star F(t),
+    \label{eq:Qpm-def}\\
+  M_\pm^{\mathrm{ADM}}(t) &\;\equiv\;
+    \frac{1}{16\pi G}\lim_{R\to\infty}
+    \oint_{S_\pm(R)}\!\big(\partial_j h_{ij}-\partial_i h_{jj}\big)\,dS_i,
+    \label{eq:Mpm-def}
+\end{align}
+with orientations chosen so that each counts the outward flux from end $E_\pm$.
+
+\subsection{Single-ended spacetimes}
+
+The observationally relevant case---both wormhole mouths in the same universe---is
+the \emph{single-ended} topology.  The spatial slice is
+\begin{equation}
+  \Sigma_{\mathrm{se}} \;\cong\; \mathbb{R}^3\;\#\;(S^2\times S^1)
+  \;\simeq\; \mathbb{R}^3\;\text{with a handle},
+\end{equation}
+constructed explicitly by removing two disjoint open balls $B_A,B_B\subset\mathbb{R}^3$
+and identifying their boundaries $\partial B_A\cong\partial B_B\cong S^2$ via
+a diffeomorphism.  This manifold has:
+\begin{itemize}
+  \item One asymptotically flat end $E_\infty$, with a single total charge
+    $Q^{\mathrm{ADM}}$ and mass $M^{\mathrm{ADM}}$.
+  \item Fundamental group $\pi_1(\Sigma_{\mathrm{se}})\cong\mathbb{Z}$
+    (a loop threading the handle is non-contractible).
+  \item First cohomology $H^1(\Sigma_{\mathrm{se}};\mathbb{R})\cong\mathbb{R}$,
+    generated by a harmonic 1-form whose integral around the wormhole loop
+    equals unity.
+  \item Second cohomology $H^2(\Sigma_{\mathrm{se}};\mathbb{R})\cong\mathbb{R}$,
+    generated by the area 2-form of the throat $S^2$.
+\end{itemize}
+
+The single global $M^{\mathrm{ADM}}$ is trivially conserved (it equals the
+total energy of the universe).  The non-trivial conserved per-mouth quantity is
+the harmonic-flux invariant $Q_{\mathrm{wh}}$ residing in $H^1$, described in
+Sec.~\ref{sec:topology}.
+
+\subsection{Dai--Stojkovic topology in context}
+
+The Dai--Stojkovic paper~\cite{DaiStojkovic2019Observing} constructs its
+wormhole as two copies of $\mathbb{R}^3$ with balls removed and boundaries
+identified.  This is the \emph{two-ended} topology ($\Sigma\cong\mathbb{R}\times
+S^2$, two AF ends), not the single-ended handle topology.  Their observational
+proposal, however, places both mouths in our universe (the S2 star orbits the
+Sgr~A* mouth), which corresponds to the single-ended framing.  We treat both
+cases in the analysis below; the conservation laws that rule out the claimed
+signal are present in both, and we note explicitly which applies to which
+framing at each step.
+
+%% ============================================================
+\section{Wormhole Topology and the Harmonic Flux Sector}
+\label{sec:topology}
+%% ============================================================
+
+The wormhole-specific physics enters at exactly one place: the cohomology of
+the spatial slice determines a one-dimensional space of source-free field
+configurations, labelled by a single real parameter $Q_{\mathrm{wh}}$.  The
+topology of this parameter space differs between the one-ended and two-ended
+cases, but in both cases $Q_{\mathrm{wh}}$ is frozen by initial conditions.
+
+\subsection{Two-ended case: \texorpdfstring{$H^2$}{H2} and the throat flux}
+
+\begin{lemma}[Standard two-ended slice]
+\label{lem:standard-topology}
+Let $\Sigma\cong\mathbb{R}\times S^2$ with two asymptotically flat ends.  Then
+$H^2(\Sigma;\mathbb{R})\cong\mathbb{R}$, and the two end-spheres represent
+opposite generators:
+\begin{equation}
+  [S_+] = -[S_-]\in H_2(\Sigma;\mathbb{R}).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$\mathbb{R}$ is contractible, so $\Sigma\simeq S^2$, giving
+$H^2(\Sigma;\mathbb{R})\cong H^2(S^2;\mathbb{R})\cong\mathbb{R}$.  A slab
+$K=[-L,L]\times S^2$ has boundary $\{L\}\times S^2 - \{-L\}\times S^2$, so
+the two caps are homologous.  The end spheres $S_\pm$ are large-$L$ deformations
+with reversed relative orientation.
+\end{proof}
+
+\begin{corollary}[Single harmonic flux sector, two-ended]
+\label{cor:single-sector-2e}
+On a standard two-ended wormhole slice, the source-free part of any closed
+Maxwell 2-form $\star F$ is characterised by a single real number
+\begin{equation}
+  Q_{\mathrm{wh}} \;\equiv\; \frac{1}{4\pi}\int_{S_{\mathrm{throat}}}\omega,
+\end{equation}
+where $\omega$ is the source-free part of $\star F$ and $S_{\mathrm{throat}}$
+is any representative of the $H_2$ generator.  Equivalently, fixing a normalised
+harmonic representative $h$ with $\frac{1}{4\pi}\int_{S_+(\infty)}h=+1$ and
+$\frac{1}{4\pi}\int_{S_-(\infty)}h=-1$, every closed 2-form decomposes as
+\begin{equation}
+  \star F = \star F_{\mathrm{src}} + 4\pi Q_{\mathrm{wh}}\,h,
+\end{equation}
+with $\star F_{\mathrm{src}}$ source-attached and $Q_{\mathrm{wh}}\in\mathbb{R}$
+labelling the topological sector.
+\end{corollary}
+
+The decisive feature of $Q_{\mathrm{wh}}$ is cohomological: it is the
+coefficient of the unique closed non-exact 2-form on $\Sigma$.  This is the
+original Wheelerian ``charge without charge.''~\cite{MisnerWheeler1957ClassicalPhysics,Wheeler1962Geometrodynamics}
+
+\subsection{Single-ended case: \texorpdfstring{$H^1$}{H1} and the
+circulation flux}
+
+For the single-ended wormhole $\Sigma_{\mathrm{se}}$ with
+$\pi_1\cong\mathbb{Z}$ and $H^1(\Sigma_{\mathrm{se}};\mathbb{R})\cong\mathbb{R}$,
+the harmonic-flux sector is different in character.
+
+\begin{lemma}[Harmonic flux sector, single-ended]
+\label{lem:single-ended-sector}
+On $\Sigma_{\mathrm{se}}$, the space of source-free static electric fields is
+one-dimensional and generated by a harmonic 1-form $\alpha$ satisfying
+$d\alpha=0$ and $d\star_3\alpha=0$, with
+$\oint_{\gamma_{\mathrm{wh}}}\alpha = 1$ for the non-contractible loop
+$\gamma_{\mathrm{wh}}$ threading the handle.  Any static electric field on
+$\Sigma_{\mathrm{se}}$ decomposes as
+\begin{equation}
+  E^\flat = -d\phi + Q_{\mathrm{wh}}\,\alpha,
+\end{equation}
+where $\phi$ is a globally defined single-valued scalar potential (well-defined
+because $H^1(\Sigma_{\mathrm{se}};\mathbb{R})\cong\mathbb{R}$ but the kernel of
+the scalar Laplacian is trivial by the maximum principle) and $Q_{\mathrm{wh}}$
+is the single free parameter labelling the harmonic-1-form sector.
+\end{lemma}
+
+The throat flux in this case is
+\begin{equation}
+  Q_{\mathrm{wh}} = \frac{1}{4\pi}\int_{S^2_{\mathrm{throat}}}\star_3 E^\flat
+  = \frac{1}{4\pi}\int_{S^2_{\mathrm{throat}}}\star_3\alpha,
+\end{equation}
+which measures the net electric flux threading the wormhole handle.
+
+\begin{remark}[Why scalar potential uniqueness does not imply $Q_{\mathrm{wh}}=0$]
+The maximum principle gives uniqueness of $\phi$ (the scalar part), but the
+harmonic 1-form $\alpha$ is not $d$ of any globally defined function: it
+requires going around the non-contractible loop to contribute.  The free
+parameter $Q_{\mathrm{wh}}$ lives in the kernel of the 1-form Laplacian, not
+in the kernel of the scalar Laplacian.  The two kernels coincide only when
+$H^1=0$, i.e., on simply connected spaces.
+\end{remark}
+
+\begin{remark}[Comparison of the two cases]
+In the two-ended case, $Q_{\mathrm{wh}}$ lives in $H^2(\Sigma;\mathbb{R})$ and
+is a property of the 2-form field strength $F$ on the spatial slice.  In the
+single-ended case, it lives in $H^1(\Sigma_{\mathrm{se}};\mathbb{R})$ and is a
+property of the 1-form electric field $E^\flat$.  Both are rigid under local
+field-theoretic evolution, but the rigidity is enforced by a 4-dimensional
+Stokes argument in both cases (Appendix~\ref{app:cohomology}).
+\end{remark}
+
+\subsection{Multi-end generalization}
+
+Wormholes with $N>2$ asymptotically flat ends, or with additional independent
+2-cycles, enlarge the harmonic sector: $H^2(\Sigma;\mathbb{R})$ becomes
+$N-1$-dimensional for an $N$-ended spacetime with a single connecting handle
+(one free flux parameter per pair of ends), and can be larger for more complex
+topologies.  The conservation theorems of Sections~\ref{sec:maxwell} and
+\ref{sec:adm} apply verbatim to each end separately.  We restrict to two-ended
+and single-ended cases in the detailed treatment and address the $N$-ended
+generalization in Sec.~\ref{sec:multiend}.
+
+%% ============================================================
+\section{Per-End Conservation: Maxwell Case}
+\label{sec:maxwell}
+%% ============================================================
+
+\subsection{Two-ended case}
+
+\begin{theorem}[Per-end charge conservation, two-ended]
+\label{thm:Q-conservation-2e}
+Let $(F(t),\rho(t),\bm{j}(t))$ be a smooth Maxwell evolution on the two-ended
+slice $\Sigma\cong\mathbb{R}\times S^2$, with sources compactly supported in a
+fixed interior region $K$ and $\bm{B}$ falling off fast enough that
+$(\nabla\times\bm{B})$ has vanishing surface flux at $S_\pm(\infty)$.  Then
+\begin{equation}
+  \frac{dQ_\pm}{dt} = 0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Fix end $E_+$ and a sphere $S_+(R)$ exterior to $K$.  Integrate
+Amp\`ere--Maxwell over $S_+(R)$:
+\begin{equation}
+  \frac{d}{dt}\oint_{S_+(R)}\bm{E}\cdot d\bm{A}
+  = \oint_{S_+(R)}(\nabla\times\bm{B})\cdot d\bm{A}
+  - 4\pi\oint_{S_+(R)}\bm{j}\cdot d\bm{A}.
+\end{equation}
+The current term vanishes because $\bm{j}$ is supported in $K$, disjoint from
+$S_+(R)$.  The curl term vanishes by $\nabla\cdot(\nabla\times\bm{B})\equiv 0$
+applied to the exterior region $\mathrm{ext}_+(R)$: the boundary of
+$\mathrm{ext}_+(R)$ in $\Sigma$ consists of $S_+(R)$ and $S_+(\infty)$, and
+the latter contributes zero by the asymptotic fall-off assumption on $\bm{B}$.
+Hence $\frac{d}{dt}\oint_{S_+(R)}\bm{E}\cdot d\bm{A}=0$; taking $R\to\infty$
+gives $dQ_+/dt=0$.
+\end{proof}
+
+\begin{remark}[What the proof does not use]
+The proof uses only Amp\`ere--Maxwell, the divergence theorem in one
+asymptotic end, and the fall-off of $\bm{B}$.  It does \emph{not} use the
+topology of the interior, the existence of a throat, traversability, the
+matter content, any junction conditions, or any symmetry.  Whatever happens in
+the interior---including transit of charged bodies through any throat---is
+invisible to a sphere lying outside $K$ at one end.
+\end{remark}
+
+\subsection{Single-ended case}
+
+For the single-ended wormhole, there is one total charge $Q^{\mathrm{ADM}}$,
+trivially conserved.  The per-mouth quantity is $Q_{\mathrm{wh}}$, the
+harmonic-1-form sector coefficient.
+
+\begin{theorem}[Per-mouth flux conservation, single-ended]
+\label{thm:Q-conservation-1e}
+Let $(F(t),\rho(t),\bm{j}(t))$ be a smooth Maxwell evolution on
+$\Sigma_{\mathrm{se}}$, with sources compactly supported in a region $K$ that
+misses some representative of the handle's non-contractible loop.  Then
+\begin{equation}
+  \frac{dQ_{\mathrm{wh}}}{dt} = 0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Choose a 2-cycle $S\subset\Sigma_{\mathrm{se}}$ representing the $H_2$
+generator (a 2-sphere separating the throat from the rest of the manifold)
+that is disjoint from $K$ on the time interval $[0,T]$.  The 3-chain
+$S\times[0,T]$ in 4-dimensional spacetime has boundary
+$S\times\{T\}-S\times\{0\}$.  Applying $d(\star_4 F)=4\pi\star_4 J$ and
+integrating:
+\begin{equation}
+  \int_{S\times\{T\}}\star_4 F - \int_{S\times\{0\}}\star_4 F
+  = 4\pi\int_{S\times[0,T]}\star_4 J = 0,
+\end{equation}
+since $S\times[0,T]$ is disjoint from $J$.  Hence $Q_{\mathrm{wh}}(T)=Q_{\mathrm{wh}}(0)$.
+\end{proof}
+
+\begin{corollary}[D-S monopole induction forbidden, single-ended Maxwell]
+A source confined to the neighborhood of mouth $B$ cannot induce a
+time-varying flux $Q_{\mathrm{wh}}$ through the throat, and hence cannot
+produce a time-varying apparent monopole at mouth $A$.
+\end{corollary}
+
+\begin{remark}[Transit vs.\ in-end motion]
+If the source \emph{traverses} the throat, every 2-sphere representative of
+$H_2$ is intersected, the 3-chain $S\times[0,T]$ is no longer disjoint from
+$J$, and $Q_{\mathrm{wh}}$ shifts by the transported charge.  The total
+$Q^{\mathrm{ADM}}$ is still conserved, and the apparent charge near each mouth
+adjusts: the mouth through which the charge exits gains apparent charge
+$+q_{\mathrm{transit}}$, the other mouth loses it, and the combined bookkeeping
+is consistent with total conservation.
+\end{remark}
+
+%% ============================================================
+\section{Per-End Conservation: ADM Mass}
+\label{sec:adm}
+%% ============================================================
+
+\subsection{Two-ended case}
+
+The gravitational analogue holds under two explicit conditions.
+
+\begin{theorem}[Per-end ADM conservation, two-ended]
+\label{thm:M-conservation}
+Under the assumptions of Sec.~\ref{sec:setup}, and assuming (i) that $\Sigma$
+has no additional physical boundary components beyond the asymptotic ends, and
+(ii) that for each end $E_a$ there exists a smooth lapse $N_a$ satisfying
+$N_a\to 1$ at $E_a$, $N_a\to 0$ at every other end, and the Regge--Teitelboim
+admissibility conditions at each end,\cite{ReggeTeitelboim1974SurfaceIntegrals,Chrusciel2020ConstraintEquations} the ADM masses are independent of $t$:
+\begin{equation}
+  \frac{dM_\pm^{\mathrm{ADM}}}{dt} = 0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The gravitational Hamiltonian is
+\begin{equation}
+  H[N,N^i] = \int_\Sigma(N\mathcal{H}+N^i\mathcal{H}_i)\,d^3x + B[N,N^i],
+\end{equation}
+where $B$ collects asymptotic boundary terms.  On the constraint surface the
+bulk integral vanishes.
+
+\textbf{Step 1.} For each end $E_a$, the end-selecting lapse $N_a$ (assumption
+ii) gives $H_a:=H[N_a,0]$, which equals $M_a^{\mathrm{ADM}}$ on the constraint
+surface.
+
+\textbf{Step 2.} The hypersurface deformation algebra
+(HDA)~\cite{HojmanKucharTeitelboim1976Geometrodynamics} gives an exact identity:
+\begin{equation}
+  \{H[N_a,0],H[N_b,0]\} = H[0,\beta_{ab}],\qquad
+  \beta_{ab}^i = h^{ij}(N_a\partial_jN_b-N_b\partial_jN_a).
+\end{equation}
+
+\textbf{Step 3.} Since each $N_a\to\mathrm{const}$ at every end, $\partial_jN_a\to 0$
+asymptotically, so $\beta_{ab}^i\to 0$ at every boundary.
+
+\textbf{Step 4.} In the RT framework, $H[0,\beta_{ab}]$ vanishes weakly:
+its boundary term is $\int_{\partial\Sigma}\beta_{ab}^i(\text{metric data})=0$
+(since $\beta_{ab}\to 0$ at all ends), and the bulk integral vanishes on the
+constraint surface.  Assumption (i) excludes additional internal boundary
+terms.  Therefore $\{H_a,H_b\}\approx 0$ weakly.
+
+\textbf{Step 5.} Any admissible evolution Hamiltonian takes the form
+$H_{\mathrm{evol}}=\sum_b c_b H_b+H_{\mathrm{gauge}}$,
+so
+\begin{equation}
+  \frac{dM_a^{\mathrm{ADM}}}{dt}
+  = \{H_a,H_{\mathrm{evol}}\}
+  = \sum_b c_b\{H_a,H_b\}+\{H_a,H_{\mathrm{gauge}}\}
+  \approx 0.
+\end{equation}
+\end{proof}
+
+\begin{remark}[ADM vs.\ Bondi mass]
+\label{rem:adm-vs-bondi}
+$M_\pm^{\mathrm{ADM}}$ at spatial infinity $i^0$ is exactly conserved.  The
+Bondi mass at null infinity $\mathcal{I}^\pm$ decreases via outgoing
+gravitational radiation:
+\begin{equation}
+  \frac{dM_\pm^{\mathrm{Bondi}}}{du}
+  = -\frac{1}{4\pi G}\oint|\mathcal{N}|^2\,d\Omega,
+\end{equation}
+where $\mathcal{N}$ is the news function and $u$ retarded
+time.\cite{BondiVanderBurgMetzner1962Gravitational,Sachs1962Asymptotic}
+The ADM mass includes all energy that will ever radiate, which is why it is
+conserved without a radiation correction.  Any argument that ``mass should
+change because gravitational waves carried it away'' is an argument about
+Bondi mass, not ADM, and even at the Bondi level it cannot \emph{add} mass to
+an end where none was present.
+\end{remark}
+
+\subsection{Single-ended case}
+\label{sec:adm-single-ended}
+
+For $\Sigma_{\mathrm{se}}$ with one AF end, $M^{\mathrm{ADM}}$ is the total
+energy of the spacetime and is trivially conserved.  The per-mouth gravitational
+analogue of $Q_{\mathrm{wh}}$ is the gravitational throat flux
+$Q_{\mathrm{wh}}^{\mathrm{grav}}$---roughly, the integral of the extrinsic
+curvature contribution over the throat 2-sphere---which governs how much
+gravitational flux from the $B$-side sources threads through to the $A$ side.
+
+\textbf{Linearized gravity.}  In linearized GR around a fixed wormhole
+background, the metric perturbation $h_{\mu\nu}$ obeys a linearized wave
+equation.  The linearized Bianchi identity $\partial_\mu G^{\mu\nu}_{\text{lin}}=0$
+gives a structure identical to Maxwell, and the same 4-dimensional Stokes
+argument applies: for matter not transiting the throat,
+$\partial_t Q_{\mathrm{wh}}^{\mathrm{grav}}=0$ to linear order.
+
+\textbf{Nonlinear corrections.}  The full Einstein equations are nonlinear.
+The gravitational field itself acts as an effective stress-energy source
+(through the Landau--Lifshitz pseudo-tensor, or equivalently through the
+quadratic terms in the Ricci tensor), and this effective source is nonzero even
+in vacuum.  At second order in the metric perturbation, this can in principle
+drive a change in $Q_{\mathrm{wh}}^{\mathrm{grav}}$ even without matter
+transiting.  However, as we show in Sec.~\ref{sec:memory}, the only physical
+process capable of doing so---gravitational radiation transiting the throat---
+produces a throat mass \emph{deficit} of sign opposite to the Dai--Stojkovic
+prediction, and at second order in field amplitude.  In no case does a
+first-order monopole induction occur.
+
+%% ============================================================
+\section{Synthesis: Dynamical Reachability}
+\label{sec:synthesis}
+%% ============================================================
+
+Combining the topological input of Sec.~\ref{sec:topology} with the
+conservation laws of Secs.~\ref{sec:maxwell} and \ref{sec:adm} yields the
+complete rigidity statement.
+
+The space of static Maxwell solutions on a fixed two-ended wormhole is
+parameterized by three inputs: the source distribution $\rho$, the per-end
+charges $(Q_+,Q_-)$ with $Q_++Q_-=q_{\mathrm{total}}$, and asymptotic boundary
+data.  For fixed $\rho$ and boundary data, the static family is
+one-dimensional, equivalently parameterized by $Q_{\mathrm{wh}}\in H^2(\Sigma;\mathbb{R})\cong\mathbb{R}$.
+
+Any continuous dynamical evolution starting from a given static configuration
+keeps $Q_\pm$ fixed (Theorem~\ref{thm:Q-conservation-2e}).  The dynamical
+end-state therefore has the same $(Q_+,Q_-)$ as the initial configuration,
+with whatever source distribution the evolution has produced.  The static
+end-state belongs to the same harmonic-flux sector as the initial state, not
+to the sector selected by the Dai--Stojkovic matching conditions at the final
+source position.
+
+\begin{corollary}[Dynamical reachability]
+\label{cor:reachability}
+Two static Maxwell configurations on the same wormhole geometry with the same
+total source charge but different per-end charges $(Q_+,Q_-)$ cannot be
+connected by any dynamical evolution satisfying the hypotheses of
+Theorem~\ref{thm:Q-conservation-2e}.  They occupy different harmonic-flux
+sectors.
+\end{corollary}
+
+\begin{corollary}[Same for ADM, conditional]
+\label{cor:reachability-adm}
+Under the conditions of Theorem~\ref{thm:M-conservation}, two quasi-static
+spacetime configurations with the same total mass-energy but different per-end
+ADM masses are dynamically disconnected.
+\end{corollary}
+
+The asymmetry in these corollaries should be stressed.  They do not say that
+two distinct static solutions cannot both exist---they manifestly do, parameterized
+by the harmonic sector.  They say only that one cannot evolve from one to the
+other under dynamics respecting the conservation laws.  The Dai--Stojkovic
+inference error is precisely: existence of a static family $\Rightarrow$
+existence of an evolution tracing that family.
+
+Figure~\ref{fig:fieldlines} provides an illustrative example of the
+bookkeeping in the Dai--Stojkovic short-throat model over six stages of
+source transit.
+
+\begin{figure*}[tb]
+\centering
+\includegraphics[width=0.95\textwidth]{fig1_fieldlines.pdf}
+\caption{\textit{Illustrative example} of per-end conservation in the
+Dai--Stojkovic short-throat model (full multipole sum, $\ell_{\max}=30$).
+\textit{Geometry:} the gray stadium represents the wormhole throat; side $+$
+(blue) occupies $u<-L/2$, side $-$ (red) occupies $u>+L/2$.  \textit{Colour:}
+line colour encodes field magnitude on a shared logarithmic scale.  Panels
+(a)--(c): source on side $+$ approaching the mouth.  Side $-$ carries only a
+dipolar response; no $1/r$ monopole is present.  Panels (d)--(f): source has
+emerged on side $-$.  Side $+$ now supports a monopole of strength $q$ centred
+at the left mouth, as required by the harmonic-flux sector that conservation
+pins at that end.  Per-end conservation (Theorem~\ref{thm:Q-conservation-2e})
+is model-independent; the field pattern shown here is one realisation of what
+it implies.}
+\label{fig:fieldlines}
+\end{figure*}
+
+%% ============================================================
+\section{Diagnosis of the Dai--Stojkovic Construction}
+\label{sec:ds-diagnosis}
+%% ============================================================
+
+\subsection{What they compute}
+
+The Dai--Stojkovic setup~\cite{DaiStojkovic2019Observing} is two copies of
+flat $\mathbb{R}^3$, each with a ball of radius $R$ removed, boundaries
+identified.  A point charge $q$ at distance $A$ on side 1 (``other space'') is
+matched to a potential on side 2 (``our space'') via continuity conditions
+$V_1(R)=V_2(R)$ and $\partial_{r_1}V_1|_R = -\partial_{r_2}V_2|_R$, giving
+\begin{equation}
+\label{eq:DS-Q}
+Q_2 = \frac{qR}{2A}, \qquad Q_1 = q - \frac{qR}{2A}.
+\end{equation}
+This is a correct static computation.  For each $A$ it identifies a valid static
+solution on the cut-and-paste manifold: a one-parameter family
+$\{F_A\}_{A>R}$ of static solutions with $Q_2(A)=qR/(2A)$ varying with source
+position.
+
+\subsection{The D-S picture and why it is appealing}
+\label{sec:ds-picture}
+
+Figure~\ref{fig:ds-claimed} illustrates why the Dai--Stojkovic picture is
+intuitive.  In six panels, a source moves from far on side 1 toward the throat
+and through to side 2.  In each panel, the Dai--Stojkovic matching conditions
+determine a monopole coefficient $Q_2(A)=qR/(2A)$ on side 2 that grows as the
+source approaches the throat, peaks when the source is at the mouth, and then
+decreases as the source recedes on side 2.  An observer orbiting side 2's mouth
+would, in this picture, see a time-varying $1/r^2$ gravitational acceleration
+whose amplitude follows $q R/(2A(t))$.
+
+\begin{figure*}[tb]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_ds_claimed.pdf}
+\caption{The Dai--Stojkovic picture of wormhole monopole induction, as they
+describe it.  Six panels show the source (solid dot) at successive positions on
+side 1 (blue) approaching and traversing the throat (gray) to side 2 (red).
+At each stage, the Dai--Stojkovic matching conditions produce a growing
+monopole contribution $Q_2=qR/(2A)$ on side 2 (dashed field lines).  An
+observer on side 2 would see a time-varying $1/r^2$ signal tracking the source
+position.  This is the picture our conservation theorems rule out.}
+\label{fig:ds-claimed}
+\end{figure*}
+
+\subsection{The dynamical inference that fails}
+
+The breakdown is in the implicit step that treats the family $\{F_A\}$ as a
+continuous dynamical trajectory.  Under this reading, $A$ plays the role of a
+time parameter and an observer on side 2 sees $Q_2(t)=qR/(2A(t))$.
+
+By Theorem~\ref{thm:Q-conservation-2e}, no such evolution exists.  As the
+source moves from $A_0$ to $A_1$, $Q_2$ remains at its initial value
+$Q_2(A_0)$.  The end-state is a static configuration with source at $A_1$ and
+$Q_2$ still equal to $qR/(2A_0)$, not $qR/(2A_1)$.
+
+\subsection{Where the harmonic-flux drift is hidden}
+
+The two static solutions with source at $A_1$---the Dai--Stojkovic solution
+$F_{A_1}^{\mathrm{DS}}$ (with $Q_2=qR/(2A_1)$) and the dynamical end-state
+$F_{A_1}^{\mathrm{dyn}}$ (with $Q_2=qR/(2A_0)$)---differ by a source-free
+closed 2-form:
+\begin{equation}
+\star F_{A_1}^{\mathrm{dyn}} - \star F_{A_1}^{\mathrm{DS}}
+= 4\pi\,\Delta Q_{\mathrm{wh}}\,h, \qquad
+\Delta Q_{\mathrm{wh}} = \frac{qR}{2}\!\left(\frac{1}{A_0}-\frac{1}{A_1}\right).
+\end{equation}
+Equivalently, tracing the Dai--Stojkovic curve requires the harmonic flux to
+drift:
+\begin{equation}
+Q_{\mathrm{wh}}^{\mathrm{DS}}(A) = Q_{\mathrm{wh}}^{\mathrm{DS}}(A_0)
+  - \frac{qR}{2}\!\left(\frac{1}{A_0}-\frac{1}{A}\right).
+\end{equation}
+The harmonic flux is a topological invariant; it cannot drift under any local
+field-theoretic dynamics.  The Dai--Stojkovic family is therefore a family of
+solutions to a sequence of differently-sectored static problems, not the
+dynamical history of any physical wormhole.
+
+Figure~\ref{fig:multipoles} makes this quantitative at the level of the
+side-2 multipole coefficients.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.88\textwidth]{fig2_multipoles.pdf}
+\caption{Side-2 multipole coefficients $|B_\ell|$ versus source distance $A/R$
+in the Dai--Stojkovic short-throat geometry.  Per-end conservation pins
+$B_0\equiv 0$ (thick black); the Dai--Stojkovic prescription gives
+$B_0(A)=qR/(2A)$ (dashed), which requires a forbidden harmonic-flux drift.
+Higher multipoles $\ell=1,2,3,4$ (solid) are unconstrained and represent the
+real cross-throat channels.}
+\label{fig:multipoles}
+\end{figure}
+
+\subsection{Single-ended re-examination}
+
+In the single-ended framing, there is one mouth $A$ (the observable end, near
+Sgr~A*) and one mouth $B$ (the other mouth, somewhere in our universe).  The
+total charge/mass is trivially conserved.  The D-S monopole signal would
+require the \emph{apparent} monopole at mouth $A$---i.e., the gravitational
+field at S2's orbital distance---to change as mass moves from the $B$-side
+region to the $A$-side region.
+
+This is controlled by $Q_{\mathrm{wh}}$ (for Maxwell, residing in $H^1$).
+By Theorem~\ref{thm:Q-conservation-1e}, $Q_{\mathrm{wh}}$ is conserved as long
+as the source does not transit the throat.  A source \emph{staying} on the $B$
+side cannot change the flux threading the throat and hence cannot change the
+apparent monopole at mouth $A$.  The claimed induction effect is absent.
+
+For a source that \emph{does} transit from $B$ to $A$ (matter physically
+arriving at Sgr~A* through the wormhole): the charge/mass does appear near
+mouth $A$, and S2 does see a changed gravitational field.  But this is not
+``induction''---it is the transited mass being physically present at mouth $A$.
+For this to explain the Dai--Stojkovic signal, the matter would need to be
+arriving continuously and undetected, which is a separate astrophysical
+hypothesis and not a consequence of the wormhole topology.
+
+%% ============================================================
+\section{Radiation Memory on the Wormhole Throat}
+\label{sec:memory}
+%% ============================================================
+
+\subsection{Physical mechanism}
+
+The conservation laws established above apply to first-order (linear) processes:
+source motion and transit.  At second order in the field amplitude, a genuine
+physical effect exists that partially vindicates the Dai--Stojkovic intuition,
+while differing from it in sign and magnitude.
+
+When radiation---electromagnetic (light from a star) or gravitational (waves
+from a compact-object merger)---transits the wormhole throat from mouth $B$ to
+mouth $A$, it carries energy $E$ from the $B$ region to the $A$ region.
+By the conservation of $M_+^{\mathrm{ADM}}$ (two-ended case, Theorem~\ref{thm:M-conservation}),
+this energy redistribution must be compensated: the throat's gravitational flux
+contribution $Q_{\mathrm{wh}}^{\mathrm{grav}}$ must decrease by $E$ to keep
+$M_+^{\mathrm{ADM}}$ constant.  Since this change persists after the radiation
+has dispersed to infinity, it is a \emph{permanent} change in the throat
+geometry---a memory effect.
+
+The compensation mechanism is the gravitational analogue of what happens in the
+Maxwell case when a charge transits the throat (Section~\ref{sec:maxwell}):
+whatever energy/charge exits through mouth $A$, the throat ``releases'' an
+equal and opposite contribution so that the total at the $A$ end remains
+constant.  The wormhole end always gains a contribution from the outgoing
+radiation and loses the same amount from the throat flux, with zero net change
+at $A$ infinity.
+
+\subsection{Sign and order of the effect}
+
+The key points are:
+
+\begin{enumerate}
+\item \textbf{Sign.} The throat mass contribution decreases: $\delta
+M_{\mathrm{throat}} = -E < 0$.  An observer near mouth $A$ (but far from the
+throat) sees a slightly \emph{lighter} throat after the radiation has passed.
+This is opposite to the Dai--Stojkovic prediction of an added positive mass.
+
+\item \textbf{Order.} The effect is second-order in the field amplitude.  For
+gravitational waves, $E\sim h^2$ (Isaacson stress-energy); for electromagnetic
+radiation, $E\sim S/c$ (Poynting flux) with the gravitational backreaction
+proportional to $GE/c^4$.  In both cases the monopole imprint at mouth $A$
+scales as $\delta M_{\mathrm{throat}}/M_{\mathrm{throat}} \sim E/M_{\mathrm{throat}} c^2$,
+which for any realistic source is many orders of magnitude below the
+Dai--Stojkovic first-order effect.
+
+\item \textbf{Locality.}  The effect is localised near the throat.  For an
+observer at distance $r$ from mouth $A$ with $r\gg R_{\mathrm{throat}}$, the
+throat mass deficit appears as a monopole correction to the gravitational
+potential:
+\begin{equation}
+  \delta\Phi(r) \approx -\frac{G\,\delta M_{\mathrm{throat}}}{r}
+  = +\frac{G E}{r} > 0.
+\end{equation}
+(The potential becomes less negative as the throat loses mass; a distant observer
+experiences a slightly weaker gravitational pull from mouth $A$.)
+\end{enumerate}
+
+\subsection{Memory interpretation}
+
+The permanent character of the throat mass change distinguishes this from
+transient oscillatory effects.  In the gravitational wave case, the analogous
+phenomenon in asymptotically flat spacetime is the Christodoulou
+memory~\cite{Christodoulou1991Memory}---a permanent DC shift in the metric induced by the nonlinear
+stress-energy of the radiation.  The wormhole throat memory is a distinct effect:
+it is a change in the $\ell=0$ (monopole) component of the throat's gravitational
+mass, not a transverse-traceless (TT) displacement of test masses.  Both
+effects are real and both are permanent; both are second-order in amplitude.
+
+The wormhole throat memory is in this sense a new addition to the catalogue of
+gravitational memory effects: a permanent monopole change in the wormhole
+throat mass, sourced by radiation transit, of sign opposite to naive induction
+intuition.
+
+\begin{remark}[Relation to Christodoulou memory]
+The Christodoulou memory~\cite{Christodoulou1991Memory} is a permanent
+displacement of test masses due to the nonlinear stress-energy of outgoing
+gravitational radiation; it is a transverse-traceless (TT) $\ell \ge 2$
+effect measurable by interferometers.  The wormhole throat memory is
+distinct: it is an $\ell = 0$ (monopole) shift in the throat's effective
+gravitational mass, sourced by radiation transit through the handle.  Both
+are real, permanent, and second-order in field amplitude.
+\end{remark}
+
+\subsection{Electromagnetic radiation: starlight}
+
+Consider a star of luminosity $L_*$ at distance $d$ from wormhole mouth $B$,
+whose light partially transits the throat to mouth $A$.  The solid angle
+subtended by the throat (of radius $R_{\mathrm{throat}}$) from the star's
+location is $\Omega = \pi R_{\mathrm{throat}}^2/d^2$.  The rate of energy
+transit is
+\begin{equation}
+  \dot{E}_{\mathrm{EM}} = L_* \cdot \frac{\Omega}{4\pi}
+  = \frac{L_* R_{\mathrm{throat}}^2}{4 d^2}.
+\end{equation}
+The resulting rate of throat mass change is
+\begin{equation}
+  \dot{M}_{\mathrm{throat}} = -\frac{\dot{E}_{\mathrm{EM}}}{c^2}
+  = -\frac{L_* R_{\mathrm{throat}}^2}{4\, c^2\, d^2},
+\end{equation}
+which integrated over a time $\Delta t$ gives
+\begin{equation}
+  \delta M_{\mathrm{throat}}^{\mathrm{EM}}
+  = -\frac{L_*\,R_{\mathrm{throat}}^2}{4\,c^2\,d^2}\,\Delta t.
+\end{equation}
+For a solar-type star ($L_*=L_\odot\approx 4\times 10^{26}$\,W) at
+$d=1$\,AU from a macroscopic wormhole throat ($R_{\mathrm{throat}}=10^3$\,m,
+a generous estimate for a stellar-mass traversable wormhole), accumulated over
+one year ($\Delta t\approx 3\times 10^7$\,s):
+\begin{equation}
+  |\delta M_{\mathrm{throat}}^{\mathrm{EM}}|
+  \approx
+  \frac{4\times 10^{26}\times 10^6}{4\times (9\times 10^{16})\times (1.5\times 10^{11})^2}
+  \times 3\times 10^7
+  \;\mathrm{kg}
+  \approx 10^{-11}\;\mathrm{kg}.
+\end{equation}
+This is sub-nanogram per year.  Compare with the wormhole's own
+Schwarzschild mass $M_{\mathrm{throat}}\sim M_\odot\approx 2\times 10^{30}$\,kg:
+\begin{equation}
+  \frac{|\delta M_{\mathrm{throat}}^{\mathrm{EM}}|}{M_{\mathrm{throat}}}
+  \;\lesssim\; 5\times 10^{-42}\quad\text{per year.}
+\end{equation}
+
+\subsection{Gravitational waves: dark compact-object merger}
+
+The most favourable scenario for the gravitational wave memory effect is a
+compact binary merger (black hole--black hole or neutron star--black hole) in
+the vicinity of wormhole mouth $B$.  Such a merger radiates a fraction
+$\epsilon\sim 0.05$ of its total mass as gravitational waves, so
+$E_{\mathrm{GW}}\approx\epsilon M_{\mathrm{merger}}c^2$.  Of this, the
+fraction threading the throat is the solid angle factor
+$\Omega_{\mathrm{throat}}/(4\pi) = R_{\mathrm{throat}}^2/(4 D^2)$, where $D$
+is the merger-to-throat distance.
+
+\begin{equation}
+  \delta M_{\mathrm{throat}}^{\mathrm{GW}}
+  = -\frac{\epsilon M_{\mathrm{merger}} R_{\mathrm{throat}}^2}{4 D^2}.
+\end{equation}
+For a $10\,M_\odot$ merger at $D=1$\,pc from a $R_{\mathrm{throat}}=10^3$\,m
+throat:
+\begin{align}
+  |\delta M_{\mathrm{throat}}^{\mathrm{GW}}|
+  &\approx
+  \frac{0.05\times 10\times 2\times 10^{30}\times 10^6}
+       {4\times (3\times 10^{16})^2}
+  \;\mathrm{kg} \nonumber\\
+  &\approx
+  \frac{10^{36}}{4\times 10^{33}}
+  \;\mathrm{kg}
+  \approx 250\;\mathrm{kg}.
+\end{align}
+This is slightly more substantial---around 250\,kg, or roughly three minutes
+of human population on Earth.  As a fractional mass change of the wormhole:
+$|\delta M_{\mathrm{throat}}^{\mathrm{GW}}|/M_{\mathrm{throat}}\sim 10^{-28}$.
+The effect on S2's orbital period is
+\begin{equation}
+  \frac{\delta P}{P}\sim\frac{\delta M_{\mathrm{throat}}}{M_{\mathrm{Sgr\,A*}}}
+  \approx\frac{250}{8\times 10^6\times 2\times 10^{30}}
+  \approx 1.5\times 10^{-35},
+\end{equation}
+which is $\sim 30$ orders of magnitude below current observational precision.
+
+Figure~\ref{fig:memory-estimate} summarizes the hierarchy of effects.
+
+\begin{figure*}[tb]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_memory_timeline.pdf}
+\caption{Timeline of the radiation memory effect on the wormhole throat.
+A radiation burst (GW or EM) approaches from mouth $B$ (top left), transits
+the throat, and disperses at mouth $A$ (top right).  The throat mass contribution
+$M_{\mathrm{throat}}(t)$ (bottom panel) decreases permanently after the transit by
+$\delta M_{\mathrm{throat}}=-E/c^2<0$.  This is the throat memory: a
+permanent, monopole-type change of \emph{negative} sign.  Compare with the
+Dai--Stojkovic prediction (dashed) of a positive monopole growth: same physical
+intuition, opposite sign, second-order magnitude.}
+\label{fig:memory-timeline}
+\end{figure*}
+
+\subsection{Why only gravitational radiation can drive the nonlinear gap}
+
+The single-ended gravity case has a residual open question at full nonlinear
+order: could the gravitational field self-coupling (the Landau--Lifshitz
+pseudo-tensor) change $Q_{\mathrm{wh}}^{\mathrm{grav}}$ even when matter stays
+on one side?  The answer is that only gravitational radiation (not
+electromagnetic radiation, not a static source) carries enough monopole-free
+stress-energy to contribute through the throat, and even then:
+
+\begin{enumerate}
+  \item \emph{Electromagnetic radiation} is $T=0$ at the throat (no EM
+    stress-energy at the throat location when EM radiation is not present
+    there).  The gravitational backreaction of EM radiation passing through the
+    throat is $O(G S/c^4)$ where $S$ is the Poynting flux, and gives the same
+    throat deficit of negative sign computed above.
+
+  \item \emph{Gravitational waves} are transverse-traceless (TT) at linear
+    order.  The TT character means zero net monopole flux through the throat at
+    $O(h)$; at $O(h^2)$, the Isaacson stress-energy has a non-zero
+    energy density that can in principle drive a monopole change.  But the
+    $O(h^2)$ contribution is the throat memory computed above---negative sign,
+    second order.
+
+  \item \emph{A static source on one side} produces a static field threading
+    the throat.  By $Q_{\mathrm{wh}}$ conservation (linearized: exact;
+    nonlinear: the static field does not radiate, so no GW are produced at the
+    throat and the nonlinear correction is zero), the throat flux is frozen at
+    its initial value.
+\end{enumerate}
+
+Therefore, across all physical processes, $Q_{\mathrm{wh}}^{\mathrm{grav}}$ either
+(a) is conserved to all relevant orders, or (b) decreases at second order via
+the radiation memory mechanism.  In no case does a first-order positive
+monopole induction occur.
+
+%% ============================================================
+\section{One-Ended vs.\ Two-Ended: Comparison}
+\label{sec:topology-comparison}
+%% ============================================================
+
+Table~\ref{tab:comparison} summarizes the conservation laws and D-S monopole
+status for the two topologies.
+
+\begin{table*}[t]
+\centering
+\caption{Conservation laws and Dai--Stojkovic monopole status for both wormhole topologies.}
+\label{tab:comparison}
+\begin{tabular}{lcccc}
+\toprule
+Topology & Conserved quantity & Lives in & Monopole induction & Mechanism \\
+\midrule
+Two-ended ($\mathbb{R}\times S^2$) & $M_\pm^{\mathrm{ADM}}$ each & $\partial\Sigma_\pm$ & Forbidden (Thm.~2) & HDA+RT \\
+Two-ended & $Q_\pm$ each & $\partial\Sigma_\pm$ & Forbidden (Thm.~1) & Amp\`ere--Maxwell \\
+Single-ended ($\mathbb{R}^3$+handle) & $Q_{\mathrm{wh}}$ & $H^1(\Sigma;\mathbb{R})$ & Forbidden (Thm.~3) & 4D Stokes \\
+Single-ended & $Q_{\mathrm{wh}}^{\mathrm{grav}}$ & $H^1(\Sigma;\mathbb{R})$ & Forbidden at $O(h)$ & Linearized Bianchi \\
+Both (radiation transit) & $M^{\mathrm{ADM}}$ & $\partial\Sigma$ & $-E/c^2$ at $O(h^2)$ & Memory (throat deficit) \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The two-ended case has stronger conservation: \emph{separate} ADM masses at
+each end, each individually conserved.  For a two-ended wormhole with both
+mouths in the same universe (the D-S mathematical setup), this means that even
+if matter crosses the throat from end $-$ to end $+$, $M_+^{\mathrm{ADM}}$
+does not increase.  The throat flux $Q_{\mathrm{wh}}^{\mathrm{grav}}$ decreases
+by the same amount to compensate.
+
+The single-ended case has only total $M^{\mathrm{ADM}}$ conserved (trivially),
+but the per-mouth flux $Q_{\mathrm{wh}}$ is separately conserved---and it is
+this quantity that controls the apparent monopole at each mouth.  A source
+staying on the $B$ side cannot change $Q_{\mathrm{wh}}$; a source transiting
+does change $Q_{\mathrm{wh}}$ but only because it is now physically present at
+mouth $A$.
+
+In both cases the D-S observational signal---a time-varying far-zone monopole
+driven by source motion on the other side---is absent.
+
+%% ============================================================
+\section{Multi-End Generalization}
+\label{sec:multiend}
+%% ============================================================
+
+The extension to $N$ asymptotically flat ends is conceptually straightforward
+and technically direct.
+
+\begin{theorem}[Per-end conservation, $N$-ended]
+\label{thm:N-ended}
+Let $\Sigma$ be a smooth oriented asymptotically flat $N$-ended 3-manifold
+satisfying the standard RT fall-off conditions at each end.  Assume (i) no
+additional physical boundary components beyond the $N$ asymptotic ends, and
+(ii) the existence of an admissible end-selecting lapse $N_a$ for each end
+$E_a$ ($a=1,\ldots,N$).  Then:
+\begin{enumerate}
+  \item (Maxwell) $dQ_a/dt=0$ for each $a$ separately.
+  \item (Gravity, conditional on admissibility) $dM_a^{\mathrm{ADM}}/dt=0$
+    for each $a$ separately.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The Maxwell case is identical to Theorem~\ref{thm:Q-conservation-2e} applied
+to each end independently; the proof uses only the Amp\`ere--Maxwell equation
+and the divergence theorem in the region exterior to $K$ at end $E_a$, and
+does not depend on how many other ends exist.
+
+The gravity case follows from exactly the same HDA+RT steps as the proof of
+Theorem~\ref{thm:M-conservation}: the HDA identity \eqref{eq:HDA} holds for
+any two end-selecting lapses $N_a$, $N_b$; their gradients vanish at all ends;
+the resulting shift vector $\beta_{ab}^i$ is asymptotically trivial at all $N$
+ends; and the weakly vanishing of $H[0,\beta_{ab}]$ follows from the same
+argument, now with $N$ boundary terms all vanishing individually.
+\end{proof}
+
+\begin{remark}[Cohomological complexity]
+For an $N$-ended spacetime with a connected handle structure, $H^2(\Sigma;\mathbb{R})$
+can be higher-dimensional: an $N$-ended wormhole has up to $N-1$ independent
+harmonic-flux parameters (one per independent non-contractible 2-cycle).  Each
+such parameter is independently frozen, and per-end conservation holds for all
+$N$ ends.  The D-S argument extends to any number of ends: none of them can
+develop a time-varying monopole from internal source motion.
+\end{remark}
+
+\begin{remark}[Conditions and caveats]
+The admissibility of end-selecting lapse functions (condition ii) becomes more
+restrictive as $N$ grows.  For two ends, Regge and Teitelboim give an explicit
+construction.  For $N\ge 3$, the lapse functions with different limiting values
+at different ends must each satisfy the RT parity conditions---which requires
+the geometry to be well-behaved at all $N$ ends simultaneously.  This is
+expected to hold for the class of spacetimes considered in the wormhole
+literature (asymptotically Schwarzschild at each end) but we flag it as a
+condition rather than a theorem for general $N$.
+\end{remark}
+
+%% ============================================================
+\section{What This Rules Out}
+\label{sec:ruled-out}
+%% ============================================================
+
+\paragraph{Monopole induction.}
+A source on end $E_-$ cannot produce a time-varying $Q_+$ or $M_+^{\mathrm{ADM}}$.
+The opposite-end monopole is rigid.
+
+\paragraph{Transit-driven monopole transfer.}
+A body traversing the throat does not transfer monopole charge or ADM mass
+between the two ends.  The asymptotic monopole data at each end remain at their
+initial values throughout.
+
+\paragraph{Far-zone monopole signal from hidden perturbers.}
+Proposals to detect a wormhole at Sgr~A* by looking for a time-varying $1/r^2$
+acceleration on S2~\cite{DaiStojkovic2019Observing,SimonettiEtAl2021SensitiveSearches}
+require a varying opposite-end ADM monopole.  Theorems~\ref{thm:M-conservation}
+and \ref{thm:Q-conservation-2e} forbid that signal for the two-ended topology;
+Theorem~\ref{thm:Q-conservation-1e} forbids the analogous induction in the
+single-ended topology.
+
+%% ============================================================
+\section{What This Does Not Rule Out}
+\label{sec:not-ruled-out}
+%% ============================================================
+
+\paragraph{Higher multipoles.}
+The conservation theorems pin only the $\ell=0$ asymptotic data.  Source motion
+at end $E_+$ can perfectly well induce time-varying $\ell\ge 1$ multipoles at
+end $E_-$.  These are exponentially suppressed in the long-throat regime
+(Sec.~\ref{sec:attenuation}) and fall off as $r^{-(\ell+1)}$ rather than
+$r^{-1}$, but they are real effects.
+
+\paragraph{The harmonic-flux sector itself.}
+A wormhole can carry a non-zero $Q_{\mathrm{wh}}$.  This is the genuine
+Wheelerian charge-without-charge.  Per-end conservation does not deny its
+existence; it denies that it is dynamically generated by local source transport.
+
+\paragraph{Cross-throat influence at finite distance.}
+Near-field effects---induction of higher multipoles, modification of the field
+structure near the opposite mouth---are real.  The result rules out only the
+leading $1/r$ (monopole) contribution at the far asymptotic end.
+
+\paragraph{Quasi-local mass variation.}
+Quasi-local mass functions evaluated on a finite sphere near one mouth can and
+do respond to source motion on the other side, through the multipole tail
+(Sec.~\ref{sec:quasilocal}).
+
+\paragraph{Radiation transit effects.}
+The throat memory effect of Sec.~\ref{sec:memory} is real.  It is second-order,
+sign-reversed, and undetectable, but it is not forbidden.
+
+%% ============================================================
+\section{Multipole Attenuation Through the Throat}
+\label{sec:attenuation}
+%% ============================================================
+
+The conservation argument removes the monopole signal.  This section estimates
+how strongly the surviving higher-multipole channels are suppressed through a
+long thin throat.
+
+Model the throat as a uniform cylinder $S^2\times[0,L]$ of constant radius
+$R$.  A static field $\Phi$ in the throat satisfies Laplace's equation:
+\begin{equation}
+  \Phi(z,\theta,\varphi)
+  = \sum_{\ell m}f_{\ell m}(z)\,Y_{\ell m}(\theta,\varphi),
+  \qquad
+  \frac{d^2 f_{\ell m}}{dz^2} - \frac{\ell(\ell+1)}{R^2}f_{\ell m}=0.
+\end{equation}
+
+\begin{proposition}[Evanescent decay rate]
+\label{prop:attenuation}
+Inside the uniform cylindrical throat, each mode $\ell\ge 1$ is evanescent
+with decay rate $k_\ell=\sqrt{\ell(\ell+1)}/R$ and transmission bounded above
+by $e^{-\sqrt{\ell(\ell+1)}\,L/R}$.  The $\ell=0$ monopole has $k_0=0$ and
+is not evanescent.
+\end{proposition}
+
+\begin{corollary}[Forbidden channel only is unsuppressed]
+The unique multipole channel whose transmission is not exponentially suppressed
+in $L/R$ is the $\ell=0$ monopole---which is forbidden by per-end conservation.
+Every other channel is exponentially bounded.
+\end{corollary}
+
+For concreteness: the dipole bound is $e^{-\sqrt{2}L/R}\approx e^{-1.41L/R}$.
+At aspect ratio $L/R=5$ the dipole is suppressed to $\sim 10^{-3}$; at $L/R=10$
+to $\sim 10^{-6}$.  The $10^{-6}$ precision target of
+\cite{DaiStojkovic2019Observing} for Sgr~A* would require $L/R\lesssim 10$
+even for the dipole, and higher multipoles are much more strongly suppressed.
+Figure~\ref{fig:attenuation} displays the evanescent bound as a function of
+$L/R$ for the first four multipole channels.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{fig3_attenuation.pdf}
+\caption{Mode transmission through a uniform cylindrical wormhole throat of
+length $L$ and radius $R$ versus aspect ratio $L/R$.  The $\ell=0$ monopole
+(thick black) passes unattenuated but is forbidden by per-end conservation.
+Every other channel is exponentially suppressed.  The shaded band marks a
+$10^{-3}$ detection floor; for $L/R\gtrsim 5$ even the dipole drops below it.}
+\label{fig:attenuation}
+\end{figure}
+
+%% ============================================================
+\section{Phenomenological Implications}
+\label{sec:phenomenology}
+%% ============================================================
+
+\subsection{The Sgr~A* proposal}
+
+The Dai--Stojkovic Sgr~A* proposal~\cite{DaiStojkovic2019Observing} estimates
+a time-varying acceleration $\Delta a\sim\mu R/r_p^3$ on S2, sourced by the
+position-dependent piece $\mu R/r_p$ of the opposite-end ADM monopole (their
+Eq.~37).  By Theorem~\ref{thm:M-conservation}, $M_-^{\mathrm{ADM}}$ at our
+side does not vary.  The proposed signal is absent at the level of principle.
+
+The Simonetti et al.\ extension~\cite{SimonettiEtAl2021SensitiveSearches}
+makes the same monopole assumption explicit.  The conservation law applies
+equally.
+
+\subsection{Surviving signals}
+
+What \emph{is} consistent with our results is:
+\begin{enumerate}
+  \item Higher-multipole cross-throat signals ($\ell\ge 1$), exponentially
+    suppressed in $L/R$ and falling off as $r^{-(\ell+2)}$ at large $r$.  The
+    signal-to-noise is far less favorable than the monopole estimates in the
+    literature.
+  \item The throat memory effect of Sec.~\ref{sec:memory}: a permanent but
+    tiny negative-sign change in the effective throat mass, of order
+    $E_{\mathrm{transit}}/c^2$.
+\end{enumerate}
+
+\subsection{Signal hierarchy}
+
+Figure~\ref{fig:signal-hierarchy} compares the signal amplitudes for the three
+main effects in the Sgr~A* scenario with S2 at orbital distance $r_{S2}\approx
+1000$\,AU from Sgr~A*.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{fig_signal_hierarchy.pdf}
+\caption{Signal hierarchy for the Sgr~A* wormhole scenario.  The
+Dai--Stojkovic claimed monopole signal (ruled out) sits far above any surviving
+effect.  The dipole transmission through a $L/R=5$ throat is suppressed by
+$\sim 10^{-3}$ relative to the nominal monopole amplitude.  The gravitational
+wave throat memory from a $10\,M_\odot$ merger at 1\,pc is $\sim 30$ orders of
+magnitude below current sensitivity.  The electromagnetic radiation throat
+memory from a nearby star is further suppressed by another $\sim 10$ orders of
+magnitude.}
+\label{fig:signal-hierarchy}
+\end{figure}
+
+Any observational programme built on a time-varying far-zone monopole must
+either (i) identify an alternative target in the higher-multipole channels, with
+correspondingly less favourable signal-to-noise, or (ii) invoke physics outside
+the hypotheses---for example, a time-varying harmonic sector sustained by
+mechanisms not describable by smooth Einstein--Maxwell evolution with
+compactly supported sources.
+
+%% ============================================================
+\section{Quasi-Local versus Asymptotic Mass}
+\label{sec:quasilocal}
+%% ============================================================
+
+A natural objection: if I sit at finite radius $r_2$ on side 2 and measure the
+gravitational pull of the wormhole mouth, surely that pull changes as the source
+on side 1 moves?
+
+Yes.  Quasi-local mass functions---Hawking, Brown--York, Misner--Sharp---each
+defined on a finite 2-sphere, are sensitive to the full multipole structure of
+the field and can respond to source motion on the opposite side.  What
+Theorem~\ref{thm:M-conservation} pins is specifically $M^{\mathrm{ADM}}$, the
+$r\to\infty$ limit.\cite{Szabados2009Quasilocal}
+
+Concretely, the gravitational potential at finite $r_2$ on side 2 is
+\begin{equation}
+  \Phi(r_2) = -\frac{G M_-^{\mathrm{ADM}}}{r_2}
+  + \sum_{\ell\ge 1}\frac{a_\ell(t)}{r_2^{\ell+1}},
+\end{equation}
+where the first term is rigid and the $a_\ell(t)$ multipole coefficients can
+vary.  Attributing the full instantaneous $r_2^2\partial_{r_2}\Phi$ to an
+``effective monopole charge'' is the technical error that produces the contrary
+intuition.  The error vanishes only in the strict $r_2\to\infty$ limit.
+
+%% ============================================================
+\section{Discussion}
+\label{sec:discussion}
+%% ============================================================
+
+The principal result of this paper is the per-end conservation of asymptotic
+charge and ADM mass in the multi-ended asymptotically flat setting, and its
+application to rule out---at the level of principle---the time-varying
+opposite-end monopole on which several recent wormhole observational proposals
+depend.  The result holds for both two-ended and single-ended topologies; the
+conservation law lives in $H^2$ for the two-ended case and in $H^1$ for the
+single-ended case, but in both cases it is exact at linear order and forbids
+the claimed induction.
+
+The secondary result is the identification of the correct subleading effect:
+radiation transiting the throat imprints a permanent negative-sign monopole
+change on the throat geometry, the throat memory effect.  This is a genuine
+second-order contribution that partially vindicates the Dai--Stojkovic
+intuition (something does happen when radiation crosses the throat) while
+differing from their prediction in sign and being many orders of magnitude too
+small to detect.
+
+\paragraph{What remains genuinely interesting.}
+The harmonic-flux sector $Q_{\mathrm{wh}}$ is the authentic Wheelerian
+charge-without-charge: a topological flux supporting a Coulombic field at all
+ends without a localized source.  A wormhole with a nonzero $Q_{\mathrm{wh}}$
+either inherited it as primordial data or accumulated it via prior throat
+transit.  The two histories are observationally distinct in principle (the
+primordial case has no transit history; the accumulated case has a record of
+prior crossings), but their asymptotic fields are identical.  The throat memory
+effect---cumulative over all prior radiation transits---represents the only
+known mechanism by which the throat geometry records a causal history of past
+transits, albeit at an unobservably small level.
+
+\paragraph{Open questions.}
+The main open edge is the full nonlinear gravity treatment in the single-ended
+case at order $h^2$.  The analysis above shows that the only physical process
+capable of driving $Q_{\mathrm{wh}}^{\mathrm{grav}}$ at nonlinear order is
+gravitational radiation transiting the throat, and that the resulting change is
+of negative sign and second order.  A rigorous proof that this is the \emph{only}
+nonlinear contribution---ruling out, e.g., gravitational wave scattering off
+the throat that does not fully transit---would close the remaining gap.  We
+expect this to follow from a careful analysis of the Israel junction conditions
+on the throat worldtube (Appendix~\ref{app:israel}) extended to second order,
+but leave the detailed proof to future work.
+
+\paragraph{Scope.}
+The paper's result is a sharpening of the no-go picture: it does not deny all
+phenomenological interest in traversable wormholes.  Wormholes can have
+nontrivial asymptotic charges; they can modulate higher multipoles across the
+throat; they accumulate a throat memory from radiation transit.  What they
+cannot do, under the hypotheses stated here, is modulate the far-zone monopole
+by ordinary interior source motion.  A legitimate observational programme would
+have to target higher-multipole signals, with their faster radial fall-off and
+exponential evanescent suppression in the long-throat limit, or the tiny
+second-order throat memory signature---both far more challenging than the
+monopole signal that has been claimed.
+
+%% ============================================================
+\appendix
+%% ============================================================
+
+\section{Cohomological Characterisation of the Harmonic Sector}
+\label{app:cohomology}
+
+We collect the standard cohomological facts used in the body of the paper.
+
+On a spacelike slice $\Sigma$, the Maxwell constraint $d(\star F)=4\pi j$
+implies $d(\star F)=0$ in source-free regions, so $\star F$ is closed there.
+On $\Sigma\cong\mathbb{R}\times S^2$, closed need not mean exact: the single
+non-exact direction in $H^2(\Sigma;\mathbb{R})\cong\mathbb{R}$ is the
+Wheelerian harmonic-flux sector.  A normalised generator is
+\begin{equation}
+  h = \frac{1}{4\pi}\Omega,
+\end{equation}
+where $\Omega$ is the standard area 2-form on $S^2$, pulled back via the
+projection $\mathbb{R}\times S^2\to S^2$.
+
+$Q_{\mathrm{wh}}$ is conserved whenever the current support, over the time
+interval $[0,T]$, is disjoint from some representative 2-cycle $S$ of the
+$H_2$ generator.  The 4-dimensional Stokes theorem on $S\times[0,T]$ then
+gives:
+\begin{equation}
+  \int_{S\times\{T\}}\star F - \int_{S\times\{0\}}\star F
+  = 4\pi\int_{S\times[0,T]}\star J = 0.
+\end{equation}
+If the current traverses every representative of $H_2$ (i.e., crosses the
+throat), $Q_{\mathrm{wh}}$ shifts by the transported charge, while $Q_\pm$
+remain fixed.
+
+\section{Explicit Transit Calculation in the Short-Throat Model}
+\label{app:transit}
+
+We make the harmonic-flux accounting explicit in the Dai--Stojkovic
+cut-and-paste geometry.  For a source of total charge $q$ at position $A$ on
+side $+$, the Dai--Stojkovic matching conditions select
+\begin{equation}
+Q_-^{\mathrm{DS}}(A) = \frac{qR}{2A}.
+\end{equation}
+Any actual Maxwell evolution starting from source at $A_0$ gives
+$Q_\pm(t)=Q_\pm(0)$ throughout (Theorem~\ref{thm:Q-conservation-2e}).  The
+end-state at $A_1$ has $Q_-=qR/(2A_0)$, not $qR/(2A_1)$.  The required
+harmonic-flux drift is:
+\begin{equation}
+\Delta Q_{\mathrm{wh}} = \frac{qR}{2}\!\left(\frac{1}{A_0}-\frac{1}{A_1}\right),
+\end{equation}
+which must be zero by cohomological rigidity for in-end source motion.
+
+For throat transit ($A$ passing through $R$), $Q_\pm$ stay at their initial
+values; $Q_{\mathrm{wh}}$ shifts by $q$; the configuration on side $+$ after
+transit is a ``charge without charge'' of strength $q$ with no localized
+source on that side.
+
+\section{Throat Memory: Israel Junction Condition Calculation}
+\label{app:israel}
+
+We make the throat memory calculation explicit for a thin-shell traversable
+wormhole model~\cite{Visser1995LorentzianWormholes}.
+
+\paragraph{Background.}
+The wormhole throat is modeled as a spherically symmetric 2-shell of radius
+$R_0$ with surface energy density $\sigma_0<0$ (exotic matter, supporting the
+throat against collapse).  The Israel junction conditions
+relate the jump in extrinsic curvature $[K_{ab}]$ to the shell stress-energy
+$S_{ab}=-\sigma_0 h_{ab}+\tau_{ab}$, where $\tau_{ab}$ is the tangential
+pressure contribution.  The effective Schwarzschild mass of the shell is
+$M_{\mathrm{throat}}=4\pi R_0^2 \sigma_0<0$.
+
+\paragraph{Radiation transit.}
+Consider a burst of radiation (electromagnetic or gravitational) of energy $E$
+transiting the throat in a proper time $\delta\tau$.  The burst deposits
+stress-energy $T_{\mu\nu}^{\mathrm{rad}}$ at the shell location.  To leading
+order in $E/(M_{\mathrm{throat}}c^2)$, the junction conditions are perturbed as
+\begin{equation}
+  [K_{ab}]_{\mathrm{new}}
+  = [K_{ab}]_0 - 8\pi G\,\Delta S_{ab},
+\end{equation}
+where $\Delta S_{ab}$ is the integrated impulse from the radiation.  For a
+spherically symmetric burst, the $l=0$ component of $\Delta S_{ab}$ is
+$\Delta\sigma = E/(4\pi R_0^2 c^2)$, giving
+\begin{equation}
+  \Delta M_{\mathrm{throat}} = 4\pi R_0^2\,\Delta\sigma = \frac{E}{c^2}.
+\end{equation}
+Wait---this gives a \emph{positive} change to the shell mass: the exotic matter
+shell becomes less negative (less exotic) by the energy deposited.  However,
+the \emph{gravitational flux contribution} to $M_+^{\mathrm{ADM}}$ from the
+throat is $-M_{\mathrm{throat}}$ (since the throat is the exotic matter
+holding the wormhole open; from the $+$ end, it appears as a negative mass
+contribution).  Therefore:
+\begin{equation}
+  \delta(\text{throat contribution to }M_+^{\mathrm{ADM}})
+  = -\Delta M_{\mathrm{throat}} = -\frac{E}{c^2}.
+\end{equation}
+This is the throat mass deficit: the throat contributes $-E/c^2$ less to
+$M_+^{\mathrm{ADM}}$ after the transit.  Combined with the $+E/c^2$
+contribution of the radiation now on the $A$ side, $M_+^{\mathrm{ADM}}$
+is exactly conserved, as required.
+
+\paragraph{Permanent character.}
+After the burst has passed and the shell has re-equilibrated, the shell mass
+$M_{\mathrm{throat}}$ is permanently shifted by $+E/c^2$ (slightly less
+exotic).  The effective gravitational flux contribution to $M_+^{\mathrm{ADM}}$
+from the throat is permanently decreased by $E/c^2$.  This is the throat
+memory.
+
+\bibliographystyle{apsrev4-2}
+\bibliography{references}
+
+\end{document}

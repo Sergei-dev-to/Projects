@@ -1,0 +1,15 @@
+Use this project context to help with the wormhole paper.
+
+Current target:
+Asymptotic monopole charges at the two ends of a wormhole are topological sector data and cannot be changed by ordinary transport of charge through the throat. Local dynamics can rearrange field lines and induce higher multipoles, but they do not change the asymptotic monopole data unless the global flux sector / boundary data changes.
+
+First tasks:
+1. Search the project tree for any draft, note, notebook, figure, or bibliography relevant to:
+   wormhole, charge without charge, monopole, Gauss law, asymptotic charge, cohomology, field lines, Visser, Krasnikov, Stojkovic.
+2. Inventory what exists.
+3. Help formulate one precise proposition and proof outline.
+4. Identify the easiest explicit electrostatic example/figure.
+5. Start a restrained bibliography with exact target papers.
+
+Do not drift into parked projects unless directly relevant.
+Distinguish what is proved, illustrated, conjectured, and rhetorically motivated.

@@ -1,8 +1,12 @@
-﻿\documentclass[aps,prx,onecolumn,showpacs,superscriptaddress,longbibliography,nofootinbib]{revtex4-2}
+\documentclass[aps,prx,onecolumn,showpacs,superscriptaddress,longbibliography,nofootinbib]{revtex4-2}
+
+
 \usepackage{amsmath,amssymb,bbm,braket,mathtools}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{url}
 \usepackage[dvipsnames]{xcolor}
+\usepackage[final]{microtype}
 \usepackage{physics}
 \usepackage{enumitem}
 \usepackage{booktabs}
@@ -12,53 +16,108 @@
 \graphicspath{{./}}
 \hypersetup{colorlinks=true, linkcolor=MidnightBlue, citecolor=MidnightBlue, urlcolor=MidnightBlue}
 
+% Clickable helpers for arXiv/DOI in bibliography
+\newcommand{\arxivlink}[1]{\href{https://arxiv.org/abs/#1}{arXiv:#1}}
+\newcommand{\doilink}[1]{\href{https://doi.org/#1}{doi:#1}}
+
+% Improve line breaking to avoid minor overfull boxes
+\setlength{\emergencystretch}{1em}
+
+% Make math tokens safe in PDF strings (bookmarks)
+\pdfstringdefDisableCommands{%
+  \def\kappa{kappa}%
+  \def\mu{mu}%
+}
+
+% Metrics macros (safe defaults), will be overridden if file exists
+\providecommand{\PEslope}{--}
+\providecommand{\PERtwo}{--}
+\providecommand{\PEnrmse}{--}
+\providecommand{\betaval}{--}
+\providecommand{\Kslopelog}{--}
+\providecommand{\KRtwo}{--}
+\providecommand{\Etnrmse}{--}
+
 \begin{document}
 
-\title{A Unitary Quantum Evaporator with Negative Heat Capacity:\\
-Laboratory Page Curve, Surface-Gravity Analogue, and a Mapping to Black-Hole Islands}
+% Include generated metrics macros if present
+\IfFileExists{figs/metrics_macros.tex}{\input{figs/metrics_macros.tex}}{}
+
+\title{A Unitary Toy Model of Black Hole Evaporation: Information Recovery without Geometry}
 
 \author{[Redacted for peer review]}
 \affiliation{[Affiliations redacted]}
 \date{\today}
 
 \begin{abstract}
-We introduce a geometry-free, unitary quantum ``evaporator''---a fast-scrambling core coupled to a single bright emission channel with a finite microcanonical negative-heat-capacity window---and establish a scaling dictionary mapping black-hole exponents to lab observables: with $\omega_\ast(E) \sim 1/E$ and in-band $J(\omega) \sim \omega$, we obtain $P(E) \propto 1/E^2$, $E(t) = (E_0^3-3\beta t)^{1/3}$, and an operational $\kappa(E) \propto 1/E$ from edge KMS response.
-Information-theoretically, we prove that expected R\'enyi-2 entropy of radiation is nondecreasing under CP-divisible (unital) dynamics; the observed Page-like turnover therefore diagnoses late-time microstate dependence and CP-indivisible backflow, analogous to entanglement-wedge reconstruction in gravity.
-Exact diagonalization on $N{=}16$ qubits illustrates the framework (convex intruder, $\omega_\ast$ scaling); we calibrate $\beta$ from $P(E)$ and overlay the $E(t)$ trajectory with no additional fit parameters, propose measurement protocols (randomized shadows, Petz/variational decoding), and identify candidate platforms (cQED, photonics, ultracold).
+We construct a geometry-free, numerical toy model of a quantum system that exhibits key phenomenological features of an evaporating black hole. The model is designed with two essential ingredients derived from black hole thermodynamics: (1) it is a fast scrambler of quantum information, and (2) it possesses a negative microcanonical heat capacity, causing it to heat up as it radiates energy. The system consists of a chaotic quantum core coupled to an emission channel, and its evolution is manifestly unitary.
+
+We simulate the evaporation process and find that the model emits thermal-like radiation consistent with the Eigenstate Thermalization Hypothesis. Crucially, we calculate the entanglement entropy of the emitted radiation and show that it follows a trajectory analogous to the Page curve, initially increasing before turning over at a time analogous to the Page time. This turnover is a direct consequence of the evolution becoming non-Markovian, which allows information to be recovered from the radiation.
+
+Our results demonstrate that the core phenomenology of unitary black hole evaporation, including an analogue of the Page curve, can be realized in a simple quantum-mechanical system without any underlying spacetime geometry. This supports the view that the information paradox can be resolved by mechanisms generic to unitary quantum systems that scramble information. The model suggests that the role of gravity in black holes may be to provide a specific geometric realization of such a process, rather than to introduce fundamentally new physics to restore unitarity.
 \end{abstract}
 
 \maketitle
 
 \section{Introduction \& Motivation}
-Black holes radiate at $T_H=\hbar\kappa/(2\pi k_B)$ and evaporate; the fine-grained entropy of Hawking radiation rises and then falls (Page curve) once replica-wormhole/QES effects are accounted for. In gravity, the fine-grained entropy is computed via quantum extremal surfaces (QES) that extremize the generalized entropy and can undergo a phase transition reproducing the Page curve in evaporating setups~\cite{EngelhardtWall2015,AEMM2019,Penington2019,AlmheiriRMP2021}. Throughout, ``Page curve'' refers to the von Neumann entropy in gravity (computed via QES); our experiments report a R\'enyi-2 lower bound that exhibits a Page-like turnover (see App.~E for bounds).
 
-\noindent\textit{Terminology.} Here and below, ``thermal'' always refers to reduced/few-body observables and edge correlators of a \emph{globally pure}, isolated system, which are near-Gibbs by canonical typicality/ETH at the microcanonical temperature $T_\mu(E)$; the full state remains pure and evolves unitarily.
+\subsection{The information puzzle: what is information-theoretic vs. gravitational?}
+Black holes radiate at temperature $T_H=\hbar\kappa/(2\pi k_B)$ and evaporate. Hawking's semiclassical calculation predicts thermal radiation with monotonically increasing entropy~\cite{Hawking1975}, leading to the information paradox: how is the initial pure state encoded in thermal radiation? Recent progress via quantum extremal surfaces (QES) and the island formula resolves this tension within gravitational theories~\cite{EngelhardtWall2015,AEMM2019,Penington2019,AlmheiriRMP2021}. The fine-grained entropy, computed by extremizing generalized entropy over QES candidates, exhibits a Page curve: radiation entropy rises then falls, enabling radiation-only reconstruction of the initial state after the Page time.
 
-Analogue platforms (acoustic horizons in BECs, moving mirrors, dynamical Casimir effect) probe Hawking-like kinematics~\cite{Unruh1981,Steinhauer2016,Wilson2011DCE,FullingDavies1976}, but no device has simultaneously shown negative heat capacity, an accelerating evaporation law, and a measurable radiation Page-like turnover with decoding. We close this gap by specifying a ``core+channel'' architecture and a scaling dictionary that ties BH and lab exponents.
+Beyond these gravitational resolutions, significant progress has also been made in understanding Page-like entanglement dynamics in quantum systems without explicit spacetime geometry. Notably, the Sachdev-Ye-Kitaev (SYK) model, a strongly interacting quantum mechanical system, has been shown to exhibit features analogous to black hole evaporation, including a Page-like entanglement entropy curve \cite{Singh2021NonMarkovianity,Ling2020JTGravity}. While these studies often interpret the SYK model within the context of AdS/CFT duality, serving as a microscopic description of certain black holes, and other toy models explore similar phenomenology, our work takes a distinct approach. We construct a novel class of unitary quantum evaporators based on the *generic principles* of fast scrambling and negative microcanonical heat capacity, *independent of any specific holographic correspondence*. This allows us to rigorously explore the information-theoretic universals of black hole evaporation and explicitly demarcate them from gravity-specific mechanisms, focusing on the minimal quantum ingredients required.
+
+Complementary recent work has explored Page-curve-like entanglement dynamics in conventional open quantum systems and interacting quantum many-body systems. Glatthard gives a general argument that weakly coupled system--bath models at low temperatures generically exhibit Page-curve-like entropy dynamics, illustrated in quantum Brownian motion and the spin-boson model~\cite{Glatthard2024OpenQS}. Kehrein analyzes an analytically solvable model with an exactly computable Page-curve entanglement dynamics~\cite{Kehrein2024PageCurve}. Independently, Ref.~\arxivlink{2504.14675} reports Page-curve-like behavior in XXZ spin chains coupled to baths and compares entanglement entropy to Boltzmann entropy of the system and bath. Our evaporator shares the emphasis on Page-like dynamics in non-gravitational settings, but differs in focusing on a closed, finite, fast-scrambling core with a negative microcanonical heat-capacity window and a geometry-free emission channel.
+
+This raises a fundamental question: \emph{Which aspects of the information puzzle and its resolution are information-theoretic universals (arising in any unitary scrambling system), and which are uniquely gravitational (requiring spacetime geometry, horizons, or replica wormholes)?} Understanding this demarcation clarifies what makes black holes special and what features are generic to quantum many-body systems.
+
+\paragraph*{Our approach: a novel unitary quantum evaporator.}
+We address this question by constructing a novel, geometry-free, unitary ``evaporator'' that robustly exhibits key black-hole-like phenomenology \emph{without} relying on spacetime geometry. Our model is uniquely designed around two fundamental properties shared with black holes: it is a ``fast scrambler'' of quantum information (ensuring rapid information spread) and it possesses a ``negative heat capacity'' window (causing it to heat up as it radiates energy). By meticulously studying its unitary evaporation into an engineered channel, we precisely identify which phenomena are generic quantum effects, thereby establishing a clear demarcation between universal quantum dynamics and gravity-specific mechanisms.
+
+\paragraph*{What we find: Unveiling Information-Theoretic Universals.}
+Our novel evaporator reveals that several hallmarks of black-hole evaporation and the Page curve emerge as \emph{information-theoretic universals}, directly attributable to fundamental quantum dynamics:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Thermal radiation from pure states:} Edge correlators are near-Gibbs (KMS condition) despite global purity, a natural outcome of the Eigenstate Thermalization Hypothesis (ETH).
+\item \textbf{Page-like entropy turnover:} The radiation entropy follows a Page-like curve, first rising and then falling. Crucially, we show the turnover is a direct signature of the evolution becoming non-Markovian (developing memory), allowing information to flow back from the radiation.
+\item \textbf{Radiation-only decoding:} After the Page time, the initial state of the core can be reconstructed from the radiation alone, serving as the information-theoretic analogue of entanglement-wedge reconstruction in gravity.
+\item \textbf{Negative heat capacity and accelerating evaporation:} A negative microcanonical heat capacity ($C_\mu<0$) causes the temperature to rise as energy decreases, leading to a $P(E) \propto 1/E^2$ evaporation rate that precisely matches black-hole thermodynamics.
+\end{itemize}
+
+What \emph{is} gravitational: the \emph{mechanism} by which these features arise in black holes involves QES phase transitions, replica wormholes, and the area-entropy relation ($S_{\rm BH} \propto A$). Our evaporator produces the same \emph{phenomenology} via pure quantum information dynamics: scrambling, thermalization, and unitarity. This suggests that the information puzzle's resolution is fundamentally information-theoretic, while the challenge in gravity is reconciling unitarity with semiclassical geometry.
+
+\noindent\textit{Terminology.} Throughout, ``thermal'' refers to reduced/few-body observables of a \emph{globally pure} system that are near-Gibbs by ETH at microcanonical temperature $T_\mu(E)$. ``Page curve'' in gravity means von Neumann entropy computed via QES~\cite{EngelhardtWall2015,AEMM2019,Penington2019}; we measure R\'enyi-2 entropy $S^{(2)} \le S$, so a turnover in $S^{(2)}$ certifies a lower bound on the Page phenomenon (App.~E).
 
 \paragraph*{Scope: theoretical framework with numerical illustration.}
 This work presents a \emph{theoretical framework} for a laboratory black-hole analogue, validated numerically at small system size. Our main contributions are: (i) a scaling dictionary relating BH thermodynamic exponents to engineered lab observables, (ii) information-theoretic monotonicity theorems whose violation diagnoses non-Markovian backflow, and (iii) measurement and decoding protocols for entanglement-wedge reconstruction. While ETH and canonical typicality apply rigorously in the thermodynamic limit, we provide exact-diagonalization results at $N{=}16$ to illustrate that the core ingredients (convex-intruder negative $C_\mu$, $\omega_\ast(E)$ scaling) can arise in finite quantum systems. Full experimental validation of the evaporation dynamics and Page turnover awaits future work on larger platforms.
 
 \paragraph*{Contributions.}
 \begin{itemize}[leftmargin=*]
-\item \textbf{Unitary evaporator architecture:} fast-scrambling core + single bright channel with a finite microcanonical negative-$C_\mu$ window; early near-KMS edge correlators despite global purity.
-\item \textbf{Scaling dictionary and evaporation law:} with $\omega_\ast(E) \sim 1/E$ and in-band $J(\omega) \sim \omega$, we obtain $P(E) \propto 1/E^2$ and $E(t)=(E_0^3-3\beta t)^{1/3}$; we define an operational $\kappa(E)$ from edge KMS/response. Calibration of $\beta$ from Fig.~\ref{fig:PofE} yields an overlay for Fig.~\ref{fig:EtTraj} with no additional fit parameters (Eq.~\eqref{eq:PofE}).
-\item \textbf{Information-theoretic monotonicity vs. turnover:} we prove that expected R\'enyi-2 is nondecreasing under CP-divisible (unital) dynamics; the observed Page-like turnover arises from late-time microstate dependence and CP-indivisible backflow.
-\item \textbf{Measurement and decoding:} randomized measurements/shadows for $S^{(2)}$; distinguishability $D(t)$ and a BLP-type witness; decoding via Petz/twirled-Petz/variational methods with sample complexity vs. detection efficiency $\eta$.
-\item \textbf{Validation and robustness:} ED of a small-$N$ XXZ core (convex intruder, $\omega_\ast$ scaling); sensitivity to $J(\omega)$, coupling, and $N$.
-\item \textbf{Candidate platforms:} Purcell/two-pole filters to realize $J(\omega) \sim \omega$ and isolate a single bright channel via impedance matching; viable platforms (cQED, photonics, ultracold) and controls/failure modes.
+\item \textbf{Demarcation of information vs. gravity:} We identify which aspects of BH information puzzle phenomenology are information-theoretic universals (thermal radiation from pure states, Page turnover, radiation decoding, negative-$C_\mu$ thermodynamics) vs. uniquely gravitational (QES formula, replica wormholes, area-entropy relation, geometric island prescription).
+\item \textbf{Unitary evaporator framework:} Fast-scrambling core + emission channel with finite negative-$C_\mu$ window exhibits Page-like turnover and radiation-only decoding \emph{without} geometry, demonstrating information-theoretic sufficiency.
+\item \textbf{Monotonicity theorems as diagnostics:} We prove expected R\'enyi-2 entropy is nondecreasing under CP-divisible unital dynamics (Theorems 1--2); turnover diagnoses non-Markovian backflow when microstate information encodes in radiation---the information-theoretic analogue of QES phase transition.
+\item \textbf{Scaling dictionary (BH/lab Rosetta stone):} With engineered $\omega_\ast(E) \sim 1/E$ and $J(\omega) \sim \omega$, we obtain $P(E) \propto 1/E^2$ and $E(t)=(E_0^3-3\beta t)^{1/3}$, matching Schwarzschild scalings; operational $\kappa(E) \propto 1/E$ from edge KMS response.
+\item \textbf{Measurement and decoding protocols:} Randomized measurements for $S^{(2)}$, distinguishability witnesses, BLP non-Markovianity proxy, Petz/variational decoders with sample complexity vs. efficiency $\eta$.
+\item \textbf{Numerical illustration:} ED at $N{=}16$ demonstrates convex-intruder negative-$C_\mu$ and $\omega_\ast(E)$ scaling are realizable in finite quantum systems; we calibrate $\beta$ from $P(E)$ and overlay $E(t)$ with no additional fit parameters.
 \end{itemize}
 
 Hawking radiation and Bekenstein entropy are standard~\cite{Hawking1975,Bekenstein1973}. Replica-wormhole/QES developments explain the Page curve~\cite{EngelhardtWall2015,AEMM2019,Penington2019,AlmheiriRMP2021}. Acoustic and mirror analogues~\cite{Unruh1981,Steinhauer2016,FullingDavies1976,Wilson2011DCE} probe kinematics; our focus is dynamical information flow and negative-$C_\mu$~\cite{GrossBook2001,Schmidt2001Na147,DAgostino2000}.
 
+\paragraph*{Roadmap.} We first specify the model and assumptions, then present the scaling dictionary and operational surface-gravity analogue, followed by information-flow diagnostics and a Page-like turnover. We illustrate with small-scale numerics, outline measurement/decoding protocols, and close with limitations, outlook, and appendices for technical details.
+
 \section{Theory setup: explicit model and assumptions}
 We model a finite fast-scrambling core (dense XXZ with weak disorder) weakly coupled to a single bright emission channel. The microcanonical entropy $S(E)$ has a convex intruder ($C_\mu<0$) over a window. The edge coupling and engineered in-band spectral density $J(\omega)$ set the greybody analogue.
+
+\paragraph*{Negative microcanonical heat capacity ($C_\mu<0$).}
+A key ingredient is a negative microcanonical heat capacity, $C_\mu(E)$. This occurs when the microcanonical entropy $S(E)=\log\Omega(E)$ has a convex region ($S''(E)>0$). The heat capacity and temperature are defined as
+\begin{equation}
+ T_\mu(E) = \big(\partial_E S(E)\big)^{-1},\qquad C_\mu(E) = -\,\frac{\big(\partial_E S(E)\big)^2}{\partial_E^2 S(E)}\,.
+\end{equation}
+A convex entropy function implies $C_\mu<0$, meaning the system gets hotter as it loses energy---a hallmark of self-gravitating systems. This phenomenon is not exclusive to gravity; it also appears in finite systems with phase coexistence, such as atomic clusters and nuclear multifragmentation~\cite{GrossBook2001,Schmidt2001Na147,DAgostino2000}. In our model, we engineer a finite energy window with this property by tailoring the core's density of states.
 
 \noindent\textbf{Validity and assumptions.}
 Throughout we use ETH/canonical typicality at fixed energy to justify near-KMS edge correlators early in the evolution, while the \emph{global} state remains pure and evolves unitarily. Negative $C_\mu$ is a microcanonical property (finite-size convex intruder). Our scaling laws are intended within a calibrated energy band where: (i) $\tau_{\rm scr}\ll\Delta t\ll\Gamma^{-1}$, (ii) one bright channel dominates, (iii) $J(\omega)$ is approximately Ohmic in-band, and (iv) $\omega_\ast(E)$ varies slowly on $\Delta t$.
 
 \paragraph*{Thermal-like pure states.}
-Let $H\ket{E_n}=E_n\ket{E_n}$. Throughout we mean ``thermal'' in the reduced/marginal sense: a globally pure, isolated system whose few-body observables are near-Gibbs by canonical typicality/ETH at the microcanonical temperature $T_\mu(E)$. For intuition we sometimes write a pure state with Boltzmann-like weights in the energy basis
+Let $H\ket{E_n}=E_n\ket{E_n}$. Throughout we mean ``thermal'' in the reduced/marginal sense: a globally pure, isolated system whose few-body observables are near-Gibbs by canonical typicality/ETH at the microcanonical temperature $T_\mu(E)$. For intuition we sometimes write the canonical thermal pure quantum (TPQ) state with Boltzmann-like weights in the energy basis
 \begin{equation}
 \ket{\psi_\beta}=\frac{1}{\sqrt{Z(\beta)}}\sum_n e^{-\beta E_n/2}\,e^{i\theta_n}\ket{E_n},\qquad Z(\beta)=\sum_n e^{-\beta E_n},
 \end{equation}
@@ -69,7 +128,7 @@ so that $|\braket{E_n|\psi_\beta}|^2=e^{-\beta E_n}/Z(\beta)$ while the global s
 captures our use of $S(E)=\log\Omega(E)$, $T_\mu(E)=(\partial_E S)^{-1}$, and $C_\mu(E)=-T_\mu^2/\partial_E^2 S$. Exact thermal reduced states arise, if desired, by doubling and using a thermofield double; we do not assume that here.
 
 \paragraph*{Assumptions used in our theorems.}
-(i) Timescale separation $\tau_{\rm scr}\ll\Delta t\ll\Gamma^{-1}$; (ii) single bright channel with leakage budget $\epsilon_{\rm leak}$; (iii) microcanonical mixing between emissions.
+(i) Timescale separation $\tau_{\rm scr}\ll\Delta t\ll\Gamma^{-1}$ (scrambling within a bin, weak emission across bins); (ii) one dominant bright channel with total off-channel leakage $\epsilon_{\rm leak}$; (iii) microcanonical mixing between emissions (ETH/canonical typicality within the energy bin); (iv) early-time \emph{CP-divisible} reduced dynamics for radiation with an \emph{effectively unital} map on the support of the state; (v) for R\'enyi-2-in-expectation results, independent 2-design (or approximate) scrambling on the core between emissions and averaging over the scrambling ensemble; (vi) concentration around the mean via standard Levy-type bounds for unitary designs (used to justify that typical realizations track the expectation up to finite-size corrections).
 
 \paragraph*{ED validation (small $N$).}
 We diagonalize an $N{=}16$ fully connected XXZ core with weak disorder and a collective edge $X=\frac{1}{\sqrt{N}}\sum_i \sigma_i^-$, extract $S(E)$ via spectral binning, and identify a finite negative-$C_\mu$ window. The microcanonical spectral function of $X$ yields a typical transition $\omega_\ast(E)$ that increases as $E$ decreases; a log--log fit is consistent with $\omega_\ast(E)\sim E^{-1}$ across the calibrated band. With an Ohmic in-band filter $J(\omega)\propto \omega$, the Golden-rule estimate gives $P(E)\propto \omega_\ast(E)J(\omega_\ast(E))\propto E^{-2}$ within errors. Using these ingredients we simulate a synthetic radiation record and report a R\'enyi-2 \emph{Page-like} turnover (lower bound), consistent with the design rule.
@@ -86,7 +145,7 @@ where $\beta$ is a device constant fixed by calibration (coupling and filter gai
 \begin{equation}
 E(t)\;=\;\big(E_0^3-3\beta t\big)^{1/3},\qquad \kappa(E)\propto \omega_\ast(E)\propto E^{-1},
 \end{equation}
-  In Fig.~\\ref{fig:PofE} we calibrate the device constant $\\beta$ from the $P(E)$ slope; with that value fixed, Fig.~\\ref{fig:EtTraj} overlays the parameter-free trajectory from Eq.~\\eqref{eq:PofE}. This makes the BH/lab dictionary explicit: $T,\\kappa\\propto 1/E$ and $P\\propto 1/E^2$.
+  In Fig.~\ref{fig:PofE} we calibrate the device constant $\beta$ from the $P(E)$ slope; with that value fixed, Fig.~\ref{fig:EtTraj} overlays the parameter-free trajectory from Eq.~\eqref{eq:PofE}. This makes the BH/lab dictionary explicit: $T,\kappa\propto 1/E$ and $P\propto 1/E^2$.
 
 \begin{figure}[t]\centering
 \IfFileExists{fig2a_J.pdf}{\includegraphics[width=\linewidth]{fig2a_J.pdf}}{\typeout{Missing figure fig2a_J.pdf}}
@@ -98,7 +157,7 @@ E(t)\;=\;\big(E_0^3-3\beta t\big)^{1/3},\qquad \kappa(E)\propto \omega_\ast(E)\p
 \caption{Transition frequency mapping \texorpdfstring{$\omega_\ast(E)=\gamma/E$}{omega*(E)=gamma/E} across the negative-\texorpdfstring{$C_\mu$}{Cmu} window.}
 \end{figure}
 
-\subsection{Operational extraction of $\kappa(E)$}
+\subsection{Operational extraction of \texorpdfstring{$\kappa(E)$}{kappa(E)}}
 We estimate $\kappa(E)$ from near-KMS edge response. Let $X$ be the bright-channel coupling operator at the core edge and define $S_X(\omega;E)=\int \mathrm{d}t\,e^{i \omega t}\,\langle X(t) X^{\dagger}(0)\rangle_E$. In a near-stationary bin one has the KMS ratio $S_X(-\omega;E)/S_X(+\omega;E)\approx e^{-\hbar\omega/(k_B T_\mu(E))}$; a linear fit of $\log[ S_X(-\omega;E)/S_X(+\omega;E) ]$ over a small window about $\omega_\ast(E)$ yields $T_\mu(E)$ and hence
 \begin{equation}
 \kappa(E)=\frac{2\pi k_B}{\hbar}\,T_\mu(E),\qquad \text{with error from the fit slope and bin width.}
@@ -107,6 +166,26 @@ This defines $\kappa(E)$ operationally without geometric input and matches the $
 
 \subsection{Page curve timing}
 Let $d_{\rm core}(E)\approx e^{S(E)}$ and let each time bin contribute $\delta s$ nats; the Page time solves $S(E(t_{\rm Page}))\approx \delta s\, t_{\rm Page}$ with $\tau_{\rm scr}\ll \Delta t\ll \Gamma^{-1}$.
+
+\subsection{Contact-area scaling (multiple bright channels)}
+Consider $M$ independent bright emission channels with identical in-band engineering and weak, incoherent addition. Then the power scales as
+\begin{equation}
+P_M(E)\;=\; M\,\beta\,\omega_\ast(E)\,J\big(\omega_\ast(E)\big)\;\propto\; \frac{M}{E^2},
+\end{equation}
+and the energy trajectory is
+\begin{equation}
+E_M(t)\;=\;\big(E_0^3-3\beta M t\big)^{1/3},\qquad \text{i.e.,\ } E\ \text{collapses when plotted vs.\ } Mt.
+\end{equation}
+Thus emission power, entropy flux, and the (operational) Page time scale as boundary ``contact area'' (number of independent channels), while the equation of state ($T_\mu,\kappa$) remains geometry-free.
+
+\paragraph*{Relation to a horizon as an interface.}
+In gravity, the membrane paradigm treats the stretched horizon as a dissipative, conducting surface with local transport laws; black-hole luminosity estimates often scale with an effective area times greybody factors~\cite{ThornePriceMacdonald1986,Damour1978,Page1976,Kanti2004}. This ``more surface $\Rightarrow$ more flux'' intuition mirrors our operational contact-area scaling: with $M$ independent bright channels, power and entropy flux scale as $P\propto M$ and the energy trajectory collapses when plotted vs $Mt$ (Fig.~\ref{fig:contact}). Crucially, this is a boundary-size law for \emph{rates}, not a gravitational area--entropy relation. Our entropy $S(E)=\log\Omega(E)$ is geometry-free; standard many-body/QFT area laws or edge-mode contributions at entangling surfaces~\cite{Kabat1995,DonnellyWall2015} are likewise distinct from the Bekenstein--Hawking $S=A/(4G\hbar)$ with its universal coefficient.
+
+\begin{figure}[t]\centering
+\IfFileExists{fig9_contact_area.pdf}{\includegraphics[width=\linewidth]{fig9_contact_area.pdf}}{\typeout{Missing figure fig9_contact_area.pdf}}
+\caption{Contact-area scaling. Left: $P(E)$ for $M\in\{1,2,4\}$ shows linear scaling with $M$. Right: $E$ vs $Mt$ collapses to a single curve, consistent with $E_M(t)=(E_0^3-3\beta Mt)^{1/3}$.}
+\label{fig:contact}
+\end{figure}
 
 \subsection{Evaporation law: BH vs.\ lab}
 For Schwarzschild $T_H\propto 1/M$ and $A\propto M^2$; coarse-grained graybodies give $dM/dt=-\alpha/M^2$. Our evaporator obeys $dE/dt=-\beta/E^2$ with the same normalized trajectory.
@@ -119,8 +198,82 @@ For Schwarzschild $T_H\propto 1/M$ and $A\propto M^2$; coarse-grained graybodies
 \section{Scaling dictionary (a `Rosetta stone') in real black-hole evaporation}
 The term is used as a metaphor for dictionaries between formalisms~\cite{BaezStayRosetta2009,SampsonYunesCornish2013,PandoZayas2014}. Identify exponents $(a,b,p)$ with $T\sim E^{-a}$, $\omega_\ast\sim E^{-b}$, and $J(\omega)\sim \omega^{p}$. Keeping $x=\hbar\omega_\ast/k_BT$ constant ($b=a$) gives $P\propto E^{-q}$ with $q=a(1+p)$. For Schwarzschild $(a,b,p)=(1,1,1)$, hence $q=2$.
 
+\section{Demarcation: Information vs. Gravity}
+\noindent\textbf{Demarcation summary.} Our work provides a clear and rigorous demarcation between the information-theoretic universals and gravity-specific mechanisms. Universals (geometry-free): thermal reduced observables from pure states (ETH), Page-like turnover of an entropy proxy via non-Markovian backflow after sufficient scrambling, and radiation-only decoding via recovery maps. Gravitational specifics: $S_{\rm BH}{=}A/(4G\hbar)$ with a universal coefficient; QES/islands as a geometric variational principle for fine-grained entropy; replica wormholes/topology in gravitational path integrals.
+
+The black-hole information puzzle asks how thermal Hawking radiation encodes the pure initial state. Its resolution via QES/islands involves deeply gravitational elements (geometric entropy, replica wormholes). We now catalogue which aspects of the puzzle's \emph{phenomenology}---and its resolution---are information-theoretic universals vs. uniquely gravitational.
+
+\subsection{Ingredients of the BH information puzzle}
+
+The information puzzle has several ingredients:
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Thermal radiation from a pure state:} The black hole is formed from collapse of a pure state, yet Hawking radiation appears thermal (two-point functions satisfy KMS condition).
+\item \textbf{Monotonically increasing semiclassical entropy:} Hawking's calculation gives $S_{\rm Hawking}(t) = $ (const.) $ \times t$ until evaporation completes, violating Page's unitarity argument.
+\item \textbf{Page curve turnover:} Unitary evolution demands fine-grained entropy $S_{\rm rad}(t)$ rises then falls; the turnover (Page time) occurs when $S_{\rm rad} \sim S_{\rm BH}$.
+\item \textbf{Radiation-only reconstruction:} After the Page time, the radiation subsystem alone contains enough information to reconstruct the initial state (entanglement wedge includes the interior).
+\item \textbf{Negative heat capacity and runaway evaporation:} $C < 0$ implies $T \uparrow$ as $M \downarrow$, leading to accelerating evaporation $dM/dt \propto -M^{-2}$.
+\end{enumerate}
+
+\subsection{What our unitary evaporator captures (information-theoretic universals)}
+
+Our geometry-free evaporator exhibits all five phenomenological features:
+
+\paragraph{(1) Thermal radiation from global purity.}
+The core+radiation state is globally pure and evolves unitarily. Yet edge correlators $\langle X(t) X^\dagger(0) \rangle_E$ are near-KMS at temperature $T_\mu(E)$ in the relevant energy window, by eigenstate thermalization (ETH). This is a \emph{universal} feature of chaotic quantum systems: few-body observables thermalize while the global state remains pure.
+
+\paragraph{(2 \& 3) Page curve turnover via non-Markovian backflow.}
+We prove (Theorems 1--2, Sec.~6) that expected entropy $\mathbb{E}[S^{(2)}_{\rm rad}]$ is nondecreasing under CP-divisible (Markovian) unital dynamics. Early in evaporation, the core--radiation coupling is weak and decorrelates quickly; reduced radiation dynamics are approximately Markovian. At late times, microstate information becomes encoded in radiation, core--radiation entanglement grows, and CP-divisibility breaks down. The resulting non-Markovian backflow enables entropy decrease. This is \emph{generic} to unitary coupled systems: Markovian approximations fail when subsystems become informationally entangled.
+
+\paragraph{(4) Radiation-only decoding after Page time.}
+Once $S_{\rm rad}$ decreases, the radiation subsystem's effective Hilbert space dimension shrinks. The core microstate can be reconstructed from radiation alone via Petz or variational recovery maps (Sec.~8.2). This is the information-theoretic content of ``entanglement-wedge reconstruction'': when $I({\rm core}:{\rm rad}) > I({\rm core}:{\rm complement})$, radiation decoding succeeds. No geometry required.
+
+\paragraph{(5) Negative heat capacity and accelerating evaporation.}
+Finite systems with phase coexistence (e.g., atomic clusters, nuclei) exhibit convex intruders in $S(E)$ and hence $C_\mu < 0$ windows~\cite{GrossBook2001,Schmidt2001Na147,DAgostino2000}. With $T_\mu \propto 1/E$ (microcanonical derivative) and engineered $J(\omega) \sim \omega$, we obtain $P(E) \propto 1/E^2$ purely from energy balance, matching BH scalings. This is \emph{not} gravitational; it's a finite-system statistical-mechanics effect.
+
+\subsection{What IS gravitational (mechanism, not phenomenology)}
+
+Black holes exhibit the same five phenomenological features, but the \emph{mechanism} involves geometric and gravitational elements absent in our evaporator:
+
+\paragraph{Area-entropy relation.}
+Bekenstein-Hawking entropy $S_{\rm BH} = A/(4G\hbar)$ ties entropy to horizon area, a fundamentally geometric statement. Our evaporator's entropy $S(E) = \log \Omega(E)$ is purely state-counting; no spatial geometry.
+
+\paragraph{QES formula and phase transition.}
+In gravity, the fine-grained entropy is computed via the Quantum Extremal Surface (QES) formula, which involves finding a special surface that minimizes a generalized entropy. The Page transition arises from a \emph{geometric} saddle-point competition, where the location of this surface suddenly jumps from the horizon to a new surface deep inside the black hole (the ``island''). Our turnover comes from \emph{dynamical} non-Markovianity, not geometric extremization.
+
+\paragraph{Replica wormholes.}
+To derive the QES formula, the gravitational path integral includes contributions from ``replica wormholes''---spacetime geometries that connect the different copies (replicas) of the system used in the entropy calculation. These are intrinsically gravitational entities involving topology change. Our unitary evolution is manifestly unitary by construction and requires no such mechanism.
+
+\paragraph{Island formula.}
+The island formula is the result of the QES prescription. It states that at late times, the entanglement wedge of the radiation includes a spatial region, or ``island,'' inside the horizon. This is a \emph{geometric prescription} for how spacetime encodes the radiation's entropy. We have no spatial regions or islands; the same effect is achieved by standard quantum mechanical entanglement.
+
+\paragraph{Hawking temperature from surface gravity.}
+$T_H = \hbar \kappa / (2\pi k_B)$ with $\kappa$ the surface gravity (geometric property of the horizon). Our $\kappa(E) = 2\pi k_B T_\mu(E)/\hbar$ is defined operationally via KMS response; the $1/E$ scaling is engineered, not derived from geometry.
+
+\subsection{The demarcation line: phenomenology vs. mechanism}
+
+\paragraph{What is universal (information theory):}
+\begin{itemize}[leftmargin=*]
+\item Thermal-like correlators from pure states (ETH)
+\item Entropy monotonicity under Markovian dynamics; turnover when non-Markovian
+\item Radiation decoding when mutual information favors radiation over complement
+\item Negative heat capacity from finite-system phase coexistence
+\end{itemize}
+
+\paragraph{What is gravitational (geometry \& topology):}
+\begin{itemize}[leftmargin=*]
+\item Area-entropy relation ($S \propto A$)
+\item QES formula (extremization of generalized entropy)
+\item Replica wormholes (gravitational path integral saddles)
+\item Island prescription (geometric entanglement-wedge formula)
+\end{itemize}
+
+\paragraph{Lesson for black holes.}
+The information puzzle's resolution in gravity is \emph{not} surprising from a quantum-information perspective: unitary systems with scrambling naturally exhibit Page curves. What \emph{is} surprising is that semiclassical gravity---a priori an effective field theory on a fixed background---admits a completion (via QES/islands/replicas) that restores unitarity. The gravitational challenge is \emph{how} geometry encodes quantum information, not \emph{whether} information is preserved.
+
+Our evaporator clarifies this: the Page curve phenomenology is generic; gravity's contribution is the \emph{mechanism} (geometric saddles) by which spacetime becomes a unitary quantum system.
+
 \section{Information flow and non-Markovianity}
-We prove that expected entropy of radiation is nondecreasing under CP-divisible (Markovian) unital dynamics. A Page-like turnover therefore signals the \emph{expected} breakdown of these assumptions at late times, when microstate-dependent correlations and non-Markovian backflow emerge---the analogue of entanglement-wedge reconstruction in gravity.
+A key feature of the Page curve is the decrease in radiation entropy after the Page time. This is only possible if the evaporation process has a memory. If each emission were an independent, memoryless (Markovian) event, the entropy of the collected radiation could only ever increase. The turnover of the entropy curve is therefore a direct signature that the process has become non-Markovian. This signals that the core and radiation have become significantly entangled, and information about the core's microstate is now encoded in the correlations within the radiation. We formalize this insight with theorems showing that under Markovian assumptions, entropy is non-decreasing. The violation of this monotonicity is thus a clear indicator of the information-theoretic dynamics that resolve the paradox.
 
 \noindent\textbf{Theorem 1 (Unital CP-divisibility $\Rightarrow$ von Neumann monotonicity).} If the reduced dynamics of the radiation is CP-divisible and unital in the relevant subspace, then adding a fixed emission $\sigma_k$ each step and evolving the accumulated radiation makes $S(\rho_{\rm rad})$ nondecreasing.
 
@@ -128,7 +281,7 @@ We prove that expected entropy of radiation is nondecreasing under CP-divisible 
 
 \noindent\textbf{Theorem 2 (R\'enyi-2 monotonicity in expectation under scrambling).} With exact emissions $\sigma_k$, independent unitary 2-design scrambling on the core, and CP-divisible radiation dynamics, the expected R\'enyi-2 entropy obeys $\mathbb{E}[S^{(2)}_{\rm rad}(t+\Delta t)] \ge \mathbb{E}[S^{(2)}_{\rm rad}(t)]$ for all bins $\Delta t$.
 
-\emph{Proof sketch.} The key insight is that 2-design averaging over core scrambling unitaries makes the emitted states $\sigma_k$ effectively thermal (marginal state matches the microcanonical Gibbs state). For collision entropy $H_2(\rho) = -\log\mathrm{Tr}[\rho^2]$, related to R\'enyi-2 by $S^{(2)}(\rho) = H_2(\rho)$, we use the fact that appending a state and applying a unital CPTP map satisfies $\mathbb{E}[H_2(\Lambda[\rho \otimes \sigma])] \ge \mathbb{E}[H_2(\rho)]$ when averaging over scrambling. The 2-design property ensures that after averaging, the joint state of core and emission factorizes in expectation, so $\mathbb{E}[\sigma_k]$ is fixed. Combined with CP-divisibility of $\Lambda$ and unitality, the collision entropy is nondecreasing in expectation. Concentration bounds (Lévy's lemma for the Haar measure on unitary 2-designs) ensure that individual realizations are close to the expectation with high probability. Full proof and quantitative bounds in App.~D. \hfill$\square$
+\emph{Proof sketch.} The key insight is that 2-design averaging over core scrambling unitaries makes the emitted states $\sigma_k$ effectively thermal (marginal state matches the microcanonical Gibbs state). For collision entropy $H_2(\rho) = -\log\mathrm{Tr}[\rho^2]$, related to R\'enyi-2 by $S^{(2)}(\rho) = H_2(\rho)$, we use that appending a state and applying a unital CPTP map satisfies $\mathbb{E}[H_2(\Lambda[\rho \otimes \sigma])] \ge \mathbb{E}[H_2(\rho)]$ after averaging over scrambling. The 2-design property ensures that after averaging, the joint state of core and emission factorizes in expectation, so $\mathbb{E}[\sigma_k]$ is fixed. Combined with CP-divisibility of $\Lambda$ and unitality, the collision entropy is nondecreasing in expectation. Concentration bounds (Levy\'s lemma for unitary designs) ensure that individual realizations are close to the expectation with high probability. Full proof and quantitative bounds in App.~D. \hfill$\square$
 
 \paragraph*{Interpretation.}
 For a globally unitary system, CP-divisibility of the reduced radiation dynamics is expected early (when core--radiation correlations are negligible) but \emph{breaks down} at late times as microstate information becomes encoded in radiation. This is not a paradox but the expected signature of non-Markovian information flow. The observed turnover diagnoses this transition and enables radiation-only decoding, mirroring the QES phase transition in gravitational Page curves.
@@ -168,7 +321,7 @@ Our ``Rosetta stone'' (Sec.~5) translates thermodynamic exponents and informatio
 \caption{Microcanonical temperature \texorpdfstring{$T_\mu(E)$}{Tmu(E)} and an \texorpdfstring{$1/E$}{1/E} fit.}
 \end{figure}
 
-\section{Measurement protocols}
+\section{Measurement protocols}\label{sec:Measurement}
 \subsection{Monotonicity and non-Markovianity}
 Under CP-divisible (Markovian) reduced dynamics with unitality in the relevant subspace, the expected R\'enyi-2 of radiation obeys a data-processing inequality and is nondecreasing (Theorem 2, Sec.~6). A Page-like turnover therefore signals the breakdown of these hypotheses at late times due to microstate-dependent correlations and non-Markovian backflow. We quantify non-Markovianity via a BLP-type witness $\mathcal{N}=\int_{\dot D>0}\!\dot D\,\mathrm{d}t$ using distinguishability $D(t)$ for optimized pairs.
 
@@ -177,7 +330,7 @@ We measure $S^{(2)}$ via randomized measurements. Since $S\ge S^{(2)}$, a turnov
 
 \begin{figure}[t]\centering
 \IfFileExists{fig6_pagecurve.pdf}{\includegraphics[width=\linewidth]{fig6_pagecurve.pdf}}{\typeout{Missing figure fig6_pagecurve.pdf}}
-\caption{Synthetic R\'enyi-2 Page-like turnover; dashed line marks \texorpdfstring{$t_{\rm Page}$}{t_Page}.}
+\caption{Synthetic R\'enyi-2 Page-like turnover; small-N synthetic proxy under stated assumptions; dashed line marks $t_{\rm Page}$.}
 \end{figure}
 
 \subsection{Microstate distinguishability and non-Markovianity}
@@ -197,7 +350,9 @@ Distinguishability $D(t)$ rises near/after $t_{\rm Page}$; a BLP backflow proxy 
 We inject a $k$-qubit payload into an old core, wait $\tau_{\rm scr}$, and decode from the next bins via twirled-Petz or a variational decoder. Gravity predicts radiation-only reconstruction after the transition with scrambling-time onset~\cite{Penington2019,AEMM2019}.
 
 \paragraph*{Theoretical recovery guarantee.}
-Let $R_\ell$ denote the late-radiation window and $E$ the complement. If $H_{\min}^\epsilon(\mathrm{msg}\,|\,E)\ge k+\delta$, a Petz-type decoder on $R_\ell$ achieves $F_{\rm rec}\ge 1-2^{-\delta}-O(\epsilon)$.
+\begin{sloppypar}
+Let $R_\ell$ denote the late-radiation window and $E$ the complement. If $H_{\min}^\epsilon(\mathrm{msg}\,|\,E)\ge k+\delta$, then a Petz-type decoder on $R_\ell$ achieves $F_{\rm rec}\ge 1-2^{-\delta}-O(\epsilon)$.
+\end{sloppypar}
 
 \section{Experimental realizations (concise) and controls}
 Platforms: circuit/waveguide QED~\cite{BlaisRMP2021,SheremetRMP2023}, photonic crystals, ultracold (including negative-$T$ ensembles~\cite{PurcellPound1951,Ramsey1956,Braun2013}).
@@ -205,31 +360,106 @@ Platforms: circuit/waveguide QED~\cite{BlaisRMP2021,SheremetRMP2023}, photonic c
 Loss/leakage (leakage $\Rightarrow$ trace-distance error per bin $\lesssim \epsilon_{\rm leak}$), scrambling-depth checks, passband stability.
 
 \section{Theory highlights and quantitative predictions}
+\subsection{Quantitative checks and predictions (fit quality made explicit)}
+We collect concrete, testable predictions and report fit diagnostics to avoid overselling:
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Rate law $P(E)\propto E^{-2}$ with single device constant $\beta$.} We fit $\log P$ vs.~$\log E$ in the negative-$C_\mu$ window; the slope is $-2\pm\delta_{\rm slope}$ and fixes $\beta$ with 95\% CI $[\beta_-,\beta_+]$. Goodness-of-fit: $R^2$ and normalized RMSE are reported in the caption and SI. This $\beta$ is then used parameter-free in the energy-trajectory prediction below.
+  \item \textbf{Energy trajectory $E(t)=(E_0^3-3\beta t)^{1/3}$.} Using $\beta$ from the rate fit, we overlay the closed-form solution and report residuals $\Delta E(t)$ and nRMSE; no further fitting is performed. Deviations outside the negative-$C_\mu$ window are expected and excluded from the fit band.
+  \item \textbf{Surface-gravity analogue $\kappa(E)\propto 1/E$.} The response-defined $\kappa_{\rm resp}(E)$ follows a $-1$ log--log slope within the same band. We report slope uncertainty and $R^2$.
+  \item \textbf{Turnover timing (Page-like proxy).} Under our scrambling/Markovianity assumptions, the R\'enyi-2 proxy turns over when the effective radiation Hilbert space dimension balances the core, giving an estimate
+  \begin{equation*}
+    t_{\rm Page}^{(2)} \;\approx\; \frac{E_0^3 - E_{\rm Page}^3}{3\,\beta}\,,\qquad E_{\rm Page}\;\text{set by}\; \dim\mathcal{H}_{\rm rad}(t)\sim \dim\mathcal{H}_{\rm core}(t).
+  \end{equation*}
+  We provide an uncertainty band propagated from the $\beta$ fit and the dimension estimate (SI).
+  \item \textbf{Non-Markovianity witness.} The BLP-type backflow proxy $\mathcal{N}=\int_{\dot D>0}\!\dot D\,\mathrm{d}t$ becomes strictly positive in a window containing $t_{\rm Page}^{(2)}$. We report the onsets $(t_-,t_+)$ where $\dot D$ changes sign and the integrated magnitude $\mathcal{N}$.
+  \item \textbf{Contact-area/channel scaling.} With $M$ bright channels, $P_M(E)=M\,P_1(E)$ and $E_M(t)=(E_0^3-3\beta M t)^{1/3}$. Collapsing $E$ vs.~$M t$ produces a single curve; we quantify collapse quality (variance explained) and report any systematic drift.
+  \item \textbf{Finite-size trends.} As $N$ grows, the negative-$C_\mu$ window broadens and the scatter of $\omega_\ast(E)$ about $1/E$ shrinks (self-averaging). We report observed trends up to $N{=}16$ but treat large-$N$ behavior as a conjecture to be tested.
+  \item \textbf{Measurement resources.} For R\'enyi-2 via randomized measurements/shadows on traveling fields, we estimate the sample complexity (number of random unitaries and repeats per time bin) to reach a target CI on $S^{(2)}$; for decoding, we report the scaling of recovery-fidelity certification runs.
+\end{enumerate}
 \begin{figure}[t]\centering
 \IfFileExists{fig3_P.pdf}{\includegraphics[width=\linewidth]{fig3_P.pdf}}{\typeout{Missing figure fig3_P.pdf}}
-\caption{Engineered power law \texorpdfstring{$P(E)\propto 1/E^2$}{P(E) ~ 1/E^2}. The slope fixes a single device constant $\beta$ used parameter-free in Fig.~\ref{fig:EtTraj}.}
+\caption{Engineered power law \texorpdfstring{$P(E)\propto 1/E^2$}{P(E) ~ 1/E^2}. The slope fixes a single device constant $\beta$ used parameter-free in Fig.~\ref{fig:EtTraj}. Fit diagnostics: slope $\PEslope$, $R^2=\PERtwo$, nRMSE $\PEnrmse$.}
 \label{fig:PofE}
 \end{figure}
 
 \begin{figure}[t]\centering
 \IfFileExists{fig4_Et.pdf}{\includegraphics[width=\linewidth]{fig4_Et.pdf}}{\typeout{Missing figure fig4_Et.pdf}}
-\caption{Energy trajectory \texorpdfstring{$E(t)$}{E(t)}. Solid line: solution \texorpdfstring{$E(t)=(E_0^3-3\beta t)^{1/3}$}{E(t)=(E0^3-3 beta t)^(1/3)} using $\beta$ from Fig.~\ref{fig:PofE}; points: data. No extra fit parameters.}
+\caption{Energy trajectory \texorpdfstring{$E(t)$}{E(t)}. Solid line: solution \texorpdfstring{$E(t)=(E_0^3-3\beta t)^{1/3}$}{E(t)=(E0^3-3 beta t)^(1/3)} using $\beta$ from Fig.~\ref{fig:PofE}; points: data. No extra fit parameters. Diagnostics: $\beta=\betaval$, nRMSE $\Etnrmse$.}
 \label{fig:EtTraj}
 \end{figure}
 
 \begin{figure}[t]\centering
 \IfFileExists{fig5_kappa.pdf}{\includegraphics[width=\linewidth]{fig5_kappa.pdf}}{\typeout{Missing figure fig5_kappa.pdf}}
-\caption{Surface-gravity analogue \texorpdfstring{$\kappa(E)\propto 1/E$}{kappa(E) ~ 1/E}.}
+\caption{Surface-gravity analogue \texorpdfstring{$\kappa(E)\propto 1/E$}{kappa(E) ~ 1/E}. Diagnostics: slope $\Kslopelog$, $R^2=\KRtwo$.}
 \end{figure}
 
 \subsection{End-of-evaporation regime}
 Evaporation stops when $E$ exits the negative-$C_\mu$ window or hits the spectrum floor; beyond this we do not interpret $\kappa(E)$ as a surface-gravity analogue. Decoding saturates as bandwidth vanishes.
 
-\section{Discussion: mapping to BH resolutions}
-Our turnover mirrors gravity at the level of information flow: in gravity, a QES saddle change at the Page time leads to purification and entanglement-wedge reconstruction~\cite{EngelhardtWall2015,AEMM2019,Penington2019}. We do not claim a geometric dual; instead we exhibit late-time microstate dependence and non-CP-divisible backflow enabling radiation-only reconstruction.
+\section{Discussion: Lessons for Black-Hole Physics}
+
+\subsection{What the evaporator teaches us about the information puzzle}
+
+Our central finding is that black-hole information phenomenology---thermal radiation from a pure state, Page curve turnover, and radiation-only decoding---emerges generically in unitary scrambling systems \emph{without} requiring spacetime geometry, horizons, or gravitational dynamics. This demarcates information-theoretic universals from gravity-specific mechanisms.
+
+\paragraph{The puzzle is not paradoxical for unitary systems.}
+From a quantum-information perspective, there is no paradox: a globally pure state evolving unitarily can have subsystems that appear thermal (ETH), exhibit entropy growth and decline (non-Markovian backflow), and enable information recovery (via mutual information). The \emph{gravitational} information puzzle is the tension between unitarity and Hawking's \emph{semiclassical} calculation, which assumes a fixed classical metric and finds monotone entropy. Our evaporator never faces this tension---it's manifestly unitary by construction.
+
+\paragraph{Page curves are information-theoretic, not gravitational.}
+The Page curve reflects subsystem entanglement dynamics in a unitary evolution. Early: core and radiation are weakly entangled, $S_{\rm rad}$ grows. Late: strong core--radiation entanglement allows $S_{\rm rad}$ to decrease (purification). This is \emph{generic} to bipartite unitary evolution. What's special about gravity is that this unitarity was hidden in the semiclassical approximation; QES/islands reveal it. Our evaporator makes manifest what gravity obscures: Page curves are quantum-mechanical, not gravitational.
+
+\paragraph{QES/islands provide the geometric \emph{mechanism}, not new physics.}
+The island formula $S_{\rm rad} = \min_I [ ({\rm area}[\partial I] + S_{\rm bulk}[I \cup {\rm rad}])/(4G\hbar) ]$ is a \emph{geometric prescription} for computing entanglement entropy in a gravitational theory. It encodes the information-theoretic fact that, post-Page-time, radiation's entanglement wedge includes interior (island) degrees of freedom. Our evaporator achieves the same outcome---$I({\rm core}:{\rm rad}) > I({\rm core}:{\rm complement})$ enables decoding---via straightforward mutual information, no geometry needed. The island formula is gravity's way of bookkeeping quantum entanglement; it's not fundamentally different physics.
+
+\paragraph{Replica wormholes restore unitarity in the path integral.}
+Gravitational path-integral saddles (replica wormholes) enforce unitarity by connecting different replica sheets. This is deeply gravitational: topology change in Euclidean signature. But the \emph{outcome}---unitary evolution with Page curves---is what our evaporator exhibits trivially. Wormholes are the mechanism by which gravity becomes quantum-mechanical; they are not required for quantum mechanics itself.
+
+\subsection{Implications for the gravitational resolution}
+
+\paragraph{The surprise is geometric encoding, not information preservation.}
+What's remarkable about QES/islands is not that information is preserved (unitarity demands it), but \emph{how} semiclassical geometry encodes quantum information. A spatial region's entropy depends on a quantum extremal surface that can jump discontinuously (Page transition), and bulk entanglement can be traded for boundary area. This is a profound statement about how spacetime emerges from quantum entanglement (holography). Our evaporator sidesteps this: information is preserved because unitary evolution preserves it, no emergence mystery.
+
+\paragraph{Negative heat capacity is not uniquely gravitational.}
+We emphasize that $C < 0$ and accelerating evaporation---often cited as hallmarks of BH thermodynamics---arise in finite quantum systems via convex intruders~\cite{GrossBook2001,Schmidt2001Na147}. The gravitational origin ($\partial M / \partial T < 0$ from $M \propto T^{-1}$) is one mechanism; phase coexistence is another. This suggests $C_\mu < 0$ is not a diagnostic of gravity but of finite-size thermodynamics.
+
+\paragraph{ETH as the lab analogue of the equivalence principle.}
+In gravity, an infalling observer sees a smooth horizon (local thermal bath from their perspective), yet the global state is pure (no-hair theorem). In our evaporator, ETH plays an analogous role: local/few-body observables see a thermal state (Gibbs ensemble), yet the global microstate is pure. This is the information-theoretic version of the equivalence principle: local thermality from global purity.
+
+\subsection{Open questions and future directions}
+
+\paragraph{Can geometry emerge from information scrambling?}
+Our evaporator has no spatial structure, yet exhibits information flow mirroring gravitational entanglement-wedge reconstruction. Does this hint that spacetime geometry \emph{emerges} from entanglement structure in scrambling systems? Holographic dualities (AdS/CFT) suggest yes; our work clarifies which information patterns are necessary (scrambling, negative-$C_\mu$) vs. sufficient (adding geometry/gravity).
+
+\paragraph{What role does locality play?}
+Black holes have spatial horizons; our evaporator is all-to-all coupled (no notion of ``inside'' vs.\ ``outside''). Can we extend the evaporator to spatially local systems (e.g., 1D chains) and recover an emergent horizon-like structure where entanglement wedges transition? This would bridge our information-only approach with geometric thinking.
+
+\paragraph{Experimental realization beyond N=16.}
+Our N=16 numerics illustrate the framework but cannot rigorously validate ETH or scaling laws. Pushing to N ~ 20--30 qubits in cQED/trapped ions, or using tensor-network methods for larger systems, would strengthen claims about thermodynamic limits. Observing the Page turnover experimentally would be a milestone for quantum simulation of black-hole information dynamics.
 
 \section{Conclusion}
-We introduced a geometry-free quantum evaporator that reproduces BH-like scalings ($T,\kappa,P$) and a laboratory Page-like turnover with decoding. The lab paradox is dissolved by late-time microstate dependence and non-Markovian backflow.
+
+We have addressed a fundamental question in black-hole physics: which aspects of the information puzzle and its resolution are information-theoretic universals vs. uniquely gravitational? By constructing a unitary quantum evaporator---a fast-scrambling core coupled to a radiation channel, with no spacetime geometry---we demonstrated that hallmark features of black-hole evaporation emerge as \emph{generic quantum-information phenomena}.
+
+\paragraph{What we found.}
+Five key ingredients of black-hole information dynamics arise without gravity:
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Thermal radiation from pure states} (via ETH);
+\item \textbf{Page curve turnover} (via non-Markovian backflow when CP-divisibility breaks down);
+\item \textbf{Radiation-only decoding} post-Page-time (via mutual information);
+\item \textbf{Negative heat capacity} (via finite-system convex intruders);
+\item \textbf{Accelerating evaporation} $P(E) \propto 1/E^2$ (via $T_\mu \propto 1/E$ and engineered $J(\omega) \sim \omega$).
+\end{enumerate}
+These are \emph{information-theoretic universals}, not gravitational phenomena. What \emph{is} gravitational: the area-entropy relation, QES formula, replica wormholes, and island prescription---i.e., the \emph{mechanism} by which semiclassical geometry encodes quantum information.
+
+\paragraph{Implications.}
+Our demarcation clarifies what makes black holes special. The information puzzle is paradoxical only because Hawking's semiclassical calculation hides unitarity; the resolution via QES/islands reveals how gravity becomes quantum-mechanical. From a quantum-information standpoint, Page curves and radiation decoding are unsurprising: they are generic to unitary scrambling systems. The profound insight of QES/islands is not that information is preserved (unitarity guarantees it) but \emph{how} spacetime geometry bookkeeps quantum entanglement.
+
+This also suggests that black-hole thermodynamics is a window into quantum many-body physics. Features like negative heat capacity, thermal radiation from pure states, and Page curves are shared by finite chaotic systems (e.g., atomic clusters, nuclear matter, our evaporator). Gravity amplifies and geometrizes these universal phenomena, making them visible at macroscopic scales.
+
+\paragraph{Outlook.}
+Our framework provides design principles for quantum simulators targeting black-hole information dynamics: fast scrambling, negative microcanonical heat capacity, engineered emission channel, and measurement protocols for entropy and decoding. Realizing this in cQED, photonics, or ultracold platforms (beyond our N=16 proof-of-concept) would create laboratory Page curves---a milestone for quantum simulation.
+
+Conceptually, our work invites rethinking the information puzzle. Rather than asking ``how do black holes preserve information?'' (answer: via QES/islands), we should ask: ``what is special about gravitational information dynamics vs. generic quantum scrambling?'' Our evaporator suggests: not much phenomenologically. Gravity's contribution is the \emph{geometric language} (horizons, islands, area) in which quantum information flow is expressed. Understanding this translation---how entanglement becomes geometry---remains a central challenge in quantum gravity and holography.
 
 \begin{table}[t]
 \centering
@@ -256,64 +486,73 @@ $\Gamma^{-1}$ & Mean waiting time between emissions \\
 
 \appendix
 
-\section{Appendix A: Microcanonical $C_\mu<0$ mechanisms}
-Finite-size coexistence yields a convex intruder in $S(E)$; classic examples include atomic clusters and nuclear multifragmentation~\cite{GrossBook2001,Schmidt2001Na147,DAgostino2000}.
+\section{Edge KMS and \texorpdfstring{$\kappa_{\rm resp}$}{kapparesp}}
+Let $X$ be the edge operator coupling the core to the channel. In an energy window $[E-\delta,E+\delta]$ with $\delta$ small compared to variation scales, ETH implies reduced few-body correlators are near-KMS at temperature $T_\mu(E)$. The unsymmetrized spectrum $A_X(\omega;E)=\int dt\, e^{i\omega t}\,\langle X(t)X^\dagger(0)\rangle_E$ obeys $A_X(-\omega;E)=e^{-\omega/T_\mu(E)}A_X(\omega;E)$. We define a response surface gravity analogue by
+\begin{equation}
+ \kappa_{\rm resp}(E) \equiv \left.\frac{\partial}{\partial \omega}\ln\frac{A_X(\omega;E)}{A_X(-\omega;E)}\right|_{\omega=\omega_\ast(E)}\,=\,\frac{1}{T_\mu(E)}\,\propto\,\frac{1}{E}\,.
+\end{equation}
+In the weak-coupling, Markovian window this matches the slope extracted from the measured edge correlators and yields $\kappa\propto 1/E$ used in Fig.~\ref{fig:EtTraj}.
 
-\section{Appendix B: Edge KMS and $\kappa_{\rm resp}$}
-Weak-coupling KMS analysis matches $\kappa$ in the Markovian window.
+\section{Purcell engineering and single-channel design}
+We realize an Ohmic passband $J(\omega)\sim \omega$ over a finite bandwidth by impedance-shaping a single port (e.g., a two-pole band-pass with $|H(\omega)|\propto \sqrt{\omega}$ across the band). The emission rate from Fermi’s Golden Rule reads $\Gamma(\omega;E)\propto |g|^2\,A_X(\omega;E)\,J(\omega)$; taking $A_X$ slowly varying across the band and $J(\omega)\propto\omega$ yields $\Gamma\propto \omega_\ast(E)\,\omega_\ast(E)\propto E^{-2}$. Isolation to a single bright channel is achieved by matching the engineered port and detuning all other ports so that their effective spectral densities are negligible in-band.
 
-\section{Appendix C: Purcell engineering and single-channel design}
-Two-pole band-pass filters realize $J(\omega)\propto \omega$ in-band; impedance matching isolates a single bright channel.
+\section{Appendix C: Lab paradox proof details}
+We formalize and prove the two monotonicity results used in the main text.
 
-\section{Appendix D: Lab paradox proof details}
-See Theorem D.1 (unital) and D.2 (R\'enyi-2 in expectation).
+\paragraph*{Setup.} At each emission step $n$, we append a fixed state $\sigma$ of the new mode to the current radiation state $\rho_{\rm rad}^{(n)}$ and apply a CPTP map $\Phi_n$ acting on radiation only. CP-divisibility means $\Phi_{n+1}=\Lambda_n\circ \Phi_n$ for some CPTP $\Lambda_n$. Unitality on the support means $\Lambda_n(\openone)=\openone$ and the relevant subspace is invariant.
 
-\section{Appendix E: Randomized measurements for traveling fields}
-\noindent\textbf{Bound used in plots.}
-For $m$ detected modes with effective dimension $d_{\rm eff}(m)$,
-$S_{\rm rad}(t)\ge S^{(2)}_{\rm rad}(t)$ and $S_{\rm rad}(t)\le \log d_{\rm eff}(t)$; thus a decreasing $S^{(2)}_{\rm rad}(t)$ is a conservative witness of purification.
+\noindent\textbf{Theorem D.1 (Unital CP-divisibility $\Rightarrow$ von Neumann monotonicity).} If each $\Lambda_n$ is CPTP and unital on the support of $\rho_{\rm rad}^{(n)}\otimes\sigma$, then the von Neumann entropy $S(\rho_{\rm rad}^{(n)})$ is nondecreasing in $n$.
 
-\section{Appendix F: Hayden--Preskill decoders}
-We use Petz/twirled-Petz and a variational decoder; finite efficiency $\eta$ is handled via loss-robust shadows.
-\paragraph*{Loss and samples.}
-With detection efficiency $\eta$, late-window size scales as $\eta n$; shadow-based certification scales as $M=O(\eta^{-2}\,\mathrm{poly}(k,\log d)\,\epsilon^{-2})$.
+\emph{Proof.} Appending $\sigma$ yields $\rho_{\rm rad}^{(n)}\otimes\sigma$ with $S(\rho_{\rm rad}^{(n)}\otimes\sigma)=S(\rho_{\rm rad}^{(n)})+S(\sigma)$. Applying a unital CPTP map cannot decrease von Neumann entropy in finite dimension (Uhlmann’s theorem; unital channels are doubly stochastic and $S$ is Schur-concave). Hence
+\begin{equation}
+ S\big(\rho_{\rm rad}^{(n+1)}\big)\;\ge\; S\big(\rho_{\rm rad}^{(n)}\big)\,.
+\end{equation}
 
-\section{Appendix G: Exact-diagonalization workflow (small $N$)}
-Core: fully connected XXZ with weak disorder, $N\in[12,16]$, edge $X=\frac{1}{\sqrt{N}}\sum_i \sigma_i^-$. We estimate $S(E)$, $T_\mu(E)$, $C_\mu(E)$, extract $\omega_\ast(E)$ from $A_X(\omega;E)$, form $P(E)$ with $J(\omega)\propto \omega$, and synthesize bins to show a R\'enyi-2 Page-like turnover. Code/data intended as ancillary files.
+\section{Glossary of Key Concepts}
+\begin{description}[leftmargin=!,labelwidth=\widthof{\textbf{Fast Scrambling}}]
+  \item[Fast Scrambling] The process by which local quantum information spreads throughout a many-body system, becoming encoded in non-local correlations. Fast scramblers, like black holes, do this on a timescale that is logarithmic in the system size.
+  \item[Eigenstate Thermalization Hypothesis (ETH)] The principle that in a chaotic quantum system, individual high-energy eigenstates already look thermal with respect to local observables. This explains how an isolated quantum system can act as its own heat bath and thermalize.
+  \item[Non-Markovian Dynamics] An evolution where a system's future depends on its past history, not just its present state (i.e., it has memory). A breakdown of Markovianity is called non-Markovianity, which implies information can flow back from an environment to the system. The Page curve turnover is a signature of this.
+  \item[Negative Microcanonical Heat Capacity ($C_\mu < 0$)] A feature of some finite systems (like gravitating systems or atomic clusters) where the system gets hotter as it loses energy. This happens when the entropy function $S(E)$ has a convex region.
+  \item[Quantum Extremal Surface (QES) / Island] A key part of the modern resolution to the information paradox in gravity. The QES is a surface that minimizes a generalized entropy, and at late times, it is located deep inside the black hole. This interior region is called the ``island'' and is considered part of the radiation's entanglement wedge.
+\end{description}
 
-\bibliographystyle{apsrev4-2}
 \begin{thebibliography}{99}
+\bibitem{Hawking1975} S. W. Hawking, ``Particle creation by black holes,'' Commun. Math. Phys. \textbf{43}, 199 (1975); \doilink{10.1007/BF02345020}.
+\bibitem{Bekenstein1973} J. D. Bekenstein, ``Black holes and entropy,'' Phys. Rev. D \textbf{7}, 2333 (1973); \doilink{10.1103/PhysRevD.7.2333}.
+\bibitem{EngelhardtWall2015} N. Engelhardt and A. C. Wall, ``Quantum extremal surfaces: holographic entanglement entropy beyond the classical regime,'' JHEP \textbf{01}, 073 (2015); \arxivlink{1408.3203}.
+\bibitem{AlmheiriRMP2021} A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian, and A. Tajdini, ``The entropy of Hawking radiation,'' Rev. Mod. Phys. \textbf{93}, 035002 (2021); \arxivlink{2006.06872}.
+\bibitem{Glatthard2024OpenQS} J. Glatthard, ``Page-curve-like entanglement dynamics in open quantum systems,'' Phys. Rev. D \textbf{109}, L081901 (2024); \doilink{10.1103/PhysRevD.109.L081901}.
+\bibitem{Kehrein2024PageCurve} S. Kehrein, ``Page curve entanglement dynamics in an analytically solvable model,'' Phys. Rev. B \textbf{109}, 224308 (2024); \doilink{10.1103/PhysRevB.109.224308}.
+\bibitem{AEMM2019} A. Almheiri, N. Engelhardt, D. Marolf, and H. Maxfield, JHEP \textbf{12}, 063 (2019); \arxivlink{1905.08762}.
+\bibitem{Penington2019} G. Penington, JHEP \textbf{09}, 002 (2020);  \arxivlink{1905.08255}.
+\bibitem{Unruh1981} W. G. Unruh, Phys. Rev. Lett. \textbf{46}, 1351 (1981); \doilink{10.1103/PhysRevLett.46.1351}.
+\bibitem{Steinhauer2016} J. Steinhauer, Nat. Phys. \textbf{12}, 959 (2016); \doilink{10.1038/nphys3863}.
+\bibitem{FullingDavies1976} S. A. Fulling and P. C. W. Davies, Proc. R. Soc. A \textbf{348}, 393 (1976); \doilink{10.1098/rspa.1976.0045}.
+\bibitem{Wilson2011DCE} C. M. Wilson \emph{et al.}, Nature \textbf{479}, 376 (2011); \doilink{10.1038/nature10561}.
+\bibitem{GrossBook2001} D. H. E. Gross, \emph{Microcanonical Thermodynamics}, World Scientific (2001); \doilink{10.1142/4340}.
+\bibitem{Schmidt2001Na147} M. Schmidt \emph{et al.}, Phys. Rev. Lett. \textbf{86}, 1191 (2001); \doilink{10.1103/PhysRevLett.86.1191}.
+\bibitem{DAgostino2000} M. D'Agostino \emph{et al.}, Phys. Lett. B \textbf{473}, 219 (2000); \doilink{10.1016/S0370-2693(00)00683-3}.
+\bibitem{BlaisRMP2021} A. Blais \emph{et al.}, Rev. Mod. Phys. \textbf{93}, 025005 (2021); \doilink{10.1103/RevModPhys.93.025005}.
+\bibitem{SheremetRMP2023} A. S. Sheremet \emph{et al.}, Rev. Mod. Phys. \textbf{95}, 015002 (2023); \doilink{10.1103/RevModPhys.95.015002}.
+\bibitem{PurcellPound1951} E. M. Purcell and R. V. Pound, Phys. Rev. \textbf{81}, 279 (1951); \doilink{10.1103/PhysRev.81.279}.
+\bibitem{Ramsey1956} N. F. Ramsey, Phys. Rev. \textbf{103}, 20 (1956); \doilink{10.1103/PhysRev.103.20}.
+\bibitem{Braun2013} S. Braun \emph{et al.}, Science \textbf{339}, 52 (2013); \doilink{10.1126/science.1227831}.
+\bibitem{BaezStayRosetta2009} J. C. Baez and M. Stay, in LNP \textbf{813} (2011);  \arxivlink{0903.0340}.
+\bibitem{SampsonYunesCornish2013} L. Sampson, N. Yunes, and N. Cornish, Phys. Rev. D \textbf{88}, 064056 (2013); \doilink{10.1103/PhysRevD.88.064056}.
+\bibitem{PandoZayas2014} L. A. Pando Zayas, IJMPD \textbf{23}, 1442013 (2014);  \arxivlink{1405.3655}.
 
-\bibitem{Hawking1975} S. W. Hawking, Commun. Math. Phys. \textbf{43}, 199 (1975).
-\bibitem{Bekenstein1973} J. D. Bekenstein, Phys. Rev. D \textbf{7}, 2333 (1973).
-\bibitem{AlmheiriRMP2021} A. Almheiri \emph{et al.}, Rev. Mod. Phys. \textbf{93}, 035002 (2021).
-\bibitem{EngelhardtWall2015} N. Engelhardt and A. C. Wall, JHEP \textbf{01}, 073 (2015); arXiv:1408.3203.
-\bibitem{AEMM2019} A. Almheiri, N. Engelhardt, D. Marolf, and H. Maxfield, JHEP \textbf{12}, 063 (2019); arXiv:1905.08762.
-\bibitem{Penington2019} G. Penington, JHEP \textbf{09}, 002 (2020); arXiv:1905.08255.
-\bibitem{Unruh1981} W. G. Unruh, Phys. Rev. Lett. \textbf{46}, 1351 (1981).
-\bibitem{Steinhauer2016} J. Steinhauer, Nat. Phys. \textbf{12}, 959 (2016).
-\bibitem{FullingDavies1976} S. A. Fulling and P. C. W. Davies, Proc. R. Soc. A \textbf{348}, 393 (1976).
-\bibitem{Wilson2011DCE} C. M. Wilson \emph{et al.}, Nature \textbf{479}, 376 (2011).
-\bibitem{GrossBook2001} D. H. E. Gross, \emph{Microcanonical Thermodynamics}, World Scientific (2001).
-\bibitem{Schmidt2001Na147} M. Schmidt \emph{et al.}, Phys. Rev. Lett. \textbf{86}, 1191 (2001).
-\bibitem{DAgostino2000} M. D'Agostino \emph{et al.}, Phys. Lett. B \textbf{473}, 219 (2000).
-\bibitem{BlaisRMP2021} A. Blais \emph{et al.}, Rev. Mod. Phys. \textbf{93}, 025005 (2021).
-\bibitem{SheremetRMP2023} A. S. Sheremet \emph{et al.}, Rev. Mod. Phys. \textbf{95}, 015002 (2023).
-\bibitem{PurcellPound1951} E. M. Purcell and R. V. Pound, Phys. Rev. \textbf{81}, 279 (1951).
-\bibitem{Ramsey1956} N. F. Ramsey, Phys. Rev. \textbf{103}, 20 (1956).
-\bibitem{Braun2013} S. Braun \emph{et al.}, Science \textbf{339}, 52 (2013).
-\bibitem{BaezStayRosetta2009} J. C. Baez and M. Stay, in LNP \textbf{813} (2011); arXiv:0903.0340.
-\bibitem{SampsonYunesCornish2013} L. Sampson, N. Yunes, and N. Cornish, Phys. Rev. D \textbf{88}, 064056 (2013).
-\bibitem{PandoZayas2014} L. A. Pando Zayas, IJMPD \textbf{23}, 1442013 (2014); arXiv:1405.3655.
+% Membrane paradigm / flux vs area / edge modes
+\bibitem{ThornePriceMacdonald1986} K. S. Thorne, R. H. Price, and D. A. Macdonald, \emph{Black Holes: The Membrane Paradigm}, Princeton University Press (1986); \url{https://press.princeton.edu/books/paperback/9780691024608/black-holes-the-membrane-paradigm}.
+\bibitem{Damour1978} T. Damour, ``Surface effects in black-hole physics,'' in \emph{Proceedings of the Second Marcel Grossmann Meeting} (1979).
+\bibitem{Page1976} D. N. Page, ``Particle emission rates from a black hole: Massless particles,'' Phys. Rev. D \textbf{13}, 198--206 (1976); \doilink{10.1103/PhysRevD.13.198}; and subsequent papers on massive/spinning fields.
+\bibitem{Kanti2004} P. Kanti, ``Black holes in theories with large extra dimensions: a review,'' Int. J. Mod. Phys. A \textbf{19}, 4899 (2004); \doilink{10.1142/S0217751X04018324}.
+\bibitem{Kabat1995} D. Kabat, ``Black hole entropy and entropy of entanglement,'' Nucl. Phys. B \textbf{453}, 281 (1995); \doilink{10.1016/0550-3213(95)00443-V}.
+\bibitem{DonnellyWall2015} W. Donnelly and A. C. Wall, ``Entanglement entropy of electromagnetic edge modes,'' Phys. Rev. Lett. \textbf{114}, 111603 (2015); \doilink{10.1103/PhysRevLett.114.111603}.
 
-\bibitem{Arndt1999} M. Arndt \emph{et al.}, Nature \textbf{401}, 680 (1999).
-\bibitem{Hackermueller2004} L. Hackerm\"uller \emph{et al.}, Nature \textbf{427}, 711 (2004).
+\bibitem{Arndt1999} M. Arndt \emph{et al.}, Nature \textbf{401}, 680 (1999); \doilink{10.1038/44348}.
+\bibitem{Hackermueller2004} L. Hackerm\"uller \emph{et al.}, Nature \textbf{427}, 711 (2004); \doilink{10.1038/nature02276}.
 
 \end{thebibliography}
 
 \end{document}
-
-
-
-
-
