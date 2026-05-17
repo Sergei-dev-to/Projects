@@ -30,6 +30,20 @@ Lantern Tide is not:
 
 Any player-facing or developer-facing language should preserve that boundary.
 
+## Source Alignment
+
+The current source reference is [GQ_ASC_ADULT_WOMEN_REFERENCE.md](GQ_ASC_ADULT_WOMEN_REFERENCE.md), based on the modified adult-women GQ-ASC PDF and Brown et al. (2020).
+
+The source instrument uses a 4-point agree/disagree questionnaire, five components, reverse scoring for specified items, and a total-score cutoff. Lantern Tide does not implement that scoring. It instead translates some construct families into behavioral game situations and a hand-tuned evidence vector.
+
+Current alignment is partial:
+
+- Camouflaging, sensory sensitivities, socializing, and interests are represented indirectly.
+- Imagination and play is weakly represented and should be expanded if source alignment matters.
+- Validated questionnaire scoring is not implemented.
+
+Do not describe the app as scoring the GQ-ASC unless an explicit licensed questionnaire mode is added and kept separate from the behavioral game profile.
+
 ## Current Game Loop
 
 The player starts in Harborwake on the morning of Lantern Tide. The scene has four areas:
@@ -117,6 +131,8 @@ Guidelines:
 - The map is still symbolic canvas art, not a full Palia-like world.
 - Movement is click/tap-to-walk, not physics-heavy exploration.
 - The evidence model is hand-tuned and unvalidated.
+- The app does not administer or score the original GQ-ASC questionnaire.
+- Imagination/play is underrepresented relative to the adult-women GQ-ASC components.
 - The interaction set is small, so uncertainty should remain visible.
 - Results are useful for design feedback, not clinical interpretation.
 

@@ -40,6 +40,7 @@ node scenario_runner.js
 - `server.js` - tiny no-cache static server for local testing.
 - `mobile_preview.html` - iframe wrapper for checking a phone-sized viewport.
 - `DESIGN.md` - current developer rationale and implementation notes.
+- `GQ_ASC_ADULT_WOMEN_REFERENCE.md` - source-alignment notes for the adult-women GQ-ASC paper/form.
 
 ## Public Demo
 
