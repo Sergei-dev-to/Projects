@@ -994,9 +994,7 @@ function draw() {
   updateCamera();
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const pulse = Math.sin(frame / 160) * 0.5 + 0.5;
-  ctx.fillStyle = `rgb(${222 + pulse * 3}, ${231 + pulse * 2}, ${216 + pulse * 4})`;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  drawCanvasBackdrop();
   ctx.setTransform(camera.scale, 0, 0, camera.scale, -camera.x * camera.scale, -camera.y * camera.scale);
 
   drawTerrain();
@@ -1017,8 +1015,9 @@ function draw() {
     } else {
       drawWorldObject(object, completed, remembered);
     }
-    if (nearest?.id === object.id) {
+    if (nearest?.id === object.id && shouldShowTargetCue()) {
       drawNameplate(object.name, object.x, object.y + object.radius + 18);
+      drawActionCue(object);
     }
     if (completed || remembered) {
       ctx.beginPath();
@@ -1041,6 +1040,44 @@ function draw() {
 
   drawPlayer();
   ctx.setTransform(1, 0, 0, 1, 0, 0);
+  drawScreenVignette();
+}
+
+function drawCanvasBackdrop() {
+  const pulse = Math.sin(frame / 160) * 0.5 + 0.5;
+  const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  gradient.addColorStop(0, `rgb(${231 + pulse * 2}, ${226 + pulse * 2}, ${214 + pulse * 2})`);
+  gradient.addColorStop(0.48, `rgb(${221 + pulse * 3}, ${232 + pulse * 2}, ${216 + pulse * 3})`);
+  gradient.addColorStop(1, `rgb(${236 + pulse * 2}, ${224 + pulse}, ${204 + pulse * 2})`);
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.save();
+  ctx.globalAlpha = 0.2;
+  for (let i = 0; i < 28; i += 1) {
+    const x = ((i * 137 + frame * 0.09) % (canvas.width + 120)) - 60;
+    const y = (i * 79) % canvas.height;
+    ctx.fillStyle = i % 2 ? "#fffdf7" : "#d8a753";
+    ctx.beginPath();
+    ctx.ellipse(x, y, 26 + (i % 4) * 6, 7 + (i % 3) * 2, -0.32, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.restore();
+}
+
+function drawScreenVignette() {
+  const gradient = ctx.createRadialGradient(
+    canvas.width * 0.5,
+    canvas.height * 0.42,
+    canvas.width * 0.2,
+    canvas.width * 0.5,
+    canvas.height * 0.52,
+    canvas.width * 0.72
+  );
+  gradient.addColorStop(0, "rgba(255, 253, 247, 0)");
+  gradient.addColorStop(1, "rgba(70, 56, 42, 0.10)");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function drawStatusBadge(object, completed) {
@@ -1187,6 +1224,10 @@ function drawTerrain() {
 }
 
 function drawTerrainPatch(x, y, w, h, r, color, points) {
+  ctx.save();
+  ctx.shadowColor = "rgba(58, 44, 31, 0.13)";
+  ctx.shadowBlur = 14;
+  ctx.shadowOffsetY = 8;
   ctx.fillStyle = color;
   ctx.beginPath();
   points.forEach(([px, py], index) => {
@@ -1201,8 +1242,12 @@ function drawTerrainPatch(x, y, w, h, r, color, points) {
   ctx.quadraticCurveTo((lastX + firstX) / 2, (lastY + firstY) / 2, firstX, firstY);
   ctx.closePath();
   ctx.fill();
+  ctx.restore();
   ctx.strokeStyle = "rgba(255, 253, 247, 0.34)";
   ctx.lineWidth = 3;
+  ctx.stroke();
+  ctx.strokeStyle = "rgba(23, 25, 28, 0.04)";
+  ctx.lineWidth = 1;
   ctx.stroke();
 }
 
@@ -1226,8 +1271,7 @@ function drawVillagePaths() {
 }
 
 function drawCurvedPath(points) {
-  ctx.strokeStyle = "rgba(151, 126, 92, 0.26)";
-  ctx.lineWidth = 20;
+  ctx.save();
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
   ctx.beginPath();
@@ -1238,10 +1282,20 @@ function drawCurvedPath(points) {
       ctx.quadraticCurveTo(prevX, prevY, (prevX + x) / 2, (prevY + y) / 2);
     }
   });
+  ctx.strokeStyle = "rgba(88, 62, 42, 0.11)";
+  ctx.lineWidth = 25;
+  ctx.shadowColor = "rgba(58, 44, 31, 0.10)";
+  ctx.shadowBlur = 8;
+  ctx.shadowOffsetY = 5;
+  ctx.stroke();
+  ctx.shadowColor = "transparent";
+  ctx.strokeStyle = "rgba(151, 126, 92, 0.26)";
+  ctx.lineWidth = 19;
   ctx.stroke();
   ctx.strokeStyle = "rgba(255, 253, 247, 0.22)";
   ctx.lineWidth = 7;
   ctx.stroke();
+  ctx.restore();
 }
 
 function drawLanternGlow(x, y) {
@@ -1469,13 +1523,30 @@ function drawLantern(x, y, color) {
 }
 
 function drawObjectAura(object) {
-  if (nearest?.id !== object.id) return;
+  if (nearest?.id !== object.id || !shouldShowTargetCue()) return;
   const radius = object.radius + 12 + Math.sin(frame / 16) * 2;
+  const glow = ctx.createRadialGradient(object.x, object.y, object.radius * 0.5, object.x, object.y, radius + 14);
+  glow.addColorStop(0, "rgba(255, 253, 247, 0)");
+  glow.addColorStop(0.55, "rgba(255, 253, 247, 0.20)");
+  glow.addColorStop(1, "rgba(45, 103, 118, 0)");
+  ctx.fillStyle = glow;
   ctx.beginPath();
-  ctx.strokeStyle = "rgba(23, 25, 28, 0.34)";
-  ctx.lineWidth = 3;
+  ctx.arc(object.x, object.y, radius + 14, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.strokeStyle = "rgba(255, 253, 247, 0.92)";
+  ctx.lineWidth = 5;
+  ctx.arc(object.x, object.y, radius + 1, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.strokeStyle = "rgba(45, 103, 118, 0.56)";
+  ctx.lineWidth = 2;
   ctx.arc(object.x, object.y, radius, 0, Math.PI * 2);
   ctx.stroke();
+}
+
+function shouldShowTargetCue() {
+  return playerHasMoved || hasPlayerHistory();
 }
 
 function drawNameplate(text, x, y) {
@@ -1490,16 +1561,41 @@ function drawNameplate(text, x, y) {
   ctx.textAlign = "start";
 }
 
+function drawActionCue(object) {
+  const label = actionLabelFor(object);
+  ctx.font = "900 11px sans-serif";
+  const width = Math.min(168, ctx.measureText(label).width + 28);
+  const x = object.x;
+  const y = object.y - object.radius - 31 - Math.sin(frame / 18) * 1.5;
+  ctx.save();
+  ctx.fillStyle = "rgba(23, 25, 28, 0.82)";
+  roundRect(x - width / 2, y - 13, width, 23, 999);
+  ctx.fill();
+  ctx.fillStyle = "#fffdf7";
+  ctx.textAlign = "center";
+  ctx.fillText(label.length > 22 ? `${label.slice(0, 20)}...` : label, x, y + 3);
+  ctx.restore();
+  ctx.textAlign = "start";
+}
+
 function drawPlayer() {
   const bob = Math.sin(frame / 12) * (moveTarget || keys.size ? 1.6 : 0.5);
   const x = player.x;
   const y = player.y + bob;
+  ctx.save();
+  ctx.shadowColor = "rgba(23, 25, 28, 0.20)";
+  ctx.shadowBlur = 8;
+  ctx.shadowOffsetY = 5;
   ctx.fillStyle = "rgba(23, 25, 28, 0.18)";
   ctx.beginPath();
   ctx.ellipse(x, y + 18, 14, 5, 0, 0, Math.PI * 2);
   ctx.fill();
+  ctx.shadowColor = "transparent";
   ctx.fillStyle = "#202326";
   roundRect(x - 8, y - 2, 16, 24, 7);
+  ctx.fill();
+  ctx.fillStyle = "#2d6776";
+  roundRect(x - 10, y + 10, 20, 8, 5);
   ctx.fill();
   ctx.fillStyle = "#f0d0b4";
   ctx.beginPath();
@@ -1515,20 +1611,31 @@ function drawPlayer() {
   ctx.beginPath();
   ctx.arc(x, y + 2, 18, 0, Math.PI * 2);
   ctx.stroke();
+  ctx.restore();
 }
 
 function drawVillager(object, x, y, completed, remembered) {
   const bodyColor = completed ? "#7f8b83" : remembered ? "#7d9488" : object.color;
+  ctx.save();
+  ctx.shadowColor = "rgba(23, 25, 28, 0.17)";
+  ctx.shadowBlur = 7;
+  ctx.shadowOffsetY = 4;
   ctx.fillStyle = "rgba(23, 25, 28, 0.16)";
   ctx.beginPath();
   ctx.ellipse(x, y + object.radius + 5, object.radius * 0.82, object.radius * 0.28, 0, 0, Math.PI * 2);
   ctx.fill();
+  ctx.shadowColor = "transparent";
   ctx.fillStyle = bodyColor;
   roundRect(x - object.radius * 0.48, y - 2, object.radius * 0.96, object.radius * 1.25, 8);
   ctx.fill();
   ctx.fillStyle = lightenColor(bodyColor, 0.28);
   ctx.beginPath();
   ctx.arc(x, y - object.radius * 0.48, object.radius * 0.72, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "rgba(23, 25, 28, 0.16)";
+  ctx.beginPath();
+  ctx.arc(x - object.radius * 0.2, y - object.radius * 0.76, object.radius * 0.36, 0, Math.PI * 2);
+  ctx.arc(x + object.radius * 0.18, y - object.radius * 0.78, object.radius * 0.34, 0, Math.PI * 2);
   ctx.fill();
   ctx.strokeStyle = nearest?.id === object.id ? "#17191c" : "rgba(255,255,255,0.9)";
   ctx.lineWidth = nearest?.id === object.id ? 4 : 2;
@@ -1542,14 +1649,20 @@ function drawVillager(object, x, y, completed, remembered) {
   ctx.moveTo(x + object.radius * 0.5, y + object.radius * 0.3);
   ctx.lineTo(x + object.radius * 0.82, y + object.radius * 0.68);
   ctx.stroke();
+  ctx.restore();
 }
 
 function drawWorldObject(object, completed, remembered) {
   const color = completed ? "#7f8b83" : remembered ? "#7d9488" : object.color;
+  ctx.save();
+  ctx.shadowColor = "rgba(23, 25, 28, 0.15)";
+  ctx.shadowBlur = 7;
+  ctx.shadowOffsetY = 4;
   ctx.fillStyle = "rgba(23, 25, 28, 0.12)";
   ctx.beginPath();
   ctx.ellipse(object.x, object.y + object.radius * 0.85, object.radius * 0.95, object.radius * 0.28, 0, 0, Math.PI * 2);
   ctx.fill();
+  ctx.shadowColor = "transparent";
   if (object.id === "fountain") {
     drawFountainObject(object.x, object.y, object.radius, color);
   } else if (object.id === "shell") {
@@ -1575,6 +1688,7 @@ function drawWorldObject(object, completed, remembered) {
   ctx.strokeStyle = nearest?.id === object.id ? "#17191c" : "rgba(255,255,255,0.9)";
   ctx.lineWidth = nearest?.id === object.id ? 4 : 2;
   ctx.stroke();
+  ctx.restore();
 }
 
 function drawFountainObject(x, y, r, color) {
@@ -1748,6 +1862,7 @@ function drawPath(x1, y1, x2, y2) {
 }
 
 function roundRect(x, y, w, h, r) {
+  r = Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2);
   ctx.beginPath();
   ctx.moveTo(x + r, y);
   ctx.arcTo(x + w, y, x + w, y + h, r);

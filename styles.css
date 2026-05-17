@@ -159,7 +159,11 @@ h2 {
   position: relative;
   overflow: hidden;
   min-height: 560px;
-  background: #dfe6d8;
+  background:
+    linear-gradient(135deg, rgba(255, 253, 247, 0.35), rgba(255, 253, 247, 0)),
+    #dfe6d8;
+  outline: 1px solid rgba(255, 253, 247, 0.46);
+  outline-offset: -7px;
 }
 
 #gameCanvas {
@@ -167,6 +171,7 @@ h2 {
   width: 100%;
   height: auto;
   background: #dfe6d8;
+  filter: saturate(1.05) contrast(1.02);
 }
 
 .interaction-hint {
@@ -180,6 +185,8 @@ h2 {
   color: white;
   font-size: 14px;
   font-weight: 800;
+  box-shadow: 0 8px 18px rgba(23, 25, 28, 0.18);
+  backdrop-filter: blur(6px);
 }
 
 .action-button {
@@ -191,6 +198,14 @@ h2 {
   background: rgba(23, 25, 28, 0.94);
   color: white;
   box-shadow: var(--shadow);
+  transform: translateY(0);
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.action-button:hover,
+.action-button:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(45, 103, 118, 0.96);
 }
 
 .dialog-open .interaction-hint,
@@ -507,8 +522,10 @@ h2 {
   border-radius: 18px;
   padding: 16px;
   background:
+    linear-gradient(90deg, rgba(45, 103, 118, 0.18), rgba(45, 103, 118, 0.02) 7px, transparent 7px),
     linear-gradient(135deg, rgba(255, 253, 247, 0.98), rgba(238, 245, 240, 0.94));
   box-shadow: 0 18px 38px rgba(32, 28, 23, 0.22);
+  backdrop-filter: blur(10px);
 }
 
 .dialog-portrait {
@@ -523,6 +540,7 @@ h2 {
   box-shadow: 0 9px 18px rgba(32, 28, 23, 0.16);
   font-size: 28px;
   font-weight: 900;
+  text-shadow: 0 2px 4px rgba(23, 25, 28, 0.22);
 }
 
 .dialog-content {
@@ -549,6 +567,7 @@ h2 {
   color: var(--ink);
   font-size: 18px;
   line-height: 1.46;
+  text-wrap: pretty;
 }
 
 .dialog-text::after {
@@ -568,6 +587,7 @@ h2 {
   color: var(--muted);
   font-size: 12px;
   font-weight: 900;
+  min-height: 18px;
 }
 
 .dialog-choices {
@@ -593,6 +613,7 @@ h2 {
   color: var(--ink);
   box-shadow: 0 8px 18px rgba(32, 28, 23, 0.08);
   text-align: left;
+  transition: transform 130ms ease, border-color 130ms ease, background 130ms ease, box-shadow 130ms ease;
 }
 
 .dialog-choices button::after {
@@ -616,6 +637,8 @@ h2 {
 .dialog-choices button:focus-visible {
   border-color: rgba(45, 103, 118, 0.72);
   background: linear-gradient(135deg, #fffdf7, #e4f0ea);
+  box-shadow: 0 10px 22px rgba(32, 28, 23, 0.13);
+  transform: translateY(-1px);
 }
 
 .profile-body {
