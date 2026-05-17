@@ -47,12 +47,12 @@ const QUEST_TARGETS = {
 
 const QUEST_DETAILS = {
   lantern: {
-    title: "Lantern oil list",
+    title: "Lantern oil card",
     lead: "Mira",
     place: "Mira in the Market Square",
     waiting: "Market Square",
-    open: "Mira is sorting lantern oil near the ribbons.",
-    done: "Mira has the oil list.",
+    open: "Mira is sorting lantern oil cards near the ribbons.",
+    done: "Mira has the oil card.",
   },
   shells: {
     title: "Shell path",
@@ -159,11 +159,11 @@ const OBJECTS = [
     color: "#c86247",
     radius: 22,
     prompt: "Talk to Mira",
-    text: "Mira balances a stack of lantern ribbons and an oil card with three blank marks. \"Could you help me find out which lanterns still need oil? The group by the fountain probably knows.\"",
+    text: "Mira balances a stack of lantern ribbons and an oil card with three blank marks. \"Could you help me find out which lanterns still need oil? The lantern line crew probably knows.\"",
     choices: [
       {
-        text: "Walk to the fountain group and ask who still needs oil.",
-        result: "You walk into the fountain circle and ask about the lantern oil. Mira gives you a grateful wave from across the square.",
+        text: "Walk to the lantern line and ask who still needs oil.",
+        result: "You walk under the lantern line and ask about the oil. Mira gives you a grateful wave from across the square.",
         complete: "lantern",
         evidence: { social_drive: 0.18, sensory_accumulation: 0.08 },
         state: { social_energy: -0.08, sensory_load: 0.12 },
@@ -204,14 +204,14 @@ const OBJECTS = [
     prompt: "Talk to Saff",
     text: "Saff tests the festival bells. The bright notes bounce off the stone walls.",
     followup: {
-      counted: "Saff taps the bell frame twice instead of ringing it. \"I saved the pattern we counted. Want the quiet version?\"",
+      counted: "Saff taps the wooden bell frame twice instead of ringing it. \"I saved the pattern we counted. Want the quiet version?\"",
       awning: "Saff points to the awning before touching the bells. \"Warning first this time.\"",
       schedule: "Saff grins and holds up two fingers. \"Two patterns left, then quiet.\"",
     },
     choices: [
       {
-        text: "Tap the bell rhythm on the railing.",
-        result: "You count the bell pattern with Saff. The ringing is bright, but the sequence starts to make sense.",
+        text: "Tap the bell rhythm on the wooden frame.",
+        result: "You count the bell pattern with Saff on the wooden frame. The ringing is bright, but the sequence starts to make sense.",
         memory: "counted",
         evidence: { sensory_accumulation: 0.12, systemizing_structure: 0.08 },
         state: { sensory_load: 0.16, focus_lock: 0.05 },
@@ -225,7 +225,7 @@ const OBJECTS = [
       },
       {
         text: "Ask Saff to show a pause sign before ringing again.",
-        result: "Saff shows you a small hand sign before the last pattern. The pause is visible before the next ring.",
+        result: "Saff shows you a small hand sign before the next pattern. The pause is visible before the next ring.",
         memory: "schedule",
         evidence: { ambiguity_avoidance: 0.05, regulation_dependency: 0.05 },
         state: { safety_feeling: 0.04 },
@@ -2001,7 +2001,7 @@ function isInteractionOpen() {
 
 function completedInteractionText(object, questKey) {
   if (object.id === "mira" && model.worldFlags.mira_low_pressure) {
-    return "Mira has the lantern oil list tucked under one ribbon-weighted hand. \"I left the side route open too, in case the square gets too much.\"";
+    return "Mira has the lantern oil card tucked under a ribbon weight. \"I left the side route open too, in case the square gets too much.\"";
   }
   if (object.id === "lio" && model.worldFlags.lio_beach_context) {
     return "Lio points proudly at the shell path. \"The tide-pool clues made the pattern easier to read.\"";
@@ -2010,7 +2010,7 @@ function completedInteractionText(object, questKey) {
     return "Oren keeps one side of the tide-glass table exactly as you left it. \"If you need to check the pattern again, it is still here.\"";
   }
   const messages = {
-    mira: "Mira has the lantern oil list tucked under one ribbon-weighted hand. \"That helped. If you want somewhere quieter, the garden path is open.\"",
+    mira: "Mira has the lantern oil card tucked under a ribbon weight. \"That helped. If you want somewhere quieter, the garden path is open.\"",
     lio: "Lio points proudly at the shell path. \"It looks like the tide decided to help us.\"",
     oren: "Oren is already labeling the finished display. \"No one has asked me which row to follow for several minutes. A triumph.\"",
   };
@@ -2155,7 +2155,7 @@ function evidencePurposeFor(dims, routeSignals) {
 
 function auditInteractionCoverage() {
   const issues = [];
-  const unexplainedTerms = ["list-keeper", "households", "old display", "strand"];
+  const unexplainedTerms = ["list-keeper", "households", "old display", "strand", "fountain group", "fountain circle", "railing"];
   OBJECTS.forEach((object) => {
     const userFacingStrings = [
       object.prompt,
