@@ -677,6 +677,9 @@ let lastScenarioResults = [];
 let frame = 0;
 let storyText = "The market is already moving. Lanterns sway, shells glint, bells ring, and quiet paths branch away from the square.";
 let camera = { x: 0, y: 0, scale: 1 };
+let cameraLookOffset = { x: 0, y: 0 };
+let mapDrag = null;
+let suppressNextCanvasClick = false;
 let dialogueRevealTimer = null;
 let activeDialogueText = "";
 let dialogueFullyRevealed = true;
@@ -796,8 +799,8 @@ function updateCamera() {
   viewW = Math.min(WORLD_WIDTH, viewW);
   viewH = Math.min(WORLD_HEIGHT, viewH);
 
-  const focusX = compact ? player.x - viewW * 0.33 : 0;
-  const focusY = compact ? player.y - viewH * 0.48 : 0;
+  const focusX = compact ? player.x - viewW * 0.33 + cameraLookOffset.x : 0;
+  const focusY = compact ? player.y - viewH * 0.48 + cameraLookOffset.y : 0;
   camera = {
     x: clamp(focusX, 0, WORLD_WIDTH - viewW),
     y: clamp(focusY, 0, WORLD_HEIGHT - viewH),
@@ -810,6 +813,10 @@ function screenToWorld(screenX, screenY) {
     x: camera.x + screenX / camera.scale,
     y: camera.y + screenY / camera.scale,
   };
+}
+
+function resetCameraLookOffset() {
+  cameraLookOffset = { x: 0, y: 0 };
 }
 
 function startingPlayer() {
@@ -873,7 +880,9 @@ function idleHintText() {
   }
   const place = currentPlace();
   if (!hasPlayerHistory()) {
-    return "Click anywhere to walk. Mira is nearby, or follow anything else that catches your eye.";
+    return compactInputMode()
+      ? "Tap to walk. Drag sideways to look around. Mira is nearby, or follow anything else that catches your eye."
+      : "Click anywhere to walk. Mira is nearby, or follow anything else that catches your eye.";
   }
   if (place === "plaza") return "Market Square is busy. Try a quieter path, the beach, the workshop, or someone nearby.";
   if (place === "grove") return "The garden is quiet. Rest by the fountain, look around, or head back toward the village.";
@@ -2856,6 +2865,57 @@ function exportScenarioResults() {
   }, null, 2);
 }
 
+function beginMapDrag(event) {
+  if (!compactInputMode() || event.pointerType === "mouse" || isInteractionOpen()) return;
+  mapDrag = {
+    pointerId: event.pointerId,
+    startX: event.clientX,
+    startY: event.clientY,
+    lastX: event.clientX,
+    lastY: event.clientY,
+    panning: false,
+  };
+  canvas.setPointerCapture?.(event.pointerId);
+}
+
+function updateMapDrag(event) {
+  if (!mapDrag || mapDrag.pointerId !== event.pointerId) return;
+  const totalX = event.clientX - mapDrag.startX;
+  const totalY = event.clientY - mapDrag.startY;
+  const absX = Math.abs(totalX);
+  const absY = Math.abs(totalY);
+
+  if (!mapDrag.panning) {
+    if (absY > 12 && absY > absX * 1.15) return;
+    if (absX < 10 || absX < absY * 1.05) return;
+    mapDrag.panning = true;
+    suppressNextCanvasClick = true;
+    moveTarget = null;
+    pendingInteraction = null;
+  }
+
+  event.preventDefault();
+  const dx = event.clientX - mapDrag.lastX;
+  const dy = event.clientY - mapDrag.lastY;
+  cameraLookOffset.x -= dx / camera.scale;
+  cameraLookOffset.y -= dy / camera.scale;
+  mapDrag.lastX = event.clientX;
+  mapDrag.lastY = event.clientY;
+  updateCamera();
+}
+
+function endMapDrag(event) {
+  if (!mapDrag || mapDrag.pointerId !== event.pointerId) return;
+  if (mapDrag.panning) {
+    suppressNextCanvasClick = true;
+    window.setTimeout(() => {
+      suppressNextCanvasClick = false;
+    }, 80);
+  }
+  canvas.releasePointerCapture?.(event.pointerId);
+  mapDrag = null;
+}
+
 document.addEventListener("keydown", (event) => {
   const key = event.key.toLowerCase();
   if (["arrowleft", "arrowright", "arrowup", "arrowdown", "w", "a", "s", "d"].includes(key)) {
@@ -2872,7 +2932,16 @@ document.addEventListener("keyup", (event) => {
   keys.delete(event.key.toLowerCase());
 });
 
+canvas.addEventListener("pointerdown", beginMapDrag);
+canvas.addEventListener("pointermove", updateMapDrag);
+canvas.addEventListener("pointerup", endMapDrag);
+canvas.addEventListener("pointercancel", endMapDrag);
+
 canvas.addEventListener("click", (event) => {
+  if (suppressNextCanvasClick) {
+    suppressNextCanvasClick = false;
+    return;
+  }
   if (!arrivalDismissed) dismissArrival();
   const rect = canvas.getBoundingClientRect();
   const screenX = ((event.clientX - rect.left) / rect.width) * canvas.width;
@@ -2882,6 +2951,7 @@ canvas.addEventListener("click", (event) => {
   const clickedVisible = visibleObjects.find((object) => distance({ x, y }, object) < object.radius + tapExtraRadius());
   if (clickedVisible) {
     playerHasMoved = true;
+    resetCameraLookOffset();
     renderHud();
     if (distance(player, clickedVisible) < interactionRange()) {
       openInteraction(clickedVisible);
@@ -2900,6 +2970,7 @@ canvas.addEventListener("click", (event) => {
   moveTarget = { x, y };
   pendingInteraction = null;
   playerHasMoved = true;
+  resetCameraLookOffset();
   renderHud();
 });
 
