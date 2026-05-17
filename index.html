@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lantern Tide Prototype</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?build=20260517-qa">
   </head>
   <body>
     <main class="game-shell">
@@ -30,7 +30,7 @@
       <section class="game-layout">
         <div class="world-frame">
           <canvas id="gameCanvas" width="960" height="600" aria-label="Lantern Tide village map"></canvas>
-          <div id="interactionHint" class="interaction-hint">Click anywhere to walk. Click a person or object to go there.</div>
+          <div id="interactionHint" class="interaction-hint">Tap or click to walk. On phone, drag sideways to look around.</div>
           <button id="actionButton" class="action-button" type="button" hidden>Interact</button>
           <div id="toast" class="toast" hidden></div>
         </div>
@@ -108,7 +108,7 @@
             <button id="interactionCloseBtn" class="icon-button" type="button" aria-label="Close">x</button>
           </div>
           <p id="dialogText" class="dialog-text"></p>
-          <p id="dialogPrompt" class="dialog-prompt">Tap to finish the line.</p>
+          <p id="dialogPrompt" class="dialog-prompt">Tap or click to finish the line.</p>
           <div id="dialogChoices" class="dialog-choices"></div>
         </div>
       </div>
@@ -127,6 +127,6 @@
       </form>
     </dialog>
 
-    <script src="app.js"></script>
+    <script src="app.js?build=20260517-qa"></script>
   </body>
 </html>

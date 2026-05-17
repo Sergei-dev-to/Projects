@@ -840,18 +840,22 @@ function updateNearest() {
     if (completedQuest) {
       hint.textContent = `${nearest.name} has a follow-up. ${nextGoalText()}`;
     } else if (model.relationships[nearest.id] && nearest.followup) {
-      hint.textContent = `Click ${nearest.name} for a follow-up conversation.`;
+      hint.textContent = `${inputVerb()} ${nearest.name} for a follow-up conversation.`;
     } else {
-      hint.textContent = `Click ${nearest.name} to ${nearest.prompt}. (${roleLabel})`;
+      hint.textContent = `${inputVerb()} ${nearest.name} to ${nearest.prompt}. (${roleLabel})`;
     }
     actionButton.textContent = actionLabelFor(nearest);
     actionTarget = nearest;
     actionButton.hidden = false;
   } else if (moveTarget) {
-    hint.textContent = "Walking. Click a person or object to interact.";
+    hint.textContent = `Walking. ${inputVerb()} a person or object to interact.`;
   } else {
     hint.textContent = idleHintText();
   }
+}
+
+function inputVerb() {
+  return compactInputMode() ? "Tap" : "Click";
 }
 
 function actionLabelFor(object) {
@@ -886,7 +890,7 @@ function idleHintText() {
   }
   if (place === "plaza") return "Market Square is busy. Try a quieter path, the beach, the workshop, or someone nearby.";
   if (place === "grove") return "The garden is quiet. Rest by the fountain, look around, or head back toward the village.";
-  if (place === "beach") return "The beach path has people and small things to notice. Click what catches your eye.";
+  if (place === "beach") return `The beach path has people and small things to notice. ${inputVerb()} what catches your eye.`;
   if (place === "workshop") return "The workshop has displays, materials, and people who may want company.";
   return "Wander toward a person, object, or place that catches your eye.";
 }
@@ -1853,7 +1857,7 @@ function revealDialogueText(text) {
   lastDialogueBlipAt = 0;
   textEl.textContent = "";
   choices.hidden = true;
-  prompt.textContent = "Tap to finish the line.";
+  prompt.textContent = "Tap or click to finish the line.";
   panel.classList.add("revealing");
 
   let index = 0;
@@ -2156,6 +2160,8 @@ function evidencePurposeFor(dims, routeSignals) {
 function auditInteractionCoverage() {
   const issues = [];
   const unexplainedTerms = ["list-keeper", "households", "old display", "strand", "fountain group", "fountain circle", "railing"];
+  const allQuestKeys = new Set(Object.keys(QUESTS));
+  const completedQuestKeys = new Set();
   OBJECTS.forEach((object) => {
     const userFacingStrings = [
       object.prompt,
@@ -2173,9 +2179,16 @@ function auditInteractionCoverage() {
     });
     object.choices.forEach((choice) => {
       const dims = Object.keys(choice.evidence || {}).filter((dim) => (choice.evidence?.[dim] || 0) > 0);
+      if (choice.text.length > 72) {
+        issues.push(`${object.name}: "${choice.text}" is too long for a phone-sized choice button.`);
+      }
+      if (choice.result && choice.result.length > 190) {
+        issues.push(`${object.name}: result for "${choice.text}" is long enough to feel like a paragraph instead of a game beat.`);
+      }
       if (!dims.length && !choice.memory && !choice.complete) {
         issues.push(`${object.name}: "${choice.text}" has no evidence, memory, or completion role.`);
       }
+      if (choice.complete) completedQuestKeys.add(choice.complete);
       if (object.type !== "npc" && dims.includes("social_prediction_uncertainty")) {
         issues.push(`${object.name}: "${choice.text}" uses social prediction outside an NPC scene.`);
       }
@@ -2189,6 +2202,11 @@ function auditInteractionCoverage() {
         issues.push(`${object.name}: "${choice.text}" completes a preparation without a result line.`);
       }
     });
+  });
+  allQuestKeys.forEach((questKey) => {
+    if (!completedQuestKeys.has(questKey)) {
+      issues.push(`${QUESTS[questKey]} has no completing interaction.`);
+    }
   });
   return issues;
 }
