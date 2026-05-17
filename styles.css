@@ -171,7 +171,7 @@ h2 {
   width: 100%;
   height: auto;
   background: #dfe6d8;
-  filter: saturate(1.05) contrast(1.02);
+  filter: saturate(1.18) contrast(1.08);
 }
 
 .interaction-hint {
