@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lantern Tide Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="hud">
+        <div>
+          <p class="eyebrow">Harborwake village prototype</p>
+          <div class="title-row">
+            <h1>Lantern Tide</h1>
+            <div class="sound-control">
+              <button id="soundToggle" class="sound-toggle" type="button" aria-label="Turn sound on" aria-pressed="false">
+                <span aria-hidden="true">🔇</span>
+              </button>
+              <div id="soundPopover" class="sound-popover" hidden>
+                <label for="volumeSlider">Volume</label>
+                <input id="volumeSlider" type="range" min="0" max="100" value="70">
+                <button id="soundTestBtn" type="button">Test</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="game-layout">
+        <div class="world-frame">
+          <canvas id="gameCanvas" width="960" height="600" aria-label="Lantern Tide village map"></canvas>
+          <div id="interactionHint" class="interaction-hint">Click anywhere to walk. Click a person or object to go there.</div>
+          <button id="actionButton" class="action-button" type="button" hidden>Interact</button>
+          <div id="toast" class="toast" hidden></div>
+        </div>
+
+        <aside class="side-panel">
+          <section>
+            <p class="eyebrow">Today in Harborwake</p>
+            <h2 id="dayPrompt">Lantern Tide is tonight.</h2>
+            <p id="dayHint" class="body-copy">Lanterns, bells, shells, quiet corners, and people are all part of the morning. Follow what catches your eye.</p>
+          </section>
+          <section>
+            <p class="eyebrow">Around Harborwake</p>
+            <ul id="villageThreads" class="thread-list"></ul>
+          </section>
+          <section>
+            <p class="eyebrow">Current place</p>
+            <h2 id="placeName">Market Square</h2>
+            <p id="placeDescription" class="body-copy">The square is warm, busy, and full of lantern chatter.</p>
+          </section>
+          <section class="story-section">
+            <p class="eyebrow">What just happened</p>
+            <p id="storyLog" class="body-copy">The market is already moving. Lanterns sway, shells glint, bells ring, and quiet paths branch away from the square.</p>
+          </section>
+          <section id="morningControls" class="morning-controls" hidden>
+            <button id="profileBtn" class="primary-button" type="button">See Morning Path</button>
+            <button id="resetBtn" class="ghost-button" type="button">Start Over</button>
+          </section>
+          <section id="pouchSection" hidden>
+            <p class="eyebrow">Pouch</p>
+            <p id="pouchText" class="body-copy">Empty for now.</p>
+          </section>
+          <section id="worldNotesSection" hidden>
+            <p class="eyebrow">Village notes</p>
+            <ul id="worldNotes" class="world-notes"></ul>
+          </section>
+        </aside>
+      </section>
+
+      <details class="dev-panel" hidden>
+        <summary>Developer view</summary>
+        <div class="dev-grid">
+          <section>
+            <h2>Evidence Vector</h2>
+            <div id="vectorList" class="vector-list"></div>
+          </section>
+          <section>
+            <h2>Trace</h2>
+            <ol id="eventLog" class="event-log"></ol>
+          </section>
+          <section class="scenario-section">
+            <div class="scenario-header">
+              <h2>Scenario Checks</h2>
+              <span id="automationSummary" class="status-badge">Checks pending</span>
+            </div>
+            <div class="scenario-buttons">
+              <button id="runAllScenariosBtn" type="button">Run All</button>
+              <button id="copyResultsBtn" type="button">Copy JSON</button>
+              <button id="downloadResultsBtn" type="button">Download JSON</button>
+            </div>
+            <div id="scenarioResults" class="scenario-results"></div>
+          </section>
+        </div>
+      </details>
+    </main>
+
+    <div id="interactionPanel" class="interaction-panel" hidden>
+      <div class="interaction-panel-inner">
+        <div id="dialogPortrait" class="dialog-portrait" aria-hidden="true">M</div>
+        <div class="dialog-content">
+          <div class="dialog-header">
+            <div>
+              <p id="dialogKicker" class="eyebrow">Conversation</p>
+              <h2 id="dialogTitle">Mira</h2>
+            </div>
+            <button id="interactionCloseBtn" class="icon-button" type="button" aria-label="Close">x</button>
+          </div>
+          <p id="dialogText" class="dialog-text"></p>
+          <p id="dialogPrompt" class="dialog-prompt">Tap to finish the line.</p>
+          <div id="dialogChoices" class="dialog-choices"></div>
+        </div>
+      </div>
+    </div>
+
+    <dialog id="profileDialog" class="game-dialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">End of day</p>
+            <h2>Lantern Tide Summary</h2>
+          </div>
+          <button class="icon-button" value="close" aria-label="Close">x</button>
+        </div>
+        <div id="profileBody" class="profile-body"></div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
