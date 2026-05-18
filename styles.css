@@ -753,13 +753,19 @@ details.profile-card summary {
   border-color: rgba(45, 103, 118, 0.24);
 }
 
-.domain-list {
+.channel-card {
+  border-color: rgba(200, 98, 71, 0.24);
+}
+
+.domain-list,
+.channel-list {
   display: grid;
   gap: 12px;
   margin-top: 14px;
 }
 
-.domain-row {
+.domain-row,
+.channel-row {
   display: grid;
   gap: 6px;
 }

@@ -116,6 +116,24 @@ const SOURCE_DOMAIN_MODEL = [
   },
 ];
 
+const INTERPRETATION_CHANNELS = [
+  {
+    id: "asdAligned",
+    label: "Autism-aligned pattern",
+    note: "Stronger when social-reading, sensory regulation, and structured/focused behavior co-occur.",
+  },
+  {
+    id: "safetyStressOverlap",
+    label: "Safety/stress overlap",
+    note: "Can also fit anxiety, trauma history, threat monitoring, fatigue, or a need to lower load.",
+  },
+  {
+    id: "noveltyAttentionOverlap",
+    label: "Novelty/attention overlap",
+    note: "Can also fit curiosity, ADHD-like novelty seeking, broad sampling, or playful exploration.",
+  },
+];
+
 const QUESTS = {
   lantern: "Find lantern oil for Mira",
   shells: "Help Lio with tide shells",
@@ -3092,12 +3110,21 @@ function projectAlignment(evidence) {
   const structure = clamp(families.structureFocus / 0.28);
   const noveltyConfound = clamp(families.noveltyConfound / 0.30);
   const pureSocialDrive = clamp(Math.max(0, evidence.social_drive - families.socialReading - families.sensoryRegulation) / 0.30);
+  const domainMean = (social + sensory + structure) / 3;
+  const pairSupport = (Math.min(social, sensory) + Math.min(social, structure) + Math.min(sensory, structure)) / 3;
+  const convergence = Math.cbrt(Math.max(0, social * sensory * structure));
+  const strongestPair = Math.max(Math.min(social, sensory), Math.min(social, structure), Math.min(sensory, structure));
+  const socialSensoryBridge = Math.min(social, sensory);
+  const singleDomainPull = Math.max(social, sensory, structure) - [social, sensory, structure].sort((a, b) => b - a)[1];
   const score = clamp(
-    0.34 * social +
-      0.33 * sensory +
-      0.33 * structure -
+    0.25 * domainMean +
+      0.20 * pairSupport +
+      0.20 * convergence +
+      0.28 * strongestPair +
+      0.07 * socialSensoryBridge -
       0.12 * noveltyConfound -
-      0.06 * pureSocialDrive
+      0.06 * pureSocialDrive -
+      0.08 * singleDomainPull
   );
   const values = Object.values(evidence);
   const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
@@ -3135,9 +3162,75 @@ function profileFamilies(evidence) {
   };
 }
 
+function interpretationChannels(profile) {
+  const e = profile.evidence;
+  const families = profile.projection?.families || profileFamilies(e);
+  const social = clamp(families.socialReading / 0.30);
+  const sensory = clamp(families.sensoryRegulation / 0.30);
+  const structure = clamp(families.structureFocus / 0.28);
+  const novelty = clamp(Math.max(families.noveltyConfound, e.novelty_breadth * 0.70) / 0.30);
+  const safetyCore = clamp((0.34 * e.ambiguity_avoidance + 0.32 * e.regulation_dependency + 0.18 * e.social_prediction_uncertainty + 0.16 * e.sensory_accumulation) / 0.22);
+  const directSocial = clamp(e.social_drive / 0.34);
+  const breadth = [social, sensory, structure].filter((value) => value >= 0.35).length;
+  const convergentPattern = Math.min(social, sensory, structure);
+  const asdBreadthBoost = [0, 0.78, 1.0, 1.12][breadth] || 1.12;
+  const singleDomainPenalty = breadth <= 1 ? 0.64 : 1;
+  const asdScore = clamp(profile.projection.score * asdBreadthBoost * singleDomainPenalty + 0.18 * convergentPattern - 0.08 * novelty);
+  const safetyScore = clamp(
+    0.68 * safetyCore +
+      0.18 * clamp(e.social_monitoring_cost / 0.22) +
+      0.10 * clamp(e.masking_adaptation / 0.18) -
+      0.08 * structure -
+      0.22 * convergentPattern
+  );
+  const noveltyScore = clamp(
+    0.72 * novelty +
+      0.14 * clamp(e.context_switch_friction / 0.14) +
+      0.10 * directSocial -
+      0.10 * Math.min(sensory, structure)
+  );
+  const values = {
+    asdAligned: asdScore,
+    safetyStressOverlap: safetyScore,
+    noveltyAttentionOverlap: noveltyScore,
+  };
+  const driversByChannel = {
+    asdAligned: [
+      ["social reading", families.socialReading],
+      ["sensory regulation", families.sensoryRegulation],
+      ["pattern and structure", families.structureFocus],
+    ],
+    safetyStressOverlap: [
+      ["predictability/safety seeking", e.ambiguity_avoidance],
+      ["load reduction", e.regulation_dependency],
+      ["watching before joining", e.social_prediction_uncertainty],
+      ["sensory load", e.sensory_accumulation],
+    ],
+    noveltyAttentionOverlap: [
+      ["novelty sampling", e.novelty_breadth],
+      ["task switching", e.context_switch_friction],
+      ["direct approach", e.social_drive],
+    ],
+  };
+  return INTERPRETATION_CHANNELS.map((channel) => {
+    const score = values[channel.id] || 0;
+    const drivers = driversByChannel[channel.id]
+      .filter(([, value]) => value >= 0.04)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([label]) => label);
+    return {
+      ...channel,
+      score,
+      level: score >= 0.52 ? "high" : score >= 0.28 ? "moderate" : "low",
+      drivers: drivers.length ? drivers : ["not enough signal"],
+    };
+  }).sort((a, b) => b.score - a.score);
+}
+
 function classifyScore(score) {
-  if (score >= 0.30) return "higher";
-  if (score >= 0.18) return "mixed";
+  if (score >= 0.25) return "higher";
+  if (score >= 0.12) return "mixed";
   return "lower";
 }
 
@@ -3219,6 +3312,7 @@ function traceEvidence(targetModel) {
 function annotateProfile(profile, targetModel = model) {
   profile.sourceDomains = sourceDomainCoverage(profile);
   profile.credibility = reflectionCredibility(profile, profile.sourceDomains, targetModel);
+  profile.interpretationChannels = interpretationChannels(profile);
   return profile;
 }
 
@@ -3538,6 +3632,14 @@ function assessmentRecord(targetModel = model) {
       value: Number(domain.value.toFixed(4)),
       level: domain.level,
     })),
+    interpretationChannels: profile.interpretationChannels.map((channel) => ({
+      id: channel.id,
+      label: channel.label,
+      score: Number(channel.score.toFixed(4)),
+      level: channel.level,
+      drivers: channel.drivers,
+      note: channel.note,
+    })),
     evidence: Object.fromEntries(Object.entries(profile.evidence)
       .map(([dim, value]) => [dim, Number(value.toFixed(4))])),
     publicProxy,
@@ -3679,6 +3781,7 @@ function showProfile() {
   const drivers = signalDrivers(profile);
   const domains = profile.sourceDomains || sourceDomainCoverage(profile);
   const credibility = profile.credibility || reflectionCredibility(profile, domains, model);
+  const channels = profile.interpretationChannels || interpretationChannels(profile);
   const shownScore = displayScore(axis);
   document.getElementById("profileBody").innerHTML = `
     <section class="profile-card profile-result">
@@ -3691,7 +3794,7 @@ function showProfile() {
       <div class="score-layout">
         <div>
           <p class="eyebrow">Lantern Tide score</p>
-          <h2>${shownScore.score}/100</h2>
+          <h2>${shownScore.score} out of 100</h2>
           <p>Likely range: <strong>${shownScore.low}-${shownScore.high}</strong></p>
           <p>Confidence: <strong>${escapeHtml(credibility.confidence)}</strong></p>
         </div>
@@ -3710,6 +3813,29 @@ function showProfile() {
       <div class="assessment-actions" aria-label="Assessment data actions">
         <button id="copyAssessmentBtn" class="ghost-button" type="button">Copy reflection data</button>
         <button id="downloadAssessmentBtn" class="ghost-button" type="button">Download reflection data</button>
+      </div>
+    </section>
+    <section class="profile-card channel-card">
+      <div class="profile-section-header">
+        <div>
+          <p class="eyebrow">Interpretation channels</p>
+          <h2>${escapeHtml(channels[0]?.label || "Not enough signal")}</h2>
+        </div>
+        <span class="coverage-pill">${escapeHtml(channels[0]?.level || "low")} closest read</span>
+      </div>
+      <p>These channels are overlap checks, not separate diagnoses.</p>
+      <div class="channel-list">
+        ${channels.map((channel) => `
+          <div class="channel-row">
+            <div class="domain-heading">
+              <span>${escapeHtml(channel.label)}</span>
+              <span>${Math.round(channel.score * 100)} / 100</span>
+            </div>
+            <div class="domain-meter" aria-hidden="true"><span style="width:${Math.round(channel.score * 100)}%"></span></div>
+            <p>${escapeHtml(channel.note)}</p>
+            <p class="domain-confounds">Drivers: ${escapeHtml(formatList(channel.drivers))}.</p>
+          </div>
+        `).join("")}
       </div>
     </section>
     <section class="profile-card domain-card">
