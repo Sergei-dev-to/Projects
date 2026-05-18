@@ -204,7 +204,8 @@ const RUN_THEMES = [
   },
 ];
 
-const ALWAYS_ACTIVE_OBJECTS = ["mira", "lio", "oren"];
+const ALWAYS_ACTIVE_OBJECTS = [];
+const NPC_OBJECT_IDS = ["mira", "saff", "lio", "nia", "oren"];
 
 const STRUCTURED_SCENE_BUCKETS = [
   {
@@ -1168,6 +1169,10 @@ function createRunPlan(seed = Date.now() + Math.floor(Math.random() * 100000)) {
     STRUCTURED_SCENE_BUCKETS.flatMap((bucket) => bucket.objectIds).filter((id, index, list) => list.indexOf(id) === index),
     rng
   );
+  const npcPool = shuffleWithRng(NPC_OBJECT_IDS.filter((id) => !active.has(id)), rng);
+  while ([...active].filter((id) => NPC_OBJECT_IDS.includes(id)).length < 2 && npcPool.length) {
+    active.add(npcPool.shift());
+  }
   while (active.size < 11 && optionalPool.length) {
     active.add(optionalPool.shift());
   }
@@ -3149,10 +3154,11 @@ function resultTextFor(object, choice, wasComplete) {
 }
 
 function nextGoalText() {
-  const nextQuest = Object.keys(QUESTS).find((key) => !model.completed[key]);
-  return nextQuest
-    ? `${QUEST_DETAILS[nextQuest].open}`
-    : "The village has settled into festival mode. You can wander, talk, rest, or finish the morning when you want.";
+  const clarity = routeClarity();
+  if (clarity.level === "usable" || clarity.level === "stronger") {
+    return "You can view your reflection now, or keep wandering for more texture.";
+  }
+  return clarity.needText.replace(/^Useful next: /, "");
 }
 
 function renderHud() {
@@ -3160,17 +3166,16 @@ function renderHud() {
   document.getElementById("placeName").textContent = place.name;
   document.getElementById("placeDescription").textContent = place.description;
 
-  const completedCount = Object.keys(QUESTS).filter((key) => model.completed[key]).length;
+  const clarity = routeClarity();
   const controls = document.getElementById("morningControls");
   const topProfileBtn = document.getElementById("topProfileBtn");
   controls.hidden = !playerHasMoved && !hasPlayerHistory();
-  topProfileBtn.hidden = completedCount !== 3;
-  topProfileBtn.textContent = "Watch Lanterns Light";
-  document.getElementById("profileBtn").textContent = completedCount === 3 ? "Watch Lanterns Light" : "See Morning Path";
-  document.getElementById("dayPrompt").textContent = completedCount === 3 ? "The village is ready." : model.runPlan.theme.prompt;
-  document.getElementById("dayHint").textContent = completedCount === 3
-    ? "The lanterns are set. You can still wander, talk, rest, or finish the morning when you want."
-    : model.runPlan.theme.hint;
+  topProfileBtn.hidden = clarity.level !== "usable" && clarity.level !== "stronger";
+  topProfileBtn.textContent = "View Reflection";
+  document.getElementById("profileBtn").textContent = clarity.level === "too-early" ? "Early Reflection" : "View Reflection";
+  document.getElementById("dayPrompt").textContent = model.runPlan.theme.prompt;
+  document.getElementById("dayHint").textContent = model.runPlan.theme.hint;
+  renderRouteClarity(clarity);
   document.getElementById("storyLog").textContent = storyText;
   renderVillageThreads();
   const items = pouchItems();
@@ -3181,13 +3186,21 @@ function renderHud() {
   document.getElementById("worldNotes").innerHTML = notes.map((note) => `<li>${note}</li>`).join("");
 }
 
+function renderRouteClarity(clarity) {
+  const panel = document.getElementById("routeClarityPanel");
+  panel.dataset.level = clarity.level;
+  document.getElementById("routeClarityLabel").textContent = clarity.label;
+  document.getElementById("routeClarityCount").textContent = `${clarity.eventCount} ${clarity.eventCount === 1 ? "moment" : "moments"}`;
+  document.getElementById("routeClarityFill").style.width = `${clarity.percent}%`;
+  document.getElementById("routeClarityText").textContent = clarity.text;
+  document.getElementById("routeClarityNeed").textContent = clarity.needText;
+}
+
 function renderVillageThreads() {
   document.getElementById("villageThreads").innerHTML = VILLAGE_THREADS.filter((thread) => isObjectActive(thread.id)).map((thread) => {
     const changed = thread.quest ? Boolean(model.completed[thread.quest]) : Boolean(model.relationships[thread.id] || model.worldFlags[thread.id]);
     const note = changed ? threadTextAfterChange(thread) : thread.open;
-    const status = thread.quest
-      ? (changed ? "Done" : "Open")
-      : (changed ? "Changed" : "");
+    const status = changed ? "Changed" : "";
     return `
       <li class="${changed ? "changed" : ""}">
         <div>
@@ -3627,6 +3640,65 @@ function profileEventCount(profile, targetModel = model) {
   return targetModel.events?.length || targetModel.simulatedEventCount || profile.credibility?.eventCount || estimateEventCountFromEvidence(profile.evidence);
 }
 
+function routeClarity(targetModel = model, profile = targetModel === model ? currentProfile() : profileFor(targetModel)) {
+  const eventCount = profileEventCount(profile, targetModel);
+  const domains = profile.sourceDomains || sourceDomainCoverage(profile);
+  const channels = profile.interpretationChannels || interpretationChannels(profile);
+  const axis = axisResult(profile);
+  const sampledDomains = domains.filter((domain) => domain.raw >= 0.03 || domain.value >= 0.22).length;
+  const domainValues = domains.map((domain) => domain.value).sort((a, b) => b - a);
+  const concentration = domainValues.length > 1 ? domainValues[0] - domainValues[1] : 1;
+  const margin = Math.max(0, (channels[0]?.score || 0) - (channels[1]?.score || 0));
+  const rangeWidth = axis.high - axis.low;
+  const eventScore = clamp(eventCount / 12) * 35;
+  const coverageScore = clamp(sampledDomains / 5) * 30;
+  const balanceScore = (1 - clamp(concentration)) * 15;
+  const marginScore = clamp(margin / 0.18) * 10;
+  const rangeScore = (1 - clamp(rangeWidth / 0.60)) * 10;
+  let percent = Math.round(eventScore + coverageScore + balanceScore + marginScore + rangeScore);
+  if (margin < 0.05) percent = Math.min(percent, 72);
+
+  let level = "partial";
+  let label = "Partial read";
+  let text = "The route has some useful signal, but the read is still narrow or mixed.";
+  if (eventCount < 3) {
+    level = "too-early";
+    label = "Too early";
+    text = "Wander and choose a few moments before the reflection gets useful.";
+    percent = Math.min(percent, eventCount * 14);
+  } else if (percent >= 82 && eventCount >= 12 && sampledDomains >= 5 && margin >= 0.08) {
+    level = "stronger";
+    label = "Stronger read";
+    text = "The route has enough variety and separation for a cleaner reflection.";
+  } else if (percent >= 62 && eventCount >= 8 && sampledDomains >= 4) {
+    level = "usable";
+    label = "Usable read";
+    text = "The route has enough variety for a first-pass reflection.";
+  }
+
+  const missingDomains = domains
+    .filter((domain) => domain.raw < 0.03 && domain.value < 0.22)
+    .map((domain) => domain.label.toLowerCase().replace("imagination and play", "imagination/play"))
+    .slice(0, 2);
+  const needs = [];
+  if (eventCount < 8) needs.push(eventCount < 3 ? "a few village moments" : "a few more moments");
+  if (missingDomains.length) needs.push(`more coverage for ${formatList(missingDomains)}`);
+  if (margin < 0.05 && eventCount >= 3) needs.push("clearer separation between overlap patterns");
+  const needText = needs.length ? `Useful next: ${needs.join("; ")}.` : "Useful next: stop for a reflection, or keep wandering if you want a steadier read.";
+
+  return {
+    level,
+    label,
+    percent: clamp(percent, 0, 100),
+    eventCount,
+    sampledDomains,
+    margin,
+    rangeWidth,
+    text,
+    needText,
+  };
+}
+
 function playProfileName(profile) {
   const families = profile.projection.families;
   const e = profile.evidence;
@@ -3736,6 +3808,7 @@ function assessmentRecord(targetModel = model) {
   const axis = axisResult(profile);
   const shownScore = displayScore(axis);
   const publicProxy = publicProxyProjection(profile);
+  const clarity = routeClarity(targetModel, profile);
   return {
     schemaVersion: ASSESSMENT_SCHEMA_VERSION,
     target: { ...ASSESSMENT_TARGET },
@@ -3749,6 +3822,16 @@ function assessmentRecord(targetModel = model) {
       score100: shownScore.score,
       likelyRange100: [shownScore.low, shownScore.high],
       confidence: profile.credibility.confidence,
+    },
+    routeClarity: {
+      level: clarity.level,
+      label: clarity.label,
+      percent: clarity.percent,
+      eventCount: clarity.eventCount,
+      sampledDomains: clarity.sampledDomains,
+      channelMargin: Number(clarity.margin.toFixed(4)),
+      rangeWidth: Number(clarity.rangeWidth.toFixed(4)),
+      needText: clarity.needText,
     },
     runPlan: {
       seed: targetModel.runPlan?.seed,
@@ -3908,12 +3991,11 @@ function renderDeveloper() {
 function showProfile() {
   const profile = currentProfile();
   const axis = axisResult(profile);
-  const completedCount = Object.keys(QUESTS).filter((key) => model.completed[key]).length;
+  const clarity = routeClarity(model, profile);
   const changes = concreteChangeItems();
   const adaptations = adaptationItems();
   const moments = routeMomentItems();
   const routeShape = routeTraceItems();
-  const remaining = remainingPreparationItems();
   const pattern = playPatternItems(profile);
   const name = playProfileName(profile);
   const drivers = signalDrivers(profile);
@@ -3927,6 +4009,18 @@ function showProfile() {
       <h2>${escapeHtml(name)}</h2>
       <p>${escapeHtml(profileLeadText(profile, axis, drivers))}</p>
       <ul class="summary-list">${pattern.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}</ul>
+    </section>
+    <section class="profile-card clarity-summary-card route-clarity-panel" data-level="${escapeHtml(clarity.level)}">
+      <div class="profile-section-header">
+        <div>
+          <p class="eyebrow">Route clarity</p>
+          <h2>${escapeHtml(clarity.label)}</h2>
+        </div>
+        <span class="coverage-pill">${clarity.percent}% ready</span>
+      </div>
+      <div class="clarity-track" aria-hidden="true"><span style="width:${clarity.percent}%"></span></div>
+      <p>${escapeHtml(clarity.text)}</p>
+      <p class="domain-confounds">${escapeHtml(clarity.needText)}</p>
     </section>
     <section class="profile-card axis-card score-card">
       <div class="score-layout">
@@ -4012,7 +4106,7 @@ function showProfile() {
     ` : ""}
     <section class="profile-card">
       <h2>Village Snapshot</h2>
-      <p>${festivalOutcomeText(completedCount)}</p>
+      <p>${festivalOutcomeText()}</p>
       <ul class="summary-list">${changes.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}</ul>
     </section>
     <section class="profile-card">
@@ -4087,28 +4181,17 @@ function showProfile() {
         <button id="downloadPilotRecordBtn" class="ghost-button" type="button">Download pilot record</button>
       </div>
     </details>
-    ${remaining.length ? `
-      <section class="profile-card">
-        <h2>Still Happening</h2>
-        <ul class="summary-list">${remaining.map((quest) => `<li><strong>${escapeHtml(quest.title)}</strong>: ${escapeHtml(quest.place)}</li>`).join("")}</ul>
-      </section>
-    ` : ""}
   `;
   document.getElementById("profileDialog").showModal();
 }
 
-function festivalOutcomeText(completedCount) {
+function festivalOutcomeText() {
   const completed = completedPreparationItems();
-  const remaining = remainingPreparationItems();
-  if (completedCount >= 3) {
-    return "The lanterns are ready, the shell path catches the last light, and Oren's tide-glass display is set for sunset.";
-  }
   if (completed.length) {
     const doneText = formatList(completed.map((quest) => quest.title.toLowerCase()));
-    const remainingText = formatList(remaining.map((quest) => quest.title.toLowerCase()));
-    return `The ${doneText} ${completed.length === 1 ? "is" : "are"} ready. The ${remainingText} ${remaining.length === 1 ? "still needs" : "still need"} help before sunset.`;
+    return `Your route changed the village around ${doneText}. Other parts of Harborwake kept moving without becoming a checklist.`;
   }
-  return "The village is still waking into festival mode. Mira, Lio, and Oren are still waiting for help with the lantern oil, shell path, and tide-glass display.";
+  return "Your route was mostly about noticing, choosing, and moving between village scenes rather than finishing named preparations.";
 }
 
 function resetGame() {
