@@ -10,6 +10,7 @@ const EVIDENCE_DIMS = [
   "ambiguity_avoidance",
   "novelty_breadth",
   "social_drive",
+  "imagination_play",
 ];
 
 const STATE_DIMS = ["social_energy", "sensory_load", "regulation_need", "focus_lock", "safety_feeling"];
@@ -32,6 +33,88 @@ const ASD_WEIGHTS = {
   systemizing_structure: 0.10,
   ambiguity_avoidance: 0.06,
 };
+
+const ASSESSMENT_TARGET = {
+  use: "play-reflection",
+  target: "adult-women-autism-trait domains",
+  caveat: "not a diagnosis or validated GQ-ASC score",
+};
+const ASSESSMENT_SCHEMA_VERSION = "lantern-tide-assessment-v1";
+const PUBLIC_PROXY_PRIOR = {
+  sourceId: "uci-autism-screening-adult-426",
+  basis: "female subset AQ-10 class lifts mapped into Lantern Tide source domains",
+  caveat: "weak public adult-screening prior; AQ-10 underrepresents camouflaging and other adult-female presentation patterns",
+  domainWeights: {
+    imagination: 0.2303,
+    camouflaging: 0.2022,
+    sensory: 0.1953,
+    socializing: 0.1996,
+    interests: 0.1726,
+  },
+};
+
+const SOURCE_DOMAIN_MODEL = [
+  {
+    id: "imagination",
+    label: "Imagination and play",
+    threshold: 0.18,
+    note: "Sampled when the player uses the festival objects for story, pretend play, or symbolic making.",
+    signals: [
+      ["imagination_play", 1.00],
+    ],
+    confounds: ["novelty without story", "art preference", "playful mood"],
+  },
+  {
+    id: "camouflaging",
+    label: "Camouflaging",
+    threshold: 0.18,
+    note: "Sampled through social bridging, waiting to read a room, and using another person as an entry point.",
+    signals: [
+      ["masking_adaptation", 0.45],
+      ["social_monitoring_cost", 0.35],
+      ["social_prediction_uncertainty", 0.20],
+    ],
+    confounds: ["ordinary politeness", "shyness", "new-place caution"],
+  },
+  {
+    id: "sensory",
+    label: "Sensory sensitivities",
+    threshold: 0.18,
+    note: "Sampled through noisy, bright, or quiet places and choices that manage sensory load.",
+    signals: [
+      ["sensory_accumulation", 0.45],
+      ["regulation_dependency", 0.55],
+    ],
+    confounds: ["fatigue", "headache", "preference for quiet"],
+  },
+  {
+    id: "socializing",
+    label: "Socializing",
+    threshold: 0.23,
+    note: "Sampled through direct joining, indirect joining, social uncertainty, and social energy cost.",
+    signals: [
+      ["social_drive", 0.30],
+      ["social_monitoring_cost", 0.25],
+      ["social_prediction_uncertainty", 0.20],
+      ["masking_adaptation", 0.15],
+      ["sensory_accumulation", 0.10],
+    ],
+    confounds: ["extroversion", "introversion", "task urgency"],
+  },
+  {
+    id: "interests",
+    label: "Interests",
+    threshold: 0.22,
+    note: "Sampled through sorting, repeating, refining, system-building, and breadth versus narrow focus.",
+    signals: [
+      ["focused_loop_depth", 0.35],
+      ["systemizing_structure", 0.35],
+      ["context_switch_friction", 0.15],
+      ["novelty_breadth", 0.15],
+    ],
+    confounds: ["completionism", "puzzle preference", "novelty seeking"],
+  },
+];
 
 const QUESTS = {
   lantern: "Find lantern oil for Mira",
@@ -80,7 +163,12 @@ const VILLAGE_THREADS = [
   { id: "nia", title: "Nia", open: "Nia is searching the tide pools for a moon charm." },
   { id: "oren", quest: "display", title: "Oren", open: QUEST_DETAILS.display.open, changed: QUEST_DETAILS.display.done },
   { id: "ribbonstall", title: "Ribbon stall", open: "Ribbons flutter at the quieter edge of the square." },
+  { id: "storylantern", title: "Story lantern", open: "A blank lantern waits for a tiny festival story." },
+  { id: "noticeboard", title: "Notice board", open: "Festival notes and helper cards are pinned near the square path." },
   { id: "tidepool", title: "Tide pool", open: "Small ripples move shell fragments by the beach path." },
+  { id: "driftwoodstage", title: "Driftwood stage", open: "A small driftwood stage sits near the tide line." },
+  { id: "storycards", title: "Story cards", open: "Painted cards show tiny Harborwake scenes by the beach baskets." },
+  { id: "glassloom", title: "Glass loom", open: "A small loom of colored glass strips waits on the workshop table." },
 ];
 
 const ROLE_LABELS = {
@@ -106,6 +194,7 @@ const WORLD_NOTE_BY_MEMORY = {
   mossycedar_listen: "The cedar shade softens the square into a far-away hum.",
   tidepool_watch: "The tide pool by the beach path marks the water's rhythm.",
   tidepool_touch: "The tide pool is a quick cold reset near the beach path.",
+  tidepool_message: "The tide pool ripples now read like a tiny water message.",
   workshopwindow_light: "The workshop window shows which glass pieces glow at dusk.",
   workshopwindow_stepback: "The workshop window is a good place to see the whole table at once.",
   shell_kept: "The smooth shell is in your pouch.",
@@ -117,6 +206,25 @@ const WORLD_NOTE_BY_MEMORY = {
   threadbasket_sorted: "The loose blue thread in the workshop has been wound back into a ring.",
   threadbasket_picked: "A sea-green thread scrap is in your pouch.",
   threadbasket_left: "Oren's thread basket is back where it was.",
+  storylantern_legend: "The story lantern carries a tiny moon-shell legend.",
+  storylantern_keeper: "The story lantern now has a small keeper watching the square.",
+  storylantern_bubbles: "The story lantern crew has tiny speech bubbles above the ribbons.",
+  storylantern_map: "The story lantern shows a clean route through Harborwake.",
+  storylantern_copy: "The story lantern matches Mira's ribbon pattern.",
+  noticeboard_watch: "The notice board has a small mark beside the quieter helper route.",
+  noticeboard_direct: "Your name is on the open helper card.",
+  noticeboard_cards: "The helper cards are sorted by place and time.",
+  driftwoodstage_creature: "The driftwood stage has a tide creature guarding a shell gate.",
+  driftwoodstage_tide: "The driftwood stage shows the tide carrying a shell home.",
+  driftwoodstage_props: "The driftwood stage props are sorted by height and color.",
+  driftwoodstage_leave: "The driftwood stage is still open for someone else's story.",
+  storycards_scene: "The story cards now show a small lantern scene by the tide.",
+  storycards_ending: "The blank story card now gives the moon shell a new ending.",
+  storycards_match: "The story cards are matched into a neat morning-to-night row.",
+  storycards_skip: "One story-card space is left blank for another player.",
+  glassloom_rows: "The glass loom is sorted into bright, readable rows.",
+  glassloom_loop: "One glass pattern has been tuned until the colors line up.",
+  glassloom_sample: "The glass loom keeps a lively mix of trial colors.",
 };
 
 const WORLD_NOTE_BY_FLAG = {
@@ -549,6 +657,104 @@ const OBJECTS = [
     ],
   },
   {
+    id: "storylantern",
+    type: "object",
+    role: "item",
+    name: "Story Lantern",
+    place: "plaza",
+    x: 485,
+    y: 135,
+    color: "#f1a36f",
+    radius: 16,
+    prompt: "add to the lantern",
+    text: "A blank paper lantern hangs low enough to reach. Someone left charcoal and a note: \"Add a small festival story.\"",
+    followup: {
+      legend: "The lantern still carries the little moon-shell legend.",
+      keeper: "The lantern keeper still watches over the square.",
+      bubbles: "The lantern crew still has tiny speech bubbles above the ribbons.",
+      map: "The lantern route-map is still easy to follow.",
+      copy: "The lantern still matches Mira's ribbon colors.",
+    },
+    choices: [
+      {
+        text: "Invent a moon-shell legend for the lantern.",
+        result: "You draw a tiny moon shell and give it a lantern-path legend.",
+        memory: "legend",
+        evidence: { imagination_play: 0.12, novelty_breadth: 0.03 },
+        state: { safety_feeling: 0.04, focus_lock: 0.03 },
+      },
+      {
+        text: "Draw a tiny keeper watching over the square.",
+        result: "The lantern gains a small keeper who watches the busy square from above.",
+        memory: "keeper",
+        evidence: { imagination_play: 0.10, regulation_dependency: 0.02 },
+        state: { safety_feeling: 0.04 },
+      },
+      {
+        text: "Add speech bubbles for the lantern crew.",
+        result: "The little lantern crew gets careful speech bubbles: oil, ribbon, light, done.",
+        memory: "bubbles",
+        evidence: { imagination_play: 0.08, social_monitoring_cost: 0.03 },
+        state: { social_energy: -0.01, safety_feeling: 0.03 },
+      },
+      {
+        text: "Draw a clear route map around the village.",
+        result: "The lantern becomes a small map of safe paths through Harborwake.",
+        memory: "map",
+        evidence: { systemizing_structure: 0.05, ambiguity_avoidance: 0.04 },
+        state: { safety_feeling: 0.04 },
+      },
+      {
+        text: "Copy Mira's ribbon colors onto the lantern.",
+        result: "The lantern matches Mira's ribbon stall, making it feel part of the square.",
+        memory: "copy",
+        evidence: { masking_adaptation: 0.04, social_monitoring_cost: 0.03 },
+        state: { social_energy: -0.01, safety_feeling: 0.03 },
+      },
+    ],
+  },
+  {
+    id: "noticeboard",
+    type: "object",
+    role: "item",
+    name: "Notice Board",
+    place: "plaza",
+    x: 110,
+    y: 130,
+    color: "#b7a36c",
+    radius: 16,
+    prompt: "read the helper cards",
+    text: "A notice board holds helper cards for Lantern Tide. Some cards have names already; some are still open.",
+    followup: {
+      watch: "A small mark still points to the lower-pressure helper route.",
+      direct: "Your name is still on the open helper card.",
+      cards: "The helper cards are still sorted by place and time.",
+    },
+    choices: [
+      {
+        text: "Watch which cards people avoid before choosing one.",
+        result: "You notice which helper cards are crowded and mark a quieter route beside the board.",
+        memory: "watch",
+        evidence: { social_monitoring_cost: 0.07, masking_adaptation: 0.04 },
+        state: { social_energy: -0.03, safety_feeling: 0.03 },
+      },
+      {
+        text: "Put your name on the nearest open card.",
+        result: "You write your name on the nearest open card and leave the board simple.",
+        memory: "direct",
+        evidence: { social_drive: 0.09, novelty_breadth: 0.03 },
+        state: { social_energy: -0.02 },
+      },
+      {
+        text: "Sort loose helper cards by place and time.",
+        result: "The board becomes easier to read: square, garden, beach, workshop; morning before sunset.",
+        memory: "cards",
+        evidence: { systemizing_structure: 0.07, ambiguity_avoidance: 0.05 },
+        state: { focus_lock: 0.05, safety_feeling: 0.03 },
+      },
+    ],
+  },
+  {
     id: "mossycedar",
     type: "object",
     role: "comfort",
@@ -596,6 +802,7 @@ const OBJECTS = [
     followup: {
       watch: "The tide pool still shows the water's rhythm.",
       touch: "The tide pool is cool where your fingers touched it.",
+      message: "The tide pool still looks like it is sending a small message.",
     },
     choices: [
       {
@@ -611,6 +818,13 @@ const OBJECTS = [
         memory: "touch",
         evidence: { regulation_dependency: 0.05 },
         state: { sensory_load: -0.04, safety_feeling: 0.03 },
+      },
+      {
+        text: "Imagine the ripples as a tiny water message.",
+        result: "The ripples become a small message from the tide, then break apart again.",
+        memory: "message",
+        evidence: { imagination_play: 0.08, focused_loop_depth: 0.02 },
+        state: { focus_lock: 0.03, safety_feeling: 0.03 },
       },
     ],
   },
@@ -644,6 +858,145 @@ const OBJECTS = [
         memory: "stepback",
         evidence: { ambiguity_avoidance: 0.04, regulation_dependency: 0.03 },
         state: { sensory_load: -0.03, safety_feeling: 0.04 },
+      },
+    ],
+  },
+  {
+    id: "glassloom",
+    type: "object",
+    role: "item",
+    name: "Glass Loom",
+    place: "workshop",
+    x: 720,
+    y: 280,
+    color: "#77a7b8",
+    radius: 16,
+    prompt: "arrange glass strips",
+    text: "A small loom holds thin strips of tide-glass. Some strips repeat; others only glow once.",
+    followup: {
+      rows: "The glass loom still has bright rows that are easy to scan.",
+      loop: "The repeated glass pattern still lines up at the edges.",
+      sample: "The glass loom still keeps a few trial colors loose.",
+    },
+    choices: [
+      {
+        text: "Group the glass strips into matching rows.",
+        result: "The loom becomes readable: blues together, greens together, sunset colors at the end.",
+        memory: "rows",
+        evidence: { systemizing_structure: 0.09, focused_loop_depth: 0.05 },
+        state: { focus_lock: 0.07 },
+      },
+      {
+        text: "Tune one repeating pattern until the edges line up.",
+        result: "You keep adjusting one glass pattern until both edges meet cleanly.",
+        memory: "loop",
+        evidence: { focused_loop_depth: 0.10, context_switch_friction: 0.04, systemizing_structure: 0.04 },
+        state: { focus_lock: 0.10, social_energy: -0.02 },
+      },
+      {
+        text: "Try several color strips and keep the lively mix.",
+        result: "The loom keeps a bright test patch where the colors change with each step.",
+        memory: "sample",
+        evidence: { novelty_breadth: 0.09 },
+        state: { focus_lock: -0.03, safety_feeling: 0.02 },
+      },
+    ],
+  },
+  {
+    id: "driftwoodstage",
+    type: "object",
+    role: "item",
+    name: "Driftwood Stage",
+    place: "beach",
+    x: 790,
+    y: 510,
+    color: "#b78e43",
+    radius: 17,
+    prompt: "arrange the stage",
+    text: "A low driftwood stage holds shell chips, sea grass, and two tiny cloth flags.",
+    followup: {
+      creature: "The driftwood stage still has a tide creature guarding the shell gate.",
+      tide: "The driftwood stage still shows the tide carrying a shell home.",
+      props: "The driftwood stage props are still sorted into neat rows.",
+      leave: "The driftwood stage still waits for another player's scene.",
+    },
+    choices: [
+      {
+        text: "Make a tiny tide creature guard a shell gate.",
+        result: "The shell chips become a little gate with a tide creature standing watch.",
+        memory: "creature",
+        evidence: { imagination_play: 0.10, focused_loop_depth: 0.03 },
+        state: { focus_lock: 0.06, safety_feeling: 0.04 },
+      },
+      {
+        text: "Act out the tide carrying one shell home.",
+        result: "You move one shell along a sea-grass wave until it reaches a tiny driftwood door.",
+        memory: "tide",
+        evidence: { imagination_play: 0.10, focused_loop_depth: 0.03 },
+        state: { focus_lock: 0.05, safety_feeling: 0.03 },
+      },
+      {
+        text: "Sort the stage pieces by size and color.",
+        result: "The small stage becomes readable: tall shells in back, bright flags in front.",
+        memory: "props",
+        evidence: { systemizing_structure: 0.08, focused_loop_depth: 0.06 },
+        state: { focus_lock: 0.08 },
+      },
+      {
+        text: "Leave the stage open for someone else's scene.",
+        result: "You leave the pieces loose, ready for someone else's idea.",
+        memory: "leave",
+        evidence: { novelty_breadth: 0.04 },
+        state: {},
+      },
+    ],
+  },
+  {
+    id: "storycards",
+    type: "object",
+    role: "item",
+    name: "Story Cards",
+    place: "beach",
+    x: 565,
+    y: 420,
+    color: "#d9b35e",
+    radius: 15,
+    prompt: "look through story cards",
+    text: "Painted cards show tiny Harborwake scenes: a moon shell, a bell awning, a glass fish, and one blank card.",
+    followup: {
+      scene: "The story cards still show the small lantern scene by the tide.",
+      ending: "The blank story card still gives the moon shell a new ending.",
+      match: "The story cards still sit in a neat morning-to-night row.",
+      skip: "One blank card is still waiting for another player.",
+    },
+    choices: [
+      {
+        text: "Make the cards into a tiny lantern story.",
+        result: "The moon shell, bell awning, and glass fish become a little lantern story by the tide.",
+        memory: "scene",
+        evidence: { imagination_play: 0.11, novelty_breadth: 0.02 },
+        state: { safety_feeling: 0.04, focus_lock: 0.03 },
+      },
+      {
+        text: "Give the blank card a new ending.",
+        result: "The blank card becomes the place where the moon shell finds its way home.",
+        memory: "ending",
+        evidence: { imagination_play: 0.10, ambiguity_avoidance: 0.02 },
+        state: { safety_feeling: 0.04 },
+      },
+      {
+        text: "Put the cards in morning-to-night order.",
+        result: "The cards settle into a clear row from first light to lantern glow.",
+        memory: "match",
+        evidence: { systemizing_structure: 0.06, ambiguity_avoidance: 0.04 },
+        state: { focus_lock: 0.04 },
+      },
+      {
+        text: "Leave the blank card for someone else.",
+        result: "You leave one blank card open, so the next person can add their own scene.",
+        memory: "skip",
+        evidence: { novelty_breadth: 0.04, social_drive: 0.02 },
+        state: {},
       },
     ],
   },
@@ -1748,12 +2101,22 @@ function drawWorldObject(object, completed, remembered) {
     drawRibbonBundle(object.x, object.y, object.radius, color);
   } else if (object.id === "lanternline") {
     drawLanternLineObject(object.x, object.y, object.radius, color);
+  } else if (object.id === "storylantern") {
+    drawStoryLanternObject(object.x, object.y, object.radius, color);
+  } else if (object.id === "noticeboard") {
+    drawNoticeBoardObject(object.x, object.y, object.radius, color);
   } else if (object.id === "mossycedar") {
     drawCedarObject(object.x, object.y, object.radius, color);
   } else if (object.id === "tidepool") {
     drawTidePoolObject(object.x, object.y, object.radius, color);
+  } else if (object.id === "driftwoodstage") {
+    drawDriftwoodStageObject(object.x, object.y, object.radius, color);
   } else if (object.id === "workshopwindow") {
     drawWindowObject(object.x, object.y, object.radius);
+  } else if (object.id === "glassloom") {
+    drawGlassLoomObject(object.x, object.y, object.radius, color);
+  } else if (object.id === "storycards") {
+    drawStoryCardsObject(object.x, object.y, object.radius, color);
   } else {
     ctx.fillStyle = color;
     ctx.beginPath();
@@ -1821,6 +2184,45 @@ function drawLanternLineObject(x, y, r, color) {
   drawLantern(x - 10, y - 4, color);
 }
 
+function drawStoryLanternObject(x, y, r, color) {
+  ctx.strokeStyle = "rgba(92,70,47,0.42)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x, y - r * 1.65);
+  ctx.lineTo(x, y - r * 0.7);
+  ctx.stroke();
+  ctx.fillStyle = color;
+  roundRect(x - r * 0.55, y - r * 0.78, r * 1.1, r * 1.38, 8);
+  ctx.fill();
+  ctx.fillStyle = "rgba(255,253,247,0.34)";
+  roundRect(x - r * 0.33, y - r * 0.5, r * 0.66, r * 0.78, 5);
+  ctx.fill();
+  ctx.fillStyle = "rgba(92,70,47,0.34)";
+  ctx.beginPath();
+  ctx.arc(x - 3, y - 1, 2, 0, Math.PI * 2);
+  ctx.arc(x + 4, y + 3, 2, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function drawNoticeBoardObject(x, y, r, color) {
+  ctx.fillStyle = color;
+  roundRect(x - r * 0.95, y - r * 0.75, r * 1.9, r * 1.25, 5);
+  ctx.fill();
+  ctx.fillStyle = "rgba(255,253,247,0.82)";
+  for (let i = 0; i < 3; i += 1) {
+    roundRect(x - r * 0.62 + i * r * 0.42, y - r * 0.44, r * 0.32, r * 0.56, 3);
+    ctx.fill();
+  }
+  ctx.strokeStyle = "rgba(92,70,47,0.44)";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(x - r * 0.5, y + r * 0.55);
+  ctx.lineTo(x - r * 0.5, y + r * 1.25);
+  ctx.moveTo(x + r * 0.5, y + r * 0.55);
+  ctx.lineTo(x + r * 0.5, y + r * 1.25);
+  ctx.stroke();
+}
+
 function drawCedarObject(x, y, r, color) {
   drawTree(x, y, r * 1.15);
   ctx.strokeStyle = color;
@@ -1842,6 +2244,25 @@ function drawTidePoolObject(x, y, r, color) {
   ctx.stroke();
 }
 
+function drawDriftwoodStageObject(x, y, r, color) {
+  ctx.fillStyle = "rgba(139, 111, 77, 0.36)";
+  roundRect(x - r * 1.45, y + r * 0.1, r * 2.9, r * 0.62, 7);
+  ctx.fill();
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(x - r * 0.5, y - r * 0.2, r * 0.38, 0, Math.PI * 2);
+  ctx.arc(x + r * 0.35, y - r * 0.26, r * 0.32, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(255,253,247,0.5)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x - r * 0.92, y + r * 0.12);
+  ctx.lineTo(x - r * 1.2, y - r * 0.48);
+  ctx.moveTo(x + r * 0.78, y + r * 0.12);
+  ctx.lineTo(x + r * 1.12, y - r * 0.5);
+  ctx.stroke();
+}
+
 function drawWindowObject(x, y, r) {
   ctx.fillStyle = "rgba(255,253,247,0.86)";
   roundRect(x - r, y - r, r * 2, r * 1.6, 6);
@@ -1854,6 +2275,31 @@ function drawWindowObject(x, y, r) {
   ctx.moveTo(x - r, y - r * 0.2);
   ctx.lineTo(x + r, y - r * 0.2);
   ctx.stroke();
+}
+
+function drawGlassLoomObject(x, y, r, color) {
+  ctx.fillStyle = "rgba(255,253,247,0.86)";
+  roundRect(x - r * 1.1, y - r * 0.72, r * 2.2, r * 1.44, 6);
+  ctx.fill();
+  const colors = [color, "#4d67a9", "#d8a753", "#477c63"];
+  colors.forEach((stripColor, index) => {
+    ctx.fillStyle = stripColor;
+    roundRect(x - r * 0.78 + index * r * 0.42, y - r * 0.5, r * 0.24, r, 3);
+    ctx.fill();
+  });
+}
+
+function drawStoryCardsObject(x, y, r, color) {
+  const offsets = [-0.7, 0, 0.7];
+  offsets.forEach((offset, index) => {
+    ctx.fillStyle = index === 1 ? color : "rgba(255,253,247,0.88)";
+    roundRect(x + offset * r - r * 0.38, y - r * 0.42 + index * 2, r * 0.76, r * 0.92, 4);
+    ctx.fill();
+  });
+  ctx.fillStyle = "rgba(45,103,118,0.55)";
+  ctx.beginPath();
+  ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+  ctx.fill();
 }
 
 function drawNpcFace(x, y, radius) {
@@ -2277,6 +2723,8 @@ function systemKeyFor(object) {
     mira: "social-lanterns",
     ribbonstall: "social-lanterns",
     lanternline: "social-lanterns",
+    storylantern: "imagination-play",
+    noticeboard: "social-planning",
     saff: "bells",
     lio: "shell-path",
     shell: "shell-path",
@@ -2285,8 +2733,11 @@ function systemKeyFor(object) {
     oren: "tide-glass",
     workshopwindow: "tide-glass",
     threadbasket: "tide-glass",
+    glassloom: "tide-glass",
     fountain: "quiet-recovery",
     mossycedar: "quiet-recovery",
+    driftwoodstage: "imagination-play",
+    storycards: "imagination-play",
   };
   return systems[object.id] || object.place || object.role;
 }
@@ -2337,6 +2788,9 @@ function evidencePurposeFor(dims, routeSignals) {
   }
   if (dims.some((dim) => ["focused_loop_depth", "systemizing_structure", "context_switch_friction", "ambiguity_avoidance"].includes(dim)) || routeSignals.includes("same-system-return")) {
     families.push("structure, focus, and predictability");
+  }
+  if (dims.includes("imagination_play")) {
+    families.push("imagination and story play");
   }
   if (dims.includes("novelty_breadth")) {
     families.push("novelty and breadth as a confound guard");
@@ -2432,6 +2886,21 @@ function applyObjectConsequence(object, choice) {
   }
   if (object.id === "fountain") {
     model.worldFlags.fountain = "visited";
+  }
+  if (object.id === "storylantern") {
+    model.worldFlags.storylantern = "changed";
+  }
+  if (object.id === "driftwoodstage") {
+    model.worldFlags.driftwoodstage = "changed";
+  }
+  if (object.id === "noticeboard") {
+    model.worldFlags.noticeboard = "changed";
+  }
+  if (object.id === "storycards") {
+    model.worldFlags.storycards = "changed";
+  }
+  if (object.id === "glassloom") {
+    model.worldFlags.glassloom = "changed";
   }
   if (object.id === "mira" && (trace.observedBeforeInteraction.mira || trace.observedThenEngaged.mira || choice.evidence?.social_monitoring_cost)) {
     model.worldFlags.mira_low_pressure = true;
@@ -2624,7 +3093,7 @@ function profileFlags(evidence, uncertainty) {
 }
 
 function profileBand(scoreBand, flags) {
-  const coreFlags = flags.filter((flag) => !["low-profile-evidence", "novelty-confound", "high-uncertainty"].includes(flag));
+  const coreFlags = flags.filter((flag) => ["sensory-regulation", "social-masking", "focused-interest"].includes(flag));
   if (scoreBand === "higher" && coreFlags.length >= 2) return "higher";
   if (scoreBand === "higher" || scoreBand === "mixed" || flags.some((flag) => flag !== "low-profile-evidence")) return "mixed";
   return scoreBand;
@@ -2634,14 +3103,14 @@ function currentProfile() {
   const evidence = blendedEvidence(model.evidence, traceEvidence(model));
   const projection = projectAlignment(evidence);
   const flags = profileFlags(evidence, projection.uncertainty);
-  return {
+  return annotateProfile({
     projection,
     flags,
     band: profileBand(projection.band, flags),
     evidence,
     traceEvidence: traceEvidence(model),
     state: { ...model.state },
-  };
+  }, model);
 }
 
 function blendedEvidence(baseEvidence, routeEvidence) {
@@ -2685,6 +3154,60 @@ function traceEvidence(targetModel) {
   return Object.fromEntries(Object.entries(deltas).map(([dim, value]) => [dim, clamp(value)]));
 }
 
+function annotateProfile(profile, targetModel = model) {
+  profile.sourceDomains = sourceDomainCoverage(profile);
+  profile.credibility = reflectionCredibility(profile, profile.sourceDomains, targetModel);
+  return profile;
+}
+
+function sourceDomainCoverage(profile) {
+  const e = profile.evidence;
+  return SOURCE_DOMAIN_MODEL.map((domain) => {
+    const raw = domain.signals.reduce((sum, [dim, weight]) => sum + (e[dim] || 0) * weight, 0);
+    const value = clamp(raw / domain.threshold);
+    return {
+      ...domain,
+      raw,
+      value,
+      level: value >= 0.65 ? "strong signal" : value >= 0.30 ? "some signal" : "lightly sampled",
+    };
+  });
+}
+
+function reflectionCredibility(profile, domains, targetModel = model) {
+  const eventCount = targetModel.events?.length || targetModel.simulatedEventCount || estimateEventCountFromEvidence(profile.evidence);
+  const sampledDomains = domains.filter((domain) => domain.raw >= 0.01).length;
+  const strongDomains = domains.filter((domain) => domain.value >= 0.65).length;
+  const coverageRatio = sampledDomains / SOURCE_DOMAIN_MODEL.length;
+  const totalSignal = Object.values(profile.evidence).reduce((sum, value) => sum + value, 0);
+  const flags = [];
+  if (eventCount < 4) flags.push("short route");
+  if (sampledDomains < 3) flags.push("narrow sample");
+  if (!domains.some((domain) => domain.id === "imagination" && domain.value >= 0.30)) flags.push("play domain lightly sampled");
+  if (profile.flags.includes("novelty-confound")) flags.push("novelty confound");
+  if (strongDomains === 1 && sampledDomains < 3) flags.push("single-domain spike");
+  if (totalSignal < 0.55) flags.push("thin evidence");
+
+  const label = eventCount < 4 ? "Early read" : sampledDomains >= 3 ? "Broader read" : "Partial read";
+  const text = label === "Broader read"
+    ? "This route touched several source domains, so the reflection can talk about a pattern rather than a single choice."
+    : label === "Partial read"
+      ? "This route is useful as a play reflection, but it still leans on a few domains more than the whole source instrument."
+      : "This route is still early; the range matters more than the point estimate.";
+  const confidence = label === "Broader read" && !flags.includes("single-domain spike")
+    ? "medium"
+    : label === "Partial read"
+      ? "low-medium"
+      : "low";
+  const rangePenalty = clamp((1 - coverageRatio) * 0.10 + (eventCount < 4 ? 0.04 : 0) + (flags.includes("single-domain spike") ? 0.04 : 0), 0, 0.18);
+  return { label, flags, text, sampledDomains, eventCount, confidence, rangePenalty };
+}
+
+function estimateEventCountFromEvidence(evidence) {
+  const total = Object.values(evidence).reduce((sum, value) => sum + value, 0);
+  return Math.round(total / 0.16);
+}
+
 function profileNarrative(profile) {
   const e = profile.evidence;
   const lines = [];
@@ -2694,6 +3217,7 @@ function profileNarrative(profile) {
   if (e.regulation_dependency + e.sensory_accumulation >= 0.12) lines.push("You noticed sensory intensity and used timing, distance, or quiet places to keep going.");
   if (e.ambiguity_avoidance >= 0.05) lines.push("Clear roles, rules, and schedules made choices more concrete.");
   if (e.focused_loop_depth + e.systemizing_structure >= 0.14) lines.push("You made objects readable by sorting, refining, or following a pattern.");
+  if (e.imagination_play >= 0.08) lines.push("You used story or pretend play to make the festival objects meaningful.");
   if (e.novelty_breadth >= 0.08) lines.push("You were willing to choose lively, unusual, or less structured options.");
   if (!lines.length) lines.push("This short morning did not create a strong pattern yet; a longer day would be more informative.");
   return lines.slice(0, 3);
@@ -2791,11 +3315,13 @@ function routeTraceItems() {
 function strongestRepeatedSystem(trace) {
   const labels = {
     "social-lanterns": "lantern",
+    "social-planning": "helper-board",
     bells: "bell",
     "shell-path": "shell",
     "tide-pool": "tide-pool",
     "tide-glass": "workshop",
     "quiet-recovery": "quiet-place",
+    "imagination-play": "story-play",
   };
   const [system, count] = Object.entries(trace.systemInteractions || {})
     .sort((a, b) => b[1] - a[1])[0] || [];
@@ -2804,21 +3330,27 @@ function strongestRepeatedSystem(trace) {
 }
 
 function playPatternItems(profile) {
-  if (model.events.length < 2) {
+  if (profileEventCount(profile) < 2) {
     return ["The current signal mostly comes from the first scene and any route behavior before it."];
   }
   return profileNarrative(profile);
 }
 
+function profileEventCount(profile, targetModel = model) {
+  return targetModel.events?.length || targetModel.simulatedEventCount || profile.credibility?.eventCount || estimateEventCountFromEvidence(profile.evidence);
+}
+
 function playProfileName(profile) {
   const families = profile.projection.families;
   const e = profile.evidence;
-  if (model.events.length < 2) return "Early Route";
+  if (profileEventCount(profile) < 2) return "Early Route";
+  if (families.socialReading >= 0.09 && families.sensoryRegulation >= 0.12 && families.structureFocus >= 0.11) return "Careful Pattern-Maker";
   if (families.sensoryRegulation >= 0.13 && families.structureFocus >= 0.11) return "Quiet Pattern-Maker";
   if (families.socialReading >= 0.09 && families.sensoryRegulation >= 0.12) return "Careful Connector";
   if (families.socialReading >= 0.09) return "Social Reader";
   if (families.structureFocus >= 0.14) return "Pattern-Maker";
   if (families.sensoryRegulation >= 0.13) return "Quiet Regulator";
+  if (e.imagination_play >= 0.18) return "Story Maker";
   if (families.noveltyConfound >= 0.16 || e.novelty_breadth >= 0.18) return "Curious Sampler";
   if (e.social_drive >= 0.20) return "Direct Helper";
   return "Open Wanderer";
@@ -2826,12 +3358,25 @@ function playProfileName(profile) {
 
 function axisResult(profile) {
   const mean = profile.projection.score;
-  const spread = clamp(profile.projection.uncertainty * 0.55, 0.08, 0.30);
+  const spread = clamp(profile.projection.uncertainty * 0.55 + (profile.credibility?.rangePenalty || 0), 0.08, 0.34);
   const variance = spread * spread;
   const low = clamp(mean - spread);
   const high = clamp(mean + spread);
   const label = mean >= 0.62 ? "strong" : mean >= 0.34 ? "moderate" : mean >= 0.18 ? "soft" : "low";
   return { mean, variance, low, high, label };
+}
+
+function displayScore(axis) {
+  const mapScore = (value) => {
+    if (value <= 0.18) return (value / 0.18) * 35;
+    if (value <= 0.30) return 35 + ((value - 0.18) / 0.12) * 15;
+    return 50 + ((value - 0.30) / 0.70) * 50;
+  };
+  return {
+    score: Math.round(clamp(mapScore(axis.mean), 0, 100)),
+    low: Math.round(clamp(mapScore(axis.low), 0, 100)),
+    high: Math.round(clamp(mapScore(axis.high), 0, 100)),
+  };
 }
 
 function signalDrivers(profile) {
@@ -2841,6 +3386,7 @@ function signalDrivers(profile) {
     ["social reading", families.socialReading],
     ["sensory regulation", families.sensoryRegulation],
     ["pattern and structure", families.structureFocus],
+    ["imagination and play", (e.imagination_play || 0) * 0.65],
     ["novelty sampling", Math.max(families.noveltyConfound, e.novelty_breadth * 0.45)],
     ["direct social approach", e.social_drive * 0.45],
   ]
@@ -2852,18 +3398,187 @@ function signalDrivers(profile) {
 }
 
 function profileLeadText(profile, axis, drivers) {
-  if (model.events.length < 2) {
+  if (profileEventCount(profile) < 2) {
     return "This was only the start of a morning, so the read is intentionally light and centered on the first visible choices.";
   }
   const style = playProfileName(profile).toLowerCase();
-  return `Your route played like a ${style}: ${axisSummaryText(axis)} The strongest signals came from ${formatList(drivers)}.`;
+  return `Your route showed a ${style} style. You often made things easier by finding clearer paths, steadier details, or better-timed ways into a scene.`;
 }
 
-function axisSummaryText(axis) {
-  if (model.events.length < 2) {
-    return "This was a short slice of play, so the range is intentionally wide.";
+function scoreMeaningText(profile, drivers) {
+  const driverSet = new Set(drivers);
+  const nonDrivers = [];
+  if (!driverSet.has("novelty sampling")) nonDrivers.push("novelty seeking");
+  if (!driverSet.has("direct social approach")) nonDrivers.push("simply walking up to people");
+  const notDriven = nonDrivers.length === 2
+    ? " It was not mainly driven by either novelty seeking or simply walking up to people."
+    : nonDrivers.length === 1
+      ? ` It was not mainly driven by ${nonDrivers[0]}.`
+      : "";
+  if (profile.band === "higher") {
+    return `This route showed several ASD-aligned traits together.${notDriven}`;
   }
-  return `In this short route, the ASD-aligned play signal was ${axis.label}, with a wider range when the route mixed several styles.`;
+  if (profile.band === "mixed") {
+    return `This route showed some ASD-aligned traits, but the pattern was partial or could overlap with other explanations.${notDriven}`;
+  }
+  return `This route did not show a strong ASD-aligned pattern.${notDriven}`;
+}
+
+function plainReadText(profile, drivers) {
+  const driverSet = new Set(drivers);
+  if (driverSet.has("sensory regulation") && driverSet.has("pattern and structure")) {
+    return "Plain read: this looked like \"I need things to make sense before I can relax.\"";
+  }
+  if (driverSet.has("social reading") && driverSet.has("sensory regulation")) {
+    return "Plain read: this looked like careful entry into busy or socially uncertain moments.";
+  }
+  if (driverSet.has("social reading")) {
+    return "Plain read: this looked like watching for the shape of a social moment before stepping in.";
+  }
+  if (driverSet.has("imagination and play")) {
+    return "Plain read: this route used story and pretend play to make the village feel meaningful.";
+  }
+  if (driverSet.has("novelty sampling")) {
+    return "Plain read: this route leaned toward exploring lively, new, or open-ended options.";
+  }
+  return "Plain read: this short route did not settle into one strong pattern yet.";
+}
+
+function assessmentRecord(targetModel = model) {
+  const profile = targetModel === model ? currentProfile() : profileFor(targetModel);
+  const axis = axisResult(profile);
+  const shownScore = displayScore(axis);
+  const publicProxy = publicProxyProjection(profile);
+  return {
+    schemaVersion: ASSESSMENT_SCHEMA_VERSION,
+    target: { ...ASSESSMENT_TARGET },
+    projection: {
+      score: Number(profile.projection.score.toFixed(4)),
+      uncertainty: Number(profile.projection.uncertainty.toFixed(4)),
+      band: profile.band,
+    },
+    display: {
+      label: "Lantern Tide score",
+      score100: shownScore.score,
+      likelyRange100: [shownScore.low, shownScore.high],
+      confidence: profile.credibility.confidence,
+    },
+    credibility: {
+      label: profile.credibility.label,
+      confidence: profile.credibility.confidence,
+      sampledDomains: profile.credibility.sampledDomains,
+      flags: profile.credibility.flags,
+    },
+    sourceDomains: profile.sourceDomains.map((domain) => ({
+      id: domain.id,
+      label: domain.label,
+      raw: Number(domain.raw.toFixed(4)),
+      value: Number(domain.value.toFixed(4)),
+      level: domain.level,
+    })),
+    evidence: Object.fromEntries(Object.entries(profile.evidence)
+      .map(([dim, value]) => [dim, Number(value.toFixed(4))])),
+    publicProxy,
+    route: {
+      eventCount: targetModel.events?.length || targetModel.simulatedEventCount || 0,
+      events: (targetModel.events || []).map((event) => ({
+        objectId: event.objectId,
+        label: event.label,
+        evidence: event.evidence,
+      })),
+    },
+  };
+}
+
+function publicProxyProjection(profile) {
+  const domains = profile.sourceDomains || sourceDomainCoverage(profile);
+  const values = Object.fromEntries(domains.map((domain) => [domain.id, domain.value]));
+  const score = Object.entries(PUBLIC_PROXY_PRIOR.domainWeights)
+    .reduce((sum, [id, weight]) => sum + (values[id] || 0) * weight, 0);
+  return {
+    sourceId: PUBLIC_PROXY_PRIOR.sourceId,
+    basis: PUBLIC_PROXY_PRIOR.basis,
+    caveat: PUBLIC_PROXY_PRIOR.caveat,
+    score: Number(score.toFixed(4)),
+    domainWeights: { ...PUBLIC_PROXY_PRIOR.domainWeights },
+  };
+}
+
+function assessmentRecordJson(targetModel = model) {
+  return JSON.stringify(assessmentRecord(targetModel), null, 2);
+}
+
+async function copyAssessmentRecord() {
+  await navigator.clipboard.writeText(assessmentRecordJson());
+  showToast("Reflection data copied.");
+}
+
+function downloadAssessmentRecord() {
+  const blob = new Blob([assessmentRecordJson()], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "lantern-tide-assessment-record.json";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  showToast("Reflection data downloaded.");
+}
+
+function pilotFieldValue(id) {
+  const element = document.getElementById(id);
+  return element ? element.value.trim() : "";
+}
+
+function optionalNumber(value) {
+  if (!value) return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? clamp(parsed) : null;
+}
+
+function pilotValidationRecord() {
+  return {
+    participantId: pilotFieldValue("pilotParticipantId") || null,
+    game: assessmentRecord(),
+    reference: {
+      instrument: pilotFieldValue("pilotComparatorName") || null,
+      global: optionalNumber(pilotFieldValue("pilotComparatorScore")),
+      rawScore: pilotFieldValue("pilotComparatorRaw") || null,
+    },
+    context: {
+      replayIntent: pilotFieldValue("pilotReplayIntent") || null,
+      ageRange: pilotFieldValue("pilotAgeRange") || null,
+      priorStatus: pilotFieldValue("pilotPriorStatus") || null,
+    },
+    feedback: {
+      choicesFeltNatural: optionalNumber(pilotFieldValue("pilotNaturalness")),
+      choicesFeltLeading: optionalNumber(pilotFieldValue("pilotLeadingness")),
+      notes: pilotFieldValue("pilotNotes") || null,
+    },
+  };
+}
+
+function pilotValidationRecordJson() {
+  return JSON.stringify(pilotValidationRecord(), null, 2);
+}
+
+async function copyPilotRecord() {
+  await navigator.clipboard.writeText(pilotValidationRecordJson());
+  showToast("Pilot record copied.");
+}
+
+function downloadPilotRecord() {
+  const blob = new Blob([pilotValidationRecordJson()], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "lantern-tide-validation-record.json";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  showToast("Pilot record downloaded.");
 }
 
 function formatList(items) {
@@ -2900,22 +3615,28 @@ function showProfile() {
   const pattern = playPatternItems(profile);
   const name = playProfileName(profile);
   const drivers = signalDrivers(profile);
+  const domains = profile.sourceDomains || sourceDomainCoverage(profile);
+  const credibility = profile.credibility || reflectionCredibility(profile, domains, model);
+  const shownScore = displayScore(axis);
   document.getElementById("profileBody").innerHTML = `
     <section class="profile-card profile-result">
-      <p class="eyebrow">Lantern Tide Summary</p>
+      <p class="eyebrow">Pattern reflection</p>
       <h2>${escapeHtml(name)}</h2>
       <p>${escapeHtml(profileLeadText(profile, axis, drivers))}</p>
       <ul class="summary-list">${pattern.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}</ul>
     </section>
-    <section class="profile-card axis-card">
-      <div class="axis-header">
+    <section class="profile-card axis-card score-card">
+      <div class="score-layout">
         <div>
-          <p class="eyebrow">Play signal range</p>
-          <h2>${axis.label.charAt(0).toUpperCase() + axis.label.slice(1)}</h2>
+          <p class="eyebrow">Lantern Tide score</p>
+          <h2>${shownScore.score}/100</h2>
+          <p>Likely range: <strong>${shownScore.low}-${shownScore.high}</strong></p>
+          <p>Confidence: <strong>${escapeHtml(credibility.confidence)}</strong></p>
         </div>
-        <div class="axis-stats">
-          <span>Mean ${axis.mean.toFixed(2)}</span>
-          <span>Variance ${axis.variance.toFixed(2)}</span>
+        <div class="score-copy">
+          <p>${escapeHtml(scoreMeaningText(profile, drivers))}</p>
+          <p><strong>Mostly driven by:</strong> ${escapeHtml(formatList(drivers))}.</p>
+          <p>${escapeHtml(plainReadText(profile, drivers))}</p>
         </div>
       </div>
       <div class="axis-track" aria-hidden="true">
@@ -2923,9 +3644,35 @@ function showProfile() {
         <span class="axis-mean" style="left:${axis.mean * 100}%"></span>
       </div>
       <div class="axis-labels"><span>lower</span><span>more aligned</span></div>
-      <p>This is the current ASD-aligned estimate from the play trace, shown as a range because a short route leaves uncertainty.</p>
-      <p><strong>Strongest drivers:</strong> ${escapeHtml(formatList(drivers))}.</p>
-      <p class="profile-note">This is a play-based reflection from this short village scene, not a diagnosis.</p>
+      <p class="profile-note">This is a game-based trait estimate from this short village route, not a diagnosis or a standard AQ, RAADS-R, or GQ-ASC score.</p>
+      <div class="assessment-actions" aria-label="Assessment data actions">
+        <button id="copyAssessmentBtn" class="ghost-button" type="button">Copy reflection data</button>
+        <button id="downloadAssessmentBtn" class="ghost-button" type="button">Download reflection data</button>
+      </div>
+    </section>
+    <section class="profile-card domain-card">
+      <div class="profile-section-header">
+        <div>
+          <p class="eyebrow">Source domain coverage</p>
+          <h2>${escapeHtml(credibility.label)}</h2>
+        </div>
+        <span class="coverage-pill">${credibility.sampledDomains}/5 sampled · ${escapeHtml(credibility.confidence)} confidence</span>
+      </div>
+      <p>${escapeHtml(credibility.text)}</p>
+      <div class="domain-list">
+        ${domains.map((domain) => `
+          <div class="domain-row">
+            <div class="domain-heading">
+              <span>${escapeHtml(domain.label)}</span>
+              <span>${escapeHtml(domain.level)}</span>
+            </div>
+            <div class="domain-meter" aria-hidden="true"><span style="width:${Math.round(domain.value * 100)}%"></span></div>
+            <p>${escapeHtml(domain.note)}</p>
+            <p class="domain-confounds">Guards: ${escapeHtml(formatList(domain.confounds.slice(0, 3)))}.</p>
+          </div>
+        `).join("")}
+      </div>
+      ${credibility.flags.length ? `<div class="flag-list">${credibility.flags.map((flag) => `<span class="flag">${escapeHtml(flag)}</span>`).join("")}</div>` : ""}
     </section>
     <section class="profile-card">
       <h2>Morning Path</h2>
@@ -2946,6 +3693,74 @@ function showProfile() {
       <h2>Route Moments</h2>
       <ul class="summary-list">${moments.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}</ul>
     </section>
+    <details class="profile-card pilot-card">
+      <summary>Pilot study export</summary>
+      <p>This creates a validation record by pairing the game route with an outside comparator score. Leave fields blank when they are not being collected.</p>
+      <div class="pilot-grid">
+        <label class="pilot-field">
+          <span>Participant ID</span>
+          <input id="pilotParticipantId" type="text" autocomplete="off" placeholder="optional local ID">
+        </label>
+        <label class="pilot-field">
+          <span>Comparator name</span>
+          <input id="pilotComparatorName" type="text" autocomplete="off" placeholder="measure or review source">
+        </label>
+        <label class="pilot-field">
+          <span>Comparator score 0-1</span>
+          <input id="pilotComparatorScore" type="number" min="0" max="1" step="0.01" inputmode="decimal" placeholder="0.00">
+        </label>
+        <label class="pilot-field">
+          <span>Raw comparator score</span>
+          <input id="pilotComparatorRaw" type="text" autocomplete="off" placeholder="optional">
+        </label>
+        <label class="pilot-field">
+          <span>Play intent</span>
+          <select id="pilotReplayIntent">
+            <option value="">Not collected</option>
+            <option value="natural-play">Natural play</option>
+            <option value="self-exploration">Self exploration</option>
+            <option value="role-play">Role-play / testing</option>
+          </select>
+        </label>
+        <label class="pilot-field">
+          <span>Age range</span>
+          <select id="pilotAgeRange">
+            <option value="">Not collected</option>
+            <option value="under-18">Under 18</option>
+            <option value="18-24">18-24</option>
+            <option value="25-34">25-34</option>
+            <option value="35-44">35-44</option>
+            <option value="45-plus">45+</option>
+          </select>
+        </label>
+        <label class="pilot-field">
+          <span>Prior status</span>
+          <select id="pilotPriorStatus">
+            <option value="">Not collected</option>
+            <option value="diagnosed">Diagnosed autistic</option>
+            <option value="self-suspecting">Self-suspecting</option>
+            <option value="not-suspecting">Not currently suspecting</option>
+            <option value="prefer-not">Prefer not to say</option>
+          </select>
+        </label>
+        <label class="pilot-field">
+          <span>Choices felt natural 0-1</span>
+          <input id="pilotNaturalness" type="number" min="0" max="1" step="0.01" inputmode="decimal" placeholder="0.00">
+        </label>
+        <label class="pilot-field">
+          <span>Choices felt leading 0-1</span>
+          <input id="pilotLeadingness" type="number" min="0" max="1" step="0.01" inputmode="decimal" placeholder="0.00">
+        </label>
+      </div>
+      <label class="pilot-field pilot-notes">
+        <span>Notes</span>
+        <textarea id="pilotNotes" rows="3" placeholder="confusing, stereotyped, natural, missing, or useful moments"></textarea>
+      </label>
+      <div class="assessment-actions" aria-label="Pilot data actions">
+        <button id="copyPilotRecordBtn" class="ghost-button" type="button">Copy pilot record</button>
+        <button id="downloadPilotRecordBtn" class="ghost-button" type="button">Download pilot record</button>
+      </div>
+    </details>
     ${remaining.length ? `
       <section class="profile-card">
         <h2>Still Happening</h2>
@@ -3023,12 +3838,30 @@ const SCENARIOS = [
     },
     expects: [["profile is not higher", (p) => p.band !== "higher"]],
   },
+  {
+    name: "Imagination Source Coverage",
+    run: () => {
+      const m = createModel();
+      applyDelta(m.evidence, { imagination_play: 0.22, novelty_breadth: 0.03 });
+      return profileFor(m);
+    },
+    expects: [
+      ["imagination/play domain sampled", (p) => p.sourceDomains.some((domain) => domain.id === "imagination" && domain.value >= 0.30)],
+      ["imagination alone is not higher profile", (p) => p.band !== "higher"],
+    ],
+  },
 ];
 
 function profileFor(targetModel) {
   const projection = projectAlignment(targetModel.evidence);
   const flags = profileFlags(targetModel.evidence, projection.uncertainty);
-  return { projection, flags, band: profileBand(projection.band, flags), evidence: { ...targetModel.evidence }, state: { ...targetModel.state } };
+  return annotateProfile({
+    projection,
+    flags,
+    band: profileBand(projection.band, flags),
+    evidence: { ...targetModel.evidence },
+    state: { ...targetModel.state },
+  }, targetModel);
 }
 
 function runScenarioChecks() {
@@ -3060,6 +3893,13 @@ function exportScenarioResults() {
   const auditIssues = auditInteractionCoverage();
   return JSON.stringify({
     exportedAt: new Date().toISOString(),
+    target: ASSESSMENT_TARGET,
+    sourceDomainModel: SOURCE_DOMAIN_MODEL.map((domain) => ({
+      id: domain.id,
+      label: domain.label,
+      signals: domain.signals,
+      confounds: domain.confounds,
+    })),
     auditIssues,
     results: lastScenarioResults.map((result) => ({
       name: result.name,
@@ -3068,6 +3908,12 @@ function exportScenarioResults() {
       score: Number(result.profile.projection.score.toFixed(4)),
       uncertainty: Number(result.profile.projection.uncertainty.toFixed(4)),
       flags: result.profile.flags,
+      sourceDomains: result.profile.sourceDomains.map((domain) => ({
+        id: domain.id,
+        value: Number(domain.value.toFixed(4)),
+        level: domain.level,
+      })),
+      credibility: result.profile.credibility.label,
       checks: result.checks,
     })),
   }, null, 2);
@@ -3231,6 +4077,16 @@ document.getElementById("downloadResultsBtn").addEventListener("click", () => {
   link.click();
   link.remove();
   URL.revokeObjectURL(url);
+});
+document.getElementById("profileBody").addEventListener("click", async (event) => {
+  const copyButton = event.target.closest("#copyAssessmentBtn");
+  const downloadButton = event.target.closest("#downloadAssessmentBtn");
+  const copyPilotButton = event.target.closest("#copyPilotRecordBtn");
+  const downloadPilotButton = event.target.closest("#downloadPilotRecordBtn");
+  if (copyButton) await copyAssessmentRecord();
+  if (downloadButton) downloadAssessmentRecord();
+  if (copyPilotButton) await copyPilotRecord();
+  if (downloadPilotButton) downloadPilotRecord();
 });
 
 renderHud();

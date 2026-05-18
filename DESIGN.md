@@ -12,6 +12,8 @@ play situation -> observable choice/route behavior -> evidence-vector update -> 
 
 The scalar estimate is intentionally secondary. The vector and profile flags matter more than a single number.
 
+Current measurement target: a play-based reflection of adult-women autism-trait domains. It is meant to help players notice patterns and decide whether more formal self-assessment or clinical evaluation might be worth exploring. It is not meant to classify, diagnose, or reproduce the source questionnaire total.
+
 ## Product Boundary
 
 Lantern Tide is:
@@ -38,8 +40,8 @@ The source instrument uses a 4-point agree/disagree questionnaire, five componen
 
 Current alignment is partial:
 
-- Camouflaging, sensory sensitivities, socializing, and interests are represented indirectly.
-- Imagination and play is weakly represented and should be expanded if source alignment matters.
+- Camouflaging, sensory sensitivities, socializing, interests, and imagination/play are represented indirectly.
+- Imagination/play is sampled through story cards, the story lantern, and symbolic object play, but it is still lighter than the source component.
 - Validated questionnaire scoring is not implemented.
 
 Do not describe the app as scoring the GQ-ASC unless an explicit licensed questionnaire mode is added and kept separate from the behavioral game profile.
@@ -61,6 +63,12 @@ Core preparations:
 
 Side interactions are not filler. They provide contrast and additional evidence around sensory regulation, social monitoring, novelty sampling, and pattern-focused behavior.
 
+Newer assessment-specific side interactions:
+
+- Notice board: distinguishes direct helping, social monitoring, and concrete role/schedule structure.
+- Story cards and story lantern: sample explicit imagination/play separately from novelty.
+- Glass loom: samples systemizing, repeat-tuning, context-switch friction, and novelty sampling.
+
 ## Evidence Vector
 
 `app.js` tracks these dimensions:
@@ -78,8 +86,28 @@ Side interactions are not filler. They provide contrast and additional evidence 
 | `ambiguity_avoidance` | Preference for clearer roles, timing, schedules, or concrete affordances. |
 | `novelty_breadth` | Broad sampling and curiosity; treated mainly as a confound guard. |
 | `social_drive` | Desire to approach socially; context, not ASD evidence by itself. |
+| `imagination_play` | Story, pretend play, symbolic making; used for source-domain coverage, not the scalar ASD-axis projection. |
 
 The current scalar projection weights process dimensions, then subtracts for novelty breadth and pure social drive so that extroversion, completionism, and novelty seeking do not automatically look like ASD alignment.
+
+## Construct Coverage Matrix
+
+`SOURCE_DOMAIN_MODEL` in `app.js` is the canonical construct map. Each source domain has:
+
+- weighted evidence dimensions,
+- a sampling threshold,
+- player-facing notes,
+- explicit confounds to guard against.
+
+Current source domains:
+
+| Source domain | Main evidence dimensions | Main confounds |
+|---|---|---|
+| Imagination and play | `imagination_play` | Novelty without story, art preference, playful mood. |
+| Camouflaging | `masking_adaptation`, `social_monitoring_cost`, `social_prediction_uncertainty` | Ordinary politeness, shyness, new-place caution. |
+| Sensory sensitivities | `sensory_accumulation`, `regulation_dependency` | Fatigue, headache, preference for quiet. |
+| Socializing | `social_drive`, social-monitoring dimensions, sensory load | Extroversion, introversion, task urgency. |
+| Interests | `focused_loop_depth`, `systemizing_structure`, `context_switch_friction`, `novelty_breadth` | Completionism, puzzle preference, novelty seeking. |
 
 ## Confound Guards
 
@@ -105,12 +133,43 @@ The end summary should be satisfying to a player who wants reflection, but it sh
 Current summary layers:
 
 - A route style name such as `Pattern-Maker`, `Quiet Regulator`, or `Careful Connector`.
+- Source-domain coverage for the five adult-women GQ-ASC components.
+- A credibility/read label based on route length, domain breadth, single-domain spikes, thin evidence, and confound flags.
 - A play signal range with mean and variance.
 - Strongest driver families.
 - Morning path observations.
 - How the village adapted.
 - Concrete festival outcome.
 - A note that this is not a diagnosis.
+
+## Calibration Path
+
+The prototype now exposes an `assessmentRecord()` shape in `app.js` and lets the ending reflection copy/download that record. The same ending screen has a collapsed pilot export panel for pairing the route with comparator/context fields. A useful validation dataset would collect:
+
+- the game route record,
+- source-domain vector values,
+- summary score/range,
+- a separately administered validated questionnaire or clinician-reviewed comparator,
+- optional context variables such as age range, diagnosis status, and replay/role-play intent.
+
+The current weights are hand-tuned. `calibration_runner.js` can fit ridge-regression weights from paired game/comparator records and report error against a mean-only baseline, leave-one-out error, and source-domain correlations. Those outputs are tuning diagnostics, not validation by themselves. A calibration study should fit or revise the weights against external outcomes, then retest confound routes and order-stability routes before making stronger claims.
+
+## Public Data Prior
+
+`public_data_prior.js` maps the public UCI Adult Autism Screening AQ-10 dataset into the game's source domains and generates `calibration_prior.public.json`. This gives a weak adult-screening anchor and female-subset statistics.
+
+The prior is not allowed to replace the female-oriented design target. AQ-10 does not adequately cover camouflaging, gendered social scripts, subtle adaptation, or internalized sensory load. Those constructs stay intentionally oversampled in the game even when public data is used for broad sanity checks.
+
+## Reliability Checks
+
+`scenario_runner.js` now includes:
+
+- scenario checks for core scoring expectations,
+- scripted playthroughs covering broad and narrow source-domain routes,
+- simulated player archetypes,
+- reliability pairs that replay same-intent routes in different orders and compare domain profiles.
+
+Passing these checks is not validation. It only prevents obvious regressions in the prototype logic.
 
 ## UI Principles
 
@@ -132,8 +191,9 @@ Guidelines:
 - Movement is click/tap-to-walk, not physics-heavy exploration.
 - The evidence model is hand-tuned and unvalidated.
 - The app does not administer or score the original GQ-ASC questionnaire.
-- Imagination/play is underrepresented relative to the adult-women GQ-ASC components.
+- Imagination/play is now explicitly sampled, but still needs more situations before it should be treated as robust.
 - The interaction set is small, so uncertainty should remain visible.
+- No real play/comparator calibration dataset has been collected yet, though export, pilot collection, public proxy-data, and offline fitting tools now exist.
 - Results are useful for design feedback, not clinical interpretation.
 
 ## Maintenance Notes
@@ -142,4 +202,4 @@ Guidelines:
 - Choice text, result text, evidence deltas, state deltas, and quest completion live together in each object.
 - `auditInteractionCoverage()` catches common content/scoring mistakes.
 - `SCENARIOS` plus `scenario_runner.js` should be updated when scoring logic changes.
-- Keep `index.html` asset build tags current when public caching hides changes.
+- The public page should use clean asset URLs; use the no-cache local server for development when browser caching hides changes.

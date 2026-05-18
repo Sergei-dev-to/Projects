@@ -29,7 +29,7 @@ The paper also cautions that the total-score cutoff should be interpreted carefu
 
 | Source component | Lantern Tide status | Current implementation notes |
 |---|---|---|
-| Imagination and play | Weak / mostly missing | The game has fantasy setting and object play, but it does not currently measure fantasy, fiction interest, or childhood imaginative play. |
+| Imagination and play | Partial but light | `imagination_play` now captures story cards, story-lantern choices, and symbolic object-play choices. It still does not measure the source's exact fantasy, fiction interest, or childhood imaginative-play items. |
 | Camouflaging | Partial | `masking_adaptation`, `social_monitoring_cost`, and observation-before-engagement choices cover some camouflaging-adjacent behavior. |
 | Sensory sensitivities | Partial | `sensory_accumulation`, `regulation_dependency`, quiet spaces, bell load, comfort objects, and recovery loops cover some sensory-regulation behavior. |
 | Socializing | Partial | Social approach, watching before joining, social fatigue/load, support requests, and repair-like routing are represented indirectly. |
@@ -53,6 +53,7 @@ Therefore the app must continue to describe itself as `GQ-ASC-inspired`, not as 
 Useful changes if source alignment becomes a priority:
 
 - Add an explicit optional questionnaire mode that presents licensed/source-approved items and calculates the original total separately.
-- Add more play situations for imagination/play and interest content, because those source components are underrepresented in the current game.
+- Add more play situations for imagination/play and interest content, because those source components remain thinner than social/sensory content.
+- Collect a calibration dataset that pairs game traces with separately administered validated measures or clinician-reviewed comparators.
 - Keep behavioral play scoring separate from questionnaire scoring unless a validation study shows that the game trace predicts the source scores.
 - Keep profile output and uncertainty visible; do not replace it with a single cutoff-based label.

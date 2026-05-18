@@ -687,10 +687,106 @@ details.profile-card summary {
   margin-top: 14px;
 }
 
+.profile-section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: start;
+}
+
+.coverage-pill {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: #e9f0ef;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.domain-card {
+  border-color: rgba(45, 103, 118, 0.24);
+}
+
+.domain-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.domain-row {
+  display: grid;
+  gap: 6px;
+}
+
+.domain-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.domain-heading span:last-child {
+  color: var(--muted);
+  text-align: right;
+}
+
+.domain-meter {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(32, 28, 23, 0.12);
+}
+
+.domain-meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), #4d67a9);
+}
+
+.domain-row p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.38;
+}
+
+.domain-row .domain-confounds {
+  color: rgba(95, 105, 112, 0.86);
+  font-size: 12px;
+}
+
 .axis-card {
   border-color: rgba(77, 103, 169, 0.28);
   background:
     linear-gradient(135deg, rgba(255, 253, 247, 0.98), rgba(233, 240, 239, 0.76));
+}
+
+.score-layout {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.42fr) 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.score-card h2 {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.score-card p {
+  line-height: 1.45;
+}
+
+.score-copy {
+  display: grid;
+  gap: 7px;
+}
+
+.score-copy p {
+  margin: 0;
 }
 
 .axis-header {
@@ -757,6 +853,58 @@ details.profile-card summary {
   padding-left: 10px;
 }
 
+.assessment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.assessment-actions button {
+  min-height: 40px;
+}
+
+.pilot-card {
+  background: rgba(255, 253, 247, 0.86);
+}
+
+.pilot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.pilot-field {
+  display: grid;
+  gap: 5px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.pilot-field input,
+.pilot-field select,
+.pilot-field textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fffdf7;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pilot-field textarea {
+  resize: vertical;
+}
+
+.pilot-notes {
+  margin-top: 10px;
+}
+
 .summary-list {
   display: grid;
   gap: 9px;
@@ -808,6 +956,14 @@ details.profile-card summary {
 
   .hud-actions {
     width: 100%;
+  }
+
+  .pilot-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .score-layout {
+    grid-template-columns: 1fr;
   }
 
   .hud-actions button,
