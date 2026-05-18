@@ -173,6 +173,72 @@ const QUEST_DETAILS = {
   },
 };
 
+const RUN_THEMES = [
+  {
+    id: "lantern-tide",
+    label: "Lantern Tide morning",
+    prompt: "Lantern Tide is tonight.",
+    hint: "Lanterns, bells, shells, quiet corners, and people are all part of the morning. Follow what catches your eye.",
+    story: "The market is already moving. Lanterns sway, shells glint, bells ring, and quiet paths branch away from the square.",
+  },
+  {
+    id: "rain-market",
+    label: "Rain market morning",
+    prompt: "Rain has moved the festival prep under awnings.",
+    hint: "People are adjusting plans around puddles, quiet corners, damp ribbons, and sheltered worktables.",
+    story: "Soft rain taps the awnings. The village is still preparing, but everyone has shifted a little closer together.",
+  },
+  {
+    id: "beach-wind",
+    label: "Windy beach morning",
+    prompt: "A sea wind keeps changing the morning plans.",
+    hint: "Shells, bells, lanterns, and workshop pieces need small adjustments before the tide turns.",
+    story: "Wind moves through Harborwake in bright little gusts. Lanterns tilt, shells flash, and people keep rechecking their work.",
+  },
+  {
+    id: "workshop-open",
+    label: "Workshop open morning",
+    prompt: "The workshop is open while the village prepares.",
+    hint: "Colored glass, helper cards, lantern lines, and quieter paths offer different ways into the morning.",
+    story: "The Tide-Glass Workshop has its doors open. Light spills over the tables while the village gathers pieces for dusk.",
+  },
+];
+
+const ALWAYS_ACTIVE_OBJECTS = ["mira", "lio", "oren"];
+
+const STRUCTURED_SCENE_BUCKETS = [
+  {
+    id: "social-reading",
+    label: "social reading",
+    min: 1,
+    objectIds: ["noticeboard", "ribbonstall", "storylantern", "saff", "nia"],
+  },
+  {
+    id: "sensory-regulation",
+    label: "sensory regulation",
+    min: 1,
+    objectIds: ["saff", "fountain", "mossycedar", "tidepool", "shell"],
+  },
+  {
+    id: "structure-focus",
+    label: "pattern and structure",
+    min: 1,
+    objectIds: ["lanternline", "glassloom", "threadbasket", "workshopwindow", "noticeboard"],
+  },
+  {
+    id: "imagination-play",
+    label: "imagination and play",
+    min: 1,
+    objectIds: ["storylantern", "driftwoodstage", "storycards"],
+  },
+  {
+    id: "novelty-confound",
+    label: "novelty and exploration",
+    min: 1,
+    objectIds: ["ribbonstall", "tidepool", "workshopwindow", "storycards", "threadbasket", "nia"],
+  },
+];
+
 const VILLAGE_THREADS = [
   { id: "mira", quest: "lantern", title: "Mira", open: QUEST_DETAILS.lantern.open, changed: QUEST_DETAILS.lantern.done },
   { id: "saff", title: "Saff", open: "Saff is testing festival bells in the square." },
@@ -1051,7 +1117,7 @@ let playerHasMoved = false;
 let arrivalDismissed = true;
 let lastScenarioResults = [];
 let frame = 0;
-let storyText = "The market is already moving. Lanterns sway, shells glint, bells ring, and quiet paths branch away from the square.";
+let storyText = model.runPlan.theme.story;
 let camera = { x: 0, y: 0, scale: 1 };
 let cameraLookOffset = { x: 0, y: 0 };
 let mapDrag = null;
@@ -1069,6 +1135,7 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 function createModel() {
+  const runPlan = createRunPlan();
   return {
     state: { ...initialState },
     evidence: Object.fromEntries(EVIDENCE_DIMS.map((dim) => [dim, 0])),
@@ -1076,10 +1143,74 @@ function createModel() {
     completed: {},
     relationships: {},
     pouch: {},
-    objectState: {},
+    objectState: objectStateForRunPlan(runPlan),
     worldFlags: {},
+    runPlan,
     traces: createTraceState(),
   };
+}
+
+function createRunPlan(seed = Date.now() + Math.floor(Math.random() * 100000)) {
+  const rng = seededRandom(seed);
+  const theme = pickWithRng(RUN_THEMES, rng);
+  const active = new Set(ALWAYS_ACTIVE_OBJECTS);
+  const buckets = STRUCTURED_SCENE_BUCKETS.map((bucket) => {
+    const selected = [];
+    const pool = shuffleWithRng(bucket.objectIds, rng);
+    while (selected.length < bucket.min && pool.length) {
+      const id = pool.shift();
+      selected.push(id);
+      active.add(id);
+    }
+    return { id: bucket.id, label: bucket.label, objectIds: selected };
+  });
+  const optionalPool = shuffleWithRng(
+    STRUCTURED_SCENE_BUCKETS.flatMap((bucket) => bucket.objectIds).filter((id, index, list) => list.indexOf(id) === index),
+    rng
+  );
+  while (active.size < 11 && optionalPool.length) {
+    active.add(optionalPool.shift());
+  }
+  return {
+    seed,
+    theme,
+    activeObjectIds: [...active],
+    buckets,
+  };
+}
+
+function seededRandom(seed) {
+  let state = seed >>> 0;
+  return () => {
+    state = (1664525 * state + 1013904223) >>> 0;
+    return state / 0x100000000;
+  };
+}
+
+function pickWithRng(list, rng) {
+  return list[Math.floor(rng() * list.length)];
+}
+
+function shuffleWithRng(list, rng) {
+  const copy = [...list];
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rng() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function objectStateForRunPlan(runPlan) {
+  const active = new Set(runPlan.activeObjectIds);
+  return Object.fromEntries(
+    OBJECTS
+      .filter((object) => !active.has(object.id))
+      .map((object) => [object.id, "removed"])
+  );
+}
+
+function isObjectActive(id) {
+  return model.objectState[id] !== "removed";
 }
 
 function createTraceState() {
@@ -1201,7 +1332,7 @@ function startingPlayer() {
 
 function updateNearest() {
   nearest = OBJECTS
-    .filter((object) => model.objectState[object.id] !== "removed")
+    .filter((object) => isObjectActive(object.id))
     .map((object) => ({ object, dist: distance(player, object) }))
     .filter(({ dist }) => dist < interactionRange())
     .sort((a, b) => a.dist - b.dist)[0]?.object || null;
@@ -1386,7 +1517,7 @@ function draw() {
   drawFestivalChanges();
 
   OBJECTS.forEach((object) => {
-    if (model.objectState[object.id] === "removed") return;
+    if (!isObjectActive(object.id)) return;
     drawObjectAura(object);
     const completed = object.choices.some((choice) => choice.complete && model.completed[choice.complete]);
     const remembered = Boolean(model.relationships[object.id] || model.worldFlags[object.id]);
@@ -3036,10 +3167,10 @@ function renderHud() {
   topProfileBtn.hidden = completedCount !== 3;
   topProfileBtn.textContent = "Watch Lanterns Light";
   document.getElementById("profileBtn").textContent = completedCount === 3 ? "Watch Lanterns Light" : "See Morning Path";
-  document.getElementById("dayPrompt").textContent = completedCount === 3 ? "The village is ready." : "Lantern Tide is tonight.";
+  document.getElementById("dayPrompt").textContent = completedCount === 3 ? "The village is ready." : model.runPlan.theme.prompt;
   document.getElementById("dayHint").textContent = completedCount === 3
     ? "The lanterns are set. You can still wander, talk, rest, or finish the morning when you want."
-    : "Lanterns, bells, shells, quiet corners, and people are all part of the morning. Follow what catches your eye.";
+    : model.runPlan.theme.hint;
   document.getElementById("storyLog").textContent = storyText;
   renderVillageThreads();
   const items = pouchItems();
@@ -3051,7 +3182,7 @@ function renderHud() {
 }
 
 function renderVillageThreads() {
-  document.getElementById("villageThreads").innerHTML = VILLAGE_THREADS.map((thread) => {
+  document.getElementById("villageThreads").innerHTML = VILLAGE_THREADS.filter((thread) => isObjectActive(thread.id)).map((thread) => {
     const changed = thread.quest ? Boolean(model.completed[thread.quest]) : Boolean(model.relationships[thread.id] || model.worldFlags[thread.id]);
     const note = changed ? threadTextAfterChange(thread) : thread.open;
     const status = thread.quest
@@ -3619,6 +3750,13 @@ function assessmentRecord(targetModel = model) {
       likelyRange100: [shownScore.low, shownScore.high],
       confidence: profile.credibility.confidence,
     },
+    runPlan: {
+      seed: targetModel.runPlan?.seed,
+      theme: targetModel.runPlan?.theme?.id,
+      themeLabel: targetModel.runPlan?.theme?.label,
+      activeObjectIds: targetModel.runPlan?.activeObjectIds || [],
+      sampledBuckets: targetModel.runPlan?.buckets || [],
+    },
     credibility: {
       label: profile.credibility.label,
       confidence: profile.credibility.confidence,
@@ -3981,7 +4119,7 @@ function resetGame() {
   actionTarget = null;
   playerHasMoved = false;
   arrivalDismissed = true;
-  storyText = "The market is already moving. Lanterns sway, shells glint, bells ring, and quiet paths branch away from the square.";
+  storyText = model.runPlan.theme.story;
   document.getElementById("toast").hidden = true;
   document.getElementById("actionButton").hidden = true;
   renderHud();
@@ -4189,7 +4327,7 @@ canvas.addEventListener("click", (event) => {
   const screenX = ((event.clientX - rect.left) / rect.width) * canvas.width;
   const screenY = ((event.clientY - rect.top) / rect.height) * canvas.height;
   const { x, y } = screenToWorld(screenX, screenY);
-  const visibleObjects = OBJECTS.filter((object) => model.objectState[object.id] !== "removed");
+  const visibleObjects = OBJECTS.filter((object) => isObjectActive(object.id));
   const clickedVisible = visibleObjects.find((object) => distance({ x, y }, object) < object.radius + tapExtraRadius());
   if (clickedVisible) {
     playerHasMoved = true;
