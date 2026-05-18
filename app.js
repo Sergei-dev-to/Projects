@@ -2960,7 +2960,10 @@ function renderHud() {
 
   const completedCount = Object.keys(QUESTS).filter((key) => model.completed[key]).length;
   const controls = document.getElementById("morningControls");
+  const topProfileBtn = document.getElementById("topProfileBtn");
   controls.hidden = !playerHasMoved && !hasPlayerHistory();
+  topProfileBtn.hidden = completedCount !== 3;
+  topProfileBtn.textContent = "Watch Lanterns Light";
   document.getElementById("profileBtn").textContent = completedCount === 3 ? "Watch Lanterns Light" : "See Morning Path";
   document.getElementById("dayPrompt").textContent = completedCount === 3 ? "The village is ready." : "Lantern Tide is tonight.";
   document.getElementById("dayHint").textContent = completedCount === 3
@@ -4030,6 +4033,7 @@ canvas.addEventListener("click", (event) => {
 
 document.getElementById("resetBtn").addEventListener("click", resetGame);
 document.getElementById("beginBtn")?.addEventListener("click", dismissArrival);
+document.getElementById("topProfileBtn").addEventListener("click", showProfile);
 document.getElementById("profileBtn").addEventListener("click", showProfile);
 document.getElementById("soundToggle").addEventListener("click", () => {
   if (soundEnabled && document.getElementById("soundPopover").hidden) {
