@@ -393,10 +393,38 @@ h2 {
   background: rgba(234, 243, 237, 0.86);
 }
 
+.thread-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .thread-title {
   display: block;
   color: var(--ink);
   font-weight: 900;
+}
+
+.thread-status {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: rgba(95, 105, 112, 0.12);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.thread-status.done {
+  background: rgba(71, 124, 99, 0.16);
+  color: var(--accent-2);
+}
+
+.thread-status.open {
+  background: rgba(216, 167, 83, 0.18);
+  color: #8a6324;
 }
 
 .thread-text {

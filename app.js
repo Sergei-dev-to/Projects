@@ -1,4 +1,4 @@
-const EVIDENCE_DIMS = [
+﻿const EVIDENCE_DIMS = [
   "social_prediction_uncertainty",
   "social_monitoring_cost",
   "masking_adaptation",
@@ -321,6 +321,7 @@ const OBJECTS = [
         text: "Tap the bell rhythm on the wooden frame.",
         result: "You count the bell pattern with Saff on the wooden frame. The ringing is bright, but the sequence starts to make sense.",
         memory: "counted",
+        soundCue: "bell-pattern",
         evidence: { sensory_accumulation: 0.12, systemizing_structure: 0.08 },
         state: { sensory_load: 0.16, focus_lock: 0.05 },
       },
@@ -328,6 +329,7 @@ const OBJECTS = [
         text: "Step under the cloth awning before the next ring.",
         result: "The awning takes the edge off the bells. Saff nods when you return.",
         memory: "awning",
+        soundCue: "soft-bell",
         evidence: { regulation_dependency: 0.08, sensory_accumulation: 0.06 },
         state: { sensory_load: -0.08, safety_feeling: 0.06 },
       },
@@ -335,6 +337,7 @@ const OBJECTS = [
         text: "Ask Saff to show a pause sign before ringing again.",
         result: "Saff shows you a small hand sign before the next pattern. The pause is visible before the next ring.",
         memory: "schedule",
+        soundCue: "pause-bell",
         evidence: { ambiguity_avoidance: 0.05, regulation_dependency: 0.05 },
         state: { safety_feeling: 0.04 },
       },
@@ -536,6 +539,7 @@ const OBJECTS = [
         text: "Listen for the bell pattern from the fountain.",
         result: "From the fountain, the bells are distant enough to become a pattern instead of a jolt.",
         memory: "bells",
+        soundCue: "distant-bells",
         evidence: { sensory_accumulation: 0.05, systemizing_structure: 0.05, regulation_dependency: 0.04 },
         state: { sensory_load: -0.06, focus_lock: 0.04 },
       },
@@ -782,6 +786,7 @@ const OBJECTS = [
         text: "Listen from the cedar before choosing a path.",
         result: "From under the cedar, the square becomes a softer hum and the paths are easier to choose between.",
         memory: "listen",
+        soundCue: "soft-hum",
         evidence: { ambiguity_avoidance: 0.04, regulation_dependency: 0.03 },
         state: { safety_feeling: 0.05 },
       },
@@ -1191,7 +1196,7 @@ function updateNearest() {
     const completedQuest = completedQuestForObject(nearest);
     const roleLabel = ROLE_LABELS[nearest.role] || nearest.type;
     if (completedQuest) {
-      hint.textContent = `${nearest.name} has a follow-up. ${nextGoalText()}`;
+      hint.textContent = `${nearest.name}'s preparation is done. You can check in, wander, or keep helping elsewhere. ${nextGoalText()}`;
     } else if (model.relationships[nearest.id] && nearest.followup) {
       hint.textContent = `${inputVerb()} ${nearest.name} for a follow-up conversation.`;
     } else {
@@ -1212,9 +1217,14 @@ function inputVerb() {
 }
 
 function actionLabelFor(object) {
+  if (completedQuestForObject(object)) return `Check in with ${object.name}`;
   if (object.type === "npc") return `Talk with ${object.name}`;
   if (object.role === "comfort") return `Visit ${object.name}`;
   return `Inspect ${object.name}`;
+}
+
+function displayNameForObject(object) {
+  return completedQuestForObject(object) ? `${object.name} - done` : object.name;
 }
 
 function dismissArrival() {
@@ -1369,7 +1379,7 @@ function draw() {
       drawWorldObject(object, completed, remembered);
     }
     if (nearest?.id === object.id && shouldShowTargetCue()) {
-      drawNameplate(object.name, object.x, object.y + object.radius + 18);
+      drawNameplate(displayNameForObject(object), object.x, object.y + object.radius + 18);
       drawActionCue(object);
     }
     if (completed || remembered) {
@@ -2402,6 +2412,7 @@ function setDialogueSpeaker(object, kicker) {
 }
 
 function ensureAudioContext() {
+  if (typeof window === "undefined" || !(window.AudioContext || window.webkitAudioContext)) return null;
   if (!audioContext) {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
   }
@@ -2417,7 +2428,8 @@ function setSoundEnabled(enabled) {
   const popover = document.getElementById("soundPopover");
   button.setAttribute("aria-pressed", String(soundEnabled));
   button.setAttribute("aria-label", soundEnabled ? "Turn sound off" : "Turn sound on");
-  button.querySelector("span").textContent = soundEnabled ? "🔊" : "🔇";
+  const icon = button?.querySelector?.("span");
+  if (icon) icon.textContent = soundEnabled ? "🔊" : "🔇";
   popover.hidden = !soundEnabled;
   if (soundEnabled) {
     ensureAudioContext();
@@ -2450,6 +2462,7 @@ function showSoundPopover() {
 function playTone({ frequency, duration = 0.06, volume = 0.018, type = "sine", delay = 0 }) {
   if (!soundEnabled) return;
   const audio = ensureAudioContext();
+  if (!audio) return;
   const start = audio.currentTime + delay;
   const osc = audio.createOscillator();
   const gain = audio.createGain();
@@ -2463,6 +2476,45 @@ function playTone({ frequency, duration = 0.06, volume = 0.018, type = "sine", d
   gain.connect(audio.destination);
   osc.start(start);
   osc.stop(start + duration + 0.02);
+}
+
+function enableSoundForExplicitCue() {
+  if (soundEnabled) {
+    ensureAudioContext();
+    return;
+  }
+  soundEnabled = true;
+  const button = document.getElementById("soundToggle");
+  const popover = document.getElementById("soundPopover");
+  button?.setAttribute?.("aria-pressed", "true");
+  button?.setAttribute?.("aria-label", "Turn sound off");
+  const icon = button?.querySelector?.("span");
+  if (icon) icon.textContent = "🔊";
+  if (popover) popover.hidden = true;
+  ensureAudioContext();
+}
+
+function playEnvironmentalCue(cue) {
+  if (!cue) return;
+  enableSoundForExplicitCue();
+  if (cue === "bell-pattern") {
+    playTone({ frequency: 784, duration: 0.12, volume: 0.30, type: "sine" });
+    playTone({ frequency: 988, duration: 0.10, volume: 0.24, type: "sine", delay: 0.16 });
+    playTone({ frequency: 880, duration: 0.14, volume: 0.26, type: "sine", delay: 0.32 });
+  } else if (cue === "soft-bell") {
+    playTone({ frequency: 660, duration: 0.16, volume: 0.15, type: "sine" });
+    playTone({ frequency: 880, duration: 0.14, volume: 0.11, type: "sine", delay: 0.24 });
+  } else if (cue === "pause-bell") {
+    playTone({ frequency: 740, duration: 0.08, volume: 0.16, type: "sine", delay: 0.20 });
+    playTone({ frequency: 740, duration: 0.12, volume: 0.18, type: "sine", delay: 0.58 });
+  } else if (cue === "distant-bells") {
+    playTone({ frequency: 523.25, duration: 0.18, volume: 0.08, type: "sine" });
+    playTone({ frequency: 659.25, duration: 0.16, volume: 0.07, type: "sine", delay: 0.28 });
+    playTone({ frequency: 587.33, duration: 0.20, volume: 0.06, type: "sine", delay: 0.58 });
+  } else if (cue === "soft-hum") {
+    playTone({ frequency: 174.61, duration: 0.45, volume: 0.06, type: "triangle" });
+    playTone({ frequency: 220, duration: 0.42, volume: 0.04, type: "triangle", delay: 0.16 });
+  }
 }
 
 function playDialogueBlip(index) {
@@ -2660,6 +2712,7 @@ function completedInteractionText(object, questKey) {
 function chooseOption(object, choice) {
   const wasComplete = choice.complete ? Boolean(model.completed[choice.complete]) : false;
   playChoiceSound();
+  playEnvironmentalCue(choice.soundCue);
   const preState = { ...model.state };
   recordInteractionTrace(object, preState);
   applyDelta(model.evidence, choice.evidence);
@@ -2983,10 +3036,16 @@ function renderVillageThreads() {
   document.getElementById("villageThreads").innerHTML = VILLAGE_THREADS.map((thread) => {
     const changed = thread.quest ? Boolean(model.completed[thread.quest]) : Boolean(model.relationships[thread.id] || model.worldFlags[thread.id]);
     const note = changed ? threadTextAfterChange(thread) : thread.open;
+    const status = thread.quest
+      ? (changed ? "Done" : "Open")
+      : (changed ? "Changed" : "");
     return `
       <li class="${changed ? "changed" : ""}">
         <div>
-          <span class="thread-title">${thread.title}</span>
+          <span class="thread-heading">
+            <span class="thread-title">${thread.title}</span>
+            ${status ? `<span class="thread-status ${changed ? "done" : "open"}">${status}</span>` : ""}
+          </span>
           <span class="thread-text">${note}</span>
         </div>
       </li>
@@ -3659,7 +3718,7 @@ function showProfile() {
           <p class="eyebrow">Source domain coverage</p>
           <h2>${escapeHtml(credibility.label)}</h2>
         </div>
-        <span class="coverage-pill">${credibility.sampledDomains}/5 sampled · ${escapeHtml(credibility.confidence)} confidence</span>
+        <span class="coverage-pill">${credibility.sampledDomains}/5 sampled Â· ${escapeHtml(credibility.confidence)} confidence</span>
       </div>
       <p>${escapeHtml(credibility.text)}</p>
       <div class="domain-list">
