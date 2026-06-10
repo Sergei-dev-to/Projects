@@ -1,0 +1,1390 @@
+Kinematic Emergence of the Page Curve in a Local Transverse-Field Ising Model
+Samuel J. W. Jones,1, ∗ M. Basil Altaie,1 and Benjamin T. H. Varcoe1
+School of Physics and Astronomy, University of Leeds, Woodhouse, Leeds LS2 9JT
+(Dated: 7th May 2026)
+
+We present a controllable quantum spin-chain model that reproduces the Page curve (the
+rise-and-fall of bipartite entanglement expected in black-hole evaporation), using only local interactions and a kinematic reduction of subsystem size. Two transverse-field Ising chains are coupled
+to form a pure bipartite state; Hawking-like evaporation is implemented by dynamically shrinking the ‘system’ chain and enlarging the ‘environment’ chain, while unitary real-time evolution is
+simulated with matrix product state (MPS) tensor networks. The characteristic Page curve profile emerges robustly under this controlled subsystem resizing, and notably persists even when the
+explicit Hamiltonian coupling across the boundary is set to zero, demonstrating that shrinking
+Hilbert-space dimension alone can generate Page curve behaviour. We show that the detailed shape
+of the curve depends on internal information dynamics, where operation at criticality yields a smooth
+profile, whereas moving away from criticality distorts entanglement growth and decay. These results position locally interacting spin chains as a realistic platform for probing black-hole-inspired
+information dynamics on current quantum hardware.
+
+INTRODUCTION
+
+Black holes, formed from the gravitational collapse of
+massive bodies, are characterised by only three classical
+parameters: mass, charge, and angular momentum [1–3].
+Wheeler interpreted Israel’s proof [1] to imply that any
+static, uncharged black hole must take the form of the
+Schwarzschild solution, which means that all other information about the collapsed matter becomes inaccessible behind the event horizon [4], he coined this the ‘nohair theorem’. Hawking showed that, near the event horizon of a static black hole, quantum field modes split so
+that positive-energy components escape to infinity, while
+negative-energy components fall into the black hole [5–7].
+This process causes black holes to emit thermal radiation,
+and behave like black bodies. As the Hawking radiation
+carries energy away, the black hole gradually loses mass
+and shrinks, ultimately evaporating entirely, apparently
+without releasing the information that had fallen behind
+the horizon.
+In contrast to this, Page treated gravitational collapse
+as a unitary quantum-mechanical process in which the
+black hole and its surrounding radiation together form a
+pure bipartite state [8, 9]. It was argued that unitarity
+requires this combined system to remain pure throughout
+its evolution and that if the black hole eventually radiates
+away entirely, the final state of the radiation must also be
+pure. From this assumption, he showed that during the
+first half of the black hole’s lifetime, the entanglement
+between the black hole and its environment—measured
+via the von Neumann entropy—should increase as Hawking radiation carries degrees of freedom into the environment. However, once the black hole has lost roughly half
+of its initial degrees of freedom, the trend reverses and
+the entropy begins to decrease. This is because the diminishing black hole Hilbert space can no longer support
+∗ ed20sjwj@leeds.ac.uk
+
+increasing entanglement. During the second half of the
+lifetime, the information is effectively returned to the environment. The resulting rise and fall of entropy is the
+Page curve, shown in Fig.1, and this characteristic behaviour serves as a key diagnostic indicator for this work.
+
+Smax
+
+tPage
+
+I.
+
+SV N
+
+arXiv:2603.17000v3 [quant-ph] 6 May 2026
+
+1
+
+t
+Figure 1. A Schematic of the idealised Page curve which depicts the behaviour of the entropy of the environment over
+time. Time is most intuitively defined as how much Hawking
+radiation has left the black hole until it eventually evaporates. In the first half of the black holes life, the entropy of
+the radiation grows and reaches a maximum until the growth
+is limited by the degrees of freedom present in the black hole
+Hilbert space. This turning point is the Page time. After this
+the entropy of the system decreases and information is recovered. This preserves unitarity and information within the
+system and is a proposed solution to the information paradox
+[9].
+
+Given that Page has proposed a resolution to the apparent destruction of information in black-hole evaporation, our aim is to understand this mechanism more
+deeply and to probe how the Page curve actually emerges.
+Our goal is to construct a tangible model in which a system with decreasing degrees of freedom and non-trivial
+entanglement naturally reproduces the Page curve pro-
+
+2
+file. The original argument presented in [8, 9] establishes
+a kinematic constraint based on subsystem dimensions,
+however it offers little guidance on how additional features, such as the internal information dynamics of the
+system, shape the entropy profile. We therefore seek a
+physically realisable analogue through which entanglement behaviour resembling that seen in Fig.1 can be
+investigated experimentally, motivated by the fact that
+pure quantum states are readily implemented in controllable spin-system platforms.
+
+Page curve-like behaviour has been observed in a variety of Hamiltonian systems and is now an active area
+of research [10–14]. In these works the authors investigate the dynamics of fermionic chains in which the system portion is initially fully filled, and overtime it empties into an environment subsystem. This suggests that
+studying explicit Hamiltonian dynamics may reveal further insight into the conditions under which the Page
+curve arises and the constraints it imposes on entanglement evolution. Our work differs fundamentally from the
+work mentioned above in that we ensure a change in the
+number of degrees of freedom of each subsystem to more
+faithfully align with the initial derivation within [8, 9]. In
+this work, we study a microscopic toy model designed to
+probe entanglement dynamics in a controllable quantum
+many body setting. We implement a dynamic boundary condition that deterministically shrinks the system,
+creating an analogue of Hawking radiation that is motivated by the reduction of degrees of freedom as a black
+hole loses mass. Because Page’s original argument is fundamentally kinematic, the controlled subsystem resizing
+provides a faithful, and directly comparable analogue, to
+Page’s model.
+
+The structure of this work is as follows, in Sec.II we
+provide the framework of the Hamiltonian and spin chain,
+which will directly move the degrees of freedom present
+in each subsystem. In Sec.III, we simulate the time evolution of this system and compute the von Neumann entropy of the system at each time step, showing that the
+entropy profile reproduces the Page curve as illustrated
+in Fig.1. This demonstrates that shrinking the spin chain
+offers a robust platform for exploring entropy dynamics
+on current quantum hardware. Building on this foundation, Secs.IV and V investigate whether internal information dynamics and dynamic coupling across the boundary
+are necessary to generate the required behaviour in the
+entropy. It is found that internal dynamics play an essential role in the form of the entropy profile noting suppression in the entropy growth in certain cases. An additional
+dynamic coupling beyond the kinematic boundary shift
+is not required. In the limit where the dynamic coupling
+is reduced to zero, leaving only the change in degrees of
+freedom, the characteristic Page curve remains.
+
+II.
+
+MODEL
+
+We utilize the Quantum Transverse Field Ising Model
+(TFIM) [15–22], which is comprised solely of local interactions. The TFIM is one of the most thoroughly
+understood frameworks in quantum many-body physics,
+with extensive research supporting its experimental realization in systems such as trapped ions and quantum
+hardware [22–25]. We look to probe the internal information dynamics of this system by initialising the system,
+and the environment, in and out of criticality such that
+we observe differing correlation lengths whilst maintaining experimental feasibility on superconducting chips or
+in trapped ion systems. A common choice of Hamiltonian
+to capture complex information dynamics (expected of a
+black hole [26]) would be the Sachdev-Ye-Kitaev (SYK)
+model often used in holographic dual models of gravitational systems [27]. The SYK model makes use of nonlocal ‘all-to-all’ interactions which facilitate extremely
+fast information propagation. However, this complexity
+often makes the system difficult to realize experimentally. Furthermore, such non-local interactions are not
+a strict requirement for the faithful reproduction of the
+Page curve [10–13]. As demonstrated in Sec.V, internal
+information dynamics play a critical role in the shape
+of the entanglement profile; however, the specific nonlocal dynamics of the SYK model are not a prerequisite.
+This suggests that a locally interacting model is sufficient to probe Page curve-like behaviour. The chain we
+model is a bipartite model partitioned into a system of
+length N and an environment of length M , with the sites
+ordered linearly see Fig.2. We employ the TFIM to perform an out-of-equilibrium quench, initializing the system in a non-eigenstate to drive internal dynamics. To
+mitigate finite-size boundary effects and facilitate the dissipation of entanglement from the system, we impose the
+condition M ≫ N ; specifically, we utilize N = 15 and
+M = 150 as our primary simulation basis. As detailed
+in Sec.III, we vary N to demonstrate that the observed
+Page curve dynamics scale consistently with increasing
+system size. The chain is then governed by the Hamiltonian given by
+
+Ĥ = Ĥsys + Ĥenv + Ĥint .
+
+(1)
+
+With the terms defined by
+
+Ĥsys = −Jsys
+Ĥenv = −Jenv
+
+N
+−1
+X
+i=1
+
+z
+σ̂iz σ̂i+1
+− gsys
+
+L−1
+X
+i=N +1
+
+z z
+Ĥint = −hσ̂N
+σ̂N +1 .
+
+N
+X
+
+σ̂jx ,
+
+j=1
+
+z
+σ̂iz σ̂i+1
+− genv
+
+L
+X
+j=N +1
+
+σ̂jx ,
+
+3
+System
+
+Environment
+Jsys
+
+1
+
+Jenv
+
+h
+N
+
+N-1
+
+N+1
+
+L-1
+
+L
+
+Figure 2. A schematic of the full spin chain modelled by the
+Hamiltonian given in Eq.1. The chain is split, one for the
+system coloured in red, of size N with interaction strength
+Jsys and one for the environment, in green, with interaction
+strength Jenv and has length M . The overall size of the system is L = N + M with a Hilbert space of size H ∼ dL . The
+two subsystems are coupled with dynamic coupling h. To simulate evaporation we systematically move the dynamic coupling h to the left to grow the environment and decrease the
+system whilst allowing the system to naturally evolve through
+time using a TEBD protocol (see Appendix A for more information) to simulate unitary evolution.
+
+fails to capture the loss of degrees of freedom characteristic of Hawking radiation. In physical evaporation, the
+continuous release of radiation reduces the black hole’s
+mass and the dimension of its associated Hilbert space.
+To model this, we implement a dynamic boundary condition that discretely transfers spins from the system to the
+environment. The time-dependent subsystem lengths,
+N (t) and M (t), are governed by
+
+N (t) = NI −
+
+ 
+t
+,
+T
+
+(5)
+
+M (t) = MI +
+
+ 
+t
+,
+T
+
+(6)
+
+and
+To initialize the system at criticality: we set Jsys =
+gsys , which maximizes the correlation length within
+the bounds established by the Lieb-Robinson velocity
+[28, 29]. Similarly, we set Jenv = genv to ensure a
+gap-less environment. We impose the initial condition
+Jsys > Jenv to create an energy contrast, allowing the
+system to act as a higher-energy manifold relative to the
+environment. Furthermore, the transverse field is scaled
+as h = O(Jsys ); these combined conditions are designed
+to suppress the re-entry of information into the system
+chain once it has dissipated into the environment. A pure
+state ρ̂ must satisfy the idempotency and normalization
+identities
+ρ̂2 = ρ̂
+
+and
+
+tr(ρ̂2 ) = 1,
+
+(2)
+
+where ρ̂ = |ψ⟩ ⟨ψ|. Given that the derivation outlined
+in [8, 9] relies on the purity of the total system, both
+the system and environment subsystems are initialized
+in pure states. The global initial state is defined as
+|ψI ⟩ = |ζ⟩ ⊗ |ϕ0 ⟩ ,
+
+where T represents the evaporation interval. This ensures
+that the system shrinks only at discrete steps t = nT for
+n ∈ Z, providing a computational dual to the decrease
+in Bekenstein-Hawking entropy [5]. The resulting timedependent Hamiltonian is
+
+(3)
+
+N (t)−1
+
+Ĥ(t) = − Jsys
+− Jenv
+
+where the system state is
+|ζ⟩ = |0⟩
+
+⊗N
+2
+
+
+1  ⊗N
+⊗N
+⊗ √ |0⟩ 2 + |1⟩ 2 .
+2
+
+(4)
+
+The environment state |ϕ0 ⟩ is the state corresponding
+to E0 , satisfying Ĥenv |ϕn ⟩ = En |ϕn ⟩, where E0 =
+min({En }). This choice of |ϕ0 ⟩ mimics a vacuum-like
+environment by minimizing internal dynamics. The construction of |ζ⟩ accounts for the fact that black holes
+possess an entropy proportional to the surface area of
+their event horizon [30]. To satisfy the requirement
+for initial entanglement within a pure state, we utilize
+the Greenberger-Horne-Zeilinger (GHZ) state, |GHZ⟩ =
+⊗n
+⊗n
+√1 (|0⟩
++|1⟩ ) [31]. By initializing half the system in a
+2
+GHZ state and the remainder as a product state, we localize the entanglement in a manner consistent with [30].
+Standard unitary evolution with static subsystem sizes
+
+− genv
+
+X
+i=1
+
+N (t)
+z
+σ̂iz σ̂i+1
+− gsys
+
+L−1
+X
+
+X
+
+σ̂jx
+
+j=1
+
+z
+σ̂iz σ̂i+1
+
+(7)
+
+i=N (t)+1
+L
+X
+j=N (t)+1
+
+z
+z
+σ̂jx − hσ̂N
+(t) σ̂N (t)+1 .
+
+While Ĥ(t) is globally time-dependent, the Hamiltonian
+remains piecewise constant between evaporation events.
+This allows for standard unitary propagation within each
+interval T , followed by a discrete update of the subsystem
+boundaries. The simulation of large-scale quantum systems is constrained by the exponential scaling of the Hilbert space, H ∼ dL . Direct diagonalization of Ĥenv becomes intractable as M increases. To circumvent this dimensionality problem, we employ MPS, a tensor network
+formalism that decomposes the high-order state tensor
+into a chain of low-rank local tensors [32, 33].
+
+4
+III.
+
+4
+
+N =5
+N = 10
+N = 15
+N = 20
+
+3
+
+Ssys
+
+entropy just before an evaporation event. After the final
+spin leaves the system, the entropy is zero by definition,
+as seen from Eq.8 since ρ̂sys = 0. Thus, the entropy
+begins and ends at zero, conserving information. This
+confirms that the Hamiltonian is sufficient to realize entanglement dynamics consistent with Fig.1, providing a
+platform to probe how dynamic coupling and internal
+dynamics affect the Page curve.
+
+THE PAGE CURVE
+
+2
+IV.
+
+1
+0
+0.0
+
+27.5
+
+55.0
+
+82.5
+
+110.0
+
+3
+
+tT
+
+In Fig.3, the calculated entropy is shown over the entire
+simulated evaporation process. The characteristic rise
+and fall of the Page curve (idealized in Fig.1) is present,
+with the turnover occurring when the subsystems are approximately equal in size. We thus observe entanglement
+behaviour consistent with the dimensional constraints of
+a unitary bipartite model undergoing subsystem reduction. We note an asymmetry in the gradient about the
+Page time, arising from the different mechanisms dominating early versus late times. During the early stages,
+the system is dominated by information transfer, characterized by the interaction strengths and the dynamic
+coupling h, which determines the rate of entanglement
+growth. Conversely, after the Page time, the system size
+dominates the environment entropy. The limited degrees
+of freedom in the system restrict the entropy in accordance with von Neumann behaviour for a pure bipartite
+model where
+(8)
+
+While these behaviours need not have the same rate of
+change, they could be fine-tuned via parameters if necessary. At t = 0, the environment begins in its ground state
+with its associated entanglement. At the final time-step
+when N = 0, the simulation does not record the entropies. This is an artifact of measuring the von Neumann
+
+2
+
+Ssys
+
+Figure 3. We simulate time evolution of the time independent
+Hamiltonian Ĥ through unitary evolution simulated with a
+TEBD protocol (see Appendix A for more information). The
+x-axis denotes the time evolution passed, simulated in increments of τ = 0.1 with an evaporation time-step T = 5, each
+marker denotes a point where an evaporation event was performed. When Tt ∈ Z the von Neumann entropy is measured,
+recorded and then an evaporation event is performed. The
+result is the von Neumann behaves in alignment with the Page
+curve after around half the time has passed (the Page time)
+the entropy decreases due to being limited by the size of the
+system since Eq.8 holds for the bipartite model. N is denoted
+in the differing colours and can be seen in the figure. The
+rest of the parameters are as follows: Jsys = gsys = h = 3,
+Jenv = genv = 1 and M = 150.
+
+Senv = −trenv (ρ̂env ln ρ̂env ) ≡ Ssys .
+
+THE EFFECT OF THE DYNAMIC
+COUPLING h
+
+1
+
+0
+
+h=0
+h = 1.5
+h=3
+h = 12
+0
+
+20
+
+40
+
+60
+
+80
+
+tT
+Figure 4. We simulate time evolution of the time independent Hamiltonian Ĥ through unitary evolution simulated with
+a TEBD protocol (see Appendix A for more information).
+The x-axis denotes the time evolution passed, simulated in
+increments of τ = 0.1 with an evaporation time-step T = 5,
+each marker denotes a point where an evaporation event was
+performed. When Tt ∈ Z the von Neumann entropy is measured, recorded and then an evaporation event is performed.
+Note when the dynamic coupling between the system and the
+environment h = 0, there is still a characteristic rise and fall
+throughout the entire process when the system is entirely kinematic. Since there is no dynamic coupling between the two
+subsystem when h = 0 the Page curve is purely down to the
+kinematic transfer of the degrees of freedom. We see that
+having no dynamic coupling has little effect on the entropic
+behaviour. The variations of h are denoted in the differing
+colours and can be seen in the figure. The rest of the parameters are as follows: Jsys = gsys = 3, Jenv = genv = 1,
+N = 15 and M = 150.
+
+In Fig.4, we observe the effects of the dynamic coupling
+between the two subsystems throughout the evaporation
+process. We conclude that the dynamic coupling h plays
+a secondary role in shaping the entropy profile of the Page
+curve, as there is no discernible correlation between the
+peak of SV N and differing values of h. This implies that
+the kinematic process remains the primary driver of the
+entropy evolution. When h = 0, there is no dynamic information transfer across the boundary mediated by the
+Hamiltonian; instead, transfer is governed solely by the
+kinematic evaporation process that imposes the analogue
+
+5
+3.500
+2.625
+
+Ssys
+
+(a)
+
+Jenv
+genv = 1
+Jenv
+genv > 1
+Jenv
+genv < 1
+
+(b)
+
+Jenv
+genv = 1
+Jenv
+genv > 1
+Jenv
+genv < 1
+
+(c)
+
+Jenv
+genv = 1
+Jenv
+genv > 1
+Jenv
+genv < 1
+
+1.750
+0.875
+0.000
+
+0
+
+20
+
+40
+
+60
+
+80 0
+
+20
+
+tT
+
+40
+
+60
+
+tT
+
+80 0
+
+20
+
+40
+
+60
+
+80
+
+tT
+
+Figure 5. We simulate time evolution of the time independent Hamiltonian Ĥ through unitary evolution simulated with a
+Jsys
+env
+TEBD protocol (see Appendix A for more information). In this plot we vary the relationships gsys
+and Jgenv
+to probe how
+criticality effects the outcome of the entropy profile. The x-axis denotes the time evolution passed, simulated in increments of
+τ = 0.1 with an evaporation time-step T = 5, each marker denotes a point where an evaporation event was performed. We keep
+N = 15, M = 150 and h = 3. When Tt ∈ Z the von Neumann entropy is measured, recorded and then an evaporation event
+is performed. We ran this simulation for each permutation of the system and environment subsystems being governed by the
+Hamiltonian with Jg > 1, Jg < 1 or Jg = 1. These permutations are categorised above into three subplots, the data is grouped
+via the conditions imposed on the system with (a) being when the system is at criticality, (b) when Jsys > gsys , and (c), when
+Jsys < gsys . We find in figure (b) that when the system has a large J then it significantly effects how entropy behaves within
+the environment when compared to the system at criticality. We observe a significant suppression in the entropy growth in the
+first half of the Page curve, which is dependent on the dominance of the Jsys .
+
+Hawking radiation in this model. This kinematic process entails a time-dependent change in the degrees of
+freedom, representing a coupling that mimics the redistribution of entanglement as degrees of freedom exit
+the black hole horizon. The emergence of the Page
+curve at h = 0 demonstrates that explicit Hamiltonianmediated information transfer is not a prerequisite for
+these dynamics. Instead, the entanglement profile is effectively captured by the kinematic resizing of the Hilbert
+space—a process that serves as a discrete analogue to the
+shifting degrees of freedom in Page’s original derivation.
+
+V.
+
+THE EFFECT OF CRITICALITY
+
+We have thus far found that an additional dynamic
+coupling, beyond the kinematic mechanism accounting
+for Hawking radiation, is not strictly necessary. We now
+provide insight into the effects of placing each subsystem in or out of criticality. Simulations were performed
+for the system and environment under three conditions:
+J
+J
+J
+g > 1, g < 1, and g = 1. We find that when the condition Jg > 1 is imposed on the system, there is a significant
+variation in the von Neumann entropy such that it deviates from the characteristic rise and fall. This does not
+imply that information is no longer conserved; since the
+entropy begins and ends at 0, global information conservation is maintained. However, the deviation from
+smooth rise and fall suggests that internal information
+dynamics influence the entropy profile over time, meaning the entanglement evolution is not as cleanly captured.
+We infer from this that a minimum scrambling speed is
+required for the Page curve to be faithfully reproduced.
+
+However, a perfect “fast scrambler” is not strictly required, as reproducing the characteristic entropy profile
+within the TFIM would otherwise have been impossible.
+
+VI.
+
+A TOY QUANTUM CIRCUIT
+
+Here we provide the quantum circuit for a system of
+L = 6 qubits, with N = 4 and M = 2, implementing the Hamiltonian defined in Eq.7 for a single Trotter
+step. We utilize a second-order Suzuki-Trotter decomposition [34] of the piecewise time-independent Hamiltonian, which accurately describes the evolution between
+discrete evaporation events. The time evolution is discretized into small steps τ , where τ ≪ ttotal , and the
+decomposition is applied iteratively. When an evaporation event occurs, it is captured by updating the gate
+set: the interaction gates corresponding to the systemenvironment boundary are shifted, and the departing system qubit is thereafter treated with environment interaction gates. To implement this, the full Hamiltonian
+is decomposed into sums of local terms that can be exponentiated exactly. Because the σ̂ x and σ̂ z terms do
+not commute, they must be applied as a sequence of discrete unitary operators. Given that the Hamiltonian is
+composed entirely of local interactions, we express the
+second-order decomposition using alternating layers of
+even and odd bond interactions. This approach limits
+the circuit depth to four layers per Trotter step, enhancing computational efficiency. The specific form of the
+Trotter decomposition is determined by whether the current system size N is even or odd, ensuring the boundary
+coupling h is correctly localized at each step. The evolu-
+
+6
+and
+
+tion is approximated as
+
+N
+Y
+
+τ
+
+L
+Y
+
+x
+
+egsys i 2 σ̂i
+
+i=1
+L
+Y
+
+τ
+
+x
+
+egenv i 2 σ̂i
+
+i=N +1
+z
+
+z
+
+eJenv iτ σ̂2i σ̂2i+1
+
+N
+Y
+
+z
+
+z
+
+eJsys iτ σ̂2i σ̂2i+1
+
+i=1
+
+i=N +1
+L
+Y
+
+z
+
+i=N +1
+N
+Y
+
+θh = −2τ h.
+
+Ûodd (τ ) ≈
+
+z
+
+z
+
+z
+
+eJenv iτ σ̂2i−1 σ̂2i · eihτ σ̂N σ̂N +1 ·
+z
+
+z
+
+eJsys iτ σ̂2i−1 σ̂2i
+
+i=1
+
+L
+Y
+
+τ
+
+x
+
+egenv i 2 σ̂i
+
+i=N +1
+N
+Y
+
+τ
+
+x
+
+egsys i 2 σ̂i ,
+
+(9)
+
+i=1
+
+N
+Y
+
+Ûeven (τ ) ≈
+e
+
+i=1
+L
+Y
+
+VII.
+
+z
+
+z
+
+z
+
+eJenv iτ σ̂2i σ̂2i+1 · eihτ σ̂N σ̂N +1 ·
+z
+
+L
+Y
+
+z
+
+eJsys iτ σ̂2i σ̂2i+1
+
+i=1
+N
+Y
+
+e
+
+z
+
+z
+
+eJenv iτ σ̂2i−1 σ̂2i
+
+i=N +1
+z
+
+z
+
+eJsys iτ σ̂2i−1 σ̂2i
+
+i=1
+
+L
+Y
+
+τ
+
+x
+
+egenv i 2 σ̂i
+
+i=N +1
+N
+Y
+
+τ
+
+To initialize the environment: the ground state of Ĥenv is
+directly diagonalized, yielding a weighted Bell-type state.
+This state can be prepared using a rotation-y gate in conjunction with standard entangling operations. The system comprises 4 qubits, with the first two initialized in
+the |0⟩ state and the remaining two in a maximally entangled state. This initialization sequence is shown in the
+first section of Fig.6. Subsequently, the figure illustrates
+a complete circuit for two Trotter steps; these steps are
+repeated for a total of n iterations to simulate a sufficient duration of the system dynamics. For a full model
+compatible with quantum hardware, an algorithm which
+can measure the entropy without de-cohering the system
+must be implemented. This is a matter which we leave
+to future work, noting some of the work in [36] may be
+useful.
+DISCUSSION
+
+genv i τ2 σ̂ix
+
+i=N +1
+z
+
+i=N +1
+N
+Y
+
+L
+Y
+
+gsys i τ2 σ̂ix
+
+(13)
+
+x
+
+egsys i 2 σ̂i .
+
+(10)
+
+i=1
+
+This decomposition assumes the convention ℏ = 1.
+Quantum computers are susceptible to various noise
+sources and gate errors (see, for example, [35]). Consequently, simplifying circuit implementation is imperative to optimize performance on current quantum hardware. In the chosen decomposition, a brickwork architecture is employed: two-site operators initially act upon
+all odd-labelled pairs, followed by a layer of two-site operators acting upon all even-labelled pairs. This structure can be directly mapped to a quantum system using
+standard one- and two-qubit rotation gates.
+The rotation-x gate angle is defined as ϕ, and the
+rotation-z gate angle as θ. These angles are directly related to the exponents in Eqs.9 and 10; due to the exponential form of the rotation operators, they are given
+by
+ϕsys,env = −τ gsys,env ,
+
+(11)
+
+θsys,env = −2τ Jsys,env ,
+
+(12)
+
+We assess the validity of a model composed strictly of
+local interactions. In the literature, the SYK Hamiltonian is frequently employed to simulate black hole information dynamics due to its fast-scrambling properties.
+In contrast, the model presented here utilizes the TFIM,
+which is constrained by local interactions and the LiebRobinson velocity. By operating the system at criticality,
+we demonstrate that the internal dynamics are sufficient
+to maintain the smooth entropy profile predicted by Page
+[8, 9]. As supported by the results in Secs.III-V, non-local
+interactions are not a strict requirement for reproducing
+Page curve–like entanglement dynamics in analogue toy
+models. Consequently, critical local systems are sufficient
+for this purpose and offer a more viable path for experimental verification on contemporary quantum hardware.
+The primary advantage of the TFIM is its compatibility
+with current quantum architectures as demonstrated by
+this model in Sec.VI. While ground-state initialization
+can be explored on quantum annealers [22, 37], the dynamic evaporation process is well-suited for gate-based
+quantum computers, such as those developed by IBM
+[38]. Specifically, the Trotter-Suzuki decomposition employed in our Time-Evolving Block Decimation (TEBD)
+simulations translates directly into sequences of one- and
+two-qubit gate operations. The locality of the interactions minimizes the requirement for SWAP gates during
+the implementation of the TEBD protocol, thereby reducing a primary source of gate noise and decoherence that
+would otherwise plague non-local models. Naturally, the
+question of how SV N could be measured after various
+iterations of the circuit given in Fig.6 without invoking
+decoherence remains open as a logical next step. Also,
+quantifying the scrambling through established methods
+such as Out-of-time-order correlators (OTOCs) [39–44],
+and correlating the findings with those presented in Fig.5.
+
+7
+
+|0⟩
+
+Rx (ϕsys )
+
+Rx (ϕsys )
+Rzz (θsys )
+
+|0⟩
+
+Rx (ϕsys.). .
+Rzz (θsys )
+
+Rx (ϕsys )
+
+Rx (ϕsys )
+
+Rx (ϕsys.). .
+
+Rzz (θsys )
+|0⟩
+
+Rx (ϕsys )
+
+H
+
+Rzz (θsys )
+Rx (ϕsys )
+
+Rzz (θsys )
+|0⟩
+
+Rx (ϕsys.). .
+Rzz (θsys )
+
+Rx (ϕsys )
+
+Rx (ϕsys )
+
+Rx (ϕsys.). .
+
+Rzz (θh )
+|0⟩
+
+Rx (ϕenv )
+
+H
+
+Rzz (θh )
+Rx (ϕenv )
+
+Rzz (θenv )
+|0⟩
+
+Ry (ηI )
+
+Rx (ϕenv )
+
+Rx (ϕenv.). .
+Rzz (θenv )
+
+Rx (ϕenv )
+
+Rx (ϕenv.). .
+
+Figure 6. In this figure the quantum circuit for L = 6 with N = 4 being the first four qubits from the top, representing the
+system initialised in a half |0⟩ and half entangled state. M = 2 are the bottom two qubits initialised in the ground state found
+via exact diagonalisation and with ηI = 1.107. The circuit is split into two parts, the first part initialises in the state found
+via diagonalisation for the environment and a system for the system where half is in the bell state and half the |0⟩ state. The
+second part is two trotter step to simulate the time evolution of this system. depicted are two repetitions of this step. The
+angles of rotation are dependant on τ and the interaction strengths.
+
+VIII.
+
+CONCLUSION
+
+In this work, we have investigated the conditions under which Page curve-like entanglement dynamics emerge
+within local quantum many-body systems. Utilizing
+MPS simulations of a local, Ising-based Hamiltonian, we
+implemented a dynamic boundary condition to model the
+systematic reduction of subsystem degrees of freedom.
+Time evolution was executed via a TEBD algorithm employing a Suzuki-Trotter decomposition. The findings
+presented in Sec.IV demonstrate that explicit dynamical coupling between the system and environment is not
+a fundamental requirement for the manifestation of the
+Page curve. Even in the limit where the Hamiltonian
+coupling h vanishes, the characteristic rise and fall of the
+von Neumann entropy persist. While the existence of
+the Page curve is fundamentally kinematically driven, its
+specific profile remains sensitive to the internal dynamics
+of the subsystems. As shown in Sec.V, the smooth entropy profile is most faithfully reproduced when the system operates at criticality. Away from the critical point,
+deviations and suppression in the entropy profile suggest that the propagation of correlations—constrained by
+local interactions and the Lieb-Robinson bound—plays a
+critical role in the growth of entropy prior to the Page
+time. Consequently, we conclude that internal dynamics are crucial in determining the qualitative nature of
+the entropy evolution. This work establishes a scalable
+and experimentally feasible platform for further exploration of entanglement dynamics on near-term quantum
+hardware.
+
+ACKNOWLEDGEMENTS
+
+We would like to thank Jiannis Pachos for his insight into
+black hole simulations. S.J. would also like to acknowledge Ryan Smith and Max Davies for many stimulating
+and interesting discussions on various topics mentioned
+within this work. This work was partially supported by
+the EPSRC grant UKRI1337: Anyons24.
+
+Appendix A: Methodology
+
+The following method was implemented using
+ITensor.jl [45], unless stated otherwise throughout. We
+first designate our initial state as Eq.4. We do this by creating both |ζ⟩ on sites 0 to N and |ϕ0 ⟩ on sites N +1 to L
+separately as MPS, and then introducing a bond of dimension 1 to connect them. For |ζ⟩ we initially create
+⊗N
+an MPS of |0⟩
+to which we apply a combination of Z
+and CN OT gates to the appropriate spin sites, faithfully
+creating |ζ⟩. To create the ground state |ϕ0 ⟩ we must
+first know what it actually is. Analytically, the ground
+state is found by exactly diagonalising the Hamiltonian
+matrix, however given the size of the matrix Henv scales
+exponentially with the Hilbert space, this becomes computationally intractable. Since the Hamiltonian is a sum
+of local terms, we may efficiently approximate the ground
+state through the Density Matrix Renormalization Group
+Algorithm (DMRG) [46–50]. The DMRG calculation was
+converged over 10 sweeps, achieving a maximum allowed
+bond dimension of χ = 100 and a final truncation error of
+ϵ < 10−10 . We note a convergence of the ground state at
+low bond dimension circa χ = 40, this ensures the max-
+
+8
+
+where λi are the eigenvalues of the reduced density matrix found via the Schmidt decomposition of the environment. After this calculation, the lengths of each chain are
+redefined, such that N → N − 1 and M → M + 1, simulating Hawking radiation in this system. This is computationally realised by adjusting the Hamiltonian such
+that Hsys acts on one less spin site and Henv acts on one
+more spin site for the next evolution interval of T . The
+spins which are changed are the ones at the boundary,
+thus moving the dynamic coupling to the left in Fig.2,
+decreasing the system. The entropy at the end of the
+next interval is calculated in accordance with the new
+size of the environment. The system itself remains constant in its size of L.
+Appendix B: Non-Unique Initial System State
+
+We provide here the some of the results of a full simulation for an alternative initial state of the system to
+show that the dynamics presented in Secs.III and V were
+not solely down to the |ζ⟩ initialisation of the system.
+We first propose a more trivial initial state of
+⊗N
+
+|ξ⟩ = |1⟩
+
+,
+
+(B1)
+
+where all the spins align and is easily verifiable from (5)
+to be a pure state. The initial state now becomes
+|ψI′ ⟩ = |ξ⟩ ⊗ |ϕ0 ⟩ ,
+
+(B2)
+
+where |ϕ0 ⟩ retains its initial definition from Sec.II. After
+running the same TEBD protocol we find that the system provides similar results under varying Jg conditions.
+The fact the Page curve is present for differing initial system states demonstrates the robustness of the kinematic
+model.
+
+|ξi
+|ζi
+
+Ssys
+
+2
+
+1
+
+0
+0.00
+
+21.25
+
+42.50
+
+63.75
+
+85.00
+
+tT
+Figure 7. We track the entropy of two systems, one initialised
+in the entangled |ζ⟩ state and the other in the |ξ⟩ state where
+all the spins are aligned. We find no quantitive difference
+in the behaviour, demonstrating the robustness of the model.
+The x-axis denotes the time evolution passed, simulated in increments of τ = 0.1 with an evaporation time-step T = 5, each
+marker denotes a point where an evaporation event was performed. When Tt ∈ Z the von Neumann entropy is measured,
+recorded and then an evaporation event is performed. The
+rest of the parameters are as follows: h = Jsys = gsys = 3,
+Jenv = genv = 1, N = 15 and M = 150.
+
+Ssys
+
+i
+
+3
+
+Ssys
+
+imum allowed bond dimension of χ = 100 is well suited
+to an accurate approximation of the ground state. From
+there we bonded the two systems together with χ = 1 (a
+tensor product) creating no initial entanglement between
+the two subsystems which is expected from the form of
+Eq.4.
+To simulate real-time evolution we implement a second
+algorithm: a TEBD algorithm [33, 34, 51]. Starting
+from the initial state |ψI ⟩, we use a second-order TrotterSuzuki decomposition [33, 52] of the standard time independent evolution operator. It is permissible to not use
+the time dependent Trotter-Susuki algorithm [53] since
+between evaporation events the Hamiltonian is time independent. In this case, the Trotter step was chosen to
+be τ = 0.1 with a cut-off of ϵ = 10−5 . At regular intervals when Tt ∈ Z, where T ≫ τ , we calculate the von
+Neumann entropy of the environment system. The von
+Neumann entropy is given by
+X
+λi ln(λi ),
+(A1)
+SV N = −
+
+2.0
+1.5
+1.0
+0.5
+0.0
+2.0
+1.5
+1.0
+0.5
+0.0
+0.00
+
+(a)
+Jenv
+genv = 1
+
+Jenv
+genv > 1
+
+Jenv
+genv < 1
+
+(b)
+Jenv
+genv = 1
+
+20.62
+
+Jenv
+genv > 1
+
+Jenv
+genv < 1
+
+41.25
+
+61.88
+
+82.50
+
+tT
+Figure 8. We track the entropy of two systems, the chain in
+(a) is initialised in the |ξ⟩ state where all the spins are aligned
+whereas in figure (b) it is initialised in the |ζ⟩. We vary the
+Jsys
+env
+ratio of Jgenv
+whilst keeping gsys
+> 1. We find no quantitive
+difference in the behaviour with it being similar between the
+two initial states, demonstrating the robustness of the model.
+This verifies the initial states do not quantitively effect the
+outcome and it is indeed the dynamics of the model. The
+x-axis denotes the time evolution passed, simulated in increments of τ = 0.1 with an evaporation time-step T = 5, each
+marker denotes a point where an evaporation event was performed. When Tt ∈ Z the von Neumann entropy is measured,
+recorded and then an evaporation event is performed. The
+rest of the parameters are as follows: Jsys = 10, h = gsys = 3,
+N = 15 and M = 150.
+
+Appendix C: DMRG Convergence
+
+We ensure we reach a convergence in the DMRG protocol to ensure an accurate ground state approximation
+
+9
+
+|E − Ef inal |
+
+7.2e-06
+7.9e-09
+8.6e-12
+9.5e-15
+0.0
+
+22.5
+
+45.0
+χallowed
+
+67.5
+
+90.0
+
+Figure 9. We plot the Maximum bond dimension allowed
+against the ground state energy error on a logarithmic scale.
+The energy is approximated through the DMRG algorithm.
+This convergence shows an accurate approximation was found
+at a relatively low which means we can increase computational
+capability by keeping the dimension low too. This convergence also ensures an accurate estimate for the initial state,
+reducing errors as the simulation progresses.
+
+to begin the simulation. We show this by plotting the error in energy against maximum bond dimension allowed
+in the interaction. By doing so we ensure that the initial
+ground state approximation is accurate to an insignificant error. This reduces the size of errors accumulating
+throughout the time evolution steps. It also ensures that
+we can limit the size of the bond dimension used without
+effecting the system dynamics, this increases computational capability and allows for larger system sizes to be
+simulated. We observe a convergence of around χ ≈ 45
+which is much less than the maximum bond dimension of
+100 which we reached during the DMRG protocol. From
+this we conclude an accurate ground state was reached,
+minimising the error contribution from this approximation that is present in the overall simulation.
+
+Appendix D: Variation of τ
+
+In this section we plot the entanglement entropy of the
+environment for varying values of the trotter step to ensure the original choice of τ = 0.1 is an accurate value to
+
+[1] W. Israel, Event horizons in static vacuum space-times,
+Phys. Rev. 164, 1776 (1967).
+[2] D. C. Robinson, Uniqueness of the kerr black hole, Phys.
+Rev. Lett. 34, 905 (1975).
+[3] P. O. Mazur, Proof of uniqueness of the kerr-newman
+black hole solution, Journal of Physics A: Mathematical
+and General 15, 3173 (1982).
+
+approximate the behaviour of the Hamiltonian. In Fig.10
+it can be seen that τ = 0.1 provides a good approximation
+to the time evolution without becoming computationally
+too expensive to run. We see we can optimise this choice
+slightly by using a larger value τ = 0.5 which provides
+qualitatively the same results for a better computing performance. We note there is a lower and upper bound to
+retrieving the Page curve dynamics which must be ensured when the value of τ is chosen. When τ is large (of
+the order of T ) there has not been a sufficient number of
+steps to capture the entanglement growth faithfully, leading to a slower entanglement growth which is not peaking
+at around the Page time. Conversely, if τ is sufficiently
+small, the internal dynamics are not effectively allowing
+the entanglement to characteristically rise. We observe
+an optimal window where τ ≈ O(T −1 ) in which the Page
+curve behaviour is categorically observed.
+τ = 0.001
+τ = 0.005
+
+τ = 0.1
+τ = 0.5
+
+τ =1
+τ =5
+
+3
+
+2
+
+Ssys
+
+6.6e-03
+
+1
+
+0
+
+0
+
+20
+
+40
+
+60
+
+80
+
+tT
+Figure 10. We simulate time evolution of the time independent Hamiltonian Ĥ through unitary evolution simulated with
+a TEBD protocol (see Appendix A for more information).
+The x-axis denotes the time evolution passed, simulated in
+increments of τ = 0.1 with an evaporation time-step T = 5,
+each marker denotes a point where an evaporation event was
+performed. When Tt ∈ Z the von Neumann entropy is measured, recorded and then an evaporation event is performed.
+We keep N = 15, M = 150 and h = 3. This is done to ensure
+τ = 0.1 is a viable choice of time step to simulate the evolution.
+
+[4] R. Ruffini and J. A. Wheeler, Introducing the black hole,
+Physics Today 24, 30 (1971).
+[5] S. W. Hawking, Particle creation by black holes, Communications in Mathematical Physics 43 (1975).
+[6] S. W. Hawking, Breakdown of predictability in gravitational collapse, Phys. Rev. D 14, 2460 (1976).
+[7] S. W. Hawking, Black hole explosions?, Nature 248, 30
+(1974).
+
+10
+[8] D. N. Page, Is black-hole evaporation predictable?, Phys.
+Rev. Lett. 44, 301 (1980).
+[9] D. N. Page, Information in black hole radiation, Phys.
+Rev. Lett. 71, 3743 (1993).
+[10] R. Jha, S. R. Manmana, and S. Kehrein, Page curve and
+entanglement dynamics in an interacting fermionic chain,
+Phys. Rev. B 111, 235140 (2025).
+[11] S. Kehrein, Page curve entanglement dynamics in an
+analytically solvable model, Phys. Rev. B 109, 224308
+(2024).
+[12] T. Ray, A. Dhar, and M. Kulkarni, Page curve like dynamics in interacting quantum systems, Phys. Rev. B
+112, 174309 (2025).
+[13] L. H. Li, S. Kehrein, and S. Gopalakrishnan, Sharp page
+transitions in generic hamiltonian dynamics, Phys. Rev.
+B 112, 014307 (2025).
+[14] F. Ares, S. Scopa, and S. Wald, Entanglement dynamics
+of a hard-core quantum gas during a joule expansion,
+Journal of Physics A: Mathematical and Theoretical 55,
+375301 (2022).
+[15] R. J. Elliott, P. Pfeuty, and C. Wood, Ising model with
+a transverse field, Phys. Rev. Lett. 25, 443 (1970).
+[16] R. Mondaini, K. R. Fratus, M. Srednicki, and M. Rigol,
+Eigenstate thermalization in the two-dimensional transverse field ising model, Phys. Rev. E 93, 032104 (2016).
+[17] R. B. Stinchcombe, Ising-model in a transverse field
+.1. basic theory, JOURNAL OF PHYSICS C-SOLID
+STATE PHYSICS 6, 2459 (1973).
+[18] P. Pfeuty, The one-dimensional ising model with a transverse field, Annals of Physics 57, 79 (1970).
+[19] R. J. Elliott and C. Wood, The ising model with a transverse field. i. high temperature expansion, Journal of
+Physics C: Solid State Physics 4, 2359 (1971).
+[20] P. Pfeuty and R. J. Elliott, The ising model with a transverse field. ii. ground state properties, Journal of Physics
+C: Solid State Physics 4, 2370 (1971).
+[21] T. Hashizume, I. P. McCulloch, and J. C. Halimeh,
+Dynamical phase transitions in the two-dimensional
+transverse-field ising model, Phys. Rev. Res. 4, 013250
+(2022).
+[22] T. Kadowaki and H. Nishimori, Quantum annealing in
+the transverse ising model, Phys. Rev. E 58, 5355 (1998).
+[23] H. Bernien, S. Schwartz, A. Keesling, H. Levine, A. Omran, H. Pichler, S. Choi, A. S. Zibrov, M. Endres,
+M. Greiner, V. Vuletić, and M. D. Lukin, Probing manybody dynamics on a 51-atom quantum simulator, Nature
+551, 579–584 (2017).
+[24] R. Blatt and C. Roos, Quantum simulations with trapped
+ions, Nature Physics 8, 277 (2012).
+[25] J. Preskill, Quantum computing in the nisq era and beyond, Quantum 2, 79 (2018).
+[26] Y. Sekino and L. Susskind, Fast scramblers, Journal of
+High Energy Physics 2008, 065 (2008).
+[27] J. Maldacena and D. Stanford, Remarks on the sachdevye-kitaev model, Phys. Rev. D 94, 106002 (2016).
+[28] P. Calabrese and J. Cardy, Entanglement entropy and
+quantum field theory, Journal of Statistical Mechanics:
+Theory and Experiment 2004, P06002 (2004).
+[29] E. Lieb and D. Robinson, The finite group velocity of
+quantum spin systems, Communications in Mathematical Physics 28, 251 (1972).
+[30] J. D. Bekenstein, Black holes and entropy, Phys. Rev. D
+7, 2333 (1973).
+
+[31] J. de Jong, F. Hahn, N. Tcholtchev, M. Hauswirth,
+and A. Pappa, Extracting ghz states from linear cluster
+states, Physical Review Research 6, 013330 (2024).
+[32] R. Orús, A practical introduction to tensor networks:
+Matrix product states and projected entangled pair
+states, Annals of Physics 349, 117–158 (2014).
+[33] G. Vidal, Efficient simulation of one-dimensional
+quantum many-body systems, Phys. Rev. Lett. 93,
+040502 (2004).
+[34] M. Suzuki, Generalized trotter’s formula and systematic
+approximants of exponential operators and inner derivations with applications to many-body problems, Commun.Math. Phys. 51, 182 (1976).
+[35] E. Knill, Quantum computing with realistically noisy
+devices, Nature 434, 39 (2005).
+[36] T. A. Chowdhury, K. Yu, M. Asaduzzaman, and R. S.
+Sufian, Capturing the page curve and entanglement dynamics of black holes in quantum computers, Nuclear
+Physics B 1019, 117112 (2025).
+[37] E. Pelofske, Comparing three generations of d-wave
+quantum annealers for minor embedded combinatorial
+optimization problems, Quantum Science and Technology 10, 025025 (2025).
+[38] J. Tindall, M. Fishman, E. M. Stoudenmire, and D. Sels,
+Efficient tensor network simulation of ibm’s eagle kicked
+ising experiment, PRX Quantum 5, 010308 (2024).
+[39] A. I. Larkin and Y. N. Ovchinnikov, Quasiclassical
+method in the theory of superconductivity, Sov. Phys.
+JETP 28, 1200 (1969).
+[40] S. H. Shenker and D. Stanford, Black holes and the butterfly effect, Journal of High Energy Physics 2014, 67
+(2014).
+[41] P. Hosur, X.-L. Qi, D. A. Roberts, and B. Yoshida, Chaos
+in quantum channels, Journal of High Energy Physics
+2016, 4 (2016).
+[42] J. Maldacena, S. H. Shenker, and D. Stanford, A bound
+on chaos, Journal of High Energy Physics 2016, 106
+(2016).
+[43] B. Swingle, G. Bentsen, M. Schleier-Smith, and P. Hayden, Measuring the scrambling of quantum information,
+Physical Review A 94, 040302 (2016).
+[44] D. A. Roberts and B. Yoshida, Chaos and complexity by
+design, Journal of High Energy Physics 2017, 121 (2017).
+[45] M. Fishman, S. R. White, and E. M. Stoudenmire, The
+ITensor Software Library for Tensor Network Calculations, SciPost Phys. Codebases , 4 (2022).
+[46] S. R. White, Density matrix formulation for quantum
+renormalization groups, Phys. Rev. Lett. 69, 2863 (1992).
+[47] S. R. White, Density-matrix algorithms for quantum
+renormalization groups, Phys. Rev. B 48, 10345 (1993).
+[48] U. Schollwöck, The density-matrix renormalization
+group, Rev. Mod. Phys. 77, 259 (2005).
+[49] U. Schollwöck, The density-matrix renormalization group
+in the age of matrix product states, Annals of Physics
+326, 96 (2011), january 2011 Special Issue.
+[50] E. R. Davidson, The iterative calculation of a few of
+the lowest eigenvalues and corresponding eigenvectors of
+large real-symmetric matrices, Journal of Computational
+Physics 17, 87 (1975).
+[51] S. R. White and A. E. Feiguin, Real-time evolution using the density matrix renormalization group, Phys. Rev.
+Lett. 93, 076401 (2004).
+[52] G. Vidal, Efficient classical simulation of slightly entangled quantum computations, Physical Review Letters
+
+11
+91, 10.1103/physrevlett.91.147902 (2003).
+[53] N. Hatano and M. Suzuki, Finding exponential product
+formulas of higher orders, in Quantum Annealing and
+
+Other Optimization Methods (Springer Berlin Heidelberg, 2005) p. 37–68.
+
+

@@ -1,0 +1,1200 @@
+Soft-Hair-Enhanced Entanglement Beyond Page Curves
+in a Black Hole Evaporation Qubit Model
+Masahiro Hotta,1 Yasusada Nambu,2 and Koji Yamaguchi1
+1
+
+Graduate School of Science, Tohoku University,
+Sendai, 980-8578, Japan
+2
+Graduate School of Science, Nagoya University,
+Nagoya, 464-8601, Japan
+
+arXiv:1706.07520v4 [gr-qc] 6 May 2018
+
+We propose a model with multiple qubits that reproduces the thermal properties of fourdimensional Schwarzschild black holes (BHs) by simultaneously taking account of the emission of
+Hawking particles and the zero-energy soft-hair evaporation at horizon. The results verify that the
+entanglement entropy between a qubit and other subsystems, including emitted radiation, is much
+larger than the BH entropy analogue of the qubit, as opposed to the Page curve prediction. Our
+result suggests that early Hawking radiation is entangled with soft hair, and that late Hawking
+radiation can be highly entangled with the degrees of freedom of BH, avoiding the emergence of a
+firewall at the horizon.
+
+Introduction.—There has been a rapid increase in the
+importance of the entanglement entropy (EE) of macroscopic systems in quantum gravity and condensed matter
+physics. After the advent of the Ryu-Takayanagi formula
+[1], which shows that the EE in a D-dimensional (Ddim) conformal field theory is equal to the BekensteinHawking entropy in a (D + 1)-dim gravity theory with a
+negative cosmological constant, the EE sheds light on unexpected features of spacetimes. The formula indicates
+the interesting possibility that quantum information generates curved spacetime in a holographic way [2]. In condensed matter physics, EE plays the role of an exotic order parameter for topological insulators [3, 4]. Recently,
+the EE was directly measured in an ultracold bosonic
+atom experiment [5], which indicated that the EE time
+evolution of many-body systems may also be observed experimentally. In the theory , the first-principles calculation of EE evolution is very complicated for macroscopic
+systems, and it has not been achieved to date.
+In discussions related to black hole (BH) physics, a famous conjecture of EE evolution, i.e., the Page curve, is
+often adopted. Hawking [6] showed that BHs evaporate
+by emitting thermal Hawking radiation. It is possible to
+assume a thought experiment in which the initial state
+is a pure state and evolves in a unitary way. AdS/CFT
+arguments support the unitarity of the process [7]. Page
+conjectured an EE evolution between an evaporating BH
+and its radiation [8], and the evolution is called a Page
+curve. It is assumed that the EE is equal to the BH thermal entropy after the so-called Page time. Though the
+conjecture is based on analyses of general many-body systems without horizons, typicality arguments of statistical
+mechanics are expected to provide essentially the same
+behavior in various physical systems including BHs.
+In this Letter, we argue a possibility that EE of a BH
+subsystem shared with other systems including radiation
+is much larger than its BH thermal entropy after the
+Page time, using a thermal system of decaying N qubits.
+This implies the direct breakdown of Page’s conjecture.
+
+The key idea is to reproduce the Hawking temperature
+relation of 4-dim Schwartzschild BHs in the qubit system:
+Trad =
+
+1
+,
+8πG hHN i
+
+(1)
+
+where Trad is the temperature of thermal radiation emitted by the system, hHN i is the quantum expectation
+value of the system Hamiltonian, and G is the gravitational constant. Natural units are adopted (c = ~ =
+kB = 1). In the same way as in BH physics, we are able to
+introduce a Bekenstein-Hawking entropy SBH by defining
+the system temperature T equal to Trad , and integrating
+the first law; dSBH = d hHN i /T = 8πG hHN i d hHN i.
+Then SBH takes the same value of the area-law entropy
+given by 4πr2 /(4G) with radius r = 2G hHN i:
+SBH = 16πGT 2
+
+−1
+
+.
+
+(2)
+
+The EE and the thermal entropy are compared with SBH
+in this model.
+It is worth stressing that the relation in Eq. (1) yields
+a negative heat capacity, which cannot appear in ordinary systems. In order to incorporate this exotic aspect
+in our model, we consider a transition from a qubit in a
+zero-energy state |−i to an escaping zero-energy particle
+of a field ΨS which mimics soft hair in BH physics. The
+BH soft-hair conjecture asserts that zero-energy degrees
+of freedom emerge at a BH horizon [9] [10]. The soft-hair
+microstates contribute to the BH entropy [9] [11]. Quantum information of infalling matter behind the horizon is
+(at least partially) stored in the soft hair by use of conserved Noether charges of would-be diffeomorphism [10].
+While the horizon soft hairs evaporate, the quantum information may be transmitted into Bondi-Metzner-Sachs
+(BMS) soft hairs at future null infinity [10] [12]. In
+our model, after emission of a zero-energy ΨS particle,
+the original system settles down in the vacuum state |0i
+with zero energy, which stands for a lack of qubit. The
+sum of the number of surviving qubits and ΨS particles
+
+2
+
+FIG. 1. Schematic diagram for the time evolution of decaying
+qubits in the Page curve conjecture. The vertical line in this
+figure represents the boundary that separates the subsystems.
+
+is conserved. Thus the system in |0i never returns spontaneously into |−i or |+i without ingoing ΨS particles.
+Since each qubit decay does not decrease the system energy, a smaller number of qubits in the system carries the
+same energy. After a fast scrambling for themalization of
+surviving qubits in a state of a sub-Hilbert space spanned
+by |±i, the system temperature T becomes higher. This
+indeed demonstrates the negative heat capacity behavior.
+A similar mechanism of negative heat capacity generation
+was proposed in a D0-brane matrix model [13]. There are
+earlier studies regarding the EE evolution of qubit models [14–16]; however, the negative heat capacity was not
+discussed.
+In our model, quantum states of a decaying qubit belong to a 3-dim Hilbert space spanned by |±i and |0i, and
+thermalization occurs only in its 2-dim |±i sector. This
+enables the system to possess a larger EE than thermal
+entropy of the surviving qubit.
+
+Page curve: Summary and problems.—For a pure state
+|Φi of a composite system AB, the bipartite entanglement between the subsystems A and B is quantified by
+EE: SEE = −TrA [ρA ln ρA ], where ρA = TrB [|ΦihΦ|]
+is the reduced state of subsystem A. The Page curve
+conjecture is based on a typicality theorem [8, 17, 18].
+The theorem implies that the EE values between two finite macroscopic systems A and B in typical states of
+Hilbert space are very close to its maximum value when
+DA ≪ DB , where DA and DB denote the dimensions
+of the sub-Hilbert space of A and B, respectively. This
+state typicality is defined using the Haar measure in the
+Hilbert space. If we have a nontrivial Hamiltonian with
+a small interaction between A and B, then the state becomes a Gibbs state ρA (T ) at a finite temperature T ,
+with respect to the energy conservation of the total system due to the Sugita theorem [19, 20]. Thus, for typical
+pure states of an AB system, the EE between A and
+B is very close to the thermal entropy of A, which is
+computed from ρA (T ). Let us consider N qubits and
+put them on a line. At the initial time, all the qubits
+are assigned to A components. The total system is in
+a typical pure state |ΨiAB , which is randomly chosen
+from the Hilbert space respecting energy conservation.
+As depicted in Fig. 1, suppose a boundary separates the
+system into two parts, and moves from left to right. In
+
+the Page curve conjecture, the decay process of A → B
+is described by assigning the left-hand-side qubits to B
+components. Plotting the thermal entropy of the smaller
+subsystem at each time generates a Page curve. The conjecture asserts that this plot is the EE time evolution for
+the decay process of A → B in high precision. The time
+at which the thermal entropy of A equates to the thermal entropy of B is referred to as the Page time, which
+corresponds to n = N/2. After the Page time, the subsystems of A are maximally entangled with B. Because
+of the entanglement monogamy, the entanglement among
+the subsystems vanishes in the conjecture.
+First, it should be noted that the Page curves have no
+dependence on the decay dynamics. This appears unusual, since details of realistic decay channels can affect
+the EE evolution, and the conjecture is not capable of
+discriminating the following two EE evolutions. In the
+first case (i), fast scrambling interaction in the thermal
+equilibrium of A components is switched off before the
+decay of A. After that, each A component decays independently into a B component, and no thermalization
+interaction appears during the process. In the second
+case (ii), fast scrambling to the equilibrium of A components continues during the decay of A → B. In BH
+physics, fast scrambling for an evaporating BH has been
+proposed [21] and is supposed to justify the random selection of pure states of the BH and its radiation. However,
+the detailed properties remain elusive.
+Another weak point of the conjecture is that this is
+based on many-body systems with positive heat capacity.
+Actually, we have no plausible arguments for negative
+heat capacity cases like BH evaporation so far.
+Qubit model.—Let us introduce decaying N qubits by
+simultaneously emitting zero-energy radiation of soft hair
+and energetic radiation corresponding to Hawking radiation. The free Hamiltonian of a decaying single qubit is
+given by
+H = ω|+ih+|,
+
+(3)
+
+where ω is a positive constant and |+i, |−i, and |0i are
+the eigenstates of the energy eigenvalues ω, 0 and 0, respectively. We have a fast scrambling interaction Hfs for
+surviving qubits. The scrambling process is assumed to
+be much faster than the emission of particles. It occurs
+only among qubits in the |±i sector state, which preserves the total energy, and does not affect subsystems
+in |0i. A simple two-body interaction example of Hfs is
+given by
+Hfs =
+
++
+X
+
+s1 =−
+
+···
+
++ X
+N X
+N
+X
+
+h (si sj )
+
+sN =− i=1 j=i+1
+
+× I1 ⊗ · · · Ii−1 ⊗ |si ihsj | ⊗ Ii+1 · · ·
+⊗ Ij−1 ⊗ |sj ihsi | ⊗ Ij+1 ⊗ · · · IN ,
+
+3
+where h (si sj ) are real coupling constants and Ii is the
+unit matrix for the ith site subsystem. At t = −to < 0,
+the N qubits are set in a pure state, which is composed of
+|±i, with the total energy expectation value fixed as Ei .
+By acting the scrambling operator exp(−ito Hfs ) onto the
+initial pure state, we get a typical pure state at t = 0. In
+a typical pure state, each qubit is in a Gibbs state ρ(T (0))
+at temperature T (0). Throughout this Letter, ρ(T ) represents the Gibbs state of the two-level system at temperature T , i.e., ρ(T ) = (|−ih−| + exp (−ω/T )|+ih+|) /(1 +
+exp (−ω/T )). T (0) is
+ uniquely determined by Ei via
+
+T (0) = ω/ ln NEωi − 1 .
+In our model, a Hawking particle with energy ω is emitted out of the qubit flipping |+i to |−i. The particle escapes from the qubit along a real axis denoted by x and
+propagates to x = +∞. The state of one particle at some
+position x is described using a 1-dim bosonic Schrödinger
+field ΨR (x), as Ψ†R (x)|vaci. Here, |vaci is the vacuum
+state of the field that satisfies ΨR (x)|vaci = 0, and the
+initial state of the field. The effective Hamiltonian that
+describes the emission is given by
+Z
+Z
+†
+HR = ΨR (x) (−i∂x ) ΨR (x)dx + |−ih+| g(x)Ψ†R (x)dx
+Z
++ |+ih−| g ∗ (x)ΨR (x)dx.
+(4)
+
+time evolution
+
+FIG. 2. Schematic diagram of the decaying qubit model with
+negative heat capacity. When a qubit makes a transition from
+|+ih+| (red circle) into |−ih−| (blue circle), a ΨR particle is
+emitted. After the decay of qubits into ΨS , there remains
+|0ih0| (dotted circle).
+
+r monotonically decreases with time due to the leakage
+of ϕ out of the overlap region. The transition from |−i
+into |+i occurs for a qubit by the fast scrambling with
+other qubits.
+Now let us introduce another channel for the decay of
+a zero-energy qubit into a zero-energy soft-hair particle.
+Suppose a similar Hamiltonian for the process:
+Z
+Z
+HS = Ψ†S (x) (−i∂x ) ΨS (x)dx + |0ih−| g(x)Ψ†S (x)dx
+Z
++ |−ih0| g ∗ (x)ΨS (x)dx,
+(8)
+
+where ΨS (x) mimics the soft hair and satisfies ΨS (x)
+g(x) is a localized function around the qubit and pro|vaci = 0. We then obtain a quantum channel for the
+vides coupling between the qubit and ΨR . The unitary
+decay:
+time-evolution operator is given by UR = exp (−itHR ).
+h
+i
+The dynamics conserves the excitation number, |+ih+| +
+ΓS [ρ] = TrΨS US (ρ ⊗ |vacihvac|) US† ,
+R †
+ΨR (x)ΨR (x)dx. Therefore, when a qubit is in |+i, the
+composite system evolves into an entangled state, such
+where US = exp (−itHS ). This satisfies ΓS [|+ih+|] =
+that
+|+ih+|, while a qubit in |−i decays into ΨS with probaZ
+
+bility s: ΓS [|−ih−|] = (1 − s)|−ih−| + s|0ih0|. Once the
+UR |+i|vaci = c+ (t)|+i|vaci+|−i
+ϕ(x, t)Ψ†R (x)dx |vaci, decay occurs, the qubit cannot come back by the next
+operation of ΓS , i.e., ΓS [|0ih0|] = |0ih0|. Also the fast
+(5)
+scrambling
+does not cause the transition from |0i to |±i.
+where ϕ(x, t) is the wave function of the created particle.
+2
+By
+combining
+ΓS and ΓR , we define a channel Γ =
+The survival probability of |+i is given by |c+ (t)| . This
+Γ
+Γ
+.
+A
+schematic
+diagram of this model is given in
+S
+R
+dynamics can be solved, as shown in Supplemental MateFig.
+2.
+rial [22]. A quantum channel for the qubit is introduced
+A qubit in a Gibbs state at initial temperature T (0)
+as
+evolves by Γ as
+i
+h
+(6)
+ΓR [ρ] = TrΨR UR (ρ ⊗ |vacihvac|) UR† ,
+Γ [ρ (T (0))] = (1 − p) |0ih0| + pρ (T ) ,
+(9)
+and the evolution of the qubit in |+ih+| is given by
+ΓR [|+ih+|] = (1 − r) |+ih+| + r|−ih−|,
+
+where the survival probability p is given by
+(7)
+
+where r is the probability of finding |−i and is given
+2
+by r = 1 − |c+ (t)| . The quantum channel satisfies
+ΓR [|0ih0|] = |0ih0| and ΓR [|−ih−|] = |−ih−| due to
+the conservation of the excitation number. Although the
+field quanta created by the transition trigger reexcitation from |−i into |+i while ϕ(x, t) has nonzero overlap
+with g(x), this is not essential. Indeed, the probability
+
+p = 1 − s (1 + r exp (−ω/T (0))) / (1 + exp (−ω/T (0))) ,
+i
+h
+1−s
+(exp (ω/T (0)) + r) . Although the
+and T = ω/ ln 1−r
+
+state in Eq. (9) is not a Gibbs state of the 3-dim Hilbert
+space, we are able to identify T as the temperature of
+the decaying qubit system, because the thermal flux of
+ΨR divided by the number of surviving qubits is determined by T . Let us impose a natural condition that T
+
+4
+is infinity when T (0) is infinity. This fixes a nontrivial
+relation between the two probability parameters r and s
+as s = 2r/(1+r). First, let us consider case (i). The temperature T rises when the radiation emission probability
+r increases as
+ω
+
+T =
+ln
+
+h
+
+exp(ω/T (0))+r
+1+r
+
+i,
+
+(10)
+
+although the particle extracts energy from the system.
+This implies that the model realizes a negative heat capacity. However, the temperature does not go to infinity
+at r = 1. This feature is different from that of BH evaporation, where the BH temperature goes to infinity at the
+last burst.
+Continuous scrambling.— On the other hand, continuous fast scrambling (case (ii)) makes the final temperature infinity. As shown in Supplemental Material
+[22], the one-qubit Gibbs state remains unchanged after each fast scrambling and qubit free evolution. Every fast scrambling loses the correlation between a single qubit and the fields. Let us consider t times operation of Γ and take the r → 0 limit with rt = τ fixed,
+Γt [ρ (T (0))] = (1 − p(τ )) |0ih0| + p(τ )ρ (T (τ )). This provides the dynamics of a single decaying qubit reduced
+from the full dynamics of N decaying qubits, ΨR and ΨS
+with the total Hamiltonian:
+
+Htot =
+
+N
+X
+
+(Hi + HRi + HSi ) + Hfs ,
+
+(11)
+
+i=1
+
+where Hi is the i th subsystem free Hamiltonian of
+Eq. (3), HRi and HSi are the i th field Hamiltonians
+of Eqs. (4) and (8), and Hfs is the fast scrambling
+Hamiltonian for the (|+i, |−i) sector. Here, as usual, we
+assume that the Hamiltonian of evaporating qubits can
+be approximated
+by the free Hamiltonian contribution:
+P
+HN = i Hi .
+In order to reproduce the BH thermal properties in
+this model, it is noted that N depends on T (0), and
+−1
+N = (4πGωT (0)) should hold. The energy ω is also
+assumed to be much smaller than T (0). The constraint
+ω ≪ T (0) yields
+p(τ ) ≈ exp(−τ ),
+
+(12)
+
+and since the temperature is given by
+T (τ ) ≈ T (0) exp τ,
+
+(13)
+
+the temperature at τ = ∞ is infinity. Eqs. (10), (12)
+and (13) are derived in Supplemental Material [22]. One
+qubit energy E = Tr [Hρ] is computed as
+E(τ ) = p(τ )
+
+ω
+ω exp (−ω/T (τ ))
+≈ p(τ ) .
+1 + exp (−ω/T (τ ))
+2
+
+Therefore, we have the relation E = ωT (0)/(2T ) for
+a single qubit. The expectation value of the total energy hHN i of N qubits is given by
+−1
+
+hHN i = N E = (8πGT )
+
+,
+
+and this is the precise relation in Eq. (1) because Trad =
+T . Thus the Bekenstein-Hawking entropy SBH is defined
+by Eq. (2) in this model. By introducing a new time
+coordinate t′ , such that τ = ln (1 − t′ /tBH )−1/3 , the qubit
+system decays completely at finite lifetime t′ = tBH , just
+as 4-dim Schwarzschild BHs do. The temperature at the
+Page time is evaluated as TPage ≈ 2T (0).
+In the Page curve conjecture, one decaying qubit is
+almost maximally entangled with emitted matter after
+the Page time and has no correlation with other qubits
+due to entanglement monogamy. Therefore, SEE between
+one decaying qubit and other subsystems (other N − 1
+qubits+ΨR +ΨS ) must be equal to SBH /N after the Page
+time. SEE at time τ is computed as
+
+
+((1 − p(τ )) |0ih0| + p(τ )ρ (T (τ )))
+SEE = −Tr
+.
+× ln ((1 − p(τ )) |0ih0| + p(τ )ρ (T (τ )))
+As shown in Supplemental Material [22], the average
+thermal entropy of the total system is computed as
+N pSth , where Sth is the qubit thermal entropy at temperature T , which is given by Sth = ln (1 + exp (−ω/T )) +
+ω/(T exp (ω/T ) + T ). Thus, the average of one-qubit
+thermal entropy is defined as pSth . In Fig. 3, these three
+entropies are plotted as a function of 1 − T (0)/T . At
+the initial time (T = T (0)), SEE of one qubit does not
+vanish, because the qubit is entangled with other qubits,
+although SEE of N qubits vanishes at that time. The entropies are conjectured to be equal to each other after
+the Page time. Actually, they behave very differently
+(SBH /N ≪ pSth ≪ SEE ). In a high-temperature regime
+with T ≫ T (0), they are analytically evaluated as
+
+2
+T (0)
+ω
+,
+4T (0)
+T
+T (0)
+ln 2,
+pSth ∼
+T
+
+
+T (0)
+T
+.
+SEE ∼
+ln
+T
+T (0)
+
+SBH /N ∼
+
+The difference between SBH /N and pSth originates from
+the extra factor p in the energy E = pEth . The discrepancy is derived in Supplemental Material [22]. The
+difference between pSth and SEE is the binary entropy of
+p that reflects the non-trivial contribution of the vacuum
+states, |0i. Thus, in this model, the Page curve conjecture does not work.
+Conclusion and discussion. — In a model of decaying qubits into zero-energy degrees of freedom, the thermal properties of 4-dim Schwarzschild BH evaporation
+are precisely reproduced. The EE is much larger than
+
+5
+SEE
+1.0
+
+pSth
+SBH / N
+
+Entropies
+
+0.8
+
+0.6
+
+0.4
+
+0.2
+
+0.0
+0.0
+
+0.2
+
+0.4
+
+0.6
+
+0.8
+
+1.0
+
+1-T(0)/T
+
+FIG. 3. Plots of three types of entropies in the decaying qubit
+model at ω/T (0) = 0.1. The Page time is defined by p = 1/2,
+and corresponds to T (0)/TPage ≈ 0.52.
+
+the average thermal entropy and the Bekenstein-Hawking
+entropy analogue for each qubit. This is the first result of
+a breakdown of the Page curve ansatz in a model which
+satisfies the Hawking temperature relation in Eq. (1).
+The result provides a new feature for a resolution of
+the information loss problem. In our model, the emission
+of a Hawking particle of ΨR at an early stage makes a
+transition from |+i into |−i of a qubit. After the Page
+time, the qubit in |−i almost decays into a zero-energy
+particle of ΨS , which may be interpreted as BMS soft
+hair propagating to future null infinity. This suggests
+that in the BH firewall paradox [23–25], early Hawking
+radiation is entangled with zero-energy BMS soft hair
+and that late Hawking radiation can be highly entangled
+with the degrees of freedom of the BH (surviving qubits in
+|−i), avoiding the emergence of a firewall at the horizon.
+The soft hair influence for black holes with positive
+heat capacity like large AdS black holes remains elusive.
+Acknowlegements. —The authors thank Masanori
+Hanada and Hal Tasaki for useful discussions. This research was partially supported by Kakenhi Grants-in-Aid
+No. 16K05311 (M.H.) and No. 16H01094 (Y.N.) from the
+Japan Society for the Promotion of Science (JSPS) and
+by the Tohoku University Graduate Program on Physics
+for the Universe (K.Y.).
+
+[1] S. Ryu and T. Takayanagi, Phys. Rev. Lett. 96, 181602
+(2006).
+[2] T. Jacobson, Phys. Rev. Lett. 116, 201101 (2016).
+[3] A. Kitaev and J. Preskill, Phys. Rev. Lett. 96, 110404
+(2006).
+[4] M. Levin and X.-G. Wen, Phys. Rev. Lett. 96, 110405
+(2006).
+[5] R. Islam, R. Ma, P. M. Preiss, M. E. Tai, A. Lukin,
+M. Rispoli, and M. Greiner, Nature (London) 528, 77
+(2015).
+
+[6] S. W. Hawking, Commun. Math. Phys. 43, 199 (1975).
+[7] S. W. Hawking, Phys. Rev. D 72, 084013 (2005).
+[8] D. N. Page, Phys. Rev. Lett. 71, 3743 (1993).
+[9] M. Hotta, K. Sasaki, and T. Sasaki, Classical Quantum
+367 Gravity 18, 1823 (2001).
+[10] S. W. Hawking, M. J. Perry, and A. Strominger, Phys.
+Rev. Lett. 116, 231301 (2016).
+[11] M. Hotta, J. Trevison, and K. Yamaguchi, Phys. Rev. D
+94, 083001 (2016).
+[12] S. W. Hawking, M. J. Perry, and A. Strominger, J. High
+373 Energy Phys. 05 (2017) 161.
+[13] E. Berkowitz, M. Hanada, and J. Maltz, Phys. Rev. D
+94, 126009 (2016).
+[14] S. D. Mathur, Classical Quantum Gravity 26, 224001
+(2009).
+[15] S. B. Giddings, Phys. Rev. D 85, 124063 (2012).
+[16] S. G. Avery, J. High Energy Phys. 01 (2013) 176.
+[17] E. Lubkin, J. Math. Phys. (N.Y.) 19, 1028 (1978).
+[18] S. Lloyd and H. Pagels, Ann. Phys. (N.Y.) 188, 186
+(1988).
+[19] A. Sugita, RIMS Kokyuroku (Kyoto) 1507, 147 (2006).
+[20] A. Sugita, Nonlinear Phenom. Complex Syst. 10, 192
+(2007).
+[21] Y. Sekino and L. Susskind, , J. High Energy Phys. 10
+(2008) 065.
+[22] See Supplemental Material for more detailed derivations.
+[23] S. L. Braunstein, S. Pirandola, and K. Życzkowski, Phys.
+Rev. Lett. 110, 101301 (2013).
+[24] A. Almheiri, D. Marolf, J. Polchinski, and J. Sully, J.
+High Energy Phys. 02 (2013) 062.
+[25] M. Hotta and A. Sugita, Prog. Theor. Exp. Phys. 2015,
+123B04 (2015).
+
+6
+SUPPLEMENTAL MATERIAL
+
+Decay Channel
+Substituting Eq. (5) into the Schrödinger equation with Hamiltonian Eq. (4) yields the following equations of
+motion:
+Z
+d
+(S14)
+i c+ (t) = g ∗ (x)ϕ(x, t)dx,
+dt
+(∂t + ∂x ) ϕ(x, t) = −ic+ (t)g(x).
+
+(S15)
+
+Using x± = x ± t, Eq. ( S15) is rewritten as
+
+i
+∂+ ϕ = − c+
+2
+
+
+
+ 
+
+
+
+1 +
+1 +
+−
+−
+g
+.
+x −x
+x +x
+2
+2
+
+Taking account of the retarded boundary condition, integration of the above equation is achieved as
+i
+ϕ=−
+2
+
+Z x+
+
+c+
+
+x−
+
+
+
+ 
+
+
+
+1 ′
+1 ′
+−
+−
+g
+dx′ .
+x −x
+x +x
+2
+2
+
+(S16)
+
+Substituting Eq. ( S16) into Eq. ( S14) yields
+
+i
+
+d
+i
+c+ (t) = −
+dt
+2
+
+Z
+
+dxg ∗ (x)
+
+ 
+
+Z x+t 
+1 ′
+1 ′
+(x + x − t) c+
+(x − x + t) dx′ .
+g
+2
+2
+x−t
+
+By changing the integral variable from x′ to t′ , such that
+t′ =
+
+1 ′
+(x − x + t) ,
+2
+
+the following equation is derived.
+d
+c+ (t) = −
+dt
+
+Z t
+
+K(t − t′ )c+ (t′ )dt′ ,
+
+0
+
+where K(t) = g ∗ (x)g (x − t) dx. This is generally solved using the Laplace transformation. As a simple example, let
+
+us take g(x) = λδ (x) with positive λ. The survival probability of the up state is computed as |c+ (t)|2 = exp −λ2 t .
+The wave function ϕ(x, t) is given by
+R
+
+
+ 2
+λ
+ϕ(x, t) = −iλ exp − (t − x) Θ (t − x) Θ(x).
+2
+If we take a large λ, then we have a localized wave packet out of a qubit.
+The feature of zero energy states comes from gravitational physics. The zero-enery qubit decay happens due to
+a large phase space volume for the soft hairs. In ordinally physical systems, the phase space is narrow and the
+zero-energy decay can be omitted.
+
+Derivation of Temperature Evolution
+
+7
+In this section, we derive Eqs. (10), (12), and (13). By using ΓR and ΓS , we obtain the following result:
+Γ [ρ (T )]
+=s
+
+1 + r exp (−ω/T )
+exp (−ω/T )
+1 + r exp (−ω/T )
+|0ih0| + (1 − s)
+|−ih−| + (1 − r)
+|+ih+|.
+1 + exp (−ω/T )
+1 + exp (−ω/T )
+1 + exp (−ω/T )
+
+The state is then expressed as
+Γ [ρ (T )] = (1 − p) |0ih0| + pρ (T ′ ) ,
+where the temperature T ′ after the operation is given by
+T′ =
+
+T
+1 + Tω ln (1 + r exp (−ω/T )) − Tω ln 1−r
+1−s
+
+.
+
+(S17)
+
+and the probability p is given by
+p = (1 − r)
+
+exp (ω/T ′ ) + 1
+.
+exp (ω/T ) + 1
+
+Imposing 1/T = 1/T ′ = 0 in Eq. ( S17) yields
+s=
+
+2r
+.
+1+r
+
+(S18)
+
+Substituting Eq. ( S18) into Eq. ( S17) and replacing T → T (0) and T ′ → T provides Eq. (10). By performing t
+times Γ, the temperature after the operation is computed as
+T =
+
+ω
+
+
+i.
+h
+
+
+−t
+ln 1 + exp T ω(0) − 1 (1 + r)
+
+(S19)
+
+Similarly, the survival probability of a qubit after the operation is given by
+p=
+
+exp (2ω/T ) − 1
+.
+exp (2ω/T (0)) − 1
+
+(S20)
+
+By taking the large t limit with rt = τ fixed in Eq. ( S19), the following relation holds:
+T (τ ) =
+
+ω
+
+
+i.
+h
+
+
+ln 1 + exp T ω(0) − 1 exp (−τ )
+
+(S21)
+
+Assuming ω ≪ T (0), we get Eq. (13). Similarly, using the same limit, Eq. (12) is derived by substituting Eq. (13)
+into Eq. ( S20).
+Finally we add a comment regarding another channel, Γ′ = ΓR ΓS . This yields a different evolution, such that
+Γ′ [ρ (T )] =
+
+2r
+1 − 2r + exp (−ω/T )
+|0ih0| +
+ρ (T ′ ) .
+1 + exp (−ω/T )
+1 + exp (−ω/T )
+
+In this case, imposing 1/T = 1/T ′ = 0 yields s = 2r. Thus, Γ′ becomes unphysical in the case with 1/2 < r ≤ 1 since
+the probability s exceeds 1, which implies that we have noncommutativity of ΓR and ΓS . However, if we consider a
+small r limit in case ii) to derive the 4-dim BH’s thermal properties, the commutator merely gives O(r2 ) correction
+terms which do not contribute to the final results.
+
+Qubit Fast Scrambling
+Here we show the invariance of the thermal state of a decaying qubit in Eq. (9) under fast scrambling and qubit
+free evolution. We have N three-level identical subsystems.
+
+8
+Let us first comment about the unitary evolution U corresponding to Γ, which describes the dynamics of a single
+decaying qubit, a radiation field ΨR , and a soft hair field ΨS . For |ψi = |+i, |−i, |0i, it provides
+U |ψi|vaciR |vaciS
+(ψ)
+
+(ψ)
+
+(ψ)
+
+= c+ |+i|vaciR |vaciS + c− |−i|ϕR iR |vaciS + c0 |0i|ϕR iR |ϕS iS ,
+
+(S22)
+
+where
+(ψ)
+|ϕR iR ∝
+
+( R
+
+
+ϕR (x)Ψ†R (x)dx |vaciR
+
+(if ψ = +)
+
+(ψ)
+|ϕS iS ∝
+
+( R
+
+
+ϕS (x)Ψ†S (x)dx |vaciS
+
+(if ψ = +, −)
+
+|vaciR
+
+(if ψ = −, 0)
+
+and
+
+|vaciS
+
+(if ψ = 0)
+
+since the unitary time evolution U conserves the excitation numbers. Let us assume that the coupling functions g(x)
+in Eq. (4) and Eq. (8) are almost localized around x = 0 with large |g(0)| as in the above SM section, and that the
+wave functions ϕR (x) and ϕS (x) of the emitted particles already have no overlap with the support of g(x). This
+ensures that
+g(x)ϕR (x) = g(x)ϕS (x) = 0.
+
+(S23)
+
+Then we are able to neglect the correlation of the state in Eq. ( S22) in the evaluation of the time evolution of the
+decaing qubit system due to the (|+i, |−i) sector fast scrambling, which causes random phase factors exp (iδ± ) =
+c± / |c± | such that
+c∗+ c− = c∗+ c0 = c∗− c0 = 0.
+Here each bar stands for the ensemble avarage of the fast scrambling. Theses properties and Eq. ( S22) yield the
+following decohered state:
+U |ψihψ| ⊗ |vaciR hvac|R ⊗ |vaciS hvac|R U †
+= |c+ |2 |+ih+| ⊗ |vaciR hvac|R ⊗ |vaciS hvac|S
+2
+
+(ψ)
+
+(ψ)
+
+(ψ)
+
+(ψ)
+
++|c− | |−ih−| ⊗ |ϕR iR hϕR |R ⊗ |vaciS hvac|S
+(ψ)
+
+(ψ)
+
++ |c0 |2 |0ih0| ⊗ |ϕR iR hϕR |R ⊗ |ϕS iS hϕS |S .
+(ψ)
+
+(ψ)
+
+In the evaluation of the single decaying qubit dynamics, it is possible to replace |ϕR iR hϕR |R into |vaciR hvac|R
+(ψ)
+(ψ)
+and |ϕS iS hϕS |S into |vaciS hvac|S because the emitted particles already leave the interaction region as seen in
+Eq. ( S23), and the field quantum states are local vacuum states around the decaying qubit. Hence the reduced state
+evolution of the decaying qubit after the fast scrambling can be described again by using the same channel Γ as
+follows.
+h 
+ i
+TrΨR ΨS U U |ψihψ| ⊗ |vaciR hvac|R ⊗ |vaciS hvac|R U † U †
+#
+" 
+2
+2
+2
+U |c+ | |+ih+| + |c− | |−ih−| + |c0 | |0ih0|
+= TrΨR ΨS
+⊗|vaciR hvac|R ⊗ |vaciS hvac|S U †
+h
+i
+2
+2
+2
+= Γ |c+ | |+ih+| + |c− | |−ih−| + |c0 | |0ih0| .
+
+This justifies the use of t-times successive operations of the channels Γt [ρ (T (0))] in our time evolution analysis.
+Next let us explain the entanglement structure of the total system. The two states |±i among the three states
+describe the qubit states. Assuming that emitted particles do not have spatial overlaps, the entanglement among
+decaying qubits and the particles can be computed by use of an extended model, in which each paricle is treated as a
+quantum of an independent field. Each channel operation ΓR of Γ requires a fresh vacuum state |vaci of a Hawking
+radiation field ΨR (x). Similarly each ΓS of Γ requires a fresh vacuum of a soft hair field ΨS (x). Therefore, 2N fields
+
+9
+are required for a one-time operation of Γ⊗N , which means that the t-times iteration of Γ⊗N requires 2N t fields. For
+instance, the original single field ΨR with N t particles is described by a set of N t different ΨR s with one particle
+excitation in each field. The initial state of the fields is a tensor product of 2N t vacuum states, such that
+t
+N O
+O
+
+|vac; Ri(jk) |vac; Si(jk) ,
+
+j=1 k=1
+
+where the subscripts (jk) discriminate the fields, and |vac; Ri(jk) (|vac; Si(jk) ) is the vacuum state of the jk-th
+radiation field (soft-hair field).
+The total dynamics generated by the full Hamiltonian in Eq. (11) yields the following complicated entangled state:
+
+=
+
+|Φi
+X
+
+···
+
+s1 =±
+
+X
+
+|s1 s2 · · · sN i
+
+sN =±
+
+
+
+X
+
+⊗
+
+···
+
++
+
+···
+
+j=1 s1 =±
+
+
+
+⊗
+
+X
+
+X
+
+···
+
+X
+
+j=1
+
+X
+
+|ϕ(j,k) ; Ri(jk)
+
+k=1
+
+!
+
+X
+
+···
+
+ϕ(1,1) =vac,φ(1)
+
+j=1 k=1
+
+
+
+|ϕ(j,k) ; Ri(jk) |vac; Si(jk) 
+
+|s1 s2 · · · 0j · · · sN i
+
+sN =±
+t
+X
+
++ ···
++
+
+N O
+t
+O
+
+cϕ(1,1) ,··· ,ϕ(N,t) (s1 s2 · · · 0j · · · sN ; t′ )
+
+ϕ(N,t) =vac,φt t′ =1
+
+ϕ(1,1) =vac,φ1
+t
+N
+O
+O
+
+X
+
+···
+
+sj−1 =± sj+1 =±
+
+X
+
+cϕ(1,1) ,··· ,ϕ(N,t) (s1 s2 · · · sN )
+
+ϕ(N,t) =vac,φ(t)
+
+ϕ(1,1) =vac,φ(1)
+
+N X
+X
+
+X
+
+
+
+|vac; Si(j1) · · · |φ(t′ ); Si(jt′ ) · · · |vac; Si(jt) 
+cϕ(1,1) ,··· ,ϕ(N,t) (00 · · · 0) |00 · · · 0i
+
+N O
+t
+O
+
+|ϕ(j,k) ; Ri(jk) |φ(k); Si(jk) ,
+
+j=1 k=1
+
+ϕ(N,t) =vac,φ(t)
+
+where |φ(t); Ri is a one-particle state of the radiation field such that
+Z
+|φ(t); Ri = φ(x, t)Ψ†R (x)dx|vac; Ri,
+and |φ(t); Si is a similar one-particle state of the soft hair field. Interference among the terms of multi-particle
+emissions can be neglected in this model. The entanglement between a decaying qubit and other systems can be
+evaluated using |Φi. The reduced state of the N -qubit system is
+TrΨR ,ΨS [|ΦihΦ|]
+X
+X
+X X
+αs1 ,··· ,sN ,s′1 ,··· ,s′N |s1 · · · sN ihs′1 · · · s′N |
+···
+=
+···
+s1 =±
+
++
+
+sN =± s′1 =±
+
+N X
+X
+
+j=1 s1 =±
+
+···
+
+X
+
+s′N =±
+
+X
+
+sj−1 =± sj+1 =±
+
+···
+
+X X
+
+sN =± s′1 =±
+
+···
+
+X
+
+X
+
+s′j−1 =± s′j+1 =±
+
+···
+
+X
+
+s′N =±
+
+αs1 ,··· ,0j ,··· ,sN ,s′1 ,··· ,0j ,··· ,s′N |s1 · · · 0j · · · sN ihs′1 · · · 0j · · · s′N |
+
++ ···
++ α0,···0 |0 · · · 0ih0 · · · 0|
+for some constants {α}. Note that the fast scrambling with free evolution of each qubit makes off-diagonal contributions of TrΨR ,ΨS [|ΦihΦ|] such as | + − − · · · −ih− + − · · · − | to vanish when we take a partial trace and compute
+a one-qubit reduced state. Thus, the fast scrambling ensemble average of ρ1 = Tr2,3,··· ,N TrΨR ,ΨS [|ΦihΦ|] takes the
+diagonalized form of
+ρ1 = (1 − p)|0ih0| + p(1 − q)|−ih−| + pq|+ih+|.
+
+10
+exp(−ω/T )
+By taking q = 1+exp(−ω/T
+) , this is rewritten as
+
+ρ1 = (1 − p) |0ih0| + pρ (T ) ,
+with the temperature T of the decaying qubit. Since the expectation value of the number of surviving qubits is
+conserved in the fast scrambling, p is unchanged during this process. Moreover, the conservation of the total energy
+ensures that T is equal to the temperature before the scrambling. Thus, the state of a decaying qubit in Eq. (9) does
+not change during the fast scrambling.
+
+Average Thermal Entropy of the Total System
+In this section, we evaluate the average thermal entropy of N decaying qubits. For one decaying qubit, the state is
+given by (1 − p) |0ih0| + pρ (T ), due to the state typicality. With probability p, a surviving qubit with temperature T
+is observed. The entropy is then given by Sth = −Tr [ρ (T ) ln ρ (T )]. The vacuum state is observed with probability
+1 − p. Then,no thermal
+entropy appears. We have N identical systems. The probability of finding n surviving qubits
+
+N
+is given by
+pn (1 − p)N −n . Therefore, the average of the total thermal entropy is computed as
+n
+
+N 
+X
+N
+
+n=1
+
+n
+
+pn (1 − p)N −n (nSth ) = N pSth .
+
+Discrepancy between SBH /N and pSth
+In this section, we derive the large discrepancy between SBH /N and pSth . First of all, SBH /N is defined using
+d (SBH /N ) = dE/T . Due to E = pEth and dEth = T dSth ,
+
+
+Eth
+d (SBH /N ) = d (pSth ) − Sth −
+dp
+(S24)
+T
+holds. The second term on the right-hand side appears due to the time dependence of p, and causes the large deviation
+of SBH /N from pSth . Let 1/T be denoted by β. Using
+Sth −
+
+βω exp (−βω)
+βω exp (−βω)
+Eth
+= ln (1 + exp (−βω)) +
+−
+= ln (1 + exp (−βω)) ,
+T
+1 + exp (−βω) 1 + exp (−βω)
+
+and
+β = pβ (0)
+assuming ω ≪ T (0), the integration of Eq. ( S24) provides
+SBH /N = p (Sth − ln 2) +
+
+Z p
+0
+
+dp′
+
+Z p′ β(0)
+
+Eth (β ′ ) dβ ′ .
+
+(S25)
+
+0
+
+By taking a small β in Eq. ( S25), the term
+ of O (T (0)/T ) in the right-hand side vanishes because Sth tends to ln 2.
+Thus, the relation SBH /N = O T (0)2 /T 2 is reproduced, even though pSth = O (T (0)/T ).
+
+
