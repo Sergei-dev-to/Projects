@@ -1,0 +1,1388 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[final]{microtype}
+
+\textwidth=6.5in
+\textheight=9in
+\oddsidemargin=0in
+\evensidemargin=0in
+\topmargin=0in
+\headheight=0in
+\headsep=0in
+\parskip=0.16in
+\parindent=0in
+
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Htot}{\mathcal H_{\rm tot}}
+\newcommand{\HB}{\mathcal H_{\rm B}}
+\newcommand{\FR}{\mathcal F_{\rm R}}
+\newcommand{\Smicro}{S_{\rm micro}}
+\newcommand{\rhoB}{\rho_{\rm B}}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1|}
+
+\title{Schwarzschild Evaporation Phenomenology from a Non-Gravitational Hamiltonian}
+\author{Sergei Slobodov\\\texttt{sergei@slobodov.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a non-gravitational Hamiltonian construction that reproduces the
+exterior thermodynamic and fine-grained entropy phenomenology of Schwarzschild
+evaporation from four inputs: a subsystem with Schwarzschild density of states,
+an outgoing radiation continuum, weak energy-conserving emission from
+area-many boundary-accessible operators, and microcanonical mixing.  The
+weak-coupling calculation gives a locally thermal radiation spectrum, the
+leading finite-energy correction, negative heat capacity, and the
+Schwarzschild number-flux, power, and lifetime scalings.  The area dependence
+of the rate follows from operator counting in the boundary-accessible emission
+algebra.  Global purity, shrinking remaining Hilbert-space dimension, and
+standard decoupling estimates give the Page curve and post-Page early/late
+radiation correlations.  At second R\'enyi order the purity contains two
+competing contractions, yielding the island min formula with the gravitational
+area term replaced by the microcanonical entropy of the remaining subsystem.
+Approximate-design and tensor-product-expander constructions give explicit
+finite-regulator realizations of the mixing assumption.  Replacing this
+abstract mixer by a
+simple deterministic sparse Hamiltonian is a separate dynamical problem: a
+Cayley-expander candidate makes the boundary emission weights equal by
+symmetry, while the remaining requirement is sectorwise cumulative
+second-moment decoupling for the induced weak-emission shrinking channel.  The
+construction addresses exterior entropy flow; it does not include interior
+geometry, horizon smoothness, or entanglement-wedge reconstruction.
+\end{abstract}
+
+\section{Introduction}
+
+We use units with $\hbar=c=k_B=1$.
+
+Semiclassical black-hole evaporation combines thermodynamic regularity with a
+subtle fine-grained information problem.  For an uncharged nonrotating black
+hole,
+\begin{equation}
+    S_{\rm BH}\propto A\propto M^2,\qquad
+    T_H\propto M^{-1},
+\end{equation}
+and the heat capacity is negative \cite{Bekenstein1973,Hawking1975}.  The
+outgoing radiation is locally thermal, up to greybody and phase-space factors
+\cite{Hawking1975,Page1976}.  The luminosity scales as
+\begin{equation}
+    P(M)\propto M^{-2},
+\end{equation}
+so the lifetime scales as $\tau\propto M_0^3$.
+
+For a unitary evaporation process, the final radiation state must encode the
+initial state even though small radiation subsystems have an approximately
+thermal appearance.  Page's dimension-counting argument predicts a radiation
+entropy that rises and then falls \cite{Page1993Average,
+Page1993Info}.  The Hayden-Preskill argument gives a sharper decoding
+statement for a diary thrown into an old, rapidly scrambling black hole
+\cite{HaydenPreskill2007,SekinoSusskind2008}.  The present paper uses the Page
+entropy statement and early/late radiation correlations; it does not prove a
+Hayden-Preskill recovery theorem.
+
+The post-2019 island calculations add a second language for the same
+fine-grained radiation entropy curve.  In those calculations, the von Neumann
+entropy of the radiation is obtained by minimizing over saddles.  Before the
+Page time the no-island saddle gives the Hawking entropy of the emitted
+radiation.  After the Page time the island saddle gives the generalized
+entropy of a quantum extremal surface, whose area term is the remaining
+black-hole entropy \cite{Penington2019,
+AlmheiriEngelhardtMarolfMaxfield2019,
+AlmheiriHartmanMaldacenaShaghoulianTajdini2020,
+AlmheiriHartmanMaldacenaShaghoulianTajdini2021}.  The Hamiltonian construction
+below shows how the same min formula arises in a manifestly unitary,
+non-gravitational model: the two candidate entropies are the emitted
+thermodynamic entropy and the microcanonical state count of the remaining
+object.
+
+Several finite-dimensional models address the information-theoretic side of
+this picture.  Tensor-network models, qubit-transport models, and random-circuit
+models describe unitary transfer of information from a shrinking black-hole
+subsystem into radiation \cite{LeutheusserVanRaamsdonk2017,Avery2013,
+OsugaPage2018,PiroliSunderhaufQi2020}.  These constructions make Page-like
+information flow transparent.  The Hamiltonian considered here also includes the
+thermodynamic data: an energy, a density of states, emitted quanta with
+definite energies, local thermal flux, negative heat capacity, and the
+Schwarzschild rate law.  Related Hilbert-space reduction models make the
+island-like entropy minimum explicit from changing Hilbert-space dimensions
+\cite{BasuWenZhou2025}.  Here the same entropy minimum is tied to an
+energy-resolved evaporation Hamiltonian and to the Schwarzschild rate law.
+
+Analogue-gravity systems give another comparison point.  Unruh's acoustic
+black holes and the later analogue-gravity literature show that
+Hawking-like radiation can arise in non-gravitational media whose long-distance
+excitations see an effective horizon \cite{Unruh1981,Barcelo2011}.  Those
+models capture the kinematic field-theory part of Hawking radiation.  The
+Hamiltonian construction below addresses the thermodynamic and
+information-theoretic part by supplying the black-hole state count as a density
+of states and treating evaporation as ordinary weak emission into outgoing
+quantum modes.
+
+The paper separates Schwarzschild evaporation phenomenology from the
+Hamiltonian assumptions used to reproduce it.  The exterior features recovered
+below are the following.
+\begin{enumerate}
+\item
+The black-hole entropy scales as the horizon area.  For a four-dimensional
+Schwarzschild black hole, $A\sim M^2$.
+\item
+The temperature scales as $T_H\sim M^{-1}$, so the heat capacity is negative.
+\item
+The outgoing radiation has an approximately thermal one-particle spectrum at
+the instantaneous Hawking temperature, with the usual greybody and phase-space
+factors and with finite-energy deviations from exact thermality.
+\item
+For four-dimensional Schwarzschild evaporation, the typical quantum energy
+scales as $\omega\sim T\sim M^{-1}$, the luminosity scales as
+$P\sim M^{-2}$, the number flux scales as
+$\Gamma_{\rm quanta}\sim M^{-1}$, and the evaporation time scales as
+$\tau\sim M_0^3$.
+\item
+The evaporation is quasi-stationary: over short intervals the radiation is
+described by an instantaneous mass and temperature, while the macroscopic mass
+changes only over many emitted quanta.
+\item
+The fine-grained evolution is unitary: the radiation von Neumann entropy
+follows the Page curve, equivalently the island min formula for the exterior
+radiation entropy, and late radiation is correlated with early radiation after
+the Page time.
+\end{enumerate}
+
+The Hamiltonian has a subsystem $B$ with microcanonical density of states
+$\rho_{\rm B}(E)\sim \exp(cE^2)$, with the energy $E$ identified with the mass
+$M$.  The strengthened version represents this state count by
+boundary-accessible degrees of freedom.  It is weakly coupled to an outgoing
+radiation continuum by an energy-conserving interaction whose local emission
+operators act on those boundary-accessible degrees.  The inclusive
+low-frequency emission strength is then proportional to the number of active
+boundary emitters, hence to the area.  This reproduces the area scaling of the
+standard low-frequency absorption cross-section by an operator-counting
+mechanism.  Mixing inside microcanonical shells is assumed to be
+cumulative over the evaporation history.  The fine-grained Page-curve and
+information-transfer statements require decoupling of the reference system from
+the subsystem that should be ignorant of the code.  In the design-based
+version used below, the regulated in-shell mixing blocks are chosen from
+approximate-design or tensor-product-expander constructions, so this
+decoupling condition follows from standard results
+\cite{HaydenPreskill2007,HaydenHorodeckiWinterYard2008,
+DankertCleveEmersonLivine2009,SzehrDupuisTomamichelRenner2013,
+BrownFawzi2015,HarrowLow2009}.  Known Hamiltonian-design constructions give
+Hamiltonian evolutions with the required design moments under their ensemble,
+locality, or time-dependence assumptions, including nearly time-independent
+design Hamiltonians and time-independent random polylog-local Hamiltonians
+\cite{NakataHircheKoashiWinter2017,CuiSchusterMaoHuangBrandao2025}.
+Channel-scrambling diagnostics based on out-of-time-order correlator (OTOC)
+decay give another Hamiltonian route to the same mutual-information statements
+\cite{HosurQiRobertsYoshida2016,YoshidaKitaev2017}.
+
+These assumptions give the thermodynamic features above through standard
+weak-coupling and microcanonical arguments.  The
+density-of-states ratio gives the local thermal factor and the leading
+finite-energy correction.  The area-sized channel count gives the
+Schwarzschild quanta rate, power, and lifetime scalings.
+The falling Page branch follows from global purity after the remaining
+black-hole Hilbert space becomes smaller than the radiation support.  The
+rising branch and post-Page early/late correlations follow from Page's theorem
+and decoupling applied to the composite emission isometry.
+
+The boundary-accessible density of states is an input to the Hamiltonian.  A
+derivation of that input from simpler non-gravitational microscopic degrees of
+freedom is a separate problem.  Given that input, local weak coupling to the
+boundary-accessible degrees gives the area emission strength, and the listed
+exterior phenomenology follows from Hamiltonian evolution in the weak-coupling
+regime together with design-based decoupling of the composite emission map
+for the fine-grained information-theoretic statements.  The model has no
+interior geometry and
+therefore does not address
+horizon smoothness, island reconstruction from the radiation, complementarity,
+or firewall questions.
+
+\subsubsection*{Relation to earlier work}
+
+The closest information-theoretic comparison is the tensor-network class of
+Leutheusser and Van Raamsdonk, where each evaporation step is specified by an
+isometry
+\begin{equation}
+    {\cal I}_n:{\cal H}^{BH}_n\to {\cal H}^{BH}_{n-1}\otimes{\cal H}^{rad}_n .
+\end{equation}
+In the present notation the corresponding map is $V_E$, used in
+Section~\ref{sec:information-flow} and constructed in
+Appendix~\ref{app:weak-emission-map} as the Stinespring dilation of the weak
+emission channel
+\begin{equation}
+    V_E:\mathcal H_E\to
+    \bigoplus_{\omega,\lambda,\mu}
+    \mathcal H_{E-\omega}\otimes\ket{\omega,\lambda,\mu}_{\rm R}.
+\end{equation}
+The additional structure here is the energy-resolved Hamiltonian origin of
+this map and the density of states that produces the thermodynamic evaporation
+law.  Tensor-network and random-circuit models supply the Page and
+early/late-correlation part of the argument
+\cite{LeutheusserVanRaamsdonk2017,PiroliSunderhaufQi2020}.
+
+Section 2 defines the model.  Section 3 derives the thermodynamic consequences.
+Section 4 states the emission-isometry reduction, the Page curve, and the
+island-formula contraction.  Section 5 gives the finite-dimensional
+regularization needed to apply Page and decoupling estimates.  Section 6
+compares the model with existing approaches, and Section~\ref{sec:discussion}
+discusses the fixed-Hamiltonian problem left by the abstract mixer.  The
+appendices give the
+weak-emission Stinespring construction, a concrete fixed-Hamiltonian target,
+the Page/replica moment calculation, and a finite-dimensional check separating
+coarse thermality from Page behavior.
+
+\section{The Model}
+
+The model has four ingredients.  The first is a black-hole subsystem $B$,
+representing the remaining object.  The second is an outgoing
+radiation field $R$, representing emitted quanta that propagate away.  The
+third is a mixing term that scrambles states inside fixed microcanonical
+shells.  The fourth is an interaction that lowers the energy of $B$ while
+creating an outgoing quantum.  The full Hamiltonian is
+\begin{equation}
+    H_{\rm tot}=H_{\rm B}^{(0)}+H_{\rm mix}+H_{\rm R}+H_I.
+\end{equation}
+The term $H_{\rm mix}$ mixes states inside a fixed microcanonical shell of
+$B$.  The interaction $H_I$ transfers energy from $B$ to $R$.
+The Hamiltonian is time independent.  The stochastic language used later for
+emission events is the standard weak-coupling description of this Hamiltonian
+in the outgoing-scattering regime.
+
+\subsection{Black-Hole Subsystem}
+
+The Hilbert space of the black-hole subsystem is organized by energy.  We use
+continuum notation for readability, but all entropy statements refer to
+microcanonical bands of width $\Delta E$ that are wide compared with the
+microscopic level spacing and narrow compared with the scale on which
+$\Smicro(E)$ varies:
+\begin{equation}
+    \HB=\int^\oplus dE\,\mathcal H_E,
+    \qquad
+    H_{\rm B}^{(0)}=\int dE\,E\,\Pi(E).
+\end{equation}
+Here $\Pi(E)$ denotes the formal spectral projector density onto energy $E$.
+For a shell of width $\Delta E$, let $\Pi_{\Delta E}(E)$ denote the projector
+onto states with energies in that shell.  Then
+\begin{equation}
+    N(E,\Delta E)=\Tr \Pi_{\Delta E}(E)\simeq \rhoB(E)\Delta E,
+    \qquad
+    \Smicro(E)=\log N(E,\Delta E).
+\end{equation}
+The Schwarzschild scaling is encoded by an area function $A(E)$ and by the
+microcanonical entropy
+\begin{equation}
+    \Smicro(E)\simeq cE^2,
+    \qquad
+    A(E)\simeq c_A E^2.
+\end{equation}
+The constants $c$ and $c_A$ set the entropy and area units.
+For the rate-law result, we use a boundary-accessible realization of this state
+count.  Up to subexponential factors, the active shell contains
+\begin{equation}
+    N(E)\simeq \frac{\Smicro(E)}{\log q}
+\end{equation}
+active boundary cells of local Hilbert-space dimension $q$.  Thus
+\begin{equation}
+    \mathcal H_E\simeq
+    \mathcal K_E\otimes
+    \bigotimes_{x=1}^{N(E)}\mathcal h_x,
+    \qquad
+    \dim \mathcal h_x=q,
+\end{equation}
+where $\mathcal K_E$ denotes any remaining degeneracy that is subleading for
+the operator count.  Since $\Smicro(E)\propto A(E)$, the number of active
+boundary cells is area-sized:
+\begin{equation}
+    N(E)\propto A(E).
+\end{equation}
+This is the horizon-qubit bookkeeping assumption in Hamiltonian language.  It
+is not a derivation of the Schwarzschild density of states from simpler
+degrees of freedom.  The word ``boundary'' refers here to the degrees that are
+accessible to the emission operators and that carry the leading shell entropy;
+it is a bookkeeping analogue of horizon area, not a geometric bulk/boundary
+factorization inside the model.
+For a narrow microcanonical wavepacket, the mass variable is the expectation
+value of the subsystem energy,
+\begin{equation}
+    M(t)=\langle H_{\rm B}^{(0)}\rangle_t.
+\end{equation}
+Choose a microscopic energy basis
+\begin{equation}
+    H_{\rm B}^{(0)}\ket a=E_a\ket a,\qquad A_a=A(E_a),
+\end{equation}
+with many states $\ket a$ in the same microcanonical shell.  Roman indices
+$a,b$ label black-hole energy eigenstates throughout.
+
+\subsection{Radiation Hilbert Space}
+
+The outgoing radiation Hilbert space is a Fock space $\FR$ with Hamiltonian
+\begin{equation}
+    H_{\rm R}
+    =
+    \sum_\lambda\int_0^\infty d\omega\,
+    \omega\, b_\lambda^\dagger(\omega)b_\lambda(\omega).
+\end{equation}
+The modes are continuum-normalized,
+\begin{equation}
+    [b_\lambda(\omega),b_{\lambda'}^\dagger(\omega')]
+    =\delta_{\lambda\lambda'}\delta(\omega-\omega').
+\end{equation}
+The label $\lambda$ denotes species, angular channels, polarizations, or other
+outgoing radiation labels.  Smooth density-of-modes and residual channel
+factors are included below in the channel weights.  The outgoing field is
+treated as an asymptotic radiation channel or large lead, so emitted quanta
+propagate away from $B$ on the evaporation time scale.
+
+\subsection{Mixing and Emission}
+
+The mixing term acts within fixed microcanonical shells,
+\begin{equation}
+    H_{\rm mix}=\int dE\,H_{\rm mix}(E),
+    \qquad
+    H_{\rm mix}(E):\mathcal H_E\to\mathcal H_E.
+\end{equation}
+Equivalently, in a finite regulator one replaces the direct integral by a
+direct sum over microcanonical bands and takes
+$H_{\rm mix}=\oplus_E H_{\rm mix}(E)$.  This is the version used in the
+dimension-counting argument below.  Exact block diagonality is an idealization
+of a microcanonical description: small off-shell matrix elements may be
+included provided they do not change the coarse evaporation trajectory on the
+emission time scale.
+For the design-based version of the model, the finite-shell mixer is
+specified by a unitary block $U_E$ whose low-order moments form an approximate
+design, or more generally by a tensor-product expander of the order required by
+the diagnostic.  The Hamiltonian block is any self-adjoint logarithm
+\begin{equation}
+    H_{\rm mix}(E)=\frac{i}{t_{\rm scr}}\log U_E,
+    \qquad
+    e^{-iH_{\rm mix}(E)t_{\rm scr}}=U_E .
+\end{equation}
+Once the blocks $U_E$ are chosen, the evolution is fixed and time independent.
+Approximate two-designs are enough for the second R\'enyi Page-purity and
+decoupling estimates
+\cite{DankertCleveEmersonLivine2009,SzehrDupuisTomamichelRenner2013};
+tensor-product expanders give the corresponding higher-moment route
+\cite{HarrowLow2009}.  Related Hamiltonian-design constructions are discussed
+in Sec.~\ref{sec:comparison} and App.~\ref{app:fixed-hamiltonian-target}.
+
+The weak-emission regime is
+\begin{equation}
+    t_{\rm emit}\ll t_{\rm evap}.
+\end{equation}
+Here $t_{\rm emit}$ is the mean time between emissions and $t_{\rm evap}$ is
+the macroscopic evaporation time.  The information-theoretic results use the
+additional mixing condition stated in Sec.~\ref{sec:isometry-flow}: the
+composite emission map must act as a typical isometry on the active
+microcanonical support.
+
+The emission term uses the standard system-continuum form for weak decay into
+outgoing modes, familiar from Friedrichs-Lee and Wigner-Weisskopf descriptions
+of unstable quantum systems coupled to continua
+\cite{Friedrichs1948,Lee1954,CohenTannoudji1992}.  In a multi-channel
+Friedrichs-Lee notation, the continuum state coupled to a state $\ket a$ of
+$B$ is
+\begin{equation}
+    \ket{b;\omega,\lambda}\equiv
+    \ket b\otimes b_\lambda^\dagger(\omega)\ket{0}_{\rm R}.
+\end{equation}
+The interaction lowers the area associated with the black-hole subsystem and
+creates an outgoing quantum.  We separate the outgoing radiation label
+$\lambda$ from an inclusive emission-channel label $\mu$.  The latter
+labels the active boundary cell, or equivalently an orthogonal boundary
+emission operator.  The number of such labels is
+$N(E)\propto A(E)$ in the boundary-accessible realization above:
+\begin{align}
+    H_I
+    =
+    \sum_{a,b,\lambda,\mu}
+    \int_0^\infty d\omega\,
+    \Big[
+    &f^{\mu\lambda}_{ba}(\omega)
+    \ket b\bra a\,
+    b_\lambda^\dagger(\omega)
+    +{\rm h.c.}\Big].
+\end{align}
+For initial states with empty outgoing radiation and for an outgoing continuum
+or large lead, the weak-coupling scattering limit selects the decaying branch
+on the evaporation time scale.  This is the rotating-wave, vacuum-continuum
+Markov limit in which reabsorption and late-time backflow are negligible.
+The form factor $f^{\mu\lambda}_{ba}(\omega)$ is supported on transitions with
+$A_b<A_a$.  In the
+long-time weak-coupling calculation, the usual resonant delta function selects
+transitions with $E_a-E_b=\omega$.  We write the smooth part of the matrix
+element as
+\begin{equation}
+    f^{\mu\lambda}_{ba}(\omega)
+    =
+    g\,u^{\mu\lambda}_{ba}\,
+    \omega^{p/2}\,
+    \chi(A_b,A_a;\omega).
+\end{equation}
+Here $g$ is the weak coupling constant.  The dimensionless matrix element
+$u^{\mu\lambda}_{ba}$ distributes amplitude among available final states, and $\chi$
+restricts the allowed area loss.  The factor
+$\omega^p$ is the effective low-energy phase-space weight; for massless
+emission in three spatial dimensions the leading behavior is $p=2$.  The
+area factor enters after summing over the active boundary emitters.  For
+four-dimensional Schwarzschild emission the corresponding low-frequency
+absorption cross-section is proportional to the horizon area,
+$\sigma_{\rm abs}(\omega\to0)=A_H$ for minimally coupled massless scalars
+\cite{Page1976,DasGibbonsMathur1997}.  The present Hamiltonian reproduces the
+same area scaling through an inclusive sum over area-many weak boundary
+emitters.  The corresponding channel count is
+\begin{equation}
+    N_A(E)\equiv \#\{\mu\}=N(E)\propto A(E).
+\end{equation}
+The channel sum is an inclusive sum over independent weak boundary emitters.
+The channels are orthogonal in the outgoing continuum, independently phased,
+or shell-averaged, so their probabilities add in the golden-rule rate.
+Coherent addition of identical amplitudes would give a different scaling and is
+not the regime considered here.
+Residual greybody and channel dependence is placed in the smooth functions
+$C_\lambda(E,\omega)$ below.  The Boltzmann factor comes from the
+density-of-states ratio.  Other values of $p$ or different scaling of
+$N(E)$ define nearby evaporators with the same microcanonical thermality but a
+different total power law.
+
+The same statement can be written as an inclusive spectral function of the
+boundary emission operators:
+\begin{equation}
+    {\cal A}_\lambda(E,\omega)
+    =
+    \frac{1}{D_E}
+    \sum_\mu
+    \Tr\!\left[
+    \Pi_E O_{\lambda\mu}^\dagger(\omega)
+    \Pi_{E-\omega}
+    O_{\lambda\mu}(\omega)\Pi_E
+    \right].
+\end{equation}
+Here $O_{\lambda\mu}(\omega)$ is the part of the interaction operator whose
+matrix elements are $u^{\mu\lambda}_{ba}$ between the shells $E$ and
+$E-\omega$.
+If the active boundary emitters have comparable shell-averaged strength and
+their cross terms vanish in the inclusive rate, then
+\begin{equation}
+    {\cal A}_\lambda(E,\omega)
+    \simeq
+    N(E) C_\lambda(E,\omega)
+    \frac{D_{E-\omega}}{D_E}.
+\label{eq:boundary-spectral-function}
+\end{equation}
+Thus the area factor is an operator-counting consequence of boundary-accessible
+entropy and local weak emission.
+
+For a rapidly mixing subsystem, the emission matrix elements are taken to have
+the standard ETH/random-matrix scaling in the energy basis
+\cite{Deutsch1991,Srednicki1994}.  In the usual ETH notation the off-diagonal
+matrix element carries a factor exponential in one half of the entropy of the
+relevant shell.  Here the transition begins in shell $E$.  For $\omega\ll E$,
+and for $a$ in shell $E$ and $b$ in shell $E-\omega$, we write
+\begin{equation}
+    u^{\mu\lambda}_{ba}=D_E^{-1/2} r^{\mu\lambda}_{ba},
+    \qquad D_E=\dim \mathcal H_E,
+\end{equation}
+where the dimensionless variables $r^{\mu\lambda}_{ba}$ have zero mean and shell-averaged
+variance
+\begin{equation}
+    \overline{|r^{\mu\lambda}_{ba}|^2}=C_\lambda(E,\omega).
+\end{equation}
+The overline denotes the shell or ensemble average within the indicated
+microcanonical bands.
+The rate calculation uses only this shell-averaged normalization.  The
+information-theoretic statements below require the composed emission channel to
+decouple the reference from the subsystem that should not contain the code
+information.  This is the channel-scrambling input supplied by the shell mixer.
+The smooth function $C_\lambda(E,\omega)$ includes residual channel-dependent
+greybody and form-factor dependence not already contained in the phase-space
+factor or in the area cross-section.  This
+normalization gives
+\begin{equation}
+    \sum_{b\in E-\omega}|u^{\mu\lambda}_{ba}|^2
+    =
+    C_\lambda(E,\omega)
+    \frac{D_{E-\omega}}{D_E}
+    \left[1+O(D_{E-\omega}^{-1/2})\right].
+\label{eq:inclusive-u}
+\end{equation}
+Thus the inclusive rate from a typical initial microstate depends on shell
+degeneracies and is insensitive to special basis choices inside the shell.  The
+sum over $\mu$ gives the area-sized absorption factor, while the smooth
+function $C_\lambda(E,\omega)$ contains residual channel dependence.
+
+\subsection{Initial States and Observables}
+
+The initial states are pure states of $B$ in a narrow microcanonical band, with
+empty outgoing radiation:
+\begin{equation}
+    \ket{\Psi(0)}\in \mathcal H_E\otimes\ket{0}_{\rm R}.
+\end{equation}
+We consider typical states in the microcanonical shell and states obtained by
+acting with a low-complexity perturbation on such states.
+
+The basic observables are:
+\begin{align}
+    M(t)&=\langle H_{\rm B}^{(0)}\rangle_t,\\
+    A(t)&=\langle A(H_{\rm B}^{(0)})\rangle_t,\\
+    E_{\rm rad}(t)&=\langle H_{\rm R}\rangle_t,\\
+    P(t)&=\frac{d}{dt}E_{\rm rad}(t),
+\end{align}
+together with the one-particle radiation spectrum.  The information-theoretic
+observables are radiation entanglement entropies and mutual information, for
+example
+\begin{align}
+    S_{\rm vN}(R)&=-\Tr\rho_R\log\rho_R,\\
+    I(R_{\rm early}:R_{\rm late})
+    &=S(R_{\rm early})+S(R_{\rm late})-S(R_{\rm early}R_{\rm late}).
+\end{align}
+The entropy $\Smicro$ is the microcanonical state-counting entropy of $B$.
+The entropy $S_{\rm vN}$ is the von Neumann entropy of a radiation subsystem.
+
+\section{Thermodynamic Properties}
+
+The density of states of $B$ fixes the microcanonical temperature.  For
+\begin{equation}
+    \Smicro(M)=cM^2,
+\end{equation}
+the inverse temperature is
+\begin{equation}
+    \beta(M)=\frac{d\Smicro}{dM}=2cM.
+\end{equation}
+Thus
+\begin{equation}
+    T(M)=\beta(M)^{-1}\propto M^{-1},
+\end{equation}
+and
+\begin{equation}
+    C=\frac{dM}{dT}<0.
+\end{equation}
+
+The local emission spectrum follows from Fermi's golden rule and the
+microcanonical degeneracy ratio.  For an emitted quantum of energy
+$\omega\ll M$,
+\begin{equation}
+    \frac{\rhoB(M-\omega)}
+         {\rhoB(M)}
+    =
+    \exp[\Smicro(M-\omega)-\Smicro(M)]
+    =
+    \exp[-\beta(M)\omega+c\omega^2]
+    \simeq e^{-\beta(M)\omega}.
+\end{equation}
+The final approximation is the local thermal limit.  The retained
+$c\omega^2$ term is the leading finite-energy backreaction correction, the
+same entropy-difference correction emphasized in the tunneling description of
+Parikh and Wilczek \cite{ParikhWilczek2000}.  For typical Hawking quanta
+$\omega\sim T\sim M^{-1}$, this correction is subleading at large $M$ but is
+the leading non-thermal deviation from an exactly canonical spectrum.
+In the weak-coupling continuum regime, Fermi's golden rule gives a transition
+rate equal to the squared matrix element times the density of final states
+\cite{Friedrichs1948,CohenTannoudji1992}.  With the shell-averaged
+matrix-element normalization in Eq.~\eqref{eq:inclusive-u}, and after summing
+over the active boundary emitters, this gives
+\begin{equation}
+    \frac{d\Gamma}{d\omega}
+    \propto
+    N(M)\,\omega^p\,
+    \exp[\Smicro(M-\omega)-\Smicro(M)].
+\end{equation}
+For typical Hawking quanta, this becomes
+\begin{equation}
+    \frac{d\Gamma}{d\omega}
+    \propto N(M)\omega^p e^{-\beta(M)\omega}.
+\end{equation}
+
+The particle emission rate and emitted power scale as
+\begin{align}
+    \Gamma_{\rm quanta}(M)
+    &\propto
+    N(M)
+    \int_0^\infty d\omega\,\omega^p e^{-\beta(M)\omega}
+    \propto N(M)\beta(M)^{-(p+1)},\\
+    P(M)
+    &\propto
+    N(M)
+    \int_0^\infty d\omega\,\omega^{p+1}e^{-\beta(M)\omega}
+    \propto N(M)\beta(M)^{-(p+2)}.
+\end{align}
+With $N(M)\propto A(M)\propto M^2$, $\beta(M)\propto M$, and $p=2$,
+\begin{equation}
+    \Gamma_{\rm quanta}(M)\propto M^{-1},
+    \qquad
+    P(M)\propto M^{-2}.
+\end{equation}
+The local thermal factor and its leading finite-energy correction follow from
+$\rhoB(M-\omega)/\rhoB(M)$ alone.  The total Hawking power law also uses the
+area-sized boundary operator count.  If only order-one boundary emitters
+couple efficiently, the three-spatial-dimensional phase-space scaling becomes
+$P\propto M^{-4}$.
+The mass therefore obeys
+\begin{equation}
+    \frac{dM}{dt}\propto -M^{-2},
+\end{equation}
+and the lifetime scales as
+\begin{equation}
+    \tau\propto M_0^3.
+\end{equation}
+The quasi-stationary expansion fails near the endpoint, where the emitted
+quantum energy is no longer small compared with the remaining mass.  The
+calculation applies in the large-mass evaporation regime, as in the standard
+semiclassical treatment.
+
+Thus the thermodynamic part of Schwarzschild evaporation follows from the
+boundary-accessible density of states and local weak emission.  The
+density-of-states ratio gives local thermality and the leading finite-energy
+correction.  The boundary operator count fixes the four-dimensional power law.
+
+\section{Isometry Reduction and Information Flow}
+\label{sec:isometry-flow}
+\label{sec:information-flow}
+
+The thermodynamic calculation uses inclusive transition rates.  Fine-grained
+information flow uses the corresponding maps between microcanonical Hilbert
+spaces.  In the weak-coupling Markov regime, conditioning on one emitted
+quantum gives an emission isometry
+\begin{equation}
+    V_E:\mathcal H_E\longrightarrow
+    \bigoplus_{\omega,\lambda,\mu}
+    \mathcal H_{E-\omega}\otimes \ket{\omega,\lambda,\mu}_{\rm R}.
+\label{eq:emission-isometry-main}
+\end{equation}
+The labels record the emitted energy, outgoing channel, and boundary emission
+operator.  The branch weights are the golden-rule weights derived above,
+including the density-of-states ratio
+$D_{E-\omega}/D_E$ and the area-sized sum over active boundary emitters.  The
+standard quantum-jump construction of Eq.~\eqref{eq:emission-isometry-main}
+and the waiting-time record are given in Appendix~\ref{app:weak-emission-map}.
+
+For a narrow coarse-grained evaporation trajectory
+\begin{equation}
+    E_0\to E_1\to \cdots \to E_m=E,
+\end{equation}
+the one-step maps compose to
+\begin{equation}
+    V_{E_0\to E}:
+    \mathcal H_{E_0}\longrightarrow
+    \mathcal H_E\otimes \mathcal H_{R(E_0\to E)} .
+\label{eq:composite-isometry-main}
+\end{equation}
+The radiation Hilbert space in Eq.~\eqref{eq:composite-isometry-main} carries
+the emitted energies, channel labels, boundary labels, and time-bin labels
+along the trajectory.  Energy conservation fixes the remaining shell, while
+the density-of-states ratio fixes the thermodynamic branching weights.
+
+The fine-grained assumption is a typical-encoding condition for the composite
+map on the active microcanonical support.  In the regulated model this
+condition is supplied by the approximate-design or tensor-product-expander
+mixing blocks described in Section~2.  Page's theorem and standard decoupling
+estimates then apply to the factorization
+$\mathcal H_E\otimes \mathcal H_{R(E_0\to E)}$
+\cite{Page1993Average,Page1993Info,HaydenHorodeckiWinterYard2008}.
+
+Let
+\begin{equation}
+    \Delta S_{\rm rad}(E)=\Smicro(E_0)-\Smicro(E),
+    \qquad
+    D_{\rm B}(E)=e^{\Smicro(E)}.
+\end{equation}
+Here $\Delta S_{\rm rad}$ is the coarse-grained thermodynamic entropy carried
+by the emitted Hawking history, and $D_{\rm B}$ is the remaining core state
+count.  Under the typical-encoding condition, the exterior radiation entropy is
+\begin{equation}
+    S_{\rm vN}(R;E)
+    =
+    \min\{\Delta S_{\rm rad}(E),\Smicro(E)\}
+    +O(1).
+\label{eq:pagecurve}
+\end{equation}
+The post-Page decreasing branch also follows directly from global purity:
+$S_{\rm vN}(R)=S_{\rm vN}(B)\le \Smicro(E)$ once the remaining subsystem is the
+smaller factor.  The typical-encoding condition is what saturates the smaller
+factor on both sides of the Page transition.
+
+The same statement has a replica form.  At second R\'enyi order, for
+equiprobable radiation histories with effective dimension
+$D_{\rm rad}=e^{\Delta S_{\rm rad}}$,
+\begin{equation}
+    \Tr\rho_R^2
+    \simeq
+    e^{-\Delta S_{\rm rad}(E)}
+    +
+    e^{-\Smicro(E)} .
+\label{eq:renyi-two-island}
+\end{equation}
+For Hawking-weighted histories, labelled by probabilities $p_\alpha$, the
+first term is replaced by $\Tr p^2$:
+\begin{equation}
+    \Tr\rho_R^2
+    \simeq
+    \Tr p^2+e^{-\Smicro(E)} .
+\label{eq:weighted-renyi-two-main}
+\end{equation}
+Appendix~\ref{app:page-replica} gives the Page and permutation-moment
+calculation behind Eqs.~\eqref{eq:renyi-two-island}
+and~\eqref{eq:weighted-renyi-two-main}.
+
+Equation~\eqref{eq:pagecurve} is the island formula in microcanonical
+variables.  The first entry is the no-island Hawking entropy of the emitted
+radiation history.  The second entry is the island branch, written here as the
+logarithm of the remaining microcanonical Hilbert-space dimension.  In the
+gravitational quantum-extremal-surface formula this second term is the
+generalized entropy, with area contribution $A/4$ equal to the black-hole
+entropy at the later mass \cite{Penington2019,
+AlmheiriEngelhardtMarolfMaxfield2019,
+AlmheiriHartmanMaldacenaShaghoulianTajdini2021}.  Here it is
+$\log D_{\rm B}(E)$.  The second R\'enyi contraction is the corresponding
+non-geometric replica contraction: replicas connect through the smaller
+remaining core factor, with no spacetime saddle.
+
+The Page time is determined by
+\begin{equation}
+    \Smicro(E_{\rm Page})
+    =
+    \frac12\Smicro(E_0),
+\end{equation}
+up to corrections set by shell width and greybody-weighted branching.  After
+this time, a late radiation block is locally close to thermal while its
+purifier is mostly the early radiation.  Thus
+\begin{equation}
+    I(R_{\rm early}:R_{\rm late})
+    =
+    S(R_{\rm early})+S(R_{\rm late})-S(R_{\rm early}R_{\rm late})
+\end{equation}
+becomes nonzero after the Page time, because
+$S(R_{\rm early}R_{\rm late})=S(B)$ by global purity and $S(B)$ is bounded by
+the smaller remaining Hilbert space.  This is a Page-level correlation
+statement.  A Hayden-Preskill recovery theorem would require an additional
+diary system and a sharper dynamical scrambling estimate.
+
+The fine-grained result therefore has two layers.  The Hamiltonian and
+shell-averaged matrix elements give the density-of-states ratio in the
+inclusive rates.  Global purity and the shrinking remaining Hilbert space give
+the post-Page entropy bound.  Saturation of the rising branch, saturation of
+the post-Page bound, and early/late correlations use decoupling of the
+composite emission map on the active microcanonical support.  The weak-coupling
+and quasi-stationary derivation applies while the emitted quantum energy is
+small compared with the remaining energy.
+
+\section{Finite-Dimensional Regulator}
+
+This section makes the finite-dimensional part of the argument explicit.  The
+Hamiltonian calculation uses continuous energy and radiation labels, while
+Page and decoupling estimates apply to finite Hilbert spaces.  The regulator
+below replaces the continuous labels by finite bands and wave packets while
+preserving the weak-coupling emission branch.  Appendix~\ref{app:finite-check}
+gives a small finite-dimensional check of the Page-theorem step and of the
+distinction between coarse energy-bin thermality and fine-grained radiation
+entropy.
+
+The continuum labels are replaced by finite labels in two steps.  Black-hole
+energies are grouped into microcanonical bands.  Outgoing radiation modes are
+grouped into wave packets with finite frequency, channel, and time-bin labels.
+After this replacement, each emission branch is a finite map from one
+microcanonical Hilbert space to a smaller microcanonical Hilbert space tensored
+with a radiation label.  The continuum formulas are recovered by refining the
+bands and wave packets.
+
+Choose energy bands $I_i=[E_i,E_i+\Delta E]$, with $\Delta E$ large compared
+with the microscopic level spacing and small on the scale over which
+$\Smicro(E)$ changes.  The black-hole Hilbert space becomes
+\begin{equation}
+    \HB^{\rm reg}
+    =
+    \bigoplus_i \mathcal H_i,
+    \qquad
+    \dim\mathcal H_i
+    =
+    D_i
+    \simeq \rhoB(E_i)\Delta E .
+\end{equation}
+The radiation continuum is regulated by wave-packet modes labelled by a
+frequency bin $\alpha$, an outgoing radiation label $\lambda$, an inclusive
+emission-channel label $\mu$, and an outgoing time bin $\tau$,
+\begin{equation}
+    \ket{\omega,\lambda,\mu}_{\rm R}
+    \quad\longrightarrow\quad
+    \ket{\alpha,\lambda,\mu,\tau}_{\rm R}.
+\end{equation}
+The bin dimensions and weights are chosen so that sums over
+$\alpha,\lambda,\mu,\tau$ converge to the continuum integrals in the
+weak-coupling rate formula.
+
+With this regulator, the emission branch of one weak-coupling time step is a
+finite Stinespring map
+\begin{equation}
+    V_i^{\rm reg}:
+    \mathcal H_i
+    \longrightarrow
+    \bigoplus_{\alpha,\lambda,\mu}
+    \mathcal H_{i-\alpha}\otimes
+    \ket{\alpha,\lambda,\mu,\tau}_{\rm R},
+\end{equation}
+where $\omega_\alpha$ is a representative frequency in bin $\alpha$, and
+$i-\alpha$ denotes the band containing $E_i-\omega_\alpha$.  Its branch
+weights are the discretized versions of $w_E(\omega,\lambda,\mu)$, including
+the density-of-states ratio and the area-sized emission-channel count.
+Refining the energy bands, frequency bins, and time bins recovers the
+continuum rate calculation, while keeping finite-dimensional spaces at every
+intermediate stage.
+
+The regulated map is the finite-dimensional object to which Page's theorem is
+applied.  The regulator preserves the weak-coupling emission branch and replaces
+the continuous energy and radiation labels by finite bands and wave packets.
+This is the only role of the regulator in the main argument.  It supplies the
+finite-dimensional setting in which Page and decoupling statements are
+applied to the Hamiltonian emission map.
+
+\section{Comparison with Existing Models}
+\label{sec:comparison}
+
+Tensor-network, qubit-transport, and random-circuit models give explicitly
+unitary descriptions of information transfer from a shrinking black-hole
+subsystem into radiation
+\cite{LeutheusserVanRaamsdonk2017,Avery2013,OsugaPage2018,
+PiroliSunderhaufQi2020,HottaNambuYamaguchi2018}.  Their basic dynamical object
+is an isometry between black-hole and radiation Hilbert spaces.  Here that
+isometry is the weak-coupling emission map of an energy-resolved
+Hamiltonian.
+
+Recent non-gravitational models show that Page-like entropy dynamics can occur
+in ordinary quantum systems, including open-system models, exactly solvable
+free-fermion dynamics, and interacting spin chains
+\cite{Glatthard2024,Glatthard2025,Kehrein2024,RayDharKulkarni2025}.  These
+models separate Page-like entropy dynamics from strictly gravitational
+mechanisms.  The present construction ties the same information-flow logic to
+a Schwarzschild density of states, an energy-conserving emission channel,
+and the Schwarzschild rate scalings.
+
+Quantum-optical models of unitary black-hole evaporation track energy transfer
+and approximate thermality in explicitly unitary models
+\cite{Alsing2025,Alsing2026}.  Related recent protocol models use
+coherently branched evaporation histories or time-dependent interior-radiation
+pair dynamics to maintain microscopic unitarity
+\cite{AkilGiannelliModestoDahlstenChiribellaBrukner2025,Abutaleb2026}.  The
+thermal factor here comes from the microcanonical density-of-states ratio of
+the black-hole subsystem.
+Local spin-chain models with a dynamically changing system/environment split
+also reproduce Page-curve behavior and show how much of that behavior can be
+kinematic \cite{JonesAltaieVarcoe2026}.  The Hamiltonian here connects the
+shrinking state count to emitted energy and rate data as well as to the
+radiation entropy curve.
+Matrix-theory black-hole models provide a more microscopic route to clump
+evaporation and decreasing active degrees of freedom, with a different
+holographic motivation
+\cite{BanksFischlerKlebanovSusskind1998,BerkowitzHanadaMaltz2016}.
+
+The Hamiltonian class uses four ingredients: boundary-accessible Schwarzschild
+state counting, an outgoing continuum, local weak emission from the active
+boundary cells, and design-based decoupling of the composite emission map.
+The area-sized inclusive strength follows from the boundary operator count.
+The comparison with existing models isolates the contribution of the present
+construction: it combines Page's isometry logic with an energy-resolved
+Hamiltonian whose boundary-accessible density of states and local weak
+emission reproduce the Schwarzschild thermodynamic scalings.  The radiation
+entropy also has the island-formula structure, and its second R\'enyi purity has
+the corresponding two-term replica competition, with the gravitational area
+term replaced by the microcanonical entropy of the remaining subsystem.
+
+\section{Discussion}
+\label{sec:discussion}
+
+The model separates the exterior evaporation package into a small number of
+Hamiltonian ingredients.  The density of states fixes the thermodynamic
+behavior: temperature, negative heat capacity, the local thermal factor, and
+the leading finite-energy correction.  Boundary accessibility and local weak
+coupling turn that state count into an area-sized inclusive emission strength,
+which fixes the Schwarzschild number flux, power, and lifetime scalings.  The
+fine-grained entropy statements use global purity, the shrinking remaining
+Hilbert space, and decoupling of the composite emission map.
+
+The island comparison is algebraic.  The no-island branch is the entropy of
+the emitted Hawking history.  The island branch is the logarithm of the
+remaining microcanonical state count.  In gravitational calculations that
+second term is the generalized entropy of a quantum extremal surface; in this
+Hamiltonian model it is $\log D_{\rm B}(E)$.  The second R\'enyi calculation
+has the same two replica contractions: the post-Page contraction connects
+replicas through the smaller remaining core factor.
+
+The construction is conditional in two places.  First, the Schwarzschild
+density of states is an input to the Hamiltonian.  A more microscopic
+non-gravitational model would derive this boundary-accessible state count from
+simpler degrees of freedom.  Second, the main text uses approximate-design or
+tensor-product-expander mixing to supply the decoupling
+needed for the Page curve and early/late correlations.  Known
+Hamiltonian-design constructions provide related Hamiltonian-generated
+versions under their own ensemble, locality, or timing assumptions
+\cite{NakataHircheKoashiWinter2017,CuiSchusterMaoHuangBrandao2025,
+ZhouZhouSonner2026}.
+
+The natural fixed-Hamiltonian problem is more specific than asking for a
+generic scrambler.  The weak-emission block must decouple the code while it
+maps one shell to a smaller shell.  Appendix~\ref{app:fixed-hamiltonian-target}
+spells out one concrete Cayley-expander target.  Vertex transitivity makes the
+boundary channels equivalent by symmetry; the remaining dynamical requirement
+is sectorwise second-moment decoupling for the open weak-emission channel,
+with exact symmetry charges tracked or recorded in the radiation.  This is the
+main route by which the abstract mixer could be replaced by a simple
+deterministic sparse Hamiltonian.
+
+The scope is exterior entropy flow.  The model has no interior geometry and
+does not address horizon smoothness, reconstruction of an island from the
+radiation, complementarity, or firewall questions.  It also does not control
+the endpoint of evaporation, where the emitted quantum energy is no longer
+small compared with the remaining energy and the weak-coupling quasi-stationary
+expansion breaks down.  Within the stated Hamiltonian class and away from the
+endpoint, local thermality, finite-energy backreaction corrections, negative
+heat capacity, the Schwarzschild rate laws, the island-formula Page curve, and
+post-Page early/late radiation correlations all follow from non-gravitational
+Hamiltonian evolution, weak-coupling emission, microcanonical state counting,
+global purity, and design-based decoupling.
+
+\appendix
+
+\section{Weak-Emission Stinespring Map}
+\label{app:weak-emission-map}
+
+This appendix records the weak-coupling construction behind
+Eq.~\eqref{eq:emission-isometry-main}.  The radiation continuum is assumed to
+have a short correlation time compared with $t_{\rm emit}$, and the coupling is
+weak enough that successive emissions are well separated
+\cite{CohenTannoudji1992,BreuerPetruccione2002}.  The Markov approximation then
+gives an outgoing channel, while the exponentially dense bands of $B$ supply
+the initial and final system subspaces.
+
+For an initial state typical in shell $E$, Fermi's golden rule gives, for a
+fixed inclusive boundary channel $\mu$,
+\begin{equation}
+    \frac{d\Gamma_{E\to E-\omega,\lambda\mu}}{d\omega}
+    =
+    2\pi g^2 \omega^p
+    C_\lambda(E,\omega)
+    \frac{D_{E-\omega}}{D_E}.
+\end{equation}
+After summing over the $N(E)$ active boundary emitters,
+\begin{equation}
+    \sum_\mu\frac{d\Gamma_{E\to E-\omega,\lambda\mu}}{d\omega}
+    =
+    2\pi g^2 N(E)\omega^p C_\lambda(E,\omega)
+    \exp[\Smicro(E-\omega)-\Smicro(E)],
+\end{equation}
+up to the overall normalization of the boundary operator count.
+
+For a small interval $dt\ll t_{\rm emit}$, the emission Kraus operators are
+\begin{equation}
+    K_{E;\omega\lambda\mu}:\mathcal H_E
+    \longrightarrow \mathcal H_{E-\omega},
+    \qquad
+    \bra bK_{E;\omega\lambda\mu}\ket a
+    =
+    \sqrt{dt}\,\bra bL_{E;\omega\lambda\mu}\ket a,
+\end{equation}
+with
+\begin{equation}
+    L_{E;\omega\lambda\mu}
+    =
+    \sqrt{2\pi}\,g\,\omega^{p/2}
+    \sum_{a\in E,\ b\in E-\omega}
+    u^{\mu\lambda}_{ba}\ket b\bra a .
+\end{equation}
+The no-emission Kraus operator is
+\begin{equation}
+    K_{E;0}
+    =
+    I_{\mathcal H_E}
+    -
+    \frac{dt}{2}
+    \sum_{\lambda,\mu}\int d\omega\,
+    L_{E;\omega\lambda\mu}^\dagger L_{E;\omega\lambda\mu}
+    +O(dt^2),
+\end{equation}
+so
+\begin{equation}
+    K_{E;0}^\dagger K_{E;0}
+    +
+    \sum_{\lambda,\mu}\int d\omega\,
+    K_{E;\omega\lambda\mu}^\dagger K_{E;\omega\lambda\mu}
+    =
+    I_{\mathcal H_E}+O(dt^2).
+\end{equation}
+
+Define the total decay operator and its shell-averaged rate by
+\begin{equation}
+    J_E
+    =
+    \sum_{\lambda,\mu}\int d\omega\,
+    L_{E;\omega\lambda\mu}^\dagger L_{E;\omega\lambda\mu},
+    \qquad
+    \Gamma_E=\frac{1}{D_E}\Tr_{\mathcal H_E}J_E .
+\end{equation}
+Conditioning on an emission gives normalized jumps
+\begin{equation}
+    \widehat K_{E;\omega\lambda\mu}
+    =
+    \Gamma_E^{-1/2}L_{E;\omega\lambda\mu}.
+\end{equation}
+If $J_E=\Gamma_EI_{\mathcal H_E}$, then
+\begin{equation}
+    \sum_{\lambda,\mu}\int d\omega\,
+    \widehat K_{E;\omega\lambda\mu}^\dagger
+    \widehat K_{E;\omega\lambda\mu}
+    =
+    I_{\mathcal H_E}.
+\end{equation}
+More generally, write $J_E=\Gamma_E(I+F_E)$.  The flat-rate map is the leading
+conditioned channel, and $F_E$ measures branch-weight and timing leakage.
+With the ETH/random-matrix normalization used in the main text, $F_E$ is small
+on typical microcanonical states, up to shell fluctuations and Markov errors.
+
+The conditioned Stinespring map is
+\begin{equation}
+    V_E=
+    \sum_{\lambda,\mu}\int d\omega\,
+    \widehat K_{E;\omega\lambda\mu}
+    \otimes\ket{\omega,\lambda,\mu}_{\rm R}.
+\end{equation}
+Including the waiting-time record, the flat-rate one-emission isometry is
+\begin{equation}
+    W_E\ket\psi
+    =
+    \sum_{\lambda,\mu}\int d\omega\int_0^\infty dt\,
+    \sqrt{\Gamma_E}\,e^{-\Gamma_Et/2}
+    \widehat K_{E;\omega\lambda\mu}
+    e^{-iH_{\rm mix}(E)t}\ket\psi
+    \otimes\ket{\omega,\lambda,\mu,t}_{\rm R}.
+\end{equation}
+In the eigenbasis $H_{\rm mix}(E)\ket\nu=\theta_\nu\ket\nu$, tracing the
+waiting-time label gives
+\begin{equation}
+    (\mathcal D_{\Gamma_E}\sigma)_{\nu\nu'}
+    =
+    \frac{\Gamma_E}{\Gamma_E+i(\theta_\nu-\theta_{\nu'})}
+    \sigma_{\nu\nu'} .
+\end{equation}
+This Lorentzian dephasing is the temporal average supplied by the physical
+emission process.  Coherences with
+$|\theta_\nu-\theta_{\nu'}|\lesssim\Gamma_E$ survive with order-one weight and
+belong to the remaining deterministic-channel problem discussed in
+Section~\ref{sec:discussion}.
+
+\section{A Fixed-Hamiltonian Target}
+\label{app:fixed-hamiltonian-target}
+
+This appendix states one concrete version of the fixed sparse Hamiltonian
+problem mentioned in Section~\ref{sec:discussion}.  It is not used in the main
+derivation, which relies on design-based mixing blocks.  Its role is to make
+the remaining deterministic problem precise.
+
+Let the active boundary cells be the vertices of a Cayley expander
+$G_N={\rm Cay}({\cal G}_N,S_N)$, with homogeneous spin interactions on the
+edges.  A representative shell Hamiltonian is
+\begin{equation}
+    K_N=
+    \sum_{g\in{\cal G}_N}\sum_{s\in S_N^+}
+    \left(
+    J_s^xX_gX_{gs}+J_s^yY_gY_{gs}+J_s^zZ_gZ_{gs}
+    \right)
+    +\sum_{g\in{\cal G}_N}(h_xX_g+h_zZ_g),
+\end{equation}
+with no resampling during evaporation.  Cayley graphs are vertex-transitive,
+and explicit Cayley/Ramanujan expander families are standard
+\cite{LubotzkyPhillipsSarnak1988,Harrow2008}.  If the shell projector commutes
+with the left group action and the boundary emission operators are related by
+that action,
+\begin{equation}
+    O_{ag,\lambda}=U_aO_{g,\lambda}U_a^\dagger,\qquad
+    [U_a,K_N]=[U_a,\Pi_E]=0,
+\end{equation}
+then the shell-averaged emission weights are equal for all boundary labels:
+\begin{equation}
+    {\cal A}_{g,\lambda}(E,\omega)
+    =
+    {\cal A}_{g',\lambda}(E,\omega).
+\end{equation}
+Thus the area factor follows from an exact symmetry of the boundary algebra,
+while the common spectral envelope is the usual ETH input for a chaotic local
+operator \cite{Srednicki1994,DAlessioKafriPolkovnikovRigol2016,
+DymarskyLashkariLiu2018}.  Exact symmetry charges should be treated within
+fixed sectors or recorded in the radiation.
+
+The Page-purity and second R\'enyi island diagnostics require second-moment
+decoupling of the composed evaporation map.  A sectorwise target is
+\begin{equation}
+    I_2(Q:B_{j+1})
+    \le
+    \kappa_j I_2(Q:B_j)+\varepsilon_{{\rm mix},j},
+    \qquad
+    \kappa_j<1,
+\end{equation}
+where $I_2$ is the second R\'enyi mutual information between a reference $Q$
+and the remaining subsystem.  The contraction comes from the dimension drop
+and from in-shell mixing that spreads reference information over the boundary
+algebra.
+
+For a fixed Hamiltonian, closed evolution by $K_N$ alone preserves
+Hilbert-Schmidt distances.  The contraction relevant to Page decoupling
+belongs to the weak-emission block generated by $K_N$ and $H_I$, after the
+emitted mode is recorded as radiation or traced from the remaining core.  In
+the flat-rate Markov limit, the one-emission block is controlled by the record
+algebra
+\begin{equation}
+    \widehat K_{m'}^\dagger\widehat K_m,
+    \qquad
+    m=(\omega,\lambda,\mu),
+\end{equation}
+and by the emission-image overlap kernel
+\begin{equation}
+    G_{\nu\nu'}
+    =
+    \Tr\!\left[
+    \rho'(\nu)\rho'(\nu')
+    \right],
+    \qquad
+    \rho'(\nu)
+    =
+    \sum_m\widehat K_m\ket\nu\bra\nu\widehat K_m^\dagger .
+\end{equation}
+A sufficient deterministic condition is that, within each exact symmetry
+sector, the diagonal matrix elements of the record algebra are smooth in the
+$K_N$ eigenbasis, the kernel $G_{\nu\nu'}$ is close to its microcanonical value
+for code-relevant eigenstates, and the waiting-time dephasing leaves negligible
+coherent weight on near-resonant pairs.
+
+This is a shrinking-channel decoupling estimate, not convergence of repeated
+powers of a single fixed-algebra channel.  Sparse/expander models are known
+routes to fast scrambling \cite{BarbonMagan2012,BentsenGuLucas2019}, and OTOC
+decay is a standard route from Hamiltonian dynamics to channel decoupling
+\cite{HosurQiRobertsYoshida2016,YoshidaKitaev2017}.  What remains for a named
+deterministic Hamiltonian family is a bound or scaling analysis showing that
+the induced weak-emission channel has the Page entropy curve, the pre- and
+post-Page second R\'enyi decoupling diagnostics, and the expected failure of
+free, integrable, or resonant controls.
+
+\section{Page and Replica Contractions}
+\label{app:page-replica}
+
+This appendix gives the finite-dimensional Page and replica formulas used in
+Section~\ref{sec:information-flow}.  For a Haar-random pure state on
+$X\otimes Y$, with
+$d_X=\dim X$, $d_Y=\dim Y$, and $d_X\le d_Y$, Page's formula is
+\begin{equation}
+    \langle S_{\rm vN}(X)\rangle
+    =
+    \sum_{k=d_Y+1}^{d_Xd_Y}\frac1k
+    -
+    \frac{d_X-1}{2d_Y}
+    =
+    \log d_X-\frac{d_X}{2d_Y}+O(d_Y^{-2}).
+\end{equation}
+Approximate unitary two-designs reproduce the second moments needed for
+Page-purity and code-subspace decoupling
+\cite{DankertCleveEmersonLivine2009,SzehrDupuisTomamichelRenner2013};
+fixed R\'enyi-$n$ moments require the corresponding $n$th moments
+\cite{HarrowLow2009}.
+
+For a Haar-typical pure state on a $b\times r$ factorization,
+\begin{equation}
+    \E\,\Tr\rho_R^2
+    =
+    \frac{b+r}{br+1}
+    =
+    \frac1r+\frac1b+O((br)^{-1}).
+\end{equation}
+With
+$b=D_{\rm B}(E)=e^{\Smicro(E)}$ and
+$r=D_{\rm rad}(E)=e^{\Delta S_{\rm rad}(E)}$, this gives
+Eq.~\eqref{eq:renyi-two-island}.  For fixed higher R\'enyi moments, the Haar
+moment expansion has the standard permutation form
+\begin{equation}
+    \E\,\Tr\rho_R^n
+    =
+    \frac{1}{(br)_n}
+    \sum_{\sigma\in S_n}
+    b^{C(\sigma)}r^{C(\tau\sigma)}.
+\end{equation}
+Here $\tau=(12\cdots n)$ is the cyclic permutation imposed by
+$\Tr\rho_R^n$, and $C(\sigma)$ is the number of cycles of $\sigma$.  The
+identity contraction gives the Hawking/no-island branch, while
+$\sigma=\tau^{-1}$ gives the post-Page branch controlled by the remaining core
+dimension.  This is the same random-matrix replica mechanism that appears in
+Page theorem and random-dynamics discussions of island-like behavior
+\cite{Urbach2021,deBoerHollanderRolph2024,BasuWenZhou2025}.
+
+The Hamiltonian assigns Hawking weights to radiation histories.  Let
+$\alpha$ label a coarse radiation history, including emitted energies,
+channels, and time bins, with probabilities $p_\alpha$ supplied by the
+weak-coupling branching rates.  A random purification of this weighted
+history distribution gives, at large dimension,
+\begin{equation}
+    \E\,\Tr\rho_R^n
+    \simeq
+    \sum_{\sigma\in S_n}
+    b^{C(\sigma)-n}
+    \prod_{c\in{\rm cycles}(\tau\sigma)}
+    \Tr p^{|c|}.
+\end{equation}
+For $p_\alpha=1/r$ this reduces to the Haar/Page expression.  The two leading
+contractions are
+\begin{equation}
+    \sigma=1:
+    \qquad
+    \E\,\Tr\rho_R^n\simeq \Tr p^n,
+\end{equation}
+and
+\begin{equation}
+    \sigma=\tau^{-1}:
+    \qquad
+    \E\,\Tr\rho_R^n\simeq b^{1-n}.
+\end{equation}
+Thus the no-island branch is the R\'enyi entropy of the emitted Hawking
+history distribution, while the island branch is the remaining core state
+count.  At second R\'enyi order this gives
+Eq.~\eqref{eq:weighted-renyi-two-main}.
+
+\section{Finite-Dimensional Check}
+\label{app:finite-check}
+
+This appendix gives a small finite-dimensional check of the
+information-theoretic step used in the main text.  It checks the conditional
+statement that, given a Page-typical emission map and the shrinking
+Hilbert-space dimensions, the radiation entropy follows Page's formula.  It
+also illustrates that matching a coarse thermal energy-bin distribution is a
+weaker condition than producing fine-grained radiation entropy.  It is not a
+test of whether a particular sparse Hamiltonian generates the Page-typical
+maps dynamically.
+
+The example uses a coarser regularization adapted to the entropy scaling.  The
+integer $L$ is an area or entropy label, unrelated to the jump operator
+$L_{E;\omega\lambda\mu}$, and $q$ is the Hilbert-space dimension per entropy
+unit:
+\begin{equation}
+    \dim\mathcal H_L=q^{L^2}.
+\end{equation}
+One regulated emission step factors the current space as
+\begin{equation}
+    \mathcal H_L\simeq \mathcal H_{L-1}\otimes\mathcal H_{\rm shell}(L),
+    \qquad
+    \dim\mathcal H_{\rm shell}(L)=q^{2L-1}.
+\end{equation}
+The removed shell is the outgoing radiation factor for that step.  Its energy
+measurement is a coarse graining
+\begin{equation}
+    \mathcal H_{\rm shell}(L)=\bigoplus_h \mathcal H_h(L),
+\end{equation}
+where $h$ labels energy bins.  The integer bin dimensions are chosen to
+approximate the four-dimensional thermal weights
+\begin{equation}
+    P_h\propto\int_{x_h}^{x_{h+1}}dx\,x^2e^{-x},
+    \qquad x=\beta\omega.
+\end{equation}
+Thus $\dim\mathcal H_h(L)/\dim\mathcal H_{\rm shell}(L)$ is the prescribed
+coarse-grained thermal probability $P_h$ for energy bin $h$, up to integer
+rounding.  The full shell Hilbert space carries the fine-grained purification
+data.
+
+For the finite-dimensional example we used $q=2$ and $L_0=4$, evolved through
+$L=4\to3\to2\to1$, and compared three classes of initial states on
+$\mathcal H_{L_0}$.  A Haar-random state is equivalent, for this fixed
+factorization, to applying a Haar-random emission isometry to a fixed input.
+A basis state is a non-typical state with no radiation entanglement.  A flat
+product state has the right energy-bin probabilities and no fine-grained
+purification structure.  Five Haar-random samples were used; the two reference
+states are deterministic for this factorization.
+
+In Table~\ref{tab:page-check}, $S_{\rm rad}$ means $S_{\rm vN}(R)$ for the
+radiation factors emitted so far.  For a Haar-random state, the expected
+radiation entropy is the entropy of the smaller factor: the emitted radiation
+at early times and the remaining core after the Page crossing.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lcccc}
+\toprule
+step & $L$ transition & smaller factor & calculated $S_{\rm rad}$ & expected $S_{\rm Page}$ \\
+\midrule
+1 & $4\to3$ & radiation & $4.7269$ & $4.7270$ \\
+2 & $3\to2$ & core & $2.7707$ & $2.7706$ \\
+3 & $2\to1$ & core & $0.6931$ & $0.6931$ \\
+\bottomrule
+\end{tabular}
+\caption{Expected Page entropy versus calculated radiation entropy for the
+Haar-random emission isometry.  Entropies are natural-log entropies and Haar
+entries are averages over five samples.  The largest absolute deviation from
+Page's formula among the five samples is below $9\times10^{-4}$.}
+\label{tab:page-check}
+\end{table}
+
+The second comparison shows what coarse radiation thermality leaves
+unresolved.  Let $d_{\rm TV}$ denote the mean total-variation distance, over the
+three emissions, between the measured energy-bin distribution and the target
+distribution with weight $x^2e^{-x}$.  At the final step Page's formula gives
+$S_{\rm Page}=0.6931$.  Table~\ref{tab:reference-state-check} compares the
+Haar-random state with the two reference states.  The zeros in the last two
+rows are exact for these product states: they carry no radiation entanglement
+and no mutual information between the previously emitted radiation $R_{<j}$
+and the newly emitted radiation factor $R_j$.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lcccp{2.05in}}
+\toprule
+input state
+& $S_{\rm rad}$
+& $d_{\rm TV}$
+& $\max_j I(R_{<j}:R_j)$
+& interpretation
+\\
+\midrule
+Haar-random
+& $0.6931$
+& $0.086$
+& $5.414$
+& Page curve and post-Page correlations
+\\
+basis
+& $0$
+& $0.986$
+& $0$
+& neither energy-bin thermality nor radiation entanglement
+\\
+flat product
+& $0$
+& $0.085$
+& $0$
+& energy-bin thermality without radiation entanglement
+\\
+\bottomrule
+\end{tabular}
+\caption{Comparison at the end of the three-emission sequence.  The flat
+product state has energy-bin statistics close to the Haar-random state while
+carrying no radiation entropy or mutual information between emitted radiation
+factors.}
+\label{tab:reference-state-check}
+\end{table}
+
+The mutual information $I(R_{<j}:R_j)$ is zero at the first emission and
+becomes nonzero after the Page crossing.  The basis state fails both the
+spectral and fine-grained comparisons.  The flat product state matches the
+coarse energy-bin distribution while carrying no radiation entropy or mutual
+information between emitted radiation factors.  Thus coarse energy-bin
+thermality and Page-curve behavior probe different parts of the emitted
+radiation state.
+
+\bibliographystyle{unsrturl}
+\bibliography{refs}
+
+\end{document}
