@@ -61,14 +61,22 @@ with the microcanonical entropy of the remaining subsystem in place of the
 gravitational area term.  The same decoupling input gives the operational
 layer: Hayden--Preskill recovery from the radiation record, and complementary
 reconstruction of code information that switches from the remaining subsystem
-to the radiation at the Page transition.
+to the radiation at the Page transition.  Interior partner operators exist
+as mirrors on the purifier of each fresh mode, are provably state-dependent
+by a finite-dimensional counting argument, and move from the remaining
+subsystem into the radiation at the same transition --- locating the
+monogamy premise of the firewall argument that fails in the model.
 Approximate-design and tensor-product-expander
 blocks provide finite-regulator realizations of the required shell mixing;
 ETH-type spectral conditions on a fixed shell Hamiltonian yield the same
-decoupling, with errors controlled by the golden-rule parameter;
+decoupling, with errors controlled by the golden-rule parameter, and imply
+that the result self-averages --- a single Hamiltonian reproduces the
+ensemble Page curve up to fluctuations exponentially small in the initial
+entropy, leaving no quantum-mechanical factorization puzzle;
 and an exact finite-size-scaling study shows that a fixed chaotic Cayley
 shell Hamiltonian reproduces the island value while free and integrable
-mixers with the same state count fail.
+mixers with the same state count fail, with seed scatter at the predicted
+concentration rate.
 The construction reproduces the exterior thermodynamic and entropy-flow
 package without a gravitational path integral, interior geometry, or horizon
 smoothness.
@@ -225,9 +233,14 @@ these inputs, the remaining evaporation package follows by standard
 weak-coupling, microcanonical, and quantum-information arguments.
 Table~\ref{tab:ledger} records the resulting division of the paper's
 statements into inputs, matched targets, and derived outputs.  The model
-has no interior geometry and does not address horizon smoothness,
-complementarity, or firewall questions; the recovery statements of
-Section~\ref{sec:recovery} concern code information, not interior geometry.
+has no interior geometry: the recovery statements of
+Section~\ref{sec:recovery} concern code information, and the interior
+(mirror) operators of Section~\ref{sec:mirrors} are an operator algebra with
+smooth-horizon correlators, not a geometry.  At that algebraic level the
+model does address the firewall argument: mirror operators exist, are
+provably state-dependent, and identify the monogamy premise that fails.
+Questions of interior geometry and the infalling experience remain outside
+its scope.
 Section~\ref{sec:open-problems} states explicitly which parts of the
 information puzzle the construction settles, in the conditional sense above,
 and which remain open.
@@ -269,6 +282,10 @@ post-Page early/late correlations & derived &
 Section~\ref{sec:information-flow} \\
 Hayden--Preskill recovery; complementary reconstruction switching at the
 Page point & derived & Section~\ref{sec:recovery} \\
+state-dependent interior (mirror) operators; failure of the monogamy
+premise & derived & Section~\ref{sec:mirrors} \\
+self-averaging: instance entropies equal ensemble values up to
+$e^{-S_0/2}$ & derived & Appendix~\ref{app:eth-decoupling} \\
 \bottomrule
 \end{tabular}
 \caption{Input/output ledger.  ``Input'' marks gravitational data supplied to
@@ -330,8 +347,9 @@ Section 2 defines the model.  Section 3 derives the thermodynamic
 consequences, shows that the two inputs are forced by the temperature and
 luminosity laws, and lists the parameter-free relations that follow.
 Section 4 states the emission-isometry reduction, the Page curve, and the
-island-formula contraction, and derives the recovery and
-complementary-reconstruction consequences.  Section 5 gives the
+island-formula contraction, and derives the recovery,
+complementary-reconstruction, and state-dependent interior-operator
+consequences.  Section 5 gives the
 finite-dimensional
 regularization needed to apply Page and decoupling estimates.  Section 6
 compares the model with existing approaches, and Section~\ref{sec:discussion}
@@ -814,6 +832,20 @@ measurement of the input.  The same input is used a second time, in
 Section~\ref{sec:information-flow}, as the operator algebra on which the
 decoupling of the shrinking emission map acts.
 
+It is worth being explicit about what this input imports.  In holographic
+theories the restriction of the accessible algebra to area-many boundary
+degrees of freedom is a consequence of bulk locality and the gravitational
+Gauss law \cite{Harlow2016}; a generic non-gravitational Hamiltonian has no
+reason to organize its leading entropy this way.  Postulating boundary
+accessibility therefore imports a semblance of geometric locality --- the
+statement that the system radiates through a surface whose cell count tracks
+its entropy --- without supplying the geometry that explains it.
+Proposition~\ref{prop:area} is the quantitative form of this admission: the
+imported structure is exactly one scaling law's worth, no more and no less,
+because the assumption is equivalent to the measured luminosity exponent.
+Why such a restricted emission algebra arises microscopically without bulk
+locality is part of open problem~1 in Section~\ref{sec:open-problems}.
+
 The two inputs are necessary for the thermodynamic package, but they do not
 contain the fine-grained package.  Appendix~\ref{app:cayley-scaling} exhibits
 shell Hamiltonians with identical state count, shrinking-dimension
@@ -996,13 +1028,29 @@ replica wormhole saddle & non-geometric replica contraction \\
 entanglement wedge of the radiation & subsystems recoverable from the
 radiation \\
 island reconstruction & decoupling/Petz recovery from the radiation \\
+smooth horizon at a fresh mode & thermal entanglement with its purifier \\
+interior partner operators & state-dependent mirrors on the purifier \\
 \bottomrule
 \end{tabular}
 \end{center}
-This table is a dictionary for the entropy and recovery statements only.  The
-Hamiltonian model has no spacetime region bounded by a quantum extremal
-surface and no gravitational path integral.  The last two rows are derived in
-Section~\ref{sec:recovery}.
+This table is a dictionary for the entropy, recovery, and mirror statements
+only.  The Hamiltonian model has no spacetime region bounded by a quantum
+extremal surface and no gravitational path integral.  The last four rows are
+derived in Sections~\ref{sec:recovery} and~\ref{sec:mirrors}.
+
+The distinction the dictionary encodes is between an \emph{operational}
+island and a \emph{geometric} one.  By an operational island we mean a
+subsystem whose Hilbert-space dimension bottlenecks the radiation entropy
+--- the second branch of Eq.~\eqref{eq:pagecurve} --- and whose content
+becomes recoverable from, and whose partner operators become supported on,
+the radiation after the transition.  By a geometric island we mean a
+spatially localizable region bounded by a quantum extremal surface.  The
+model derives the operational island in full; it does not produce a
+geometric one, and the dictionary above is the precise extent of the
+correspondence.  The claim is therefore that the geometric island is
+sufficient but not necessary for the entropy and recovery structure: any
+dynamics with the stated state counting and decoupling produces the
+operational island, with or without a spacetime realization.
 
 Combining the finite-dimensional Page estimate with the regulated
 weak-emission construction gives the schematic accuracy statement
@@ -1154,13 +1202,206 @@ independently derived mixing time.
 Three qualifications.  First, what is reconstructed is code information ---
 the microstate data of the diary --- not interior geometry; the model has no
 interior, and these statements are the algebraic content of island
-reconstruction, not a geometric one.  Second, the statements are conditional
+reconstruction, not a geometric one.  Section~\ref{sec:mirrors} extends this
+algebraic layer to interior partner operators, with the same caveat.  Second,
+the statements are conditional
 on the same decoupling input as the entropy results, with the same error
 budget; they are corollaries, not new assumptions.  Third, for
 Hawking-weighted histories the flat dimensions are replaced by one-shot
 entropies of the weighted history distribution, and the one-shot decoupling
 theorem gives the corresponding statement with $\Delta S_{\rm rad}$ replaced
 by a smooth min-entropy \cite{Dupuis2014}.
+
+\subsection{Interior operators and state dependence}
+\label{sec:mirrors}
+
+The recovery statements above concern code information.  This subsection
+extends them to the model's analogue of interior mode operators.  The
+gravitational questions are where the partner of a late Hawking mode lives,
+and whether operators describing it can be chosen independently of the
+microstate \cite{AMPS2013,PapadodimasRaju2013,PapadodimasRaju2014,
+VerlindeVerlinde2013,Harlow2016}.  Both have sharp answers here: partner
+(mirror) operators exist for every microstate and move from the core to the
+early radiation at the Page transition, and no state-independent choice is
+possible.  The first statement is a corollary of decoupling; the second is a
+finite-dimensional counting argument requiring no analytic care.
+
+Let $\mathsf b$ denote the record register of the most recent emission step,
+with Hilbert space of dimension $d_b$, and let $P$ denote everything else ---
+the remaining core $B$ together with the earlier radiation record $R$ --- so
+that the global pure state lives on
+$\mathcal H_{\mathsf b}\otimes\mathcal H_P$.  Call a global pure state
+$\ket\Psi$ \emph{smooth at the fresh mode} if its reduced state on
+$\mathsf b$ is the full-rank thermal state $\rho_\beta$ of the mode at the
+instantaneous temperature.  This is the model analogue of the
+infalling-vacuum condition: the freshly emitted mode is thermally entangled
+with the rest, not pure.  The weak-emission channel produces exactly this
+marginal, with the detailed-balance weights of Section~3, up to the same
+$O(\Gamma_E/\Delta E)$ and finite-energy corrections as the spectrum.
+
+For a smooth state, finite-dimensional modular theory --- here, the
+$\rho_\beta^{1/2}$-twisted transpose on the Schmidt partner --- supplies, for
+each operator $X$ on the mode, a unique \emph{mirror} operator
+$\widetilde X_\Psi$ supported on the Schmidt partner of $\mathsf b$ inside
+$P$, characterized by
+\begin{equation}
+    \widetilde X_\Psi\ket\Psi
+    =
+    \big(\rho_\beta^{1/2}X^\dagger\rho_\beta^{-1/2}\otimes
+    \mathbb 1_P\big)\ket\Psi,
+    \qquad
+    [\widetilde X_\Psi,\,Y\otimes\mathbb 1_P]=0
+    \quad\text{for exterior }Y.
+\label{eq:mirror-relation}
+\end{equation}
+Write $X^\sharp\equiv\rho_\beta^{1/2}X^\dagger\rho_\beta^{-1/2}$ for the
+twisted adjoint appearing in Eq.~\eqref{eq:mirror-relation}.  For a mode
+annihilation operator $a$ at frequency $\omega$ the first relation
+reads $\tilde a\ket\Psi=e^{-\beta\omega/2}a^\dagger\ket\Psi$, the defining
+relation of the state-dependent interior constructions
+\cite{PapadodimasRaju2013,PapadodimasRaju2014}, and the induced two-point
+functions $\langle Y\widetilde X\rangle_\Psi
+=\Tr[\rho_\beta^{1/2}Y\rho_\beta^{1/2}X^\dagger]$ are the two-sided thermal
+correlators of a smooth horizon.  The construction visibly depends on
+$\ket\Psi$ through the Schmidt basis and weights.  The next proposition shows
+the dependence is not removable.
+
+\begin{proposition}[No state-independent interior]
+\label{prop:no-go}
+Fix a mode operator $X$ with $[X^\sharp,X]\neq0$ (any raising or
+lowering operator qualifies).  No single operator $\widetilde X$ satisfies
+the action relation of Eq.~\eqref{eq:mirror-relation} for every smooth state
+while commuting with the exterior algebra: any $\widetilde X$ satisfying the
+action relation on all smooth states equals
+$X^\sharp\otimes\mathbb 1_P$ --- an exterior operator --- whose commutator
+with the exterior algebra is of order one.
+\end{proposition}
+
+\emph{Proof.}  Smooth states span the full Hilbert space: fixing one smooth
+$\ket{\Psi_0}$, the states $(\mathbb 1\otimes U)\ket{\Psi_0}$ are smooth for
+every unitary $U$ on $P$ (the mode marginal is unchanged), unitaries span
+the operator algebra of $P$ linearly, and
+$(\mathbb 1\otimes\mathcal B(\mathcal H_P))\ket{\Psi_0}
+=\mathcal H_{\mathsf b}\otimes\mathcal H_P$ because $\rho_\beta$ has full
+rank.  The action relation is linear in $\ket\Psi$, so holding on a spanning
+set it forces the operator identity
+$\widetilde X=X^\sharp\otimes\mathbb 1_P$.
+For $X=a$ the commutator is
+$[e^{-\beta\omega/2}a^\dagger,a]\otimes\mathbb 1_P\neq0$.  \hfill$\square$
+
+The spanning family is dynamically legitimate --- same fresh emission,
+different past --- and the argument is robust: averaging over the unitary
+family shows that an operator satisfying the action relation to accuracy
+$\epsilon$ on typical smooth microstates equals the exterior operator up to
+$\epsilon$ in a thermally weighted two-norm, leaving the order-one
+commutator defect intact.  This is the finite-dimensional form of the
+state-dependence argument of \cite{PapadodimasRaju2013,PapadodimasRaju2014}:
+demanding one fixed linear operator forces $\tilde a=e^{-\beta\omega/2}
+a^\dagger$, which is not behind the horizon at all.
+
+\begin{proposition}[Location of the mirror]
+\label{prop:mirror-location}
+Let $w=\log d_b+2\log(1/\epsilon)$.
+(i) If $\Delta S_{\rm rad}(E)\le\Smicro(E)-w$, mirror operators for the
+fresh mode supported on the core exist for every smooth microstate, with
+one fixed core operator serving all states produced by the emission isometry
+from the shell, and the relations of Eq.~\eqref{eq:mirror-relation} holding
+on products of exterior operators applied to the state up to
+$O(\sqrt\epsilon)$; no operator supported on the radiation record reproduces
+the mirror correlators to better than $O(\epsilon)$.
+(ii) If $\Delta S_{\rm rad}(E)\ge\Smicro(E)+w$, then for each decoupled code
+subspace there is a fixed operator on the early radiation record satisfying
+the mirror relations, in the same sense, for every state of the subspace ---
+including superpositions --- up to $O(\sqrt\epsilon)$; no core-supported
+operator does better than $O(\epsilon)$.
+\end{proposition}
+
+\emph{Proof.}  Pre-Page the rising branch of Eq.~\eqref{eq:pagecurve} is
+additive over radiation factors, so $I(\mathsf b:R)=O(\epsilon)$ and the
+purifier of the fresh mode embeds in the core up to $O(\sqrt\epsilon)$ by
+Uhlmann's theorem; conjugating the modular mirror through the embedding gives
+$\widetilde X_B$.  It is fixed across the shell because the accessible smooth
+states span only the image of the emission isometry, a subspace of dimension
+$D$ inside the larger target space, so the spanning hypothesis of
+Proposition~\ref{prop:no-go} is not met --- which is precisely why a fixed
+choice is possible there.  The converse follows because any operator
+satisfying the mirror correlators on $R$ would make the connected
+mode--radiation correlators order one, while they are bounded by
+$\|\rho_{\mathsf bR}-\rho_{\mathsf b}\otimes\rho_R\|_1=O(\epsilon)$.
+Post-Page the purifier of a fresh block is the early radiation
+(Section~\ref{sec:information-flow}), $I(\mathsf b:B)=O(\epsilon)$, and the
+same Uhlmann conjugation lands the mirror on $R$; the isometry can be chosen
+once per decoupled code subspace because the decoupling bound
+Eq.~\eqref{eq:decoupling-bound} holds uniformly on it, and the relations are
+then linear over the subspace.  The converse exchanges $B$ and $R$.
+\hfill$\square$
+
+The two regimes meet in the same $O(\log(1/\epsilon))$ window around the
+Page transition as complementary recovery: the mirror's support tracks the
+entanglement wedge.  Post-Page, the interior partner of a fresh mode is a
+subsystem of the early radiation in the code encoding --- the algebraic
+content of the $A=R_B$ and ER=EPR proposals
+\cite{VerlindeVerlinde2013,MaldacenaSusskind2013}, with the island
+reconstruction realized by the Petz pullback of
+Proposition~\ref{prop:recovery}.
+
+This dissolves the monogamy step of the firewall argument within the model.
+The argument needs three premises for an old black hole \cite{AMPS2013}:
+(P1)~unitarity makes the fresh mode strongly correlated with the early
+radiation; (P2)~smoothness makes it thermally entangled with an interior
+partner; (P3)~the partner is a system independent of the early radiation.
+Premises (P1) and (P2) hold here --- (P1) is derived and (P2) is the
+constructed mirror --- while (P3) fails, and by
+Proposition~\ref{prop:no-go} it \emph{must} fail: post-Page the partner is
+supported inside the early radiation, so the two entanglements of (P1)
+and~(P2) are the same entanglement counted twice, and no state-independent
+operator independent of the radiation could have done the mirror's job.  The
+model thus locates the premise at which the argument breaks and shows the
+break is forced, not optional.
+
+The cost of state dependence is also quantified.  The objection to
+state-dependent interiors is that quantum mechanics acts linearly, so
+observables should not depend on which superposition of microstates is
+considered \cite{AMPSS2013,MarolfPolchinski2016}.  In the model the boundary
+is explicit: one fixed reconstruction serves an entire decoupled code
+subspace of dimension $e^k$ with
+$k\le\Delta S_{\rm rad}-\Smicro-2\log(1/\epsilon)$, superpositions within the
+subspace included, while Proposition~\ref{prop:no-go} forbids extending any
+fixed choice to families spanning the shell.  State dependence here is
+subspace dependence with the decoupling budget; linearity violations can
+arise only across code subspaces exceeding the budget.
+
+Two further objections to state-dependent constructions can be checked
+directly because the model is explicit.  For superpositions of
+\emph{macroscopically distinct} microstates --- components in different
+energy shells --- the construction is sectorwise: components of different
+mass emit distinguishable radiation histories, so the record decoheres the
+sectors, and any sectorwise-defined mirror returns the Born-weighted mixture
+of per-sector correlators.  Linearity is not violated for cross-shell
+superpositions; it is enforced by the same record that carries the Hawking
+flux.  For the frozen-vacuum problem \cite{Bousso2014} --- if mirrors are
+defined relative to whichever state is handed to us, even an excited interior
+is declared vacuum --- the model's answer is that the reference is not chosen
+by hand: smoothness is a property, the full-rank thermal marginal of the
+fresh record, which the golden-rule channel produces dynamically through
+detailed balance.  Non-smooth states exist in the Hilbert space, are
+distinguishable by exterior measurements on the mode, and the construction
+simply does not apply to them; excitations on top of a smooth state within
+the code subspace are counted by the mirror algebra in the ordinary way.
+The caveat is that this resolves the ambiguity for the model's marginal
+notion of smoothness; the gravitational frozen-vacuum problem concerns the
+infalling mode structure, which the model does not represent.
+
+Two qualifications.  First, the radiation-supported mirror is a Petz
+pullback built from $\rho_R^{\pm1/2}$ and is expected to be exponentially
+hard to implement \cite{HarlowHayden2013,BrownGharibyanPeningtonSusskind2020}:
+the interior partner exists in the radiation without being feasibly
+accessible, the same distinction as for the recovery channel
+(Section~\ref{sec:open-problems}, item~4).  Second, as with the recovery
+statements, what is constructed is an operator algebra with smooth-horizon
+correlators, not interior geometry or an infalling experience; these are the
+algebraic conditions any gravitational interior description must reproduce
+(Section~\ref{sec:open-problems}, item~2).
 
 \section{Finite-Dimensional Regulator}
 
@@ -1304,7 +1545,11 @@ replicas through the smaller remaining core factor.
 Section~\ref{sec:recovery} adds the operational layer: complementary
 recovery of code information, switching from the core to the radiation at
 the island transition, which is the model's version of entanglement-wedge
-reconstruction.
+reconstruction.  Section~\ref{sec:mirrors} extends this to interior partner
+operators: mirrors with smooth-horizon correlators exist for every
+microstate, are necessarily state-dependent, and cross from the core to the
+radiation at the same transition, which dissolves the monogamy step of the
+firewall argument at the algebraic level.
 
 The construction is conditional in two places.  First, the Schwarzschild
 density of states is an input to the Hamiltonian.  By
@@ -1325,10 +1570,15 @@ assumption by ETH-type spectral conditions on a fixed shell Hamiltonian ---
 smooth jump-operator matrix elements, fourth-moment factorization, and a
 nondegenerate spectrum imply the required second-moment decoupling, with
 errors controlled by the same weak-coupling parameter as the golden rule ---
-and Appendix~\ref{app:cayley-scaling} adds
+and shows that the result self-averages: under the eighth-moment extension
+of the same hypothesis, a single fixed Hamiltonian reproduces the ensemble
+Page curve with fluctuations $O(e^{-S_0/2})$
+(Proposition~\ref{prop:self-averaging}).
+Appendix~\ref{app:cayley-scaling} adds
 finite-size-scaling evidence that a fixed, time-independent,
 vertex-transitive shell Hamiltonian supplies the same decoupling at exactly
-solvable sizes.
+solvable sizes, with seed scatter falling at the predicted concentration
+rate.
 
 The natural fixed-Hamiltonian problem is more specific than asking for a
 generic scrambler.  The weak-emission block must decouple the code while it
@@ -1342,6 +1592,29 @@ deterministic sparse Hamiltonian.  Appendix~\ref{app:cayley-scaling} carries
 out the first finite-size step of this programme, for a circulant Cayley
 mixer and a scramble-then-reveal step channel.
 
+The mixing assumption should also be compared with the dynamical signature
+that defines black holes as fast scramblers.  A Schwarzschild black hole
+emits roughly one quantum per time $\beta$ while scrambling in
+$t_{\rm scr}\sim\beta\log\Smicro$ \cite{SekinoSusskind2008}, so order
+$\log\Smicro$ quanta leave per scrambling time; per-step mixing is therefore
+\emph{stronger} than the physical rate, not weaker.  Weakening it to the
+physical rate changes little: the entropy package needs decoupling only on
+the accumulated radiation, so a mixing lag of $O(\log\Smicro)$ quanta widens
+the Page window by a relative $O(\log S_0/S_0)$, while the information-mirror
+delay of Section~\ref{sec:recovery} grows from $O(k)$ quanta to
+$O(\log\Smicro)$ --- which \emph{recovers} the original Hayden--Preskill
+estimate rather than spoiling it.  On the mechanism side, nonlocal or
+expander interaction graphs are precisely the architecture the fast-scrambling
+conjecture requires \cite{LashkariStanfordHastingsHaydenOsborne2013}, and the
+vertex-transitive circulant family of Appendix~\ref{app:cayley-scaling} is in
+this class; the chaos bound $\lambda_L\le2\pi/\beta$
+\cite{MaldacenaShenkerStanford2016} caps the rate at which any Hamiltonian
+can discharge the assumption.  What is missing is a derivation of
+$t_{\rm scr}\sim\beta\log\Smicro$ from the shell Hamiltonian itself ---
+e.g.\ OTOC decay for the Cayley family --- which would tie the mixing rate to
+the temperature; this is open problem~4 of
+Section~\ref{sec:open-problems}.
+
 \subsection{What is settled and what remains open}
 \label{sec:open-problems}
 
@@ -1350,7 +1623,8 @@ construction settles the exterior accounting, conditional on the calibrated
 inputs and the mixing ingredient: local thermality, finite-energy
 backreaction corrections, negative heat capacity, the Schwarzschild rate
 laws, the island-formula Page curve, post-Page early/late radiation
-correlations, and complementary recovery of code information all follow from
+correlations, complementary recovery of code information, and the existence
+and forced state dependence of interior partner operators all follow from
 non-gravitational Hamiltonian evolution, weak-coupling emission,
 microcanonical state counting, global purity, and decoupling of the composite
 emission map.  No exotic dynamics, nonlocality, or modification of quantum
@@ -1367,29 +1641,49 @@ endpoint.
 and luminosity laws (Propositions~\ref{prop:dos} and~\ref{prop:area}) but not
 derived: a microscopic, non-gravitational origin of a super-Hagedorn,
 boundary-accessible density of states is the input-side open problem stated
-above.  Recent work indicates how unusual such spectra are
-\cite{AurellMajumdar2025}.
+above.  The boundary-accessibility half is where a semblance of geometric
+locality enters the model (Section~\ref{sec:necessity}); in holographic
+theories it follows from bulk locality and the Gauss law, and a microscopic
+derivation here would have to produce it without either.  Recent work
+indicates how unusual such spectra are \cite{AurellMajumdar2025}.
 \item
 \emph{Interior consistency.}  The smooth-horizon description requires
 near-horizon modes to be entangled across the horizon, while unitarity
 requires late radiation to be purified by early radiation; monogamy of
-entanglement forbids both \cite{AMPS2013}.  The model takes the trivial exit:
-it has no interior, so nothing clashes.  Its recovery statements are the
-algebraic content of island reconstruction, not a reconstruction of interior
-geometry.  Proposition~\ref{prop:complementary} sharpens the question rather
-than answering it: after the Page transition the code information is in the
-radiation, so whatever the interior is in the gravitational description, it
-must be assembled from radiation degrees of freedom --- the question
-addressed by state-dependent interior constructions and the ER=EPR proposal
-\cite{PapadodimasRaju2013,MaldacenaSusskind2013}.
+entanglement forbids both if the partner is independent of the radiation
+\cite{AMPS2013}.  Section~\ref{sec:mirrors} settles the algebraic version of
+this question within the model: partner operators with smooth-horizon
+correlators exist for every microstate
+(Proposition~\ref{prop:mirror-location}), post-Page they are supported
+inside the early radiation --- so the two entanglements are one --- and no
+state-independent choice is possible
+(Proposition~\ref{prop:no-go}), confirming the state-dependent
+interior constructions and the ER=EPR identification at the level of
+operator algebra \cite{PapadodimasRaju2013,PapadodimasRaju2014,
+VerlindeVerlinde2013,MaldacenaSusskind2013}.  What remains open is the
+geometric half: whether the semiclassical interior --- a smooth metric and an
+infalling experience --- is the mirror algebra in disguise, and how a
+state-(subspace-)dependent operator assignment is compatible with a single
+effective field theory in the interior
+\cite{AMPSS2013,MarolfPolchinski2016}.  The model bounds but does not answer
+the linearity objection: superpositions within a decoupling-budget code
+subspace are provably safe, and the model is silent about what an infalling
+observer encounters beyond it.
 \item
 \emph{The gravitational mechanism.}  Replica wormholes derive the island
 formula from low-energy gravity with no microscopic input, but the
 calculation behaves like an ensemble average, raising the factorization
 problem \cite{PeningtonShenkerStanfordYang2022,MarolfMaxfield2020}.  The
-model has a single Hamiltonian and produces the same two contractions as
-chaotic-channel statistics, which sharpens the question: why does geometry
-implement this contraction?  Relatedly, small corrections to Hawking's
+model has a single Hamiltonian, produces the same two contractions as
+chaotic-channel statistics, and, under the eighth-moment extension of the
+same ETH hypothesis, self-averages
+(Proposition~\ref{prop:self-averaging}): the instance entropy package equals
+the ensemble answer up to $O(e^{-S_0/2})$, and purity products factorize.
+On the quantum-mechanics side the ensemble is therefore redundant, and the
+factorization question is confined to the gravity side: why does the
+gravitational path integral compute an ensemble mean at all, and why does
+the geometric island compute the operational island's entropy --- why does
+geometry implement this contraction?  Relatedly, small corrections to Hawking's
 calculation cannot restore unitarity \cite{Mathur2009}; the model shows what
 the order-one departure must look like algebraically --- boundary-accessible
 entropy and decoupling of the emission map --- but not which assumption of
@@ -1401,9 +1695,11 @@ emission step, not derived; obtaining it from Hamiltonian data would tie the
 mixing rate to the temperature.  Separately,
 Proposition~\ref{prop:recovery} asserts the existence of a recovery channel,
 not its feasibility: the Petz map is expected to be exponentially hard to
-implement, and whether the interior sits behind a complexity barrier is a
-part of the puzzle that existence statements do not touch
-\cite{HarlowHayden2013}.
+implement, and whether the interior sits behind a complexity barrier ---
+now a concrete question about the radiation-supported mirror of
+Section~\ref{sec:mirrors} --- is a part of the puzzle that existence
+statements do not touch
+\cite{HarlowHayden2013,BrownGharibyanPeningtonSusskind2020}.
 \item
 \emph{The endpoint.}  The quasi-stationary weak-coupling expansion fails when
 the emitted quantum energy is comparable to the remaining mass, exactly where
@@ -1984,7 +2280,10 @@ The chaotic family tracks the Haar floor to within $0.003$ nats at every
 size, with deviation and standard deviation both roughly halving as $n$
 increases by two: at these sizes the fixed deterministic Hamiltonian is
 statistically indistinguishable from a Haar isometry and converges to the
-Page value at the Haar rate.  The free family diverges
+Page value at the Haar rate.  The halving of the seed scatter is the
+$e^{-S_0/2}=2^{-n/2}$ concentration predicted by the self-averaging
+estimate of Proposition~\ref{prop:self-averaging}
+(Appendix~\ref{app:eth-decoupling}).  The free family diverges
 ($0.40\to1.05\to1.20$), and the integrable family plateaus an order of
 magnitude above the falling Haar floor ($0.12\to0.17\to0.16$).  The spectral
 diagnostics line up with the entropy test: the family that fails by
@@ -2174,6 +2473,80 @@ not proven for any named Hamiltonian family, the same status as ETH itself;
 uniformity of (E1)--(E5) along the whole trajectory is assumed; and exact
 symmetries require sectorwise application with charges recorded in the
 radiation, as in Appendix~\ref{app:fixed-hamiltonian-target}.
+
+\subsubsection*{Self-averaging and the redundancy of the ensemble}
+
+Equation~\eqref{eq:eth-two-contractions} is a mean.  The gravitational
+derivation of the same two contractions --- replica wormholes --- behaves
+like an ensemble average and thereby raises the factorization problem
+\cite{PeningtonShenkerStanfordYang2022,MarolfMaxfield2020}.  The model can
+ask the corresponding question directly: how far does the purity of a single
+fixed Hamiltonian fluctuate about the two-contraction value?  The answer
+requires one more order of the same hypothesis.  Let (E3$'$) denote (E3)
+extended to eighth moments: joint moments of the $R^{(m)}$ Wick-factorize
+through eighth order, with crossing corrections suppressed by $e^{-\Smicro}$,
+as in the free-probability formulation
+\cite{FoiniKurchan2019,PappalardiFoiniKurchan2022}.
+
+The second moment of the purity is then a sum over the $4!$ pairings of four
+replicas --- permutations $\pi\in S_4$ weighted by
+$d_B^{c(\pi)}d_R^{c(\sigma\pi)}$ with $\sigma=(12)(34)$ the double swap and
+$c$ the cycle count.  The four block-preserving permutations reproduce
+$(\E\Tr\rho_R^2)^2$ exactly; the twenty connected ones are the fluctuation.
+The largest connected class is the norm fluctuation of the unconstrained
+Gaussian calculus, and it is absent here because the flat-rate normalization
+$\sum_m\widehat K_m^\dagger\widehat K_m=I$ makes the channel exactly trace
+preserving; the surviving classes match the exact variance of the Haar
+ensemble \cite{Giraud2007}.  The result, with
+$\Delta S_{\rm rad}+\Smicro\gtrsim S_0$ along the trajectory, is the
+following.
+
+\begin{proposition}[Self-averaging of the exterior entropy package]
+\label{prop:self-averaging}
+Assume (E1)--(E5) with (E3$'$).  Away from the endpoint,
+\begin{equation}
+    \frac{{\rm Var}\,[\Tr\rho_R^2]}{\big(\E\Tr\rho_R^2\big)^2}
+    =
+    O\!\left(e^{-2\max\{\Delta S_{\rm rad}(E),\,\Smicro(E)\}}\right)
+    \le
+    O\!\left(e^{-S_0}\right),
+\label{eq:self-averaging}
+\end{equation}
+where the variance may be read over microcanonical shell windows, over
+shell-typical codes and initial states, or over the ETH ensemble, with the
+same leading connected diagrams.  Consequently the second R\'enyi radiation
+entropy of a single instance deviates from the two-contraction value of
+Eq.~\eqref{eq:eth-two-contractions} by $O(e^{-S_0/2})$, worst at the Page
+transition, and products of purities across shells factorize to the same
+accuracy.
+\end{proposition}
+
+\emph{Proof sketch.}  The permutation sum above, with the connected classes
+enumerated and the norm class removed by trace preservation; the Haar value
+${\rm Var}\simeq2e^{-2\max}$ \cite{Giraud2007} calibrates the surviving
+multiplicities; (E3$'$) crossings multiply by $1+O(e^{-\Smicro})$ and the
+dwell and envelope factors enter as in
+Proposition~\ref{prop:eth-decoupling}.  Concentration over codes follows by
+Chebyshev using (E5).  The uniform bound uses
+$\max\{a,b\}\ge(a+b)/2\gtrsim S_0/2$.  \hfill$\square$
+
+Three comments.  First, the seed scatter of
+Appendix~\ref{app:cayley-scaling} is a direct finite-size measurement of
+this concentration: the standard deviation across seeds for the chaotic
+family (Table~\ref{tab:cayley-scaling}) falls $0.043\to0.016\to0.007$ as $n$
+grows by two --- consistent with the predicted $e^{-S_0/2}=2^{-n/2}$ halving
+--- and tracks the Haar reference's own finite-size deviations, i.e.\
+concentration at the Haar rate.  Second, the proposition is the model's
+statement of factorization: for a fixed Hamiltonian the would-be ensemble
+fluctuations are the twenty connected pairings, explicitly listed and
+exponentially small, so the ensemble description loses nothing and is needed
+for nothing --- the analogue, in this setting, of wormholes without
+averaging \cite{SaadShenkerStanfordYao2021}, with the connected pairings
+playing the role of the half-wormhole corrections.  Third, the statement
+covers the shell purities and the entropy package built from them; it does
+not control fluctuations of finer observables, higher R\'enyi constants
+require more replicas of the same calculation, and (E3$'$) shares the
+epistemic status of (E3).
 
 \bibliographystyle{unsrturl}
 \bibliography{refs}
