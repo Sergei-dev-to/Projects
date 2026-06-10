@@ -29,7 +29,7 @@
 \newcommand{\ket}[1]{|#1\rangle}
 \newcommand{\bra}[1]{\langle #1|}
 
-\title{Schwarzschild Evaporation Phenomenology from a Non-Gravitational Hamiltonian}
+\title{Schwarzschild Evaporation and Islands in a Non-Gravitational Hamiltonian Model}
 \author{Sergei Slobodov\\\texttt{sergei@slobodov.com}}
 \date{\today}
 
@@ -37,38 +37,45 @@
 \maketitle
 
 \begin{abstract}
-We give a non-gravitational Hamiltonian construction that reproduces the
-exterior thermodynamic and fine-grained entropy phenomenology of Schwarzschild
-evaporation from four inputs: a subsystem with Schwarzschild density of states,
-an outgoing radiation continuum, weak energy-conserving emission from
-area-many boundary-accessible operators, and microcanonical mixing.  The
-weak-coupling calculation gives a locally thermal radiation spectrum, the
-leading finite-energy correction, negative heat capacity, and the
-Schwarzschild number-flux, power, and lifetime scalings.  The area dependence
-of the rate follows from operator counting in the boundary-accessible emission
-algebra.  Global purity, shrinking remaining Hilbert-space dimension, and
-standard decoupling estimates give the Page curve and post-Page early/late
-radiation correlations.  At second R\'enyi order the purity contains two
-competing contractions, yielding the island min formula with the gravitational
-area term replaced by the microcanonical entropy of the remaining subsystem.
-Approximate-design and tensor-product-expander constructions give explicit
-finite-regulator realizations of the mixing assumption.  Replacing this
-abstract mixer by a
-simple deterministic sparse Hamiltonian is a separate dynamical problem: a
-Cayley-expander candidate makes the boundary emission weights equal by
-symmetry, while the remaining requirement is sectorwise cumulative
-second-moment decoupling for the induced weak-emission shrinking channel.  The
-construction addresses exterior entropy flow; it does not include interior
-geometry, horizon smoothness, or entanglement-wedge reconstruction.
+We ask which parts of Schwarzschild evaporation require gravity once the
+black-hole state count is supplied as a Hamiltonian density of states.  We
+construct a non-gravitational Hamiltonian with a Schwarzschild microcanonical
+entropy, area-many weak emission operators, an outgoing radiation continuum,
+and mixing within fixed energy shells.  The weak-coupling calculation gives
+the local Hawking spectrum, the leading finite-energy correction, negative
+heat capacity, and the Schwarzschild number-flux, power, and lifetime
+scalings.  The area dependence of the rate comes from an inclusive sum over
+boundary-accessible emission operators.  Thus the density of states fixes the
+thermal factor, while the boundary emission algebra fixes the rate.  The same
+Hamiltonian gives the
+fine-grained information-flow structure: global purity and decoupling of the
+shrinking emission map produce the Page curve and post-Page early/late
+radiation correlations.  At second R\'enyi order the purity contains the two
+contractions familiar from island calculations, giving the island min formula
+with the microcanonical entropy of the remaining subsystem in place of the
+gravitational area term.  Approximate-design and tensor-product-expander
+blocks provide finite-regulator realizations of the required shell mixing.
+The construction reproduces the exterior thermodynamic and entropy-flow
+package without a gravitational path integral, interior geometry, or horizon
+smoothness.
 \end{abstract}
 
 \section{Introduction}
 
 We use units with $\hbar=c=k_B=1$.
 
-Semiclassical black-hole evaporation combines thermodynamic regularity with a
-subtle fine-grained information problem.  For an uncharged nonrotating black
-hole,
+This paper asks how much of Schwarzschild evaporation can be reproduced by an
+ordinary quantum Hamiltonian with no dynamical geometry.  The answer we find is
+that the exterior thermodynamic and entropy-flow package follows once two
+black-hole inputs are supplied: the Schwarzschild microcanonical state count
+and an area-sized set of weak emission operators.  Gravity enters through these
+inputs.  The subsequent local thermality, rate law, Page curve, early/late
+correlations, and island-formula entropy are consequences of Hamiltonian
+evolution, weak emission into outgoing modes, and decoupling of the shrinking
+emission map.
+
+The target is the evaporation of an uncharged nonrotating black hole in four
+asymptotically flat spacetime dimensions.  Semiclassically,
 \begin{equation}
     S_{\rm BH}\propto A\propto M^2,\qquad
     T_H\propto M^{-1},
@@ -102,36 +109,13 @@ AlmheiriEngelhardtMarolfMaxfield2019,
 AlmheiriHartmanMaldacenaShaghoulianTajdini2020,
 AlmheiriHartmanMaldacenaShaghoulianTajdini2021}.  The Hamiltonian construction
 below shows how the same min formula arises in a manifestly unitary,
-non-gravitational model: the two candidate entropies are the emitted
-thermodynamic entropy and the microcanonical state count of the remaining
-object.
+non-gravitational model.  The no-island branch is the entropy of the emitted
+radiation history.  The island branch is the microcanonical state count of the
+remaining subsystem.  There is no gravitational path integral in the model, so
+the island statement is algebraic and does not construct quantum extremal
+surfaces or replica wormholes.
 
-Several finite-dimensional models address the information-theoretic side of
-this picture.  Tensor-network models, qubit-transport models, and random-circuit
-models describe unitary transfer of information from a shrinking black-hole
-subsystem into radiation \cite{LeutheusserVanRaamsdonk2017,Avery2013,
-OsugaPage2018,PiroliSunderhaufQi2020}.  These constructions make Page-like
-information flow transparent.  The Hamiltonian considered here also includes the
-thermodynamic data: an energy, a density of states, emitted quanta with
-definite energies, local thermal flux, negative heat capacity, and the
-Schwarzschild rate law.  Related Hilbert-space reduction models make the
-island-like entropy minimum explicit from changing Hilbert-space dimensions
-\cite{BasuWenZhou2025}.  Here the same entropy minimum is tied to an
-energy-resolved evaporation Hamiltonian and to the Schwarzschild rate law.
-
-Analogue-gravity systems give another comparison point.  Unruh's acoustic
-black holes and the later analogue-gravity literature show that
-Hawking-like radiation can arise in non-gravitational media whose long-distance
-excitations see an effective horizon \cite{Unruh1981,Barcelo2011}.  Those
-models capture the kinematic field-theory part of Hawking radiation.  The
-Hamiltonian construction below addresses the thermodynamic and
-information-theoretic part by supplying the black-hole state count as a density
-of states and treating evaporation as ordinary weak emission into outgoing
-quantum modes.
-
-The paper separates Schwarzschild evaporation phenomenology from the
-Hamiltonian assumptions used to reproduce it.  The exterior features recovered
-below are the following.
+The exterior features recovered below are the following.
 \begin{enumerate}
 \item
 The black-hole entropy scales as the horizon area.  For a four-dimensional
@@ -159,22 +143,33 @@ radiation entropy, and late radiation is correlated with early radiation after
 the Page time.
 \end{enumerate}
 
+The contribution of this paper is to assemble these thermodynamic, rate, and
+fine-grained entropy statements in one energy-resolved Hamiltonian framework.
 The Hamiltonian has a subsystem $B$ with microcanonical density of states
 $\rho_{\rm B}(E)\sim \exp(cE^2)$, with the energy $E$ identified with the mass
-$M$.  The strengthened version represents this state count by
-boundary-accessible degrees of freedom.  It is weakly coupled to an outgoing
-radiation continuum by an energy-conserving interaction whose local emission
-operators act on those boundary-accessible degrees.  The inclusive
-low-frequency emission strength is then proportional to the number of active
-boundary emitters, hence to the area.  This reproduces the area scaling of the
-standard low-frequency absorption cross-section by an operator-counting
-mechanism.  Mixing inside microcanonical shells is assumed to be
-cumulative over the evaporation history.  The fine-grained Page-curve and
-information-transfer statements require decoupling of the reference system from
-the subsystem that should be ignorant of the code.  In the design-based
-version used below, the regulated in-shell mixing blocks are chosen from
-approximate-design or tensor-product-expander constructions, so this
-decoupling condition follows from standard results
+$M$.  The leading entropy is carried by boundary-accessible degrees of
+freedom.  The subsystem is weakly coupled to an outgoing radiation continuum by
+an energy-conserving interaction whose local emission operators act on those
+degrees of freedom.  The inclusive low-frequency emission strength is then
+proportional to the number of active boundary emitters, hence to the area.
+This reproduces the area scaling of the standard low-frequency absorption
+cross-section by operator counting.  The same weak-emission map, after mixing
+inside microcanonical shells, gives the shrinking-isometry Page curve and its
+island-formula min structure.
+
+This separation is important.  Recent work constructs operators with
+black-hole-like spectral growth, $\Omega(E)\sim\exp({\rm const.}\,E^2)$, and
+finds that such spectra can arise from unusual, barely localized wavefunctions
+\cite{AurellMajumdar2025}.  In the present framework, the spectral growth alone
+would give the microcanonical Hawking temperature.  It would not fix the
+inclusive luminosity or the fine-grained Page/island structure.  Those require
+the boundary-accessible emission algebra and the decoupling of the induced
+shrinking channel.
+
+In the design-based version used below, the regulated
+in-shell mixing blocks are chosen from approximate-design or
+tensor-product-expander constructions, so this decoupling condition follows
+from standard results
 \cite{HaydenPreskill2007,HaydenHorodeckiWinterYard2008,
 DankertCleveEmersonLivine2009,SzehrDupuisTomamichelRenner2013,
 BrownFawzi2015,HarrowLow2009}.  Known Hamiltonian-design constructions give
@@ -186,29 +181,40 @@ Channel-scrambling diagnostics based on out-of-time-order correlator (OTOC)
 decay give another Hamiltonian route to the same mutual-information statements
 \cite{HosurQiRobertsYoshida2016,YoshidaKitaev2017}.
 
-These assumptions give the thermodynamic features above through standard
-weak-coupling and microcanonical arguments.  The
-density-of-states ratio gives the local thermal factor and the leading
-finite-energy correction.  The area-sized channel count gives the
-Schwarzschild quanta rate, power, and lifetime scalings.
-The falling Page branch follows from global purity after the remaining
-black-hole Hilbert space becomes smaller than the radiation support.  The
-rising branch and post-Page early/late correlations follow from Page's theorem
-and decoupling applied to the composite emission isometry.
-
-The boundary-accessible density of states is an input to the Hamiltonian.  A
-derivation of that input from simpler non-gravitational microscopic degrees of
-freedom is a separate problem.  Given that input, local weak coupling to the
-boundary-accessible degrees gives the area emission strength, and the listed
-exterior phenomenology follows from Hamiltonian evolution in the weak-coupling
-regime together with design-based decoupling of the composite emission map
-for the fine-grained information-theoretic statements.  The model has no
-interior geometry and
-therefore does not address
-horizon smoothness, island reconstruction from the radiation, complementarity,
-or firewall questions.
+The construction is conditional in two explicit places.  First, the
+Schwarzschild density of states and its boundary-accessible realization are
+inputs to the Hamiltonian.  Deriving them from simpler non-gravitational
+microscopic degrees of freedom is a separate problem.  Second, the
+fine-grained information-flow result uses decoupling of the composite emission
+map, supplied here by approximate designs or tensor-product expanders.  With
+these inputs, the remaining evaporation package follows by standard
+weak-coupling, microcanonical, and quantum-information arguments.  The model
+has no interior geometry and does not address horizon smoothness, island
+reconstruction from the radiation, complementarity, or firewall questions.
 
 \subsubsection*{Relation to earlier work}
+
+Several finite-dimensional models address the information-theoretic side of
+this picture.  Tensor-network models, qubit-transport models, and random-circuit
+models describe unitary transfer of information from a shrinking black-hole
+subsystem into radiation \cite{LeutheusserVanRaamsdonk2017,Avery2013,
+OsugaPage2018,PiroliSunderhaufQi2020}.  These constructions make Page-like
+information flow transparent.  The Hamiltonian considered here also includes the
+thermodynamic data: an energy, a density of states, emitted quanta with
+definite energies, local thermal flux, negative heat capacity, and the
+Schwarzschild rate law.  Related Hilbert-space reduction models make the
+island-like entropy minimum explicit from changing Hilbert-space dimensions
+\cite{BasuWenZhou2025}.
+
+Analogue-gravity systems give another comparison point.  Unruh's acoustic
+black holes and the later analogue-gravity literature show that
+Hawking-like radiation can arise in non-gravitational media whose long-distance
+excitations see an effective horizon \cite{Unruh1981,Barcelo2011}.  Those
+models capture the kinematic field-theory part of Hawking radiation.  The
+Hamiltonian construction below addresses the thermodynamic and
+information-theoretic part by supplying the black-hole state count as a density
+of states and treating evaporation as ordinary weak emission into outgoing
+quantum modes.
 
 The closest information-theoretic comparison is the tensor-network class of
 Leutheusser and Van Raamsdonk, where each evaporation step is specified by an
@@ -452,8 +458,8 @@ not the regime considered here.
 Residual greybody and channel dependence is placed in the smooth functions
 $C_\lambda(E,\omega)$ below.  The Boltzmann factor comes from the
 density-of-states ratio.  Other values of $p$ or different scaling of
-$N(E)$ define nearby evaporators with the same microcanonical thermality but a
-different total power law.
+$N(E)$ give models with the same microcanonical thermal factor and a different
+total power law.
 
 The same statement can be written as an inclusive spectral function of the
 boundary emission operators:
@@ -481,7 +487,10 @@ their cross terms vanish in the inclusive rate, then
 \label{eq:boundary-spectral-function}
 \end{equation}
 Thus the area factor is an operator-counting consequence of boundary-accessible
-entropy and local weak emission.
+entropy and local weak emission.  This area factor is used in the rate law; the
+Page and island calculations below use the same emission labels as radiation
+records, but their leading entropy competition is controlled by Hilbert-space
+dimensions and decoupling.
 
 For a rapidly mixing subsystem, the emission matrix elements are taken to have
 the standard ETH/random-matrix scaling in the energy basis
@@ -502,8 +511,8 @@ The overline denotes the shell or ensemble average within the indicated
 microcanonical bands.
 The rate calculation uses only this shell-averaged normalization.  The
 information-theoretic statements below require the composed emission channel to
-decouple the reference from the subsystem that should not contain the code
-information.  This is the channel-scrambling input supplied by the shell mixer.
+decouple the reference from the complementary subsystem.  This is the
+channel-scrambling input supplied by the shell mixer.
 The smooth function $C_\lambda(E,\omega)$ includes residual channel-dependent
 greybody and form-factor dependence not already contained in the phase-space
 factor or in the area cross-section.  This
@@ -689,6 +698,17 @@ mixing blocks described in Section~2.  Page's theorem and standard decoupling
 estimates then apply to the factorization
 $\mathcal H_E\otimes \mathcal H_{R(E_0\to E)}$
 \cite{Page1993Average,Page1993Info,HaydenHorodeckiWinterYard2008}.
+Operationally, this means the following.  Let $X_E$ be the smaller factor in
+the bipartition
+$\mathcal H_E\otimes\mathcal H_{R(E_0\to E)}$.  For the code subspace under
+consideration, the reduced state on $X_E$ is close to the corresponding
+Page-typical state: maximally mixed in the equiprobable-history idealization,
+or Hawking-weighted on the radiation branch when the golden-rule history
+weights are kept.  Denote the trace-distance error by $\epsilon_{\rm Page}(E)$.
+Then the entropy errors are bounded by the usual continuity estimates and are
+absorbed in the $O(1)$ term below in the large-entropy regime.  Equivalently,
+for code states purified by a reference, the complementary subsystem is
+decoupled from that reference, up to the same error.
 
 Let
 \begin{equation}
@@ -746,6 +766,43 @@ AlmheiriHartmanMaldacenaShaghoulianTajdini2021}.  Here it is
 $\log D_{\rm B}(E)$.  The second R\'enyi contraction is the corresponding
 non-geometric replica contraction: replicas connect through the smaller
 remaining core factor, with no spacetime saddle.
+
+The correspondence is therefore:
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+gravitational island calculation & Hamiltonian model \\
+\midrule
+radiation region & emitted radiation record \\
+no-island saddle & Hawking-history contraction \\
+island saddle & remaining-core contraction \\
+area term $A/4G$ & $\log D_{\rm B}(E)=\Smicro(E)$ \\
+QES minimization & minimization over the remaining shell \\
+replica wormhole saddle & non-geometric replica contraction \\
+\bottomrule
+\end{tabular}
+\end{center}
+This table is a dictionary for the entropy calculation only.  The Hamiltonian
+model has no spacetime region bounded by a quantum extremal surface and no
+gravitational path integral.
+
+Combining the finite-dimensional Page estimate with the regulated
+weak-emission construction gives the schematic accuracy statement
+\begin{equation}
+    S_{\rm vN}(R;E)
+    =
+    \min\{\Delta S_{\rm rad}(E),\Smicro(E)\}
+    +O(1)
+    +O\!\left(\epsilon_{\rm Page}(E)\log D_{\rm min}(E)\right)
+    +\delta_{\rm shell}+\delta_{\rm gb}+\delta_{\rm end}.
+\end{equation}
+Here $D_{\rm min}(E)=\min\{D_{\rm B}(E),e^{\Delta S_{\rm rad}(E)}\}$.
+The first correction is the finite-dimensional Page correction.  The second is
+the error from imperfect decoupling of the composite emission map.  The terms
+$\delta_{\rm shell}$, $\delta_{\rm gb}$, and $\delta_{\rm end}$ denote,
+respectively, finite shell-width errors, greybody/history-weighting errors,
+and the breakdown of the quasi-stationary large-mass expansion near the
+endpoint.
 
 The Page time is determined by
 \begin{equation}
@@ -888,13 +945,11 @@ The Hamiltonian class uses four ingredients: boundary-accessible Schwarzschild
 state counting, an outgoing continuum, local weak emission from the active
 boundary cells, and design-based decoupling of the composite emission map.
 The area-sized inclusive strength follows from the boundary operator count.
-The comparison with existing models isolates the contribution of the present
-construction: it combines Page's isometry logic with an energy-resolved
-Hamiltonian whose boundary-accessible density of states and local weak
-emission reproduce the Schwarzschild thermodynamic scalings.  The radiation
-entropy also has the island-formula structure, and its second R\'enyi purity has
-the corresponding two-term replica competition, with the gravitational area
-term replaced by the microcanonical entropy of the remaining subsystem.
+This combination ties Page's isometry logic to the Schwarzschild thermodynamic
+scalings.  The radiation entropy also has the island-formula structure, and
+its second R\'enyi purity has the corresponding two-term replica competition,
+with the gravitational area term replaced by the microcanonical entropy of the
+remaining subsystem.
 
 \section{Discussion}
 \label{sec:discussion}
