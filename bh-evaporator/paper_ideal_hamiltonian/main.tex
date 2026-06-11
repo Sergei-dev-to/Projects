@@ -16,6 +16,7 @@
 \headsep=0in
 \parskip=0.16in
 \parindent=0in
+\emergencystretch=1em
 
 \hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
 
@@ -31,8 +32,10 @@
 
 \newtheorem{proposition}{Proposition}
 \newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
 
-\title{A Conditional Hamiltonian Model of Schwarzschild Evaporation:\\
+\title{A Conditional Hamiltonian Model of the Operational Schwarzschild
+Horizon:\\
 State Count, Boundary Accessibility, and Island Algebra}
 \author{Sergei Slobodov\\\texttt{sergei@slobodov.com}}
 \date{\today}
@@ -41,7 +44,8 @@ State Count, Boundary Accessibility, and Island Algebra}
 \maketitle
 
 \begin{abstract}
-We ask which parts of Schwarzschild evaporation require gravity once the
+We ask which parts of the Schwarzschild horizon and its evaporation require
+gravity once the
 black-hole state count is supplied as a Hamiltonian density of states.  We
 construct a non-gravitational Hamiltonian with a Schwarzschild microcanonical
 entropy, area-many weak emission operators, an outgoing radiation continuum,
@@ -56,9 +60,14 @@ heat capacity, and the Schwarzschild number-flux, power, and lifetime
 scalings.  The area dependence of the rate comes from an inclusive sum over
 boundary-accessible emission operators.  Thus the density of states fixes the
 thermal factor, while the boundary emission algebra fixes the rate.  Within
-the model class both inputs are forced: the density of states is equivalent to
-the Hawking temperature law, and the area-sized emission count is equivalent
-to the Schwarzschild luminosity law.  The same
+the model class the two thermodynamic inputs are forced: the density of states
+is equivalent to the Hawking temperature law, and the area-sized emission count
+is equivalent to the Schwarzschild luminosity law.  The fine-grained
+information-flow results additionally require a shell-mixing or ETH decoupling
+condition, which is the third input stated above.  Within the regulated
+model that third input is in turn equivalent to the complementary-recovery
+structure it produces, so each input is equivalent to one layer of the
+target phenomenology.  The same
 Hamiltonian gives the
 fine-grained information-flow structure: global purity and decoupling of the
 shrinking emission map produce the Page curve and post-Page early/late
@@ -73,10 +82,10 @@ as mirrors on the purifier of each fresh mode, are provably state-dependent
 by a finite-dimensional counting argument, and move from the remaining
 subsystem into the radiation at the same transition --- locating the
 monogamy premise of the firewall argument that fails in the model.
-The radiation-supported mirror is a Petz pullback; its circuit complexity
-is bounded below by $\exp(\frac{1}{2}S_{\rm micro}(E))$ by the
-Harlow--Hayden theorem, tightened to $\exp(S_{\rm micro}(E))$ by the
-Python's lunch, and the no-go theorem implies that any sub-exponential
+The radiation-supported mirror is a Petz pullback; conditional on the
+Harlow--Hayden and Python's-lunch decoding-complexity assumptions, its
+circuit complexity is bounded below by $\exp(\frac{1}{2}S_{\rm micro}(E))$,
+tightened to $\exp(S_{\rm micro}(E))$, so that any sub-exponential
 circuit fails the mirror relations for typical microstates.
 Approximate-design and tensor-product-expander
 blocks provide finite-regulator realizations of the required shell mixing;
@@ -96,27 +105,39 @@ Self-averaging upgrades the statement to a single fixed Hamiltonian.
 The remaining genuinely gravitational questions are why the black-hole
 Hilbert space has Bekenstein--Hawking dimension, why the leading entropy
 is boundary-accessible, and how the operational island is realized as
-semiclassical geometry; all other features of the exterior information
-puzzle are on the quantum-mechanics side given these inputs.
-The construction reproduces the exterior thermodynamic and entropy-flow
-package without a gravitational path integral, interior geometry, or horizon
-smoothness.
+semiclassical geometry; the exterior entropy-flow, recovery, and
+mirror-algebra features treated here are on the quantum-mechanics side
+given these inputs.
+In the operational, exterior sense the construction realizes the horizon
+itself --- detailed-balance thermality, area-law emission strength, the
+island transition, complementary recovery, state-dependent mirrors, and
+the decoding barrier --- without a gravitational path integral, interior
+geometry, or horizon smoothness; what it lacks is precisely the local
+geometry: near-horizon Rindler correlators, the quasinormal spectrum, and
+the infalling experience.
 \end{abstract}
 
 \section{Introduction}
 
 We use units with $\hbar=c=k_B=1$.
 
-This paper asks how much of Schwarzschild evaporation can be reproduced by a
+This paper asks how much of Schwarzschild evaporation --- and of the
+Schwarzschild horizon itself, in the exterior operational sense defined
+below --- can be reproduced by a
 conditional non-gravitational Hamiltonian model with no dynamical geometry.  The answer we find is
 that the exterior thermodynamic and entropy-flow package follows once two
 black-hole inputs are supplied: the Schwarzschild microcanonical state count
-and an area-sized set of weak emission operators.  Gravity enters through
-these inputs, and only there.  Section~\ref{sec:necessity} shows that each
-input is equivalent, within the model class, to one item of the target
-phenomenology: the state count to the temperature law, and the
-boundary-accessible emission count to the luminosity law.  The inputs are
-therefore exactly the two measured scalings being matched, not additional
+and an area-sized set of weak emission operators.  The thermodynamic role of
+gravity enters through these two inputs; the fine-grained information-flow
+results additionally assume a shell-mixing or ETH decoupling condition on
+the emission map.  Section~\ref{sec:necessity} shows that each
+of the first two inputs is equivalent, within the model class, to one item
+of the target phenomenology: the state count to the temperature law, and the
+boundary-accessible emission count to the luminosity law; and
+Section~\ref{sec:recovery} extends the pattern to the third
+(Proposition~\ref{prop:decoupling-necessary}): decoupling is equivalent to
+the complementary-recovery structure it produces.  The inputs are
+therefore exactly the phenomenology being matched, not additional
 discretionary structure.  The subsequent local thermality, rate law, Page
 curve, early/late correlations, and island-formula entropy are consequences
 of Hamiltonian evolution, weak emission into outgoing modes, and decoupling
@@ -147,8 +168,11 @@ Page entropy statement and early/late radiation correlations, and, from the
 same decoupling input, the corresponding recovery statements: diary-sized
 code subspaces become recoverable from the radiation record precisely after
 the Page transition, with the Hayden-Preskill mirror bookkeeping in units of
-emitted quanta (Section~\ref{sec:recovery}).  It does not derive the
-scrambling-time estimate $t_{\rm scr}\sim\beta\log\Smicro$.
+emitted quanta (Section~\ref{sec:recovery}).  The scrambling-time estimate
+$t_{\rm scr}\sim\beta\log\Smicro$ is obtained only conditionally:
+Proposition~\ref{prop:scrambling-time} derives it as a lower bound from the
+chaos bound for mixers thermally tied to the microcanonical temperature,
+with both the tie and its saturation imported rather than derived.
 
 The post-2019 island calculations add a second language for the same
 fine-grained radiation entropy curve.  In those calculations, the von Neumann
@@ -166,6 +190,14 @@ radiation history.  The island branch is the microcanonical state count of the
 remaining subsystem.  There is no gravitational path integral in the model, so
 the island statement is algebraic and does not construct quantum extremal
 surfaces or replica wormholes.
+To set expectations: as in every derivation of this kind, the fine-grained
+entropy statement is Page's theorem together with a typical-encoding
+(decoupling) hypothesis.  The contribution is not a new mechanism for the
+Page curve but the reduction --- the Schwarzschild thermodynamic inputs and
+the Hamiltonian emission map bring the exterior problem to exactly that
+standard decoupling structure, with the hypothesis isolated as a separately
+checkable condition (Appendices~\ref{app:eth-decoupling}
+and~\ref{app:cayley-scaling}) rather than left implicit.
 
 The exterior features recovered below are the following.
 \begin{enumerate}
@@ -239,7 +271,8 @@ Appendix~\ref{app:cayley-scaling} complements these constructions
 with an exact finite-size-scaling study of one fixed deterministic
 Hamiltonian.
 
-The construction is conditional in two explicit places.  First, the
+The construction is conditional in the three inputs above, which enter the
+argument in two places.  First, the
 Schwarzschild density of states and its boundary-accessible realization are
 inputs to the Hamiltonian.  Propositions~\ref{prop:dos} and~\ref{prop:area}
 show that these inputs are forced --- the density of states by the
@@ -268,8 +301,8 @@ is term-by-term identical to the ETH permutation sum of
 Proposition~\ref{prop:eth-decoupling} under $S_{\rm BH}=\Smicro$
 (Proposition~\ref{prop:dos}), and self-averaging
 (Proposition~\ref{prop:self-averaging}) makes the result instance-level.
-The remaining genuinely gravitational question is therefore precisely why
-the black-hole Hilbert space has Bekenstein--Hawking dimension, and nothing more.
+Within that comparison, the remaining gravitational input is the
+identification $S_{\rm BH}=\log d_B$ itself.
 Section~\ref{sec:open-problems} states explicitly which parts of the
 information puzzle the construction settles, in the conditional sense above,
 and which remain open.
@@ -305,31 +338,73 @@ $\Gamma_{\rm quanta}\propto M^{-1}$, $\tau\propto M_0^3$ & derived &
 Section~3 \\
 $\langle\omega\rangle=3T$, $N_{\rm quanta}\sim S_0$, $\tau\propto S_0^{3/2}$
 & derived & Section~\ref{sec:cross-relations} \\
-Page curve, island min formula, Page point at $0.65\,\tau$ & derived &
+Page curve, island min formula, Page point at $0.57\,\tau$ (ideal
+$p{=}2$ Zurek-weighted model value; $0.65\,\tau$ in equal-entropy
+bookkeeping) & derived &
 Sections~\ref{sec:information-flow} and~\ref{sec:cross-relations} \\
 post-Page early/late correlations & derived &
 Section~\ref{sec:information-flow} \\
 Hayden--Preskill recovery; complementary reconstruction switching at the
 Page point & derived & Section~\ref{sec:recovery} \\
+decoupling $\Leftrightarrow$ complementary recovery: the third input is
+forced by the operational layer & derived &
+Prop.~\ref{prop:decoupling-necessary} \\
 state-dependent interior (mirror) operators; failure of the monogamy
 premise & derived & Section~\ref{sec:mirrors} \\
 self-averaging: instance entropies equal ensemble values up to
 $e^{-S_0/2}$ & derived & Appendix~\ref{app:eth-decoupling} \\
 replica wormhole sum $=$ ETH permutation sum given $S_{\rm BH}=\Smicro$ &
 derived & Section~\ref{sec:wormhole-ETH} \\
-mirror complexity $\geq\exp(\frac{1}{2}\Smicro)$; no-go $\Rightarrow$
+mirror complexity $\geq\exp(\frac{1}{2}\Smicro)$, conditional on the
+Harlow--Hayden complexity class; no-go $\Rightarrow$
 infeasibility & derived & Prop.~\ref{prop:mirror-complexity} \\
 \bottomrule
 \end{tabular}
 \caption{Input/output ledger.  ``Input'' marks gravitational data supplied to
 the Hamiltonian; each is equivalent to one matched target, so the model takes
 exactly two measured scalings and no further gravitational structure.
-``Standard'' marks non-gravitational quantum-mechanical ingredients.  The
+``Standard'' marks non-gravitational quantum-mechanical ingredients; the
+mixing row is the third input of the abstract --- nontrivial, but
+quantum-mechanical rather than gravitational.  The
 remaining items are derived.  The fine-grained items additionally require the
 mixing ingredient and fail without it
 (Appendix~\ref{app:cayley-scaling}).}
 \label{tab:ledger}
 \end{table}
+
+\subsubsection*{The operational horizon}
+
+The ledger has a one-sentence reading.  By an \emph{operational horizon}
+we mean the exterior information-theoretic signature package of a
+Schwarzschild horizon: thermal emission with detailed balance at
+$T\propto M^{-1}$, absorption and inclusive emission strength
+proportional to the horizon area, the Page/island transition of the
+radiation entropy, complementary recovery of code information switching
+from the object to the radiation, thermally entangled (smooth-mode)
+partner operators that are necessarily state-dependent, an exponential
+decoding-complexity barrier, and --- conditionally on the thermal tie of
+Proposition~\ref{prop:scrambling-time} --- the fast-scrambling timescale
+hierarchy.  By a \emph{geometric horizon} we mean the local
+semiclassical structure: near-horizon Rindler correlators, the
+quasinormal spectrum, an infalling experience, and a causal boundary in
+a metric.  The claim of this paper, assembled across Sections~3--4 and
+the appendices, is that the operational horizon is quantum-mechanical: a
+factorized, non-geometric Hamiltonian system realizes every signature
+above given the three inputs, each of which is in turn equivalent to one
+layer of the target phenomenology (Propositions~\ref{prop:dos},
+\ref{prop:area}, and~\ref{prop:decoupling-necessary}).  What such a
+system does not possess is precisely the geometric horizon.  Formation
+has the corresponding statistical shadow: if the spectrum contains an
+ordinary extensive sector alongside the super-Hagedorn sector, the
+latter dominates the microcanonical ensemble above the energy at which
+their entropies cross, so generic high-energy states equilibrate into
+the horizon-like sector --- an entropic analogue of the Hawking--Page
+transition \cite{HawkingPage1983}; tying this crossover to the emission
+dynamics is open.  In this sense the paper's demarcation is a statement
+about horizons, not only about evaporation: the exterior operational
+content of a horizon sits on the quantum-mechanics side of the line,
+and the genuinely gravitational content is its local geometry together
+with the microscopic origin of the inputs.
 
 \subsubsection*{Relation to earlier work}
 
@@ -609,7 +684,10 @@ The channel sum is an inclusive sum over independent weak boundary emitters.
 The channels are orthogonal in the outgoing continuum, independently phased,
 or shell-averaged, so their probabilities add in the golden-rule rate.
 Coherent addition of identical amplitudes would give a different scaling and is
-not the regime considered here.
+not the regime considered here.  Only this incoherent addition is used in
+the rate; whether the emitter index is additionally resolvable at infinity
+as an orthogonal radiation record is a separate question, deferred to
+Section~\ref{sec:isometry-flow}.
 Residual greybody and channel dependence is placed in the smooth functions
 $C_\lambda(E,\omega)$ below.  The Boltzmann factor comes from the
 density-of-states ratio.  Other values of $p$ or different scaling of
@@ -886,6 +964,59 @@ because the assumption is equivalent to the measured luminosity exponent.
 Why such a restricted emission algebra arises microscopically without bulk
 locality is part of open problem~1 in Section~\ref{sec:open-problems}.
 
+The state-count half of the input is not merely underived but provably out
+of reach of local models.  That black-hole entropy exceeds any local state
+counting is the founding observation of holography
+\cite{Bekenstein1981,tHooft1993,Susskind1995,Bousso2002}: in the present
+variables, a local field theory occupying the Schwarzschild volume
+$V\sim M^3$ at the Hawking temperature $T\sim M^{-1}$ carries entropy
+$S_{\rm local}\sim VT^3=O(1)$, a factor $M^2$ below $\Smicro$, and even
+cutoff field theory restricted to states that have not collapsed reaches
+only $S\sim A^{3/4}$ \cite{CohenKaplanNelson1999,Yurtsever2003}.  For
+lattice models the obstruction is elementary: a finite-range Hamiltonian on
+$N$ sites of local dimension $d$ has $S\le N\log d$ with extensive energy,
+so $\Smicro(E)\propto E^2$ requires unbounded local dimension, interaction
+range growing with $E$, or a degree-of-freedom count growing with $E$.
+None of this is new; it restates the holographic entropy mismatch in the
+model class.  What is specific to the present construction is the
+factorization: the rate condition --- area-many comparably coupled emission
+channels, equivalently $P\propto M^{-2}$ --- is achievable by an ordinary
+local thermal emitter (a Stefan--Boltzmann body at $T\sim M^{-1}$ radiating
+from a surface of area $\sim M^2$ has exactly this power law while carrying
+$O(1)$ entropy), so the entire non-local content of the Schwarzschild
+package is concentrated in the state count.
+
+The two inputs also fix the microscopic kinematics, under one further
+assumption.
+
+\begin{corollary}[Forced corpuscular kinematics]
+\label{cor:corpuscular}
+Assume Propositions~\ref{prop:dos} and~\ref{prop:area}, and additionally
+that the boundary-accessible entropy cells are the comparable
+energy-carrying constituents of the shell --- active emitters sharing
+the total energy, not mere degeneracy labels.  Then the system at energy
+$E$ consists of $N(E)\simeq\Smicro(E)/\log q\propto E^2$ constituents,
+each carrying energy $E/N(E)\propto 1/E\propto T(E)$ and order-one
+entropy: area-many soft quanta at the system's own temperature.
+\end{corollary}
+
+\emph{Proof.}  Division: $N(E)\propto\Smicro(E)\propto E^2$ by
+Proposition~\ref{prop:area} and the boundary-accessible realization of
+Section~2.1, and the energy-sharing assumption gives
+$E/N(E)\propto E^{-1}\propto T(E)$ by Proposition~\ref{prop:dos}.
+\hfill$\square$
+
+This is the quantum $N$-portrait of Dvali and Gomez --- the black hole
+as a condensate of $N\sim M^2$ soft constituents at criticality
+\cite{DvaliGomez2013} --- obtained here as forced kinematics rather than
+as a model.  The energy-sharing assumption is genuine: entropy cells
+could instead be degeneracy labels, gauge-edge modes, or collective
+labels carrying no comparable energy share, and the corollary is silent
+about such realizations.  Its value is to sharpen open problem~1: under
+the assumption, the gravitational residue is not ``find any
+microstructure'' but ``find the interaction that stabilizes $E^2$ soft
+quanta of energy $\sim T$ at criticality.''
+
 The two inputs are necessary for the thermodynamic package, but they do not
 contain the fine-grained package.  Appendix~\ref{app:cayley-scaling} exhibits
 shell Hamiltonians with identical state count, shrinking-dimension
@@ -893,7 +1024,11 @@ bookkeeping, and emission-record structure whose radiation entropy
 nevertheless fails the Page/island formula --- diverging from it for free
 dynamics and plateauing above it for integrable dynamics --- while a fixed
 chaotic Hamiltonian reproduces it.  The ingredient separating success from
-failure is dynamical, not gravitational.
+failure is dynamical, not gravitational.  Its necessity statement lives at
+the operational level: Proposition~\ref{prop:decoupling-necessary} shows
+that, within the regulated model, complementary recovery is equivalent to
+decoupling, so the third input, like the first two, is equivalent to the
+layer of phenomenology it produces.
 
 \subsection{Parameter-free relations}
 \label{sec:cross-relations}
@@ -923,10 +1058,26 @@ the radiation carries order-one entropy per quantum.
 \emph{Lifetime--entropy relation.}  $\tau\propto M_0^3=(S_0/c)^{3/2}$, so
 $\tau\propto S_0^{3/2}$ at fixed $c$.
 \item
-\emph{Page point.}  The radiation entropy attains its maximum $S_0/2$ when
-$\Smicro(E)=S_0/2$, that is, at $M_{\rm Page}=M_0/\sqrt2$, reached at
-$t_{\rm Page}=(1-2^{-3/2})\,\tau\simeq0.65\,\tau$; after this time
-$I(R_{\rm early}{:}R_{\rm late})>0$.
+\emph{Page point.}  In the equal-entropy bookkeeping, where the radiation
+record carries exactly the entropy lost by the subsystem
+($\Delta S_{\rm rad}=S_0-\Smicro$), the radiation entropy peaks when
+$\Smicro(E)=S_0/2$, at $M_{\rm Page}=M_0/\sqrt2$ and
+$t_{\rm Page}=(1-2^{-3/2})\,\tau\simeq0.65\,\tau$.  The physical record
+entropy is larger: free-streaming massless quanta carry entropy at $\nu$
+times the rate the emitter loses it, with $\nu=4/3$ for an ideal $p=2$
+flux \cite{Zurek1982} and $O(1)$ greybody corrections \cite{Page1976}.
+The crossing $\nu(S_0-\Smicro)=\Smicro$ then gives
+$\Smicro^{\rm Page}=\frac{\nu}{1+\nu}S_0$ and
+$t_{\rm Page}=\bigl[1-\bigl(\tfrac{\nu}{1+\nu}\bigr)^{3/2}\bigr]\tau
+\simeq0.57\,\tau$ at $\nu=4/3$, the model's analogue of the refined
+gravitational estimate \cite{Page2013}.  In either bookkeeping
+$I(R_{\rm early}{:}R_{\rm late})>0$ after the transition.  Both numbers
+assume the resolvable-record convention of
+Section~\ref{sec:isometry-flow}; if the emitter index were itself an
+orthogonal asymptotic record, $\nu$ would grow logarithmically with $S_0$
+and the transition would move to the first $O(S_0/\log S_0)$ quanta --- a
+fine-grained signature separating that variant from Schwarzschild
+evaporation.
 \end{enumerate}
 Relations 1--4 lie in the thermodynamic sector.  Relation 5 ties it to the
 fine-grained sector of Section~\ref{sec:information-flow}: the time at which
@@ -1004,7 +1155,48 @@ Let
 \end{equation}
 Here $\Delta S_{\rm rad}$ is the coarse-grained thermodynamic entropy carried
 by the emitted Hawking history, and $D_{\rm B}$ is the remaining core state
-count.  Under the typical-encoding condition, the exterior radiation entropy is
+count.
+
+A bookkeeping distinction is needed before this definition can be matched
+to Schwarzschild evaporation.  Three kinds of labels enter the emission
+map: the frequency, channel, and time-bin labels $(\omega,\lambda,t)$,
+which are resolvable in the asymptotic radiation; the emitter index $\mu$,
+which enters the inclusive rate of Section~3; and internal labels that
+never leave the core.  The rate calculation uses only shell-averaged
+incoherence between emitters --- vanishing cross terms --- which holds for
+independently phased couplings whether or not different $\mu$ produce
+orthogonal outgoing states.  The fine-grained bookkeeping, by contrast, is
+controlled by the resolvable record dimension.  We take the radiation
+record alphabet to be the binned $(\omega,\lambda,t)$, whose per-quantum
+entropy is order one, and treat $N(E)$ as a rate multiplicity rather than
+a record dimension.  The inclusive rates are unchanged by the $\mu$-sum,
+but the fine-grained statements are not automatically inherited:
+coarse-graining Kraus branches changes the effective Kraus rank, the
+second moments, and the record entropy.  The resolvable emission map is
+the collective one --- the field operators of Section~2 carry no $\mu$
+label, so the jump operator of a record branch $(\omega,\lambda,t)$ is
+the coherent sum of the microscopic emitters, and the conditional core
+state per record stays pure, preserving the isometric structure that the
+global-purity arguments below use.
+Lemma~\ref{lem:mu-inheritance} of Appendix~\ref{app:eth-decoupling}
+shows that these collective jump operators inherit the ETH conditions
+from microscopic emitters with independent zero-mean fluctuations:
+variances, hence rates, add to the $N(E)\,C_\lambda$ envelope, while the
+zero mean forbids the coherent $N^2$ (Dicke) enhancement that aligned
+amplitudes would produce.  The opposite convention --- $\mu$ carried to
+infinity as a faithful orthogonal record --- would add
+$\log N(E)\simeq2\log M$ nats per quantum, a record entropy parametrically
+larger than the Hawking radiation entropy, and would move the Page
+transition into the first $O(S_0/\log S_0)$ emitted quanta.  That variant
+reproduces every coarse observable of Section~3 but is distinguishable
+from Schwarzschild evaporation at the fine-grained level; for the real
+process the resolvable channel count per quantum is $O(1)$, because the
+dominant wavelength is comparable to the horizon radius and only the
+lowest angular channels escape \cite{Page1976}.  Relation~5 of
+Section~\ref{sec:cross-relations} quantifies the difference.
+$\Delta S_{\rm rad}$ as defined above is the equal-entropy idealization of
+the resolvable-record entropy; the weighted refinements are
+Eq.~\eqref{eq:weighted-renyi-two-main} and relation~5.  Under the typical-encoding condition, the exterior radiation entropy is
 \begin{equation}
     S_{\rm vN}(R;E)
     =
@@ -1116,7 +1308,10 @@ The Page time is determined by
     =
     \frac12\Smicro(E_0),
 \end{equation}
-up to corrections set by shell width and greybody-weighted branching.  After
+up to corrections set by shell width and greybody-weighted branching, and
+in the equal-entropy bookkeeping; the Zurek-weighted record moves the
+crossing to $\Smicro=\frac{\nu}{1+\nu}S_0$ (relation~5 of
+Section~\ref{sec:cross-relations}).  After
 this time, a late radiation block is locally close to thermal while its
 purifier is mostly the early radiation.  Thus
 \begin{equation}
@@ -1214,8 +1409,8 @@ exchanged.  \hfill$\square$
 For diary-sized codes, $k=O(1)$, the two regimes meet in a window of width
 $O(\log(1/\epsilon))$ nats around the island transition
 $\Delta S_{\rm rad}=\Smicro$ of Eq.~\eqref{eq:pagecurve}: in Schwarzschild
-variables, at $M_{\rm Page}=M_0/\sqrt2$ and $t_{\rm Page}\simeq0.65\,\tau$
-(Section~\ref{sec:cross-relations}).  Before the transition the code
+variables, at $t_{\rm Page}\simeq0.57$--$0.65\,\tau$ depending on the
+record bookkeeping (Section~\ref{sec:cross-relations}, relation~5).  Before the transition the code
 information sits in the core and the radiation record carries none of it;
 after the transition the assignment is reversed.  This is complementary
 recovery in the sense of the error-correction formulation of holographic
@@ -1224,6 +1419,49 @@ recovery channel on the radiation playing the role of entanglement-wedge
 reconstruction of the island
 \cite{CotlerHaydenPeningtonSaltonSwingleWalter2019,Penington2019}.  The
 correspondence rows added to the dictionary above are these two statements.
+
+The implication also runs backward: the operational layer does not merely
+follow from decoupling, it measures it.
+
+\begin{proposition}[The operational layer measures decoupling]
+\label{prop:decoupling-necessary}
+Fix the code subspace, reference, and error conventions of
+Proposition~\ref{prop:recovery}.  Complementary recovery is then
+equivalent, in the standard information--disturbance sense and up to
+polynomial loss in the error parameter, to decoupling of the complementary
+factor from the reference
+\cite{Schumacher1996,KretschmannSchlingemannWerner2008}: decoupling of
+$QB$ at error $\epsilon$ implies a radiation-record recovery channel with
+error $O(\epsilon)$ (Proposition~\ref{prop:recovery}), and a recovery
+channel with entanglement fidelity $1-\epsilon$ implies
+$\|\rho_{QB}-\pi_Q\otimes\rho_B\|_1=O(\sqrt\epsilon)$; likewise with $B$
+and $R$ exchanged.
+\end{proposition}
+
+\emph{Proof note.}  Both directions are standard.  The forward direction
+is Proposition~\ref{prop:recovery}.  The converse is the
+information--disturbance tradeoff
+\cite{Schumacher1996,KretschmannSchlingemannWerner2008}: dilating the
+recovery channel to an isometry
+$V:\mathcal H_R\to\mathcal H_{Q'}\otimes\mathcal H_{E_\Lambda}$ makes the
+global state pure on $Q\,B\,Q'E_\Lambda$ with $\rho_{QQ'}$
+near-maximally entangled; exact maximal entanglement would factorize the
+global state as $\Phi_{QQ'}\otimes\ket\chi_{BE_\Lambda}$, forcing
+$\rho_{QB}=\pi_Q\otimes\rho_B$, and the Fuchs--van de Graaf inequalities
+with Uhlmann's theorem degrade the conclusion to $O(\sqrt\epsilon)$.
+\hfill$\square$
+
+Together with Propositions~\ref{prop:dos} and~\ref{prop:area}, this
+completes a necessity trinity: each of the three inputs is equivalent,
+within the model class, to one layer of the target phenomenology --- the
+state count to the temperature law, the boundary emission count to the
+luminosity law, and decoupling to the operational island structure of
+complementary recovery switching at the Page transition.  The third
+equivalence is deliberately stated with the recovery statements, not the
+entropy curve, as the target: Page-like entropy saturation alone is weaker
+than decoupling and does not force it.  No input is slack --- each can be
+read off from the layer of phenomenology it produces, and no weaker
+substitute reproduces that layer.
 
 The same estimate gives the information-mirror statement for an old black
 hole \cite{HaydenPreskill2007}.  If the diary is deposited at a shell $E_1$
@@ -1234,10 +1472,12 @@ nats suffice.  By relation~3 of Section~\ref{sec:cross-relations}, each
 emitted quantum carries order-one entropy, so a diary of $k$ nats becomes
 radiation-recoverable after $O(k+\log(1/\epsilon))$ additional quanta.
 Explicit decoders are known in the design setting \cite{YoshidaKitaev2017}.
-What the model does not supply is the dynamical scrambling-time estimate
-$t_{\rm scr}\sim\beta\log\Smicro$ \cite{SekinoSusskind2008}: the bookkeeping
-here is in emitted quanta, conditional on per-step mixing, not in an
-independently derived mixing time.
+What the model supplies only conditionally is the dynamical scrambling-time
+estimate $t_{\rm scr}\sim\beta\log\Smicro$ \cite{SekinoSusskind2008}: the
+bookkeeping here is in emitted quanta, conditional on per-step mixing, and
+Proposition~\ref{prop:scrambling-time} recovers the estimate as a chaos-bound
+lower bound for thermally tied mixers, with the tie and saturation
+imported, not derived.
 
 Three qualifications.  First, what is reconstructed is code information ---
 the microstate data of the diary --- not interior geometry; the model has no
@@ -1491,7 +1731,8 @@ $k_{\rm max}(E)=\Delta S_{\rm rad}(E)-\Smicro(E)-O(\log(1/\varepsilon))$
 and the decoder complexity lower bound
 $\mathcal C_{\rm min}(E)=\exp(\frac{1}{2}\Smicro(E))$
 (Proposition~\ref{prop:mirror-complexity})
-are related by $\Delta S_{\rm rad}(E)=S_0-\Smicro(E)+O(\Gamma_E/\Delta E)$, giving
+are related, in the equal-entropy record bookkeeping, by
+$\Delta S_{\rm rad}(E)=S_0-\Smicro(E)+O(\Gamma_E/\Delta E)$, giving
 \begin{equation}
 \label{eq:accessibility-complexity}
   k_{\rm max}(E) = S_0 - 2\Smicro(E) - O\!\left(\log\tfrac{1}{\varepsilon}\right),
@@ -1663,13 +1904,17 @@ microstate, are necessarily state-dependent, and cross from the core to the
 radiation at the same transition, which dissolves the monogamy step of the
 firewall argument at the algebraic level.
 
-The construction is conditional in two places.  First, the Schwarzschild
+The construction is conditional in the three stated inputs, entering in two
+places.  First, the Schwarzschild
 density of states is an input to the Hamiltonian.  By
 Proposition~\ref{prop:dos} it is forced by the targeted temperature law, and
 by Proposition~\ref{prop:area} its boundary-accessible realization is forced
 by the targeted luminosity law, so the model takes exactly two measured
 scalings and no further gravitational structure
-(Table~\ref{tab:ledger}).  A more microscopic
+(Table~\ref{tab:ledger}).  Proposition~\ref{prop:decoupling-necessary}
+extends the pattern to the third input at the operational level:
+complementary recovery is equivalent to decoupling, so no weaker mixing
+assumption reproduces the operational island.  A more microscopic
 non-gravitational model would derive this boundary-accessible state count from
 simpler degrees of freedom.  Second, the main text uses approximate-design or
 tensor-product-expander mixing to supply the decoupling
@@ -1720,8 +1965,9 @@ expander interaction graphs are precisely the architecture the fast-scrambling
 conjecture requires \cite{LashkariStanfordHastingsHaydenOsborne2013}, and the
 vertex-transitive circulant family of Appendix~\ref{app:cayley-scaling} is in
 this class; the chaos bound $\lambda_L\le2\pi/\beta$
-\cite{MaldacenaShenkerStanford2016} caps the rate at which any Hamiltonian
-can discharge the assumption.  What is missing is a derivation of
+\cite{MaldacenaShenkerStanford2016} caps the rate for any mixer whose
+dynamics is thermally tied to $\beta(E)$ --- the conditional content of
+Proposition~\ref{prop:scrambling-time} below.  What is missing is a derivation of
 $t_{\rm scr}\sim\beta\log\Smicro$ from the shell Hamiltonian itself ---
 e.g.\ OTOC decay for the Cayley family --- which would tie the mixing rate to
 the temperature; this is addressed in
@@ -1729,23 +1975,27 @@ Proposition~\ref{prop:scrambling-time} below, with the remaining
 undetermined ingredient identified in open problem~4 of
 Section~\ref{sec:open-problems}.
 
-\begin{proposition}[Scrambling time from the chaos bound]
+\begin{proposition}[Scrambling time from the chaos bound, conditional]
 \label{prop:scrambling-time}
 Let $H_E$ be a shell Hamiltonian with $\Smicro$ effective qubits satisfying
-the ETH spectral conditions of Appendix~\ref{app:eth-decoupling}.  The
-in-shell scrambling time satisfies
+the ETH spectral conditions of Appendix~\ref{app:eth-decoupling}, and assume
+the \emph{thermal tie}: the OTOCs governing in-shell operator growth obey
+the Maldacena--Shenker--Stanford chaos bound at the microcanonical inverse
+temperature, $\lambda_L\le2\pi/\beta(E)$
+\cite{MaldacenaShenkerStanford2016}.  The
+in-shell scrambling time then satisfies
 \begin{equation}
   \label{eq:scrambling-time}
   t_{\rm scr} = \frac{\log\Smicro}{\lambda_L}
   \;\geq\; \frac{\beta\log\Smicro}{2\pi},
 \end{equation}
-where $\lambda_L\le2\pi/\beta$ is the Maldacena--Shenker--Stanford chaos
-bound \cite{MaldacenaShenkerStanford2016}, and equality is achieved by
-maximally chaotic Hamiltonians ($\lambda_L=2\pi/\beta$).  The emission
+where equality is achieved by maximally chaotic Hamiltonians
+($\lambda_L=2\pi/\beta$).  The emission
 rate is one quantum per $O(\beta)$ time, so the shell re-scrambles in
 at least $(\log\Smicro)/(2\pi)$ emission steps.  The per-step mixing assumption of
 Section~\ref{sec:isometry-flow} is therefore an overapproximation by a
-factor of $O(\log\Smicro)$; relaxing it to the physical mixing rate
+factor of at least $(\log\Smicro)/(2\pi)$; relaxing it to the physical
+mixing rate of a maximally chaotic shell
 shifts the Page window by a relative $O(\log S_0/S_0)$ and converts the
 Hayden--Preskill $O(k)$-step information delay of
 Section~\ref{sec:recovery} into the physical $O(\log\Smicro)$-step
@@ -1764,7 +2014,8 @@ scr}$ as
 where the $1/\Smicro$ prefactor reflects the $O(1)$ initial reach of a
 local operator in an $\Smicro$-qubit system.  Scrambling is complete when
 $C(t_{\rm scr})=O(1)$, giving $t_{\rm scr}=(\log\Smicro)/\lambda_L$.
-The chaos bound then supplies the upper bound on $\lambda_L$ and the
+The chaos bound --- applicable by the thermal-tie hypothesis --- then
+supplies the upper bound on $\lambda_L$ and the
 lower bound on $t_{\rm scr}$.  For a maximally chaotic Hamiltonian
 ($\lambda_L=2\pi/\beta$), this is the Sekino--Susskind fast-scrambling
 estimate \cite{SekinoSusskind2008}.  The emission lag follows because one
@@ -1786,6 +2037,21 @@ not determine $\lambda_L$ from a time series.  Extracting $\lambda_L$
 from OTOC vs.\ $t$ for the Cayley family is the remaining open question
 (item~4 below); if it saturates the bound, the scrambling-time estimate
 becomes a derived consequence of the shell dynamics.
+
+\smallskip\noindent\emph{Why the thermal tie is a hypothesis.}  The chaos
+bound constrains OTOCs evaluated in a thermal state at inverse temperature
+$\beta$ of the Hamiltonian generating the dynamics.  Within a
+microcanonical shell the state is maximally mixed --- effectively at
+infinite temperature with respect to $H_{\rm mix}(E)$ alone --- where the
+bound is vacuous: an abstract shell mixer can scramble arbitrarily fast.
+In gravity the energy dynamics and the scrambling dynamics are one
+Hamiltonian whose only scale at energy $E$ is the temperature, so the tie
+is automatic.  In the factored model it is an imported physical condition:
+the mixer's local energy scale must be set by $T(E)$.  This is a
+demarcation point in its own right --- the relation between scrambling
+rate and temperature is thermal physics that the factored Hamiltonian does
+not enforce, and Eq.~\eqref{eq:scrambling-time} should be read as
+conditional on it.
 
 \subsection{Replica wormholes as permutation contractions}
 \label{sec:wormhole-ETH}
@@ -1882,11 +2148,11 @@ each bulk permutation $\sigma\in S_n$, the on-shell dilaton action
 contributes $e^{(C(\sigma)-n)S_0}$ where $S_0=\phi_r/(4G_{\rm N})$ is the
 extremal dilaton value at the asymptotic boundary (the Bekenstein--Hawking
 entropy stored in the dilaton zero-mode); the matter sector contributes
-$r^{C(\tau\sigma)}$ for a thermal radiation bath of entropy $\log r$.  The
-saddle-point sum is therefore
+$r^{C(\tau\sigma)-n}$ for a normalized thermal radiation bath of entropy
+$\log r$.  The saddle-point sum is therefore
 \begin{equation}\label{eq:JT-saddle-sum}
   \Tr\rho_R^n\big|_{\rm JT}
-  = \sum_{\sigma\in S_n} b^{C(\sigma)-n}\,r^{C(\tau\sigma)},
+  = \sum_{\sigma\in S_n} b^{C(\sigma)-n}\,r^{C(\tau\sigma)-n},
   \qquad b=e^{S_0},
 \end{equation}
 which matches the ETH sum~\eqref{eq:renyi-n-perm} term by term.  The
@@ -1925,11 +2191,19 @@ endpoint.
 and luminosity laws (Propositions~\ref{prop:dos} and~\ref{prop:area}) but not
 derived: a microscopic, non-gravitational origin of a super-Hagedorn,
 boundary-accessible density of states is the input-side open problem stated
-above.  The boundary-accessibility half is where a semblance of geometric
-locality enters the model (Section~\ref{sec:necessity}); in holographic
-theories it follows from bulk locality and the Gauss law, and a microscopic
-derivation here would have to produce it without either.  Recent work
-indicates how unusual such spectra are \cite{AurellMajumdar2025}.
+above.  By the holographic entropy mismatch recalled in
+Section~\ref{sec:necessity}, no local Hamiltonian can supply the state
+count, so the problem is necessarily one of \emph{non-local} quantum
+mechanics, with three available structures: unbounded local dimension,
+interaction range growing with energy, or a degree-of-freedom count growing
+with energy.  Under the energy-sharing assumption of
+Corollary~\ref{cor:corpuscular} the target is sharper still: the residue
+is the critical interaction stabilizing the forced soft large-$N$
+kinematics.  The boundary-accessibility half is where a semblance of
+geometric locality enters the model (Section~\ref{sec:necessity}); in
+holographic theories it follows from bulk locality and the Gauss law, and a
+microscopic derivation here would have to produce it without either.
+Recent work indicates how unusual such spectra are \cite{AurellMajumdar2025}.
 \item
 \emph{Interior consistency.}  The smooth-horizon description requires
 near-horizon modes to be entangled across the horizon, while unitarity
@@ -1981,14 +2255,18 @@ semiclassical calculation fails.
 \emph{Dynamical rates and complexity.}
 Proposition~\ref{prop:scrambling-time} derives the scrambling-time formula
 $t_{\rm scr}=(\log\Smicro)/\lambda_L$ from ETH and the OTOC definition,
-and shows that the chaos bound $\lambda_L\le2\pi/\beta$
+and the chaos bound $\lambda_L\le2\pi/\beta$
 \cite{MaldacenaShenkerStanford2016} gives the lower bound
-$t_{\rm scr}\ge(\beta\log\Smicro)/(2\pi)$; equality, recovering the
-Sekino--Susskind fast-scrambling estimate, is achieved when $\lambda_L=2\pi/\beta$.  The remaining undetermined
-quantity is whether the shell Hamiltonian saturates the chaos bound
-($\lambda_L=2\pi/\beta$): deriving this from the shell's spectral structure
---- e.g., extracting $\lambda_L$ from OTOC vs.\ $t$ for the Cayley family
---- would convert the per-step mixing assumption into a derived consequence
+$t_{\rm scr}\ge(\beta\log\Smicro)/(2\pi)$; equality recovers the
+Sekino--Susskind fast-scrambling estimate.  Two imported conditions
+remain.  The first is the thermal tie: the factored model does not enforce
+the chaos bound at $\beta(E)$ --- a maximally mixed shell is an
+infinite-temperature state for the mixer alone --- so tying the mixer's
+energy scale to the temperature is a physical input.  The second is
+saturation ($\lambda_L=2\pi/\beta$).  Deriving either from the shell's
+spectral structure --- e.g., extracting $\lambda_L$ from OTOC vs.\ $t$ for
+the Cayley family --- would convert the per-step mixing assumption into a
+derived consequence
 of the dynamics and bind the complexity threshold
 $\exp(\frac{1}{2}\Smicro)$ of Corollary~\ref{cor:accessibility-complexity}
 to the temperature.  Separately, recovery and mirror operators
@@ -2015,8 +2293,24 @@ description is, such that it both presents a smooth interior and computes the
 correct exterior entropies.  The model sharpens that boundary: the exterior
 entropy package (Page curve, replica contractions, self-averaging, mirror
 operators, complementary recovery) lies entirely on the quantum-mechanics
-side; the remaining gravitational questions are why $S_{\rm BH}=\log d_B$ and
-what the semiclassical interior is, neither of which involves bulk dynamics.
+side; the remaining gravitational questions are why $S_{\rm BH}=\log d_B$
+with the leading entropy boundary-accessible, why the gravitational path
+integral computes ETH-like statistics, and what the semiclassical interior
+is --- none of which is a question about exterior information flow.
+
+One scope statement remains.  The model's information flow presupposes a
+factorized exterior: core and radiation are tensor factors, and
+information resides in the core until emitted.  In gravity this is
+contested --- the holography-of-information results argue that the
+gravitational Gauss law makes information about the bulk available in
+asymptotic observables at all times, in which case the Page curve
+computed here is a statement about factorized, non-gravitational
+bookkeeping \cite{Raju2022}.  The model takes no side: it is the
+explicit benchmark for that bookkeeping, every step of which is
+elementary and auditable.  Determining which minimal Gauss-law-like
+constraint, added to the Hamiltonian, would modify or flatten the curve
+--- and whether it could do so while preserving the thermodynamic
+package --- is a separate problem, left for future work.
 
 \appendix
 
@@ -2122,7 +2416,27 @@ The conditioned Stinespring map is
     \widehat K_{E;\omega\lambda\mu}
     \otimes\ket{\omega,\lambda,\mu}_{\rm R}.
 \end{equation}
-Including the waiting-time record, the flat-rate one-emission isometry is
+The dilation treats the emitter index $\mu$ as an orthogonal record for
+bookkeeping --- the idealization in which each emitter couples to its own
+lead.  Under the resolvable-record convention of
+Section~\ref{sec:isometry-flow} the physical record retains only
+$(\omega,\lambda)$ and the time bin, the jump operator of each record
+branch is the collective $\mu$-sum
+(Lemma~\ref{lem:mu-inheritance}), each branch remains pure, and the
+inclusive rates are identical under shell-averaged phases:
+\begin{equation}
+    \widehat K^{\rm coll}_{E;\omega\lambda}
+    =\sum_\mu \widehat K_{E;\omega\lambda\mu},
+    \qquad
+    V_E^{\rm coll}
+    =\sum_{\lambda}\int d\omega\,
+    \widehat K^{\rm coll}_{E;\omega\lambda}
+    \otimes\ket{\omega,\lambda}_{\rm R},
+\end{equation}
+with flat-rate normalization holding up to $\mu\neq\mu'$ cross terms that
+vanish on shell average and contribute to the $F_E$ budget above.
+Including the waiting-time record, the flat-rate one-emission isometry in
+the orthogonal-lead bookkeeping is
 \begin{equation}
     W_E\ket\psi
     =
@@ -2293,7 +2607,9 @@ moment expansion has the standard permutation form
     b^{C(\sigma)}r^{C(\tau\sigma)}.
 \end{equation}
 Here $\tau=(12\cdots n)$ is the cyclic permutation imposed by
-$\Tr\rho_R^n$, and $C(\sigma)$ is the number of cycles of $\sigma$.  The
+$\Tr\rho_R^n$, $C(\sigma)$ is the number of cycles of $\sigma$, and
+$(br)_n=br(br+1)\cdots(br+n-1)$ is the rising factorial, equal to $(br)^n$
+at leading order.  The
 identity contraction gives the Hawking/no-island branch, while
 $\sigma=\tau^{-1}$ gives the post-Page branch controlled by the remaining core
 dimension.  This is the same random-matrix replica mechanism that appears in
@@ -2630,10 +2946,21 @@ separately checkable hypothesis.
 One step maps the shell $\mathcal H_E$, of dimension $D$ and eigenpairs
 $H_E\ket\nu=\theta_\nu\ket\nu$, to the shell $\mathcal H_{E-\omega}$ of
 dimension $D_-$.  The ingredients are those of
-Appendix~\ref{app:weak-emission-map}: the flat-rate conditioned jumps
-$\widehat K_m$ with record label $m=(\omega,\lambda,\mu)$, normalized by
-$\sum_m\widehat K_m^\dagger\widehat K_m=I$, and the dwell dephasing obtained
-by tracing the waiting-time record,
+Appendix~\ref{app:weak-emission-map}: in microscopic notation the
+$\mu$-resolved labels are
+$\tilde m=(\omega,\lambda,\mu)$.  In this appendix, however, the label
+$m$ denotes the resolvable coarse-grained branch.  Thus $\widehat K_m$ is
+the corresponding $\mu$-summed jump operator, with
+$\sum_m\widehat K_m^\dagger\widehat K_m=I$ holding up to $\mu\neq\mu'$
+cross terms that vanish on shell average and sit in the $F_E$
+shell-fluctuation budget of Appendix~\ref{app:weak-emission-map}; if the
+arrival-time record is
+kept, $m$ is further refined by the time bin, while in the dephased channel
+below the waiting-time record is traced into $T$.  The assumptions below
+are stated for these coarse-grained operators;
+Lemma~\ref{lem:mu-inheritance} derives them from their microscopic
+counterparts.  The remaining ingredient is the dwell
+dephasing obtained by tracing the waiting-time record,
 $T(\rho)_{\nu\nu'}=L_{\nu\nu'}\rho_{\nu\nu'}$ with
 $L_{\nu\nu'}=\Gamma_E/[\Gamma_E+i(\theta_\nu-\theta_{\nu'})]$.  One
 conditioned step is
@@ -2714,9 +3041,68 @@ arrival times, the latter entering through the kernel
 \eqref{eq:lorentzian-purity} --- and the second is the island branch.  Here
 they are derived for a fixed Hamiltonian rather than assumed via designs.
 
+The coarse-grained operators are not an independent hypothesis: their ETH
+conditions follow from microscopic ones.
+
+\begin{lemma}[Collective jump operators inherit the ETH conditions]
+\label{lem:mu-inheritance}
+Let the microscopic jump operators $\widehat K_{m\mu}$ satisfy (E2) with
+envelopes $f_{m\mu}$ and variables $R^{(m\mu)}$ that are zero-mean, with
+second and fourth moments diagonal in the joint label $(m,\mu)$ ---
+uncorrelated across emitters and across records alike --- up to the
+crossing corrections allowed in (E3).  Then the collective
+operators $\widehat K_m=\sum_\mu\widehat K_{m\mu}$ satisfy (E2) with
+envelope $|F_m|^2=\sum_\mu|f_{m\mu}|^2\simeq N(E)\,|f_{m\cdot}|^2$ ---
+variances, hence rates, add, while the zero mean forbids the coherent
+$N^2$ (Dicke) enhancement, which would require aligned amplitudes ---
+satisfy (E3), including its distinct-record independence clause, with
+crossing corrections suppressed by a further $1/N(E)$
+relative to the emitter-wise ones, and are flat-rate normalized up to
+$\mu\neq\mu'$ cross terms that vanish on shell average and sit in the
+$F_E$ budget of Appendix~\ref{app:weak-emission-map}.
+Equations~\eqref{eq:eth-two-contractions}--\eqref{eq:lorentzian-purity}
+and Proposition~\ref{prop:eth-decoupling} then hold for the resolvable
+record with weights $q_m=\sum_\mu q_{m\mu}$; the island branch is
+unchanged, and only the record branch coarsens.
+\end{lemma}
+
+\emph{Proof sketch.}  The collective matrix element is
+$D^{-1/2}\sum_\mu f_{m\mu}R^{(m\mu)}_{\bar\nu\nu}$, a sum of independent
+zero-mean variables: its variance is $\sum_\mu|f_{m\mu}|^2$, giving (E2)
+with the summed envelope and a normalized collective variable $R^{(m)}$.
+Joint moments of sums of independent Wick families Wick-factorize with
+the summed variances, and diagonality in $(m,\mu)$ ensures that distinct
+collective records remain uncorrelated; the connected fourth cumulant is
+a single sum
+of $N(E)$ emitter-wise cumulants against the $N(E)^2$ normalization of
+the variance squared, so the crossing corrections of (E3) acquire an
+extra $1/N(E)$.  The normalization deviation
+$\sum_m\widehat K_m^\dagger\widehat K_m-I$ consists of the
+$\mu\neq\mu'$ cross terms, zero-mean by independence and absorbed into
+$F_E$.  Conditioned on a record, the core is acted on by the
+single operator $\widehat K_m$, so each branch remains pure and the
+composite map remains an isometry into the core--record space; the
+global-purity arguments of Section~\ref{sec:isometry-flow} apply
+unchanged.  \hfill$\square$
+
+Two remarks on the lemma.  First, the collective form is what the
+Hamiltonian generates: the field operators $b_\lambda^\dagger(\omega)$ of
+Section~2 carry no $\mu$ label, so distinct emitters feed the same
+outgoing mode and their amplitudes superpose; the $\mu$-orthogonal record
+of Appendix~\ref{app:weak-emission-map} is the opposite idealization, in
+which each emitter couples to its own lead.  Second, a fully decohered
+instrument description --- $\mu$ as an unresolved internal Kraus index
+--- reproduces the same inclusive rates and the same mean channel after
+shell averaging, while higher moments and branch purity differ by the
+$\mu\neq\mu'$ cross terms.  It is unitarily realizable with an extra
+environment, but it is not consistent with the chosen $B\cup R$
+purification unless that hidden $\mu$ environment is counted as part of
+the radiation or the core; the collective form is the coarse-graining
+consistent with the model's purity bookkeeping.
+
 \begin{proposition}[ETH implies second-moment decoupling]
 \label{prop:eth-decoupling}
-Assume (E1)--(E5).  Then the one-step conditioned emission channel
+Assume conditions (E1)--(E5).  Then the one-step conditioned emission channel
 reproduces the second moments of the Haar emission isometry up to relative
 errors
 $O(\Gamma_E/\Delta E)$ and $O(e^{-\Smicro(E-\omega)})$, and the composed map
@@ -2807,7 +3193,7 @@ following.
 
 \begin{proposition}[Self-averaging of the exterior entropy package]
 \label{prop:self-averaging}
-Assume (E1)--(E5) with (E3$'$).  Away from the endpoint,
+Assume conditions (E1)--(E5) with (E3$'$).  Away from the endpoint,
 \begin{equation}
     \frac{{\rm Var}\,[\Tr\rho_R^2]}{\big(\E\Tr\rho_R^2\big)^2}
     =

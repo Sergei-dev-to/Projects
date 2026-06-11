@@ -1,218 +1,110 @@
-# The Gravitational Trilemma
+# The Entropy-Budget Gap (formerly "the gravitational trilemma")
 
-**Core claim.** No local Hamiltonian in the thermodynamic limit can
-simultaneously satisfy the Schwarzschild thermodynamic package. The
-package reduces, via Props 1–2 of the companion paper, to two conditions
-that are mutually exclusive in any local quantum system:
+**Status (2026-06-10).** Demoted from standalone-theorem ambition to
+positioning material, after review. Two findings forced the demotion:
 
----
+1. **It is not a trilemma.** Props 1–2 of the conditional-Hamiltonian paper
+   collapse (C)+(A) into a single condition (super-Hagedorn DOS), and (R)
+   is locally achievable. One obstruction, not three-way tension.
+2. **The obstruction is not new.** It is the founding observation of
+   holography. A standalone paper would be re-deriving 't Hooft/Susskind in
+   lattice notation.
 
-## 1. The two conditions
+The salvageable content has been distributed:
 
-**Definition (Super-Hagedorn entropy, SH).** A Hamiltonian $H$ satisfies
-SH if its microcanonical entropy $S(E) = \log\rho(E)$ grows
-super-linearly with energy:
-
-$$S(E) \;\geq\; c E^\alpha, \qquad \alpha > 1,\quad c > 0,$$
-
-for all $E \geq E_0$.  The Schwarzschild case has $\alpha = 2$:
-$S(E) = 4\pi E^2$ (Bekenstein-Hawking, $G=1$).
-
-**Definition (Thermodynamic locality, TL).** A Hamiltonian $H$ satisfies
-TL if it is a finite-range sum of local terms on a lattice:
-
-$$H = \sum_{X \subset \Lambda,\, |X| \leq R} h_X, \qquad \|h_X\| \leq J,$$
-
-acting on $\mathcal{H} = \bigotimes_{x\in\Lambda} \mathcal{H}_x$ with
-$\dim\mathcal{H}_x = d < \infty$, where $\Lambda \subset \mathbb{Z}^d$
-and $|\Lambda| = N$.
-
-**Theorem (SH $\perp$ TL).** *No Hamiltonian satisfies both SH and TL
-in the thermodynamic limit $N \to \infty$.*
+- **Conditional-Hamiltonian paper** (`paper_ideal_hamiltonian/main.tex`,
+  Section "Necessity of the two inputs" + open problem 1): a paragraph
+  stating the gap, citing the classics, and claiming only the
+  factorization. Done 2026-06-10.
+- **Super-Hagedorn companion paper** (`paper_super_hagedorn_evaporator/`):
+  the escape-route classification (Section 3 below) as the framing question
+  its construction partially answers. **Pending.**
 
 ---
 
-## 2. Proof
+## 1. The established impossibility (cite, don't claim)
 
-Under TL the Hilbert space has dimension $d^N$, so the microcanonical
-entropy is bounded by
+That black-hole entropy exceeds any local state counting is classical:
 
-$$S(E) \;\leq\; \log d^N \;=\; N \log d. \tag{$*$}$$
+- Bekenstein 1981 (PRD 23, 287): universal entropy bound $S \leq 2\pi RM$.
+- 't Hooft 1993 (gr-qc/9310026): gravitational collapse implies
+  dimensional reduction; DOF count bounded by area.
+- Susskind 1995 (J. Math. Phys. 36, 6377): the holographic principle.
+- Bousso 2002 (RMP 74, 825): covariant entropy bounds, review.
+- Cohen–Kaplan–Nelson 1999 (PRL 82, 4971) and Yurtsever 2003 (PRL 91,
+  041302): cutoff local QFT restricted to non-collapsing states maxes out
+  at $S \sim A^{3/4}$ — sharper than the Stefan-Boltzmann estimate below.
 
-The local energy is extensive: the maximum energy is $\|H\| \leq J R_d N$
-where $R_d$ is the lattice coordination number, so $E \leq C_J N$ for
-a constant $C_J = J R_d$.  Hence
+**Evaporation-adapted version (exposition, not a result).** A local field
+theory occupying the Schwarzschild volume $V \sim M^3$ at the Hawking
+temperature $T \sim M^{-1}$ carries
 
-$$N \;\geq\; \frac{E}{C_J},$$
+$$S_{\rm local} \sim VT^3 = O(1) \quad\text{vs}\quad S_{\rm BH} = 4\pi M^2 .$$
 
-but the bound $(*)$ does not require $N$ to grow with $E$; we need the
-other direction.  Fix an energy density $e = E/N \in (0, C_J)$; then
-$N = E/e$ and
+The local body matched to the black hole's actual $T$ and $R$ is
+essentially vacuum; the gap is $O(M^2)$ — the area in Planck units. Vivid
+for the evaporation context, implicit in the literature.
 
-$$S(E) \;\leq\; \frac{E \log d}{e} \;=:\; c_{\rm TL}(e)\, E. \tag{TL bound}$$
+**Lattice version (elementary lemma, not a theorem).** A finite-range
+Hamiltonian on $N$ sites of local dimension $d$ has $S \leq N\log d$ with
+extensive energy $E \leq C_J N$. At fixed energy density this gives
+$S(E) \leq c_{\rm TL}\,E$, linear — incompatible with $S \geq cE^\alpha$,
+$\alpha > 1$, at large $E$.
 
-The TL bound is *linear* in $E$ at fixed density $e$.
+*Known gap in the old "SH ⊥ TL theorem" framing:* the fixed-density
+argument does not cover the Schwarzschild regime ($N \sim M^3$, energy
+density $\to 0$). The correct general statement is not the fixed-density
+bound but the contrapositive bookkeeping of $S \leq N\log d$ — which is
+exactly the escape-route classification below. The theorem packaging is
+dropped.
 
-Under SH: $S(E) \geq c E^\alpha$ with $\alpha > 1$.  For $E$ large enough
-(specifically $E > (c_{\rm TL}(e)/c)^{1/(\alpha-1)}$), the SH lower
-bound exceeds the TL upper bound:
+## 2. What is actually ours: the factorization
 
-$$c E^\alpha \;>\; c_{\rm TL}(e)\, E,$$
+The classics say "the package requires holography." Props 1–2 say which
+half:
 
-a contradiction.  In the thermodynamic limit $E \to \infty$ (with
-$N = E/e \to \infty$), this contradiction is unavoidable for any fixed
-density $e$ and any $\alpha > 1$. $\square$
+- **State count** ($S = cM^2$, equivalently $T \sim M^{-1}$): provably
+  non-local (Section 1). All the gravity is here.
+- **Rate condition** ($P \sim M^{-2}$, equivalently area-many comparable
+  emission channels): locally achievable. A Stefan-Boltzmann body at
+  $T \sim M^{-1}$ radiating from area $\sim M^2$ has exactly this power
+  law while carrying $O(1)$ entropy.
 
-**Remark (superextensivity).** The proof has a clean information-theoretic
-reading: TL systems have *extensive* entropy (entropy per site bounded by
-$\log d$), while SH requires *superextensive* entropy ($S/N \sim E \to
-\infty$ at fixed density).  Superextensive entropy is impossible in any
-local system because it would require more entropy per site than the
-local Hilbert space can hold.
+The imported gravitational structure is exactly one scaling law's worth,
+concentrated entirely in the state count. This demarcation is the paper's
+move; it is now stated there.
 
----
+## 3. The live question: escape-route classification (→ companion paper)
 
-## 3. Connection to the Schwarzschild thermodynamic package
+$S \leq N\log d$ has exactly three escape routes. Any system with
+$S(E) \geq cE^\alpha$, $\alpha > 1$, must have at least one of:
 
-The three observational conditions of the companion paper — cooling
-(C), area-entropy (A), and radiation (R) — are not independent:
+1. **Unbounded local dimension** ($d$ grows with $E$);
+2. **Growing interaction range / participation** (terms couple $O(E)$-sized
+   sets, e.g. SYK-like — though SYK itself has $S \sim N$, not
+   super-Hagedorn);
+3. **Variable degree-of-freedom count** ($N$ grows with $E$ — the
+   variable-$N$ constructions: `variable_n_bose_hubbard`,
+   `variable_length_spin_chain`, and the super-Hagedorn evaporator itself).
 
-**Prop. 1 of companion paper:** (C) $\Leftrightarrow$ (A).  The
-temperature law $T \sim M^{-1}$ is equivalent (via $T = (dS/dM)^{-1}$)
-to $S = cM^2$.  So (C) and (A) together are a single condition: the
-DOS is super-Hagedorn with $\alpha = 2$.
+Open questions, in scope for the companion paper:
 
-**Prop. 2 of companion paper:** (R) $\Rightarrow$ $N(E) \propto A(E)$.
-The luminosity law $P \sim M^{-2}$ forces the number of
-boundary-accessible emission channels to scale as $M^2$ (area).  This
-is a condition on the *emission channel*, not on the internal DOS; it
-is independent of (C)/(A) and achievable by local systems
-(Stefan-Boltzmann, §4.1 below).
+- Which routes are individually *sufficient* for $S \propto E^2$ over a
+  finite window, and which the companion construction actually uses.
+- Whether boundary accessibility (area-many comparably coupled emitters)
+  can coexist with each route — route 3 seems natural for it; route 2 may
+  conflict with any boundary notion.
+- Whether a route can support the full evaporation package (negative heat
+  capacity trajectory + Page curve), or only the static state count.
+- The Bekenstein-saturation angle (BH = unique saturator at its own $T$,
+  $R$) — keep as remark only; the biconditional needs a definition of
+  "local description" that circles back to the same bookkeeping.
 
-**Consequence:** The trilemma (C) + (A) + (R) reduces to:
+## 4. What died
 
-> (SH): $S(E) = cE^2$ — imposed by (C)/(A) and impossible for local
-> Hamiltonians (Theorem above).
->
-> (R): $N(E) \propto E^2$ — imposed by (R) and achievable locally.
-
-The trilemma is therefore not a three-way tension.  It is a single
-obstruction — **super-Hagedorn entropy is incompatible with locality**
-— with the radiation condition (R) playing a secondary role: it tells
-you how the (non-local) system emits information but is not itself the
-source of the impossibility.
-
----
-
-## 4. The three pairs revisited
-
-To keep the record straight, here is what each pair of conditions gives
-for local QM:
-
-### 4.1  (C) + (R) without (A): achievable locally
-
-A compact thermal body of radius $\sim M$ at temperature $T \sim M^{-1}$
-radiates by Stefan-Boltzmann:
-
-$$P \;\sim\; \sigma T^4 \cdot M^2 \;\sim\; M^{-4} \cdot M^2 \;=\; M^{-2}
-\qquad \text{(R satisfied)}$$
-
-$$S_{\rm local} \;\sim\; V T^3 \;\sim\; M^3 \cdot M^{-3} \;=\; O(1)
-\qquad \text{(A violated by } M^2\text{)}$$
-
-This is possible locally: the photon gas in the Schwarzschild volume at
-the Hawking temperature is nearly vacuum.  It carries $O(1)$ nats of
-entropy, $M^2$ times less than $S_{\rm BH}$.
-
-### 4.2  (A) + (C) [i.e., SH]: impossible locally
-
-By the theorem: any $\alpha > 1$ growth of $S(E)$ contradicts TL.
-The Schwarzschild case $S = 4\pi M^2$ requires superextensive entropy
-with $\alpha = 2$.
-
-### 4.3  (A) + (R): achievable only at the wrong temperature
-
-Requiring $S = cM^2$ (A) and $P \sim M^{-2}$ (R) simultaneously fixes
-the temperature via Stefan-Boltzmann ($P \sim T^4 M^2 = M^{-2}$
-$\Rightarrow$ $T = M^{-1}$, which recovers (C)). But as §4.2 shows,
-local QM with $S = cM^2$ requires spatial volume $V \sim M^5$
-(from $V T^3 = M^2$ and $T = M^{-1}$), which violates the Schwarzschild
-spatial scale $V \sim M^3$.  The system matching (A) and (R) has the
-right temperature and luminosity but lives in a spatial region $M^{2/3}$
-times larger than the BH.
-
----
-
-## 5. The entropy gap
-
-The central quantitative result: for any local QFT in the Schwarzschild
-volume at the Hawking temperature,
-
-$$\frac{S_{\rm BH}}{S_{\rm local}} \;=\; \frac{4\pi M^2}{O(1)} \;=\; O(M^2),
-\qquad M \to \infty.$$
-
-The BH entropy exceeds the local entropy budget by $M^2$ — exactly the
-Schwarzschild area in Planck units.  This is not a quantitative mismatch
-in coupling constants; it is a qualitative separation that grows without
-bound.
-
-Phrased another way: the BH is the unique thermodynamic object that
-saturates the Bekenstein bound $S \leq 2\pi RM$ (with $R = 2M$,
-$S = 4\pi M^2$) at temperature $T = 1/(8\pi M)$.  Local QFT at the
-same temperature and spatial extent has $S = O(1)$, a factor $M^2$
-below the Bekenstein maximum.
-
----
-
-## 6. What is and is not claimed
-
-**Claimed:**
-
-- SH $\perp$ TL is a theorem (§2).  No citation needed beyond the
-  dimension formula $S \leq N \log d$ for a local Hilbert space.
-- Props 1–2 of the companion paper reduce the three-condition trilemma
-  to a single obstruction (SH), so the "trilemma" is really a *lemma*.
-- The entropy gap is $O(M^2)$, precisely the Schwarzschild area.
-
-**Speculative:**
-
-- Whether the theorem extends to non-relativistic QFT with a UV cutoff
-  (the bound $S \leq N \log d$ requires a finite-dimensional per-site
-  Hilbert space; in QFT the number of modes per volume is UV-divergent).
-  The gap $O(M^2)$ likely survives after renormalization but needs checking.
-- Whether interacting non-local systems (SYK, random matrices) can
-  evade the theorem by having $N \sim E^2$ without a lattice structure.
-  They are not TL systems, but they are also not obviously "gravitational."
-  The right statement for them is an open question.
-
-**Out of scope:**
-
-- Why gravity achieves SH (positive result, requires holography or a
-  microscopic theory of BH degrees of freedom).
-- Whether the theorem characterizes BHs uniquely among all thermodynamic
-  objects, or whether exotic near-Hagedorn string states approach the
-  bound.
-
----
-
-## 7. Open questions
-
-1. **Lattice theorem.** State the $\alpha > 1$ impossibility for
-   non-relativistic QM on $\mathbb{Z}^3$ with a clean set of
-   assumptions.  The proof in §2 is essentially this; write it as a
-   self-contained proposition.
-
-2. **Continuum limit.** The QFT version requires a UV regulator.
-   Replacing the lattice by a QFT with UV cutoff $\Lambda_{\rm UV}$:
-   $N \to V \Lambda_{\rm UV}^3$, $d \to e^{s_{\rm UV}}$ where
-   $s_{\rm UV}$ is the entropy density at the cutoff scale.  The TL
-   bound becomes $S \leq V \Lambda_{\rm UV}^3 s_{\rm UV}$, still linear
-   in $V$ (and hence in $E$ for extensive energy).  Super-Hagedorn
-   still violates this for $M \gg \Lambda_{\rm UV}^{-1}$.
-
-3. **Bekenstein saturation as a positive characterization.** The
-   theorem says: local systems fall short of the Bekenstein bound by
-   $O(M^2)$.  The BH saturates it.  This suggests a stronger claim:
-   **BH entropy = Bekenstein saturation = impossibility of local
-   description**.  Making this a biconditional would be the sharpest
-   possible demarcation.
+- The name "trilemma" and the three-condition framing.
+- The "SH ⊥ TL" theorem (proof gap at Schwarzschild scaling; corrected
+  content absorbed into Sections 1 and 3).
+- Standalone-paper ambition. Codex review (2026-06) was right: core
+  't Hooft/Susskind/Bousso territory, with Yurtsever/CKN as the
+  quantitative sharpening already in the literature.
