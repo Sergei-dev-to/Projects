@@ -66,6 +66,11 @@ as mirrors on the purifier of each fresh mode, are provably state-dependent
 by a finite-dimensional counting argument, and move from the remaining
 subsystem into the radiation at the same transition --- locating the
 monogamy premise of the firewall argument that fails in the model.
+The radiation-supported mirror is a Petz pullback; its circuit complexity
+is bounded below by $\exp(\frac{1}{2}S_{\rm micro}(E))$ by the
+Harlow--Hayden theorem, tightened to $\exp(S_{\rm micro}(E))$ by the
+Python's lunch, and the no-go theorem implies that any sub-exponential
+circuit fails the mirror relations for typical microstates.
 Approximate-design and tensor-product-expander
 blocks provide finite-regulator realizations of the required shell mixing;
 ETH-type spectral conditions on a fixed shell Hamiltonian yield the same
@@ -303,6 +308,8 @@ self-averaging: instance entropies equal ensemble values up to
 $e^{-S_0/2}$ & derived & Appendix~\ref{app:eth-decoupling} \\
 replica wormhole sum $=$ ETH permutation sum given $S_{\rm BH}=\Smicro$ &
 derived & Section~\ref{sec:wormhole-ETH} \\
+mirror complexity $\geq\exp(\frac{1}{2}\Smicro)$; no-go $\Rightarrow$
+infeasibility & derived & Prop.~\ref{prop:mirror-complexity} \\
 \bottomrule
 \end{tabular}
 \caption{Input/output ledger.  ``Input'' marks gravitational data supplied to
@@ -1409,15 +1416,58 @@ The caveat is that this resolves the ambiguity for the model's marginal
 notion of smoothness; the gravitational frozen-vacuum problem concerns the
 infalling mode structure, which the model does not represent.
 
-Two qualifications.  First, the radiation-supported mirror is a Petz
-pullback built from $\rho_R^{\pm1/2}$ and is expected to be exponentially
-hard to implement \cite{HarlowHayden2013,BrownGharibyanPeningtonSusskind2020}:
-the interior partner exists in the radiation without being feasibly
-accessible, the same distinction as for the recovery channel
-(Section~\ref{sec:open-problems}, item~4).  Second, as with the recovery
-statements, what is constructed is an operator algebra with smooth-horizon
-correlators, not interior geometry or an infalling experience; these are the
-algebraic conditions any gravitational interior description must reproduce
+\begin{proposition}[Complexity of the radiation mirror]
+\label{prop:mirror-complexity}
+Let $\widetilde X_R$ be the post-Page mirror of
+Proposition~\ref{prop:mirror-location}(ii), supported on the early radiation.
+The quantum circuit complexity of implementing $\widetilde X_R$ satisfies
+\begin{equation}
+    \mathcal C(\widetilde X_R)
+    \;\geq\;
+    \exp\!\bigl(\tfrac{1}{2}\Smicro(E)\bigr)
+    \label{eq:mirror-complexity}
+\end{equation}
+for any smooth microstate and any shell energy $E$ in the post-Page era
+($\Delta S_{\rm rad}(E)>\Smicro(E)$).
+The bound decreases monotonically along the evaporation trajectory,
+reaching zero only at the endpoint where $\Smicro(E)\to0$.
+\end{proposition}
+
+\emph{Proof sketch.}
+By the proof of Proposition~\ref{prop:mirror-location}, the mirror is
+constructed from the Uhlmann isometry $W:\mathcal H_{\mathsf b}\to
+\mathcal H_R$ that embeds the Schmidt partner of the fresh mode into the
+radiation.  This isometry equals the adjoint of the Petz recovery channel of
+Proposition~\ref{prop:recovery} applied to the partner observable, which
+involves $\rho_R^{-1/2}$ on the $e^{\Delta S_{\rm rad}}$-dimensional
+radiation register.  The Harlow--Hayden theorem
+\cite{HarlowHayden2013} states that any decoder implementing such
+a recovery from scrambled Hawking radiation has circuit complexity at least
+$\exp(\frac{1}{2}S_{\rm BH})$; in the model $S_{\rm BH}=\Smicro(E)$
+(Proposition~\ref{prop:dos}), giving~\eqref{eq:mirror-complexity}.  The
+Python's-lunch bound of \cite{BrownGharibyanPeningtonSusskind2020} tightens
+the exponent to $\Smicro(E)$.
+The monotone decrease follows from $\Smicro(E)$ decreasing along the
+trajectory as $E$ shrinks; the bound vanishes only when $\Smicro\to0$.
+\hfill$\square$
+
+\smallskip
+Propositions~\ref{prop:no-go} and~\ref{prop:mirror-complexity} are
+complementary.  Proposition~\ref{prop:no-go} shows that any operator
+simple enough to be state-independent --- implementable by a fixed circuit
+of sub-exponential depth --- has an $O(1)$ commutator defect and fails to
+be a genuine mirror for typical smooth microstates.  Proposition~\ref{prop:mirror-complexity}
+quantifies the cost: the minimal circuit depth sufficient for the mirror
+relations to hold is $\exp(\frac{1}{2}\Smicro)$.  The complexity barrier is
+not an accident; it is the price of forced state dependence.  The interior
+partner exists in the radiation without being feasibly accessible ---
+the same separation as for the recovery channel
+(Section~\ref{sec:open-problems}, item~4).
+
+As with the recovery statements, what is constructed here is an operator
+algebra with smooth-horizon correlators, not interior geometry or an
+infalling experience; these are the algebraic conditions any gravitational
+interior description must reproduce
 (Section~\ref{sec:open-problems}, item~2).
 
 \section{Finite-Dimensional Regulator}
@@ -1702,6 +1752,21 @@ calculation is geometric language for ETH permutation statistics, and the
 information puzzle is not a puzzle about bulk dynamics: it is a question
 about why the black-hole Hilbert space has the Bekenstein--Hawking dimension.
 
+\smallskip\noindent\emph{Hawking's calculation as the identity contraction.}
+Hawking's derivation corresponds to retaining only $\sigma=e$ in the
+sum~\eqref{eq:renyi-n-perm}, giving $\Tr\rho_R^n=r^{1-n}$ and a
+monotonically rising entropy $S_{\rm vN}(R)=\log r$ --- information loss.
+The first missing term, $\sigma=\tau^{-1}$ with weight $b^{1-n}$, is
+smaller than the identity term pre-Page ($b>r$) but strictly larger
+post-Page ($b<r$): it is not a perturbative correction but a competitor of
+the same order.  This is the permutation-language form of the Mathur
+statement \cite{Mathur2009}: any small deformation of Hawking's amplitude
+shifts the coefficient of $\sigma=e$ by $O(\delta)$ while leaving the
+$\sigma=\tau^{-1}$ term absent, so no perturbative correction reaches the
+Page curve.  Restoring unitarity requires adding $\sigma=\tau^{-1}$ at full
+weight --- the full Petz dual of the emission channel --- which is what the
+island saddle and, in the model, Eq.~\eqref{eq:renyi-two-island} supply.
+
 \subsection{What is settled and what remains open}
 \label{sec:open-problems}
 
@@ -1784,14 +1849,19 @@ semiclassical calculation fails.
 \emph{Dynamical rates and complexity.}  The scrambling-time estimate
 $t_{\rm scr}\sim\beta\log\Smicro$ \cite{SekinoSusskind2008} is supplied per
 emission step, not derived; obtaining it from Hamiltonian data would tie the
-mixing rate to the temperature.  Separately,
-Proposition~\ref{prop:recovery} asserts the existence of a recovery channel,
-not its feasibility: the Petz map is expected to be exponentially hard to
-implement, and whether the interior sits behind a complexity barrier ---
-now a concrete question about the radiation-supported mirror of
-Section~\ref{sec:mirrors} --- is a part of the puzzle that existence
-statements do not touch
-\cite{HarlowHayden2013,BrownGharibyanPeningtonSusskind2020}.
+mixing rate to the temperature.  Separately, recovery and mirror operators
+exist but are not feasibly accessible.  Proposition~\ref{prop:mirror-complexity}
+gives the explicit complexity lower bound
+$\exp(\frac{1}{2}\Smicro(E))$ for the radiation-supported mirror (tightened
+to $\exp(\Smicro(E))$ by the Python's lunch), decreasing monotonically along
+the trajectory but remaining exponential throughout the post-Page era.
+Proposition~\ref{prop:no-go} and
+Proposition~\ref{prop:mirror-complexity} are complementary: state independence
+is forbidden algebraically, and state-dependent implementation costs
+exponentially.  What is not yet derived is the scrambling rate itself:
+tying $t_{\rm scr}$ to the shell Hamiltonian would convert the per-step mixing
+assumption into a consequence of the dynamics and bind the complexity
+threshold to the temperature.
 \item
 \emph{The endpoint.}  The quasi-stationary weak-coupling expansion fails when
 the emitted quantum energy is comparable to the remaining mass, exactly where
