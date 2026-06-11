@@ -1719,14 +1719,13 @@ in-shell scrambling time satisfies
 \begin{equation}
   \label{eq:scrambling-time}
   t_{\rm scr} = \frac{\log\Smicro}{\lambda_L}
-  \;\leq\; \frac{\beta\log\Smicro}{2\pi},
+  \;\geq\; \frac{\beta\log\Smicro}{2\pi},
 \end{equation}
 where $\lambda_L\le2\pi/\beta$ is the Maldacena--Shenker--Stanford chaos
-bound \cite{MaldacenaShenkerStanford2016}.  Equality holds when
-$\lambda_L=2\pi/\beta$ (maximally chaotic Hamiltonian).  The emission
-rate is one quantum per $O(\beta)$ time, so the shell re-scrambles every
-$\lceil t_{\rm scr}/\beta\rceil = \lceil(\log\Smicro)/(2\pi)\rceil$
-emissions.  The per-step mixing assumption of
+bound \cite{MaldacenaShenkerStanford2016}, and equality is achieved by
+maximally chaotic Hamiltonians ($\lambda_L=2\pi/\beta$).  The emission
+rate is one quantum per $O(\beta)$ time, so the shell re-scrambles in
+at least $(\log\Smicro)/(2\pi)$ emission steps.  The per-step mixing assumption of
 Section~\ref{sec:isometry-flow} is therefore an overapproximation by a
 factor of $O(\log\Smicro)$; relaxing it to the physical mixing rate
 shifts the Page window by a relative $O(\log S_0/S_0)$ and converts the
@@ -1752,12 +1751,12 @@ lower bound on $t_{\rm scr}$.  For a maximally chaotic Hamiltonian
 ($\lambda_L=2\pi/\beta$), this is the Sekino--Susskind fast-scrambling
 estimate \cite{SekinoSusskind2008}.  The emission lag follows because one
 quantum is emitted per $O(\beta)$ time (Section~\ref{sec:isometry-flow}),
-so $t_{\rm scr}/t_{\rm emit}=(\log\Smicro)/(2\pi)$.~$\square$
+so $t_{\rm scr}/t_{\rm emit}\ge(\log\Smicro)/(2\pi)$.~$\square$
 
 \smallskip\noindent\emph{What Proposition~\ref{prop:scrambling-time} derives and what it assumes.}
 The formula $t_{\rm scr}=(\log\Smicro)/\lambda_L$ follows from ETH and
-the definition of scrambling.  The chaos bound converts this into the
-estimate $t_{\rm scr}\le(\beta\log\Smicro)/(2\pi)$.
+the definition of scrambling.  The chaos bound gives the lower bound
+$t_{\rm scr}\ge(\beta\log\Smicro)/(2\pi)$.
 What is not derived is whether $\lambda_L=2\pi/\beta$ for the specific
 shell Hamiltonian: this is the saturation of the chaos bound, which holds
 for black holes by gravitational shock-wave arguments \cite{ShenkerStanford2014}
@@ -1963,9 +1962,9 @@ semiclassical calculation fails.
 Proposition~\ref{prop:scrambling-time} derives the scrambling-time formula
 $t_{\rm scr}=(\log\Smicro)/\lambda_L$ from ETH and the OTOC definition,
 and shows that the chaos bound $\lambda_L\le2\pi/\beta$
-\cite{MaldacenaShenkerStanford2016} gives
-$t_{\rm scr}\le(\beta\log\Smicro)/(2\pi)$, recovering the Sekino--Susskind
-estimate when the bound is saturated.  The remaining undetermined
+\cite{MaldacenaShenkerStanford2016} gives the lower bound
+$t_{\rm scr}\ge(\beta\log\Smicro)/(2\pi)$; equality, recovering the
+Sekino--Susskind fast-scrambling estimate, is achieved when $\lambda_L=2\pi/\beta$.  The remaining undetermined
 quantity is whether the shell Hamiltonian saturates the chaos bound
 ($\lambda_L=2\pi/\beta$): deriving this from the shell's spectral structure
 --- e.g., extracting $\lambda_L$ from OTOC vs.\ $t$ for the Cayley family
