@@ -32,7 +32,8 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{corollary}{Corollary}
 
-\title{Schwarzschild Evaporation and Islands in a Non-Gravitational Hamiltonian Model}
+\title{A Conditional Hamiltonian Model of Schwarzschild Evaporation:\\
+State Count, Boundary Accessibility, and Island Algebra}
 \author{Sergei Slobodov\\\texttt{sergei@slobodov.com}}
 \date{\today}
 
@@ -44,7 +45,12 @@ We ask which parts of Schwarzschild evaporation require gravity once the
 black-hole state count is supplied as a Hamiltonian density of states.  We
 construct a non-gravitational Hamiltonian with a Schwarzschild microcanonical
 entropy, area-many weak emission operators, an outgoing radiation continuum,
-and mixing within fixed energy shells.  The weak-coupling calculation gives
+and mixing within fixed energy shells.
+The construction is conditional on three nontrivial inputs: the Schwarzschild
+density of states, boundary accessibility of the leading entropy through
+area-many emission operators, and a shell-mixing or ETH decoupling condition
+for the composite emission map.  Given these inputs, the weak-coupling
+calculation gives
 the local Hawking spectrum, the leading finite-energy correction, negative
 heat capacity, and the Schwarzschild number-flux, power, and lifetime
 scalings.  The area dependence of the rate comes from an inclusive sum over
@@ -87,9 +93,11 @@ The replica wormhole saddle sum is shown to be term-by-term identical to
 the ETH permutation sum under the Bekenstein--Hawking identification
 $S_{\rm BH}=\log d_B$, which is itself Proposition~1 of the model.
 Self-averaging upgrades the statement to a single fixed Hamiltonian.
-The remaining genuinely gravitational question is therefore precisely why
-the black-hole Hilbert space has Bekenstein--Hawking dimension; all other
-features of the information puzzle are on the quantum-mechanics side.
+The remaining genuinely gravitational questions are why the black-hole
+Hilbert space has Bekenstein--Hawking dimension, why the leading entropy
+is boundary-accessible, and how the operational island is realized as
+semiclassical geometry; all other features of the exterior information
+puzzle are on the quantum-mechanics side given these inputs.
 The construction reproduces the exterior thermodynamic and entropy-flow
 package without a gravitational path integral, interior geometry, or horizon
 smoothness.
@@ -99,8 +107,8 @@ smoothness.
 
 We use units with $\hbar=c=k_B=1$.
 
-This paper asks how much of Schwarzschild evaporation can be reproduced by an
-ordinary quantum Hamiltonian with no dynamical geometry.  The answer we find is
+This paper asks how much of Schwarzschild evaporation can be reproduced by a
+conditional non-gravitational Hamiltonian model with no dynamical geometry.  The answer we find is
 that the exterior thermodynamic and entropy-flow package follows once two
 black-hole inputs are supplied: the Schwarzschild microcanonical state count
 and an area-sized set of weak emission operators.  Gravity enters through
@@ -847,6 +855,13 @@ channels couple efficiently, $P\propto M^{-4}$.
 channel count $N$ replaced by $N_{\rm eff}$; the equivalence is read off from
 the exponents.  \hfill$\square$
 
+The equivalence is within the comparable-channel inclusive rate model:
+smooth matrix elements, incoherent addition of orthogonal emission records,
+and phase-space exponent $p=2$.  If matrix elements are highly non-uniform,
+coherently summed, or dominated by a smaller subset of channels,
+$N_{\rm eff}$ is the effective participation count, not the microscopic
+number of labels.
+
 The structural gravitational input is therefore a single qualitative
 statement: the leading shell entropy is boundary-accessible to the emission
 operators.  Given Proposition~\ref{prop:dos}, the count of entropy-bearing
@@ -1417,11 +1432,13 @@ The caveat is that this resolves the ambiguity for the model's marginal
 notion of smoothness; the gravitational frozen-vacuum problem concerns the
 infalling mode structure, which the model does not represent.
 
-\begin{proposition}[Complexity of the radiation mirror]
+\begin{proposition}[Complexity of the radiation mirror, conditional]
 \label{prop:mirror-complexity}
 Let $\widetilde X_R$ be the post-Page mirror of
 Proposition~\ref{prop:mirror-location}(ii), supported on the early radiation.
-The quantum circuit complexity of implementing $\widetilde X_R$ satisfies
+If the Petz recovery channel implementing $\widetilde X_R$ lies in the same
+complexity class as the Harlow--Hayden scrambled-decoding problem, then
+the quantum circuit complexity satisfies
 \begin{equation}
     \mathcal C(\widetilde X_R)
     \;\geq\;
@@ -1429,7 +1446,8 @@ The quantum circuit complexity of implementing $\widetilde X_R$ satisfies
     \label{eq:mirror-complexity}
 \end{equation}
 for any smooth microstate and any shell energy $E$ in the post-Page era
-($\Delta S_{\rm rad}(E)>\Smicro(E)$).
+($\Delta S_{\rm rad}(E)>\Smicro(E)$), tightened to
+$\exp(\Smicro(E))$ under the Python's-lunch conjecture.
 The bound decreases monotonically along the evaporation trajectory,
 reaching zero only at the endpoint where $\Smicro(E)\to0$.
 \end{proposition}
@@ -1441,13 +1459,13 @@ constructed from the Uhlmann isometry $W:\mathcal H_{\mathsf b}\to
 radiation.  This isometry equals the adjoint of the Petz recovery channel of
 Proposition~\ref{prop:recovery} applied to the partner observable, which
 involves $\rho_R^{-1/2}$ on the $e^{\Delta S_{\rm rad}}$-dimensional
-radiation register.  The Harlow--Hayden theorem
-\cite{HarlowHayden2013} states that any decoder implementing such
-a recovery from scrambled Hawking radiation has circuit complexity at least
-$\exp(\frac{1}{2}S_{\rm BH})$; in the model $S_{\rm BH}=\Smicro(E)$
-(Proposition~\ref{prop:dos}), giving~\eqref{eq:mirror-complexity}.  The
-Python's-lunch bound of \cite{BrownGharibyanPeningtonSusskind2020} tightens
-the exponent to $\Smicro(E)$.
+radiation register.  If this Petz inversion falls within the Harlow--Hayden
+complexity class, the theorem of \cite{HarlowHayden2013} gives circuit
+complexity at least $\exp(\frac{1}{2}S_{\rm BH})$; in the model
+$S_{\rm BH}=\Smicro(E)$ (Proposition~\ref{prop:dos}),
+giving~\eqref{eq:mirror-complexity}.  The Python's-lunch bound of
+\cite{BrownGharibyanPeningtonSusskind2020} tightens the exponent to
+$\Smicro(E)$ under the same reduction.
 The monotone decrease follows from $\Smicro(E)$ decreasing along the
 trajectory as $E$ shrinks; the bound vanishes only when $\Smicro\to0$.
 \hfill$\square$
@@ -1815,10 +1833,12 @@ Three consequences follow.
 \smallskip\noindent\emph{The wormhole is a geometric Wick contraction.}
 The topology change of the replica wormhole implements the same combinatorial
 pairing as the ETH Wick contraction of the emission-channel matrix elements:
-the identity versus the cyclic inverse of $\tau$.  The geometry encodes
-the statistics; once those statistics are fixed by ETH and the spectrum,
-the wormhole adds no computational information beyond what follows from
-non-gravitational quantum mechanics.
+the identity versus the cyclic inverse of $\tau$.  The non-gravitational
+model reproduces the same permutation algebra once the gravitational area
+term is replaced by $\log D_{\rm B}$.  The replica wormhole therefore plays,
+in this comparison, the role of a geometric representation of the same
+contraction structure, not an additional microscopic input to the
+Hamiltonian calculation.
 
 \smallskip\noindent\emph{Half-wormholes are the connected ETH classes.}
 The sub-leading connected saddles of \cite{SaadShenkerStanfordYao2021}
