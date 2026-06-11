@@ -30,6 +30,7 @@
 \newcommand{\bra}[1]{\langle #1|}
 
 \newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
 
 \title{Schwarzschild Evaporation and Islands in a Non-Gravitational Hamiltonian Model}
 \author{Sergei Slobodov\\\texttt{sergei@slobodov.com}}
@@ -1464,6 +1465,32 @@ partner exists in the radiation without being feasibly accessible ---
 the same separation as for the recovery channel
 (Section~\ref{sec:open-problems}, item~4).
 
+\begin{corollary}[Accessibility--complexity trade-off]
+\label{cor:accessibility-complexity}
+Along the post-Page trajectory, the decoupling budget
+$k_{\rm max}(E)=\Delta S_{\rm rad}(E)-\Smicro(E)-O(\log(1/\varepsilon))$
+(Propositions~\ref{prop:recovery} and~\ref{prop:mirror-location})
+and the decoder complexity lower bound
+$\mathcal C_{\rm min}(E)=\exp(\frac{1}{2}\Smicro(E))$
+(Proposition~\ref{prop:mirror-complexity})
+are related by $\Delta S_{\rm rad}(E)=S_0-\Smicro(E)+O(\Gamma_E/\Delta E)$, giving
+\begin{equation}
+\label{eq:accessibility-complexity}
+  k_{\rm max}(E) = S_0 - 2\Smicro(E) - O\!\left(\log\tfrac{1}{\varepsilon}\right),
+  \qquad
+  \mathcal C_{\rm min}(E) = \exp\!\bigl(\tfrac{1}{2}\Smicro(E)\bigr).
+\end{equation}
+A computational budget $D$ is sufficient only when $\Smicro(E)\le 2\log D$,
+at which stage $k_{\rm max}(E)\ge S_0-4\log D$.
+For a polynomial-time observer ($D=S_0^c$, fixed $c\ge1$), the threshold
+$\Smicro(E)\le 2c\log S_0$ is met only when the black hole has evaporated
+to within $2c\log S_0$ bits of the endpoint; at that stage
+$k_{\rm max}=S_0-O(\log S_0)$.
+The complexity barrier recedes as the interior evaporates: nearly all
+interior information becomes feasibly accessible, but only once the black
+hole has nearly ceased to exist.
+\end{corollary}
+
 As with the recovery statements, what is constructed here is an operator
 algebra with smooth-horizon correlators, not interior geometry or an
 infalling experience; these are the algebraic conditions any gravitational
@@ -1766,6 +1793,31 @@ $\sigma=\tau^{-1}$ term absent, so no perturbative correction reaches the
 Page curve.  Restoring unitarity requires adding $\sigma=\tau^{-1}$ at full
 weight --- the full Petz dual of the emission channel --- which is what the
 island saddle and, in the model, Eq.~\eqref{eq:renyi-two-island} supply.
+
+\smallskip\noindent\emph{JT gravity as the explicit realization.}
+In two-dimensional Jackiw--Teitelboim (JT) gravity coupled to matter, the
+PSSY calculation \cite{PeningtonShenkerStanfordYang2022} evaluates
+$\Tr\rho_R^n$ by integrating over $n$-replica Euclidean geometries.  For
+each bulk permutation $\sigma\in S_n$, the on-shell dilaton action
+contributes $e^{(C(\sigma)-n)S_0}$ where $S_0=\phi_r/(4G_{\rm N})$ is the
+extremal dilaton value at the asymptotic boundary (the Bekenstein--Hawking
+entropy stored in the dilaton zero-mode); the matter sector contributes
+$r^{C(\tau\sigma)}$ for a thermal radiation bath of entropy $\log r$.  The
+saddle-point sum is therefore
+\begin{equation}\label{eq:JT-saddle-sum}
+  \Tr\rho_R^n\big|_{\rm JT}
+  = \sum_{\sigma\in S_n} b^{C(\sigma)-n}\,r^{C(\tau\sigma)},
+  \qquad b=e^{S_0},
+\end{equation}
+which matches the ETH sum~\eqref{eq:renyi-n-perm} term by term.  The
+identification $S_{\rm BH}=\log b$ in Eq.~\eqref{eq:wormhole-ETH-chain}
+is, in the JT context, the dilaton boundary condition
+$b=e^{\phi_r/(4G_{\rm N})}$: a boundary condition, not a dynamical output
+of the path integral.  This is the gravitational expression of
+Open problem~1 below --- the one equation that fixes the microcanonical
+state count from a geometric quantity.  All other features of the replica
+sum follow from the matter sector and the topology of $S_n$, just as in
+the non-gravitational ETH expansion.
 
 \subsection{What is settled and what remains open}
 \label{sec:open-problems}
