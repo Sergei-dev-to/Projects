@@ -77,6 +77,13 @@ and an exact finite-size-scaling study shows that a fixed chaotic Cayley
 shell Hamiltonian reproduces the island value while free and integrable
 mixers with the same state count fail, with seed scatter at the predicted
 concentration rate.
+The replica wormhole saddle sum is shown to be term-by-term identical to
+the ETH permutation sum under the Bekenstein--Hawking identification
+$S_{\rm BH}=\log d_B$, which is itself Proposition~1 of the model.
+Self-averaging upgrades the statement to a single fixed Hamiltonian.
+The remaining genuinely gravitational question is therefore precisely why
+the black-hole Hilbert space has Bekenstein--Hawking dimension; all other
+features of the information puzzle are on the quantum-mechanics side.
 The construction reproduces the exterior thermodynamic and entropy-flow
 package without a gravitational path integral, interior geometry, or horizon
 smoothness.
@@ -241,6 +248,14 @@ model does address the firewall argument: mirror operators exist, are
 provably state-dependent, and identify the monogamy premise that fails.
 Questions of interior geometry and the infalling experience remain outside
 its scope.
+Section~\ref{sec:wormhole-ETH} draws the sharpest demarcation the model
+affords: the replica wormhole sum \cite{PeningtonShenkerStanfordYang2022}
+is term-by-term identical to the ETH permutation sum of
+Proposition~\ref{prop:eth-decoupling} under $S_{\rm BH}=\Smicro$
+(Proposition~\ref{prop:dos}), and self-averaging
+(Proposition~\ref{prop:self-averaging}) makes the result instance-level.
+The remaining genuinely gravitational question is therefore precisely why
+the black-hole Hilbert space has Bekenstein--Hawking dimension, and nothing more.
 Section~\ref{sec:open-problems} states explicitly which parts of the
 information puzzle the construction settles, in the conditional sense above,
 and which remain open.
@@ -286,6 +301,8 @@ state-dependent interior (mirror) operators; failure of the monogamy
 premise & derived & Section~\ref{sec:mirrors} \\
 self-averaging: instance entropies equal ensemble values up to
 $e^{-S_0/2}$ & derived & Appendix~\ref{app:eth-decoupling} \\
+replica wormhole sum $=$ ETH permutation sum given $S_{\rm BH}=\Smicro$ &
+derived & Section~\ref{sec:wormhole-ETH} \\
 \bottomrule
 \end{tabular}
 \caption{Input/output ledger.  ``Input'' marks gravitational data supplied to
@@ -1615,6 +1632,76 @@ e.g.\ OTOC decay for the Cayley family --- which would tie the mixing rate to
 the temperature; this is open problem~4 of
 Section~\ref{sec:open-problems}.
 
+\subsection{Replica wormholes as permutation contractions}
+\label{sec:wormhole-ETH}
+
+The gravitational replica path integral for $\Tr\rho_R^n$, summed over
+$n$-replica topologies, assigns each permutation $\sigma\in S_n$ a saddle
+weight proportional to $b^{C(\sigma)}\,r^{C(\tau\sigma)}/(br)^n$, with
+$\tau=(12\cdots n)$ the cyclic boundary permutation, $b=e^{S_{\rm BH}}$,
+and $r=e^{S_{\rm rad}}$
+\cite{PeningtonShenkerStanfordYang2022,AlmheiriHartmanMaldacenaShaghoulianTajdini2020}.
+The identity saddle ($\sigma=e$, weight $r^{-1}$) is the disconnected
+geometry giving the Hawking/no-island answer; the dominant connected saddle
+($\sigma=\tau^{-1}$, weight $b^{-1}$) is the Euclidean wormhole giving the
+island answer; the full sum reproduces the Page curve.
+
+This is precisely the permutation sum~\eqref{eq:renyi-n-perm} of
+Appendix~\ref{app:page-replica}, derived there from the Haar-random replica
+formula and already used in Section~\ref{sec:information-flow}.
+Under the identification $b=D_{\rm B}(E)=e^{\Smicro}$ of
+Proposition~\ref{prop:dos}, the gravitational saddle weight and the
+Haar replica weight are the same function of $\sigma$.
+Proposition~\ref{prop:eth-decoupling} establishes that a single fixed
+Hamiltonian satisfying the ETH spectral conditions produces the same
+second-moment structure as a Haar isometry, grounding the permutation sum
+in non-random Hamiltonian dynamics.
+Proposition~\ref{prop:self-averaging} then upgrades the statement from the
+ETH ensemble to a single fixed Hamiltonian: the instance purity deviates from
+the permutation sum by $O(e^{-S_0/2})$.
+Taken together:
+\begin{equation}
+  \label{eq:wormhole-ETH-chain}
+  \underbrace{
+    \frac{1}{(br)_n}
+    \sum_{\sigma\in S_n}
+    b^{C(\sigma)}\,r^{C(\tau\sigma)}
+  }_{\text{replica saddle sum (gravity, Prop.~\ref{prop:dos})}}
+  \;=\;
+  \underbrace{\E_{\rm ETH}\,\Tr\rho_R^n}_{\text{Prop.~\ref{prop:eth-decoupling}}}
+  \;=\;
+  \Tr\rho_R^n\big|_{\text{fixed }H}+O\!\left(e^{-S_0/2}\right).
+\end{equation}
+
+Three consequences follow.
+
+\smallskip\noindent\emph{The wormhole is a geometric Wick contraction.}
+The topology change of the replica wormhole implements the same combinatorial
+pairing as the ETH Wick contraction of the emission-channel matrix elements:
+the identity versus the cyclic inverse of $\tau$.  The geometry encodes
+the statistics; once those statistics are fixed by ETH and the spectrum,
+the wormhole adds no computational information beyond what follows from
+non-gravitational quantum mechanics.
+
+\smallskip\noindent\emph{Half-wormholes are the connected ETH classes.}
+The sub-leading connected saddles of \cite{SaadShenkerStanfordYao2021}
+correspond to the twenty connected permutation classes of
+Proposition~\ref{prop:self-averaging}, each of size $O(e^{-S_0})$.
+A single fixed Hamiltonian already accounts for them through self-averaging;
+there is nothing to restore, because the instance entropy is already the
+ensemble answer at this order.
+
+\smallskip\noindent\emph{The only gravitational input is the spectrum.}
+Equation~\eqref{eq:wormhole-ETH-chain} holds by non-gravitational quantum
+mechanics once $b=e^{\Smicro}$ is given.  The identification
+$S_{\rm BH}=\Smicro$ --- Bekenstein--Hawking entropy equals the logarithm of
+the boundary-accessible microcanonical state count --- is the one equation
+that connects the two sides and does not follow from non-gravitational
+dynamics (item~1 below).  Modulo that identification, the replica wormhole
+calculation is geometric language for ETH permutation statistics, and the
+information puzzle is not a puzzle about bulk dynamics: it is a question
+about why the black-hole Hilbert space has the Bekenstein--Hawking dimension.
+
 \subsection{What is settled and what remains open}
 \label{sec:open-problems}
 
@@ -1671,23 +1758,28 @@ subspace are provably safe, and the model is silent about what an infalling
 observer encounters beyond it.
 \item
 \emph{The gravitational mechanism.}  Replica wormholes derive the island
-formula from low-energy gravity with no microscopic input, but the
-calculation behaves like an ensemble average, raising the factorization
-problem \cite{PeningtonShenkerStanfordYang2022,MarolfMaxfield2020}.  The
-model has a single Hamiltonian, produces the same two contractions as
-chaotic-channel statistics, and, under the eighth-moment extension of the
-same ETH hypothesis, self-averages
-(Proposition~\ref{prop:self-averaging}): the instance entropy package equals
-the ensemble answer up to $O(e^{-S_0/2})$, and purity products factorize.
-On the quantum-mechanics side the ensemble is therefore redundant, and the
-factorization question is confined to the gravity side: why does the
-gravitational path integral compute an ensemble mean at all, and why does
-the geometric island compute the operational island's entropy --- why does
-geometry implement this contraction?  Relatedly, small corrections to Hawking's
-calculation cannot restore unitarity \cite{Mathur2009}; the model shows what
-the order-one departure must look like algebraically --- boundary-accessible
-entropy and decoupling of the emission map --- but not which assumption of
-the semiclassical calculation fails in gravity, or where.
+formula from low-energy gravity with no microscopic input
+\cite{PeningtonShenkerStanfordYang2022,AlmheiriHartmanMaldacenaShaghoulianTajdini2020},
+but the calculation behaves like an ensemble average, raising the factorization
+problem \cite{MarolfMaxfield2020}.
+Section~\ref{sec:wormhole-ETH} shows that the replica saddle sum is
+term-by-term identical to the ETH Wick expansion of
+Proposition~\ref{prop:eth-decoupling} under the identification
+$S_{\rm BH}=\Smicro$ (Proposition~\ref{prop:dos}), and
+Proposition~\ref{prop:self-averaging} upgrades the ensemble average to
+a single fixed Hamiltonian.  On the quantum-mechanics side the factorization
+question is thereby fully resolved: the replica wormhole calculation
+is geometric language for ETH permutation statistics, its ensemble
+is redundant, and the connected corrections are explicitly listed and
+exponentially small.  What remains open is purely on the gravity side:
+why does the gravitational path integral compute an ensemble mean at all ---
+i.e., what feature of the semiclassical saddle-point expansion produces
+ETH-like statistics --- and why does the geometric island compute the
+operational island's entropy, i.e., why does area equal $\log d_B$?
+Relatedly, small corrections to Hawking's calculation cannot restore
+unitarity \cite{Mathur2009}; the model identifies what the order-one
+departure must look like algebraically, but not which assumption of the
+semiclassical calculation fails.
 \item
 \emph{Dynamical rates and complexity.}  The scrambling-time estimate
 $t_{\rm scr}\sim\beta\log\Smicro$ \cite{SekinoSusskind2008} is supplied per
@@ -1710,9 +1802,11 @@ semiclassical gravity controls it.
 
 Items 2 and 3 are two sides of one question: what the semiclassical
 description is, such that it both presents a smooth interior and computes the
-correct exterior entropies.  The model contributes a boundary for that
-question --- everything in Table~\ref{tab:ledger} below the input rows lies
-on the quantum-mechanics side of it.
+correct exterior entropies.  The model sharpens that boundary: the exterior
+entropy package (Page curve, replica contractions, self-averaging, mirror
+operators, complementary recovery) lies entirely on the quantum-mechanics
+side; the remaining gravitational questions are why $S_{\rm BH}=\log d_B$ and
+what the semiclassical interior is, neither of which involves bulk dynamics.
 
 \appendix
 
@@ -1981,7 +2075,7 @@ $b=D_{\rm B}(E)=e^{\Smicro(E)}$ and
 $r=D_{\rm rad}(E)=e^{\Delta S_{\rm rad}(E)}$, this gives
 Eq.~\eqref{eq:renyi-two-island}.  For fixed higher R\'enyi moments, the Haar
 moment expansion has the standard permutation form
-\begin{equation}
+\begin{equation}\label{eq:renyi-n-perm}
     \E\,\Tr\rho_R^n
     =
     \frac{1}{(br)_n}
