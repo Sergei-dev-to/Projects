@@ -1706,8 +1706,69 @@ this class; the chaos bound $\lambda_L\le2\pi/\beta$
 can discharge the assumption.  What is missing is a derivation of
 $t_{\rm scr}\sim\beta\log\Smicro$ from the shell Hamiltonian itself ---
 e.g.\ OTOC decay for the Cayley family --- which would tie the mixing rate to
-the temperature; this is open problem~4 of
+the temperature; this is addressed in
+Proposition~\ref{prop:scrambling-time} below, with the remaining
+undetermined ingredient identified in open problem~4 of
 Section~\ref{sec:open-problems}.
+
+\begin{proposition}[Scrambling time from the chaos bound]
+\label{prop:scrambling-time}
+Let $H_E$ be a shell Hamiltonian with $\Smicro$ effective qubits satisfying
+the ETH spectral conditions of Appendix~\ref{app:eth-decoupling}.  The
+in-shell scrambling time satisfies
+\begin{equation}
+  \label{eq:scrambling-time}
+  t_{\rm scr} = \frac{\log\Smicro}{\lambda_L}
+  \;\leq\; \frac{\beta\log\Smicro}{2\pi},
+\end{equation}
+where $\lambda_L\le2\pi/\beta$ is the Maldacena--Shenker--Stanford chaos
+bound \cite{MaldacenaShenkerStanford2016}.  Equality holds when
+$\lambda_L=2\pi/\beta$ (maximally chaotic Hamiltonian).  The emission
+rate is one quantum per $O(\beta)$ time, so the shell re-scrambles every
+$\lceil t_{\rm scr}/\beta\rceil = \lceil(\log\Smicro)/(2\pi)\rceil$
+emissions.  The per-step mixing assumption of
+Section~\ref{sec:isometry-flow} is therefore an overapproximation by a
+factor of $O(\log\Smicro)$; relaxing it to the physical mixing rate
+shifts the Page window by a relative $O(\log S_0/S_0)$ and converts the
+Hayden--Preskill $O(k)$-step information delay of
+Section~\ref{sec:recovery} into the physical $O(\log\Smicro)$-step
+estimate of \cite{HaydenPreskill2007}.
+\end{proposition}
+
+\emph{Proof sketch.}
+For a chaotic ETH Hamiltonian, the squared-commutator out-of-time-order
+correlator $C(t)=-\langle[W(t),V]^2\rangle_\beta$ for generic local
+operators $W$, $V$ at separation $>1$ vanishes at $t=0$ (spatial
+locality) and grows in the Lyapunov window $t_{\rm eq}\ll t\ll t_{\rm
+scr}$ as
+\[
+  C(t) \;\sim\; \frac{c}{\Smicro}\,e^{\lambda_L t},
+\]
+where the $1/\Smicro$ prefactor reflects the $O(1)$ initial reach of a
+local operator in an $\Smicro$-qubit system.  Scrambling is complete when
+$C(t_{\rm scr})=O(1)$, giving $t_{\rm scr}=(\log\Smicro)/\lambda_L$.
+The chaos bound then supplies the upper bound on $\lambda_L$ and the
+lower bound on $t_{\rm scr}$.  For a maximally chaotic Hamiltonian
+($\lambda_L=2\pi/\beta$), this is the Sekino--Susskind fast-scrambling
+estimate \cite{SekinoSusskind2008}.  The emission lag follows because one
+quantum is emitted per $O(\beta)$ time (Section~\ref{sec:isometry-flow}),
+so $t_{\rm scr}/t_{\rm emit}=(\log\Smicro)/(2\pi)$.~$\square$
+
+\smallskip\noindent\emph{What Proposition~\ref{prop:scrambling-time} derives and what it assumes.}
+The formula $t_{\rm scr}=(\log\Smicro)/\lambda_L$ follows from ETH and
+the definition of scrambling.  The chaos bound converts this into the
+estimate $t_{\rm scr}\le(\beta\log\Smicro)/(2\pi)$.
+What is not derived is whether $\lambda_L=2\pi/\beta$ for the specific
+shell Hamiltonian: this is the saturation of the chaos bound, which holds
+for black holes by gravitational shock-wave arguments \cite{ShenkerStanford2014}
+and for SYK in the large-$N$ limit, but is not a consequence of ETH
+alone.  The Cayley family's OTOC saturation at $t_{\rm mix}=5$
+steps for $n=6$--$12$ qubits (Appendix~\ref{app:cayley-scaling}) is
+consistent with $t_{\rm scr}\sim O(\log n)$ for those sizes, but does
+not determine $\lambda_L$ from a time series.  Extracting $\lambda_L$
+from OTOC vs.\ $t$ for the Cayley family is the remaining open question
+(item~4 below); if it saturates the bound, the scrambling-time estimate
+becomes a derived consequence of the shell dynamics.
 
 \subsection{Replica wormholes as permutation contractions}
 \label{sec:wormhole-ETH}
@@ -1898,11 +1959,22 @@ unitarity \cite{Mathur2009}; the model identifies what the order-one
 departure must look like algebraically, but not which assumption of the
 semiclassical calculation fails.
 \item
-\emph{Dynamical rates and complexity.}  The scrambling-time estimate
-$t_{\rm scr}\sim\beta\log\Smicro$ \cite{SekinoSusskind2008} is supplied per
-emission step, not derived; obtaining it from Hamiltonian data would tie the
-mixing rate to the temperature.  Separately, recovery and mirror operators
-exist but are not feasibly accessible.  Proposition~\ref{prop:mirror-complexity}
+\emph{Dynamical rates and complexity.}
+Proposition~\ref{prop:scrambling-time} derives the scrambling-time formula
+$t_{\rm scr}=(\log\Smicro)/\lambda_L$ from ETH and the OTOC definition,
+and shows that the chaos bound $\lambda_L\le2\pi/\beta$
+\cite{MaldacenaShenkerStanford2016} gives
+$t_{\rm scr}\le(\beta\log\Smicro)/(2\pi)$, recovering the Sekino--Susskind
+estimate when the bound is saturated.  The remaining undetermined
+quantity is whether the shell Hamiltonian saturates the chaos bound
+($\lambda_L=2\pi/\beta$): deriving this from the shell's spectral structure
+--- e.g., extracting $\lambda_L$ from OTOC vs.\ $t$ for the Cayley family
+--- would convert the per-step mixing assumption into a derived consequence
+of the dynamics and bind the complexity threshold
+$\exp(\frac{1}{2}\Smicro)$ of Corollary~\ref{cor:accessibility-complexity}
+to the temperature.  Separately, recovery and mirror operators
+exist but are not feasibly accessible.
+Proposition~\ref{prop:mirror-complexity}
 gives the explicit complexity lower bound
 $\exp(\frac{1}{2}\Smicro(E))$ for the radiation-supported mirror (tightened
 to $\exp(\Smicro(E))$ by the Python's lunch), decreasing monotonically along
@@ -1910,10 +1982,7 @@ the trajectory but remaining exponential throughout the post-Page era.
 Proposition~\ref{prop:no-go} and
 Proposition~\ref{prop:mirror-complexity} are complementary: state independence
 is forbidden algebraically, and state-dependent implementation costs
-exponentially.  What is not yet derived is the scrambling rate itself:
-tying $t_{\rm scr}$ to the shell Hamiltonian would convert the per-step mixing
-assumption into a consequence of the dynamics and bind the complexity
-threshold to the temperature.
+exponentially.
 \item
 \emph{The endpoint.}  The quasi-stationary weak-coupling expansion fails when
 the emitted quantum energy is comparable to the remaining mass, exactly where
