@@ -62,7 +62,11 @@ boundary-accessible emission operators.  Thus the density of states fixes the
 thermal factor, while the boundary emission algebra fixes the rate.  Within
 the model class the two thermodynamic inputs are forced: the density of states
 is equivalent to the Hawking temperature law, and the area-sized emission count
-is equivalent to the Schwarzschild luminosity law.  The fine-grained
+calibrates the Schwarzschild luminosity law.  The same construction separates
+the source-side emission algebra from the resolvable radiation record:
+Schwarzschild quanta have wavelength of order the horizon radius, so
+area-many source operators feed a serial record of order-one outgoing channel
+capacity per coherence time.  The fine-grained
 information-flow results additionally require a shell-mixing or ETH decoupling
 condition, which is the third input stated above.  Within the regulated
 model that third input is in turn equivalent to the complementary-recovery
@@ -133,7 +137,8 @@ results additionally assume a shell-mixing or ETH decoupling condition on
 the emission map.  Section~\ref{sec:necessity} shows that each
 of the first two inputs is equivalent, within the model class, to one item
 of the target phenomenology: the state count to the temperature law, and the
-boundary-accessible emission count to the luminosity law; and
+boundary-accessible emission count to the luminosity law inside the
+weak-emission class; and
 Section~\ref{sec:recovery} extends the pattern to the third
 (Proposition~\ref{prop:decoupling-necessary}): decoupling is equivalent to
 the complementary-recovery structure it produces.  The inputs are
@@ -238,9 +243,12 @@ an energy-conserving interaction whose local emission operators act on those
 degrees of freedom.  The inclusive low-frequency emission strength is then
 proportional to the number of active boundary emitters, hence to the area.
 This reproduces the area scaling of the standard low-frequency absorption
-cross-section by operator counting.  The same weak-emission map, after mixing
-inside microcanonical shells, gives the shrinking-isometry Page curve and its
-island-formula min structure.
+cross-section by operator counting.  Since the typical emitted wavelength is
+of order the horizon radius, the asymptotic record is a compressed sequence of
+frequencies, outgoing channels, and time bins; the area-sized multiplicity is
+the source-side emission algebra that supplies the inclusive strength.  The
+same weak-emission map, after mixing inside microcanonical shells, gives the
+shrinking-isometry Page curve and its island-formula min structure.
 
 This separation is important.  Recent work constructs operators with
 black-hole-like spectral growth, $\Omega(E)\sim\exp({\rm const.}\,E^2)$, and
@@ -276,7 +284,8 @@ argument in two places.  First, the
 Schwarzschild density of states and its boundary-accessible realization are
 inputs to the Hamiltonian.  Propositions~\ref{prop:dos} and~\ref{prop:area}
 show that these inputs are forced --- the density of states by the
-temperature law and boundary accessibility by the luminosity law --- but
+temperature law and boundary accessibility by the luminosity law inside the
+weak-emission class --- but
 deriving them from simpler non-gravitational microscopic degrees of freedom
 is a separate problem.  Second, the fine-grained information-flow result uses
 decoupling of the composite emission map, supplied here by approximate
@@ -317,7 +326,7 @@ item & status & fixed by / derived in \\
 microcanonical entropy $\Smicro(E)=cE^2$ & input &
 equivalent to $T_H\propto M^{-1}$ (Prop.~\ref{prop:dos}) \\
 boundary accessibility of the leading entropy & input &
-equivalent to $P\propto M^{-2}$ (Prop.~\ref{prop:area}) \\
+calibrated by $P\propto M^{-2}$ (Prop.~\ref{prop:area}) \\
 weak emission into a massless outgoing continuum ($p=2$) & standard &
 Section~2.3 \\
 chaotic in-shell mixing & standard &
@@ -361,7 +370,7 @@ infeasibility & derived & Prop.~\ref{prop:mirror-complexity} \\
 \bottomrule
 \end{tabular}
 \caption{Input/output ledger.  ``Input'' marks gravitational data supplied to
-the Hamiltonian; each is equivalent to one matched target, so the model takes
+the Hamiltonian; each is fixed by one matched target, so the model takes
 exactly two measured scalings and no further gravitational structure.
 ``Standard'' marks non-gravitational quantum-mechanical ingredients; the
 mixing row is the third input of the abstract --- nontrivial, but
@@ -914,7 +923,7 @@ phenomenology; it \emph{is} the targeted temperature law, written in
 microcanonical form.  Conversely, no model in the class can match the
 temperature law without it.
 
-\begin{proposition}[The luminosity measures boundary accessibility]
+\begin{proposition}[The luminosity calibrates boundary accessibility]
 \label{prop:area}
 Assume the density of states of Proposition~\ref{prop:dos}, weak local
 emission with golden-rule rates, and phase-space exponent $p=2$.  Let
@@ -944,9 +953,9 @@ The structural gravitational input is therefore a single qualitative
 statement: the leading shell entropy is boundary-accessible to the emission
 operators.  Given Proposition~\ref{prop:dos}, the count of entropy-bearing
 cells is $N(E)\simeq\Smicro(E)/\log q$ automatically; what the input adds is
-that all of them emit.  The two luminosity laws $M^{-2}$ and $M^{-4}$ are the
-two sides of this dichotomy, so the Schwarzschild power law is precisely the
-measurement of the input.  The same input is used a second time, in
+that all of them participate in the weak-emission algebra.  The Schwarzschild
+power law calibrates this source-side participation count inside the
+inclusive-rate model.  The same input is used a second time, in
 Section~\ref{sec:information-flow}, as the operator algebra on which the
 decoupling of the shrinking emission map acts.
 
@@ -960,7 +969,8 @@ statement that the system radiates through a surface whose cell count tracks
 its entropy --- without supplying the geometry that explains it.
 Proposition~\ref{prop:area} is the quantitative form of this admission: the
 imported structure is exactly one scaling law's worth, no more and no less,
-because the assumption is equivalent to the measured luminosity exponent.
+because the assumption is fixed by the measured luminosity exponent in this
+emission class.
 Why such a restricted emission algebra arises microscopically without bulk
 locality is part of open problem~1 in Section~\ref{sec:open-problems}.
 

@@ -62,16 +62,68 @@ thermal weight at constant $T$. So input 1 is measured by the
 constant-temperature law, exactly parallel to Prop 1 of the
 Schwarzschild paper (trinity discipline transfers).
 
-**Input 2 (boundary accessibility).** Horizon-area-many channels
-coupling the patch interior to the horizon register, $N \sim S_0 \sim
-A$. Measured by: absorption/emission flux balance of the horizon at
-$T_{\rm dS}$ (the equilibrium analogue of the luminosity law; the
-patch absorbs with $\sigma \sim A$). To check: what exterior
-observable fixes $N \sim A$ here, given there is no net luminosity in
-equilibrium? Candidate: the *relaxation rate* of patch perturbations
-(quasi-equilibrium return rate scales with channel count), or the
-fluctuation spectrum. This is the one leg of the trinity that does not
-transfer trivially — flag as open design question.
+### The reservoir lemma (2026-06-12)
+
+**Lemma (the dS state-count input is an ordinary reservoir).** Let an
+arbitrary finite local system (the reservoir) have smooth microcanonical
+entropy $S_R$, with $S_R(E_{\rm tot}) = S_0$, $S_R' = \beta$, and heat
+capacity $C$ at the operating point. A patch holding energy $E$ out of
+the shared total sees the reservoir DOS
+
+$$\rho(E) \propto \exp\Big[S_0 - \beta E - \frac{E^2}{2T^2C} + \cdots\Big].$$
+
+The exact Schwarzschild–de Sitter cosmological-horizon entropy expands as
+($m = M/\ell$, $r_c = \ell(1 - m - \tfrac32 m^2 + \cdots)$):
+
+$$S_{\rm hor}(M) = \pi r_c^2 = S_0 - \beta M - 2\pi M^2 + \cdots,$$
+
+which is precisely the reservoir form with
+
+$$C_{\rm eff} = \frac{1}{4\pi T_{\rm dS}^2} = \pi\ell^2 = S_0.$$
+
+So the SdS entropy deficit has the generic large-finite-reservoir
+expansion through second order, with the single identification
+$C_{\rm eff} = S_0$ (heat capacity equal to entropy, unremarkable for
+ordinary systems at order-one temperature ratios). This statement
+concerns the state-count input and does not by itself characterize the
+full de Sitter Hilbert space or its constraint structure.
+
+**Consequence — the two horizons are demarcation-complementary.**
+Schwarzschild: spectrally exotic (super-Hagedorn, provably non-local by
+the entropy gap), constraint structure pedestrian (the factorized
+exterior suffices for the whole operational package). de Sitter:
+spectrally ordinary at the level of this finite-reservoir expansion, so
+the distinctive dS content must enter beyond input 1. Stage B
+(constraints) is therefore not one option among several — it is one of
+the places where dS specialness can reside.
+
+**The other place: input 2 survives as nontrivial.** For an ordinary
+local bath in three dimensions, entropy is volume-law while the contact
+surface is area-law, so the number of comparable coupling channels
+scales as $N \sim S_0^{2/3}$, not $S_0$. The dS horizon register has
+$N \sim S_0$: a reservoir whose *entire* entropy is carried by its
+contact cells. That saturation is a holographic statement even for dS.
+The old candidate measurement by relaxation/fluctuation spectral weights
+is now only a secondary diagnostic, because shared-mode bottlenecks can
+hide source-side participation from instantaneous flux observables. The
+current exterior certificate should be formulated in latency terms:
+perturb the static patch and ask how many exchanged Gibbons-Hawking
+quanta are needed before the perturbation is recoverable from the
+horizon record.
+
+So the refined design statement: dS gravitational content = (i) the
+Gauss-law/observer constraint structure (Stage B), plus (ii) the
+boundary saturation $N \sim S_0$ of an otherwise ordinary reservoir.
+Input 1 carries none of it.
+
+**Input 2 (boundary accessibility).** Horizon-area-many source
+operators coupling the patch interior to the horizon register,
+$N \sim S_0 \sim A$. The equilibrium analogue of the luminosity law is
+not a direct mode count: absorption/emission balance and fluctuation
+spectra calibrate inclusive strength, while the current exterior
+certificate of full access is latency. Open design question: formulate
+the static-patch recovery protocol and compare its $S_0$ scaling to an
+ordinary finite reservoir coupled through a contact surface.
 
 **Input 3 (decoupling/mixing of the horizon register).** Same as
 Schwarzschild. Measured by: recovery — Hayden–Preskill for an object
@@ -133,6 +185,22 @@ CLPW signature, whether it appears at Stage A, Stage B, or neither
 (genuinely gravitational residue). Same demarcation discipline as the
 horizon papers.
 
+**Peripheral hypothesis for Stage B framing (2026-06-13, from the
+anonymity/alternatives work — keep alive, do not build a theorem on it
+yet):** the alternatives theorem of the saturation program
+(`boundary_saturation_invariant.md` §5.8) forks unitary information
+release under a compressed anonymous channel into
+(a) fast internal routing/mixing, or
+(b) an emission map already nonlocal on the source algebra.
+The fork may align with the factorized-vs-Gauss-law split:
+branch (a) = the factorized Hamiltonian scrambling model (Stage 0);
+branch (b) = gravitational/Gauss-law/holography-of-information access
+(Stage B's constrained model). If it holds up, Stage B is the study of
+the encoder branch — a framing the QRF literature has not used, and a
+partial answer to the crowding problem. Status: suggestive
+observation, not an argument; discussion-level only until the
+alternatives theorem is proven.
+
 ---
 
 ## 3. Candidate operational package for the static patch
@@ -187,9 +255,16 @@ To scan (overlap risk — this is the crowded part):
 
 1. Trinity leg 1, dS version: prove $\rho \propto e^{S_0-\beta E}$ ⟺
    constant-$T$ detailed balance within the model class (should be a
-   three-line Prop 1 analogue).
-2. Settle the input-2 measurement question (what replaces luminosity
-   in equilibrium).
+   three-line Prop 1 analogue).  The realizability half is done — see
+   the reservoir lemma above ($C_{\rm eff}=S_0$ match through second
+   order); remaining: state the equivalence direction and the validity
+   window of the expansion.
+2. Settle the input-2 exterior-certificate question.  The old
+   relaxation/fluctuation-rate route is secondary after the
+   shared-mode obstruction; the primary target is a static-patch
+   latency protocol. Compare horizon-register recovery to an ordinary
+   finite reservoir with contact-surface coupling, where interior
+   transport gives a power-law lower bound.
 3. Stage A in a toy: total-parity constraint on (interior ⊗ horizon ⊗
    record), show only the charge delocalizes. Calibration exercise.
 4. Stage B core computation: energy constraint + clock, relational
