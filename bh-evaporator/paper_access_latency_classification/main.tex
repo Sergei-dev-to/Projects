@@ -1,0 +1,1485 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\cR}{\mathcal R}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\cZ}{\mathcal Z}
+\newcommand{\Tr}{\operatorname{Tr}}
+
+\title{Horizon Interfaces and the Recovery of Private Quantum Information}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Horizons behave like quantum/classical interfaces: coarse no-hair data
+are public and classical, while microscopic or diary information remains
+private until the observer's access algebra is enlarged.  This note
+formalizes that interface in finite-dimensional quantum-information
+terms.  In exact form, redundant recovery from disjoint record fragments
+forces the public algebra to be commutative, giving an effective center
+and private noncommuting blocks; approximate public records are treated
+as the standard Darwinism/SBS stability input.  In any finite-velocity
+source-local realization, a diary deposited far from the access region is
+absent from the reduced emitted record, up to the Lieb-Robinson tail,
+before the routing time; no decoder on those records can recover it in
+that window, even with unbounded computational power.  This is an
+information-theoretic obstruction, independent of decoding complexity.
+Source-side
+saturation does not remove the latency, and anonymous unitary saturated
+couplings can record only a collective center while leaving private
+blocks inaccessible.  The exact protected private complement is the
+commutant/noiseless subsystem of the record-generating algebra.
+The resulting recovery problem has two independent bottlenecks: access
+geometry and coherent export.  A horizon-like interface with redundant
+public records, private blocks, saturated source access, and
+location-uniform fast private recovery must use fast internal
+routing/scrambling or nonlocal/dressed access; conversely, a
+log-diameter access geometry equipped with a theorem-backed
+decoupling/export mixer realizes the fast-routing branch in
+logarithmic or polylogarithmic depth.  A second-moment export criterion
+then reduces the deterministic sparse-dynamics strengthening to a
+specific moment-gap problem.  Freezing the internal dynamics separates
+routed recovery from dressed access operationally.
+\end{abstract}
+
+\section{Introduction}
+
+The motivating distinction is between public classical data and private
+quantum data.  Public data may be redundantly available in many records:
+pointer positions, thermodynamic labels, or no-hair charges.  Private
+data are noncommuting block degrees of freedom inside a fixed public
+sector, such as a diary state or a black-hole microstate.  Quantum
+Darwinism and no-broadcasting explain why redundant objective records
+select commuting public information \citep{Barnum1996NoBroadcasting,
+Brandao2015GenericClassical,Le2019StrongQD,Korbicz2020Roads}.  The
+question addressed here is different: when can private quantum
+information become recoverable quickly from the allowed records?
+
+The answer is a mechanism classification.  For finite-velocity
+source-local systems, private information cannot be recovered before it
+has routed to the source-local access region.  Thus horizon-like fast
+private recovery requires either fast internal routing/scrambling, as in
+Hayden-Preskill-type pictures \citep{Hayden2007BlackHoles}, or a
+nonlocal/dressed access algebra, as in gravitationally constrained or
+holographic descriptions.  The obstruction is information-theoretic:
+allowing an arbitrarily powerful decoder on the emitted records does not
+help before the diary has reached the record channel, unless the access
+algebra already contains nonlocal or dressed diary information.
+
+The positive side is equally important.  Once the diary reaches an
+export-active block, recovery requires coherent export: the emitted
+records must decouple the diary reference from the remaining source.
+This yields an access/export window.  Ordinary local reservoirs have a
+power-law access time for worst-case deposits, while bounded-degree
+log-diameter access geometries can have logarithmic access time.  With a
+theorem-backed design, tensor-product-expander, or random-circuit
+decoupling primitive, such a geometry realizes the fast-routing branch.
+For a deterministic sparse dynamics, the corresponding target is a
+second-moment gap in the decoupling functional for the emitted-record
+partition.
+
+The claim is about finite-dimensional access models and their chosen
+factorizations.  It does not derive gravitational dynamics.  The
+gravitational language enters when a horizon is modeled as an interface
+with public no-hair data, private microscopic blocks, and an enlarged or
+dressed observer algebra.
+
+The public side is deliberately not the novel part of the paper.  The
+exact cut theorem below records the no-broadcasting core, while
+approximate public objectivity is imported from Quantum Darwinism and
+spectrum-broadcast-structure assumptions.  The new constraints concern
+the private complement: when it is absent from accessible records, when
+it can become recoverable, and what mechanisms can make that recovery
+fast.  The algebraic obstruction is the commutant of the
+record-generating interaction algebra; the dynamical question is how
+quickly that commutant becomes trivial inside a public block and whether
+the accessible records actually export the diary rather than merely
+becoming sensitive to it.
+
+\section{The Cut Theorem}
+
+The public/private split has an exact finite-dimensional form.  Let
+$\cA\subset B(\cH)$ be the algebra of information to be made available
+in records.  Say that $\cA$ is redundantly recoverable from two disjoint
+record fragments $R_1$ and $R_2$ if the record-formation channel
+$\cE:\mathsf S(\cA)\to \mathsf S(R_1R_2F)$ has reduced channels
+$\cE_i=\Tr_{\overline{R_i}}\circ\cE$ and there are recovery channels
+$\cD_i:\mathsf S(R_i)\to\mathsf S(\cA)$ such that
+\begin{equation}
+  \cD_i\circ \cE_i = {\rm id}_{\mathsf S(\cA)},
+  \qquad i=1,2 .
+\end{equation}
+
+\begin{theorem}[Redundant recoverability is central]
+\label{thm:cut}
+If a finite-dimensional algebra $\cA$ is exactly redundantly recoverable
+from two disjoint record fragments, then $\cA$ is commutative.
+\end{theorem}
+
+\begin{proof}
+Every finite-dimensional $C^*$-algebra has the form
+\begin{equation}
+  \cA \cong \bigoplus_x B(\cH_x).
+\end{equation}
+If some block has $\dim \cH_x>1$, then redundant recovery from $R_1$ and
+$R_2$ would broadcast the full set of quantum states on $B(\cH_x)$.  The
+channel $(\cD_1\otimes\cD_2)\circ\Tr_F\circ\cE$, restricted to that
+block, has both marginals equal to the input state.  This contradicts
+the no-broadcasting theorem \citep{Barnum1996NoBroadcasting}, since the
+states in a nontrivial matrix block do not commute.  Hence every block
+is one-dimensional, so $\cA$ is commutative.
+\end{proof}
+
+\begin{corollary}[Public center and private blocks]
+\label{cor:public-private}
+Let the logical algebra have block form
+\begin{equation}
+  \cA_{\rm code}
+  =
+  \bigoplus_x B(\cH_x),
+  \qquad
+  \cZ(\cA_{\rm code})
+  =
+  \operatorname{span}\{P_x\}.
+\end{equation}
+The sector label $x$ may be redundantly public.  The noncommuting
+degrees of freedom inside each block cannot be redundantly recoverable
+from disjoint fragments.  They are private to those fragments unless an
+enlarged or differently dressed access algebra is supplied.
+\end{corollary}
+
+In the exact block-scalar case this split is visible directly.  If a
+fragment channel has the form
+\begin{equation}
+  \cN_a(\rho)
+  =
+  \sum_x \Tr(P_x\rho)\,\sigma_x^{(a)},
+\end{equation}
+then every fragment observable $B_a$ pulls back to
+\begin{equation}
+  \cN_a^*(B_a)
+  =
+  \sum_x \Tr(B_a\sigma_x^{(a)})\,P_x
+  \in \cZ(\cA_{\rm code}).
+\end{equation}
+The fragment sees only the central distribution $p_x=\Tr(P_x\rho)$.
+All states with the same $p_x$, including all diary states inside a
+fixed block, are identical to that fragment.
+
+The paper uses this exact result as the algebraic core of the public
+side.  Approximate Darwinian or spectrum-broadcast records require an
+additional stability input: many fragments identify $x$ with small
+error, while within-block distinguishability remains small below the
+relevant access threshold.  We import that approximate objectivity
+condition from the Quantum Darwinism and SBS literature
+\citep{Brandao2015GenericClassical,Le2019StrongQD,Korbicz2020Roads};
+the quantitative latency results below do not depend on a particular
+choice of stability constants.
+
+\section{Source-Local Record Model}
+
+Let $\Lambda$ be a bounded-degree graph or lattice with bounded local
+Hilbert dimension and finite-range, uniformly bounded Hamiltonian
+\begin{equation}
+  H_\Lambda=\sum_Z h_Z,
+  \qquad
+  \sup_x \sum_{Z\ni x}\lVert h_Z\rVert < \infty .
+\end{equation}
+Let $X\subset\Lambda$ be the access region and $Y\subset\Lambda$ the
+region where a diary is deposited, with $L=d(X,Y)$.  The record system
+is an environment or field coupled to the source only near $X$:
+\begin{equation}
+  H_{\rm tot}(s)=H_\Lambda+H_R(s)+H_{\rm int}(s),
+  \qquad
+  \operatorname{supp}_\Lambda H_{\rm int}(s)\subset N_R(X).
+\end{equation}
+The emitted record $R_t$ is the part of the environment collected up to
+time or record depth $t$.  The diary channel is
+\begin{equation}
+  \cN_t(\rho_D)
+  =
+  \Tr_{\neg R_t}\!\left[
+  W_t(\rho_D\otimes\rho_{\rm rest}\otimes |0\rangle\langle 0|_R)
+  W_t^\dagger
+  \right],
+\end{equation}
+where $W_t$ is generated by $H_{\rm tot}(s)$.
+
+\begin{definition}[Source-local emission]
+An emitted record channel is source-local relative to $X$ if the source
+support of the interaction that creates the record remains in a bounded
+neighborhood of $X$ throughout the record window.
+\end{definition}
+
+\begin{definition}[Location-uniform fast recovery]
+A system has location-uniform fast recovery for $k$-qubit deposits if
+diaries deposited in arbitrary regions $Y\subset\Lambda$ are recoverable
+from the allowed record/access algebra in sub-power-law record depth or
+time, with the stated side-information and decoder resources.
+\end{definition}
+
+\section{Reduced-Record Locality Bound}
+
+\begin{lemma}[Reduced-record Lieb-Robinson bound]
+\label{lem:reduced-lr}
+In the source-local record model, let $\cC_t$ be the constant channel
+that maps every diary state to the record state produced by a fixed
+reference diary preparation.  For $t<L/v$,
+\begin{equation}
+  \lVert \cN_t-\cC_t\rVert_\diamond
+  \le
+  \varepsilon_{\rm LR}(t),
+  \qquad
+  \varepsilon_{\rm LR}(t)
+  \le
+  C |X|\,|Y|\, t\, e^{-\mu(L-vt)} ,
+\end{equation}
+with constants determined by local dimensions, interaction range,
+operator-norm bounds, and the chosen Lieb-Robinson estimate.  For a
+$k$-qubit diary supported on bounded-degree cells, $|Y|=O(k)$.
+\end{lemma}
+
+\begin{proof}[Proof note]
+Discretize the record field as environment ancillas coupled only near
+$X$, if needed.  A perturbation or diary operation supported in $Y$ can
+influence the reduced state of the collected record only through the
+combined source-plus-environment path $Y\to X\to R_t$.  Since
+$H_{\rm int}$ has source support only near $X$, there is no direct
+$Y\to R_t$ shortcut.  The standard information-propagation consequence
+of Lieb-Robinson bounds \citep{Lieb1972FiniteVelocity,Bravyi2006LR}
+gives the displayed exponential tail after summing over the spacetime
+boundary of the coupling region and over the diary support.
+
+For the diamond norm, include an arbitrary diary reference as a
+spectator.  Equivalently, test the channel with controlled diary
+operations
+\begin{equation}
+  W_{YA}=\sum_j |j\rangle\!\langle j|_A\otimes U_Y^{(j)}
+\end{equation}
+on the diary support and an ancilla $A$.  Record observables commute
+with $A$, and the Lieb-Robinson estimate applies uniformly to each
+$Y$-supported block $U_Y^{(j)}$.  Taking the supremum over controlled
+unitaries gives the same reduced-record bound for entangled
+diary-reference inputs, hence the displayed diamond-norm estimate.
+\end{proof}
+
+\begin{lemma}[Constant channels do not recover diaries]
+\label{lem:constant}
+If $\lVert \cN_t-\cC_t\rVert_\diamond\le \varepsilon$, then for every
+decoder $\cR:R_t\to \widehat D$,
+\begin{equation}
+  F_e\!\left[
+  (\operatorname{id}_{R_D}\otimes \cR\cN_t)(\Phi_{R_DD}),
+  \Phi_{R_D\widehat D}
+  \right]
+  \le
+  \frac{1}{d_D}+O(\varepsilon).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Post-processing by $\cR$ cannot increase diamond distance.  The constant
+channel produces a product state across $R_D|\widehat D$, whose overlap
+with a $d_D$-dimensional maximally entangled target is at most $1/d_D$.
+Entanglement fidelity is a linear overlap with the target state, so
+trace-norm error changes it by $O(\varepsilon)$.
+\end{proof}
+
+\section{Access-Latency Classification}
+
+\begin{theorem}[Source-local records forbid horizon-like latency]
+\label{thm:latency}
+For a finite-dimensional source with finite Lieb-Robinson velocity and
+source-local emission, a diary deposited distance $L$ from the access
+region cannot be recovered with high entanglement fidelity from the
+emitted record before
+\begin{equation}
+  t \ge L/v - O(\log(C|X|\,|Y|t/\varepsilon)).
+\end{equation}
+In a $d$-dimensional local reservoir with entropy $S=\Theta(|\Lambda|)$
+and worst-case deposits at distance $L=\Theta(S^{1/d})$, the
+location-uniform recovery latency is power-law:
+\begin{equation}
+  t_{\rm rec}=\Omega(S^{1/d})
+\end{equation}
+up to logarithmic and geometry-dependent factors.
+\end{theorem}
+
+\begin{proof}
+Combine Lemmas~\ref{lem:reduced-lr} and~\ref{lem:constant}.  The
+logarithm contains $t$ and the diary size only through slowly varying
+prefactors, so the implicit fixed point shifts the ballistic scale only
+logarithmically for $k=O(\operatorname{polylog}S)$ deposits.
+\end{proof}
+
+\begin{corollary}[Mechanism classification]
+Location-uniform sub-power-law recovery of arbitrary private deposits
+requires at least one of:
+\begin{enumerate}
+  \item fast internal routing/scrambling, so the relevant dynamics has no
+  finite-velocity bottleneck; or
+  \item nonlocal/dressed access, so the allowed record algebra is not
+  generated by source-local emission in factorized source variables.
+\end{enumerate}
+\end{corollary}
+
+\begin{corollary}[Frozen-dynamics diagnostic]
+\label{cor:frozen}
+Consider the same source-local record model, but freeze the internal
+source dynamics that transports operators from the diary region $Y$ to
+the access region $X$, while keeping the record coupling near $X$.  If a
+diary deposited in $Y$ remains recoverable from the allowed records with
+order-one entanglement fidelity, then the access algebra used by the
+decoder is not generated by source-local emission in the factorized
+source variables, or the side information already contains the diary.
+\end{corollary}
+
+\begin{proof}
+With the internal source dynamics frozen, source-local record formation
+near $X$ has no path by which a perturbation in the disjoint region $Y$
+can affect the emitted record.  Equivalently, Lemma~\ref{lem:reduced-lr}
+has zero routing velocity for the $Y\to X$ path, so the diary-to-record
+channel is constant on the diary, up to any explicitly supplied
+nonlocal/dressed access or trivial diary-containing side information.
+Lemma~\ref{lem:constant} then excludes order-one recovery from the
+source-local record alone.
+\end{proof}
+
+\begin{remark}
+This is an operational separator between the two fast branches.  If
+fast recovery disappears when internal routing is frozen, the recovery
+was routing/scrambling-assisted.  If it survives, the recovering algebra
+already had nonlocal or dressed support relative to the factorized
+source variables.
+\end{remark}
+
+\begin{theorem}[Source-side saturation does not imply fast recovery]
+\label{thm:saturation-slow}
+For each $S$ there is a finite-dimensional record channel with
+source-side participation
+\begin{equation}
+  N_{\rm eff}(W)
+  =
+  \frac{(\Tr W)^2}{\Tr W^2}
+  =
+  S
+\end{equation}
+but worst-case private recovery latency $\Omega(S)$ records.
+\end{theorem}
+
+\begin{proof}
+Let the source consist of $S$ cells, each carrying one private qubit.
+For each cell $i$ let $J_i$ be a normalized local source operator, and
+take the source-side Gram matrix
+\begin{equation}
+  W_{ij}=\langle J_i,J_j\rangle=\delta_{ij}.
+\end{equation}
+Then $N_{\rm eff}(W)=S$, so the source-side access family is saturated.
+
+Now define the emitted record process to have only one elementary output
+per step.  At each step the channel samples one cell $i$ uniformly and
+applies a local record map to that cell.  The record may reveal the
+sampled address or hide it; the lower bound below does not use address
+hiding.  Consider a diary deposited in a worst-case unknown cell $j$.
+After $n$ records, the probability that cell $j$ has ever been sampled is
+at most $n/S$.
+
+Conditioned on the event that $j$ has not been sampled, the emitted
+record is independent of the diary.  Thus the $n$-record diary-to-record
+channel has the form
+\begin{equation}
+  \cN_n
+  =
+  \left(1-p_n\right)\cC_n+p_n\cM_n,
+  \qquad
+  p_n\le \frac{n}{S},
+\end{equation}
+where $\cC_n$ is a constant channel on the diary and $\cM_n$ is some
+channel produced on the sampled branch.  Hence
+\begin{equation}
+  \lVert \cN_n-\cC_n\rVert_\diamond
+  \le
+  2p_n
+  \le
+  \frac{2n}{S}.
+\end{equation}
+By Lemma~\ref{lem:constant}, every decoder has entanglement fidelity at
+most $1/d_D+O(n/S)$.  An order-one recovery advantage therefore requires
+$n=\Omega(S)$ records.
+\end{proof}
+
+\begin{remark}
+The construction isolates the issue.  Source-side saturation says that
+the family of source couplings has full participation.  It does not say
+that a newly deposited diary reaches the emitted record quickly.  The
+failure here is bandwidth/sampling-limited rather than LR-limited; the
+finite-velocity slow router of Theorem~\ref{thm:latency} is the
+geometric version of the same separation.
+\end{remark}
+
+\begin{remark}
+The theorem is stated without useful side information about the diary
+location.  Side information about unsampled cells does not alter the
+bound, since those cells have not interacted with the emitted record.
+Side information that already contains the diary or its purifier is the
+trivial excluded case.  A Hayden-Preskill escape uses a different model:
+fast scrambling first routes the diary into global degrees of freedom,
+and previously collected radiation supplies the side information needed
+for recovery from a small number of fresh records.
+\end{remark}
+
+\begin{theorem}[Anonymous saturation does not force mixing]
+\label{thm:anonymous-saturation}
+Source-side saturation, record-label anonymity, source permutation
+symmetry, and unitary record formation do not imply private-block
+mixing or private recovery.
+\end{theorem}
+
+\begin{proof}
+Let the source be $S$ qubits and let the microscopic source operators be
+the normalized local observables
+\begin{equation}
+  J_i=\sigma_i^z,\qquad i=1,\ldots,S .
+\end{equation}
+With the Hilbert-Schmidt inner product normalized on the source,
+$W_{ij}=\langle J_i,J_j\rangle=\delta_{ij}$, so
+$N_{\rm eff}(W)=S$.  This is source-side saturation of the microscopic
+contribution family before compression into the single collective
+pointer channel.
+
+Let $P_q$ be the projector onto the eigenspace of the permutation-
+invariant charge
+\begin{equation}
+  Q=\sum_{i=1}^S \sigma_i^z ,
+\end{equation}
+and let the record be a finite pointer with at least $2S+1$ orthogonal
+positions and shift operator $V$.  The controlled-shift interaction
+\begin{equation}
+  U=\sum_q P_q\otimes V^q
+\end{equation}
+is unitary and permutation invariant.  Repeating the interaction with
+fresh pointers gives arbitrarily many record copies of the collective
+charge $Q$.  The record label contains no microscopic source address,
+and the channel is covariant under permutations of the source qubits.
+
+The record state depends only on the eigenspace of $Q$.  For a charge
+eigenvalue $q$, the corresponding source subspace has dimension
+\begin{equation}
+  \binom{S}{(S+q)/2}
+\end{equation}
+whenever this expression is defined.  All density matrices supported
+inside the same $Q$-eigenspace produce the same record statistics under
+every repetition of this coupling.  Thus the public algebra generated by
+the records is the commutative algebra of projectors onto $Q$ sectors,
+while the noncommuting algebra inside a degenerate sector remains
+private forever.  No mixing of private block information into the record
+is forced by saturation, anonymity, symmetry, or unitarity.
+\end{proof}
+
+\section{Protected Private Complements}
+
+The collective-charge example is not an accident.  It is the standard
+noiseless-subsystem obstruction in the language of access channels
+\citep{Zanardi1997Noiseless,Knill2000GeneralNoise,Kribs2005Unified}.
+
+\begin{definition}[Record-generating algebra]
+For a family of passive record instruments on a finite source Hilbert
+space $\cH$, let $\cA_{\rm rec}$ be the unital $*$-algebra generated by
+the Heisenberg pullbacks of all bounded record observables in the
+instrument family.  Equivalently, in a microscopic interaction model it
+is the algebra generated by the source operators through which the
+record couples, together with their products and adjoints.
+\end{definition}
+
+\begin{remark}
+The algebra is relative to the specified access family.  Enlarging the
+allowed instruments, adding active probes, or including dressed
+observables enlarges $\cA_{\rm rec}$ and can shrink the protected
+commutant.  The theorem below therefore identifies protected private
+information relative to a chosen record/access model, rather than an
+absolute property of the source Hilbert space.
+\end{remark}
+
+\begin{theorem}[Protected complement is the commutant]
+\label{thm:commutant}
+Let $\cA_{\rm rec}\subset B(\cH)$ be the record-generating algebra.  In
+finite dimension there is a decomposition
+\begin{equation}
+  \cH
+  =
+  \bigoplus_\alpha
+  \cH_{\alpha}^{L}\otimes \cH_{\alpha}^{R},
+  \qquad
+  \cA_{\rm rec}
+  =
+  \bigoplus_\alpha
+  B(\cH_{\alpha}^{L})\otimes I_{\alpha}^{R},
+\end{equation}
+and
+\begin{equation}
+  \cA_{\rm rec}'
+  =
+  \bigoplus_\alpha
+  I_{\alpha}^{L}\otimes B(\cH_{\alpha}^{R}) .
+\end{equation}
+Record statistics generated by $\cA_{\rm rec}$ are insensitive to the
+full quantum state on each factor $\cH_{\alpha}^{R}$.  Thus the exact
+private complement protected forever from the passive records is
+precisely the noncommuting part of the commutant $\cA_{\rm rec}'$.
+\end{theorem}
+
+\begin{proof}
+The displayed decomposition is the finite-dimensional structure theorem
+for unital $*$-algebras.  Every Heisenberg record effect $E$ lies in
+$\cA_{\rm rec}$, so on the $\alpha$ block it has the form
+$E_\alpha^L\otimes I_\alpha^R$.  For any two states with the same
+left-factor reduced states
+\begin{equation}
+  \Tr_{\cH_\alpha^R}(P_\alpha\rho P_\alpha)
+  =
+  \Tr_{\cH_\alpha^R}(P_\alpha\sigma P_\alpha)
+  \quad \text{for all }\alpha ,
+\end{equation}
+one has $\Tr(E\rho)=\Tr(E\sigma)$ for every record effect and therefore
+for every measurement or decoder using only the passive record algebra.
+Conversely, operators in the commutant act on the multiplicity factors
+$\cH_\alpha^R$ and are not distinguished by $\cA_{\rm rec}$.  These are
+exactly the noiseless/private subsystems relative to the record
+instruments.
+\end{proof}
+
+\begin{corollary}[Irreducibility criterion]
+\label{cor:irreducible}
+Within a public block, there is no exact protected private subsystem
+relative to the passive record family iff the record-generating algebra
+acts irreducibly on that block, equivalently iff its commutant inside the
+block is only the scalar algebra.
+\end{corollary}
+
+\begin{proof}
+This is Theorem~\ref{thm:commutant} restricted to one public block.  A
+nontrivial multiplicity factor $\cH_\alpha^R$ gives a protected private
+subsystem; if all multiplicity factors are one-dimensional, the
+commutant contributes only block scalars.
+\end{proof}
+
+\begin{remark}
+The collective-charge pointer realizes the degenerate case.  The
+record-generating algebra is the abelian algebra of functions of
+$Q=\sum_i\sigma_i^z$, so its commutant contains the full matrix algebra
+inside each fixed-charge sector.  Saturation, anonymity, symmetry, and
+unitarity leave that commutant intact.  A genuine mixing condition must
+therefore say that the time-generated record algebra becomes irreducible
+inside the relevant public block, or quantify how rapidly its commutant
+shrinks in an approximate sense.
+\end{remark}
+
+\begin{definition}[Heisenberg observability algebra]
+For a fixed source Hamiltonian $H$ and a record coupling through source
+operator(s) $K_a$, define the observability algebra up to sampling times
+$T=\{t_1,\ldots,t_n\}$ by
+\begin{equation}
+  \cA_T
+  =
+  \operatorname{alg}\{
+    e^{iHt_j}K_a e^{-iHt_j},
+    e^{iHt_j}K_a^\dagger e^{-iHt_j}
+    : a,j
+  \}.
+\end{equation}
+The exact private algebra invisible to all passive records generated at
+these times is $\cA_T'$.
+\end{definition}
+
+\begin{corollary}[Exact observability criterion]
+\label{cor:observability}
+Within a public block, no exact protected private subsystem survives the
+sampled Heisenberg orbit iff
+\begin{equation}
+  \cA_T'=\mathbb C I,
+\end{equation}
+equivalently iff $\cA_T$ acts irreducibly on the block.
+\end{corollary}
+
+\begin{proof}
+Apply Corollary~\ref{cor:irreducible} to the record-generating algebra
+$\cA_T$.  The equivalence between irreducibility and scalar commutant is
+Burnside's theorem for finite-dimensional complex matrix algebras.
+\end{proof}
+
+\begin{proposition}[Generic exact observability]
+\label{prop:generic-observability}
+Fix a $D$-dimensional public block and sampling times
+$T=\{t_1,\ldots,t_n\}$.  For sampled operators
+$L_j=e^{iHt_j}Ke^{-iHt_j}$, the condition
+\begin{equation}
+  \operatorname{alg}\{L_j,L_j^\dagger:j=1,\ldots,n\}
+  = B(\mathbb C^D)
+\end{equation}
+is Zariski open in the matrix entries of the $L_j$ whenever it is
+nonempty.  Consequently, in any finite-parameter family $(H,K)$ for
+which one point gives a full sampled algebra and for which this
+nonvanishing determinant is not identically zero, the set of parameters
+with no exact protected commutant is open and dense away from the
+determinant-zero locus.
+\end{proposition}
+
+\begin{proof}
+A finite set of matrices generates the full matrix algebra iff words in
+those matrices of length at most $D^2-1$ span the $D^2$-dimensional
+vector space $B(\mathbb C^D)$.  This is equivalent to at least one
+$D^2\times D^2$ determinant, formed from vectorized words, being
+nonzero.  The determinant is a polynomial in the matrix entries of the
+sampled operators $L_j$ and $L_j^\dagger$.  Therefore the full-algebra
+condition is the nonvanishing of at least one such determinant: a
+Zariski-open condition in the sampled operator variables.  Pulling this
+determinant back along any chosen parameterization $(H,K)\mapsto L_j$
+gives an analytic function of those parameters.  If that function is not
+identically zero, its nonzero set is open and dense, and on that set the
+commutant is scalar by Corollary~\ref{cor:observability}.
+\end{proof}
+
+\begin{remark}
+The proposition is an exact genericity statement, not a scrambling-rate
+theorem.  It says that exact protected commutants are nongeneric once
+the sampled orbit is allowed to explore a full matrix algebra.  It does
+not say how many samples are needed, how stable the conclusion is
+approximately, or whether deterministic chaotic dynamics produces the
+iid-like independence used in Theorem~\ref{thm:pauli-growth}.
+\end{remark}
+
+\begin{corollary}[Exact obstruction classes]
+\label{cor:obstructions}
+The sampled orbit has a nontrivial protected commutant whenever there is
+a non-scalar operator $Q$ on the public block such that
+\begin{equation}
+  [Q,e^{iHt_j}K_a e^{-iHt_j}]=
+  [Q,e^{iHt_j}K_a^\dagger e^{-iHt_j}]=0
+  \qquad \text{for all }a,j .
+\end{equation}
+In particular, exact protection survives in any sector left invariant by
+symmetries, selection rules, fragmentation, collective monitoring, or an
+operator Krylov subspace that fails to generate the full matrix algebra.
+\end{corollary}
+
+\begin{proof}
+Such a $Q$ lies in $\cA_T'$ and is not scalar, so
+Corollary~\ref{cor:observability} gives a protected private algebra.
+The listed mechanisms are standard ways for all sampled record
+operators to preserve a common nontrivial commutant or invariant block
+decomposition.
+\end{proof}
+
+\begin{definition}[One-step observability channel]
+\label{def:obs-channel}
+For a sampled record operator family $\mathcal L_i=\{L_{i,a}\}_a$ on a
+public block, let $\cA_i=\operatorname{alg}\{L_{i,a},L_{i,a}^\dagger:a\}$
+and let $\Pi_i$ be the Hilbert-Schmidt orthogonal conditional
+expectation onto the commutant $\cA_i'$.  The one-step observability
+channel on operators is
+\begin{equation}
+  \cT_i(O)=\Pi_i(O).
+\end{equation}
+For records accumulated through $n$ steps, define
+\begin{equation}
+  \cT_{1:n}=\cT_n\cdots \cT_1 .
+\end{equation}
+This channel keeps the component of an operator that remains invisible
+to each sampled record family separately.  Since
+\begin{equation}
+  \cA_{1:n}'=
+  \left(\operatorname{alg}(\cA_1,\ldots,\cA_n)\right)'
+  =
+  \bigcap_{i=1}^n \cA_i',
+\end{equation}
+the conditional expectation $\mathbb E_n$ onto the exact protected
+algebra $\cA_{1:n}'$ is the projection onto the common fixed subspace of
+the $\Pi_i$.
+\end{definition}
+
+\begin{definition}[Observability gap on a diary algebra]
+Let $\cD_0$ be the traceless operator space of a fixed $k$-qubit diary
+inside a public block.  The sampled record sequence has observability
+gap certificate $\gamma>0$ on $\cD_0$ with constant $C$ if for every
+$O\in\cD_0$,
+\begin{equation}
+  \lVert \cT_{1:n}(O)\rVert_2
+  \le
+  C e^{-\gamma n}\lVert O\rVert_2 .
+\end{equation}
+\end{definition}
+
+\begin{remark}
+The product $\cT_{1:n}$ is a sufficient certificate for approximate
+de-protection, not a necessary definition of it.  For a deterministic
+sequence of noncommuting one-step commutants, its contraction is an
+alternating-projections problem governed by the relative angles among
+the invisible subspaces.  A weak product bound therefore does not by
+itself show that private information remains protected.  The physical
+target is a conditional, or windowed, contraction statement for the
+actual Heisenberg record sequence; the product certificate is the
+cleanest way to turn such a contraction into a bound on the protected
+component.
+\end{remark}
+
+\begin{lemma}[Observability gap implies de-protection]
+\label{lem:obs-gap}
+If the sampled record sequence has observability gap $\gamma$ on
+$\cD_0$, then the exactly protected component of every diary operator
+$O\in\cD_0$ obeys
+\begin{equation}
+  \lVert \mathbb E_n(O)\rVert_2
+  \le
+  C e^{-\gamma n}\lVert O\rVert_2 .
+\end{equation}
+Thus the fixed-diary effective irreducibility rate is at least
+$\gamma$.
+\end{lemma}
+
+\begin{proof}
+The exact protected algebra $\cA_{1:n}'$ is contained in every one-step
+commutant $\cA_i'$.  Therefore the projection $\mathbb E_n(O)$ is fixed
+by each $\Pi_i$ and lies in the common fixed space of the product
+$\cT_{1:n}$.  Since $\mathbb E_n$ is an orthogonal projection onto a
+subspace of that common invisible space,
+\begin{equation}
+  \lVert \mathbb E_n(O)\rVert_2
+  \le
+  \lVert \cT_{1:n}(O)\rVert_2 .
+\end{equation}
+The claimed bound follows from the observability-gap hypothesis.
+\end{proof}
+
+\begin{remark}
+The definition is deliberately channel-level rather than exact-algebraic.
+Exact observability asks whether $\cA_{1:n}'$ is scalar.  The gap asks
+how quickly a fixed diary loses its component in the invisible directions
+resolved by the record sequence.  Small couplings, hydrodynamic modes,
+nearly conserved quantities, and correlated Heisenberg iterates can all
+make $\gamma$ small even when the exact commutant is already scalar.
+\end{remark}
+
+\begin{proposition}[Benchmark observability gaps]
+\label{prop:gap-benchmarks}
+The observability-gap language has the following benchmark behavior.
+\begin{enumerate}
+  \item Suppose there is an adapted sequence of sampled algebras and a
+  number $\eta>0$ such that, at step $i$, the following holds for every
+  operator $O$ in the image of
+  $\cT_{1:i-1}$ applied to the diary operator space:
+  \begin{equation}
+    \mathbb E\!\left[
+      \lVert \Pi_i(O)\rVert_2^2 \,\middle|\, \mathcal F_{i-1}
+    \right]
+    \le
+    (1-\eta)\lVert O\rVert_2^2 .
+  \end{equation}
+  Then
+  \begin{equation}
+    \mathbb E\,\lVert \cT_{1:n}(O)\rVert_2^2
+    \le
+    (1-\eta)^n\lVert O\rVert_2^2
+    \le
+    e^{-\eta n}\lVert O\rVert_2^2 .
+  \end{equation}
+  In particular the sequence has an average squared-norm observability
+  gap at least $\eta$ on the diary operator space.  This conditional
+  contraction is the form expected from physical scrambling dynamics,
+  possibly over coarse-grained time windows rather than single record
+  steps.
+
+  \item If each one-step algebra is generated by an independent
+  uniformly random nonidentity Pauli string on a $D$-dimensional block,
+  then for every fixed normalized traceless operator $O$,
+  \begin{equation}
+    \mathbb E\,
+    \lVert \cT_{1:n}(O)\rVert_2^2
+    =
+    p_q^n,
+    \qquad
+    p_q=\frac{D^2/2-1}{D^2-1}<\frac12 .
+  \end{equation}
+  Thus the squared-norm gap is at least $\log 2+O(D^{-2})$, and the
+  norm gap is at least $\frac12\log 2+O(D^{-2})$, in expectation.
+
+  \item If the one-step algebras share a common non-scalar commutant
+  element $Q$, then every traceless operator in that common commutant has
+  $\cT_{1:n}(Q)=Q$ for all $n$.  The observability gap on any diary
+  algebra containing such an operator is zero.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For the first item, iterate the conditional contraction inequality:
+\begin{equation}
+  \mathbb E\lVert \cT_{1:n}(O)\rVert_2^2
+  =
+  \mathbb E\,
+  \mathbb E\!\left[
+    \lVert \Pi_n\cT_{1:n-1}(O)\rVert_2^2
+    \middle| \mathcal F_{n-1}
+  \right]
+  \le
+  (1-\eta)\,
+  \mathbb E\lVert \cT_{1:n-1}(O)\rVert_2^2 ,
+\end{equation}
+and repeat.  The second item is the Pauli counting used in
+Theorem~\ref{thm:pauli-growth}: a fixed nonidentity Pauli component
+survives one random one-step commutant projection with probability
+$p_q$, and orthogonality of the Pauli basis gives the claim for any
+fixed traceless $O$.  The third item is immediate because a common
+commutant operator is fixed by every $\Pi_i$.
+\end{proof}
+
+\begin{remark}
+The first item is the useful bridge to physical dynamics.  It does not
+assume iid records; it asks for a per-step contraction after conditioning
+on the past.  Proving such an $\eta$ for Heisenberg iterates
+$U^{-i}KU^i$ is the deterministic scrambling problem.  Integrable,
+fragmented, symmetry-constrained, or collective-access systems are
+expected to fail this condition by leaving $\eta=0$ or parametrically
+small.
+\end{remark}
+
+\begin{definition}[Effective irreducibility rate]
+For records accumulated up to depth $n$, let $\cA_n$ be the algebra
+generated by their Heisenberg pullbacks and let $\mathbb E_n$ be the
+trace-preserving conditional expectation onto $\cA_n'$.  A block has
+effective irreducibility rate $\lambda$ if, for every traceless private
+operator $O$ in that block with $\lVert O\rVert_2=1$,
+\begin{equation}
+  \lVert \mathbb E_n(O)\rVert_2
+  \le
+  C e^{-\lambda n}.
+\end{equation}
+\end{definition}
+
+\begin{corollary}[Protected-component collapse]
+\label{cor:rate}
+If a public block has effective irreducibility rate $\lambda>0$, then
+the exact protected component of every normalized traceless private
+operator is at most $\varepsilon$ after
+\begin{equation}
+  n
+  \ge
+  \lambda^{-1}\log(C/\varepsilon)
+\end{equation}
+records.
+\end{corollary}
+
+\begin{proof}
+The conditional expectation $\mathbb E_n$ extracts the component lying
+in the commutant $\cA_n'$, which is the exactly protected algebra by
+Theorem~\ref{thm:commutant}.  The claim is the definition of effective
+irreducibility solved for the record depth $n$.
+\end{proof}
+
+This definition isolates the quantitative target.  The structural
+commutant theorem says which private information is protected exactly;
+an ETH, design, or spectral-gap hypothesis should determine $\lambda$
+for a concrete scrambling model.  There are two distinct targets.  For
+Hayden-Preskill-type recovery, the relevant quantity is fixed-deposit
+de-protection: the protected component of a particular deposited diary
+must decay in $O(k+\log(1/\varepsilon))$ independent record units.  The
+stronger condition that the entire public block have no protected
+subsystem left is worst-case commutant collapse; for a block of
+dimension $D$ it can require $O(\log D)$ independent generators, which is
+linear in the entropy when $D\sim e^S$.  Collective monitoring has
+$\lambda=0$ for both notions.
+
+\begin{theorem}[Random Pauli record growth]
+\label{thm:pauli-growth}
+Let a public block be $q$ qubits, $D=2^q$, and let
+$P_1,\ldots,P_n$ be independent uniformly random nonidentity Pauli
+strings, modulo phase.  Let $\cA_n$ be the algebra they generate and
+let $\mathbb E_n$ be the Hilbert-Schmidt conditional expectation onto
+$\cA_n'$.  For every fixed traceless operator $O$ with
+$\lVert O\rVert_2=1$,
+\begin{equation}
+  \mathbb E\,
+  \lVert \mathbb E_n(O)\rVert_2^2
+  =
+  p_q^n,
+  \qquad
+  p_q =
+  \frac{D^2/2-1}{D^2-1}
+  < \frac12 .
+\end{equation}
+Moreover,
+\begin{equation}
+  \Pr[\cA_n'\ne \mathbb C I]
+  \le
+  (D^2-1)p_q^n
+  \le
+  D^2 2^{-n}.
+\end{equation}
+Thus the fixed-operator protected weight decays exponentially with
+record depth, while the worst-case exact protected subsystem is absent
+with high probability once
+\begin{equation}
+  n \ge 2q+\log_2(1/\delta)+O(1).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Use the normalized Pauli strings as an orthonormal Hilbert-Schmidt
+basis.  The commutant $\cA_n'$ is spanned by the Pauli strings that
+commute with every selected $P_i$, so $\mathbb E_n$ keeps exactly those
+Pauli components and removes the rest.  For a fixed nonidentity Pauli
+string $Q$, the number of nonidentity Pauli strings commuting with $Q$
+is $D^2/2-1$, out of $D^2-1$ choices.  Therefore $Q$ survives one random
+record generator with probability $p_q$, and survives $n$ independent
+generators with probability $p_q^n$.  Expanding a fixed normalized
+traceless $O$ in the Pauli basis gives the first claim by linearity of
+expectation and orthogonality.
+
+For the second claim, $\cA_n'$ is nontrivial only if some nonidentity
+Pauli string commutes with every $P_i$.  A union bound over the
+$D^2-1$ nonidentity Pauli strings gives
+$(D^2-1)p_q^n$, and $p_q<1/2$ gives the displayed simpler bound.
+\end{proof}
+
+\begin{remark}
+The theorem separates two notions that are easy to conflate.  A fixed
+private operator loses its protected component at an order-one rate per
+independent random record generator.  Worst-case protected information,
+however, persists as long as the sampled record algebra has a nontrivial
+commutant; in this model the exact commutant becomes scalar only after
+order $\log D$ independent generators.  This is de-protection, not yet
+decodability.  A recovery theorem still needs a channel-capacity,
+decoupling, or Hayden-Preskill-type condition.
+\end{remark}
+
+\begin{remark}
+For a fixed $k$-qubit diary, applying the first estimate to a basis of
+$4^k-1$ logical Pauli operators and using Markov plus a union bound gives
+fixed-diary de-protection after $O(k+\log(1/\varepsilon)+\log(1/\delta))$
+independent record generators, with failure probability $\delta$.  This
+is the horizon-relevant scaling.  The iid-Pauli model should be read as a
+best-case baseline: in a physical scrambling model the record generators
+are typically correlated Heisenberg iterates, such as
+$P_i=U^{-i}KU^i$, and the dynamical question is whether chaotic or
+ETH-like evolution manufactures effectively independent generators.  The
+usual $\log S$ scrambling scale is a time cost for producing such
+independent record units, not the number of record units needed once they
+are independent.
+\end{remark}
+
+\begin{theorem}[Random-coding recovery baseline]
+\label{thm:random-recovery}
+Let a $k$-qubit diary $D$ be maximally entangled with a reference
+$R_D$, and let an old black-hole block $B$ of dimension $d_B$ be
+maximally entangled with early radiation $E$.  Apply a Haar-random
+unitary, or an exact unitary two-design, to $DB$ and split the output as
+new radiation $R$ and remaining block $C$:
+\begin{equation}
+  U: D B \longrightarrow R C,
+  \qquad
+  d_D d_B = d_R d_C .
+\end{equation}
+Then the complementary channel to $C$ is decoupled from the diary
+reference on average:
+\begin{equation}
+  \mathbb E_U
+  \left\|
+  \rho_{R_D C}
+  -
+  \rho_{R_D}\otimes\rho_C
+  \right\|_1
+  \le
+  O(d_D/d_R).
+\end{equation}
+Consequently, if $R$ contains
+\begin{equation}
+  \log_2 d_R
+  \ge
+  k+2\log_2(1/\varepsilon)+\log_2(1/\delta)+O(1)
+\end{equation}
+qubits, then with probability at least $1-\delta$ there is a decoder
+$\cR:RE\to \widehat D$ whose entanglement fidelity for the diary is at
+least $1-O(\varepsilon)$.
+\end{theorem}
+
+\begin{proof}
+The trace-norm estimate is the standard decoupling bound used in the
+Hayden-Preskill protocol \citep{Hayden2007BlackHoles,Dupuis2014OneShot}:
+for a random encoding,
+\begin{equation}
+  \mathbb E_U
+  \left\|
+  \rho_{R_D C}
+  -
+  \rho_{R_D}\otimes\rho_C
+  \right\|_1
+  \le
+  O\!\left(
+  \sqrt{\frac{d_D d_C}{d_R d_B}}
+  \right)
+  =
+  O(d_D/d_R),
+\end{equation}
+where $d_Dd_B=d_Rd_C$ in the last step.  Markov's inequality turns the
+average estimate into the stated high-probability bound after increasing
+$d_R$ by the displayed overhead.  By the information-disturbance
+duality, if the complementary output $C$ is nearly independent of the
+diary reference, then the complementary system $RE$ admits a recovery map
+for the diary, with entanglement-fidelity loss controlled by the
+decoupling error.
+\end{proof}
+
+\begin{remark}
+This theorem closes the toy baseline:
+\begin{equation}
+  \text{independent randomization}
+  \Longrightarrow
+  \text{fixed-diary de-protection}
+  \Longrightarrow
+  \text{fixed-diary recovery}.
+\end{equation}
+It also marks the remaining physical problem.  The random-coding
+baseline assumes global Haar or design randomization.  In deterministic
+source-local models, observability and export are separate tasks: one
+must explain how the dynamics produces sufficiently independent
+Heisenberg pullbacks of the record coupling, and separately prove the
+decoupling condition that makes the emitted records reconstructive.  The
+time cost of producing those record units is the scrambling part of the
+problem.
+\end{remark}
+
+\section{Access Geometry and Export}
+
+The previous two sections isolate two distinct bottlenecks.  The
+latency theorem constrains access: before private information reaches
+the allowed record channel, the record channel is nearly constant on the
+diary.  The decoupling theorem constrains export: once the private
+information is in an export-active block, the emitted records recover it
+only if the diary reference decouples from the remaining source.
+In staged source-local models this gives the recovery window
+\begin{equation}
+  t_{\rm access}
+  \lesssim
+  t_{\rm rec}
+  \lesssim
+  t_{\rm access}+t_{\rm export},
+\end{equation}
+with the upper end improved when routing, mixing, and export overlap.
+The warning is that visibility is not recovery: large commutators,
+OTOCs, or boundary sensitivity do not by themselves imply that the
+emitted records decouple the diary reference from the remaining source.
+
+\begin{lemma}[Export capacity bound]
+\label{lem:export-capacity}
+Let $D$ be a $k$-qubit diary maximally entangled with a reference
+$R_D$, and let $E$ be admissible side information independent of the
+diary at deposit time.  Suppose the only system newly delivered to the
+decoder is a record $R$ of dimension $d_R$.  If a decoder on $RE$
+recovers the diary with trace-distance error at most $\eta$ on
+$R_D\widehat D$, then
+\begin{equation}
+  \log_2 d_R
+  \ge
+  k-O\!\left(\eta k+h_2(\eta)\right).
+\end{equation}
+Consequently, if the record channel exports at most $c_R$ qubits per
+step, then
+\begin{equation}
+  \Delta_{\rm export}
+  \ge
+  \frac{k-O\!\left(\eta k+h_2(\eta)\right)}{c_R}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Before the record is delivered, admissibility gives $I(R_D:E)=0$.
+Sending a system $R$ can increase mutual information with $R_D$ by at
+most $2\log_2 d_R$, so
+\begin{equation}
+  I(R_D:ER)\le 2\log_2 d_R .
+\end{equation}
+Successful recovery means that the decoded state on $R_D\widehat D$ is
+$\eta$-close to a maximally entangled $k$-qubit state.  By continuity of
+mutual information,
+\begin{equation}
+  I(R_D:ER)\ge
+  2k-O\!\left(\eta k+h_2(\eta)\right),
+\end{equation}
+since data processing cannot increase the mutual information under the
+decoder.  Combining the two inequalities gives the dimension bound.  The
+time bound follows by dividing the required coherent record size by the
+per-step export capacity.
+\end{proof}
+
+\begin{theorem}[Expander mixer realizes fast-routed recovery]
+\label{thm:expander-mixer}
+Let $G_S=(V_S,E_S)$ be a bounded-degree graph family with
+$|V_S|=S$, and let $X_S\subset V_S$ be the access/emission set.  Suppose
+the access radius
+\begin{equation}
+  R_X(S)=\max_{y\in V_S} d_G(y,X_S)
+\end{equation}
+is $O(\log S)$, and suppose the source dynamics is finite-speed and
+graph-local on $G_S$.
+
+Let a $k$-qubit diary $D$ be deposited in an arbitrary region $Y$, with
+reference $R_D$ and admissible side information $E$ independent of the
+diary at deposit time.  Assume that for every such $Y$ the diary-bearing
+subsystem is collected into an export-active block by time
+\begin{equation}
+  t_{\rm arr}(Y\to X_S)
+  \le
+  C_{\rm arr}\log S+O(k).
+\end{equation}
+Assume also that the subsequent export window emits a record subsystem
+$R$ and leaves a remaining source $C$ satisfying
+\begin{equation}
+  \left\|
+  \rho_{R_D C}
+  -
+  \rho_{R_D}\otimes\rho_C
+  \right\|_1
+  \le
+  \varepsilon .
+\end{equation}
+Then there is a decoder $\cR:RE\to\widehat D$ recovering the diary with
+entanglement-fidelity loss $O(\varepsilon)$, and
+\begin{equation}
+  t_{\rm rec}
+  \le
+  C_{\rm arr}\log S+\Delta_{\rm export}.
+\end{equation}
+If the export window is implemented by a Haar random unitary, an exact
+or approximate unitary two-design, a quantum tensor-product expander, or
+a random-circuit ensemble satisfying a decoupling theorem, then the
+export condition holds with the corresponding theorem's error.  In
+particular, once the emitted record has
+\begin{equation}
+  \log_2 d_R
+  \ge
+  k+2\log_2(1/\varepsilon)+\log_2(1/\delta)+O(1),
+\end{equation}
+the standard Hayden-Preskill decoupling budget gives recovery with
+failure probability at most $\delta$, up to the error of the chosen
+mixer.  Lemma~\ref{lem:export-capacity} gives the corresponding
+record-size lower bound: logarithmic access geometry cannot remove the
+need to export a diary-sized coherent record, up to continuity terms.
+\end{theorem}
+
+\begin{proof}
+Before the graph light cone from $Y$ reaches $X_S$, the reduced-record
+Lieb-Robinson bound in Lemma~\ref{lem:reduced-lr} makes the diary-to-record
+channel diamond-close to a constant channel.  Therefore no decoder on
+the records can recover the diary in that interval.
+
+For the upper bound, the assumed collection time places the
+diary-bearing subsystem in the export-active block by
+$C_{\rm arr}\log S+O(k)$.  The export condition is exactly the
+complementary-channel decoupling condition.  By the
+information-disturbance duality used in Theorem~\ref{thm:random-recovery},
+decoupling of $R_D$ from $C$ implies a recovery map from $RE$ to the
+diary.  The displayed record-size threshold is the same
+Hayden-Preskill budget as in Theorem~\ref{thm:random-recovery}.  Adding
+the collection time and export-window duration gives the stated bound.
+\end{proof}
+
+\begin{remark}
+There are two readings of the upper bound.  In the clean existence
+case, the export-active block is the whole covered source during the
+mixer window.  Then there is no separate collection hypothesis: the
+diary lies in the mixed block wherever it was deposited, and the
+chosen design, tensor-product-expander, or random-circuit primitive
+supplies the decoupling condition for a sufficiently large emitted
+record.  In the localized-export
+variant, where only a bounded region near $X_S$ can emit, collection into
+that region is an additional routing hypothesis.  The light cone reaching
+$X_S$ gives possible influence on the records; it does not by itself
+prove that the diary-bearing subsystem has been collected into the
+export-active block.
+\end{remark}
+
+\begin{remark}
+The theorem is an existence mechanism, not a deterministic Hamiltonian
+theorem.  Approximate two-designs and quantum tensor-product expanders
+provide theorem-backed export primitives
+\citep{Harrow2009RandomCircuits,Harrow2009TPE,Szehr2013Decoupling}.
+Brown and Fawzi prove a direct random-circuit decoupling theorem with
+$O(n\log^2 n)$ two-qubit gates and $O(\log^3 n)$ depth when the needed
+parallel interactions are available \citep{Brown2015Decoupling}.  These
+routes establish logarithmic or polylogarithmic fast-routed recovery,
+depending on the implementation depth of the chosen mixer.  Replacing
+the theorem-backed mixer by a simple fixed nonintegrable Hamiltonian on
+an expander graph is the physical strengthening.  Sparse-graph
+scrambling results motivate that strengthening, but OTOC growth alone is
+not a decoupling/export theorem \citep{Barbon2012Expanders,
+Bentsen2019Sparse}.
+\end{remark}
+
+\begin{theorem}[Small-subsystem moment-gap export criterion]
+\label{thm:moment-gap-export}
+Consider the whole-source mixer version of
+Theorem~\ref{thm:expander-mixer}.  After the diary is in the mixed
+source, let one mixing step be drawn from an ensemble $\nu$ of unitaries
+on the active source block, and let
+\begin{equation}
+  \mathsf M_2(X)
+  =
+  \mathbb E_{U\sim\nu}
+  \left[
+    U^{\otimes 2}X(U^\dagger)^{\otimes 2}
+  \right]
+\end{equation}
+be its second-moment channel.  Let $\mathsf P_{\rm Haar}$ denote the
+Haar second-moment projector.  Fix the $k$-qubit diary, the emitted
+record partition, and the one-shot decoupling functional appearing in
+Theorem~\ref{thm:random-recovery}.  Suppose that, in a seminorm
+$\|\cdot\|_{\rm dec(D,R)}$ controlling this particular decoupling
+functional,
+\begin{equation}
+  \left\|
+    \mathsf M_2^n-\mathsf P_{\rm Haar}
+  \right\|_{\rm dec(D,R)}
+  \le
+  C_{\rm dec}(D,R)e^{-\gamma_2 n}.
+\end{equation}
+Then, after $n$ mixing steps and emission of a record $R$, the expected
+decoupling error obeys
+\begin{equation}
+  \mathbb E
+  \left\|
+  \rho_{R_D C}
+  -
+  \rho_{R_D}\otimes\rho_C
+  \right\|_1
+  \le
+  O(d_D/d_R)+C'_{\rm dec}(D,R)e^{-\gamma_2 n}.
+\end{equation}
+Consequently, a record satisfying the Hayden-Preskill size budget
+together with
+\begin{equation}
+  n
+  \ge
+  \gamma_2^{-1}
+  \log(C'_{\rm dec}(D,R)/\varepsilon)
+\end{equation}
+recovers the diary with entanglement-fidelity loss
+$O(\varepsilon)$, except with the usual Markov tail probability.  On a
+bounded-degree expander with access radius $O(\log S)$, record bandwidth
+$c_R$, and $C'_{\rm dec}(D,R)=\exp(O(k+\log(1/\delta)))$, this gives
+\begin{equation}
+  t_{\rm rec}
+  \le
+  O(\log S)
+  +
+  O\!\left(
+    \gamma_2^{-1}(k+\log(1/\varepsilon)+\log(1/\delta))
+  \right)
+  +
+  O(k/c_R),
+\end{equation}
+up to the overheads of the chosen mixing schedule.
+\end{theorem}
+
+\begin{proof}
+The Hayden-Preskill decoupling estimate in
+Theorem~\ref{thm:random-recovery} is a second-moment statement: the Haar
+calculation only uses the second moment of the encoding unitary tested
+against the diary and the chosen output partition.  If the $n$-step
+second-moment channel is within
+$C_{\rm dec}e^{-\gamma_2 n}$ of the Haar second moment in a seminorm
+that dominates that restricted functional, the same estimate differs
+from the Haar bound by at most a constant multiple of this moment error.
+This gives
+the displayed trace-norm decoupling estimate.  The recovery statement
+then follows from the same information-disturbance step used in
+Theorem~\ref{thm:random-recovery}.  The final latency bound adds the
+expander access time, the moment-mixing time, and the record-size floor
+from Lemma~\ref{lem:export-capacity}.
+\end{proof}
+
+\begin{remark}
+The criterion turns the deterministic expander problem into a precise
+gap problem: prove a useful lower bound on $\gamma_2$ for a fixed
+bounded-degree expander Hamiltonian or Floquet circuit with the intended
+record partition.  The norm in the theorem is deliberately a
+small-subsystem/export norm, not a global-design norm.  Global
+approximate two-design convergence has an extensive initial deviation
+and can require extensive depth; it is stronger than the
+Hayden-Preskill recovery task for a fixed diary.  The fast-branch target
+is small-subsystem decoupling after the diary has spread through the
+expander, with a prefactor controlled by the diary and record budget.
+Existing random-circuit results supply nearby benchmarks.  Brown and
+Fawzi prove decoupling for random circuits with $O(n\log^2 n)$ gates and
+polylogarithmic depth when broad parallel interactions are available
+\citep{Brown2015Decoupling}; Harrow and Mehraban prove
+short-random-circuit design bounds for local and long-range
+architectures \citep{Harrow2023ShortDesigns}, and Mittal--Hunter-Jones
+prove approximate-design convergence for random circuits on arbitrary
+connected architectures \citep{Mittal2023ArbitraryDesigns}.  These
+general architecture results do not by themselves prove
+logarithmic-depth export on bounded-degree expanders.  Sparse-graph
+fast-scrambling results are evidence for fast operator growth on
+expanders, while
+Theorem~\ref{thm:moment-gap-export} identifies the stronger
+second-moment/export property needed for recovery.
+\end{remark}
+
+\begin{remark}
+This also fixes the role of the observability and de-protection
+diagnostics above.  A positive irreducibility rate $\lambda$ says that
+the protected component of a diary operator is being removed relative to
+the sampled record algebra.  It does not say that the diary has been
+coherently exported.  For example, an expander circuit with fast
+controlled-phase spreading and records restricted to a commuting
+$Z$-algebra can rapidly remove the protected component of an off-diagonal
+diary operator while producing only a dephasing, entanglement-breaking
+record channel for that diary.  The observability diagnostic then sees
+de-protection, but the Hayden-Preskill decoupling condition fails.
+Thus $\lambda$ is a precursor to recovery, while the
+second-moment/export gap $\gamma_2$ is the recovery-relevant invariant.
+\end{remark}
+
+\section{Horizon-Interface Separation}
+
+The previous results assemble into a family-level separation.  Consider
+a sequence of interfaces indexed by a size parameter $S$, with logical
+algebra
+\begin{equation}
+  \cA_{\rm code}^{(S)}
+  =
+  \bigoplus_x B(\cH_x^{(S)}).
+\end{equation}
+Call the interface horizon-like, in the access sense used here, if it
+has:
+\begin{enumerate}
+  \item redundant recovery of the sector label $x$ from disjoint passive
+  record fragments;
+  \item nontrivial private blocks, $\dim\cH_x^{(S)}>1$ for some sectors;
+  \item source-side saturation, $N_{\rm eff}(W)=\Theta(S)$ for the
+  physically normalized source coupling family; and
+  \item location-uniform fast recovery of arbitrary $k$-qubit private
+  deposits from the allowed enlarged record/access algebra in
+  sub-power-law depth, for example $\operatorname{poly}(k,\log S)$.
+\end{enumerate}
+The operative obstruction in the theorem is the fourth property, fast
+location-uniform private recovery, tested against finite-velocity
+source-locality.  The other properties specify the horizon-interface
+profile and rule out weaker systems that have only public objectivity,
+only private blocks, or only many participating source operators.
+
+\begin{theorem}[Horizon-interface separation]
+\label{thm:horizon-interface}
+A horizon-like access interface cannot be realized, for all deposit
+locations, by finite-velocity source-local emission from a geometrically
+local source whose worst-case diary-to-access distance grows as
+$L(S)=S^\alpha$ with $\alpha>0$.  Any such realization must contain at
+least one of two mechanisms:
+\begin{enumerate}
+  \item fast internal routing/scrambling, so arbitrary private deposits
+  are brought to the emitting/access region in sub-power-law time; or
+  \item nonlocal/dressed access, so the allowed record algebra is not the
+  reduced algebra generated by source-local emission in the factorized
+  source variables.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:cut}, the redundantly recoverable public part is a
+commutative center.  By Corollary~\ref{cor:public-private}, the
+noncommuting degrees inside each block cannot themselves be redundantly
+public; they are private to the passive fragments.
+
+Assume now that the recovery of arbitrary private deposits is produced
+only by finite-velocity source-local emission.  For a worst-case deposit
+at distance $L(S)=S^\alpha$ from the access region,
+Theorem~\ref{thm:latency} gives recovery latency
+$\Omega(S^\alpha)$ up to logarithmic factors, contradicting the assumed
+sub-power-law location-uniform recovery.  Theorem~\ref{thm:saturation-slow}
+shows that source-side saturation cannot remove this obstruction by
+itself, and Theorem~\ref{thm:anonymous-saturation} shows that anonymity,
+source symmetry, and unitary record formation still do not force private
+mixing.  Therefore a successful interface must either remove the
+power-law routing bottleneck by fast internal mixing, or change the
+accessible algebra so that the records are nonlocal/dressed relative to
+the factorized source variables.
+\end{proof}
+
+\begin{remark}
+The theorem classifies mechanisms, not ontologies.  A single physical
+system can admit both descriptions: a stretched-horizon account may
+emphasize fast routing, while a boundary or gravitationally dressed
+account may emphasize the nonlocal access algebra.
+\end{remark}
+
+\section{Examples and Stress Tests}
+
+Ordinary local reservoirs fall on the slow side of
+Theorem~\ref{thm:latency}.  Theorem~\ref{thm:saturation-slow} shows that
+source-side participation $N_{\rm eff}(W)=\Theta(S)$ does not by itself
+imply logarithmic latency.  Theorem~\ref{thm:anonymous-saturation}
+shows that even anonymous symmetric unitary access can stop at a public
+collective center and leave private blocks unmixed; Theorem~\ref{thm:commutant}
+identifies those unmixed blocks as the commutant/noiseless factors of
+the record-generating algebra.  Theorem~\ref{thm:expander-mixer} gives a
+clean positive fast-routing witness: a bounded-degree log-diameter
+access geometry, combined with a theorem-backed export mixer, has
+location-uniform logarithmic or polylogarithmic private recovery.  In
+fast-scrambler and stretched-horizon pictures, the required role of the
+dynamics is to provide both rapid access and coherent export, with a
+floor set by scrambling plus the emitted-record budget.  Nonlocal
+encoders, boundary reconstruction, and gravitationally dressed access
+realize the nonlocal/dressed branch; by Corollary~\ref{cor:frozen}, this
+branch is diagnosed by recovery that survives after source-local routing
+is frozen.  Rindler wedges test thermality and observer
+algebras but do not by themselves supply a finite-sector Page/Hayden-
+Preskill recovery channel.  BTZ/AdS examples can realize both branches
+depending on whether the protocol is described as boundary
+reconstruction or as chaotic routing in the boundary/stretched-horizon
+dynamics.
+
+\section{Relation to Horizon Interfaces}
+
+The cut theorem supplies the public/classical side of a proposed
+constrained-access horizon interface: redundant recoverability selects
+the center.  The latency theorem supplies the private/quantum side:
+block information cannot be recovered quickly from source-local records
+unless routing is fast or the access algebra is nonlocal/dressed.
+The expander mixer theorem supplies the positive fast-routing side:
+logarithmic access geometry plus decoupling export realizes
+location-uniform fast private recovery.  Theorem~\ref{thm:horizon-interface}
+combines these into the access profile:
+\begin{equation}
+\begin{gathered}
+  \text{public center from redundant records,}\\
+  \text{private blocks hidden from small/passive records,}\\
+  \text{fast private recovery by log-depth access plus export,}\\
+  \text{or by dressed/nonlocal access.}
+\end{gathered}
+\end{equation}
+This separates horizon-like private recovery from ordinary thermality,
+ordinary Darwinian records, and direct high-bandwidth monitoring.
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+
+\end{document}
