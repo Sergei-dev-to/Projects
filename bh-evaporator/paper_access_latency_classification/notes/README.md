@@ -1,36 +1,67 @@
 # Notes Map
 
-Date: 2026-06-16
+Date: 2026-06-20
 
-Purpose: keep the access-latency notes usable. The folder now contains result notes, conceptual bridge notes, literature notes, and scratch material. This file says what to read first and what each note is for.
+Purpose: keep the access-latency notes usable after the constrained-access
+direction was closed as a primary result engine. The folder contains useful
+theorem work, conceptual bridges, literature checks, and scratch material, but
+the live decision is now in the postmortem.
+
+## Current Status
+
+Read this first:
+
+- `postmortem_2026_06_20.md`
+  - Terminal decision note for the constrained-access direction.
+  - Records why the apparent result space is largely occupied by quantum
+    crypto, Hayden-Preskill recovery, symmetry-recovery bounds,
+    Lieb-Robinson/locality, expander fast-scrambling, and decoupling.
+  - Preserves the useful residue as a defensive audit toolkit:
+    access/export bottlenecks, routed-versus-dressed recovery, and the
+    distinction between publicization, de-protection, and coherent export.
+  - Adds the start rule for future directions: run a literature pass before
+    investing in drafting or proof work.
+
+The rest of this folder should now be read as historical support and reusable
+technical scaffolding, not as an active program plan.
 
 ## Read Order
 
-For a cold start, read:
+For historical reconstruction, read:
 
-1. `long_term_goal_constrained_access.md`
-2. `private_information_fate_classification.md`
-3. `constrained_access_program_plan_review.md`
-4. `access_geometry_and_export_bottlenecks.md`
-5. `directions_review_2026_06_18.md`
-6. `paths_forward_2026_06_18.md`
-7. `level1_local_tightness_benchmark.md`
-8. `level2_expander_fast_routing.md`
-9. `level2_expander_mixer_theorem.md`
-10. `moment_gap_two_way_attempt.md`
-11. `access_latency_stress_test.md`
-12. `external_review_response_2026_06_18.md`
-13. `private_complement_unified_frame.md`
+1. `postmortem_2026_06_20.md`
+2. `long_term_goal_constrained_access.md`
+3. `program_status_2026_06_18.md`
+4. `private_information_fate_classification.md`
+5. `access_geometry_and_export_bottlenecks.md`
+6. `level1_local_tightness_benchmark.md`
+7. `level2_expander_fast_routing.md`
+8. `level2_expander_mixer_theorem.md`
+9. `experimental_prediction_routes.md`
+10. `paths_forward_2026_06_18.md`
 
 Then use the remaining files as needed.
 
-## Canonical Result Stack
+## Historical Result Stack
 
-These are the notes closest to the current theorem draft.
+These are the notes closest to the theorem draft. They are useful for audit,
+reuse, and citation mining, but the postmortem supersedes them as program
+guidance.
+
+- `program_status_2026_06_18.md`
+  - Program calibration after the black-hole-to-access shift.
+  - Separates theorem-grade constrained-access results from the
+    conditional black-hole sufficiency application.
+  - Locates the gravitational residue in the supplied inputs:
+    state count, boundary saturation, thermal-scrambling tie, and local
+    geometry.
+  - Historically named the next sharp test:
+    scrambling diagnostics versus coherent recovery fidelity.
 
 - `self_review_and_external_review_packet.md`
-  - Current self-review after the observability-gap target adjustment.
-  - Lists solid results, conditional/open pieces, weak points, and the recommended outside-review packet.
+  - Self-review after the observability-gap target adjustment.
+  - Lists solid results, conditional/open pieces, weak points, and the
+    outside-review packet that was considered before the postmortem.
 
 - `external_review_response_2026_06_18.md`
   - Response to the first external-style review.
@@ -39,8 +70,8 @@ These are the notes closest to the current theorem draft.
     theory, operator spreading, or quantum-control observability.
 
 - `paths_forward_2026_06_18.md`
-  - Current result-oriented direction map.
-  - Ranks the live routes after the latency classification, with the
+  - Historical result-oriented direction map.
+  - Ranks the routes considered after the latency classification, with the
     corrected split between de-protection and export:
     deterministic de-protection plus export, local tightness,
     expander/log-diameter fast routing, failure classification, dressed
@@ -75,7 +106,7 @@ These are the notes closest to the current theorem draft.
     still-open deterministic expander Hamiltonian version.
 
 - `moment_gap_two_way_attempt.md`
-  - Immediate next result boundary after the moment-gap export
+  - Former next-result boundary after the moment-gap export
     criterion.
   - Positive route: prove a `t=2` expander moment-Hamiltonian gap and
     convert it to export/recovery.
@@ -84,17 +115,18 @@ These are the notes closest to the current theorem draft.
     recovery.
 
 - `access_geometry_and_export_bottlenecks.md`
-  - Current synthesis note.
+  - Synthesis note.
   - Unifies the Level 1 and Level 2 modules as:
     `private recovery latency = access geometry + export/decoupling`.
   - Compares ordinary lattices, directed channels, expanders,
     dressed/nonlocal access, and measurement-cut scale separation.
-  - States the next result targets without treating horizons and
+  - States the then-live result targets without treating horizons and
     measurements as identical.
 
 - `directions_review_2026_06_18.md`
-  - Current result-direction review.
-  - Ranks the live branches by payoff/risk after the expander theorem:
+  - Result-direction review before the postmortem.
+  - Ranks the branches then under consideration by payoff/risk after the
+    expander theorem:
     theorem-backed expander mixer, deterministic expander export, local
     tightness/dual-unitary cuts, failure classification, dressed access,
     export-capacity bounds, measurement-cut export, and experimental
@@ -111,16 +143,27 @@ These are the notes closest to the current theorem draft.
     - fast routed/scrambled,
     - dressed/nonlocal accessible.
   - Tracks what is proven, what is imported, and what remains open.
-  - Current technical gate: replace iid/random baselines with correlated ETH/scrambling dynamics.
+  - Former technical gate: replace iid/random baselines with correlated
+    ETH/scrambling dynamics.
 
 - `constrained_access_program_plan_review.md`
-  - Current program review after the expander/moment-gap detour.
+  - Program review after the expander/moment-gap detour.
   - Re-centers the program on the access-profile triad:
     `publicization != de-protection != coherent export`.
   - Defines the experimental/numerical target quantities:
     `R_public`, `lambda`, and `F_export`.
   - Demotes expander moment-gap work to a witness branch for coherent
     export rather than the program center.
+
+- `experimental_prediction_routes.md`
+  - Route map for experimentally or numerically legible
+    predictions.
+  - Separates framework demonstrations from discriminating measurements.
+  - Strongest near-term route: recovery-versus-scrambling phase diagram,
+    with locality / interaction-range scaling as the experimental
+    access-axis test.
+  - Calibration target:
+    `same public records, different private quantum fates`.
 
 - `access_latency_stress_test.md`
   - Witness and countermodel companion.
@@ -176,7 +219,8 @@ These are useful for positioning but should not be imported into the theorem dra
 - `access_profile_verification_target.md`
   - Lightweight bridge from the theorem stack to eventual numerical or experimental verification.
   - Records measurable quantities: `m_public`, `m_private`, `lambda`, `F_rec`, and disturbance to public records.
-  - Keeps the experimental target visible without turning the current proof work into an apparatus-design project.
+  - Kept the experimental target visible without turning proof work into an
+    apparatus-design project.
 
 ## Literature and Scratch
 
@@ -200,20 +244,24 @@ These are useful for positioning but should not be imported into the theorem dra
 These parent-folder notes are useful history but are no longer the clean entry point.
 
 - `../notes/constrained_access_review_memo.md`
-  - Review packet from before the current folder was organized.
+  - Review packet from before this folder was organized.
   - Partly superseded by `private_information_fate_classification.md`.
 
 - `../notes/darwinian_no_hair_split.md`
-  - Raw theorem workspace that led to the current TeX draft.
-  - Superseded for current purposes by `main.tex`, `access_latency_stress_test.md`, and `private_information_fate_classification.md`.
+  - Raw theorem workspace that led to the TeX draft.
+  - Superseded for postmortem purposes by `main.tex`,
+    `access_latency_stress_test.md`, and
+    `private_information_fate_classification.md`.
 
 - `../notes/access_emergence_philosophy.md`
   - Broad exploratory memo on emergence, substrate independence, and geometry above the cut.
-  - Still useful for ambition and guardrails, but `long_term_goal_constrained_access.md` is the shorter current compass.
+  - Still useful for ambition and guardrails, but
+    `long_term_goal_constrained_access.md` is the shorter compass.
 
-## Format Rule Going Forward
+## Format Rule If This Folder Is Reopened
 
-New notes should declare one of these roles at the top:
+New notes should be added only if the postmortem stop rule is satisfied. If
+that happens, they should declare one of these roles at the top:
 
 ```text
 Role: result stack / stress test / conceptual bridge / literature / scratch / archive
