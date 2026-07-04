@@ -1,0 +1,496 @@
+\documentclass[aps,prd,onecolumn,longbibliography,nofootinbib]{revtex4-2}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[final]{microtype}
+
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\Hcore}{\mathcal{H}_{\rm core}}
+\newcommand{\Hrad}{\mathcal{H}_{\rm rad}}
+\newcommand{\Htot}{\mathcal{H}_{\rm tot}}
+\newcommand{\Smicro}{S_{\rm micro}}
+\newcommand{\Svn}{S_{\rm vN}}
+
+\begin{document}
+
+\title{A Non-Gravitational Sector-Rate Model for Black-Hole-Like Evaporation}
+
+\author{[Author]}
+\affiliation{[Affiliation]}
+\date{\today}
+
+\begin{abstract}
+We construct a finite non-gravitational comparison model for several features
+usually bundled with black-hole evaporation.  The primary object is a
+Hamiltonian-derived sector-rate model.  The core Hilbert space is a direct sum
+of finite sectors with an area-like state count, the sector mass obeys a
+Schwarzschild-like relation, and outgoing radiation is produced by couplings
+from one sector to a smaller sector plus a radiation mode.  In the secular
+limit the rates are determined by transition matrix elements, radiation phase
+space, and the density of final core states.  With energy-resolved sectors, an
+exponential local density of states gives a hard spectrum close to the thermal
+form in the variable $\beta\omega$; adding idealized within-sector mixing gives
+accelerating emission for the square-root mass law, while the corresponding
+linear mass-law control remains approximately non-accelerating.  A separate
+finite repeated-interaction realization tracks purification and information
+flow.  On one fixed eight-emission schedule it shows a small Page-like turnover
+of the full radiation von Neumann entropy together with the shrinking
+core-support bound.  The sector dimensions, mass law, local density of states,
+and mixing assumption are inputs.  The result is an explicit diagnostic model:
+it shows which parts of the evaporation package can be assembled from finite
+quantum statistical mechanics, and which parts still require a microscopic
+origin.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Black-hole evaporation combines thermodynamic and quantum-information
+statements.  A four-dimensional Schwarzschild black hole has entropy
+proportional to area, temperature inversely proportional to mass, negative heat
+capacity, and power scaling $P\sim M^{-2}$ \cite{Bekenstein1973,Hawking1975}.
+Page's argument gives the expected fine-grained radiation entropy for unitary
+evaporation \cite{Page1993Info,Page1993Average}.  Modern gravitational
+calculations recover this behavior using generalized entropy, quantum extremal
+surfaces, islands, and replica-wormhole saddles
+\cite{Penington2020,AEMM2019,AlmheiriReview2021}.
+
+This paper asks how much of that package can be reproduced in a finite quantum
+model without dynamical spacetime.  The point is comparative.  A model that
+uses only ordinary Hilbert spaces, sector transitions, density-of-states
+effects, and unitary purification can help separate generic statistical
+mechanisms from specifically gravitational ones.
+
+Toy and qubit models of black-hole evaporation already show that unitary
+information transfer and Page-like behavior can be modeled without solving the
+gravitational problem \cite{Avery2013,OsugaPage2018,Broda2021}.  Tensor-network
+and random-unitary models define explicit maps between black-hole and radiation
+Hilbert spaces \cite{LeutheusserVanRaamsdonk2017,PiroliSunderhaufQi2020}.  The
+present construction follows that explicit-model tradition, with a different
+emphasis: the thermodynamic exponents, the hard spectrum, and the information
+diagnostics are kept as separate tests.
+
+The central model is a sector-rate model derived from an abstract Hamiltonian.
+Core sectors $B_n$ have dimensions
+\begin{equation}
+    \dim B_n=q^n,\qquad \Smicro(n)=n\log q,
+\end{equation}
+and the black-hole-like mass law is
+\begin{equation}
+    M_n=\alpha\sqrt n .
+\end{equation}
+This gives $S\sim M^2$, $T\sim M^{-1}$, and negative heat capacity.  The
+comparison mass law
+\begin{equation}
+    M_n=\alpha n
+\end{equation}
+keeps the same sector count and removes the black-hole-like entropy/mass
+relation.
+
+The main numerical result is that an energy-resolved sector model can generate
+both a near-thermal hard spectrum and accelerated evaporation, provided the
+remaining core is mixed within each sector.  In the same sector model, the
+linear mass-law control gives a similarly good hard spectrum and does not show
+the same acceleration.  This isolates the acceleration as a consequence of the
+entropy/mass relation rather than of the radiation alphabet alone.
+
+The information-flow calculation is separate.  It is a small exact
+state-vector repeated-interaction realization designed to track purification,
+soft records, and early/late radiation correlations.  It should be read as a
+compatibility check: the sector thermodynamics can coexist with a unitary
+record model showing a Page-like turnover.  It is not yet a full coherent
+Hamiltonian simulation of the sector-rate model.
+
+\section{Model Standard and Entropies}
+\label{sec:standard}
+
+The minimum object is:
+\begin{enumerate}[leftmargin=*]
+    \item a finite Hilbert space;
+    \item a Hamiltonian or Hamiltonian-derived transition rule;
+    \item an initial state class;
+    \item an observable split into core, hard radiation, purifier or bath, and
+    full emitted radiation;
+    \item controls that change the mass law, density of states, and mixing.
+\end{enumerate}
+
+The microcanonical core entropy is
+\begin{equation}
+    \Smicro(n)=\log\Omega_n,\qquad \Omega_n=\dim B_n .
+\end{equation}
+It is the entropy entering the thermodynamic relation
+\begin{equation}
+    \beta=\frac{\partial \Smicro}{\partial M}.
+\end{equation}
+The hard-radiation entropy is the entropy of the visible hard register or hard
+energy distribution.  The Page-like diagnostic is the von Neumann entropy of
+the full emitted radiation subsystem,
+\begin{equation}
+    \Svn(R)=-\Tr \rho_R\log\rho_R .
+\end{equation}
+These quantities answer different questions and are reported separately.
+
+\section{Sector Hamiltonian and Rate Limit}
+\label{sec:sector}
+
+The abstract total Hilbert space is
+\begin{equation}
+    \Htot=
+    \left(\bigoplus_{n=n_{\min}}^{n_{\max}} B_n\right)\otimes \Hrad .
+\end{equation}
+The Hamiltonian has the form
+\begin{equation}
+    H_{\rm tot}=H_{\rm core}+H_{\rm rad}+H_{\rm int}.
+\end{equation}
+The core block is
+\begin{equation}
+    H_{\rm core}=\sum_{n,a}E_{n,a}|n,a\rangle\langle n,a|,
+    \qquad
+    E_{n,a}=M_n+\epsilon_{n,a}.
+\end{equation}
+The radiation Hamiltonian is
+\begin{equation}
+    H_{\rm rad}=\sum_\lambda \omega_\lambda b_\lambda^\dagger b_\lambda .
+\end{equation}
+The interaction couples one core sector to the next smaller sector plus one
+outgoing quantum:
+\begin{equation}
+    H_{\rm int}
+    =
+    \sum_{n,a,b,\lambda}
+    \left(
+    g^{(\lambda)}_{n;ba}|n-1,b\rangle\langle n,a|b_\lambda^\dagger
+    +{\rm h.c.}
+    \right).
+\end{equation}
+In the weak-coupling secular limit,
+\begin{equation}
+    \Gamma_{n,a\rightarrow n-1,b;\lambda}
+    =
+    2\pi |g^{(\lambda)}_{n;ba}|^2
+    \delta(E_{n,a}-E_{n-1,b}-\omega_\lambda).
+\end{equation}
+After binning or continuum approximation, this is a golden-rule rate: matrix
+element times radiation phase space times final core density of states.
+
+The population diagnostic evolves probabilities by
+\begin{equation}
+    \dot p_{n,a}
+    =
+    -\sum_b \Gamma_{ba}p_{n,a}
+    +\sum_c \Gamma_{ac}p_{n+1,c}.
+\end{equation}
+This rate equation is the object actually simulated in the sector
+calculation.  A fully coherent wave-packet simulation remains a later
+Hamiltonian upgrade.
+
+\section{Thermodynamics}
+\label{sec:thermo}
+
+For the square-root mass law,
+\begin{equation}
+    M_n=\alpha\sqrt n,\qquad \Smicro(n)=n\log q .
+\end{equation}
+Therefore
+\begin{equation}
+    \beta_n=
+    \frac{\partial \Smicro}{\partial M}
+    =
+    \frac{2\sqrt n\log q}{\alpha},
+    \qquad
+    T_n=\frac{\alpha}{2\sqrt n\log q}.
+\end{equation}
+The heat capacity is negative because $M$ decreases as $T$ increases.  This is
+a consequence of the chosen entropy/mass relation, not an independent
+dynamical discovery.
+
+For the linear mass law,
+\begin{equation}
+    M_n=\alpha n ,
+\end{equation}
+the temperature is constant for the same sector count.  This gives the main
+thermodynamic control.
+
+For a transition emitting energy $\omega$, the microcanonical final-state
+factor is
+\begin{equation}
+    \exp[\Smicro(M-\omega)-\Smicro(M)].
+\end{equation}
+For small $\omega$,
+\begin{equation}
+    \Smicro(M-\omega)-\Smicro(M)
+    =
+    -\beta(M)\omega+O(\omega^2).
+\end{equation}
+Thus a thermal hard spectrum can arise from sector density of states and
+transition matrix elements.  This is the thermality test used below.  It is
+different from assigning a hard-register probability and then purifying it.
+
+\section{Energy-Resolved Sector Result}
+\label{sec:energy}
+
+The first sector-rate diagnostic used small random perturbations inside each
+sector.  It produced accelerating evaporation for the square-root mass law and
+deceleration for the linear mass law.  Its emitted spectrum was too narrow,
+with total-variation distance from the target thermal distribution around
+$0.77$.
+
+The improved diagnostic gives each sector an internal spectrum
+\begin{equation}
+    E_{n,a}=M_n+\epsilon_{n,a}
+\end{equation}
+with local density of states approximately
+\begin{equation}
+    \rho_n(\epsilon)\propto e^{\beta_n\epsilon}
+\end{equation}
+over an energy window of order $T_n$.  Transition rates are
+\begin{equation}
+    \Gamma_{fi}\propto
+    |\langle f,n-1|X_n|i,n\rangle|^2\,\omega_{fi}^{p},
+    \qquad
+    \omega_{fi}=E_i^{(n)}-E_f^{(n-1)}.
+\end{equation}
+The emitted number distribution is compared in
+\begin{equation}
+    x=\beta_n\omega
+\end{equation}
+to
+\begin{equation}
+    P(x)\propto x^p e^{-x}.
+\end{equation}
+
+With an exponential sector density of states and no within-sector mixing, the
+hard spectrum becomes close to thermal and the evaporation decelerates.  The
+state falls into lower-rate parts of the sector spectrum.  The next diagnostic
+adds an idealized within-sector mixing step,
+\begin{equation}
+    p_n(a)\mapsto \frac{P_n}{\dim B_n}.
+\end{equation}
+This stands in for fast intra-sector equilibration.
+
+With this mixing, the square-root mass law gives both acceleration and a
+near-thermal hard spectrum.  For two seeds, local and scrambled shrinkage
+operators, and width parameter ${\rm width}_x=4$:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+operator & power ratio & jump ratio & TV distance\\
+\midrule
+local     & 1.098 & 1.045 & 0.055\\
+scrambled & 1.097 & 1.045 & 0.054\\
+\bottomrule
+\end{tabular}
+\end{center}
+The power ratio is mid-evaporation emitted power divided by early emitted
+power.
+
+The linear mass-law control has a similarly good hard spectrum and lacks the
+same acceleration:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+operator & power ratio & jump ratio & TV distance\\
+\midrule
+local     & 0.988 & 0.995 & 0.051\\
+scrambled & 0.988 & 0.995 & 0.049\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This is the main sector-rate result.  The hard spectrum is generated by the
+energy-resolved density of states.  Acceleration is tied to the square-root
+mass law.  Within-sector mixing is still a modeled ingredient.
+
+\section{Companion Information-Flow Diagnostic}
+\label{sec:info}
+
+The sector-rate calculation does not track global purification.  The companion
+diagnostic is a finite repeated-interaction state-vector model with core
+sectors
+\begin{equation}
+    \dim B_L=q^{L^2}.
+\end{equation}
+It includes hard radiation records, hidden purifier records, soft shell
+records, and an emitted-energy accumulator.  The hard marginal in this
+companion model is fixed by the chosen thermodynamic schedule.  The
+nontrivial question is whether the shrinking support and soft records can
+carry unitary information flow in the same finite architecture.
+
+The main small run has
+\begin{equation}
+    L_{\rm init}=3,\qquad q=2,
+\end{equation}
+and uses one fixed eight-emission hard schedule with threshold $\Delta=4$.
+The following table reads off the same trajectory at four times:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+quantity & 2 & 4 & 6 & 8\\
+\midrule
+scrambled $\Svn(R_{\rm full})$ & 1.427 & 3.799 & 2.612 & 1.900\\
+no-scrambling $\Svn(R_{\rm full})$ & 1.017 & 1.384 & 1.592 & 1.698\\
+$\log|\mathrm{supp}({\rm core},A)|$ & 6.947 & 4.159 & 3.584 & 2.197\\
+mean active capacity & 5.666 & 2.716 & 1.154 & 0.401\\
+\bottomrule
+\end{tabular}
+\end{center}
+The support and capacity rows are the same for the two scramblers on this
+schedule.  The scrambled run shows a small rise and turnover of the full
+radiation von Neumann entropy.  The no-scrambling run rises more slowly over
+the same window.  This indicates that the finite turnover observed here is not
+only a dimension-bound effect; routing information into the emitted records
+also matters.
+
+For the six-emission old/new split, the full radiation mutual information is:
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+scrambler & $I({\rm old}:{\rm new})$\\
+\midrule
+Margulis-like & 2.615\\
+grid-like     & 2.624\\
+none          & 1.988\\
+\bottomrule
+\end{tabular}
+\end{center}
+This is a small-system compatibility check.  It does not prove a robust
+thermodynamic-limit Page curve for the sector-rate model.
+
+\section{Inputs, Outputs, and Controls}
+\label{sec:accounting}
+
+The specified inputs are:
+\begin{itemize}[leftmargin=*]
+    \item the sector dimensions $\dim B_n=q^n$;
+    \item the square-root and linear mass laws;
+    \item the energy-resolved sector density of states;
+    \item the transition operators $X_n$;
+    \item the idealized within-sector mixing map;
+    \item the purifier and soft-record registers in the companion model.
+\end{itemize}
+
+The generated outputs in the sector-rate diagnostic are:
+\begin{itemize}[leftmargin=*]
+    \item hard spectrum close to $x^p e^{-x}$ for exponential local density of
+    states;
+    \item acceleration for the square-root mass law after within-sector mixing;
+    \item absence of the same acceleration for the linear mass-law control;
+    \item failure of broad-spectrum thermality alone to preserve acceleration
+    without mixing.
+\end{itemize}
+
+The generated outputs in the companion information-flow diagnostic are:
+\begin{itemize}[leftmargin=*]
+    \item a fixed-schedule radiation entropy rise and turnover in the
+    scrambled run;
+    \item a shrinking core-support bound on the same trajectory;
+    \item enhanced early/late mutual information with scrambling.
+\end{itemize}
+
+The main remaining gap is that these are two linked diagnostics, not one
+coherent simulation.  A stronger model would put the sector-rate dynamics,
+explicit outgoing modes, mixing dynamics, and information-flow diagnostics in
+one state-vector or open-system Hamiltonian calculation.
+
+\section{Toward a Microscopic Origin}
+\label{sec:microscopic}
+
+The sector-rate model specifies the area-like state count and mass law.  A
+natural microscopic derivation would be stronger.  The current live direction
+is a relational connector model: a core with $N$ active constituents and
+$O(N^2)$ pairwise connector modes.  Such a model can supply area-like counting
+from ordinary degrees of freedom.
+
+The spectral constraints are now sharp.  A linear critical connector band gives
+a good simple power proxy and poor post-emission heating.  A quadratic
+($z=2$) connector band gives better heating.  For that quadratic band, the
+emission matrix element must scale approximately as
+\begin{equation}
+    |g(\omega)|^2\sim \omega^{1/2}
+\end{equation}
+to recover $P\sim M^{-2}$ in the local spectral-weight proxy.  This points
+toward type-B Goldstone or ferromagnetic-magnon-like connector physics.
+
+The open microscopic problem is to obtain, from one recognizable Hamiltonian,
+the $O(N^2)$ active connector count, protected quadratic band, emission
+matrix-element scaling, and slow shrinkage after many microscopic emissions.
+
+\section{Discussion}
+
+The sector-rate construction gives a reproducible non-gravitational comparison
+model.  It assembles an area-like sector count, black-hole-like mass law,
+Hamiltonian-derived transition rates, a generated near-thermal hard spectrum,
+and acceleration under the square-root mass law.  The companion
+repeated-interaction diagnostic shows compatible unitary information flow at
+small finite size.
+
+The claim is limited.  The area state count, mass law, sector density of states,
+and within-sector mixing are specified.  The information-flow diagnostic is a
+companion construction rather than the same sector-rate Hamiltonian evolved
+coherently.  The finite Page-like signal is small and seed-limited.  The
+fully coherent autonomous Hamiltonian with outgoing radiation wave packets
+remains to be built.
+
+Within those limits, the model helps separate the evaporation package into
+testable mechanisms.  Thermality comes from energy-resolved density of states;
+acceleration comes from the entropy/mass relation plus mixing; Page-like
+information flow requires a shrinking support and actual routing of
+correlations into emitted records.  Those statements are ordinary finite
+quantum statistical mechanics.  A gravitational derivation still has to supply
+the sector count, the mass law, and the microscopic dynamics that realize them.
+
+\appendix
+
+\section{Reproducibility Notes}
+
+The main scripts and notes are:
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+script & result note or output\\
+\midrule
+\texttt{sim/sector\_hamiltonian\_evaporator.py} &
+\texttt{notes/sector\_hamiltonian\_evaporator\_results.md}\\
+\texttt{sim/sector\_hamiltonian\_energy\_resolved.py} &
+\texttt{notes/sector\_hamiltonian\_energy\_resolved\_results.md}\\
+\texttt{sim/repeated\_interaction\_page\_trajectory.py} &
+\texttt{sim/data/repeated\_interaction\_page\_trajectory.csv}\\
+\texttt{sim/fused\_floquet\_time\_resolved\_scan.py} &
+\texttt{notes/fused\_floquet\_time\_resolved\_results.md}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The energy-resolved sector runs use
+\begin{equation}
+    n=4,\ldots,10,\qquad q=2,\qquad \alpha=8,
+\end{equation}
+two seeds, local and scrambled shrinkage maps, and exponential sector density
+of states with width parameters ${\rm width}_x=2,4,8$.  The displayed tables
+use ${\rm width}_x=4$.
+
+The companion information-flow run uses $L_{\rm init}=3$, $q=2$, threshold
+$\Delta=4$, one fixed eight-emission hard schedule, and the Margulis-like and
+no-scrambling choices.  The full radiation subsystem includes hard records,
+hidden purifier records, and soft shell records.
+
+To regenerate the central CSV outputs from the project root:
+\begin{verbatim}
+python bh-evaporator/sim/sector_hamiltonian_evaporator.py
+python bh-evaporator/sim/sector_hamiltonian_energy_resolved.py
+python bh-evaporator/sim/repeated_interaction_page_trajectory.py
+python bh-evaporator/sim/fused_floquet_time_resolved_scan.py
+\end{verbatim}
+
+\bibliographystyle{apsrev4-2}
+\bibliography{refs}
+
+\end{document}

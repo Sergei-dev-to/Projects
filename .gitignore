@@ -110,3 +110,14 @@ wormhole/wormhole_paper*.txt
 # Keep manuscript source and reproducible scripts instead.
 wormhole/_*_src/
 
+# bh-evaporator local/generated/downloaded artifacts
+bh-evaporator/.codex_tmp/
+bh-evaporator/literature/
+bh-evaporator/**/*.pdf
+bh-evaporator/**/*.npz
+bh-evaporator/**/*Notes.bib
+bh-evaporator/**/arxiv_source/
+bh-evaporator/**/arxiv_source.zip
+bh-evaporator/portable_msi_bundle/
+bh-evaporator/START_RESULT2_MAIN_WINDOWS.bat
+

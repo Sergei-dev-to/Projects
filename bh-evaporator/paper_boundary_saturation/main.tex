@@ -8,7 +8,7 @@
 \usepackage{hyperref}
 \usepackage[final]{microtype}
 
-\title{Boundary Saturation as the Operational Horizon Invariant}
+\title{Emission Operator Participation in Hamiltonian Models of Schwarzschild Evaporation}
 \author{Sergei Slobodov\thanks{sergei@slobodov.com}}
 \date{\today}
 
@@ -25,16 +25,14 @@
 
 \hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
 
-\newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}{Definition}
 
 \newcommand{\be}{\begin{equation}}
 \newcommand{\ee}{\end{equation}}
 \newcommand{\Tr}{\mathrm{Tr}}
-\newcommand{\Smicro}{S_{\rm micro}}
 \newcommand{\Neff}{N_{\rm eff}}
+\newcommand{\Smicro}{S_{\rm micro}}
 \newcommand{\ket}[1]{|#1\rangle}
 \newcommand{\bra}[1]{\langle #1|}
 
@@ -45,322 +43,303 @@
 \maketitle
 
 \begin{abstract}
-% TODO: finalize once the latency lemma (both halves) and the dS leg
-% are proven.
-We propose a geometry-free characterization of horizons with two
-layers.  The model-side invariant is \emph{boundary saturation}: the
-participation number of the emission algebra's channel Gram kernel
-scales as the full entropy, $\Neff \sim S$, whereas ordinary local
-reservoirs coupled through a contact surface obey
-$\Neff \lesssim S^{(d-1)/d}$.  Its exterior certificate is
-\emph{recovery latency}: horizons are thermal systems whose full
-entropy is exterior-recoverable at logarithmic emitted-record latency
---- a diary of entropy $k$ becomes recoverable from the radiation
-within $O(k+\log S)$ emitted quanta in the Hayden--Preskill regime ---
-while ordinary reservoirs are bounded below by interior transport, with
-power-law latency exponents.  The
-criterion is the unique exterior invariant surviving a two-horizon
-comparison: for Schwarzschild the state-count input is exotic
-(super-Hagedorn, unavailable to local systems) while for de Sitter it
-is ordinary --- the cosmological-horizon entropy deficit matches a
-generic finite reservoir through second order, with effective heat
-capacity equal to the horizon entropy --- yet saturation holds in both
-cases and fails for every ordinary thermal system, including the
-reservoir that mimics the de Sitter spectrum.  The latency exponent is
-dimensionless, independent of coupling normalization, and distinguishes
-horizons from systems satisfying every geometric entropy bound,
-separating the criterion from the holographic principle, the stretched
-horizon, and fast-scrambler connectivity.
+How many independent internal sources must feed Hawking radiation in a
+Hamiltonian model of Schwarzschild evaporation?  For a weakly coupled
+finite quantum system, the operators that emit radiation define a
+positive Gram matrix in each microcanonical energy window.  The
+participation ratio of this matrix is a basis-independent effective
+count of independent source directions.
+For four-dimensional massless radiation, a Schwarzschild temperature
+law, and smooth ordinary-strength matrix elements, the Schwarzschild
+luminosity law requires this count to be of order the
+Bekenstein--Hawking entropy.  By comparison, an ordinary local reservoir
+with finite-range dynamics and surface-supported emission operators has
+effective count bounded by the number of microscopic operators on its
+contact surface.  Thus, in this class of models, the degrees of freedom
+counted by the black-hole entropy appear in the operators that emit
+Hawking quanta.
 \end{abstract}
 \end{titlingpage}
 \pagenumbering{arabic}
 
-\section{Introduction: the two-horizon contrast}
-\label{sec:contrast}
+\section{Introduction}
 
-% The contrast engine. Per program decision: this stays foregrounded ---
-% without it, saturation reads as a stretched-horizon slogan.
+Toy models of unitary black-hole evaporation often replace the geometry
+near the horizon by a finite quantum system coupled to radiation
+\cite{HaydenPreskill2007,LeutheusserVanRaamsdonk2017,SlobodovLong,
+SlobodovNote}.  Such a system has three separate ingredients.  Its
+density of states supplies the black-hole entropy, its
+emission operators produce Hawking-like radiation, and its internal
+dynamics makes information recoverable from the late radiation.
 
-Which exterior property makes a thermal system a horizon?  The
-conditional Hamiltonian models of \cite{SlobodovLong,SlobodovNote}
-% TODO: self-citations once companion papers are posted
-reproduce the operational signature package of a Schwarzschild horizon
---- detailed-balance thermality, area-law emission strength, the
-Page/island transition, complementary recovery, state-dependent
-mirrors, and the decoding-complexity barrier --- from three inputs: the
-state count, boundary accessibility of the leading entropy, and
-decoupling.  Each input is measured by one layer of the phenomenology.
+Consider the emission ingredient.  Suppose a system with
+microcanonical entropy $\Smicro(E)$ couples weakly to an exterior field
+through operators $O_\mu$.  The label $\mu$ denotes microscopic source
+operators; several such operators may feed the same resolved radiation
+mode.  In a fixed energy window the matrix of shell-averaged overlaps
+of these operators measures how many independent directions in operator
+space couple to the exterior.  The standard participation ratio of this
+Gram matrix is the effective rank.
 
-Running the same analysis on the cosmological horizon flips one input
-and not the other.  For Schwarzschild, the state count is exotic:
-$\Smicro(E) = cE^2$ is super-Hagedorn and provably unavailable to local
-finite-density systems --- the holographic entropy mismatch
-\cite{Bekenstein1981,tHooft1993,Susskind1995,Bousso2002,
-CohenKaplanNelson1999,Yurtsever2003}.  For de Sitter, the state count
-is ordinary: we show in Section~\ref{sec:reservoir} that the
-Schwarzschild--de Sitter horizon-entropy deficit matches the generic
-expansion of a large finite thermal reservoir through second order,
-with effective heat capacity $C_{\rm eff} = S_0$.  The spectrum input
-is thus impossible for one horizon and trivial for the other.
+In the weak-emission class with massless four-dimensional phase space
+and a smooth matrix-element envelope of the kind used in the eigenstate
+thermalization hypothesis, the Schwarzschild luminosity law fixes the
+effective rank of the emission operator Gram matrix to be of order
+\[
+  \Smicro(E) \sim S_{\rm BH}(E) .
+\]
+An ordinary finite-range many-body system with volume-law entropy and
+surface-supported coupling has effective rank at most proportional to
+its contact surface.  In $d$ spatial dimensions this gives
+\[
+  \Neff \lesssim S^{(d-1)/d}.
+\]
 
-One input survives the comparison unchanged: in both cases the number
-of comparably coupled emission channels scales as the \emph{full}
-entropy, $N \sim S$, whereas an ordinary local reservoir in $d$ spatial
-dimensions, coupled through a contact surface, has volume-law entropy
-and only area-law channels, $N \sim S^{(d-1)/d}$.  We propose this
-\emph{boundary saturation} as the operational horizon invariant:
+In this sense, the stretched-horizon picture has an algebraic content:
+the degrees of freedom counted by the entropy are represented in the
+emission operator algebra.  This is familiar in spirit from
+complementarity, the membrane paradigm, and holography
+\cite{SusskindThorlaciusUglum1993,ThornePriceMacdonald1986,
+tHooft1993,Susskind1995,Bousso2002}; the formulation below is tailored
+to Hamiltonian evaporation models, where one can inspect the coupling
+operators directly.
+
+The same distinction has a standard dynamical expression.  In a local
+reservoir, information deposited in the bulk becomes recoverable from
+exterior operations only after it has had time to reach the contact
+surface, as required by the Lieb--Robinson bound.
+
+\section{Emission Operator Gram Matrix}
+
+Let $\mathcal H_E$ be the microcanonical shell of a finite system and
+let $\Pi_E$ be the projector onto this shell.  A weak coupling to an
+exterior field has the schematic form
 \be
-  \sigma \;\equiv\; \lim \frac{\log \Neff}{\log S} \;=\; 1
-  \qquad \text{(horizon)}, \qquad
-  \sigma = \frac{d-1}{d} \quad \text{(ordinary reservoir)}.
+  H_{\rm int}
+  =
+  \sum_\mu O_\mu\otimes B_\mu ,
 \ee
-The claim has two layers.  \emph{Boundary saturation is the hidden
-model-side condition; recovery latency is its exterior certificate once
-mixing is included.}  The invariant itself is model-side:
-Section~\ref{sec:participation} defines the accessible channel count
-as a spectral invariant of the coupling algebra, immune to channel
-rebasing and coupling rescaling.  Its exterior certificate --- which
-tests saturation jointly with the mixing input, since a saturated but
-slow-mixing system fails it --- is the
-recovery-latency exponent (Lemma~\ref{lem:measurement}): horizons
-are thermal systems whose full entropy is exterior-recoverable at
-logarithmic emitted-record latency, while ordinary reservoirs are
-transport-limited to power-law latency.  The certificate, not flux
-moments, is what an exterior observer measures: shared outgoing modes
-make the channel count invisible to flux statistics --- the same
-collective bottleneck that limits the per-quantum record capacity in
-\cite{SlobodovLong}.
-
-\section{The participation channel count}
-\label{sec:participation}
-
-Let the system shell $\mathcal H_E$ couple to an external continuum
-through operators $\{O_\mu\}$.  Define the \emph{channel Gram kernel}
-at frequency $\omega$,
+where $O_\mu$ acts on the system and $B_\mu$ creates or annihilates
+exterior quanta.  For an emitted quantum of energy $\omega$, define the
+shell-averaged Gram matrix
 \be
   W_{\mu\nu}(E,\omega)
-  = \frac{1}{D_E}\,
-  \Tr\!\left[\Pi_{E-\omega}\,O_\mu\,\Pi_E\,O_\nu^\dagger\right],
+  =
+  \frac{1}{D_E}
+  \Tr\!\left[
+    \Pi_{E-\omega} O_\mu \Pi_E O_\nu^\dagger
+  \right],
 \label{eq:gram}
 \ee
-a positive-semidefinite Hermitian matrix on channel space: the
-shell-averaged Hilbert--Schmidt Gram matrix of the jump operators.
+where $D_E=\Tr\Pi_E$.  This is a positive semidefinite Hermitian matrix.
+It is the Hilbert--Schmidt Gram matrix of the transition operators
+$\Pi_{E-\omega}O_\mu\Pi_E$.
 
-\begin{definition}[Participation channel count]
+\begin{definition}[Effective rank]
 \label{def:neff}
+The effective number of participating emission operators is
 \be
   \Neff(E,\omega)
-  = \frac{(\Tr W)^2}{\Tr W^2}
-  = \frac{\big(\sum_a \lambda_a\big)^2}{\sum_a \lambda_a^2},
+  =
+  \frac{(\Tr W)^2}{\Tr W^2}
+  =
+  \frac{\big(\sum_a\lambda_a\big)^2}{\sum_a\lambda_a^2},
+\label{eq:neff}
 \ee
-the participation ratio of the eigenvalues $\lambda_a$ of $W$.
+where $\lambda_a$ are the eigenvalues of $W$.
 \end{definition}
 
-\begin{lemma}[Invariance and dichotomy]
-\label{lem:invariance}
-(i) $\Neff$ is invariant under unitary rebasing of the channel labels
-and under overall coupling rescaling $W \to \lambda W$; it is a
-spectral invariant of the coupling algebra's image in shell operator
-space.
-(ii) Comparable independent channels of rank $N$ give
-$\Neff \simeq N$; coherent (Dicke-aligned) coupling gives
-$\Neff \simeq 1$ regardless of the microscopic label count.
+This is the usual participation ratio of the spectrum of $W$.  It is
+unchanged by a unitary rebasing of the labels $\mu$ and by an overall
+rescaling of the interaction.  If $N$ independent operators contribute
+with comparable weight, then $\Neff\simeq N$.  If many microscopic
+labels are coherently aligned, the matrix is approximately rank one and
+$\Neff\simeq 1$.
+
+The distinction between source operators and radiation modes is
+important.  At Schwarzschild temperature the typical wavelength is of
+order the black-hole radius, so the number of resolved angular modes per
+thermal time is order one.  The effective rank in Eq.~\eqref{eq:neff}
+counts independent directions in the system operator algebra, not
+instantaneous radiation-mode multiplicity.
+
+\section{Schwarzschild Scaling}
+
+For weak emission, the inclusive power takes the golden-rule form
+\be
+  P(E)
+  \propto
+  \int_0^\infty d\omega\,
+  \omega^{p+1}\,\Tr W(E,\omega),
+\label{eq:power}
+\ee
+where $p=2$ for four-dimensional massless radiation.  The
+microcanonical density of states supplies the thermal factor through
+the ratio of final and initial shell dimensions.  If the matrix
+elements obey a smooth eigenstate-thermalization-type envelope, the
+thermal integral gives the
+usual scaling
+\be
+  P(E) \propto \Neff(E)\,\bar\lambda(E)\,T(E)^{p+2},
+\label{eq:power-scaling}
+\ee
+where
+\be
+  \bar\lambda(E,\omega)
+  =
+  \frac{\Tr W(E,\omega)^2}{\Tr W(E,\omega)}
+\ee
+is the weighted mean eigenvalue of the Gram matrix, evaluated in the
+thermal window $\omega\sim T$.
+
+\begin{lemma}[Schwarzschild luminosity and effective rank]
+\label{lem:schwarzschild}
+Assume four-dimensional massless phase space, $T(E)\propto E^{-1}$,
+and an eigenstate-thermalization-type emission envelope in which
+$\bar\lambda(E,\omega)$
+has no hidden power-law dependence on $E$ across the thermal window.
+Then the Schwarzschild luminosity law $P(E)\propto E^{-2}$ is equivalent
+to
+\be
+  \Neff(E) \propto E^2 \propto S_{\rm BH}(E).
+\ee
 \end{lemma}
 
-\emph{Proof.}  (i) Both traces are basis-independent, and the ratio is
-degree-zero in $W$.  (ii) Flat spectrum of rank $N$:
-$(N\lambda)^2/(N\lambda^2) = N$; rank one: $\lambda^2/\lambda^2 = 1$.
+\emph{Proof.}
+With $p=2$, Eq.~\eqref{eq:power-scaling} gives
+$P(E)\propto \Neff(E)\bar\lambda(E)T(E)^4$.  Since
+$T(E)\propto E^{-1}$ and $\bar\lambda$ is assumed to carry no additional
+power of $E$, the condition $P(E)\propto E^{-2}$ is equivalent to
+$\Neff(E)\propto E^2$.  For a Schwarzschild black hole
+$S_{\rm BH}\propto E^2$.
 \hfill$\square$
 
-% OBSTRUCTION (2026-06-12, see notes/boundary_saturation_invariant.md
-% section 5.5): the flux-statistics measurement of N_eff FAILS for
-% shared-mode coupling --- HBT measures the radiation-mode
-% participation (O(1) for Schwarzschild: s-wave dominance), not the
-% source Gram-kernel participation. N_eff remains the correct
-% model-side invariant (Lemma~\ref{lem:invariance} stands); its
-% exterior certificate is the recovery-latency exponent.
-\begin{lemma}[Exterior certificate: recovery latency]
-\label{lem:measurement}
-% TODO: horizon half from the long paper's Hayden-Preskill section
-% (latency O(k + log S) quanta, conditional on mixing + thermal tie);
-% bath half is the paper's conditional move: a lower bound showing
-% bulk-deposited information in a finite-range d-dimensional reservoir
-% reaches surface-supported jump operators only after a power-law-in-S
-% time. Safe theorem: Lieb-Robinson ballistic ~S^{1/d}; physical
-% expectation: diffusive ~S^{2/d}. Either suffices for the
-% power-law-vs-logarithmic dichotomy.
-A horizon-class system makes every bit of its entropy
-radiation-recoverable at polylogarithmic latency: a diary of entropy
-$k$ is recoverable after $O(k+\log S)$ emitted quanta in the
-Hayden--Preskill regime.  A local finite-range reservoir coupled
-through a contact surface has bulk-recovery latency bounded below by
-interior transport: rigorously, a Lieb--Robinson ballistic lower bound
-scales as $S^{1/d}$ for a bulk deposit at radius scale, while diffusive
-thermal transport gives the physical expectation $S^{2/d}$.  The latency
-exponent --- a count of emitted quanta, dimensionless and independent
-of coupling normalization --- is the operational form of the
-saturation criterion.
-\end{lemma}
+The lemma is a statement about the weak-emission class.  Different
+models may put the required powers of $E$ into individual matrix
+elements, coherent enhancement, phase space, or a different
+factorization of the interaction.  Within Eq.~\eqref{eq:power}, the
+luminosity fixes the effective rank of the source operator Gram matrix;
+the number of labels chosen to write the interaction is basis-dependent.
 
-\section{The compressed exterior channel}
-\label{sec:compression}
+\section{Local Reservoirs With Surface Coupling}
 
-Why must the certificate be temporal?  Because the horizon condition
-itself compresses the exterior channel.  A thermal emitter of size $R$
-at temperature $T$ radiates through $\sim (RT)^{d-1}$ modes per
-coherence time $\beta$; the horizon condition $T \sim 1/R$ --- the
-temperature law for Schwarzschild, Gibbons--Hawking for de Sitter ---
-makes this $O(1)$: horizons are one-wavelength systems.  The channel is
-moreover critically provisioned: $O(1)$ nats per $\beta$ over
-$\tau/\beta \sim S$ emission steps carries exactly the entropy, with no
-slack.  This is the channel-capacity face of the statement that black
-holes are one-dimensional information conduits
-\cite{BekensteinMayo2001,Pendry1983}.  An exterior observer therefore
-sees $O(1)$ numbers at any instant; all structure beyond that resides
-in correlations across the emitted record, which is why boundary
-saturation is invisible to flux moments and why the certificate of
-Lemma~\ref{lem:measurement} is a latency exponent.
+Consider an ordinary many-body reservoir on a $d$-dimensional lattice
+$\Lambda$ with finite local Hilbert space and finite-range Hamiltonian.
+Let its entropy be extensive, $S=s|\Lambda|$, in a thermal window.
+Assume the exterior field couples through operators supported in a
+surface shell $\partial\Lambda$ of fixed microscopic thickness.
 
-Compression together with unitarity forces \emph{serialization}, not
-mixing: a tape-readout model purifies $S$ bits through a single mode
-over $O(S)$ emissions using time-bin orthogonality, with no fast
-scrambling.  What forces mixing is the latency demand itself ---
-% TODO (theorem target): compressed channel + state-independent
-% evaporation + Hayden-Preskill latency O(k + log S) for arbitrarily
-% deposited diaries ==> fast routing/mixing. Eventual purification needs
-% only tape reading; rapid recoverability of a fresh deposit requires
-% the deposited information to reach the few coupling directions
-% within O(k + log S) emitted records.
-rapid recoverability of arbitrarily deposited information requires the
-deposit to reach the few coupling directions within $O(k+\log S)$
-emitted records for a diary of entropy $k$, which ordinary local baths
-cannot achieve and horizons achieve only when accessibility and mixing
-act together.
-Compression is thus the reason the two inputs are exterior-visible
-only as a joint temporal exponent.
-
-\section{The Schwarzschild leg}
-\label{sec:schwarzschild}
-
-% Invariant restatement of Prop 2 of the long paper: luminosity
-% measures N_eff of the Gram kernel; the comparable-channel hypothesis
-% is absorbed into the definition.
-
-\begin{lemma}[Luminosity measures saturation]
-\label{lem:schwarzschild}
-Within the weak-emission microcanonical class with massless $p=2$ phase
-space, the Schwarzschild luminosity law $P \propto E^{-2}$ holds if and
-only if $\Neff(E) \propto E^2 \propto \Smicro(E)$, i.e.\ $\sigma = 1$.
-\end{lemma}
-
-% TODO: proof by restating the inclusive power integral of
-% [long paper, Prop 2] with N_eff in place of the comparable-channel
-% count; the if-and-only-if survives because N_eff is exactly the
-% participation count that the inclusive rate sums.
-
-\section{The ordinary-reservoir bound}
-\label{sec:reservoir-bound}
-
-\begin{lemma}[Contact scaling]
-\label{lem:contact}
-For a local finite-range Hamiltonian in $d$ spatial dimensions at
-temperature $T$, coupled to the continuum through a contact surface of
-area $A$: the jump operators are supported on surface sites, so
-$\mathrm{rank}\,W \lesssim A/\lambda_T^{d-1}$, while
-$S \sim V/\lambda_T^d$.  Hence
+\begin{lemma}[Surface-supported emission operators]
+\label{lem:surface}
+For fixed interaction range and local Hilbert-space dimension,
 \be
-  \Neff \;\lesssim\; S^{(d-1)/d},
+  \Neff \le C\,|\partial\Lambda|
 \ee
-strictly below saturation.
-\end{lemma}
-
-% TODO: careful thermal-window counting (which surface operators carry
-% weight in the frequency window; log factors). This is the converse
-% half that makes the criterion nontrivial.
-
-\section{The de Sitter leg}
-\label{sec:reservoir}
-
-\subsection{The reservoir lemma}
-
-% Imported from notes/ds_operational_horizon.md. Claim ONLY the
-% interpretation; the SdS expansion itself presumably appears in SdS
-% thermodynamics literature (check Padmanabhan, SdS effective
-% temperature papers) --- cite when found.
-
-\begin{lemma}[The de Sitter state count is an ordinary reservoir]
-\label{lem:reservoir}
-Let a finite system have smooth microcanonical entropy with
-$S_R(E_{\rm tot}) = S_0$, $S_R' = \beta$, and heat capacity $C$.  A
-patch holding energy $E$ of the shared total sees
+for a constant $C$ independent of the reservoir size.  Consequently,
+for a regular $d$-dimensional family,
 \be
-  \rho(E) \propto
-  \exp\Big[S_0 - \beta E - \frac{E^2}{2T^2C} + \cdots\Big].
-\ee
-The exact Schwarzschild--de Sitter cosmological-horizon entropy expands
-as ($m = M/\ell$, $r_c = \ell(1 - m - \tfrac32 m^2 + \cdots)$)
-\be
-  S_{\rm hor}(M) = \pi r_c^2 = S_0 - \beta M - 2\pi M^2 + \cdots,
-\ee
-which is the reservoir form with
-\be
-  C_{\rm eff} = \frac{1}{4\pi T_{\rm dS}^2} = \pi\ell^2 = S_0 .
+  \Neff \lesssim S^{(d-1)/d}.
 \ee
 \end{lemma}
 
-The first-order entropic suppression is classical
-\cite{GibbonsHawking1977,CLPW2022}; the content here is the
-second-order finite-reservoir identification: through this order the
-de Sitter state-count input is generic bath thermodynamics with an
-unremarkable effective heat capacity of order the entropy.  A checkable
-corollary: patch energy fluctuations
-$\langle\Delta E^2\rangle = C_{\rm eff}T^2 = S_0 T^2$.
-% TODO: verify the fluctuation corollary against known dS results.
+\emph{Proof.}
+Each emission operator is supported on a bounded-size patch of the
+surface shell.  The vector space spanned by all such few-body operators
+has dimension at most $C|\partial\Lambda|$, with $C$ depending on the
+range and local dimension.  The rank of the Gram matrix
+Eq.~\eqref{eq:gram} is bounded by this dimension, and the participation
+ratio never exceeds the rank.  For a regular lattice,
+$|\partial\Lambda|\sim |\Lambda|^{(d-1)/d}$, while
+$S\sim |\Lambda|$.
+\hfill$\square$
 
-\subsection{Saturation at the cosmological horizon}
+Lemma~\ref{lem:schwarzschild} gives an entropy-sized effective rank for
+Schwarzschild emission.  Lemma~\ref{lem:surface} gives a surface-sized
+operator space for a local bulk reservoir with contact coupling.  A very
+thin reservoir, or a system whose entropy is already localized on the
+emitting surface, may have entropy-sized participation; this is the
+stretched-horizon structure in Hamiltonian language.
 
-% TODO: the dS leg in latency form (per Lemma~\ref{lem:measurement}):
-% equilibrium Hayden-Preskill --- perturb the static patch, ask after
-% how many exchanged Gibbons-Hawking quanta the perturbation is
-% recoverable from the horizon flux. Horizon register: O(log S_0)
-% latency; the ordinary bath of Lemma~\ref{lem:reservoir} with surface
-% contact: transport-limited power law. Check dS Hayden-Preskill
-% literature before drafting.
+\section{Dynamical Counterpart}
 
-\section{What saturation is not}
-\label{sec:ancestors}
+Let a local reservoir couple to an exterior apparatus through the same
+surface shell, with uniformly bounded local interactions.  Deposit a
+small quantum register in a bulk region at distance $L$ from that
+surface, and allow the exterior apparatus arbitrary measurements,
+ancillas, and feedback through the surface coupling.  Lieb--Robinson
+bounds \cite{LiebRobinson1972,HastingsKoma2006,NachtergaeleSims2010}
+imply that exterior observables have exponentially small commutator with
+the deposited register until times of order $L/v$, where $v$ is the
+Lieb--Robinson velocity.  Equivalently, the exterior record is nearly
+independent of the deposited quantum information until the light cone
+reaches the surface.
 
-% Referee-proofing. Each ancestor differs in kind.
+For a deposit at radius scale in a reservoir with extensive entropy,
+$L$ scales as $S^{1/d}$ in thermal-cell units.  The corresponding
+exterior recovery time is therefore power-law in $S$.  In the
+Hayden--Preskill recovery problem, a small register thrown into an
+already scrambled black hole becomes recoverable from the later
+radiation after $O(k+\log S)$ emitted quanta, assuming the decoder holds
+the earlier radiation and the usual decoupling hypotheses apply
+\cite{HaydenPreskill2007,SlobodovLong}.  This comparison uses locality
+on the reservoir side and scrambling on the black-hole side.  The
+effective-rank calculation above concerns the emission algebra itself.
 
-\emph{Stretched horizon} \cite{SusskindThorlaciusUglum1993}: a
-postulate about where entropy resides, presupposing the geometry;
-saturation is a measurable exponent, statable for systems with no
-metric.
-\emph{Membrane paradigm} \cite{ThornePriceMacdonald1986}: operational
-surface transport; no entropy-versus-channel-count statement.
-\emph{Holographic principle}
-\cite{tHooft1993,Susskind1995,Bousso2002}: a geometric \emph{bound}
-$S \le A/4$; saturation is a dynamical \emph{equality} about the
-coupling algebra --- an ordinary bath satisfies every holographic bound
-and violates saturation.
-\emph{Fast-scrambler connectivity} \cite{SekinoSusskind2008}: a
-statement about the internal interaction graph (the mixing input of
-\cite{SlobodovLong}); saturation concerns the external coupling
-algebra (the emission input).  The two are distinct inputs and the
-likeliest point of confusion.
+Recovery has two separable costs: the number of emitted quanta after
+which the deposited information is present in the exterior record at
+all, and the difficulty of extracting it from that record.  The
+comparison above concerns only the first.  The second is an independent
+axis: with the dynamics known, the Hayden--Preskill decoder can be made
+efficient \cite{YoshidaKitaev2017}, while decoding generic Hawking
+radiation is expected to be computationally infeasible
+\cite{HarlowHayden2013}, with a conjectured geometric criterion for the
+hard instances \cite{BrownGharibyanPeningtonSusskind2020}.  The two
+exponents can therefore separate: a system may attain logarithmic
+arrival latency while the extraction cost remains exponential.  The
+comparison by arrival latency is insensitive to this distinction, which
+is set by decoder resources rather than by the emission algebra.
 
 \section{Discussion}
-\label{sec:discussion}
 
-% TODO after lemmas close: consequences ---
-% (1) saturation as the geometry-free operational definition of
-%     "horizon", with the two-horizon contrast as the argument it is a
-%     law and not a slogan;
-% (2) the residue question it sharpens: why does gravity put all the
-%     entropy where the coupling is (microscopic origin = open problem
-%     1 of the long paper, both horizons);
-% (3) relation to the constraint/Gauss-law residue (de Sitter Stage B,
-%     separate paper).
+In a weak Hamiltonian emission model, the Schwarzschild luminosity law
+fixes the effective rank of the emission operator Gram matrix.  With
+ordinary-strength smooth matrix elements and four-dimensional phase
+space, that rank is of order $S_{\rm BH}$.  A local reservoir with
+surface-supported couplings has effective rank bounded by its surface
+area in microscopic units.  The same surface restriction gives the
+usual power-law locality bound on exterior recovery of bulk-deposited
+quantum information.
+
+The exterior certificate for an entropy-sized participation count is
+necessarily temporal.  At Schwarzschild temperature the wavelength is
+of order the horizon radius, so the radiation resolves an order-one
+number of angular modes per coherence time
+\cite{Page1976,BekensteinMayo2001,Pendry1983}: instantaneous emission
+statistics have order-one rank however large $\Neff$ may be.  A
+stationary horizon offers a second exterior window.  For Rindler
+wedges, eternal black holes, and large anti--de Sitter black holes, the
+exterior state is thermal in the exact KMS sense, and stationary
+response and fluctuation spectra are tied to interior state structure
+by the equilibrium dictionary
+\cite{BisognanoWichmann1976,Israel1976,GibbonsHawkingAction1977,
+HawkingPage1983}.  Schwarzschild evaporation sits on the other side of
+that divide: at negative heat capacity the canonical ensemble does not
+exist, and there is no stationary KMS state of the exterior field to
+which long-time spectral data could be referred.  The exterior instead
+receives a single non-stationary record delivering of order one nat per
+coherence time over of order $S$ emissions.  Whatever entropy-sized
+structure is exterior-visible is therefore visible only in the time
+ordering of that record, which is why the exterior counterpart of the
+participation statement is the recovery-latency comparison of the
+preceding section rather than a flux moment.
+
+The Bekenstein--Hawking density of states and the scrambling dynamics
+enter as separate inputs.  Once those inputs are assumed, the entropy
+counted by the black hole is also available to the emission operator
+algebra.  In stretched-horizon language, the entropy is carried by
+degrees of freedom that directly participate in absorption and emission.
+In ordinary local-reservoir language, this is a special surface
+structure beyond thermality alone.
 
 \bibliographystyle{unsrturl}
 \bibliography{refs}

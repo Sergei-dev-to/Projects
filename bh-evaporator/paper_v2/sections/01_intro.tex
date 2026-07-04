@@ -1,0 +1,37 @@
+\section{Introduction}
+
+Black-hole evaporation is often discussed as a single phenomenon, but the standard story bundles together ingredients that are logically distinct. Some are intrinsically gravitational: the existence of a causal horizon, the Bekenstein-Hawking area law, semiclassical backreaction, quantum extremal surfaces, islands, and replica-wormhole saddle points. Others are not intrinsically gravitational: thermal-looking reduced states can arise from pure states by typicality or eigenstate thermalization, finite unitary systems generically produce Page-like entanglement curves, and negative heat capacity occurs in finite microcanonical systems with convex entropy regions.
+
+This paper asks how far one can get without geometry. The goal is not to simulate a black hole literally, and not to replace the island formula. The goal is to build a control model: a finite, non-gravitational quantum system that reproduces selected black-hole-like thermodynamic and information-flow signatures while making explicit which assumptions are doing the work.
+
+The model has two layers. The first is a thermodynamic engine. We assume or engineer a finite chaotic core whose microcanonical entropy $S(E)$ has a convex window,
+\begin{equation}
+  S''(E)>0,
+\end{equation}
+so that the microcanonical heat capacity is negative. In this window the core heats up as it loses energy. Coupled to a radiation channel with a suitable in-band spectral density, this produces an accelerating evaporation law analogous to the Schwarzschild scaling.
+
+The second layer is a unitary information-flow model. In the minimal Hamiltonian version, the core is coupled repeatedly to fresh outgoing radiation bins. For each bin, a collision Hamiltonian lowers the core by one coarse energy shell while exciting one of several outgoing radiation labels. The full collision is unitary; the reduced core evolves by the Kraus operators obtained from that unitary. This gives a direct computation of the radiation Renyi entropy, rather than an imposed Page curve.
+
+At the level of Hilbert-space bookkeeping, the emission map has the form
+\begin{equation}
+  \Hcore(E_m)\longrightarrow
+  \Hcore(E_m)\otimes |0\rangle
+  \oplus
+  \Hcore(E_{m+1})\otimes {\rm span}\{|1\rangle,\ldots,|M\rangle\},
+\end{equation}
+where $|0\rangle$ denotes no emission and the nonzero labels are outgoing radiation modes. This layer keeps the global state pure. Early radiation can be thermal-looking after coarse graining, while late radiation can purify after the effective radiation Hilbert space becomes comparable to the remaining core. The resulting Page-like behavior is a finite-dimensional unitary effect, not a gravitational entropy prescription.
+
+The distinction matters because Page curves alone are not diagnostic of gravity. Random states, chaotic circuits, tensor-network models, and open-system analogues already show that Page-like entropy dynamics can occur without spacetime. What is less often bundled into the same non-gravitational model is the thermodynamic side of black-hole evaporation: negative heat capacity, increasing temperature during energy loss, and accelerating power. Our contribution is to combine these thermodynamic ingredients with unitary information flow in a single control architecture.
+
+The intended lesson is therefore limited but sharp. If this model reproduces a black-hole-like collection of signatures, then those signatures should not be treated as uniquely gravitational. What remains gravitational is the mechanism by which semiclassical gravity computes the fine-grained entropy: the area term, generalized entropy, extremization over quantum extremal surfaces, islands, and replica-wormhole saddles.
+
+\subsection{Contributions}
+
+The paper makes five contributions:
+\begin{enumerate}[leftmargin=*]
+\item We define a geometry-free evaporator architecture based on a finite scrambling core with a convex microcanonical entropy window.
+\item We derive the thermodynamic scaling dictionary connecting negative heat capacity, $T(E)\propto E^{-1}$, engineered emission spectra, $P(E)\propto E^{-2}$, and $E(t)\simeq(E_0^3-3\beta t)^{1/3}$.
+\item We construct an engineered multi-mode collision Hamiltonian whose weak-coupling dynamics shows an accelerating emission window for convex entropy profiles, while a linear-entropy control decelerates.
+\item We identify a concrete obstruction in one-channel Hamiltonian evaporators: shrinking shell dimensions create dark subspaces unless the outgoing channel has enough independent modes.
+\item We position the model as a control case for black-hole information flow, clarifying what it does not contain: no metric, no causal horizon, no area law, no QES, no islands, and no replica wormholes.
+\end{enumerate}

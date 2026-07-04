@@ -42,6 +42,20 @@ violated by systems that satisfy every geometric entropy bound. None of
 the four ancestors (stretched horizon, membrane paradigm, holographic
 bound, fast-scrambler connectivity) has these properties — see §5.
 
+**Updated framing (2026-06-21): useful ancestry, not avoidance.**
+The old membrane/complementarity picture says that, for the exterior
+observer, the horizon behaves as an entropy-carrying absorbing and
+emitting surface. Boundary saturation is the quantitative version of
+that intuition: it asks how much of the entropy-counting Hilbert space is
+actually exposed to the exterior coupling algebra. The ancestors are
+useful rather than threatening: stretched horizon supplies the
+absorbing/re-emitting surface picture, membrane paradigm supplies
+surface response, holography supplies the area state count, absorption
+universality supplies the area-strength exterior coupling, and
+Bekenstein-Mayo supplies the compressed one-dimensional flow. The added
+move is to combine them into a source-side participation invariant and
+compare it with ordinary reservoirs.
+
 ## 1. Lemma 1: the participation channel count
 
 **Setup.** A system shell $\mathcal H_E$ couples to an external
@@ -57,6 +71,30 @@ shell-averaged Hilbert–Schmidt Gram matrix of the jump operators).
 $$N_{\rm eff}(E,\omega) = \frac{(\mathrm{Tr}\,W)^2}{\mathrm{Tr}\,W^2}
 = \frac{\big(\sum_a \lambda_a\big)^2}{\sum_a \lambda_a^2},$$
 the participation ratio of the eigenvalues $\lambda_a$ of $W$.
+
+**Current proof target after the literature guard (2026-06-20).**
+The result worth protecting is not a new formulation of Hayden-Preskill
+recovery, fast scrambling, or the membrane paradigm. It is the
+source-side separation:
+
+```text
+boundary saturation:
+    sigma_acc = limsup log N_eff(source Gram kernel) / log S = 1
+
+ordinary local reservoir with contact coupling:
+    sigma_acc <= (d-1)/d
+```
+
+Here "source-side" means that the channel labels are the microscopic
+operators in the emission Hamiltonian. They are not outgoing radiation
+modes. A shared long-wavelength exterior mode may compress the radiation
+coherence matrix to O(1) rank while the source Gram kernel still has
+N_eff ~ S. This is exactly why the flux/HBT measurement route failed,
+and why the theorem must be stated as a coupling-algebra invariant.
+
+The exterior latency theorem remains useful, but it is downstream: it
+certifies the obstruction operationally once mixing/export assumptions
+are included. It is not the invariant itself.
 
 **Lemma 1 (invariance and dichotomy).**
 (i) $N_{\rm eff}$ is invariant under unitary rebasing of the channel
@@ -97,9 +135,14 @@ dimension of the surface operator space active in a thermal window,
 $\mathrm{rank}\,W \lesssim A_{\rm contact}/\lambda_T^{d-1}$, while
 $S \sim V/\lambda_T^d$. Hence
 $$N_{\rm eff} \lesssim S^{(d-1)/d},$$
-i.e. $\sigma \le (d-1)/d$ strictly below saturation. *To do: state the
-thermal-window counting carefully; this is the converse half that makes
-the criterion nontrivial.*
+i.e. $\sigma \le (d-1)/d$ strictly below saturation. This is the
+converse half that makes the criterion nontrivial. The draft now states
+it at lattice scale: few-body surface operators span at most
+$c_r|\partial\Lambda|$ source directions, participation never exceeds
+rank, and the thermal-window restriction can only reduce the count or
+tighten constants. The theorem is therefore insensitive to coupling
+normalization, source-basis choice, outgoing-mode rank, and later
+decoder processing.
 
 ## 4. dS leg
 
@@ -115,6 +158,15 @@ Hayden-Preskill literature and formulate the equilibrium recovery
 protocol.*
 
 ## 5. Ancestors (referee-proofing section)
+
+Current stance: use the ancestors constructively. Stretched horizon and
+complementarity supply the exterior story; membrane paradigm supplies the
+surface-response language; holography supplies the area state count;
+absorption universality supplies the area-strength exterior coupling;
+Bekenstein-Mayo/Pendry supplies the compressed one-dimensional flow; fast
+scrambling supplies the internal mixing input. Boundary saturation combines
+these into a source-side participation invariant and compares it with
+ordinary reservoirs.
 
 Each adjacent idea differs in kind:
 - **Stretched horizon (Susskind–Thorlacius–Uglum):** postulate about
@@ -250,6 +302,10 @@ exterior-visible only as a joint temporal exponent.**
 
 ## 5.7 Stress-test program and taxonomy (Codex discussion + AdS check, 2026-06-13)
 
+See also `notes/horizon_property_separation_program.md` for the
+standalone separation-program version: predicates, witness systems,
+theorem candidates, and the novelty audit.
+
 **Where the road leads (endpoint articulation, Codex):** an operational
 theory/taxonomy of horizons — ordinary reservoirs (power-law latency) /
 fast scramblers without saturation / saturated-but-slow systems /
@@ -369,19 +425,148 @@ question — why is gravity's bound state a permutation-symmetric,
 mode-degenerate condensate: an anonymous channel operating at
 capacity.
 
+## 5.9 T2 literature positioning + proof spec (Codex pass, 2026-06-13)
+
+**Verdict:** the exact alternatives theorem is not a standard named
+result; the ingredients are known. Do NOT pitch as "horizons anonymize
+information" (too close to no-hair / stretched-horizon / scrambling
+folklore). The new value is the **trichotomy collapse**: compressed
+anonymous emission cannot be simultaneously source-local, slow-routing,
+and fast-recovering — one of locality or slow routing has to go.
+
+**Anchor list (for the T2 session's related-work section):**
+- Hayden–Preskill 0708.4025 — proves fast recovery *assuming* the
+  scrambling encoder; T2 asks what makes that assumption possible
+  under a compressed anonymous channel.
+- Sekino–Susskind 0808.2096 — motivates the routing scale; T2 makes
+  fast scrambling a forced branch, not a benchmark.
+- Susskind–Thorlacius–Uglum hep-th/9306069 — anonymizer intuition is
+  old; cite, don't claim.
+- Braunstein–Pati no-hiding gr-qc/0603046 — related background (info
+  absent from one subsystem is in the complement); lacks locality,
+  source addresses, compression, latency.
+- Bekenstein–Mayo gr-qc/0105055 — the compression premise; T2's
+  novelty is coupling compression to anonymity + HP latency.
+- HP-in-Hamiltonians, arXiv 2303.02010 — HP recovery is a stronger
+  diagnostic than local OTOC growth; supports latency-over-spectral.
+- Raju 2012.05770 — the nonlocal-encoder branch's home: gravity makes
+  interior info available through constraints; in T2 it is the second
+  alternative (the exterior algebra was never source-local).
+
+**Framing map (use verbatim-ish):** HP proves fast recovery assuming
+scrambling; fast-scrambler lore motivates the required routing scale;
+LR bounds (Theorem 1) show ordinary local reservoirs fail it; Raju/HoI
+supplies the nonlocal alternative; the anonymity theorem identifies why
+those are the two branches once the exterior channel has no source
+return address.
+
+**No-smuggling proof spec (the hypotheses must be independently
+checkable so "nonlocal encoder" is not defined as "whatever else"):**
+1. *Source-local access* = property of the jump operators alone:
+   supports of $O_\mu$ are $O(1)$-local patches of the source algebra
+   (checkable before any dynamics).
+2. *Fast routing* = property of the internal dynamics alone: evolved
+   deposit operators develop overlap with the coupling algebra within
+   the latency window (operator-growth statement, quantifiable via the
+   Gram overlap of $V(t)$ against the emission algebra).
+3. *Theorem obligation:* with (1) source-local access and NOT-(2), show
+   latency fails — structurally Theorem 1's argument with the geometric
+   light cone replaced by the operator-growth cone of the actual
+   internal dynamics.
+
+**Candidate proof path (new, from the tape-readout autopsy):** latency
+≥ routing time, because information must reach the coupling directions
+before it can enter the record (data-processing). The tape readout
+evaded this because each cell was *pre-aligned* with a future record
+direction (its own time-bin) — zero routing needed. Anonymity =
+permutation covariance = **no cell is preferentially aligned with any
+record direction**, so the deposit must be rotated into the collective
+coupling directions before emission can carry it: routing is
+unavoidable, and the only question is who performs the rotation — the
+internal dynamics (branch 1) or the emission map itself (branch 2,
+which then cannot be source-local). This turns the dichotomy from a
+disjunction-by-exhaustion into a conservation statement about where
+the rotation happens.
+
+## 5.10 Temporal-certificate forcing argument + decoder-complexity axis (2026-07-03, in paper)
+
+Two additions to `paper_boundary_saturation/main.tex` from the
+hyperbolic/elliptic locality discussion (Carroll–Singh mad-dog thread).
+
+**(a) Why the certificate is temporal — forcing argument, Discussion
+section.** Upgrades §5.5's "flux moments failed" to "they had to fail":
+stationary horizons (Rindler, eternal, large AdS) admit an equilibrium
+dictionary — exact KMS state, Euclidean saddle, Bisognano–Wichmann /
+Israel TFD — that ties stationary response/fluctuation spectra to
+interior state structure, so state-side structure has a *spectral*
+exterior representation there. Schwarzschild evaporation is on the
+other side of the Hawking–Page divide: negative heat capacity ⇒ no
+canonical ensemble, no stationary KMS state to refer long-time spectral
+data to. Combined with compression (O(1) modes per coherence time), the
+only exterior-visible face of entropy-sized structure is the time
+ordering of the emitted record ⇒ latency certificates are forced, not
+chosen. Independently corroborates the §5.7 compression/Hawking–Page
+divide. New refs: BisognanoWichmann1976, Israel1976,
+GibbonsHawkingAction1977.
+
+**(b) Two-exponent remark, end of Dynamical Counterpart section.**
+Recovery separates into arrival (decoupling latency; our axis) and
+extraction (decoder complexity; Yoshida–Kitaev efficient with known
+dynamics, Harlow–Hayden hardness, Python's-lunch geometric criterion).
+The exponents can diverge — log-arrival with exponential extraction is
+a possible class — and the paper now states explicitly that its
+classification is by arrival latency, insensitive to decoder resources.
+Connects to the access-profile note's decoder-complexity axis
+(`paper_access_latency_classification`); taxonomy row for §5.7 if the
+taxonomy section is ever written out.
+
 ## 6. Open items, in order (revised after §5.5)
 
-1. **Latency lemma, horizon half:** restate the long paper's HP
-   recovery in latency form — diary recoverable after O(k + log S)
-   quanta, conditional on mixing + thermal tie.
-2. **Latency lemma, bath half (the new conditional move):**
-   lower bound on the time for bulk-deposited information to become
-   available to surface-supported jump operators in a finite-range
-   d-dim system. Safe theorem: Lieb–Robinson ballistic, ~S^{1/d};
-   physical expectation: diffusive, ~S^{2/d}. Either separates
-   power-law from logarithmic, which is all the dichotomy needs.
-3. dS leg restated in latency terms (perturbation of the static patch;
-   equilibrium version of HP — check dS Hayden–Preskill literature).
+1. **Latency lemma, horizon half: DONE 2026-06-13** — Lemma
+   "Horizon half: logarithmic latency" in the Schwarzschild-leg
+   section, proof by import (decoupling budget k + 2log(1/ε) nats at
+   O(1) nats/quantum, plus O(log S) re-scrambling quanta conditional
+   on the thermal tie; HP regime removes the Page-time wait). Also
+   closed same day: Schwarzschild luminosity lemma proof via the exact
+   identity Tr W = N_eff·λ̄ with λ̄ ≡ Tr W²/Tr W (the class hypothesis
+   "λ̄ = standard ETH envelope" is the invariant form of comparable
+   channels); contact-scaling lemma proof (few-body surface operators
+   ⇒ rank W ≤ c_r|∂Λ| ~ S^{(d-1)/d}, participation ≤ rank,
+   lattice-scale counting suffices for the exponent); deposit-symmetry
+   remark (fourth remark after Theorem 1); validity clause
+   k + log(|B|/ε) = o(S^{1/d}) added to Theorem 1; abstract advertises
+   state-independence.
+2. **Latency lemma, bath half (the new conditional move): DONE
+   2026-06-12** — Theorem 1 (+ exterior-light-cone lemma + no-bulk-
+   fraction corollary) in `paper_boundary_saturation/main.tex`,
+   ordinary-reservoir section. Proof architecture: exterior (field +
+   apparatus + ancillas, arbitrary time-dependent H_E = adaptive
+   protocols via Stinespring) attached as a single auxiliary vertex to
+   the interaction graph; arbitrary on-site H_E removed by interaction
+   picture, so LR holds with constants set by (J, g, r, d) only; every
+   path exterior→bulk traverses the bulk, distance ≥ L/a. Twirl over
+   the deposit region converts the LR commutator into Q–E decoupling
+   ‖ρ_QE − π⊗ρ_E‖₁ ≤ e^{2k} c₀|B||∂Λ| e^{−(L−vt)/ξ}; the no-recovery
+   converse is the long paper's overlap argument. Latency
+   t ≥ (L − ξ[2k + log(c₀|B||∂Λ|/ε)])/v — k, log|B|,
+   log|∂Λ|, log(1/ε) enter *additively* against a power-law budget
+   (mirrors the O(k + log S) horizon structure). Key referee-proofing:
+   the bound is operator-norm,
+   state-independent ⟹ survives arbitrary decoder pre-shared
+   entanglement — the "old-bath HP" objection dies; locality, not
+   entanglement budget, separates the classes (BHV no-signaling).
+   Corollary kills surface-deposit objections: fraction of entropy
+   recoverable at latency τ ≲ τ·S^{−1/d}, so any fixed fraction costs
+   τ ≳ S^{1/d}. Diffusive S^{2/d} kept as stated expectation, not
+   theorem. New refs: Lieb–Robinson 1972, Hastings–Koma 2006,
+   Bravyi–Hastings–Verstraete 2006, Nachtergaele–Sims 2010 (review;
+   covers harmonic/unbounded-coupling extensions for the regulator
+   remark).
+3. dS leg: DRAFTED 2026-06-13 in latency form (equilibrium HP
+   protocol: decoder holds prior exchanged-quanta record; horizon
+   register O(k + log S_0) by import; the reservoir-lemma bath fails
+   by a power of S_0 via Theorem 1). Remaining: position against dS
+   Hayden–Preskill literature (user's check) before finalizing.
 4. Reassess what survives of flux-moment measurement as a secondary
    diagnostic (Dicke-vs-incoherent dichotomy is still visible in
    radiation statistics even if N_eff is not).

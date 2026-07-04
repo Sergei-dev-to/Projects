@@ -1,5 +1,9 @@
 # An Operational de Sitter Horizon: positioning note
 
+Related access-channel language: `notes/constrained_access_channel.md`
+defines the distinguishability/recoverability perspective used below
+for constraint-dressed observables.
+
 **Goal.** Extend the operational-horizon program to the cosmological
 horizon, and use the constrained variant of the model as the explicit
 finite foil for holography-of-information and the CLPW algebra story.

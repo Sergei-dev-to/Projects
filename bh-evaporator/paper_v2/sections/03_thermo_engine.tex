@@ -1,0 +1,23 @@
+\section{Thermodynamic Engine}
+
+The thermodynamic input is the microcanonical entropy profile of the core. In the shell model this is simply
+\begin{equation}
+  S_m=\log D_m.
+\end{equation}
+The negative-heat-capacity regime is represented by a convex profile,
+\begin{equation}
+  S''(E)>0.
+\end{equation}
+Equivalently, as the core loses energy and moves to lower shells, the inverse temperature
+\begin{equation}
+  \beta(E)=\frac{\partial S}{\partial E}
+\end{equation}
+decreases, so the temperature $T=1/\beta$ increases.
+
+This is the thermodynamic analogue of Schwarzschild evaporation: the object heats up as it loses energy. In the present model this behavior is not derived from geometry or an area law. It is imposed through the finite density of states. The point of the construction is to test what this thermodynamic input can do when embedded in a unitary emission model.
+
+For the numerical Hamiltonian tests we use a power-law shell profile over the working window. The parameter called ``curvature'' in the simulations controls how convex this profile is. A linear profile is used as the control. The linear case evaporates through the same collision Hamiltonian architecture, but it does not have negative microcanonical heat capacity.
+
+The relevant diagnostic is therefore not the absolute emitted power, which depends on coupling strength and channel count, but the comparison between convex and linear profiles under the same collision protocol. In the successful Step 2 regime the convex profile gives an increasing emitted-power window, while the linear profile decelerates.
+
+The effect is finite-window. Once the core approaches the bottom of the engineered spectrum, depletion and finite-size effects dominate and the emitted power falls. We therefore do not claim a complete end-to-end black-hole evaporation curve. The claim is that negative microcanonical heat capacity can control an accelerating evaporation window in a fixed, geometry-free Hamiltonian model.

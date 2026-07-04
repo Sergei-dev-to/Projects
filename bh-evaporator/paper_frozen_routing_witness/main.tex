@@ -1,0 +1,766 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!55!black,
+  breaklinks=true
+]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cK}{\mathcal K}
+\newcommand{\cR}{\mathcal R}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Frec}{F^{e}_{\mathrm{rec}}}
+\newcommand{\LCB}{\mathrm{LCB}}
+\newcommand{\UCB}{\mathrm{UCB}}
+
+\title{A Transport-Frozen Control Arm for Scrambling Experiments:\\
+Witnessing Routed Recovery of Private Quantum Information}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Experiments that decode scrambled quantum information verify recovery
+against decoherence: teleportation-based witnesses distinguish genuine
+scrambling from noise-induced signal loss.  No experiment appears to
+have controlled for the complementary failure of interpretation:
+recovery that succeeds because the accessed records were prearranged,
+nonlocally encoded, or dressed with side information, rather than
+because internal dynamics routed the information to the access region.
+We propose the missing control arm.  The dynamics is defined at the
+circuit level, and the frozen arm replaces only the bulk two-qubit
+routing gates by identity while retaining single-qubit layers, record
+couplings, and the wall-clock schedule.  Two independent certificates
+--- a single-excitation transport bound and an operator-spreading
+bound targeting residual~$ZZ$ coupling --- convert calibration claims
+into measured envelopes.  The witness is a confidence-bound
+inequality: routed access is claimed only when the lower confidence
+bound on normal-arm recovery fidelity exceeds the upper confidence
+bound on frozen-arm recovery plus all certified systematics.  On
+superconducting hardware with tunable couplers, a minimal two-copy
+Yoshida--Kitaev instance with a six-site routing chain fits in
+roughly two dozen qubits, and a worst-of-published-values error budget
+leaves a witness margin of at least $0.25$ in entanglement fidelity
+without error mitigation.  A stage-zero broadcast of a commuting
+pointer label into record fragments extends the protocol to a
+simultaneous access profile --- public guessing probability unchanged
+between arms while private recovery collapses --- realizing an
+operational demonstration that moving an access cut moves private
+recoverability without moving public statistics.  A weak-link or
+disorder sweep turns the same apparatus from an engineered
+demonstration into a mechanism measurement of when recovery tracks
+scrambling.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+The Hayden--Preskill thought experiment \citep{HaydenPreskill2007}
+and its efficient decoders \citep{YoshidaKitaev2017} turned the
+recovery of scrambled quantum information into a laboratory protocol.
+Trapped-ion \citep{Landsman2019} and superconducting
+\citep{Blok2021,Mi2021,Wang2021} experiments have realized
+teleportation-based decoding and used its fidelity as a
+\emph{verified} scrambling witness: because decoherence degrades the
+teleportation signal while genuine scrambling sustains it, the decoder
+separates unitary information spreading from noise.
+
+These verifications close one loophole and leave another open.  A
+successful decoding tells us the accessed records, together with side
+information, sufficed to reconstruct the input.  It does not tell us
+\emph{how} the information reached those records.  Three mechanisms
+produce the same successful decode:
+\begin{enumerate}
+\item internal dynamics routed and scrambled the input into the
+  accessed subsystem (the mechanism of interest);
+\item the encoding was prearranged so that the accessed subsystem
+  carried the input from the start;
+\item the effective access was nonlocal or dressed --- the nominally
+  local record algebra, combined with the supplied side information,
+  already contained the input relative to the chosen factorization.
+\end{enumerate}
+On fully engineered platforms the distinction is usually fixed by
+construction, which is precisely why it has not been measured: the
+experiments demonstrate designed circuits rather than discriminate
+mechanisms.  But the distinction is operationally meaningful, it is
+the content of the word ``latency'' in any claim that information
+becomes accessible only after routing or scrambling dynamics, and it
+becomes a genuine question the moment the dynamics is not fully
+transparent --- disordered media, fragmented dynamics, or any system
+whose access structure is not fixed by inspection.
+
+This paper proposes the control arm that measures it.  The idea is
+simple to state:
+\begin{quote}
+  freeze the transport, keep the record coupling, and test whether
+  recovery survives.
+\end{quote}
+If recovery dies with transport, the original protocol used dynamical
+routing.  If recovery survives, the access was prearranged, nonlocal,
+or dressed relative to the chosen factorization.  The contribution of
+this paper is to turn that sentence into a protocol with a
+well-defined freezing operation, measured certificates in place of
+calibration assumptions, a one-sided witness inequality, and a
+feasibility budget on current superconducting hardware.
+
+Three design points carry the weight.  First, \emph{freezing is
+defined at the circuit level}: the dynamics is a brickwork circuit,
+and the frozen arm replaces only the bulk two-qubit routing gates by
+identity, retaining single-qubit layers, record couplings, and the
+wall-clock schedule.  This makes ``what is frozen'' a well-defined
+subset of the pulse schedule rather than a Hamiltonian idealization,
+and it sidesteps a trap: an always-on hopping chain is free-fermionic
+and does not scramble, so a Hamiltonian-level freeze would compare
+the wrong dynamics.  Second, \emph{the frozen arm is certified, not
+assumed}: a single-excitation transport measurement and an
+operator-spreading measurement bound, from data, the two distinct
+ways residual couplings could fake or leak transport.  Third,
+\emph{the witness is one-sided by construction}: all statistical
+uncertainty and all certified systematics act against the claim.
+
+Section~\ref{sec:setup} fixes definitions and the recovery baseline.
+Section~\ref{sec:protocol} specifies the arms, the freezing
+operation, and the certificates.  Section~\ref{sec:witness} states
+the witness inequality.  Section~\ref{sec:feasibility} gives the
+minimal instance and the error budget.  Section~\ref{sec:public}
+adds the public-record layer that upgrades the witness to a full
+access-profile demonstration.  Section~\ref{sec:sweep} describes the
+discriminating sweep.  Section~\ref{sec:discussion} states what the
+verdicts do and do not mean.
+
+\section{Setup}
+\label{sec:setup}
+
+\subsection{Registers and channels}
+
+A diary register $D$ of $k$ qubits, $d_D = 2^k$, is purified by a
+reference $A$ held by the verifier.  A routing medium $B$ of $L$
+sites connects the diary site to an access region.  Records are
+emitted by a fixed coupling from the access region into record
+qubits $R_1,\dots,R_m$ at scheduled times; $R_t$ denotes the records
+accessible by time $t$, and $E$ denotes authorized side information
+(in the laboratory realization, the second copy and cross-copy
+entanglement of the Yoshida--Kitaev construction).
+
+The object under test is the diary-to-record channel
+$\cN_t : D \to R_t E$ induced by the dynamics and the record
+schedule.  Recovery is quantified by entanglement fidelity: with
+$\Phi_{AD}$ the maximally entangled state on $AD$,
+\begin{equation}
+  \Frec(t)
+  \;=\;
+  \sup_{\mathrm{Dec}}
+  F\!\left[
+    \big( \mathrm{id}_A \otimes \mathrm{Dec}\circ \cN_t \big)(\Phi_{AD}),
+    \;\Phi_{A\hat D}
+  \right],
+\end{equation}
+where the supremum runs over decoders on $R_t E$.  If $\cN_t$ is a
+constant channel on $D$, every decoder yields
+\begin{equation}
+  \Frec = \frac{1}{d_D^2},
+  \label{eq:baseline}
+\end{equation}
+the trivial baseline ($1/4$ for a one-qubit diary); in
+average-fidelity language the corresponding baseline is $1/d_D$.
+More generally, if $\|\cN_t - \cK_t\|_\diamond \le \epsilon$ for some
+channel $\cK_t$ constant on $D$, then, because a decoder cannot
+increase diamond distance,
+\begin{equation}
+  \Frec(t) \;\le\; \frac{1}{d_D^2} + O(\epsilon).
+  \label{eq:access-inequality}
+\end{equation}
+Inequality~\eqref{eq:access-inequality} is elementary data
+processing; we use it as the yardstick that converts certified bounds
+on residual couplings into bounds on frozen-arm recovery.
+
+\subsection{What the frozen arm bounds}
+
+For source-local dynamics with a finite propagation velocity,
+Lieb--Robinson bounds \citep{LiebRobinson1972,Bravyi2006} make
+$\epsilon(t)$ exponentially small before the diary light cone reaches
+the access region, so~\eqref{eq:access-inequality} pins recovery at
+baseline during the latency window regardless of decoder power.  The
+frozen arm realizes the extreme point of this statement: with routing
+removed, the only contributions to $\epsilon$ are residual hardware
+couplings, and these are bounded by measurement
+(Section~\ref{sec:certificates}) rather than by theory.  The frozen
+arm thereby anchors the zero-transport end of the latency axis with
+an experimentally certified~$\epsilon$.
+
+\section{Protocol}
+\label{sec:protocol}
+
+\subsection{Dynamics and the freezing operation}
+\label{sec:freezing}
+
+The dynamics $U(t)$ is a brickwork random circuit on the routing
+medium: layers of two-qubit gates on alternating bulk edges,
+interleaved with independent random single-qubit gates.  The
+two-qubit gate is taken to be CZ (Section~\ref{sec:conjugate} gives
+the reason).  The record coupling is a fixed two-qubit interaction on
+the access edge, executed at scheduled layers, followed by readout of
+the record qubits at the end of the run.  A brickwork circuit at
+depth comparable to the chain length is a standard scrambler; a
+Hamiltonian-level alternative such as an always-on XY chain would be
+free-fermionic, hence integrable, and would not test
+scrambling-mediated access at all.
+
+The four arms share one pulse schedule and differ only in a labeled
+subset of it:
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+arm & bulk routing gates & record coupling & purpose \\
+\midrule
+1. normal & executed & executed & recovery under full dynamics \\
+2. frozen & replaced by identity & executed & the control arm \\
+3. echo & refocusing cycles & executed & second, differently \\
+ & & & confounded control \\
+4. idle & replaced by identity & omitted & measures idle loss \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In the frozen arm the bulk couplers are parked at their off point for
+the duration of each skipped gate; single-qubit layers are retained,
+so local fields and frame rotations are identical across arms, and
+the wall-clock schedule is identical by construction.  ``What is
+frozen'' is therefore a well-defined subset of the executed pulse
+schedule.  The record coupling is nominally identical across arms;
+Section~\ref{sec:confounds} makes this a measured requirement rather
+than an assumption.  Figure~\ref{fig:arms} shows the normal and
+frozen schedules side by side.
+
+The echo arm addresses a complementary objection.  The frozen arm
+removes transport by \emph{omission}, so its error profile (idling)
+differs from the normal arm's (gates); a skeptic can attribute the
+recovery difference to that profile difference rather than to
+transport.  In the echo arm transport occurs and is dynamically
+undone --- but the timing matters: a single mid-run reversal would
+leave the late record emissions sampling the return path, when
+transported information passes back through the access region, and
+the arm would not be a null control at all.  The echo arm therefore
+executes \emph{refocusing cycles}: bulk gates run forward and are
+immediately reversed ($U_{\mathrm{blk}}^\dagger$ after
+$U_{\mathrm{blk}}$) within each inter-emission window, so every
+record emission occurs at a refocused point with no net transport
+accumulated.  This doubles the bulk gate count, making the echo
+arm's error profile an upper bound on the normal arm's rather than a
+match; it is a secondary diagnostic, not a substitute for the frozen
+arm.  If recovery dies in both arms 2 and 3 --- one confounded by
+idling, the other by gate errors --- no single error profile
+explains the normal arm's recovery, and the routing interpretation
+is doubly supported.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_arms.pdf}
+\caption{Protocol schedules for the normal arm (left) and frozen arm
+(right).  Grey squares: random single-qubit gates, identical across
+arms.  Blue connectors: bulk CZ routing gates (brickwork).  Dotted
+connectors: the same gates replaced by identity with couplers parked
+--- the only difference between arms.  Green connectors: scheduled
+record emissions (swaps into fresh ancillas), identical across arms.
+The reference $A$ is entangled with the diary at site~1 before the
+circuit starts (left edge).}
+\label{fig:arms}
+\end{figure}
+
+\subsection{Protocol summary and run budget}
+\label{sec:protocolbox}
+
+\begin{enumerate}[itemsep=1pt]
+\item Prepare $\Phi_{AD}$, insert $D$ at site 1; prepare the two-copy
+  resource (cross-copy EPR pairs) and, if the public layer of
+  Section~\ref{sec:public} is included, execute the stage-0
+  broadcast.
+\item Execute the arm's schedule (normal / frozen / echo / idle);
+  emit records at the scheduled layers.
+\item Run the Yoshida--Kitaev decoder on records plus side
+  information; post-select ($\sim 20$ repetitions in the simulated
+  $L=6$ instance).
+\item Estimate $\Frec$ by tomography on the reference--mirror pair;
+  estimate $P_{\mathrm{guess}}(X|F_i)$ by fragment readout.
+\item Interleave the certificates (Section~\ref{sec:certificates})
+  and the record-edge benchmarking in the same configuration.
+\end{enumerate}
+
+Run budget: at $\sim 10^3$ post-selected shots per estimate, four
+arms, the simulated post-selection overhead of $\sim 20$
+(Section~\ref{sec:signature}), and a dozen depth points, one full
+witness curve is $\sim 10^6$ circuit executions; at kilohertz-scale
+repetition rates this is under an hour of device time per
+configuration, with calibration dominating wall-clock cost.  A
+disorder or weak-link sweep (Section~\ref{sec:sweep}) multiplies this
+by the number of sweep points and remains within hours.
+
+\subsection{Freezing certificates}
+\label{sec:certificates}
+
+The frozen arm can fail in two physically distinct ways, so two
+certificates are required.
+
+\textbf{Certificate 1 (transport).}  With couplers parked, prepare a
+single excitation at the diary site and measure its arrival
+probability in the access region over the full protocol duration.
+This bounds actual transport under the frozen schedule from data.
+The same measurement with couplers active yields the light-cone
+velocity of the medium, supplying the independent handle on the
+velocity and distance that any latency claim needs.
+
+\textbf{Certificate 2 (operator spreading).}  The single-excitation
+test is blind to interactions that grow operator support without
+transporting excitations; residual $ZZ$ coupling at the coupler off
+point is the specific mechanism on this platform.  Under the frozen
+schedule, prepare the diary site in $|+\rangle$, run the schedule,
+and measure the decay of $\langle X\rangle$ on the diary site
+together with two-point correlators on the diary edge (or a two-site
+out-of-time-order echo).  This bounds many-body spreading directly.
+
+Both certificates are converted, via
+inequality~\eqref{eq:access-inequality}, into a single certified
+envelope $\epsilon_{\mathrm{res}}$ on frozen-arm recovery, and both
+are re-measured in the same configuration as the witness runs.
+
+\begin{remark}
+The conversion is crude but rigorous.  A residual coupling that
+accumulates phase $\theta$ on the diary edge over the protocol
+generates a unitary within angle $\theta$ of the identity on the
+diary's neighborhood, so the frozen-arm record channel is within
+diamond distance $O(\theta)$ of a channel constant on $D$;
+inequality~\eqref{eq:access-inequality} then bounds frozen-arm
+recovery above baseline by $O(\theta)$.  The certificates measure
+$\theta$ (Certificate 2) and the transported population
+(Certificate 1) directly, so $\epsilon_{\mathrm{res}}$ inherits
+measured error bars rather than calibration claims.
+\end{remark}
+
+\subsection{Decoder: two-copy Yoshida--Kitaev realization}
+\label{sec:conjugate}
+
+Recovery in the Hayden--Preskill regime requires the ``old black
+hole'' resource: the scrambler maximally entangled with the side
+information $E$.  The standard laboratory realization
+\citep{YoshidaKitaev2017,Landsman2019,Blok2021} runs two copies with
+$U$ on one and $U^*$ on the other, joined by cross-copy EPR pairs;
+the probabilistic decoder projects record qubits and their mirrors
+onto EPR pairs and, on success, teleports the diary onto a mirror
+qubit.  For a perfect scrambler the success probability is
+$1/d_D^2$; for the finite instance of Section~\ref{sec:feasibility}
+the simulated value is $P \approx 0.05$
+(Section~\ref{sec:signature}), a post-selection overhead of
+$\sim 20$ repetitions --- still cheap enough that the
+Grover-assisted variant is unnecessary.
+
+The conjugate copy is compilation, not schedule reuse, and it is
+budgeted.  Single-qubit gates conjugate exactly in software.  The
+two-qubit gate choice decides the hardware cost: CZ is real, hence
+self-conjugate, so a CZ brickwork makes $U^*$ nearly free, whereas
+iSWAP-family gates require a separately calibrated conjugate pulse.
+Three items enter the budget explicitly: (a)~the calibration surface
+doubles, since the same CZ must be calibrated per edge on both
+copies; (b)~cross-copy EPR preparation and the final Bell
+measurement add roughly $L$ two-qubit operations; (c)~software
+conjugation conjugates the ideal gate, not its coherent error, so the
+implemented $U^*$ differs from the conjugate of the implemented $U$
+--- this mismatch enters the decoder as an effective infidelity and
+is bounded by cross-copy cycle benchmarking.  Items (a)--(c) add of
+order $10$--$20\%$ to the two-qubit gate budget.
+
+\subsection{Confounds as measured envelopes}
+\label{sec:confounds}
+
+Each systematic that could imitate or hide the effect is assigned a
+measured envelope.
+
+\begin{enumerate}
+\item \emph{Idle loss.}  In the frozen arm the bulk idles during
+  skipped gates; recovery can die of decoherence rather than absent
+  routing.  Arm~4 measures this loss directly; dynamical decoupling
+  on frozen sites suppresses it.  Envelope
+  $\epsilon_{\mathrm{idle}}$.
+\item \emph{Residual coupling at the off point.}  Bounded by
+  Certificates 1 and 2; envelope $\epsilon_{\mathrm{res}}$.
+  Transport across $L-1$ frozen edges is suppressed as
+  $(g_{\mathrm{off}}\tau)^{2(L-1)}$ and is negligible for
+  $L \ge 6$; the certificates bound it from data regardless.
+\item \emph{Record-coupling drift.}  Switching couplers can shift
+  neighboring parameters; the record-edge gate is characterized by
+  interleaved randomized benchmarking in both coupler
+  configurations, with a recalibration threshold.  Envelope
+  $\epsilon_{\mathrm{rec}}$.
+\item \emph{Decoder mismatch.}  The fair comparison is
+  best-decoder-per-arm.  For the frozen arm the best decoder reduces
+  to reading the access region, whose ceiling is set by the
+  certified transport bound, so this confound folds into
+  $\epsilon_{\mathrm{res}}$; both same-decoder and best-decoder
+  numbers are reported.
+\item \emph{Statistics.}  $\Frec$ is estimated by two-qubit
+  tomography on the reference--mirror pair or by direct fidelity
+  estimation; statistical error lives in the confidence bounds of
+  Section~\ref{sec:witness}, not in the systematic envelopes.
+\end{enumerate}
+
+\section{The witness}
+\label{sec:witness}
+
+The protocol claims routed access at confidence level $\alpha$ if
+\begin{equation}
+  \LCB_\alpha\!\left[ \Frec(\text{normal}, t) \right]
+  \;>\;
+  \max\!\left\{
+    \UCB_\alpha\!\left[ \Frec(\text{frozen, best decoder}) \right],\;
+    \frac{1}{d_D^2}
+  \right\}
+  \;+\;
+  \epsilon_{\mathrm{idle}}
+  + \epsilon_{\mathrm{res}}
+  + \epsilon_{\mathrm{rec}} .
+  \label{eq:witness}
+\end{equation}
+Statistical uncertainty enters through the confidence bounds;
+certified systematics are added to the frozen side; hence every
+unmodeled effect acts against the claim.  The systematics sit on the
+frozen side because of the false-positive scenario the witness must
+exclude: if access were prearranged, frozen-arm recovery would
+survive freezing, but idle decoherence could still suppress it and
+make the witness fire wrongly.  Adding $\epsilon_{\mathrm{idle}}$ to
+the frozen ceiling covers exactly the recovery that idling could
+have hidden (it upper-bounds the multiplicative correction
+$F \cdot \epsilon_{\mathrm{idle}}$ since $F \le 1$), and
+$\epsilon_{\mathrm{res}}$, $\epsilon_{\mathrm{rec}}$ likewise cover
+leakage and drift.  The witness is one-sided in
+the useful direction: a failed inequality is uninformative (idle
+decoherence, poor mitigation, or a small margin all produce it), but
+a satisfied inequality excludes, within the certified envelopes,
+every access mechanism that does not use the frozen transport ---
+in particular prearranged encodings and dressed access, whose
+recovery would survive freezing and lift the frozen-arm term.
+
+Conversely, define the complementary verdict: if
+$\UCB_\alpha[\Frec(\text{frozen})]$ remains \emph{above} baseline by
+more than the certified envelopes while transport is certifiably
+frozen, the recovering algebra was nonlocal, prearranged, or dressed
+relative to the chosen factorization.  The two verdicts partition
+the interpretations of any successful normal-arm decode.
+
+\section{Feasibility on tunable-coupler hardware}
+\label{sec:feasibility}
+
+\subsection{Platform}
+
+Superconducting transmons with tunable couplers provide the required
+control-graph factorization natively: routing gates are
+coupler-mediated and switchable per edge on nanosecond timescales,
+while the record edge and readout are separate fixed controls.
+Published device figures anchor the budget: CZ fidelity
+$99.81 \pm 0.02\%$ at $33$\,ns with residual $ZZ$ below $2$\,kHz at
+the coupler idle point on a tunable-coupler device
+\citep{Marxer2023}, and mean $T_1 = 68\,\mu$s,
+$T_{2,\mathrm{CPMG}} = 89\,\mu$s on a 105-qubit processor
+\citep{GoogleQEC2024}.  Rydberg tweezer arrays are the backup
+platform: freezing by physically retracting atoms is geometrically
+cleaner, at the cost of much slower cycling.
+
+\subsection{Minimal instance}
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+diary $D$ & 1 qubit ($k{=}1$; baseline $\Frec = 1/4$) \\
+reference $A$ & 1 qubit, dynamically decoupled \\
+routing medium & $L = 6$ sites per copy, 1D chain \\
+records & $m = 4$ scheduled swaps, layers $14, 17, 20, 23$ \\
+copies & 2 ($U$ and $U^*$), cross-copy EPR pairs \\
+public layer (\S\ref{sec:public}) & $+3$--$4$ qubits \\
+total & $\sim 24$ qubits \\
+depth & $24$ brickwork layers \\
+two-qubit gates & $\sim 135$ including conjugate-copy overhead \\
+wall clock & $\sim 1.6$--$2\,\mu$s per run \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The record budget and emission schedule are fixed by an exact
+statevector simulation of the instance
+(Section~\ref{sec:signature}), which corrected two natural guesses.
+First, $m = 2$--$3$ records are not enough: the ideal-dynamics
+achievable fidelity saturates near $0.4$.  Second, and more useful as
+a design rule, \emph{when} matters more than \emph{how many}:
+records emitted before the chain has scrambled are largely wasted
+($m = 5$ early emissions underperform $m = 4$ late ones), so the
+schedule holds emissions until after the scrambling onset.  With
+$m = 4$ and late emission the ideal-dynamics achievable fidelity is
+$0.84 \pm 0.04$.
+
+Qubit count is not the constraint; coherent two-copy depth at
+fidelity is.  At $L = 8$ the gate budget roughly doubles and raw
+circuit fidelity drops below $0.5$, requiring error mitigation;
+$L = 8$ is therefore the stretch instance and $L = 6$ the first
+target.
+
+\subsection{Error budget and margin}
+\label{sec:budget}
+
+Two budget rows are quoted: a best-published combination, and a
+worst-of-both row that takes the worst published value on each axis
+independently, so that the feasibility claim does not rest on any
+single device family or best-in-class number.
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+quantity & best combined & worst of both \\
+\midrule
+two-qubit error & $1.9\times 10^{-3}$ \citep{Marxer2023} &
+  $3.3\times 10^{-3}$ (conservative\footnotemark) \\
+$T_2$ for idle loss & $89\,\mu$s \citep{GoogleQEC2024} &
+  $40\,\mu$s (conservative) \\
+residual $ZZ$ (off) & $2$\,kHz \citep{Marxer2023} & $5$\,kHz \\
+\midrule
+$\epsilon_{\mathrm{idle}}$ ($2\,\mu$s window) & $\sim 0.022$ &
+  $\sim 0.049$ \\
+$\epsilon_{\mathrm{res}}$ & $\sim 0.002$ & $\sim 0.005$ \\
+$\epsilon_{\mathrm{rec}}$ & $0.005$ & $0.005$ \\
+frozen-arm ceiling & $\sim 0.28$ & $\sim 0.31$ \\
+\midrule
+raw circuit fidelity ($135$ gates) & $\sim 0.77$ & $\sim 0.64$ \\
+normal-arm $\Frec$ estimate & $\sim 0.65$ & $\sim 0.58$ \\
+\textbf{witness margin} & $\ge 0.35$ & $\ge 0.25$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\footnotetext{Secondary-source mean for the 105-qubit processor of
+\citep{GoogleQEC2024}; the primary text gives only the error
+distribution.  Used here only as a conservative bound; the
+feasibility conclusion does not depend on it.}
+
+The normal-arm estimate uses
+$\Frec \approx F_{\mathrm{circ}} F_{\mathrm{YK}} +
+(1-F_{\mathrm{circ}})/4$ with $F_{\mathrm{YK}} = 0.76$ from a direct
+simulation of the two-copy Yoshida--Kitaev decoder circuit on the
+instance (Section~\ref{sec:signature}); the simulated
+optimal-decoder achievability, $0.84$, sits above it as expected and
+marks the headroom available to better decoders.  As an
+independent hardware-realism
+reference, the qutrit-processor decoding of \citet{Blok2021}
+reported average teleportation fidelity $0.568$ against the $1/2$
+classical bound, i.e.\ entanglement fidelity $\approx 0.42$ against
+a trivial baseline of $1/9$ after conversion at $d = 3$; the
+dimension and platform differ, so we cite it as evidence that
+NISQ-era YK decoding sustains an order-one excess over trivial, not
+as a margin input.  At $L = 6$ the budget leaves a no-mitigation
+witness margin; mitigation is reserved for the stretch instance.
+
+\subsection{Simulated signature}
+\label{sec:signature}
+
+Figure~\ref{fig:signature} shows the predicted witness signature
+from an exact statevector simulation of the instance (ideal gates;
+the hardware envelopes of Section~\ref{sec:budget} enter the budget,
+not the figure).  Two rigorous bounds are plotted.  The achievable
+curve is the decoupling/Uhlmann fidelity
+$F(\rho_{AC}, \rho_A \otimes \rho_C)^2$, an explicit lower bound on
+optimal recovery from records plus side information; the dashed
+curves are the upper bound
+$\tfrac14 + \tfrac12 \| \rho_{ARE} - \rho_A \otimes \rho_{RE} \|_1$
+of the type used in Section~\ref{sec:setup}.  The normal arm's
+bounds rise with the record emissions; the frozen arm's upper bound
+is pinned at the trivial baseline to numerical precision --- the
+ideal-dynamics version of the certified ceiling, confirming that the
+frozen arm's entire allowance comes from the hardware envelopes
+rather than the protocol itself.
+
+The same simulation, extended to the full two-copy decoder circuit
+(both copies, cross-copy EPR resource, record-mirror projections),
+gives the protocol's own endpoint numbers: the probabilistic
+Yoshida--Kitaev decoder attains $F_{\mathrm{YK}} = 0.764 \pm 0.050$
+at success probability $P = 0.048 \pm 0.005$ in the normal arm, and
+exactly the trivial $\Frec = 1/4$ (at $P = 1/8$) in the frozen arm.
+The decoder sits $0.08$ below the optimal-decoder achievability, the
+expected suboptimality of the probabilistic construction at finite
+scrambling depth, and the frozen-arm value confirms that
+same-decoder and best-decoder comparisons coincide at baseline under
+ideal frozen dynamics.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{fig_signature.pdf}
+\caption{Simulated witness signature for the $L = 6$, $m = 4$
+instance ($12$ circuit realizations; bands are $\pm 1$ standard
+deviation across realizations).  Solid: achievable recovery fidelity
+in the normal arm --- the maximum of the decoupling/Uhlmann lower
+bound and the trivial $1/4$ attained by the discard-and-reprepare
+decoder; the steps coincide with the record emissions (vertical
+guides).  Dashed: rigorous upper bounds for each arm.  The frozen
+arm's upper bound sits at the trivial baseline $1/4$ throughout:
+with routing gates removed, ideal dynamics grants the decoder
+nothing, so any experimental frozen-arm excess is bounded by the
+certified hardware envelopes alone.}
+\label{fig:signature}
+\end{figure}
+
+\section{The public-record layer}
+\label{sec:public}
+
+As described so far the protocol tests one axis: private recovery
+and its dependence on routing.  A small addition upgrades it to the
+simultaneous access profile that motivates the program --- the
+operational statement that a record structure can make a commuting
+label public while a noncommuting complement stays private, and that
+changing the accessible algebra moves the second property but not
+the first.
+
+\textbf{Stage 0} (identical in all arms): a pointer qubit at the
+access region, carrying a label $X$ chosen to commute with the record
+coupling, is branched into $n_{\mathrm{frag}} = 2$--$3$ fragment
+ancillas by CNOT gates --- a minimal quantum-Darwinism broadcast
+\citep{Ollivier2005,Zurek2009,Brandao2015}.  Stage 0 executes before
+the arms diverge; this ordering is forced, since a label originating
+at the diary site would itself require routing and the arms would
+not share public statistics by construction.
+
+\textbf{Measured profile per arm:}
+\begin{equation}
+  P_{\mathrm{guess}}(X \,|\, F_i) \quad \text{per fragment},
+  \qquad
+  \Frec(D) \quad \text{via the decoder}.
+\end{equation}
+
+\textbf{Predicted signature:}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & normal arm & frozen arm \\
+\midrule
+$P_{\mathrm{guess}}(X|F_i)$ & high & high (equal) \\
+$\Frec(D)$ & order one & at certified ceiling \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Public objectivity of $X$ is unaffected by freezing because the
+broadcast channel does not use bulk transport; private recovery of
+$D$ collapses to the certified ceiling.  The equality of the public
+row is by construction --- the fragments record $X$ at stage 0 and
+idle thereafter --- and that is the point rather than a weakness:
+invariance of the public center under motion of the accessible
+algebra is exactly what the demonstration is supposed to exhibit,
+while the private row is where the arms genuinely differ.  This is,
+in one apparatus, the operational content of moving a Heisenberg
+cut: the public statistics are invariant, the private recoverability
+is not.  The
+addition costs $3$--$4$ qubits and a few CNOTs executed before the
+deep circuit, off the diary's error path, so the budget of
+Section~\ref{sec:budget} is unchanged.
+
+\section{From demonstration to discrimination: the sweep}
+\label{sec:sweep}
+
+On a fully engineered brickwork circuit the witness verdict is known
+by construction; the run is a calibration of the method.  The same
+apparatus becomes a measurement of unknown physics under a parameter
+sweep of the routing medium:
+\begin{itemize}
+\item \emph{weak link}: replace the middle bulk edge's CZ by a
+  partial-entangling gate of tunable angle $\lambda$ and sweep it;
+\item \emph{disorder}: draw the single-qubit layers from a disordered
+  distribution of strength $W$ and sweep toward the localized
+  regime.
+\end{itemize}
+Neither variant changes qubit count or depth; only pulse parameters
+sweep.  Along the sweep, operator-spreading diagnostics and diary
+recovery can be expected to separate --- structurally constrained
+media can look scrambled by out-of-time-order measures while
+coherent export remains obstructed --- and where (and whether) they
+separate is a mechanism question not fixed by inspection.  The frozen arm then serves as the
+certified zero-transport anchor of the sweep rather than a
+standalone control, and the witness
+inequality~\eqref{eq:witness} applies pointwise in
+$\lambda$ or $W$.
+
+\section{Scope, verdicts, and limitations}
+\label{sec:discussion}
+
+\textbf{What a positive witness means.}  Within the certified
+envelopes, the recovery observed in the normal arm required the bulk
+transport that the frozen arm removes: prearranged, nonlocal, and
+dressed access are excluded for that run, because they would survive
+freezing.  This is
+a statement about channel mechanisms, not about interpretations of
+quantum mechanics; any interpretation reproducing unitary channel
+statistics predicts the same data.
+
+\textbf{What a failed witness means.}  Little.  Idle decoherence,
+insufficient margin, or decoder infidelity all produce failure; the
+inequality is deliberately one-sided.
+
+\textbf{What a surviving frozen-arm recovery means.}  If frozen-arm
+recovery stays above baseline by more than the certified envelopes
+while both certificates hold, the recovering algebra was nonlocal,
+prearranged, or dressed relative to the chosen factorization --- the
+protocol does not distinguish among those three without additional
+structure, but it cleanly separates all of them from dynamical
+routing.
+
+\textbf{Relation to existing witnesses.}  Teleportation-based
+verification \citep{Landsman2019,Blok2021} and circuit-class
+comparisons \citep{Mi2021,Wang2021} control for decoherence imitating
+scrambling.  The transport-frozen arm controls for the complementary
+misreading --- access imitating dynamics --- and appears not to have
+been performed on any platform.  The two controls are independent
+and composable.
+
+\textbf{Limitations.}  (i)~The decoder assumes a known $U$; the
+witness certifies the routing mechanism, not decoding difficulty ---
+complexity-restricted recovery is a separate axis.  (ii)~The verdict
+is relative to the chosen tensor factorization; a different
+factorization redefines ``transport,'' which is not a defect but a
+statement of what the witness measures.  (iii)~The quoted margins
+use published device values from two hardware families; the
+worst-of-both row bounds the mixing, and a single-device budget
+should replace it once a target device is fixed.  (iv)~At $L = 6$
+the demonstration class is engineered; the discriminating claims
+belong to the sweep of Section~\ref{sec:sweep}.  (v)~The simulated decoder
+numbers assume ideal gates; the budget composes them with circuit
+fidelity through a depolarizing-style estimate, and a noise-model
+simulation of the full protocol would refine that composition.
+
+The protocol gives the latency axis of the access-profile framework
+(developed in a companion note, in preparation) its operational
+anchor: before routing, certified near-baseline recovery; after
+routing, order-one recovery; and the difference is a measured,
+confidence-bounded quantity rather than a design assumption.
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+
+\end{document}
