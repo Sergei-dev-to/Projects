@@ -74,6 +74,11 @@ Claude_files/
 # Private/local project data that should not be committed here
 corp-tax-2025/
 .claude/settings.local.json
+ASD-game/
+ASD-game-gh-pages/
+alcubierre-penrose/
+anyon-kiefer-kolland/
+black-hole-anyon-intruder/
 
 # Generated data/metrics; scripts remain tracked
 bh-evaporator/sim/data/
@@ -103,6 +108,7 @@ wormhole/__pycache__/
 wormhole/*.raw
 wormhole/_*
 wormhole/s2_*
+wormhole/*.tar
 wormhole/FrolovNovikov1990*.txt
 wormhole/wormhole_paper*.txt
 
