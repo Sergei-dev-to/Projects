@@ -15,13 +15,20 @@ Constraint/access pass: `notes/constrained_access_channel.md` collects
 the access-algebra, Gauss-law, Quantum Darwinism, and Heisenberg-cut
 language into one object.
 
+Memory-burden pass: `notes/prototype_m0_m1_results.md` and
+`notes/prototype_m3_discriminator_table.md` add a live witness system:
+the Dvali memory-burden/N-portrait prototype is degeneracy-saturated
+but source-rank-unsaturated, and its strict diary latency is blocked by
+memory-sector conservation.
+
 ## One-sentence target
 
-Thermality, finite horizon entropy, eventual unitary release, source-side
-boundary saturation, fast recovery latency, and gravitational
-constraint/nonfactorization are logically distinct properties.  Black
-holes sit at the intersection; Rindler, ordinary reservoirs, tape
-emitters, de Sitter, and BTZ separate the axes.
+Thermality, finite horizon entropy, eventual unitary release,
+source-rank boundary saturation, fast recovery latency, and gravitational
+constraint/nonfactorization are logically distinct properties.  The
+factorized black-hole target sits at their intersection; Rindler,
+ordinary reservoirs, tape emitters, de Sitter, and BTZ separate the
+axes.
 
 The possible paper-grade result is not "horizons anonymize" or
 "horizons are thermal."  Those are lore.  The result would be:
@@ -50,10 +57,11 @@ Use these as independent predicates, not as synonyms.
    equilibrium recovery protocol; Rindler has observer-relative
    thermality but no finite emitted record by itself.
 
-4. **Source-side boundary saturation (S).**  The participation number
-   of the source coupling algebra scales like the entropy:
-   `N_eff ~ S`.  Ordinary local reservoirs with surface contact have
-   `N_eff <= S^{(d-1)/d}`.
+4. **Source-side boundary/source-rank saturation (S).**  The
+   participation number of the source coupling algebra scales like the
+   entropy: `N_eff ~ S`.  Ordinary local reservoirs with surface
+   contact have `N_eff <= S^{(d-1)/d}`.  This is separate from both the
+   state count and the latency certificate.
 
 5. **Routing/mixing (M).**  Newly deposited information reaches the
    source coupling algebra in logarithmic emitted-record latency.  This
@@ -87,6 +95,7 @@ Use these as independent predicates, not as synonyms.
 | Ordinary local reservoir | yes, if thermal | yes | yes, through a surface | no: `S^{(d-1)/d}` | power-law lower bound by LR | can be compressed by apparatus but source access remains surface-limited | Finite entropy plus thermality does not imply horizon recovery. |
 | Serial tape emitter | optional | yes | yes, unitary eventual release | can be arranged label-wise | slow for arbitrary new deposits | compressed, but normally non-anonymous via time/source address | Eventual purity does not imply HP latency. |
 | Saturated but slow emitter | optional | yes | yes | yes | no, if no routing | may be anonymous | Boundary saturation alone does not imply fast recovery. |
+| Memory-burden / N-portrait prototype | model-dependent thermal line | yes: `K ~ S` assisted memory modes | partial: master radiation record exists, memory diary record does not | no: `N_eff = 1` at the flux line | no: strict `N_m` conservation blocks fixed-sector diary exit; BH mapping gives post-burden power-law release | compressed collective master line; at most coarse energy/frequency tags | Degeneracy saturation does not imply source-rank saturation or HP latency. |
 | Fast scrambler with small contact | optional | yes | yes | no | only surface fraction visible quickly | depends | Mixing alone does not imply full-entropy exterior recovery. |
 | Horizon-class factorized model | yes by DOS/detailed balance | yes | yes | yes | logarithmic by decoupling + thermal tie | compressed/anonymous collective record | The operational package is `F+R+S+M`, not thermality alone. |
 | BTZ / AdS3 black hole | yes | yes, Cardy | equilibrium unless bath-coupled | should be CFT operator-access statement | chaotic CFT expectation; model-dependent | less serial for large AdS, cleaner holographic dual | Tests whether the three inputs are natural in a real dual Hamiltonian. |
@@ -190,6 +199,48 @@ The value is not "horizons anonymize."  The value is the no-free-lunch
 fork.  An anonymous compressed channel can serialize information
 eventually; fast HP-style release forces the routing burden somewhere.
 
+### Theorem C': memory-burden as a frozen-routing countermodel
+
+Status: note-level verified for the strict prototype.  A
+visible-algebra obstruction lemma is drafted in
+`operator_overlap_latency_lemma.md`; the broader theorem generalization
+is still open.
+
+The Dvali memory-burden prototype realizes the slow/frozen-routing horn
+of Theorem C as a physical model class rather than as a circuit control.
+Its flux line is fed by a single collectively enhanced master mode, so
+the source Gram kernel has `N_eff = 1` even though the assisted memory
+sector has `K ~ S` degeneracy.  Separately, total memory occupation
+`N_m` is conserved in the strict Hamiltonian, and no term routes memory
+ladder operators into the master radiation ladder.  Diaries encoded
+inside a fixed diagonal burden sector therefore do not become quantum
+recoverable from the emitted master record at any time.  Generic loads
+may leak coarse energy/frequency tags, but that is not HP recovery of an
+arbitrary new diary.
+
+This countermodel supplies the proved negative arm:
+
+```text
+degeneracy saturation + flux != source-rank saturation,
+source-rank saturation != HP latency,
+and burden-class frozen routing fails HP latency for an independent
+mechanistic reason.
+```
+
+The remaining theorem target is the bridge under explicit model
+assumptions: in a compressed anonymous factorized channel, fast
+new-deposit recovery requires either order-one overlap with the full
+visible algebra generated by the coupled source algebra, or a
+nonlocal/constraint-dressed emission map.  The risky step is reducing
+that visible-algebra condition to a simple instantaneous routing profile
+such as `G_D(t)`; multi-time products are the likely counterexample
+route if the simple bridge fails.  The natural first theorem class is a
+fresh-ancilla or weak-collision record model with bounded per-collision
+strength and bounded total record budget.  The strict memory-burden
+prototype itself is not in that bridge class, because the `b0` record
+mode is persistent; it satisfies the visible-algebra lemma by exact
+sector structure instead.
+
 ### Theorem D: Rindler null case
 
 Status: literature theorem plus interpretation; likely cheap but useful.
@@ -253,7 +304,9 @@ The candidate original content is narrower:
 
 1. **The separation itself.**  The usual words "horizon," "thermal,"
    "black-hole information," "scrambling," and "holography" mix axes
-   that the witness systems separate.
+   that the witness systems separate.  The memory-burden prototype now
+   gives a live state-count-saturated but source-rank/latency-poor
+   witness from the black-hole model literature itself.
 
 2. **Latency as the exterior certificate.**  Source-side saturation is
    not seen in instantaneous radiation-mode counts.  It becomes visible
@@ -284,7 +337,8 @@ The candidate original content is narrower:
 2. Formalize Theorem C in terms of an operator-growth overlap:
    `G_B(t) = || P_E U(t) O_B U(t)^\dagger ||` against the coupling
    algebra.  Fast recovery implies `G_B(t)` becomes order one by the
-   recovery time unless the emission map is nonlocal on `O_B`.
+   recovery time unless the emission map is nonlocal on `O_B`.  Use
+   the memory-burden prototype as the strict zero-overlap countermodel.
 
 3. Write the Rindler null lemma as a short appendix-level note:
    modular thermality yes; finite recoverable register no.  This should
