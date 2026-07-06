@@ -550,6 +550,7 @@ coherence_witness_g2_result.md
 statistics_rank_link_result.md
 asymmetry_backreaction_escape_result.md
 participation_pigeonhole_result.md
+participation_cap_decomposition_result.md
 q1b_static_certificate_theorem.md
 envelope_as_coupling_universality.md
 nearextremal_ds_stress_test.md

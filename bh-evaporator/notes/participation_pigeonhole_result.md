@@ -147,6 +147,18 @@ harmonic-line clause (escape note §4); ordinary envelope including
 the commutator cap E'; Schwarzschild-scaling per-channel flux cap
 Phi_env (the ordinary-envelope translation above).
 
+**Cap dependency, resolved 2026-07-06
+(`participation_cap_decomposition_result.md`):** the per-channel cap
+Phi_env / F_H ~ 1/(cS) is NOT an independent hypothesis.  It
+decomposes into (a) a pure-observable outlier floor N_eff >= 1/f
+(exact from Tr(W^2) <= lambda_max Tr W, no envelope), plus (b)
+N_eff^ord ~ cS = Lemma 1 on the ORDINARY sector, which is
+uncontested (the envelope was only ever disputed for the enhanced
+outlier) and is underwritten by the same E' = coupling universality
+that excludes the coupling-enhanced outlier.  So the certificate
+rests on exactly two inputs — the asymmetry observable and coupling
+universality — and the cap is downstream, not alongside.
+
 ```text
 Schwarzschild luminosity
 + KMS line asymmetry within eta of Boltzmann

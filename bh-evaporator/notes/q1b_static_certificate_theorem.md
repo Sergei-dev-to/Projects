@@ -41,7 +41,13 @@ line at frequency `omega` from a microcanonical shell.  Assume:
    This is the per-channel translation of
    `paper_boundary_saturation/main.tex`, Lemma
    "Schwarzschild luminosity and effective rank"; the paper verifies
-   the scaling, not an exact numerical cap.
+   the scaling, not an exact numerical cap.  NOT an independent
+   assumption (`participation_cap_decomposition_result.md`): it is
+   Lemma 1 on the ORDINARY sector only — uncontested, since the
+   envelope was only ever disputed for the enhanced outlier — and is
+   underwritten by the same E' (assumption 4).  A pure-observable
+   floor N_eff >= 1/f survives even if this is rejected (see the
+   minimal-statement note below).
 
 4. Commutator cap `E'`: the ordinary envelope also caps the channel
    commutator scale, so coupling enhancement cannot hide powers of `S`.
@@ -83,6 +89,30 @@ eta <~ 1 / (n_ref sqrt(S)).
 
 At coarser accuracy, the theorem still gives the explicit floor
 `N_eff ~ min(cS, (eta n_ref)^-2)`.
+
+## Minimal Statement (assumption-light floor)
+
+Independently of assumptions 3 and 4, a weaker statement holds on
+observables alone
+(`participation_cap_decomposition_result.md` §2).  From
+`Tr(W^2) <= lambda_max Tr W` (exact) and the observable trace,
+
+```text
+N_eff >= 1/f,
+```
+
+and against occupation enhancement the asymmetry bounds
+`f <= eta n_ref`, so
+
+```text
+N_eff >= 1 / (eta n_ref)   [pure observable, no envelope, no E'].
+```
+
+A reader who rejects coupling universality and every envelope
+statement must still accept this: a Schwarzschild line calibrated to
+KMS within `eta` has participation at least `1/(eta n_ref)` against
+occupation enhancement.  The saturation form above is the upgrade that
+adds assumptions 3-4; quote whichever matches the assumptions in play.
 
 ## Proof Skeleton
 
