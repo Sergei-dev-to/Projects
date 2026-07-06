@@ -1,20 +1,29 @@
-# E' as Gravitational Coupling Universality: the Fork Localizes to One Vertex Property
+# E' as a No-Bright-Collective-Channel Condition: Universality Closes the Charge Route, Collective Emission Is the Real Escape
 
 Date: 2026-07-05 (section 6 residue sharpened 2026-07-06 after the
-1601.01329 full-text read)
+1601.01329 full-text read; sections 3-5 corrected 2026-07-06 after the
+charge-vs-collective distinction — see the correction note at the top
+of section 3)
 
 Role: works through the proposal from the Opus review pass — that the
 commutator-cap hypothesis E' of `participation_pigeonhole_result.md`
-is not a generic technical assumption but the operator-level content
-of gravitational coupling universality.  Payoff: the strict
-memory-burden prototype needs no E' (asymmetry alone excludes it), and
-the ONLY surviving coherent escape is localized to a single,
-nameable, in-principle-checkable property — a sqrt(S)-enhanced
-non-universal radiation vertex for the emergent graviton.  This
-upgrades the certificate from "conditional on a hypothesis" to
-"conditional on a physical principle," and sharpens the fork into a
-demarcation statement.  Verification grading per claim.  Not paper
-text.
+has physical content, not just technical.  CORRECTED FRAMING (was
+"E' = gravitational coupling universality"; that overclaimed).  E' is
+best read as "no anomalously bright exterior emission vertex," with
+TWO possible violations: (1) a non-universal microscopic charge, which
+universality (equivalence principle / Weinberg soft theorem, robust in
+the EFT regime and Weinberg-Witten-protected) does close; and (2) a
+COLLECTIVE coupling enhancement — a coherent horizon/condensate mode
+coupling as sqrt(S) while thermal at O(1) occupation — which
+universality does NOT close, because it is ordinary many-body
+coherence, not non-universal gravity.  Route (2) is the real
+N-portrait-style escape.  Payoff: the strict memory-burden prototype
+does not realize route (2) (its exterior vertex is envelope-scale,
+brightness is occupation — caught by asymmetry), and the demarcation
+statement becomes: thermality + luminosity force entropy-rank
+participation UNLESS the horizon emits through a thermalized bright
+collective exterior channel.  Verification grading per claim.  Not
+paper text.
 
 ## 1. The two enhancement routes, via the coupling-blind occupation
 
@@ -81,105 +90,121 @@ prototype — it guards a strictly more exotic hypothetical.  [Follows
 from M1 + section 1; the robust hook is that the MEASURED 1-1/S pins
 K_0 = n_0 ~ S regardless of Hamiltonian details.]
 
-## 3. What E' actually guards, and why it is coupling universality
+## 3. What E' actually guards: two failure modes, only one closed by universality
 
-The only escape E' closes is route (2): a channel bright through an
-anomalously large bare vertex |c_i|^2 while thermalized at O(1)
-occupation — a Dicke/superradiant-type collective mode with enhanced
-radiation coupling.  Such a channel would pass asymmetry (n=O(1)) and
-g2 (thermal), yet carry Schwarzschild flux at rank one.
+**Correction (2026-07-06).**  The earlier version of this section read
+"E' = gravitational coupling universality."  That overclaimed.
+Universality constrains the ELEMENTARY coupling; it does not by itself
+forbid a coherent many-body state from coupling through a normalized
+collective mode with amplitude enhanced by sqrt(N).  That is ordinary
+collective physics, not non-universal gravity.  E' is therefore best
+stated as a condition on the exterior emission vertex, with two
+distinct violations.
 
-E' forbids it by capping |c_i|^2 at the envelope scale.  The physical
-content of that cap:
+E' = **no anomalously bright exterior emission vertex**: no channel
+carries O(1) of the Schwarzschild flux at rank one through an enhanced
+coupling |c_i|^2 (while thermalized, so asymmetry and g2 both pass).
+The two ways E' can fail:
 
-```text
-E'  <=>  the radiation-emission operators have no channel-selective
-         matrix-element enhancement:  <E|A_i|E'> ~ e^{-S/2} f_i(omega)
-         with f_i smooth and O(1) in the fundamental coupling units.
-```
+**Route (2a) — non-universal microscopic charge.**  Some channel has a
+larger "gravitational charge" than others, a channel-selective
+elementary coupling.  CLOSED by universality, and robustly:
 
-This is precisely what gravitational coupling universality buys.  The
-argument, in three steps:
+1. A massless spin-2 has a soft POLE, not a Goldstone Adler zero — it
+   couples to the conserved T_munu with strength fixed by energy
+   (equivalence principle).  Weinberg's soft theorem forces this
+   universality on any Lorentz-invariant S-matrix with a massless
+   spin-2; Weinberg-Witten forbids such a graviton from arising as an
+   ordinary localizable quasiparticle of a Lorentz-invariant medium
+   (so a naive "phonon-graviton" with the wrong soft behavior is
+   excluded).
 
-1. The horizon radiates through minimal coupling to the
-   energy-momentum tensor.  By the equivalence principle the coupling
-   strength is universal (one sqrt(G) per quantum, set by energy), with
-   NO channel-dependent "gravitational charge."
+2. The universality of the COUPLING CONSTANT holds throughout the EFT
+   regime, not merely in the soft limit: for a large black hole
+   (r_g >> l_P) the horizon is deep in the EFT, so the elementary
+   emission coupling is channel-independent at the horizon scale.
+   Only genuinely trans-EFT emergent gravity (Lorentz invariance
+   emergent, graviton non-fundamental) reopens this — and then only at
+   the medium/Planck scale, not the macroscopic horizon.
 
-2. A universal minimal coupling is a bounded, few-body operator.  Its
-   matrix elements between microcanonical shell states obey the
-   standard ETH envelope, matrix element ~ e^{-S/2} times a smooth
-   O(1) form factor: the e^{-S/2} is the universal density-of-states
-   suppression, identical across channels.
+So route (2a) is well-closed for the macroscopic BH, tied to the
+equivalence principle and Weinberg-Witten.  [Standard soft-theorem /
+WW lore as deployed here; the "coupling universality holds at horizon
+scale, not just softly" step is the load-bearing synthesis — WW's
+hypotheses (a Lorentz-covariant conserved T_munu) should be checked
+against primary sources before external use.]
 
-3. Producing a coupling-enhanced channel means producing a source
-   operator whose matrix element is e^{+S/2}-anomalous relative to
-   this envelope — a many-body operator finely tuned to connect
-   specific shell states with amplitude sqrt(S) above the universal
-   scale.  Universal minimal coupling to T_munu does not supply such
-   an operator.  Hence within gravitational coupling universality,
-   E' holds.
-
-[Physics-level argument, not a theorem.  Step 2 (universal coupling =>
-ETH envelope) is a physical expectation about emission operators, not
-a proof; step 3 assumes the only vertex on offer is minimal coupling.
-State as a principle, not a lemma.]
+**Route (2b) — collective coupling enhancement.**  A coherent
+horizon/condensate mode couples to exterior radiation as sqrt(S)
+(normalized collective mode of S constituents) while its occupation is
+thermal / O(1).  Such a channel is bright, passes asymmetry (n = O(1)
+=> r ~ thermal) AND g2 (thermalized => g2 = 2), and carries the flux
+at rank one.  NOT closed by universality: Weinberg constrains the
+per-graviton coupling, but a coherent state of N universally-coupled
+gravitons can have a sqrt(N) collective vertex — this is ordinary
+Dicke/superradiance-type coherence, independent of whether the
+graviton is fundamental or emergent.  **This is the real
+N-portrait-style escape**, and it is a question about emission
+DYNAMICS, not about graviton ontology.
 
 ## 4. The surviving escape, named
 
 The certificate does NOT refute the coherent/N-portrait branch.  It
-localizes the branch's only survival route to one property:
+localizes the branch's only survival route to route (2b):
 
-**The emergent (composite) graviton must couple to exterior radiation
-through a vertex enhanced by ~sqrt(S) over a fundamental graviton —
-a channel-selective, non-universal radiation coupling.**
+**The horizon must emit through a thermalized, bright COLLECTIVE
+exterior channel — a coherent mode with a sqrt(S)-enhanced coupling to
+the radiation and thermal O(1) occupation.**
 
-This is the coupling-enhancement escape stated physically.  It is not
-absurd on its face: composite objects have form factors and can couple
-coherently.  But it is a definite, nameable claim that (i) violates
-coupling universality at the emission vertex, and (ii) should have
-independent consequences (anomalous graviton/radiation emission
-wherever the composite structure is probed), i.e. is falsifiable in
-principle.  The N-portrait's own critical relation alpha N ~ 1 is
-about the internal binding of the condensate; whether it also endows
-the master mode with a sqrt(S)-enhanced EXTERIOR radiation vertex (as
-opposed to a large occupation, which is route (1) and already caught)
-is a separate, checkable question the framework now poses sharply.
-[Inference; the distinction between internal collective coupling and
-exterior radiation vertex should be checked against the prototype
-Hamiltonian's b_0 emission term before external use — M1 says C_0 is
-ordinary, which already suggests the strict model takes route (1), not
-this escape.]
+This is a definite, dynamical, in-principle-checkable claim, and it is
+NOT "gravity is non-universal": it keeps emergent/collective gravity in
+its proper place as a question about the emission vertex, not a
+violation of the equivalence principle.  The N-portrait's critical
+relation alpha N ~ 1 is about the INTERNAL binding of the condensate;
+whether it also makes the exterior emission proceed through a
+sqrt(S)-enhanced collective channel (route 2b) rather than through an
+envelope-scale vertex with large occupation (route 1, already caught)
+is exactly what must be checked.
+
+For the strict 2006.00011 prototype the answer is route (1): the
+exterior a_0 -> b_0 vertex is envelope-scale, C_0 <~ eps_0/sqrt(S)
+(= C_ETH, section 6), and the S-fold brightness is the occupation
+n_0 ~ S — occupation enhancement, caught by asymmetry.  The collective
+sqrt(N) lives in the internal master-memory coupling, not the emission
+vertex (verified section 6).  A DIFFERENT model with a thermalized
+bright collective exterior channel would evade both asymmetry and g2 —
+that model is un-built in the corpus (section 6 residue), but it is not
+excluded by universality; it is the open dynamical question.
 
 ## 5. The sharpened fork (demarcation payoff)
 
 ```text
-Within gravitational coupling universality:
+Given gravitational coupling universality (route 2a closed for r_g >> l_P):
   Schwarzschild luminosity
   + per-resolved-mode thermality (asymmetry ~ KMS, g2 = 2)
-    => entropy-rank source participation, N_eff ~ S.
-
-The coherent single-source branch survives ONLY by violating
-coupling universality: a sqrt(S)-enhanced non-universal radiation
-vertex for the emergent graviton.
+    => entropy-rank source participation, N_eff ~ S,
+  UNLESS the horizon emits through a thermalized bright COLLECTIVE
+  exterior channel (route 2b).
 ```
 
 Two things make this a demarcation result rather than a technical
 lemma:
 
-- The disputed physics is localized.  The entire question "is the
-  horizon's entropy source-rank participating?" reduces, given the
-  observables, to one property of the emergent graviton's exterior
-  coupling.  That is exactly the program's goal: separate the
-  QI-forced content (here, rank from thermality) from an irreducible
-  gravitational input (here, whether the emergent graviton's
-  radiation coupling is universal).
+- The disputed physics is localized AND correctly placed.  The
+  question "is the horizon's entropy source-rank participating?"
+  reduces, given the observables and universality, to one DYNAMICAL
+  question: does the horizon emit through a thermalized bright
+  collective channel?  This separates the QI-forced content (rank from
+  thermality) from a sharply-posed gravitational-dynamics input —
+  without misattributing the escape to a violation of the equivalence
+  principle.
 
-- Both branches are live and each is a result.  If coupling
-  universality holds, thermality certifies rank (the certificate is a
-  theorem modulo the physics principle).  If the N-portrait realizes
-  the sqrt(S) vertex, then per-mode Hawking thermality COEXISTS with
-  rank-1 emission through a non-universal graviton — itself a striking,
+- Both branches are live and each is a result.  If there is no bright
+  collective emission channel, thermality certifies rank (the
+  certificate is a theorem modulo the emission-envelope condition).
+  If the N-portrait realizes the collective channel, then per-mode
+  Hawking thermality COEXISTS with rank-1 emission through a coherent
+  horizon mode — itself a striking,
   in-principle-testable prediction.
 
 ## 6. Verification against the prototype b_0 emission vertex [computation]
@@ -242,9 +267,10 @@ luminosity-carrying emission line: in 1601.01329 it is a weak
 occupancy readout, and in the actual emission model (2006.00011) the
 luminosity channel is the envelope-scale, route-(1) master vertex.  To
 realize the escape the N-portrait would have to make that sqrt(S)
-readout coupling BE the main thermal emission channel — and then defend
-its non-universality and the independent consequences that implies.
-So the escape is not un-built for lack of ingredients; it is un-built
+readout coupling BE the main thermal emission channel — a thermalized
+bright collective exterior channel (route 2b of section 3), with the
+independent consequences that implies.  So the escape is not un-built
+for lack of ingredients; it is un-built
 because no corpus model assigns the enhanced coupling the
 bright-emission role.  [Computation on the 2006.00011 couplings; the
 1601.01329 readout-vs-emission distinction is verified against the M0b
@@ -257,16 +283,25 @@ is the natural next step if this residue becomes load-bearing.]
 
 ## Discipline
 
-- E'-as-universality is a physical principle argument, not a proof;
-  step 2 and step 3 of section 3 are expectations about emission
-  operators.  Never call it a lemma.
+- Do NOT say "E' = coupling universality."  Universality closes only
+  route (2a), the non-universal-charge failure.  E' is the
+  no-anomalously-bright-exterior-vertex condition; its live failure is
+  route (2b), collective enhancement, which universality does NOT
+  forbid (Weinberg constrains the per-graviton coupling, not the
+  sqrt(N) collective vertex of a coherent state).
+- The route (2b) escape is a DYNAMICAL question about the emission
+  vertex, not a violation of the equivalence principle.  Do not phrase
+  it as "unless gravity is non-universal"; phrase it as "unless the
+  horizon emits through a thermalized bright collective channel."
 - Keep the corollary of section 2 sharp: the STRICT prototype is
   excluded by observables alone (route 1); E' only matters for the
-  exotic Dicke route.  Do not conflate the two.
+  collective route (2b).  Do not conflate the two.
 - Fork-not-refutation survives verbatim: the N-portrait is localized,
   not refuted; the surviving route is named and in-principle checkable.
-- Do not claim gravitational universality is PROVEN to forbid the
-  sqrt(S) vertex; claim it localizes the dispute to that vertex.
+- The route (2a) argument (universality at horizon scale via
+  equivalence principle + Weinberg-Witten) is standard lore as
+  deployed; flag WW's hypotheses for a primary-source check before
+  external use.
 - The load-bearing distinction is now THREE-way (internal binding /
   external readout / exterior emission vertex) and VERIFIED against the
   couplings (section 6): only the emission vertex carries the certified
@@ -279,19 +314,22 @@ is the natural next step if this residue becomes load-bearing.]
 
 ## Feeds
 
-- Pigeonhole note: E' gains a physical reading (coupling universality)
-  and the route (1)/(2) split is made central; the strict-prototype
-  corollary (no E' needed) is new and belongs in the theorem's scope
-  discussion.
+- Pigeonhole note / cap-decomposition note: "E' = coupling
+  universality" must be demoted to "universality closes the charge
+  route (2a); the residue is route (2b), collective emission."  The
+  cap-decomposition "double duty of E'" (excludes outlier + envelopes
+  ordinary sector) still holds, but its outlier-exclusion half is
+  charge-route universality PLUS the no-bright-collective-channel
+  condition, not universality alone.
 - Q3 (branch forcing): this is the sharpest branch-forcing statement
-  yet — thermality forces rank UNLESS the emergent graviton's
-  radiation vertex is non-universal.  Promote from think-pass.  The
-  qualifier "within coupling universality" must travel with this line
-  whenever it is quoted.
+  yet — thermality forces rank UNLESS the horizon emits through a
+  thermalized bright collective exterior channel.  Promote from
+  think-pass.  Do not quote it as "unless gravity is non-universal."
 - Roadmap: the certificate's headline can be stated as the section-5
   fork; the "conditional on the class" caveat acquires a physical
-  name.
+  name (the emission-envelope / no-bright-collective-channel
+  condition).
 - Coherence witness / M3: the route (1)/(2) taxonomy clarifies why g2
   and asymmetry are complementary (g2 catches thermalization within a
   route, asymmetry catches occupation across routes; neither catches
-  coupling, which is the E'/universality residue).
+  collective coupling, which is the route-(2b) residue).

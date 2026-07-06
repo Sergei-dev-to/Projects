@@ -74,8 +74,13 @@ clause of the escape note).  The asymmetry leg is provably BLIND to
 coupling enhancement: r_i is invariant under c_i rescaling (check:
 A = c·a on an equilibrium mode has r = e^{-beta omega} for every c).
 Coupling enhancement is excluded only by the ordinary-envelope
-hypothesis — physically grounded in the universality of the
-gravitational vertex (no S-enhanced per-channel coupling available).
+hypothesis E' (no anomalously bright exterior vertex).  Its two failure
+modes have different status (`envelope_as_coupling_universality.md`
+§3): non-universal microscopic charge is closed by gravitational
+coupling universality, but COLLECTIVE enhancement (a sqrt(S)-coupled
+thermalized collective mode) is NOT — that is ordinary Dicke coherence
+and is the live residue.  So E' is an emission-envelope condition, not
+"universality" alone.
 So the theorem's two hypotheses are independent and both load-bearing:
 
 ```text
@@ -154,10 +159,12 @@ decomposes into (a) a pure-observable outlier floor N_eff >= 1/f
 (exact from Tr(W^2) <= lambda_max Tr W, no envelope), plus (b)
 N_eff^ord ~ cS = Lemma 1 on the ORDINARY sector, which is
 uncontested (the envelope was only ever disputed for the enhanced
-outlier) and is underwritten by the same E' = coupling universality
-that excludes the coupling-enhanced outlier.  So the certificate
-rests on exactly two inputs — the asymmetry observable and coupling
-universality — and the cap is downstream, not alongside.
+outlier) and is underwritten by the same E' (emission-envelope
+condition — charge route by universality, collective route the live
+residue) that excludes the coupling-enhanced outlier.  So the
+certificate rests on exactly two inputs — the asymmetry observable and
+E' (the emission-envelope condition, not coupling universality alone) —
+and the cap is downstream, not alongside.
 
 Clarification: the exact ordinary-sector decomposition is
 `N_eff = 1/(f^2 + (1-f)^2/N_eff^ord)`.  The displayed theorem below

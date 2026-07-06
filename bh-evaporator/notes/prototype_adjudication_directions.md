@@ -326,18 +326,24 @@ semiclassical per-mode thermality -> exclusion or thermal mimicry?
 ```
 
 Per-mode thermality is now the live forcing candidate, and Q1b
-produced the sharp physics-principle statement:
-`envelope_as_coupling_universality.md` recasts the E' hypothesis as
-gravitational coupling universality.  Within that principle,
-thermality + luminosity force N_eff ~ S unless the emergent graviton's
-exterior radiation vertex is sqrt(S)-enhanced and non-universal.  Two
+produced the sharp statement (`envelope_as_coupling_universality.md`,
+framing corrected 2026-07-06): thermality + luminosity force
+N_eff ~ S UNLESS the horizon emits through a thermalized bright
+COLLECTIVE exterior channel.  The E' hypothesis reads as
+"no anomalously bright exterior emission vertex," with two failure
+modes: (2a) non-universal microscopic charge — closed by universality
+(equivalence principle / Weinberg-Witten) in the EFT regime; (2b) a
+sqrt(S)-coupled thermalized collective channel — NOT closed by
+universality (it is ordinary Dicke coherence, not non-universal
+gravity), and this is the real N-portrait-style escape.  Two
 sub-findings: (a) the strict memory-burden prototype is
-occupation-enhanced (K_0 = n_0 ~ S), so observables alone exclude it —
-E' is not even needed for the concrete model; (b) the only surviving
-escape is a coupling-enhanced Dicke-type vertex, localized and
-in-principle checkable.  Promote Q3 from think-pass: this is a
-demarcation statement (rank is QI-forced modulo one nameable
-gravitational-input property).
+occupation-enhanced (K_0 = n_0 ~ S, exterior vertex envelope-scale),
+so observables alone exclude it — route (2b) is not realized; (b) the
+surviving escape is a dynamical question about the emission vertex,
+localized and in-principle checkable, NOT a violation of the
+equivalence principle.  Promote Q3 from think-pass: this is a
+demarcation statement (rank is QI-forced modulo one sharply-posed
+gravitational-dynamics question).
 
 ### Later
 

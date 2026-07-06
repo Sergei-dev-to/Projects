@@ -8,12 +8,14 @@ per-channel cap F_H/F_env ~ cS asserted in
 `paper_boundary_saturation/main.tex`.  Result: the cap is not a third
 hypothesis.  It decomposes into (a) a pure-observable outlier bound
 that needs no envelope at all, plus (b) an application of Lemma 1 to
-the ordinary sector, which is itself underwritten by the same
-coupling-universality principle (E') already identified.  So the whole
+the ordinary sector, which is itself underwritten by the same E'
+(emission-envelope condition) already identified.  So the whole
 certificate rests on exactly two inputs — the line-asymmetry observable
-and coupling universality — and the cap is downstream of them, not
-alongside.  All inequalities are exact; grading per claim.  Not paper
-text.
+and E' — and the cap is downstream of them, not alongside.  (NB: E' is
+the no-anomalously-bright-exterior-vertex condition, not "coupling
+universality"; universality closes only its charge-route half — see
+`envelope_as_coupling_universality.md` §3.)  All inequalities are
+exact; grading per claim.  Not paper text.
 
 ## 1. The pigeonhole, restated exactly
 
@@ -127,20 +129,27 @@ disputed outlier; once sections 2-3 remove it (observably + by
 universality), Lemma 1 applies to what remains WITHOUT the contested
 step.
 
-Moreover the same E' = coupling universality does double duty:
+Moreover the same E' does double duty:
 
 ```text
-E' (universality) =>
+E' =>
    (a) no coupling-enhanced outlier            [section 3, route 2];
    (b) ordinary emission operators are ETH-enveloped
        => Lemma 1 holds on the ordinary sector => N_eff^ord ~ cS.
 ```
 
-Step (b) is the SAME argument as section 3 of
-`envelope_as_coupling_universality.md` (universal minimal coupling =>
-e^{-S/2} ETH envelope), now used for the residual sector rather than
-against the outlier.  So the per-channel cap needs no input that was
-not already on the table.
+Caveat on what E' is (corrected 2026-07-06,
+`envelope_as_coupling_universality.md` §3): E' is NOT "coupling
+universality."  Universality (equivalence principle / Weinberg-Witten)
+closes only the non-universal-CHARGE failure; the live residue is
+COLLECTIVE coupling enhancement (a sqrt(S)-coupled thermalized
+collective channel), which universality does not forbid.  So E' =
+"no anomalously bright exterior emission vertex," and step (a) above is
+underwritten by charge-route universality PLUS the
+no-bright-collective-channel condition.  Step (b) still follows from
+the ordinary-sector envelope.  The point that survives verbatim: the
+per-channel cap needs no input beyond E' and the observable — but E'
+itself is the emission-envelope condition, not universality alone.
 
 ## 6. Consequences
 
@@ -148,11 +157,16 @@ The certificate's dependency structure, fully reduced:
 
 ```text
 INPUT I  (observable):  line asymmetry within eta of calibrated KMS.
-INPUT II (principle):   gravitational coupling universality (= E').
+INPUT II (E' = emission-envelope condition):  no anomalously bright
+             exterior emission vertex.  Two parts: (2a) no
+             non-universal charge — closed by universality/Weinberg-
+             Witten in the EFT regime; (2b) no thermalized bright
+             COLLECTIVE channel — the live dynamical residue, NOT
+             closed by universality.
 
 I         => no occupation-enhanced outlier (f <= eta n_ref).
-II        => no coupling-enhanced outlier, AND ordinary sector
-             ETH-enveloped (Lemma 1 => N_eff^ord ~ cS).
+II        => no coupling-enhanced outlier (via 2a + 2b), AND ordinary
+             sector ETH-enveloped (Lemma 1 => N_eff^ord ~ cS).
 I + II    => N_eff ~ min(cS, (eta n_ref)^{-2}) ~ cS for eta small.
 I alone   => exact floor N_eff >= 1/f; if the dangerous outlier is
              occupation-enhanced, f <= eta n_ref, so
@@ -162,7 +176,9 @@ I alone   => exact floor N_eff >= 1/f; if the dangerous outlier is
 
 The "per-channel flux cap F_H/F_env ~ cS" is therefore not a third
 assumption.  It is the section-4 identity plus N_eff^ord ~ cS, and the
-latter is Lemma 1 on the uncontested sector, underwritten by II.  The
+latter is Lemma 1 on the uncontested sector, underwritten by II (E',
+the emission-envelope condition — charge route by universality,
+collective route as the live residue).  The
 soft joint dissolves into the two inputs already named.
 
 Bonus, worth keeping: the pure-observable floor is genuinely
