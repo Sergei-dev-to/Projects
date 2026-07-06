@@ -260,6 +260,133 @@ thin reservoir, or a system whose entropy is already localized on the
 emitting surface, may have entropy-sized participation; this is the
 stretched-horizon structure in Hamiltonian language.
 
+\section{A Static Line-Response Certificate}
+\label{sec:static-certificate}
+
+The preceding rank conclusion has an apparent loophole.  A single
+collective source with a macroscopic occupation can carry the same
+coarse flux as many weak sources.  In that case the ordinary-envelope
+assumption in Lemma~\ref{lem:schwarzschild} is violated, and the Gram
+matrix may have $\Neff=O(1)$ even though the luminosity is
+Schwarzschild-sized.  This is the coherent-enhancement branch realized
+in critical condensate language by one bright collective mode.
+
+There is, however, a static response test that separates this branch
+from an equilibrium entropy-rank source.  For a resolved line with
+system operator $A_i(\omega)$, define the emission and absorption rates
+through that channel by
+\be
+  \Gamma_{{\rm em},i}\propto
+  \langle A_i^\dagger A_i\rangle,
+  \qquad
+  \Gamma_{{\rm abs},i}\propto
+  \langle A_i A_i^\dagger\rangle .
+\ee
+If
+\be
+  K_i=
+  \frac{\langle A_i^\dagger A_i\rangle}
+       {\langle [A_i,A_i^\dagger]\rangle},
+\ee
+then
+\be
+  r_i\equiv
+  \frac{\Gamma_{{\rm em},i}}{\Gamma_{{\rm abs},i}}
+  =
+  \frac{K_i}{K_i+1}.
+\label{eq:line-asymmetry}
+\ee
+This identity is just the bosonic stimulated-emission algebra written
+for an arbitrary channel operator.  In an equilibrium shell, the KMS
+condition gives instead
+\be
+  \langle A_i A_i^\dagger\rangle
+  =
+  e^{\beta\omega}\langle A_i^\dagger A_i\rangle,
+  \qquad
+  r_i=e^{-\beta\omega},
+\ee
+or, more generally, the microcanonical ratio
+$\rho(E-\omega)/\rho(E)$; for rotating or charged holes the usual
+grand-canonical replacement
+$e^{-\beta(\omega-m\Omega_H-q\Phi_H)}$ is used
+\cite{HaagHugenholtzWinnink1967,BekensteinMeisels1977,
+PanangadenWald1977}.
+
+Large occupation enhancement has $K_i\gg1$ and therefore
+$r_i\to1$.  A Schwarzschild thermal line at $\omega\sim T$ instead has
+an order-one Boltzmann asymmetry.  Thus a line whose measured
+emission/absorption ratio is within $\eta$ of its calibrated
+microcanonical value can carry only a small flux fraction through
+occupation-enhanced channels.  Writing
+\be
+  n_\beta = \frac{R}{1-R},
+  \qquad
+  R=\frac{\rho(E-\omega)}{\rho(E)}
+\ee
+for the reference thermal occupation, this fraction obeys
+\be
+  f \lesssim \eta n_\beta ,
+\label{eq:f-bound}
+\ee
+up to the convention used for the experimental or model error $\eta$.
+
+Pure coupling enhancement is different: rescaling $A_i\mapsto cA_i$
+leaves Eq.~\eqref{eq:line-asymmetry} invariant.  The line-asymmetry
+test therefore does not by itself exclude hidden powers in the
+commutator scale.  The ordinary-envelope hypothesis must be strengthened
+in per-channel form: non-enhanced channels have a flux cap
+$F_{\rm env}$, including a cap on the commutator scale, normalized so
+that the Schwarzschild scaling lemma reads
+\be
+  \frac{F_{\rm H}}{F_{\rm env}}\sim c\,S_{\rm BH}.
+\ee
+Here $F_{\rm H}$ is the total thermal-line flux and $c$ is an
+order-one class constant.  This is not a new universal numerical
+constant; it is the per-channel translation of the smooth-envelope
+assumption in Lemma~\ref{lem:schwarzschild}.
+
+With this cap, the finite-accuracy conclusion is a pigeonhole bound.
+The ordinary part of the flux has support count
+\be
+  \Neff^{\rm ord}
+  \gtrsim
+  (1-f)\,\frac{F_{\rm H}}{F_{\rm env}}
+  \sim
+  (1-f)c\,S_{\rm BH}.
+\ee
+The total participation ratio is bounded by the possible concentration
+of the remaining fraction $f$ into an enhanced channel:
+\be
+  \Neff
+  \gtrsim
+  \frac{1}{f^2+(1-f)/(cS_{\rm BH})}
+  \sim
+  \min\{cS_{\rm BH},f^{-2}\}.
+\label{eq:finite-eta-neff}
+\ee
+Exact calibration, $f=0$, gives $\Neff\gtrsim cS_{\rm BH}$ in the
+ordinary-envelope class.  At finite accuracy, full total participation
+requires $\eta\lesssim1/(n_\beta\sqrt{S_{\rm BH}})$; at coarser
+accuracy Eq.~\eqref{eq:finite-eta-neff} remains a quantitative floor.
+
+The response test has one kinematic caveat.  If the bright collective
+ladder is anharmonic and fully resolved, a sloped occupation
+distribution can make the line ratio look thermal even with
+$\Neff=O(1)$.  This fake is resolution-dependent: it fails the same
+asymmetry test when the ladder is unresolved, and within a resolved
+sub-line its photon counting remains subthermal.  The passive
+second-order statistic
+\be
+  g^{(2)}(0)
+  =
+  \frac{\langle A^\dagger A^\dagger A A\rangle}
+       {\langle A^\dagger A\rangle^2}
+\ee
+therefore supplies an independent leg of the certificate.  A sharp
+collective source gives $g^{(2)}(0)=1-O(1/S)$, while a thermal Hawking
+mode gives $g^{(2)}(0)=2$.
+
 \section{Dynamical Counterpart}
 
 Let a local reservoir couple to an exterior apparatus through the same
@@ -310,28 +437,33 @@ area in microscopic units.  The same surface restriction gives the
 usual power-law locality bound on exterior recovery of bulk-deposited
 quantum information.
 
-The exterior certificate for an entropy-sized participation count is
-necessarily temporal.  At Schwarzschild temperature the wavelength is
-of order the horizon radius, so the radiation resolves an order-one
-number of angular modes per coherence time
+Flux moments alone do not certify an entropy-sized participation
+count.  At Schwarzschild temperature the wavelength is of order the
+horizon radius, so the radiation resolves an order-one number of
+angular modes per coherence time
 \cite{Page1976,BekensteinMayo2001,Pendry1983}: instantaneous emission
-statistics have order-one rank however large $\Neff$ may be.  A
-stationary horizon offers a second exterior window.  For Rindler
-wedges, eternal black holes, and large anti--de Sitter black holes, the
-exterior state is thermal in the exact KMS sense, and stationary
-response and fluctuation spectra are tied to interior state structure
-by the equilibrium dictionary
+mode counts have order-one rank however large $\Neff$ may be.  The
+static certificate in Sec.~\ref{sec:static-certificate} uses a
+different observable: the calibrated stimulated emission/absorption
+ratio of a resolved line, supplemented by photon counting to close the
+resolved-ladder loophole.  It tests whether the flux is carried by
+ordinary thermal channels or by a bright coherent source.
+
+There remains a separate temporal question.  For Rindler wedges,
+eternal black holes, and large anti--de Sitter black holes, the exterior
+state is thermal in the exact KMS sense, and stationary response and
+fluctuation spectra are tied to interior state structure by the
+equilibrium dictionary
 \cite{BisognanoWichmann1976,Israel1976,GibbonsHawkingAction1977,
 HawkingPage1983}.  Schwarzschild evaporation sits on the other side of
 that divide: at negative heat capacity the canonical ensemble does not
 exist, and there is no stationary KMS state of the exterior field to
 which long-time spectral data could be referred.  The exterior instead
 receives a single non-stationary record delivering of order one nat per
-coherence time over of order $S$ emissions.  Whatever entropy-sized
-structure is exterior-visible is therefore visible only in the time
-ordering of that record, which is why the exterior counterpart of the
-participation statement is the recovery-latency comparison of the
-preceding section rather than a flux moment.
+coherence time over of order $S$ emissions.  The static line response
+can certify the source-rank axis within the class, but the access
+latency of deposited quantum information is still the temporal
+comparison of the preceding section.
 
 The Bekenstein--Hawking density of states and the scrambling dynamics
 enter as separate inputs.  Once those inputs are assumed, the entropy
@@ -354,15 +486,24 @@ $\sqrt K$, while the remaining $K-1$ modes decouple
 coherent-enhancement escape from the ordinary-envelope assumption: the
 thermal-line Gram matrix may have participation $\Neff=O(1)$, with the
 power carried by the large master occupation rather than by $O(S)$
-comparable eigenvalues.  The same models also separate participation
-from latency.  In the strict prototype the memory-sector occupation is
-conserved and fixed-sector diary information has no Hamiltonian route
-into the emitted master record; in the black-hole mapping the
-memory-burden release channel is instead parametrically long.  Thus
-state-count saturation, source-rank saturation, and Hayden--Preskill
-latency are separate assumptions.  The rank conclusion above applies
-to the weak-emission ordinary-envelope class, not to this collectively
-enhanced single-source branch.
+comparable eigenvalues.  Section~\ref{sec:static-certificate} turns
+this escape into an exterior discriminator.  A harmonic bright source
+has emission/absorption ratio $n/(n+1)$, approaching one at large
+occupation, while the calibrated Schwarzschild line has an order-one
+thermal asymmetry; per resolved mode it also has
+$g^{(2)}(0)=1-O(1/S)$ rather than the thermal value two.  A dressed
+coherent model can evade this conclusion only by leaving the calibrated
+ordinary-envelope class, by becoming entropy-rank participating, or by
+using a resolution-dependent anharmonic ladder caught by the paired
+statistics.
+
+The same models also separate participation from latency.  In the
+strict prototype the memory-sector occupation is conserved and
+fixed-sector diary information has no Hamiltonian route into the
+emitted master record; in the black-hole mapping the memory-burden
+release channel is instead parametrically long.  Thus state-count
+saturation, source-rank saturation, and Hayden--Preskill latency are
+separate assumptions.
 
 \bibliographystyle{unsrturl}
 \bibliography{refs}
