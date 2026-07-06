@@ -322,8 +322,19 @@ graviton-condensate/N-portrait -> collective single-source branch?
 semiclassical per-mode thermality -> exclusion or thermal mimicry?
 ```
 
-Per-mode thermality is now the live forcing candidate.  Keep this as a
-thinking pass unless Q1b produces a sharp theorem.
+Per-mode thermality is now the live forcing candidate, and Q1b
+produced the sharp physics-principle statement:
+`envelope_as_coupling_universality.md` recasts the E' hypothesis as
+gravitational coupling universality.  Within that principle,
+thermality + luminosity force N_eff ~ S unless the emergent graviton's
+exterior radiation vertex is sqrt(S)-enhanced and non-universal.  Two
+sub-findings: (a) the strict memory-burden prototype is
+occupation-enhanced (K_0 = n_0 ~ S), so observables alone exclude it —
+E' is not even needed for the concrete model; (b) the only surviving
+escape is a coupling-enhanced Dicke-type vertex, localized and
+in-principle checkable.  Promote Q3 from think-pass: this is a
+demarcation statement (rank is QI-forced modulo one nameable
+gravitational-input property).
 
 ### Later
 
@@ -540,6 +551,7 @@ statistics_rank_link_result.md
 asymmetry_backreaction_escape_result.md
 participation_pigeonhole_result.md
 q1b_static_certificate_theorem.md
+envelope_as_coupling_universality.md
 nearextremal_ds_stress_test.md
 operator_overlap_latency_lemma.md
 q2_operator_overlap_bridge_theorem.md
