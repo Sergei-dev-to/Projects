@@ -197,7 +197,9 @@ arguably the sharpest strict-model vote yet.  The certificate suite is
 now a three-rung operational ladder by cost: passive g2, probe line
 asymmetry, deposit-and-decode latency.  Q3 consequence: per-mode
 thermality + detailed balance force entropy-rank participation within
-the class.
+the class AND modulo E' (the no-bright-collective-channel condition —
+a thermalized collective channel preserves KMS and g2 = 2 at rank one;
+only the latency rung reaches it).
 
 The depletion-backreaction escape is EXAMINED (2026-07-05,
 `asymmetry_backreaction_escape_result.md`): closed for the strict
@@ -392,11 +394,14 @@ how the fork resolves.
 
 Tier 2 — static certification of source rank.  Current: Q1b skeleton
 COMPLETE — escape closed/clause-covered, pigeonhole landed and
-corrected.  Endpoint: theorem — within the class, Schwarzschild flux
-law + KMS line asymmetry force N_eff^ord ≥ (1−f)·c·S and total
+corrected.  Endpoint: theorem — within the class and modulo E' (no
+bright collective exterior channel), Schwarzschild flux law + KMS line
+asymmetry force N_eff^ord ≥ (1−f)·c·S and total
 N_eff ~ min(cS, (η·n̄_eq)⁻²), with full total saturation at
-calibration accuracy η ≲ 1/(n̄_eq√S) and unconditionally at η = 0
-(semiclassical anchor).  The saturation paper's Lemma upgrades
+calibration accuracy η ≲ 1/(n̄_eq√S) and, at η = 0, unconditionally
+EXCEPT for the collective-channel residue (a rank-one thermal
+collective mode gives g2 = 2 at N_eff = 1, invisible to the static
+legs).  The saturation paper's Lemma upgrades
 from class-conditional to certificate-closed, and boundary saturation
 becomes statically certifiable by an exterior observer: no
 deposit-and-decode protocol required for the rank axis.
@@ -460,13 +465,19 @@ sessions inherit the map.
 Any quantum system reproducing the semiclassical exterior facts of a
 Schwarzschild horizon — flux law, per-resolved-mode thermal
 statistics, KMS line asymmetry — is forced to entropy-rank source
-participation by the static certificate.  With Q2's bridge and the
-deposit-and-decode rung, the full program also certifies log-latency
-access structure.  The semiclassical exterior facts stop being only
-modeling inputs and become measurements on a theorem-backed
-three-rung ladder.  This is an operational bootstrap of the horizon's
-information-theoretic structure from exterior phenomenology, within
-the stated class.
+participation by the static certificate, PROVIDED it does not emit
+through a thermalized bright collective exterior channel (route 2b,
+E'/the no-bright-collective-channel condition; a collective channel
+preserves KMS and g2 = 2 at rank one and is invisible to the static
+legs).  That single residual sub-case is where the deposit-and-decode
+rung earns its keep: with Q2's bridge and the latency rung, the full
+program also certifies log-latency access structure and is the only
+leg that can reach the collective-channel case.  The semiclassical
+exterior facts stop being only modeling inputs and become measurements
+on a theorem-backed three-rung ladder.  This is an operational
+bootstrap of the horizon's information-theoretic structure from
+exterior phenomenology, within the stated class and modulo the
+collective-channel residue.
 
 Demarcation consequence: everything exterior-operational about
 evaporation is QI-forced by QFT-in-curved-space facts.  Combined with
@@ -475,11 +486,16 @@ gravitational residue narrows to the value of `A/4G` (upstream state
 count) and the lived interior (downstream).
 
 N-portrait consequence: fork-not-refutation upgrades to
-refutation-conditional-on-class.  The coherent branch's remaining
-escape is exiting the class assumptions (e.g. a genuinely
-non-equilibrium line); checking whether real N-portrait dynamics does
-so becomes that branch's obligation, with a falsifiable O(1) signature
-either way.
+refutation-conditional-on-class-AND-no-bright-collective-channel.  The
+coherent branch's remaining escape is NOT primarily exiting the class
+with an O(1) static signature — the corrected escape (route 2b) is a
+thermalized bright collective exterior channel that PRESERVES KMS and
+g2 = 2 at rank one, so it shows no static deviation at all.  It is a
+dynamical question about the emission vertex, addressable only by the
+latency rung or dynamical input, not by the static observables.
+Checking whether real N-portrait dynamics realizes such a collective
+emission channel becomes that branch's obligation; the strict 2006
+prototype does not (it is route-1 occupation, statically caught).
 
 Referee honesty check: ETH-minded readers may find "thermality forces
 entropy rank" expected.  The headline is the adjudicated fork — the

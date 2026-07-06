@@ -131,9 +131,10 @@ that carries the luminosity at rank one (the memory-burden escape, the
 the ORDINARY sector — every channel except the candidate outlier — the
 envelope is the standard ETH statement for simple operators and was
 never in dispute.  The certificate's job was exactly to remove the
-disputed outlier; once sections 2-3 remove it (observably + by
-universality), Lemma 1 applies to what remains WITHOUT the contested
-step.
+disputed outlier; once sections 2-3 remove it (observably + by E', the
+no-bright-collective-channel condition — of which universality closes
+only the charge subroute), Lemma 1 applies to what remains WITHOUT the
+contested step.
 
 Moreover the same E' does double duty:
 
@@ -194,7 +195,9 @@ also accept that any occupation-enhanced bright channel is limited by
 `f <= eta n_ref`.  Thus the stronger floor
 `N_eff >= 1/(eta n_ref)` is earned whenever the dangerous outlier is
 occupation-enhanced.  It does not rule out a coupling-enhanced thermal
-outlier; that is precisely the universality residue.
+outlier — the thermalized bright collective channel — which is
+precisely the E' / collective-channel residue (NOT a universality
+residue: universality does not bear on it).
 
 ## Discipline
 

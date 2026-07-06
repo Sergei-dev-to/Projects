@@ -188,10 +188,14 @@ If the ordinary sector is asserted to have normalized participation
 scaling use, both forms give the same `min(cS, f^{-2})` floor.
 
 Semiclassical anchor (eta = 0): exact KMS asymmetry gives
-N_eff >= c·S unconditionally within the class.  At finite eta the
-total-participation statement is a floor, and the full saturation
-claim requires eta <~ 1/(n_bar_eq sqrt(S)) — state which of the two
-quantities is meant every time.  Leg A (g2) remains independent
+N_eff >= c·S within the class and modulo E' (the
+no-bright-collective-channel condition).  The E' qualifier is NOT
+optional even at eta = 0: a rank-one thermal COLLECTIVE channel has
+r = e^{-beta omega} (KMS-exact) and g2 = 2, so it passes eta = 0 with
+N_eff = 1 — the static legs cannot see it, only E' excludes it.  At
+finite eta the total-participation statement is a floor, and the full
+saturation claim requires eta <~ 1/(n_bar_eq sqrt(S)) — state which of
+the two quantities is meant every time.  Leg A (g2) remains independent
 passive corroboration and covers the sloped-ladder clause.  All
 load-bearing steps are now at computation or explicit-hypothesis
 level; nothing in the chain is a sketch.
