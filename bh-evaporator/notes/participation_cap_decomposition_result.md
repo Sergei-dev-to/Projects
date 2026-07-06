@@ -81,10 +81,27 @@ Tr(W^2) = lambda_max^2 + Tr(W^2)_ord
 => N_eff = 1 / ( f^2 + (1-f)^2 / N_eff^ord ).
 ```
 
-With N_eff^ord ~ cS this is the corrected pigeonhole bound
-N_eff ~ min(cS, f^{-2}) (superseding the linear form; consistent with
-`participation_pigeonhole_result.md`).  The ONLY new ingredient beyond
-section 2 is
+There are two useful versions of the upgrade.
+
+If Lemma 1 is taken to give normalized ordinary-sector participation,
+`N_eff^ord ~ cS`, then the exact identity gives
+
+```text
+N_eff = 1 / ( f^2 + (1-f)^2 / (cS) )
+      ~ min(cS, f^{-2}).
+```
+
+The more conservative support-count version used in
+`participation_pigeonhole_result.md` follows from the same identity plus
+the weaker count `N_eff^ord >= (1-f)cS`, equivalently from the
+per-channel ordinary cap:
+
+```text
+N_eff >= 1 / ( f^2 + (1-f)/(cS) ).
+```
+
+The two forms differ only at finite `f`; both give the same parametric
+floor `min(cS, f^{-2})`.  The ONLY new ingredient beyond section 2 is
 
 ```text
 N_eff^ord ~ cS       (participation of the ordinary sector).
@@ -137,8 +154,10 @@ I         => no occupation-enhanced outlier (f <= eta n_ref).
 II        => no coupling-enhanced outlier, AND ordinary sector
              ETH-enveloped (Lemma 1 => N_eff^ord ~ cS).
 I + II    => N_eff ~ min(cS, (eta n_ref)^{-2}) ~ cS for eta small.
-I alone   => N_eff >= 1/(eta n_ref), the pure-observable floor,
-             valid against occupation enhancement with NO envelope.
+I alone   => exact floor N_eff >= 1/f; if the dangerous outlier is
+             occupation-enhanced, f <= eta n_ref, so
+             N_eff >= 1/(eta n_ref).  This does NOT exclude a
+             coupling-enhanced thermal outlier; that is II's job.
 ```
 
 The "per-channel flux cap F_H/F_env ~ cS" is therefore not a third
@@ -146,13 +165,14 @@ assumption.  It is the section-4 identity plus N_eff^ord ~ cS, and the
 latter is Lemma 1 on the uncontested sector, underwritten by II.  The
 soft joint dissolves into the two inputs already named.
 
-Bonus, worth keeping: the pure-observable floor N_eff >= 1/(eta n_ref)
-is a genuinely assumption-light result.  Even a reader who rejects
-coupling universality and every envelope statement must accept that a
-Schwarzschild line calibrated to KMS within eta has participation at
-least 1/(eta n_ref) against occupation enhancement.  That is the
-minimal defensible certificate, and it survives with nothing but the
-KMS identity and the observed asymmetry.
+Bonus, worth keeping: the pure-observable floor is genuinely
+assumption-light.  Even a reader who rejects coupling universality and
+every envelope statement must accept `N_eff >= 1/f` exactly, and must
+also accept that any occupation-enhanced bright channel is limited by
+`f <= eta n_ref`.  Thus the stronger floor
+`N_eff >= 1/(eta n_ref)` is earned whenever the dangerous outlier is
+occupation-enhanced.  It does not rule out a coupling-enhanced thermal
+outlier; that is precisely the universality residue.
 
 ## Discipline
 

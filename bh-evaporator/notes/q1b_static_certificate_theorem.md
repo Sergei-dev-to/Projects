@@ -79,6 +79,20 @@ N_eff >= 1 / ( f^2 + (1 - f)/(c S) )
       ~ min(c S, f^-2).
 ```
 
+This displayed total bound is the conservative support-count form.  The
+exact decomposition is
+
+```text
+N_eff = 1 / ( f^2 + (1 - f)^2 / N_eff^ord ).
+```
+
+If the ordinary sector itself has normalized participation
+`N_eff^ord ~ cS`, this becomes
+`1/(f^2 + (1-f)^2/(cS))`.  If one uses only the weaker per-channel
+ordinary cap, `N_eff^ord >= (1-f)cS`, it reduces to the conservative
+displayed bound above.  Both have the same parametric floor
+`min(cS, f^-2)`.
+
 In particular, exact calibration (`eta = 0`) gives
 `N_eff >= c S` within the class.  At finite calibration accuracy,
 full total-participation saturation requires
@@ -105,14 +119,18 @@ and against occupation enhancement the asymmetry bounds
 `f <= eta n_ref`, so
 
 ```text
-N_eff >= 1 / (eta n_ref)   [pure observable, no envelope, no E'].
+N_eff >= 1 / (eta n_ref)
+    [pure observable against occupation enhancement; no envelope, no E'].
 ```
 
 A reader who rejects coupling universality and every envelope
-statement must still accept this: a Schwarzschild line calibrated to
-KMS within `eta` has participation at least `1/(eta n_ref)` against
-occupation enhancement.  The saturation form above is the upgrade that
-adds assumptions 3-4; quote whichever matches the assumptions in play.
+statement must still accept the exact floor `N_eff >= 1/f`, and must
+also accept that an occupation-enhanced bright channel is bounded by
+`f <= eta n_ref`.  The stronger displayed floor follows if the
+dangerous outlier is occupation-enhanced.  It does not exclude a
+coupling-enhanced thermal outlier; that is exactly what assumption 4
+does.  The saturation form above is the upgrade that adds assumptions
+3-4; quote whichever matches the assumptions in play.
 
 ## Proof Skeleton
 
@@ -154,7 +172,9 @@ contributes `f^2` to the normalized second moment, giving
 N_eff >= 1 / (f^2 + (1 - f) Phi_env/Phi_H).
 ```
 
-Substitute `Phi_H/Phi_env ~ cS`.
+This is the conservative support-count/cap version.  The exact
+ordinary-sector decomposition is
+`N_eff = 1/(f^2 + (1-f)^2/N_eff^ord)`.
 
 ## Role Of g2
 

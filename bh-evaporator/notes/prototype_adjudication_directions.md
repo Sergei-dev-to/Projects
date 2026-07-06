@@ -221,8 +221,11 @@ the asymmetry leg is provably blind to it); the pigeonhole closes
 route (b) with two named bounds: ordinary-sector support count
 N_eff^ord >= (1-f)·c·S, and total participation
 N_eff >= 1/(f^2 + (1-f)/(cS)) ~ min(cS, f^{-2}) — total saturation
-requires calibration eta <~ 1/(n_bar_eq sqrt(S)).  One new explicit
-hypothesis (E', commutator cap).
+requires calibration eta <~ 1/(n_bar_eq sqrt(S)).  The remaining
+non-observable input is E' read as coupling universality; the
+per-channel cap is downstream of that principle plus the asymmetry
+observable, not a third independent leg
+(`participation_cap_decomposition_result.md`).
 **Q1b SKELETON COMPLETE: every load-bearing step is at computation or
 explicit-hypothesis level; nothing in the chain is a sketch.**
 

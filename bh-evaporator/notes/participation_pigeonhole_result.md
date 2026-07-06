@@ -159,6 +159,11 @@ that excludes the coupling-enhanced outlier.  So the certificate
 rests on exactly two inputs — the asymmetry observable and coupling
 universality — and the cap is downstream, not alongside.
 
+Clarification: the exact ordinary-sector decomposition is
+`N_eff = 1/(f^2 + (1-f)^2/N_eff^ord)`.  The displayed theorem below
+uses the conservative support-count/cap form
+`N_eff^ord >= (1-f)cS`, which gives the `(1-f)/(cS)` denominator.
+
 ```text
 Schwarzschild luminosity
 + KMS line asymmetry within eta of Boltzmann
@@ -169,6 +174,11 @@ N_eff^ord >= (1 - f) * c * S                (ordinary-sector count);
 N_eff     >= 1 / ( f^2 + (1 - f)/(c S) )
           ~  min( c S , (eta * n_bar_eq)^{-2} )   (total participation).
 ```
+
+If the ordinary sector is asserted to have normalized participation
+`N_eff^ord ~ cS`, the exact identity gives the slightly sharper finite
+`f` form `N_eff = 1/(f^2 + (1-f)^2/(cS))`.  For the certificate's
+scaling use, both forms give the same `min(cS, f^{-2})` floor.
 
 Semiclassical anchor (eta = 0): exact KMS asymmetry gives
 N_eff >= c·S unconditionally within the class.  At finite eta the
@@ -223,6 +233,10 @@ theory, no new physics expected.]
   participation N_eff (floored by f^{-2}).  Total saturation ~ S
   requires eta <~ 1/(n_bar_eq sqrt(S)); do not quote the saturation
   conclusion at O(1) eta.
+- Distinguish the conservative support-count formula
+  `f^2 + (1-f)/(cS)` from the exact normalized ordinary-sector formula
+  `f^2 + (1-f)^2/N_eff^ord`.  They are parametrically equivalent for
+  the scaling claim but not identical finite-`f` statements.
 
 ## Feeds
 
