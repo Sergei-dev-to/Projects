@@ -108,31 +108,36 @@ The two ways E' can fail:
 
 **Route (2a) — non-universal microscopic charge.**  Some channel has a
 larger "gravitational charge" than others, a channel-selective
-elementary coupling.  CLOSED by universality, and robustly:
+elementary coupling.  Closed assuming standard EFT minimal coupling /
+equivalence-principle universality:
 
-1. A massless spin-2 has a soft POLE, not a Goldstone Adler zero — it
-   couples to the conserved T_munu with strength fixed by energy
-   (equivalence principle).  Weinberg's soft theorem forces this
-   universality on any Lorentz-invariant S-matrix with a massless
-   spin-2; Weinberg-Witten forbids such a graviton from arising as an
-   ordinary localizable quasiparticle of a Lorentz-invariant medium
-   (so a naive "phonon-graviton" with the wrong soft behavior is
-   excluded).
-
-2. The universality of the COUPLING CONSTANT holds throughout the EFT
-   regime, not merely in the soft limit: for a large black hole
-   (r_g >> l_P) the horizon is deep in the EFT, so the elementary
+1. In the EFT of gravity, matter couples to the metric through minimal
+   coupling to T_munu with a single strength sqrt(G) — no
+   channel-dependent gravitational charge.  This is the
+   equivalence-principle input.  The universality of the coupling
+   CONSTANT then holds throughout the EFT regime: for a large black
+   hole (r_g >> l_P) the horizon is deep in the EFT, so the elementary
    emission coupling is channel-independent at the horizon scale.
-   Only genuinely trans-EFT emergent gravity (Lorentz invariance
-   emergent, graviton non-fundamental) reopens this — and then only at
-   the medium/Planck scale, not the macroscopic horizon.
 
-So route (2a) is well-closed for the macroscopic BH, tied to the
-equivalence principle and Weinberg-Witten.  [Standard soft-theorem /
-WW lore as deployed here; the "coupling universality holds at horizon
-scale, not just softly" step is the load-bearing synthesis — WW's
-hypotheses (a Lorentz-covariant conserved T_munu) should be checked
-against primary sources before external use.]
+2. Consistency support (not the main closure): a massless spin-2 has a
+   soft POLE, not a Goldstone Adler zero, so Weinberg's soft theorem
+   forces universal coupling on any Lorentz-invariant S-matrix with a
+   massless spin-2; and Weinberg-Witten cautions that a local massless
+   spin-2 cannot arise as an ordinary quasiparticle of a
+   Lorentz-invariant medium with a covariant T_munu — so a naive
+   "phonon-graviton" is not a loophole here.  These are consistency
+   checks on the EFT assumption, not an independent proof of it.
+
+So route (2a) is closed under the standard EFT/equivalence-principle
+assumption.  Genuinely trans-EFT emergent gravity (Lorentz invariance
+emergent, graviton non-fundamental) could reopen it — but only at the
+medium/Planck scale, not the macroscopic horizon.  [The EFT minimal-
+coupling assumption is the honest load-bearing input; the soft-theorem
+/ WW statements are supporting lore, and the reading that
+coupling-constant universality follows at horizon scale (not just in
+the soft limit) should be checked against primary sources — including
+WW's hypotheses (a Lorentz-covariant conserved T_munu) — before
+external use.]
 
 **Route (2b) — collective coupling enhancement.**  A coherent
 horizon/condensate mode couples to exterior radiation as sqrt(S)

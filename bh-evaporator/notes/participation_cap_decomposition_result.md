@@ -65,11 +65,17 @@ source, and by the route split of
 
 ```text
 (1) occupation-enhanced:  closed observationally (section 2, f <= eta n_ref);
-(2) coupling-enhanced:    closed by E' = coupling universality.
+(2) coupling-enhanced:    closed by E' (no anomalously bright exterior
+    vertex): its charge-route subcase (2a) by coupling universality,
+    its collective-route subcase (2b) only as a dynamical residue —
+    universality does NOT forbid a sqrt(S) collective vertex
+    (`envelope_as_coupling_universality.md` §3).
 ```
 
 So the brightest-channel fraction is bounded — f <= eta n_ref — under
-the two inputs (asymmetry observable + universality).  No separate cap
+the two inputs (asymmetry observable + E'), where the coupling half of
+E' is closed by universality only for the charge subroute; the
+collective subroute is the open dynamical question.  No separate cap
 is invoked to bound lambda_max; the route analysis already did it.
 
 ## 4. Saturation upgrade: from N_eff >= 1/f to N_eff ~ cS
@@ -214,10 +220,13 @@ outlier; that is precisely the universality residue.
 - `q1b_static_certificate_theorem.md`: hypothesis list can drop "the
   per-channel cap" as a standalone item and cite this decomposition;
   add the floor as the minimal unconditional statement.
-- `envelope_as_coupling_universality.md`: section 3's universality
-  argument now does double duty (outlier exclusion + ordinary-sector
-  envelope); cross-reference.
+- `envelope_as_coupling_universality.md`: section 3's E'
+  (emission-envelope condition) does double duty (outlier exclusion +
+  ordinary-sector envelope); the outlier-exclusion half is
+  charge-route universality PLUS the no-bright-collective-channel
+  condition, not universality alone.  Cross-reference.
 - Paper: the certificate section can state the floor first
-  (unconditional) and the saturation form second (adds universality on
-  the ordinary sector), which is a cleaner and more honest logical
-  order than the single capped bound now inked.
+  (unconditional) and the saturation form second (adds E' / the
+  emission-envelope condition on the ordinary sector), which is a
+  cleaner and more honest logical order than the single capped bound
+  now inked.

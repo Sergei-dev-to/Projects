@@ -191,17 +191,27 @@ It is still essential for two jobs:
 
 Within the class, a coherent/N-portrait branch that reproduces the
 Schwarzschild flux and calibrated line asymmetry must choose one of
-three exits:
+four exits:
 
 1. become entropy-rank participating through register-sampling
    emission;
 2. use a resolved sloped ladder, which predicts nonchaotic sub-line
    `g2` and resolution-dependent asymmetry;
-3. leave the calibrated equilibrium class.
+3. leave the calibrated equilibrium class;
+4. emit through a thermalized bright COLLECTIVE exterior channel —
+   `g2 = 2` and KMS-preserving at rank one (route 2b of
+   `envelope_as_coupling_universality.md`).  This exit is invisible to
+   both static legs; it is excluded only by E' (the
+   no-bright-collective-channel condition), which universality does
+   NOT supply.  It is the real N-portrait-style escape, addressable
+   only by the latency rung or by dynamical input.
 
-This is the current strongest fork statement: not a refutation of all
-N-portrait dynamics, but a conditional no-go for the strict coherent
-branch inside the certificate class.
+The strict 2006 prototype takes exit 1's complement — it is route (1)
+occupation, caught by asymmetry, so it does not reach any of these
+exits.  This is the current strongest fork statement: not a refutation
+of all N-portrait dynamics, but a conditional no-go for the strict
+coherent branch, with exit 4 the honest residue the static
+certificate cannot close.
 
 ## Owed Before Paper Text
 

@@ -156,19 +156,32 @@ corroboration, and the PAIR needs no clause — the legs provably cover
 each other's blind spots.
 
 Corollary (semiclassical anchor, eps = 0): exact per-mode thermality
-implies zero sharp-channel flux, hence N_eff ~ S unconditionally
-within the class. The static certificate pair (flux law + counting
-statistics) certifies source-rank saturation; the coherent-enhancement
-escape of the luminosity lemma is closed by the statistics leg.
+implies zero SHARP-channel flux (g2_i near 1), hence N_eff ~ S GIVEN
+E' — the emission-envelope / no-bright-collective-channel condition.
+The qualifier is essential: the §1 identity with a single thermal
+COLLECTIVE channel (f = 1, g2_i = 2) gives g2 = 2 at N_eff = 1, so
+g2 = 2 alone does NOT force rank; it forces rank only once a
+thermalized bright collective channel (route 2b of
+`envelope_as_coupling_universality.md`) is excluded by E'.  The static
+certificate pair (flux law + counting statistics) certifies
+source-rank saturation modulo that condition; the coherent-enhancement
+escape it closes is the SHARP-channel (occupation) one, not the
+collective one.
 
 Q3 consequence: per-mode thermality + detailed balance FORCE
-entropy-rank participation within the class — the branch-forcing
-question is half-answered, conditional on the class assumptions. The
-N-portrait branch must now either (a) predict g2 != 2 per resolved
-mode (falsifiable against semiclassical thermality), (b) generate
-thermal statistics from genuinely many independent amplitudes (=
-becoming the boundary-ETH branch), or (c) rely on broadband tag
-multiplexing (killed per resolved mode).
+entropy-rank participation within the class UNLESS the horizon emits
+through a thermalized bright collective channel (route 2b) — the
+branch-forcing question is half-answered, conditional on the class
+assumptions and E'.  A surviving N-portrait branch has exactly the
+options: (a) predict g2 != 2 per resolved mode (falsifiable against
+semiclassical thermality); (b) generate thermal statistics from
+genuinely many independent amplitudes (= becoming the boundary-ETH
+branch); (c) rely on broadband tag multiplexing (killed per resolved
+mode); or (d) emit through a thermalized bright COLLECTIVE channel —
+g2 = 2 and KMS-preserving at rank one, invisible to both static legs,
+the route-2b residue that only the latency rung or dynamical input can
+address.  Option (d) is the one the earlier three-way statement
+missed.
 
 ## 5. Open items, in order (updated after second pass)
 

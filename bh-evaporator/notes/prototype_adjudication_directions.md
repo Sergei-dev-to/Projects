@@ -222,9 +222,11 @@ route (b) with two named bounds: ordinary-sector support count
 N_eff^ord >= (1-f)·c·S, and total participation
 N_eff >= 1/(f^2 + (1-f)/(cS)) ~ min(cS, f^{-2}) — total saturation
 requires calibration eta <~ 1/(n_bar_eq sqrt(S)).  The remaining
-non-observable input is E' read as coupling universality; the
-per-channel cap is downstream of that principle plus the asymmetry
-observable, not a third independent leg
+non-observable input is E' = the emission-envelope condition (no
+anomalously bright exterior vertex); universality closes only its
+charge subroute, the collective subroute (2b) is the live residue.
+The per-channel cap is downstream of E' plus the asymmetry observable,
+not a third independent leg
 (`participation_cap_decomposition_result.md`).
 **Q1b SKELETON COMPLETE: every load-bearing step is at computation or
 explicit-hypothesis level; nothing in the chain is a sketch.**
@@ -402,11 +404,19 @@ deposit-and-decode protocol required for the rank axis.
 Tier 3 — branch forcing (Q3 full answer).  Current: half-answered
 within the channel framework.  Endpoint: semiclassical per-mode
 thermality plus detailed balance force the entropy-rank branch
-outright, and any surviving coherent alternative must predict an O(1)
-KMS violation or sub-thermal per-resolved-mode statistics — a
-falsifiable signature, not a philosophical fork.  Sharpest admissible
-form: Hawking thermality is not branch-neutral; it votes, and the vote
-is a theorem within the class.
+UNLESS the horizon emits through a thermalized bright collective
+exterior channel (route 2b of
+`envelope_as_coupling_universality.md`).  Note the corrected scope:
+such a collective channel preserves KMS asymmetry AND g2 = 2 while
+staying rank one, so it is NOT caught by any static observable — it is
+not a "coherent alternative that must show KMS or g2 deviations"
+(the strict prototype IS caught, because it is route (1) occupation,
+not (2b)).  The remaining coherent alternative is precisely the
+collective-channel emission vertex.  Sharpest admissible form: Hawking
+thermality forces entropy-rank participation modulo the one dynamical
+question of whether the emission vertex is a bright collective channel;
+the static observables cannot decide that sub-case, so it is where the
+latency rung (Q2) and dynamical input must do the work.
 
 Tier 4 — certificate ladder completion.  Needs Q2 in addition.
 Endpoint: the three-rung ladder (passive `g2`, probe line asymmetry,
