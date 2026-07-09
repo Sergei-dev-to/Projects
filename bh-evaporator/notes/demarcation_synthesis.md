@@ -274,6 +274,23 @@ dimension, global purity, and a split. Hayden-Preskill recovery additionally
 consumes scrambling, access to the emitted radiation, and the relevant
 decoupling estimates.
 
+July 2026 operational update:
+
+```text
+The source-rank question now has a conditional exterior certificate.
+Occupation-enhanced rank-one emission gives a HIGH-side calibrated-response
+deviation. A thermal bright collective channel is an exact equilibrium mimic,
+but persistent drain makes it reservoir-starved; with
+Gamma_th <= c_P T it gives a LOW-side deviation proportional to its flux.
+Thus source-rank saturation follows within the weak-emission/refill class only
+after gravity supplies ordinary EFT coupling and an operator-specific
+thermal/QNM relaxation ceiling.
+```
+
+The companion latency theorem is one-way: small integrated access to the
+diary-visible generator algebra forbids fast recovery. It does not prove that
+a real horizon has the sufficient decoupling/export dynamics.
+
 ### 5. Geometry and Interior
 
 Question:
@@ -389,18 +406,22 @@ path.
 
 ## Current Best Next Moves
 
-1. Treat `notes/demarcation_algebra_type_synthesis.md` as the conceptual
+1. Consolidate the two-sided source-rank certificate in
+   `paper_boundary_saturation/main.tex`, retaining the Planckian/QNM,
+   Markovian-refill, finite-accuracy, and multiplexing qualifiers.
+
+2. Treat `notes/demarcation_algebra_type_synthesis.md` as the conceptual
    endpoint: Type I exact/QI, Type III_1 QFT, Type II crossed-product
    semiclassical gravity, with finite `e^{A/4G}` state count and lived interior
    as residues.
 
-2. Reassess the drafts against the algebra-type synthesis and label standard QI
+3. Reassess the drafts against the algebra-type synthesis and label standard QI
    consequences as standard QI consequences.
 
-3. If continuing the Matrix direction, position it as a dynamical-consistency
+4. If continuing the Matrix direction, position it as a dynamical-consistency
    check on an algebra supplied by the matrix-entanglement literature, ideally
    in contact with that community.
 
-4. Avoid new taxonomy or toy numerics unless they answer one of the residues:
+5. Avoid new taxonomy or toy numerics unless they answer one of the residues:
    state count/equation of state, exact-to-semiclassical algebra transition, or
-   lived interior.
+   lived interior, or close a named certificate loophole.

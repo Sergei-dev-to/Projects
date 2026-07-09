@@ -1,6 +1,6 @@
 # Statistics-Rank Link: Proof Skeleton (Q1b)
 
-Date: 2026-07-05
+Date: 2026-07-05; route-2b dependency update 2026-07-08
 
 Role: Q1b of the current roadmap — close the coherent-enhancement
 escape of the luminosity lemma using per-resolved-mode counting
@@ -8,6 +8,14 @@ statistics. Status: proof skeleton with one exact identity, one
 two-line corollary, one physics lemma at sketch level (the load-bearing
 new piece), and an assembled conditional theorem. Verification grading
 per claim. Not yet paper text.
+
+Successor status: `collective_channel_starvation_result.md` confirms
+that route 2b is an exact equilibrium static mimic, then bounds its
+persistent flux within a thermal Markovian refill model.  The paragraphs
+below about static blindness remain correct; their current continuation
+is that `Gamma_th <= c_P T` converts persistent collective emission into
+a LOW-side asymmetry deficit.  The Planckian/QNM and refill-scope
+qualifiers remain load-bearing.
 
 ## 1. Composite-source identity [exact within stated class]
 
@@ -157,7 +165,7 @@ each other's blind spots.
 
 Corollary (semiclassical anchor, eps = 0): exact per-mode thermality
 implies zero SHARP-channel flux (g2_i near 1), hence N_eff ~ S GIVEN
-E' — the emission-envelope / no-bright-collective-channel condition.
+static E' — the emission-envelope / no-bright-collective-channel condition.
 The qualifier is essential: the §1 identity with a single thermal
 COLLECTIVE channel (f = 1, g2_i = 2) gives g2 = 2 at N_eff = 1, so
 g2 = 2 alone does NOT force rank; it forces rank only once a
@@ -166,22 +174,23 @@ thermalized bright collective channel (route 2b of
 certificate pair (flux law + counting statistics) certifies
 source-rank saturation modulo that condition; the coherent-enhancement
 escape it closes is the SHARP-channel (occupation) one, not the
-collective one.
+collective one.  Dynamically, the starvation result replaces the
+collective half of E' by the conditional refill-rate bound.
 
-Q3 consequence: per-mode thermality + detailed balance FORCE
-entropy-rank participation within the class UNLESS the horizon emits
-through a thermalized bright collective channel (route 2b) — the
-branch-forcing question is half-answered, conditional on the class
-assumptions and E'.  A surviving N-portrait branch has exactly the
+Q3 consequence: equilibrium per-mode thermality + detailed balance
+force entropy-rank participation within the static class unless the
+horizon emits through a thermalized bright collective channel.  Under
+persistent drain, that remaining route is starvation-limited modulo
+`Gamma_th <= c_P T`.  A surviving N-portrait branch has exactly the
 options: (a) predict g2 != 2 per resolved mode (falsifiable against
 semiclassical thermality); (b) generate thermal statistics from
 genuinely many independent amplitudes (= becoming the boundary-ETH
 branch); (c) rely on broadband tag multiplexing (killed per resolved
 mode); or (d) emit through a thermalized bright COLLECTIVE channel —
-g2 = 2 and KMS-preserving at rank one, invisible to both static legs,
-the route-2b residue that only the latency rung or dynamical input can
-address.  Option (d) is the one the earlier three-way statement
-missed.
+g2 = 2 and KMS-preserving at rank one in equilibrium, but LOW-side
+asymmetry under Planckian-limited persistent drain.  It survives through
+super-Planckian/non-Markovian refill, unresolved multiplexing, or exit
+from the class; the latency rung remains the assumption-light backstop.
 
 ## 5. Open items, in order (updated after second pass)
 

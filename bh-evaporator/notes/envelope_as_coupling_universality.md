@@ -3,7 +3,7 @@
 Date: 2026-07-05 (section 6 residue sharpened 2026-07-06 after the
 1601.01329 full-text read; sections 3-5 corrected 2026-07-06 after the
 charge-vs-collective distinction — see the correction note at the top
-of section 3)
+of section 3; route-2b deployment completed 2026-07-08)
 
 Role: works through the proposal from the Opus review pass — that the
 commutator-cap hypothesis E' of `participation_pigeonhole_result.md`
@@ -24,6 +24,15 @@ statement becomes: thermality + luminosity force entropy-rank
 participation UNLESS the horizon emits through a thermalized bright
 collective exterior channel.  Verification grading per claim.  Not
 paper text.
+
+Successor status: `collective_channel_starvation_result.md` executes
+the deployment left open here.  The collective channel is an exact
+STATIC mimic, but it is reservoir-starved.  Within thermal Markovian
+refill, `Gamma_th <= c_P T` converts route 2b into a signed LOW-side
+asymmetry deficit proportional to its flux fraction.  Sections 1-6
+below retain the localization argument; section 7 records the updated
+closure.  The Planckian/QNM input, non-Markovian corner, and mixed-
+frequency multiplexing remain explicit qualifiers.
 
 ## 1. The two enhancement routes, via the coupling-blind occupation
 
@@ -152,7 +161,7 @@ graviton is fundamental or emergent.  **This is the real
 N-portrait-style escape**, and it is a question about emission
 DYNAMICS, not about graviton ontology.
 
-## 4. The surviving escape, named
+## 4. The surviving static escape, named
 
 The certificate does NOT refute the coherent/N-portrait branch.  It
 localizes the branch's only survival route to route (2b):
@@ -181,7 +190,7 @@ bright collective exterior channel would evade both asymmetry and g2 —
 that model is un-built in the corpus (section 6 residue), but it is not
 excluded by universality; it is the open dynamical question.
 
-## 5. The sharpened fork (demarcation payoff)
+## 5. The static fork (demarcation payoff before the deployment check)
 
 ```text
 Given gravitational coupling universality (route 2a closed for r_g >> l_P):
@@ -282,9 +291,56 @@ bright-emission role.  [Computation on the 2006.00011 couplings; the
 full-text pass.  The claim that no corpus model puts sqrt(S) in a
 bright thermal emission vertex is an inference from the models checked,
 not an exhaustive proof — the flux fraction and statistics of the
-1601.01329 collective coupling AS an emission channel were not computed
-(M0b found mean occupancy, not g2 or asymmetry), so a dedicated check
-is the natural next step if this residue becomes load-bearing.]
+1601.01329 collective coupling AS an emission channel had not yet been
+computed when this section was written.  That dedicated check is now
+complete in `collective_channel_starvation_result.md`.]
+
+## 7. Route 2b deployed: E' becomes a relaxation bound [computation + conditional theorem]
+
+Deploying the 1601.01329 collective coupling as the radiation vertex
+confirms the static escape exactly:
+
+```text
+N_eff = 1,
+g2 = 2,
+r = exp(-omega/T),
+instantaneous intensity = K times the ordinary single-species value.
+```
+
+But the collective mode contains only O(1) thermal quanta, while the
+`K-1` orthogonal modes are exactly dark.  Without refill the channel
+emits a flash and carries integrated reservoir fraction `1/K`.  With a
+thermal Markovian refill rate `Gamma_th` and radiative drain
+`Gamma_out`, its exact steady occupation is
+
+```text
+n* = Gamma_th nbar_T / (Gamma_th + Gamma_out),
+1 - r*/r_KMS = x/(nbar_T + 1 + x),
+x = Gamma_out/Gamma_th.
+```
+
+Thus a persistent collective channel carrying flux fraction `f` at
+`omega ~ T` has a LOW-side asymmetry deficit of order `f/c_P` whenever
+`Gamma_th <= c_P T`.  Exact calibrated asymmetry excludes nonzero
+collective flux in that scope; finite accuracy gives
+`f_coll <~ m c_P eta` for the single/equal-split `m`-channel cases.
+
+Updated fork:
+
+```text
+Schwarzschild luminosity + calibrated two-sided line asymmetry
+  + ordinary-sector envelope
+  + EFT universality for route 2a
+  + Gamma_th <= c_P T for route 2b
+    => entropy-rank source participation,
+```
+
+within the certificate and refill classes.  Route 2b is therefore no
+longer an unexplained bright-vertex assumption; it is a rate-bounded
+escape.  It can survive through super-Planckian refill, strongly
+non-Markovian dynamics, a coherent/nonthermal refill that must be
+classified separately, or an unresolved mixed-frequency multiplexed
+construction.  The latency rung remains the assumption-light backstop.
 
 ## Discipline
 
@@ -298,6 +354,9 @@ is the natural next step if this residue becomes load-bearing.]
   vertex, not a violation of the equivalence principle.  Do not phrase
   it as "unless gravity is non-universal"; phrase it as "unless the
   horizon emits through a thermalized bright collective channel."
+- After the deployment check, do not call route 2b simply "open."
+  Call it "starvation-limited modulo Planckian/QNM relaxation," and
+  retain the Markovian and multiplexing qualifiers.
 - Keep the corollary of section 2 sharp: the STRICT prototype is
   excluded by observables alone (route 1); E' only matters for the
   collective route (2b).  Do not conflate the two.
@@ -326,14 +385,12 @@ is the natural next step if this residue becomes load-bearing.]
   ordinary sector) still holds, but its outlier-exclusion half is
   charge-route universality PLUS the no-bright-collective-channel
   condition, not universality alone.
-- Q3 (branch forcing): this is the sharpest branch-forcing statement
-  yet — thermality forces rank UNLESS the horizon emits through a
-  thermalized bright collective exterior channel.  Promote from
-  think-pass.  Do not quote it as "unless gravity is non-universal."
-- Roadmap: the certificate's headline can be stated as the section-5
-  fork; the "conditional on the class" caveat acquires a physical
-  name (the emission-envelope / no-bright-collective-channel
-  condition).
+- Q3 (branch forcing): section 5 is the static fork; section 7 is the
+  current endpoint.  Thermality plus the Planckian/QNM relaxation input
+  forces rank within the refill class.  Do not quote this as either
+  "unless gravity is non-universal" or as an assumption-free no-go.
+- Roadmap: replace the no-bright-collective-vertex assumption by the
+  route-2b starvation bound, with its explicit dynamical qualifiers.
 - Coherence witness / M3: the route (1)/(2) taxonomy clarifies why g2
   and asymmetry are complementary (g2 catches thermalization within a
   route, asymmetry catches occupation across routes; neither catches

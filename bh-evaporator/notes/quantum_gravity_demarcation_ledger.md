@@ -391,6 +391,53 @@ e^{A/4G} state count/equation of state, the exact-to-semiclassical algebra
 transition, and the lived interior.
 ```
 
+## July 2026 Operational-Certificate Update
+
+The boundary-saturation branch has advanced beyond the June Matrix-only
+endpoint.  The current operational program separates two exterior
+certificates:
+
+```text
+line response:
+  bounds source-Gram participation at a resolved emission line;
+
+deposit-and-decode latency:
+  bounds how quickly arbitrary private information reaches the emitted
+  record algebra.
+```
+
+The strict memory-burden/N-portrait prototype is the negative witness:
+it is degeneracy-saturated but has `N_eff = 1` at the flux line and
+zero fixed-sector diary visibility in the strict Hamiltonian.  Its
+occupation-enhanced emission predicts a HIGH-side departure from the
+calibrated emission/absorption ratio.
+
+The worst static loophole is a thermal bright collective channel.  It
+can reproduce KMS response and `g2 = 2` exactly at rank one, confirming
+that equilibrium statics alone do not determine source rank.  The
+explicit deployment in `collective_channel_starvation_result.md` is
+reservoir-starved: persistent drain produces a LOW-side asymmetry
+deficit unless the collective mode refills faster than the thermal
+scale.  Therefore the strongest current source-rank statement is:
+
+```text
+Schwarzschild luminosity + calibrated two-sided line response
+  + ordinary-sector envelope
+  + EFT coupling universality
+  + operator-specific Planckian/QNM relaxation ceiling
+    => entropy-sized source participation within the stated
+       weak-emission and refill classes.
+```
+
+This sharpens rather than removes the dynamics row of the ledger.  QI
+performs the participation inference after gravity supplies the
+ordinary coupling and thermal-relaxation inputs.  The remaining
+technical gaps are mixed-frequency collective multiplexing,
+strongly non-Markovian refill, and a microscopic bound on the specific
+collective refill operator.  The latency certificate remains the
+assumption-light backstop and supplies only a necessary access
+condition, not a proof that real black holes achieve HP recovery.
+
 ## Search Protocol
 
 Every future literature search or model attempt should specify which boundary

@@ -1,6 +1,6 @@
 # The Per-Channel Flux Cap Is Not an Independent Assumption
 
-Date: 2026-07-06
+Date: 2026-07-06; route-2b dependency update 2026-07-08
 
 Role: shores up the softest formal joint of the Q1b certificate — the
 per-channel cap F_H/F_env ~ cS asserted in
@@ -10,8 +10,13 @@ hypothesis.  It decomposes into (a) a pure-observable outlier bound
 that needs no envelope at all, plus (b) an application of Lemma 1 to
 the ordinary sector, which is itself underwritten by the same E'
 (emission-envelope condition) already identified.  So the whole
-certificate rests on exactly two inputs — the line-asymmetry observable
-and E' — and the cap is downstream of them, not alongside.  (NB: E' is
+static certificate rests on exactly two inputs — the line-asymmetry
+observable and E' — and the cap is downstream of them, not alongside.
+After `collective_channel_starvation_result.md`, the route-2b part of E'
+is derived within the thermal Markovian refill class from the dynamical
+input `Gamma_th <= c_P T`; it is no longer a bare vertex assumption.
+The static-only bookkeeping below is retained because the Planckian/QNM
+bound and refill scope remain explicit qualifiers.  (NB: E' is
 the no-anomalously-bright-exterior-vertex condition, not "coupling
 universality"; universality closes only its charge-route half — see
 `envelope_as_coupling_universality.md` §3.)  All inequalities are
@@ -65,18 +70,31 @@ source, and by the route split of
 
 ```text
 (1) occupation-enhanced:  closed observationally (section 2, f <= eta n_ref);
-(2) coupling-enhanced:    closed by E' (no anomalously bright exterior
-    vertex): its charge-route subcase (2a) by coupling universality,
-    its collective-route subcase (2b) only as a dynamical residue —
-    universality does NOT forbid a sqrt(S) collective vertex
-    (`envelope_as_coupling_universality.md` §3).
+(2) coupling-enhanced:    in the static statement, closed by E' (no
+    anomalously bright exterior vertex).  Its charge-route subcase (2a)
+    is excluded by EFT coupling universality.  Its collective-route
+    subcase (2b) is statically invisible but, after explicit deployment,
+    is starvation-limited: within thermal Markovian refill and
+    Gamma_th <= c_P T, its LOW-side asymmetry bounds its flux fraction
+    (`collective_channel_starvation_result.md`).
 ```
 
-So the brightest-channel fraction is bounded — f <= eta n_ref — under
-the two inputs (asymmetry observable + E'), where the coupling half of
-E' is closed by universality only for the charge subroute; the
-collective subroute is the open dynamical question.  No separate cap
-is invoked to bound lambda_max; the route analysis already did it.
+Thus the static statement still reads "asymmetry observable + E'."
+The dynamically completed black-hole statement replaces route 2b's
+piece of E' by Planckian/QNM relaxation.  If `f_occ` is the
+occupation-enhanced fraction and `f_coll` is the fraction in `m`
+collective channels at `omega ~ T`, then parametrically
+
+```text
+f_occ  <= eta n_ref,
+f_coll <~ m c_P eta,
+f_bad  =  f_occ + f_coll.
+```
+
+The `m`-channel expression is established for the single/equal-split
+cases; mixed-frequency unequal multiplexing remains open bookkeeping.
+No separate cap is invoked to bound lambda_max; the route analysis
+already does it.
 
 ## 4. Saturation upgrade: from N_eff >= 1/f to N_eff ~ cS
 
@@ -133,8 +151,9 @@ envelope is the standard ETH statement for simple operators and was
 never in dispute.  The certificate's job was exactly to remove the
 disputed outlier; once sections 2-3 remove it (observably + by E', the
 no-bright-collective-channel condition — of which universality closes
-only the charge subroute), Lemma 1 applies to what remains WITHOUT the
-contested step.
+only the charge subroute in the static formulation, while the
+starvation theorem supplies the collective closure modulo the refill
+bound), Lemma 1 applies to what remains WITHOUT the contested step.
 
 Moreover the same E' does double duty:
 
@@ -148,33 +167,41 @@ E' =>
 Caveat on what E' is (corrected 2026-07-06,
 `envelope_as_coupling_universality.md` §3): E' is NOT "coupling
 universality."  Universality (equivalence principle / Weinberg-Witten)
-closes only the non-universal-CHARGE failure; the live residue is
+closes only the non-universal-CHARGE failure; the static residue is
 COLLECTIVE coupling enhancement (a sqrt(S)-coupled thermalized
-collective channel), which universality does not forbid.  So E' =
+collective channel), which universality does not forbid.  So static E' =
 "no anomalously bright exterior emission vertex," and step (a) above is
 underwritten by charge-route universality PLUS the
-no-bright-collective-channel condition.  Step (b) still follows from
+no-bright-collective-channel condition.  Dynamically, the latter is
+replaced by the starvation theorem plus `Gamma_th <= c_P T` within its
+refill scope.  Step (b) still follows from
 the ordinary-sector envelope.  The point that survives verbatim: the
 per-channel cap needs no input beyond E' and the observable — but E'
 itself is the emission-envelope condition, not universality alone.
 
 ## 6. Consequences
 
-The certificate's dependency structure, fully reduced:
+The certificate's dependency structure, fully reduced.  Keep the static
+and dynamically completed versions separate:
 
 ```text
 INPUT I  (observable):  line asymmetry within eta of calibrated KMS.
-INPUT II (E' = emission-envelope condition):  no anomalously bright
-             exterior emission vertex.  Two parts: (2a) no
-             non-universal charge — closed by universality/Weinberg-
-             Witten in the EFT regime; (2b) no thermalized bright
-             COLLECTIVE channel — the live dynamical residue, NOT
-             closed by universality.
+STATIC INPUT II (E' = emission-envelope condition): no anomalously
+             bright exterior emission vertex.
+
+DYNAMIC REPLACEMENT FOR II's outlier half:
+             (2a) no non-universal charge — EFT/equivalence-principle
+                  universality;
+             (2b) no hidden persistent bright collective channel —
+                  starvation bound plus Gamma_th <= c_P T, within the
+                  thermal Markovian refill scope.
 
 I         => no occupation-enhanced outlier (f <= eta n_ref).
-II        => no coupling-enhanced outlier (via 2a + 2b), AND ordinary
-             sector ETH-enveloped (Lemma 1 => N_eff^ord ~ cS).
-I + II    => N_eff ~ min(cS, (eta n_ref)^{-2}) ~ cS for eta small.
+II        => ordinary sector ETH-enveloped
+             (Lemma 1 => N_eff^ord ~ cS).
+I + static II, or I + dynamic replacement + ordinary-sector envelope
+          => N_eff ~ min(cS, f_bad^{-2}) ~ cS for sufficiently small
+             eta, where f_bad = f_occ + f_coll.
 I alone   => exact floor N_eff >= 1/f; if the dangerous outlier is
              occupation-enhanced, f <= eta n_ref, so
              N_eff >= 1/(eta n_ref).  This does NOT exclude a
@@ -183,10 +210,10 @@ I alone   => exact floor N_eff >= 1/f; if the dangerous outlier is
 
 The "per-channel flux cap F_H/F_env ~ cS" is therefore not a third
 assumption.  It is the section-4 identity plus N_eff^ord ~ cS, and the
-latter is Lemma 1 on the uncontested sector, underwritten by II (E',
-the emission-envelope condition — charge route by universality,
-collective route as the live residue).  The
-soft joint dissolves into the two inputs already named.
+latter is Lemma 1 on the uncontested ordinary sector.  The soft joint
+dissolves into the observable, the ordinary-sector envelope, and a
+named control of the two possible bright outliers.  For route 2b that
+control is now dynamical rather than an unexplained commutator cap.
 
 Bonus, worth keeping: the pure-observable floor is genuinely
 assumption-light.  Even a reader who rejects coupling universality and
@@ -195,9 +222,9 @@ also accept that any occupation-enhanced bright channel is limited by
 `f <= eta n_ref`.  Thus the stronger floor
 `N_eff >= 1/(eta n_ref)` is earned whenever the dangerous outlier is
 occupation-enhanced.  It does not rule out a coupling-enhanced thermal
-outlier — the thermalized bright collective channel — which is
-precisely the E' / collective-channel residue (NOT a universality
-residue: universality does not bear on it).
+outlier — the thermalized bright collective channel.  That outlier is
+statically invisible; the starvation result reaches it only after the
+Planckian/QNM relaxation and refill-scope assumptions are supplied.
 
 ## Discipline
 
@@ -208,8 +235,10 @@ residue: universality does not bear on it).
 - N_eff^ord ~ cS is Lemma 1 on the ORDINARY sector; say "ordinary
   sector," because Lemma 1 on the full source is exactly what the
   outlier escapes.
-- The double-duty of E' (excludes outlier + envelopes the residual)
-  is the load-bearing observation; keep both halves explicit.
+- Keep the static E' formulation distinct from the dynamical
+  starvation completion.  Do not silently turn QNM lore or generic
+  Planckian dissipation into a theorem about every collective refill
+  operator.
 - The floor is the fallback for a reader who rejects universality; do
   not let the saturation headline hide that a weaker unconditional
   statement exists.
@@ -228,6 +257,9 @@ residue: universality does not bear on it).
   ordinary-sector envelope); the outlier-exclusion half is
   charge-route universality PLUS the no-bright-collective-channel
   condition, not universality alone.  Cross-reference.
+- `collective_channel_starvation_result.md`: route 2b is now bounded
+  modulo Planckian/QNM relaxation; propagate that replacement whenever
+  the static E' dependency is summarized.
 - Paper: the certificate section can state the floor first
   (unconditional) and the saturation form second (adds E' / the
   emission-envelope condition on the ordinary sector), which is a

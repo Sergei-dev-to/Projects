@@ -1,7 +1,7 @@
 # Prototype Adjudication: Current Roadmap
 
 Date started: 2026-07-04
-Updated: 2026-07-05
+Updated: 2026-07-08
 
 Status: current handoff.  M0-M3, Q1, the Q1b proof skeleton (with its
 line-asymmetry upgrade), and the Q2 operator-overlap bridge theorem
@@ -195,11 +195,13 @@ line has em/abs = n₀/(n₀+1) = 1 − 1/S where the KMS line requires
 e^{−ω/T} — an O(1) detailed-balance failure, independent of g2,
 arguably the sharpest strict-model vote yet.  The certificate suite is
 now a three-rung operational ladder by cost: passive g2, probe line
-asymmetry, deposit-and-decode latency.  Q3 consequence: per-mode
-thermality + detailed balance force entropy-rank participation within
-the class AND modulo E' (the no-bright-collective-channel condition —
-a thermalized collective channel preserves KMS and g2 = 2 at rank one;
-only the latency rung reaches it).
+asymmetry, deposit-and-decode latency.  Q3 consequence, updated after
+the route-2b deployment: per-mode thermality + detailed balance force
+entropy-rank participation within the class once EFT charge
+universality and the Planckian/QNM refill ceiling are supplied.  A
+thermal collective channel preserves KMS and g2 = 2 in equilibrium but
+develops a LOW-side deficit under persistent drain; only the latency
+rung reaches refill dynamics without the Planckian input.
 
 The depletion-backreaction escape is EXAMINED (2026-07-05,
 `asymmetry_backreaction_escape_result.md`): closed for the strict
@@ -224,11 +226,12 @@ route (b) with two named bounds: ordinary-sector support count
 N_eff^ord >= (1-f)·c·S, and total participation
 N_eff >= 1/(f^2 + (1-f)/(cS)) ~ min(cS, f^{-2}) — total saturation
 requires calibration eta <~ 1/(n_bar_eq sqrt(S)).  The remaining
-non-observable input is E' = the emission-envelope condition (no
-anomalously bright exterior vertex); universality closes only its
-charge subroute, the collective subroute (2b) is the live residue.
-The per-channel cap is downstream of E' plus the asymmetry observable,
-not a third independent leg
+static input is E' = the emission-envelope condition (no anomalously
+bright exterior vertex); universality closes only its charge subroute.
+The route-2b deployment below replaces the collective subroute's piece
+of E' by the conditional Planckian/QNM refill bound.  The per-channel
+cap is downstream of the ordinary-sector envelope plus the asymmetry
+observable, not a third independent leg
 (`participation_cap_decomposition_result.md`).
 **Q1b SKELETON COMPLETE: every load-bearing step is at computation or
 explicit-hypothesis level; nothing in the chain is a sketch.**
@@ -318,6 +321,29 @@ This also unifies the access-cut language: diagonal burden tags are the
 public center, fixed-sector coherences are protected private blocks, and
 the master-record algebra is the visible cut.
 
+### Route 2b Deployment Check (2026-07-07/08)
+
+**STATUS: done in `collective_channel_starvation_result.md`.**  The
+envelope note's "dedicated check" executed: the 1601.01329 collective
+coupling deployed as an emission channel gives EXACT static mimicry
+(KMS, g2 = 2, rank one, K-fold bright — the residue was real), but the
+strict deployment is reservoir-starved: the K-1 orthogonal modes are
+exactly decoupled, so integrated flux fraction = 1/K, a flash not a
+channel, with a SIGNED time-resolved signature (asymmetry starts
+thermal and drifts sub-thermal; g2 pinned at 2).  General refill bound:
+sustaining flux fraction f at KMS accuracy eta requires
+rethermalization Gamma_th >~ f T/eta; with the Planckian/QNM cap
+Gamma_th <= c_P T this gives f <~ c_P eta — parallel in form to the
+route-1 bound f <= eta nbar_eq, but with the deficit on the LOW side
+(starved-cold vs hoarded-hot).  Consequence: E' for route 2b is
+DERIVED-modulo-Planckian rather than assumed; the collective-outlier
+controls become (asymmetry observable, Planckian relaxation), while
+the full rank theorem still uses the ordinary-sector envelope and EFT
+universality for route 2a.  The latency rung remains the only
+assumption-light reach into route 2b without the Planckian input
+(backstop role, plus non-Markovian/coherent-refill corners and the
+multiplexed bookkeeping, which are the note's open items).
+
 ### Q3: Branch-Forcing Think-Pass
 
 After Q1b, stress-test candidate principles that might force real black
@@ -392,51 +418,49 @@ source-rank-poor and latency-blocked witness.  This is a result at any
 downstream outcome; the fork-not-refutation framing does not depend on
 how the fork resolves.
 
-Tier 2 — static certification of source rank.  Current: Q1b skeleton
-COMPLETE — escape closed/clause-covered, pigeonhole landed and
-corrected.  Endpoint: theorem — within the class and modulo E' (no
-bright collective exterior channel), Schwarzschild flux law + KMS line
-asymmetry force N_eff^ord ≥ (1−f)·c·S and total
-N_eff ~ min(cS, (η·n̄_eq)⁻²), with full total saturation at
-calibration accuracy η ≲ 1/(n̄_eq√S) and, at η = 0, unconditionally
-EXCEPT for the collective-channel residue (a rank-one thermal
-collective mode gives g2 = 2 at N_eff = 1, invisible to the static
-legs).  The saturation paper's Lemma upgrades
-from class-conditional to certificate-closed, and boundary saturation
-becomes statically certifiable by an exterior observer: no
-deposit-and-decode protocol required for the rank axis.
+Tier 2 — line-response certification of source rank.  Current: Q1b
+skeleton COMPLETE and route 2b deployed.  The static theorem remains
+conditional on E', but the collective half of E' is now replaced,
+within thermal Markovian refill, by `Gamma_th <= c_P T`.  Use the total
+dangerous fraction `f_bad = f_occ + f_coll`, with occupation-enhanced
+HIGH-side bound `f_occ <= η n̄_eq` and starved-collective LOW-side bound
+`f_coll <~ m c_P η` for the single/equal-split cases.  Then
+`N_eff^ord >= (1−f_bad)cS` and
+`N_eff ~ min(cS,f_bad^-2)`.  Full total saturation still requires
+`f_bad <~ S^-1/2`; a coarse finite-accuracy measurement gives a floor,
+not an entropy-sized measurement.  Exact calibrated response forces
+entropy rank only within the weak-emission, ordinary-sector-envelope,
+EFT-universality, Planckian-relaxation, and refill-scope conditions.
 
-Tier 3 — branch forcing (Q3 full answer).  Current: half-answered
-within the channel framework.  Endpoint: semiclassical per-mode
-thermality plus detailed balance force the entropy-rank branch
-UNLESS the horizon emits through a thermalized bright collective
-exterior channel (route 2b of
-`envelope_as_coupling_universality.md`).  Note the corrected scope:
-such a collective channel preserves KMS asymmetry AND g2 = 2 while
-staying rank one, so it is NOT caught by any static observable — it is
-not a "coherent alternative that must show KMS or g2 deviations"
-(the strict prototype IS caught, because it is route (1) occupation,
-not (2b)).  The remaining coherent alternative is precisely the
-collective-channel emission vertex.  Sharpest admissible form: Hawking
-thermality forces entropy-rank participation modulo the one dynamical
-question of whether the emission vertex is a bright collective channel;
-the static observables cannot decide that sub-case, so it is where the
-latency rung (Q2) and dynamical input must do the work.
+Tier 3 — branch forcing (Q3 answer, conditional).  Current: the worst
+branch has a rate rather than an unnamed vertex.  A thermal bright
+collective channel is an exact equilibrium static mimic at rank one,
+but persistent drain makes it sub-thermal unless refill is faster than
+the horizon's thermal/QNM scale.  The coherent branch must therefore:
+become entropy-rank participating; show the occupation-enhanced HIGH
+signature; show the starvation LOW signature; use super-Planckian or
+strongly non-Markovian refill; exploit unresolved mixed-frequency
+multiplexing; or leave the calibrated class.  This is not an
+assumption-free refutation of N-portrait dynamics.  The strict prototype
+is still excluded more directly because it is route (1) occupation.
 
 Tier 4 — certificate ladder completion.  Needs Q2 in addition.
 Endpoint: the three-rung ladder (passive `g2`, probe line asymmetry,
-deposit-and-decode latency) is theorem-backed end to end — statics
-certify source rank, the visible-algebra bridge certifies the latency
-structure.  Slogan upgrade: horizons are thermal systems whose full
-entropy is exterior-recoverable at logarithmic emitted-record latency
-AND whose source rank is exterior-certifiable statically.
+deposit-and-decode latency) is theorem-backed end to end — line
+response certifies source-rank floors under the named dynamics, while
+the visible-algebra bridge supplies a necessary latency condition.
+Do not state that Q2 proves a real black hole achieves HP recovery; it
+proves that fast recovery requires order-one generator access,
+nonlocal/dressed access, or side information.
 
-Tier 5 — demarcation payoff (the program's stated goal).  Endpoint:
-given per-mode thermality — a QFT-in-curved-space fact — source-rank
-saturation follows by quantum-information arguments alone, so the
-trinity's input 2 is derived rather than assumed.  The gravitational
-residue narrows consistently with the algebra-type seam: the value of
-`A/4G` and the lived interior.
+Tier 5 — demarcation payoff (the program's stated goal).  Current
+endpoint: source-rank saturation follows from exterior response only
+after gravity supplies two dynamical facts — ordinary EFT coupling and
+a thermal/QNM relaxation ceiling.  Quantum information consumes those
+facts; it does not derive them.  The residue is therefore narrower than
+the original trinity but larger than `A/4G` plus the lived interior:
+the operator-specific thermal tie remains a genuine gravitational
+input until the refill bound is derived microscopically.
 
 Tier 6 — external stakes (keep hedged).  Endpoint: the asymmetry rung
 is a linear-response measurement, the cheapest branch discriminator
@@ -464,38 +488,32 @@ sessions inherit the map.
 
 Any quantum system reproducing the semiclassical exterior facts of a
 Schwarzschild horizon — flux law, per-resolved-mode thermal
-statistics, KMS line asymmetry — is forced to entropy-rank source
-participation by the static certificate, PROVIDED it does not emit
-through a thermalized bright collective exterior channel (route 2b,
-E'/the no-bright-collective-channel condition; a collective channel
-preserves KMS and g2 = 2 at rank one and is invisible to the static
-legs).  That single residual sub-case is where the deposit-and-decode
-rung earns its keep: with Q2's bridge and the latency rung, the full
-program also certifies log-latency access structure and is the only
-leg that can reach the collective-channel case.  The semiclassical
-exterior facts stop being only modeling inputs and become measurements
-on a theorem-backed three-rung ladder.  This is an operational
-bootstrap of the horizon's information-theoretic structure from
-exterior phenomenology, within the stated class and modulo the
-collective-channel residue.
+statistics, and calibrated line asymmetry is forced toward
+entropy-rank source participation by the response certificate once
+ordinary-sector envelopes, EFT coupling universality, and the
+Planckian/QNM refill ceiling are supplied.  A thermal bright collective
+channel is invisible in an equilibrium snapshot, but persistent drain
+makes it LOW-side nonthermal unless it refills super-Planckianly.  Q2's
+latency rung remains the assumption-light backstop for refill dynamics
+outside that class.  This is an operational bootstrap of the horizon's
+information-theoretic structure from exterior phenomenology, but it is
+conditional on named gravitational dynamics rather than QI alone.
 
-Demarcation consequence: everything exterior-operational about
-evaporation is QI-forced by QFT-in-curved-space facts.  Combined with
-the algebra-type seam (demarcation_algebra_type_synthesis.md), the
-gravitational residue narrows to the value of `A/4G` (upstream state
-count) and the lived interior (downstream).
+Demarcation consequence: much of the exterior-operational package is
+QI-forced after the state count, algebra, ordinary emission envelope,
+and thermal/QNM dynamics are supplied.  Combined with the algebra-type
+seam, the remaining gravitational residues are `A/4G`, the
+operator-specific thermal tie that underwrites the refill ceiling, the
+exact-to-semiclassical algebra transition, and the lived interior.
 
-N-portrait consequence: fork-not-refutation upgrades to
-refutation-conditional-on-class-AND-no-bright-collective-channel.  The
-coherent branch's remaining escape is NOT primarily exiting the class
-with an O(1) static signature — the corrected escape (route 2b) is a
-thermalized bright collective exterior channel that PRESERVES KMS and
-g2 = 2 at rank one, so it shows no static deviation at all.  It is a
-dynamical question about the emission vertex, addressable only by the
-latency rung or dynamical input, not by the static observables.
-Checking whether real N-portrait dynamics realizes such a collective
-emission channel becomes that branch's obligation; the strict 2006
-prototype does not (it is route-1 occupation, statically caught).
+N-portrait consequence: fork-not-refutation upgrades to a conditional
+rate test.  The strict 2006 prototype is route-1 occupation and is
+statically caught.  A different N-portrait can build the rank-one
+thermal collective vertex, but persistent Hawking-sized output then
+requires super-Planckian refill or a mechanism outside the thermal
+Markovian class.  Demonstrating that mechanism becomes the branch's
+obligation; absent it, starvation predicts a signed LOW-side response
+deviation while `g2` remains two.
 
 Referee honesty check: ETH-minded readers may find "thermality forces
 entropy rank" expected.  The headline is the adjudicated fork — the
@@ -586,6 +604,7 @@ statistics_rank_link_result.md
 asymmetry_backreaction_escape_result.md
 participation_pigeonhole_result.md
 participation_cap_decomposition_result.md
+collective_channel_starvation_result.md
 q1b_static_certificate_theorem.md
 envelope_as_coupling_universality.md
 nearextremal_ds_stress_test.md

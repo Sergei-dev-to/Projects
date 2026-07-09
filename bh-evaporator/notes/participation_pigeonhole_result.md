@@ -1,6 +1,6 @@
 # Participation Pigeonhole: the Route-(b) Inequality and Generalized Channel Occupation (Q1b Skeleton Completion)
 
-Date: 2026-07-05
+Date: 2026-07-05; route-2b dependency update 2026-07-08
 
 Role: closes the top formal gap left by
 `asymmetry_backreaction_escape_result.md` (route-(b): does O(1) flux
@@ -17,6 +17,15 @@ footing.  One new hypothesis is made explicit (the commutator cap, an
 envelope-type assumption) and one blindness of the certificate is
 recorded (coupling enhancement).  Verification grading per claim.  Not
 paper text.
+
+Successor status: `collective_channel_starvation_result.md` resolves
+the live collective-enhancement residue within a thermal Markovian
+refill class.  A persistent bright collective channel develops a
+LOW-side asymmetry deficit unless its refill rate exceeds the thermal
+scale.  Accordingly, E' remains the correct STATIC hypothesis, while
+the dynamically completed black-hole statement replaces route 2b's
+piece of E' by `Gamma_th <= c_P T`.  The Planckian/QNM input and refill
+scope are load-bearing and must remain visible.
 
 ## 1. Generalized occupation and per-channel asymmetry [computation]
 
@@ -73,19 +82,23 @@ r_i -> 1, caught by the calibrated line (with the resolved-ladder
 clause of the escape note).  The asymmetry leg is provably BLIND to
 coupling enhancement: r_i is invariant under c_i rescaling (check:
 A = c·a on an equilibrium mode has r = e^{-beta omega} for every c).
-Coupling enhancement is excluded only by the ordinary-envelope
-hypothesis E' (no anomalously bright exterior vertex).  Its two failure
-modes have different status (`envelope_as_coupling_universality.md`
-§3): non-universal microscopic charge is closed by gravitational
-coupling universality, but COLLECTIVE enhancement (a sqrt(S)-coupled
-thermalized collective mode) is NOT — that is ordinary Dicke coherence
-and is the live residue.  So E' is an emission-envelope condition, not
-"universality" alone.
+At the static level coupling enhancement is excluded only by the
+ordinary-envelope hypothesis E' (no anomalously bright exterior
+vertex).  Its two failure modes have different closures.  A
+non-universal microscopic charge is excluded by gravitational coupling
+universality.  A COLLECTIVE enhancement is not forbidden by
+universality, but its explicit deployment is starvation-limited:
+within thermal Markovian refill, `Gamma_th <= c_P T` makes its LOW-side
+asymmetry deficit proportional to its flux fraction.  Thus E' remains
+the static condition, while the dynamical certificate derives its
+collective half modulo Planckian/QNM relaxation.
 So the theorem's two hypotheses are independent and both load-bearing:
 
 ```text
-envelope hypothesis  -> no coupling enhancement;
-asymmetry leg        -> no occupation enhancement.
+static envelope hypothesis -> no coupling enhancement;
+asymmetry leg              -> no occupation enhancement;
+Planckian refill bound      -> collective coupling cannot remain
+                               bright and KMS-exact persistently.
 ```
 
 This split is the fork closure stated at operator level.  NEW
@@ -161,10 +174,13 @@ N_eff^ord ~ cS = Lemma 1 on the ORDINARY sector, which is
 uncontested (the envelope was only ever disputed for the enhanced
 outlier) and is underwritten by the same E' (emission-envelope
 condition — charge route by universality, collective route the live
-residue) that excludes the coupling-enhanced outlier.  So the
-certificate rests on exactly two inputs — the asymmetry observable and
-E' (the emission-envelope condition, not coupling universality alone) —
-and the cap is downstream, not alongside.
+residue) that excludes the coupling-enhanced outlier.  In the
+static-only theorem the certificate therefore rests on the asymmetry
+observable and E'.  In the dynamically completed version,
+`collective_channel_starvation_result.md` replaces route 2b's piece of
+E' by the Planckian/QNM relaxation input `Gamma_th <= c_P T`, within
+the stated refill class.  The per-channel cap remains downstream, not
+an additional independent hypothesis.
 
 Clarification: the exact ordinary-sector decomposition is
 `N_eff = 1/(f^2 + (1-f)^2/N_eff^ord)`.  The displayed theorem below
@@ -188,12 +204,17 @@ If the ordinary sector is asserted to have normalized participation
 scaling use, both forms give the same `min(cS, f^{-2})` floor.
 
 Semiclassical anchor (eta = 0): exact KMS asymmetry gives
-N_eff >= c·S within the class and modulo E' (the
-no-bright-collective-channel condition).  The E' qualifier is NOT
-optional even at eta = 0: a rank-one thermal COLLECTIVE channel has
-r = e^{-beta omega} (KMS-exact) and g2 = 2, so it passes eta = 0 with
-N_eff = 1 — the static legs cannot see it, only E' excludes it.  At
-finite eta the total-participation statement is a floor, and the full
+N_eff >= c·S within the static class and modulo E'.  A rank-one
+thermal COLLECTIVE channel has r = e^{-beta omega} (KMS-exact) and
+g2 = 2 at an instant, so the equilibrium static legs cannot see it.
+The starvation theorem adds time and drain: with finite
+`Gamma_th <= c_P T`, persistent nonzero collective flux produces a
+LOW-side deficit, so exact calibration excludes it in that dynamical
+scope.  At finite eta, use the combined dangerous fraction
+`f_bad = f_occ + f_coll`, with `f_occ <= eta n_bar_eq` and, for the
+single/equal-split collective cases at omega ~ T,
+`f_coll <~ m c_P eta`.  The total-participation statement is then a
+floor, and the full
 saturation claim requires eta <~ 1/(n_bar_eq sqrt(S)) — state which of
 the two quantities is meant every time.  Leg A (g2) remains independent
 passive corroboration and covers the sloped-ladder clause.  All
@@ -226,11 +247,13 @@ theory, no new physics expected.]
 
 ## Discipline
 
-- E' (commutator cap) is a real hypothesis; list it every time the
-  theorem is stated.  Do not present the pigeonhole as
-  hypothesis-free.
+- E' (commutator cap) is a real hypothesis in the static-only theorem.
+  In the dynamical completion, explicitly replace only its route-2b
+  outlier half by the Planckian/QNM refill bound; do not present either
+  form as hypothesis-free.
 - The asymmetry leg cannot see coupling enhancement; never claim leg
-  B alone excludes it.  Envelope in, envelope out.
+  B at equilibrium alone excludes it.  The collective closure uses
+  time-dependent drain plus a refill-rate bound.
 - The constant c and Phi_env are not exact constants quoted from the
   paper; they are the per-channel ordinary-envelope normalization of
   the paper's Schwarzschild scaling lemma.  Quote them as scaling data,
@@ -262,3 +285,5 @@ theory, no new physics expected.]
 - Escape note: its route-(b) "target inequality" is discharged here.
 - Paper form (when written): the certificate section's hypothesis
   list is §4 of this note.
+- Route 2b paper form: use `collective_channel_starvation_result.md` and
+  retain its Markovian, Planckian/QNM, and multiplexing qualifiers.

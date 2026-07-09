@@ -1,12 +1,30 @@
 # Q1b Static Certificate Theorem: Consolidated Statement
 
-Date: 2026-07-05
+Date: 2026-07-05; dependency update 2026-07-08
 
 Role: paper-form staging note for the Q1b result.  This consolidates
 `statistics_rank_link_result.md`, `asymmetry_backreaction_escape_result.md`,
-and `participation_pigeonhole_result.md` into one theorem statement.
+`participation_pigeonhole_result.md`, and the route-2b completion in
+`collective_channel_starvation_result.md` into one theorem statement.
 Not final prose; use this as the source of truth for the certificate
 claim.
+
+Dependency update: the STATIC theorem below still names E' when stated
+without dynamics.  The route-2b part of E' is no longer a bare vertex
+assumption once the collective-channel starvation result is admitted:
+within its Markovian thermal-refill scope, it follows from
+`Gamma_th <= c_P T`.  Thus there are now two calibrated versions:
+
+```text
+static only:        line asymmetry + ordinary-sector envelope
+                    + E'                                      => rank bound;
+dynamically closed: line asymmetry + ordinary-sector envelope
+                    + EFT charge universality
+                    + Planckian/QNM relaxation                 => rank bound.
+```
+
+The second version is conditional on the relaxation bound and the
+starvation theorem's refill scope; it is not assumption-free.
 
 ## Theorem Target
 
@@ -49,10 +67,23 @@ line at frequency `omega` from a microcanonical shell.  Assume:
    floor N_eff >= 1/f survives even if this is rejected (see the
    minimal-statement note below).
 
-4. Commutator cap `E'`: the ordinary envelope also caps the channel
-   commutator scale, so coupling enhancement cannot hide powers of `S`.
-   Line asymmetry is blind to pure coupling enhancement; this is a
-   hypothesis, not an observed consequence.
+4. Coupling-enhancement control.  In the static-only statement this is
+   the commutator/vertex cap `E'`: the ordinary envelope also caps the
+   channel commutator scale, so coupling enhancement cannot hide powers
+   of `S`.  In the dynamically completed statement E' decomposes into:
+
+   ```text
+   (2a) no channel-selective microscopic gravitational charge
+        [standard EFT/equivalence-principle input];
+   (2b) no persistently bright thermal collective channel
+        [derived within the starvation model from Gamma_th <= c_P T].
+   ```
+
+   Line asymmetry is statically blind to pure coupling enhancement, but
+   a drained collective channel with Planckian-limited refill develops a
+   LOW-side asymmetry deficit.  Strongly non-Markovian refill and the
+   fully multiplexed mixed-frequency case remain outside the completed
+   statement.
 
 5. The observed line asymmetry is within `eta` of the calibrated
    reference.  For a Schwarzschild thermal line with
@@ -103,6 +134,27 @@ eta <~ 1 / (n_ref sqrt(S)).
 
 At coarser accuracy, the theorem still gives the explicit floor
 `N_eff ~ min(cS, (eta n_ref)^-2)`.
+
+For the dynamically completed version, let `f_coll` be the total flux
+fraction carried by `m` thermal collective channels in the scope of
+`collective_channel_starvation_result.md`.  The starvation bound gives,
+at `omega ~ T` and up to greybody and occupation constants,
+
+```text
+f_coll <~ m c_P eta.
+```
+
+Use the total dangerous fraction
+
+```text
+f_bad = f_occ + f_coll,
+f_occ <= eta n_ref,
+```
+
+in the participation formulas above.  Exact calibrated asymmetry with
+finite `c_P` sets both fractions to zero in this scope.  For finite
+accuracy the theorem certifies the corresponding explicit floor; it
+does not turn a coarse measurement into full entropy-rank saturation.
 
 ## Minimal Statement (assumption-light floor)
 
@@ -155,8 +207,12 @@ r_i = Gamma_em,i / Gamma_abs,i = K_i / (K_i + 1).
 
 Large occupation enhancement gives `r_i -> 1`, so a calibrated
 Schwarzschild line excludes it except for flux fraction `f`.  Pure
-coupling enhancement leaves `r_i` invariant, so it is excluded only by
-the ordinary-envelope plus `E'` hypotheses.
+coupling enhancement leaves the instantaneous equilibrium `r_i`
+invariant.  The static theorem therefore excludes it only through the
+ordinary-envelope plus `E'` hypotheses.  The dynamical completion treats
+the collective subcase separately: radiative drain competes with refill,
+and `Gamma_th <= c_P T` turns a persistent bright collective channel into
+a LOW-side KMS deficit bounded in proportion to its flux fraction.
 
 The remaining flux must pass through ordinary channels with per-channel
 flux cap `Phi_env`.  Pigeonhole:
@@ -199,19 +255,22 @@ four exits:
    `g2` and resolution-dependent asymmetry;
 3. leave the calibrated equilibrium class;
 4. emit through a thermalized bright COLLECTIVE exterior channel —
-   `g2 = 2` and KMS-preserving at rank one (route 2b of
+   `g2 = 2` and instantaneously KMS-preserving at rank one (route 2b of
    `envelope_as_coupling_universality.md`).  This exit is invisible to
-   both static legs; it is excluded only by E' (the
-   no-bright-collective-channel condition), which universality does
-   NOT supply.  It is the real N-portrait-style escape, addressable
-   only by the latency rung or by dynamical input.
+   equilibrium static legs, but its explicit deployment is
+   reservoir-starved.  Within the thermal Markovian refill model,
+   `Gamma_th <= c_P T` forces a LOW-side asymmetry deficit proportional
+   to its flux fraction.  It survives only by super-Planckian refill,
+   by leaving that refill class, or in an unresolved multiplexed corner.
+   The latency rung remains the assumption-light backstop.
 
 The strict 2006 prototype takes exit 1's complement — it is route (1)
 occupation, caught by asymmetry, so it does not reach any of these
 exits.  This is the current strongest fork statement: not a refutation
 of all N-portrait dynamics, but a conditional no-go for the strict
-coherent branch, with exit 4 the honest residue the static
-certificate cannot close.
+coherent branch.  Exit 4 is now a rate-bounded residue rather than an
+unnamed vertex assumption, but its Planckian and refill-scope qualifiers
+remain load-bearing.
 
 ## Owed Before Paper Text
 
@@ -223,3 +282,9 @@ certificate cannot close.
   using them as examples.
 - Run the broadband-vs-resolved `g2` multiplexing numeric if the
   sloped-ladder or tag-multiplexing caveat becomes central.
+- Promote the collective-starvation bound from the single/equal-split
+  calculation to mixed frequencies and unequal flux fractions before
+  quoting the `m`-channel form as a full theorem.
+- Replace generic "Planckian" rhetoric by the strongest operator-specific
+  QNM/relaxation statement that the black-hole literature actually
+  supports; generic many-body Planckian dissipation is only conjectural.

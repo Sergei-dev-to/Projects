@@ -21,6 +21,16 @@ the Dvali memory-burden/N-portrait prototype is degeneracy-saturated
 but source-rank-unsaturated, and its strict diary latency is blocked by
 memory-sector conservation.
 
+Route-2b update (2026-07-08):
+`notes/collective_channel_starvation_result.md` deploys the worst
+static loophole — a thermal bright rank-one collective channel.  Its
+static mimicry is exact, but persistent emission is starvation-limited.
+Within thermal Markovian refill, `Gamma_th <= c_P T` produces a signed
+LOW-side asymmetry deficit proportional to the collective flux
+fraction.  The static E' condition is therefore replaced, for this
+subroute, by a named Planckian/QNM relaxation input.  Latency remains
+the assumption-light backstop outside that refill class.
+
 ## One-sentence target
 
 Thermality, finite horizon entropy, eventual unitary release,
@@ -331,24 +341,27 @@ The candidate original content is narrower:
 
 ## Immediate next work
 
-1. Review and polish the Q1b paper section now added to
+1. Update and polish the Q1b paper section in
    `paper_boundary_saturation/main.tex`:
 
    ```text
    Schwarzschild luminosity
-   + ordinary envelope, including the E' commutator cap
-   + calibrated line asymmetry within eta
+   + ordinary-sector envelope
+   + calibrated two-sided line asymmetry within eta
+   + EFT universality for channel-selective charge enhancement
+   + Planckian/QNM refill bound for collective enhancement
    + harmonic-line / resolution-stability clause
-       => N_eff^ord >= (1-f)cS,
-          N_eff >= 1 / (f^2 + (1-f)/(cS)).
+       => f_bad = f_occ + f_coll is bounded,
+          N_eff^ord >= (1-f_bad)cS,
+          N_eff >= 1 / (f_bad^2 + (1-f_bad)/(cS)).
    ```
 
-   The section and bibliography entries are in place.  Remaining work
-   is paper-level calibration: constants, theorem phrasing, the
-   harmonic-line/resolution-stability clause, and whether the finite
-   `eta` total-rank floor should live in the main text or an appendix.
-   `g2` remains the passive corroborating leg; it does not directly
-   measure rank.
+   State the occupation-enhanced HIGH-side and starved-collective
+   LOW-side deficits separately.  The collective result is currently
+   complete for one channel and equal-split channels; mixed-frequency,
+   unequal multiplexing and strongly non-Markovian refill remain open.
+   `g2` remains passive corroboration; it does not directly measure
+   rank and stays at two under Gaussian starvation.
 
 2. Run or sketch the leg-A support calculation for the tag-multiplexing
    loophole: strict memory-burden superpositions should show

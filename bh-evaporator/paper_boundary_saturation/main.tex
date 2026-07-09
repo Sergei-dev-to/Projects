@@ -52,7 +52,14 @@ count of independent source directions.
 For four-dimensional massless radiation, a Schwarzschild temperature
 law, and smooth ordinary-strength matrix elements, the Schwarzschild
 luminosity law requires this count to be of order the
-Bekenstein--Hawking entropy.  By comparison, an ordinary local reservoir
+Bekenstein--Hawking entropy.  A calibrated emission/absorption
+measurement gives a two-sided test of the main rank-one escapes:
+macroscopic occupation drives the ratio above its thermal value, while
+a drained thermal collective channel with relaxation bounded by the
+temperature is reservoir-starved and drifts below it.  Under the stated
+weak-emission, resolution, and relaxation assumptions, the luminosity
+and line response give a quantitative lower bound on source
+participation.  By comparison, an ordinary local reservoir
 with finite-range dynamics and surface-supported emission operators has
 effective count bounded by the number of microscopic operators on its
 contact surface.  Thus, in this class of models, the degrees of freedom
@@ -260,19 +267,19 @@ thin reservoir, or a system whose entropy is already localized on the
 emitting surface, may have entropy-sized participation; this is the
 stretched-horizon structure in Hamiltonian language.
 
-\section{A Static Line-Response Certificate}
+\section{A Two-Sided Line-Response Certificate}
 \label{sec:static-certificate}
 
-The preceding rank conclusion has an apparent loophole.  A single
-collective source with a macroscopic occupation can carry the same
-coarse flux as many weak sources.  In that case the ordinary-envelope
-assumption in Lemma~\ref{lem:schwarzschild} is violated, and the Gram
-matrix may have $\Neff=O(1)$ even though the luminosity is
-Schwarzschild-sized.  This is the coherent-enhancement branch realized
-in critical condensate language by one bright collective mode.
+The preceding rank conclusion has two apparent rank-one loopholes.  A
+single source can be bright because its occupation is macroscopic, or a
+thermal collective mode can be bright because its coupling is enhanced.
+In either case the full-source ordinary-envelope assumption in
+Lemma~\ref{lem:schwarzschild} fails, and the Gram matrix may have
+$\Neff=O(1)$ even though the luminosity is Schwarzschild-sized.
 
-There is, however, a static response test that separates this branch
-from an equilibrium entropy-rank source.  For a resolved line with
+A line-response identity separates the occupation-enhanced branch from
+an equilibrium entropy-rank source.  Dynamics is then needed for the
+thermal collective branch.  For a resolved line with
 system operator $A_i(\omega)$, define the emission and absorption rates
 through that channel by
 \be
@@ -331,44 +338,119 @@ for the reference thermal occupation, this fraction obeys
 \ee
 up to the convention used for the experimental or model error $\eta$.
 
+Before adding an envelope assumption, there is an exact observable
+floor.  If $\lambda_{\max}=f_{\max}\Tr W$, positivity gives
+\be
+  \Tr(W^2)\leq \lambda_{\max}\Tr W,
+  \qquad
+  \Neff\geq \frac{1}{f_{\max}}.
+\label{eq:pure-floor}
+\ee
+Consequently an occupation-enhanced brightest channel obeying
+Eq.~\eqref{eq:f-bound} already gives
+$\Neff\gtrsim1/(\eta n_\beta)$ without a matrix-element envelope.
+This is a floor, not yet the entropy-sized conclusion.
+
 Pure coupling enhancement is different: rescaling $A_i\mapsto cA_i$
-leaves Eq.~\eqref{eq:line-asymmetry} invariant.  The line-asymmetry
-test therefore does not by itself exclude hidden powers in the
-commutator scale.  The ordinary-envelope hypothesis must be strengthened
-in per-channel form: non-enhanced channels have a flux cap
-$F_{\rm env}$, including a cap on the commutator scale, normalized so
-that the Schwarzschild scaling lemma reads
+leaves Eq.~\eqref{eq:line-asymmetry} invariant in equilibrium.  There
+are two physically distinct possibilities.  A channel-selective
+elementary coupling lies outside the ordinary gravitational/EFT
+coupling class.  A normalized collective mode, however, can acquire a
+$\sqrt K$ vertex from $K$ universally coupled constituents without
+violating elementary coupling universality.  If that collective mode is
+thermal, it has the calibrated ratio and $g^{(2)}(0)=2$ at rank one.
+It is therefore an exact instantaneous static mimic.
+
+Persistent emission adds a constraint that the equilibrium snapshot
+misses.  Let a collective mode be refilled from the internal system at
+thermal rate $\Gamma_{\rm th}$ and drained into empty exterior modes at
+rate $\Gamma_{\rm out}$.  In the Markovian thermal-refill model its
+steady occupation and response ratio are exactly
+\be
+ n_* = \frac{\Gamma_{\rm th}n_\beta}
+              {\Gamma_{\rm th}+\Gamma_{\rm out}},
+ \qquad
+ 1-\frac{r_*}{R}
+ =\frac{x}{n_\beta+1+x},
+ \qquad
+ x=\frac{\Gamma_{\rm out}}{\Gamma_{\rm th}}.
+\label{eq:starvation}
+\ee
+The drained mode is colder than its refill bath.  Its asymmetry moves
+\emph{below} the calibrated ratio, while a macroscopically occupied
+source moves above it.  Gaussian drain leaves $g^{(2)}(0)=2$, so the
+signed response, rather than photon bunching, is the starvation
+diagnostic.
+
+For a line at $\omega\sim T$ carrying number-flux fraction $F_{\rm coll}$
+through $m$ equal collective channels, write the total Hawking number
+flux as $\dot N_{\rm H}=aT$ with $a=O(1)$ including greybody data.
+If the internal relaxation rate is bounded by
+\be
+  \Gamma_{\rm th}\leq c_P T,
+\label{eq:planckian-input}
+\ee
+Eq.~\eqref{eq:starvation} gives parametrically
+\be
+  \eta_-
+  \gtrsim
+  \frac{F_{\rm coll}a}
+       {m c_P n_\beta(n_\beta+1)},
+  \qquad
+  F_{\rm coll}
+  \lesssim
+  \frac{m c_P n_\beta(n_\beta+1)}{a}\,\eta_- .
+\label{eq:collective-flux-bound}
+\ee
+For Schwarzschild black holes, quasinormal damping supplies the
+semiclassical motivation for a thermal-scale relaxation rate
+\cite{BertiCardosoStarinets2009}.  A generic Planckian bound on all
+many-body relaxation rates is conjectural, not a theorem
+\cite{HartnollMackenzie2022}; the chaos bound constrains a different
+quantity and is only supporting context
+\cite{MaldacenaShenkerStanford2016}.  Equations
+\eqref{eq:starvation}--\eqref{eq:collective-flux-bound} are therefore
+conditional on Eq.~\eqref{eq:planckian-input}, thermal Markovian refill,
+and the stated single/equal-split channel bookkeeping.  Strongly
+non-Markovian and mixed-frequency multiplexed refill remain outside the
+claim.
+
+The ordinary sector still requires the smooth-envelope input of
+Lemma~\ref{lem:schwarzschild}.  In per-channel form its flux is capped by
+$F_{\rm env}$, normalized so that
 \be
   \frac{F_{\rm H}}{F_{\rm env}}\sim c\,S_{\rm BH}.
 \ee
-Here $F_{\rm H}$ is the total thermal-line flux and $c$ is an
-order-one class constant.  This is not a new universal numerical
-constant; it is the per-channel translation of the smooth-envelope
-assumption in Lemma~\ref{lem:schwarzschild}.
-
-With this cap, the finite-accuracy conclusion is a pigeonhole bound.
-The ordinary part of the flux has support count
+This is not a new universal numerical constant; it is the ordinary-
+sector translation of that lemma.  Let
+\be
+  f_{\rm bad}=f_{\rm occ}+F_{\rm coll},
+  \qquad
+  f_{\rm occ}\lesssim\eta_+ n_\beta,
+\ee
+where $\eta_+$ and $\eta_-$ are the measured high- and low-side
+deviations.  The finite-accuracy pigeonhole bound is then
 \be
   \Neff^{\rm ord}
   \gtrsim
-  (1-f)\,\frac{F_{\rm H}}{F_{\rm env}}
+  (1-f_{\rm bad})\,\frac{F_{\rm H}}{F_{\rm env}}
   \sim
-  (1-f)c\,S_{\rm BH}.
+  (1-f_{\rm bad})c\,S_{\rm BH},
 \ee
-The total participation ratio is bounded by the possible concentration
-of the remaining fraction $f$ into an enhanced channel:
+and
 \be
   \Neff
   \gtrsim
-  \frac{1}{f^2+(1-f)/(cS_{\rm BH})}
+  \frac{1}{f_{\rm bad}^2+(1-f_{\rm bad})/(cS_{\rm BH})}
   \sim
-  \min\{cS_{\rm BH},f^{-2}\}.
+  \min\{cS_{\rm BH},f_{\rm bad}^{-2}\}.
 \label{eq:finite-eta-neff}
 \ee
-Exact calibration, $f=0$, gives $\Neff\gtrsim cS_{\rm BH}$ in the
-ordinary-envelope class.  At finite accuracy, full total participation
-requires $\eta\lesssim1/(n_\beta\sqrt{S_{\rm BH}})$; at coarser
-accuracy Eq.~\eqref{eq:finite-eta-neff} remains a quantitative floor.
+Exact calibrated response gives $\Neff\gtrsim cS_{\rm BH}$ within this
+weak-emission and relaxation class.  At finite accuracy, full total
+participation requires $f_{\rm bad}\lesssim S_{\rm BH}^{-1/2}$; at
+coarser accuracy Eq.~\eqref{eq:finite-eta-neff} remains a quantitative
+floor rather than a saturation measurement.
 
 The response test has one kinematic caveat.  If the bright collective
 ladder is anharmonic and fully resolved, a sloped occupation
@@ -446,8 +528,11 @@ mode counts have order-one rank however large $\Neff$ may be.  The
 static certificate in Sec.~\ref{sec:static-certificate} uses a
 different observable: the calibrated stimulated emission/absorption
 ratio of a resolved line, supplemented by photon counting to close the
-resolved-ladder loophole.  It tests whether the flux is carried by
-ordinary thermal channels or by a bright coherent source.
+resolved-ladder loophole.  Its sign distinguishes a macroscopically
+occupied hot-side outlier from a reservoir-starved cold-side collective
+outlier.  The latter inference additionally uses the relaxation input
+Eq.~\eqref{eq:planckian-input}; it is not a consequence of equilibrium
+statistics alone.
 
 There remains a separate temporal question.  For Rindler wedges,
 eternal black holes, and large anti--de Sitter black holes, the exterior
@@ -460,10 +545,13 @@ that divide: at negative heat capacity the canonical ensemble does not
 exist, and there is no stationary KMS state of the exterior field to
 which long-time spectral data could be referred.  The exterior instead
 receives a single non-stationary record delivering of order one nat per
-coherence time over of order $S$ emissions.  The static line response
-can certify the source-rank axis within the class, but the access
-latency of deposited quantum information is still the temporal
-comparison of the preceding section.
+coherence time over of order $S$ emissions.  The appropriate reference
+for a resolved transition is therefore the microcanonical density-of-
+states ratio, not a globally stationary canonical bath.  The two-sided
+line-response certificate can bound the source-rank axis within its
+weak-emission and relaxation class, but the access latency of deposited
+quantum information is still the independent temporal comparison of
+the preceding section.
 
 The Bekenstein--Hawking density of states and the scrambling dynamics
 enter as separate inputs.  Once those inputs are assumed, the entropy
@@ -478,24 +566,30 @@ flux is carried by a collectively enhanced source rather than by
 entropy-sized source participation.  The black-hole $N$-portrait and
 memory-burden models provide a useful comparison class
 \cite{DvaliGomez2013,DvaliPanchenko2016,DvaliEisemannMichelZell2020,
-DvaliValbuenaBermudezZantedeschi2024}.  In the critical condensate
-language, equal coupling of an external mode to $K$ memory species is
-equivalent to coupling to one collective mode with strength enhanced by
-$\sqrt K$, while the remaining $K-1$ modes decouple
-\cite{DvaliPanchenko2016}.  In the memory-burden prototype this is the
-coherent-enhancement escape from the ordinary-envelope assumption: the
-thermal-line Gram matrix may have participation $\Neff=O(1)$, with the
-power carried by the large master occupation rather than by $O(S)$
-comparable eigenvalues.  Section~\ref{sec:static-certificate} turns
-this escape into an exterior discriminator.  A harmonic bright source
-has emission/absorption ratio $n/(n+1)$, approaching one at large
-occupation, while the calibrated Schwarzschild line has an order-one
-thermal asymmetry; per resolved mode it also has
-$g^{(2)}(0)=1-O(1/S)$ rather than the thermal value two.  A dressed
-coherent model can evade this conclusion only by leaving the calibrated
-ordinary-envelope class, by becoming entropy-rank participating, or by
-using a resolution-dependent anharmonic ladder caught by the paired
-statistics.
+DvaliValbuenaBermudezZantedeschi2024}.  The strict emission prototype
+uses an ordinary-strength exterior vertex with master occupation
+$n_0\sim S$.  It therefore predicts
+$r=n_0/(n_0+1)=1-O(1/S)$ and, per resolved mode,
+$g^{(2)}(0)=1-O(1/S)$ rather than the thermal value two.  This
+occupation-enhanced branch is excluded by the response measurement
+within the harmonic/resolution-stable class.
+
+Equal coupling of an external mode to $K$ memory species instead reduces
+to one collective mode with strength enhanced by $\sqrt K$, while the
+remaining $K-1$ modes decouple \cite{DvaliPanchenko2016}.  If the
+collective mode starts thermal, it exactly reproduces the calibrated
+ratio and $g^{(2)}(0)=2$ at $\Neff=1$; this confirms that equilibrium
+static observables do not determine source participation.  The same
+decoupling then causes starvation: only the $O(1)$ occupation of the
+bright mode drains, giving a flash with integrated reservoir fraction
+$1/K$.  Persistent Hawking-sized emission requires refill, and
+Eqs.~\eqref{eq:starvation}--\eqref{eq:collective-flux-bound} turn the
+required refill into a low-side response deviation under the
+thermal-scale relaxation assumption.  A generic coherent model can
+still evade the completed certificate through superthermal refill,
+strongly non-Markovian dynamics, a different nonthermal refill class,
+or unresolved multiplexing; the result is a conditional rate bound,
+not a refutation of all collective black-hole models.
 
 The same models also separate participation from latency.  In the
 strict prototype the memory-sector occupation is conserved and

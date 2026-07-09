@@ -53,6 +53,7 @@ present.
 |---|---:|---:|---|---|---|---|---|
 | Boundary-ETH / incoherent ETH-Gaussian entropy-rank | saturated or matched to BH entropy | `N_eff ~ S`, `sigma = 1`, `lambda_bar ~ eps0^2 / S`, `Tr W ~ eps0^2` | many weak incoherent channels | HP-like `O(k + log S)` emitted quanta, conditional on fast mixing and a real thermal tie | thermal/chaotic `g2(0)=2`; source phases average incoherently | Boltzmann `e^(-omega/T)` (KMS-calibrated equilibrium channels) | access-saturated branch |
 | N-portrait / strict memory-burden | saturated by `K ~ S` assisted gapless memory modes | `N_eff = 1`, `sigma = 0`, `lambda_bar ~ eps0^2` from `C0^2 n0`, same `Tr W` scale | one collectively enhanced sharp master source | infinite in the strict toy for fixed-energy memory diaries; BH mapping gives model-dependent post-burden powers, with conservative bound `tau >= R S_BH^2` in Dvali:2024hsb | resolved-mode `g2(0)=1-1/S`; broadband tag-multiplexing can increase apparent bunching | `n0/(n0+1) = 1 - 1/S`; O(1) KMS failure (backreaction escape closed for the strict class; resolved-ladder sub-case clause-covered — see `asymmetry_backreaction_escape_result.md`) | degeneracy-saturated but source-rank-unsaturated |
+| Starved bright collective channel (route 2b deployed; `collective_channel_starvation_result.md`) | saturated memory sector behind the channel | `N_eff = 1` by construction (single collective operator `b'`, coupling `sqrt(K) g`) | one thermalized collective mode at `O(1)` occupation | not addressed by statics; the only assumption-free reach is the latency rung | `g2(0) = 2` exactly (Gaussian; starvation-blind) | starts at KMS, drifts BELOW: `r* = n*/(n*+1) < e^(-omega/T)` with deficit `x/(nbar+1+x)`, `x = Gamma'/Gamma_th`; strict deployment carries integrated flux fraction `1/K` only | static mimicry exact but starvation-limited; sustaining full flux needs super-Planckian refill |
 | Semiclassical Hawking mode | BH entropy assumed | not a source-Gram model by itself | thermal reduction of two-mode squeezed pair | HP latency only with extra Page/decoupling setup | thermal/chaotic `g2(0)=2` per exterior mode | Boltzmann `e^(-omega/T)` exactly (thermal stimulated response) | votes against the strict sharp coherent branch |
 | Ordinary local reservoir | may be large but not BH-saturated | bounded by contact/surface access, not volume entropy | local transport/contact channels | ballistic lower bound `~ S^{1/d}` if mapped to a `d`-dimensional bulk reservoir; diffusive expectation longer | statistics alone not decisive | Boltzmann at reservoir temperature; not decisive by itself | local reservoir, not horizon-like saturation |
 | Fast scrambler without saturation | mixing may be fast, but DOS/source access not entropy-saturated | can have low or intermediate `N_eff` | model-dependent | can be logarithmic internally | not enough without DOS/source-rank saturation | model-dependent; not decisive | fast mixing alone is insufficient |
@@ -177,6 +178,12 @@ axis 2: diary latency, HP-like logarithmic recovery versus blocked/long release;
 axis 3: per-resolved-mode counting, g2 ~= 1 versus g2 = 2;
 axis 4: line asymmetry, em/abs = e^(-omega/T) (KMS) versus 1 - 1/S.
 ```
+
+Axis 4 is TWO-SIDED after the route-2b deployment check
+(`collective_channel_starvation_result.md`): occupation-enhanced
+channels fail HIGH (em/abs -> 1), starved collective channels fail LOW
+(em/abs below Boltzmann by `Gamma'/(Gamma_th (nbar+1))`).  KMS is the
+narrow middle; both deviations are signed predictions.
 
 Thus the Dvali memory-burden/N-portrait strict branch should be recorded
 as:
