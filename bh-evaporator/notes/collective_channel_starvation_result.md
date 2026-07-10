@@ -16,6 +16,18 @@ named Planckian-relaxation input, upgrading the certificate's second
 input from a vertex assumption to a dynamics bound.  Verification
 grading per claim.  Not paper text.
 
+Successor update (2026-07-09):
+`collective_channel_spectral_starvation_theorem.md` removes the
+time-local Markov assumption for stationary linear, gauge-invariant
+Gaussian channels with additive self-energies and derives an exact
+frequency-local flux/deficit identity.  Separately,
+`signed_cancellation_and_gram_tail_result.md` shows that one aggregate
+line ratio can hide exact HIGH/LOW cancellation at `N_eff <= 2`; LOW
+and HIGH fractions must be channel-resolved or separated by a
+multi-setting protocol.  Exact calibration at two drain strengths
+closes that cancellation in the narrow stationary class.  The ordinary
+Gram tail remains a separate input-2 joint.
+
 ## 1. The deployment: exact structure of the corpus ingredient
 
 Pinned from `1601.01329` `src.tex` l.633-640.  The optical coupling with

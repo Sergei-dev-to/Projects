@@ -2,6 +2,17 @@
 
 Date: 2026-07-05; route-2b dependency update 2026-07-08
 
+Successor correction (2026-07-09):
+`collective_channel_spectral_starvation_theorem.md` removes the Markov
+approximation within the stationary linear gauge-invariant Gaussian additive
+class.  But `signed_cancellation_and_gram_tail_result.md` proves two limits on
+the static certificate: HIGH and LOW aggregate response errors can cancel
+exactly, and an arbitrary distribution of ordinary thermal Gram weights can
+have the same calibrated response and `g2 = 2`.  Thus the separate bad-flux
+bounds below require resolved response or a multi-setting protocol, while the
+ordinary-tail conclusion still requires E', response-kernel tomography, or a
+microscopic coupling-spectrum theorem.
+
 Role: closes the top formal gap left by
 `asymmetry_backreaction_escape_result.md` (route-(b): does O(1) flux
 through register-sampling channels force entropy-rank participation?).
@@ -18,14 +29,12 @@ envelope-type assumption) and one blindness of the certificate is
 recorded (coupling enhancement).  Verification grading per claim.  Not
 paper text.
 
-Successor status: `collective_channel_starvation_result.md` resolves
-the live collective-enhancement residue within a thermal Markovian
-refill class.  A persistent bright collective channel develops a
-LOW-side asymmetry deficit unless its refill rate exceeds the thermal
-scale.  Accordingly, E' remains the correct STATIC hypothesis, while
-the dynamically completed black-hole statement replaces route 2b's
-piece of E' by `Gamma_th <= c_P T`.  The Planckian/QNM input and refill
-scope are load-bearing and must remain visible.
+Successor status: a persistent bright collective channel develops a
+LOW-side response deficit unless its internal refill dominates the exterior
+drain.  This statement is exact in the spectral Gaussian class just named.
+An operator-specific Planckian/QNM ceiling would be a later black-hole
+corollary, not an assumption of that theorem.  Aggregate cancellation and the
+ordinary-tail non-identifiability above remain load-bearing qualifiers.
 
 ## 1. Generalized occupation and per-channel asymmetry [computation]
 

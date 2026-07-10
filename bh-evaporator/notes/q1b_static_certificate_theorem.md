@@ -26,6 +26,23 @@ dynamically closed: line asymmetry + ordinary-sector envelope
 The second version is conditional on the relaxation bound and the
 starvation theorem's refill scope; it is not assumption-free.
 
+Phase-1/2 correction (2026-07-09):
+
+1. `collective_channel_spectral_starvation_theorem.md` removes the
+   time-local Markov assumption for stationary linear, gauge-invariant
+   Gaussian channels with additive self-energies.  It gives an exact
+   frequency-local flux-versus-LOW-deficit identity in terms of
+   `Gamma_int(omega)`; the Planckian/QNM ceiling is only a corollary.
+2. `signed_cancellation_and_gram_tail_result.md` proves that one HIGH
+   and one LOW channel can have an exactly calibrated aggregate ratio
+   with `N_eff <= 2`.  Therefore separate `f_occ` and `f_coll` bounds
+   require channel/line-shape resolution or a multi-setting
+   drain/time/resolution/tomography protocol.  One net line ratio is not
+   sufficient.
+3. The paired legs control enhanced sectors, not the full ordinary Gram
+   tail.  `N_eff^ord ~ cS` remains the ordinary-sector envelope input
+   unless a cumulative tail bound is independently measured or derived.
+
 ## Theorem Target
 
 Consider a weak, golden-rule emission model for a resolved exterior
@@ -85,18 +102,21 @@ line at frequency `omega` from a microcanonical shell.  Assume:
    fully multiplexed mixed-frequency case remain outside the completed
    statement.
 
-5. The observed line asymmetry is within `eta` of the calibrated
-   reference.  For a Schwarzschild thermal line with
+5. The channel-resolved or multi-setting-separated line asymmetry is
+   within `eta_+`/`eta_-` of the calibrated reference.  A single
+   aggregate tolerance cannot be used as both bounds because HIGH and
+   LOW defects can cancel.  For a Schwarzschild thermal line with
    `R = exp(-beta omega) < 1`, write
 
    ```text
    n_ref = R / (1 - R).
    ```
 
-Then occupation-enhanced channels can carry at most flux fraction
+Then a separately bounded occupation-enhanced channel can carry at most
+flux fraction
 
 ```text
-f <= eta * n_ref
+f <= eta_+ * n_ref
 ```
 
 up to the convention used for the asymmetry error.  Therefore:
@@ -141,20 +161,22 @@ fraction carried by `m` thermal collective channels in the scope of
 at `omega ~ T` and up to greybody and occupation constants,
 
 ```text
-f_coll <~ m c_P eta.
+f_coll <~ m c_P eta_-.
 ```
 
 Use the total dangerous fraction
 
 ```text
 f_bad = f_occ + f_coll,
-f_occ <= eta n_ref,
+f_occ <= eta_+ n_ref,
 ```
 
 in the participation formulas above.  Exact calibrated asymmetry with
 finite `c_P` sets both fractions to zero in this scope.  For finite
 accuracy the theorem certifies the corresponding explicit floor; it
 does not turn a coarse measurement into full entropy-rank saturation.
+These formulas are invalid if `eta_+` and `eta_-` are inferred from one
+net aggregate ratio rather than separately resolved/protocol-bounded.
 
 ## Minimal Statement (assumption-light floor)
 
@@ -242,6 +264,26 @@ It is still essential for two jobs:
 - It passively distinguishes the strict sharp collective branch
   (`g2 = 1 - 1/S` per resolved mode) from ETH-Gaussian/Hawking
   thermality (`g2 = 2`).
+
+It also prevents arbitrary HIGH/LOW cancellation from being treated as
+a response-only success.  If HIGH channels satisfy
+`g2_i <= 2-kappa` and the observed composite statistic obeys
+`g2_tot >= 2-epsilon_g`, then
+
+```text
+Q_H = sum_{i in H} f_i^2 <= epsilon_g/kappa.
+```
+
+If a separate spectral protocol bounds LOW total flux by `F_C <= c_-`
+and the ordinary tail obeys `Q_O <= p`, then
+
+```text
+N_eff >= 1/[epsilon_g/kappa + c_-^2 + p].
+```
+
+This is the cancellation-safe paired-leg form.  Entropy-sized rank
+still requires `p ~ 1/S`; the response legs do not derive that ordinary
+tail bound by themselves.
 
 ## Branch Consequence
 

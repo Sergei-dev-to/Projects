@@ -2,6 +2,17 @@
 
 Date: 2026-07-05; route-2b dependency update 2026-07-08
 
+Successor correction (2026-07-09): the LOW-side starvation result extends
+beyond Markovian refill in the stationary linear gauge-invariant Gaussian
+additive class.  It does not by itself make one aggregate response ratio a
+rank certificate: HIGH and LOW deviations can cancel exactly, and a fully
+ordinary thermal Gram tail is invisible to static response and `g2`.
+`signed_cancellation_and_gram_tail_result.md` gives the exact counterexamples,
+the conditional paired bound, and an exact two-drain separator.  Any use of
+separate HIGH/LOW flux tolerances below therefore presumes resolved response or
+a multi-setting protocol; the ordinary tail still needs an envelope,
+tomography, or a microscopic theorem.
+
 Role: Q1b of the current roadmap — close the coherent-enhancement
 escape of the luminosity lemma using per-resolved-mode counting
 statistics. Status: proof skeleton with one exact identity, one
@@ -9,13 +20,11 @@ two-line corollary, one physics lemma at sketch level (the load-bearing
 new piece), and an assembled conditional theorem. Verification grading
 per claim. Not yet paper text.
 
-Successor status: `collective_channel_starvation_result.md` confirms
-that route 2b is an exact equilibrium static mimic, then bounds its
-persistent flux within a thermal Markovian refill model.  The paragraphs
-below about static blindness remain correct; their current continuation
-is that `Gamma_th <= c_P T` converts persistent collective emission into
-a LOW-side asymmetry deficit.  The Planckian/QNM and refill-scope
-qualifiers remain load-bearing.
+Successor status: route 2b is an exact equilibrium static mimic, while
+persistent drain creates a LOW-side deficit in the exact spectral class above.
+A Planckian/QNM relaxation ceiling is needed only when translating that
+identity into a black-hole flux ceiling.  The cancellation and ordinary-tail
+qualifiers in the correction above must remain visible.
 
 ## 1. Composite-source identity [exact within stated class]
 

@@ -355,6 +355,29 @@ broader Post-Completion Horizon ranking for active work until the
 flagship certificate is locked.  Q2 remains a separate companion;
 JT/Kerr/dS and phenomenology are deferred.
 
+Progress update, same day:
+
+```text
+Phase 0: COMPLETE — theorem observables, widths, line/band ranks fixed.
+Phase 1: COMPLETE for the stated class — exact stationary linear
+         Gaussian spectral-starvation and flux/deficit identities;
+         Markov limit recovered numerically.
+Phase 2a: LANDED — one aggregate ratio admits exact HIGH/LOW
+          cancellation at N_eff <= 2; paired g2 + separately resolved
+          LOW flux + ordinary-tail control gives
+          N_eff >= 1/(epsilon_g/kappa + c_-^2 + p).  Exact
+          calibration at two drain strengths closes cancellation in the
+          narrow stationary class by a monotonicity theorem; finite errors
+          are bounded when the scan has a bounded starvation-ratio window.
+```
+
+The correction is demarcation-relevant: the current work is trying to
+remove input 2 of the established necessity trinity (boundary-accessible
+rank).  It has not yet done so.  Signed cancellation needs an operational
+full spectral multi-setting closure, and the ordinary Gram-tail bound `p ~ 1/S`
+remains the residual part of input 2.  Input 1 (`S(E) ~ E^2`) and input
+3 (decoupling/typical encoding) remain separate.
+
 ### Q3: Branch-Forcing Think-Pass
 
 After Q1b, stress-test candidate principles that might force real black
@@ -449,9 +472,10 @@ collective channel is an exact equilibrium static mimic at rank one,
 but persistent drain makes it sub-thermal unless refill is faster than
 the horizon's thermal/QNM scale.  The coherent branch must therefore:
 become entropy-rank participating; show the occupation-enhanced HIGH
-signature; show the starvation LOW signature; use super-Planckian or
-strongly non-Markovian refill; exploit unresolved mixed-frequency
-multiplexing; or leave the calibrated class.  This is not an
+signature; show the starvation LOW signature; exploit signed aggregate
+cancellation at one setting; use a non-additive, nonlinear/non-Gaussian, or
+nonstationary refill mechanism outside the spectral theorem; exploit
+unresolved mixed-frequency multiplexing; or leave the calibrated class.  This is not an
 assumption-free refutation of N-portrait dynamics.  The strict prototype
 is still excluded more directly because it is route (1) occupation.
 
@@ -616,6 +640,8 @@ asymmetry_backreaction_escape_result.md
 participation_pigeonhole_result.md
 participation_cap_decomposition_result.md
 collective_channel_starvation_result.md
+collective_channel_spectral_starvation_theorem.md
+signed_cancellation_and_gram_tail_result.md
 certificate_gap_closure_plan_2026_07_09.md
 q1b_static_certificate_theorem.md
 envelope_as_coupling_universality.md

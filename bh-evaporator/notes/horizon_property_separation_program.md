@@ -346,22 +346,22 @@ The candidate original content is narrower:
 
    ```text
    Schwarzschild luminosity
-   + ordinary-sector envelope
-   + calibrated two-sided line asymmetry within eta
-   + EFT universality for channel-selective charge enhancement
-   + Planckian/QNM refill bound for collective enhancement
-   + harmonic-line / resolution-stability clause
-       => f_bad = f_occ + f_coll is bounded,
-          N_eff^ord >= (1-f_bad)cS,
-          N_eff >= 1 / (f_bad^2 + (1-f_bad)/(cS)).
+   + channel-resolved response or a sufficient multi-setting separator
+   + paired g2 bound on HIGH L2 weight
+   + separately bounded LOW flux
+   + ordinary-sector envelope/tomography/microscopic spectrum theorem
+       => N_eff >= 1/(epsilon_g/kappa + c_-^2 + p).
    ```
 
    State the occupation-enhanced HIGH-side and starved-collective
-   LOW-side deficits separately.  The collective result is currently
-   complete for one channel and equal-split channels; mixed-frequency,
-   unequal multiplexing and strongly non-Markovian refill remain open.
-   `g2` remains passive corroboration; it does not directly measure
-   rank and stays at two under Gaussian starvation.
+   LOW-side deficits separately.  One aggregate ratio permits exact
+   cancellation at `N_eff <= 2`.  The starvation identity is exact for
+   stationary linear gauge-invariant Gaussian additive channels, and exact
+   plus finite-error two-drain separation holds in the narrow stationary
+   class.  Full spectral multi-setting separation, mixed-frequency
+   multiplexing, and the ordinary Gram tail remain open.  `g2` bounds the
+   HIGH L2 contribution under the fourth-moment assumptions; it stays at two
+   under Gaussian starvation and for an arbitrary ordinary thermal tail.
 
 2. Run or sketch the leg-A support calculation for the tag-multiplexing
    loophole: strict memory-burden superpositions should show

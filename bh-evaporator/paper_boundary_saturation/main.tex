@@ -52,13 +52,14 @@ count of independent source directions.
 For four-dimensional massless radiation, a Schwarzschild temperature
 law, and smooth ordinary-strength matrix elements, the Schwarzschild
 luminosity law requires this count to be of order the
-Bekenstein--Hawking entropy.  A calibrated emission/absorption
-measurement gives a two-sided test of the main rank-one escapes:
+Bekenstein--Hawking entropy.  Resolved or multi-setting calibrated
+emission/absorption measurements, supplemented by photon counting, give
+a two-sided test of the main rank-one escapes:
 macroscopic occupation drives the ratio above its thermal value, while
 a drained thermal collective channel with relaxation bounded by the
 temperature is reservoir-starved and drifts below it.  Under the stated
-weak-emission, resolution, and relaxation assumptions, the luminosity
-and line response give a quantitative lower bound on source
+weak-emission, resolution, relaxation, and channel-separation
+assumptions, the luminosity and paired response give a quantitative lower bound on source
 participation.  By comparison, an ordinary local reservoir
 with finite-range dynamics and surface-supported emission operators has
 effective count bounded by the number of microscopic operators on its
@@ -376,6 +377,38 @@ steady occupation and response ratio are exactly
  x=\frac{\Gamma_{\rm out}}{\Gamma_{\rm th}}.
 \label{eq:starvation}
 \ee
+The time-local assumption is not essential for a stationary linear
+Gaussian channel.  With additive frequency-dependent internal and
+exterior self-energies, define
+$\Gamma_a(\omega)=-2\operatorname{Im}\Sigma_a^R(\omega)$.  The exact
+Keldysh relations give, pointwise in a resolved line,
+\be
+ n_{\rm eff}(\omega)
+ =\frac{\Gamma_{\rm int}(\omega)n_\beta(\omega)}
+        {\Gamma_{\rm int}(\omega)+\Gamma_{\rm out}(\omega)},
+ \qquad
+ 1-\frac{r_{\rm eff}}{R}
+ =\frac{x}{n_\beta+1+x},
+ \quad
+ x=\frac{\Gamma_{\rm out}}{\Gamma_{\rm int}}.
+\label{eq:spectral-starvation}
+\ee
+Real dispersive self-energy shifts distort the spectral function but
+cancel from this ratio.  If $\mathcal A(\omega)=-2\operatorname{Im}
+G^R(\omega)$ and
+$\delta_-(\omega)=1-r_{\rm eff}(\omega)/R(\omega)$, the outgoing
+spectral number current satisfies the exact identity
+\be
+ j_{\rm out}(\omega)
+ =\frac{\mathcal A(\omega)\Gamma_{\rm int}(\omega)
+ n_\beta(\omega)[n_\beta(\omega)+1]\delta_-(\omega)}
+ {2\pi[1+n_\beta(\omega)\delta_-(\omega)]}.
+\label{eq:spectral-current}
+\ee
+Thus the theorem can be written in terms of an independently calibrated
+internal relaxation spectrum; a Planckian ceiling is needed only for a
+black-hole corollary.
+
 The drained mode is colder than its refill bath.  Its asymmetry moves
 \emph{below} the calibrated ratio, while a macroscopically occupied
 source moves above it.  Gaussian drain leaves $g^{(2)}(0)=2$, so the
@@ -410,10 +443,15 @@ many-body relaxation rates is conjectural, not a theorem
 quantity and is only supporting context
 \cite{MaldacenaShenkerStanford2016}.  Equations
 \eqref{eq:starvation}--\eqref{eq:collective-flux-bound} are therefore
-conditional on Eq.~\eqref{eq:planckian-input}, thermal Markovian refill,
-and the stated single/equal-split channel bookkeeping.  Strongly
-non-Markovian and mixed-frequency multiplexed refill remain outside the
-claim.
+conditional on Eq.~\eqref{eq:planckian-input} and the stated
+single/equal-split channel bookkeeping.  The spectral identities
+\eqref{eq:spectral-starvation}--\eqref{eq:spectral-current} remove the
+Markov approximation for additive stationary linear Gaussian kernels.
+Non-additive, nonlinear/non-Gaussian, unresolved, and mixed-frequency
+multiplexed refill remain outside the displayed black-hole bound.  A
+total linewidth cannot be substituted for $\Gamma_{\rm int}$ unless
+$\Gamma_{\rm out}$ is independently calibrated and the additive split
+is valid.
 
 The ordinary sector still requires the smooth-envelope input of
 Lemma~\ref{lem:schwarzschild}.  In per-channel form its flux is capped by
@@ -422,14 +460,61 @@ $F_{\rm env}$, normalized so that
   \frac{F_{\rm H}}{F_{\rm env}}\sim c\,S_{\rm BH}.
 \ee
 This is not a new universal numerical constant; it is the ordinary-
-sector translation of that lemma.  Let
+sector translation of that lemma.
+
+There is an additional aggregation caveat.  In emission-flux fractions
+$f_i=\Gamma_{{\rm em},i}/\sum_j\Gamma_{{\rm em},j}$, the measured total
+line ratio is
+\be
+  r_{\rm tot}
+  =\left(\sum_i\frac{f_i}{r_i}\right)^{-1},
+  \qquad
+  \frac{R}{r_{\rm tot}}
+  =\sum_i f_i\frac{R}{r_i}.
+\label{eq:aggregate-ratio}
+\ee
+A HIGH-side and a LOW-side channel can therefore cancel exactly.  Two
+such channels can give $r_{\rm tot}=R$ with $\Neff\leq2$, approaching
+one for an extreme LOW-side absorber.  One aggregate tolerance cannot
+be read as separate high- and low-side bounds.
+
+In the narrow stationary Gaussian class, a two-drain protocol gives an
+explicit finite-error separator.  Scale all exterior widths as
+$\Gamma_{{\rm out},c}=s\gamma_c$ and write
+\be
+  \frac{D(s)}{s}=-H+L(s),\qquad
+  L(s)=\sum_c\frac{s\gamma_c^2}{g_c+s\gamma_c},
+\ee
+where $H\geq0$ is the drain-independent HIGH balance weight.  If
+$s_2>s_1$, $s_2\gamma_c/g_c\leq X$, and
+$|D(s_j)/s_j|\leq\epsilon_j$, monotonicity gives
+\be
+  L(s_1)\leq
+  \frac{s_1(1+X)}{s_2-s_1}(\epsilon_1+\epsilon_2),
+  \qquad
+  H\leq L(s_1)+\epsilon_1.
+\label{eq:two-drain-finite}
+\ee
+For measured $y_j=r_{\rm tot}(s_j)/R$ with
+$|y_j-1|\leq\eta_j<1$, one may take
+$\epsilon_j=[E_{\rm tot}(s_j)/(s_jR)]\eta_j/(1-\eta_j)$.
+A lower classification threshold
+$s_1\gamma_c/g_c\geq x_{\min}>0$ also converts the first bound into
+$E_C(s_1)\leq s_1n_\beta L(s_1)/x_{\min}$.  The constants deteriorate
+when the scan does not bound the starvation ratios; this is the precise
+additional width prior used by this multi-setting realization.
+
+The following
+finite-accuracy statement assumes channel/line-shape resolution or a
+multi-setting drain, time, resolution, or response-tomography protocol
+that separately bounds the two signed sectors.  Under that condition let
 \be
   f_{\rm bad}=f_{\rm occ}+F_{\rm coll},
   \qquad
   f_{\rm occ}\lesssim\eta_+ n_\beta,
 \ee
-where $\eta_+$ and $\eta_-$ are the measured high- and low-side
-deviations.  The finite-accuracy pigeonhole bound is then
+where $\eta_+$ and $\eta_-$ are the separately resolved high- and
+low-side deviations.  The finite-accuracy pigeonhole bound is then
 \be
   \Neff^{\rm ord}
   \gtrsim
@@ -446,8 +531,9 @@ and
   \min\{cS_{\rm BH},f_{\rm bad}^{-2}\}.
 \label{eq:finite-eta-neff}
 \ee
-Exact calibrated response gives $\Neff\gtrsim cS_{\rm BH}$ within this
-weak-emission and relaxation class.  At finite accuracy, full total
+Exact separately resolved response gives $\Neff\gtrsim cS_{\rm BH}$
+within this weak-emission and relaxation class.  Exact aggregate
+response alone does not.  At finite accuracy, full total
 participation requires $f_{\rm bad}\lesssim S_{\rm BH}^{-1/2}$; at
 coarser accuracy Eq.~\eqref{eq:finite-eta-neff} remains a quantitative
 floor rather than a saturation measurement.
@@ -468,6 +554,33 @@ second-order statistic
 therefore supplies an independent leg of the certificate.  A sharp
 collective source gives $g^{(2)}(0)=1-O(1/S)$, while a thermal Hawking
 mode gives $g^{(2)}(0)=2$.
+
+More generally, under fourth-moment channel independence, if every
+HIGH-side channel obeys $g_i^{(2)}\leq2-\kappa$, then
+\be
+  Q_{\rm H}\equiv\sum_{i\in H}f_i^2
+  \leq \frac{\epsilon_g}{\kappa},
+  \qquad
+  g_{\rm tot}^{(2)}\geq2-\epsilon_g.
+\ee
+If a separately resolved spectral protocol bounds the total LOW-side
+emitted fraction by $F_C\leq c_-$, then
+$Q_C=\sum_{i\in C}f_i^2\leq c_-^2$.  Finally, the ordinary per-channel
+envelope $f_i\leq p$ gives
+$Q_O=\sum_{i\in O}f_i^2\leq p$.  Hence the paired certificate has the
+transparent bound
+\be
+  \Neff
+  \geq
+  \frac{1}{\epsilon_g/\kappa+c_-^2+p}.
+\label{eq:paired-floor}
+\ee
+The first two terms are observable/protocol bounds on the enhanced
+branches.  The last is still the ordinary-sector smooth-envelope input.
+Thus the response calculation closes the dangerous outliers but does
+not, by itself, derive the full ordinary Gram tail.  Removing that last
+input requires response-kernel tomography or another cumulative bound
+on the ordered ordinary eigenvalues.
 
 \section{Dynamical Counterpart}
 
@@ -525,14 +638,18 @@ horizon radius, so the radiation resolves an order-one number of
 angular modes per coherence time
 \cite{Page1976,BekensteinMayo2001,Pendry1983}: instantaneous emission
 mode counts have order-one rank however large $\Neff$ may be.  The
-static certificate in Sec.~\ref{sec:static-certificate} uses a
+paired certificate in Sec.~\ref{sec:static-certificate} uses a
 different observable: the calibrated stimulated emission/absorption
 ratio of a resolved line, supplemented by photon counting to close the
 resolved-ladder loophole.  Its sign distinguishes a macroscopically
 occupied hot-side outlier from a reservoir-starved cold-side collective
-outlier.  The latter inference additionally uses the relaxation input
-Eq.~\eqref{eq:planckian-input}; it is not a consequence of equilibrium
-statistics alone.
+outlier only when the signed components are channel-resolved or
+separated by a multi-setting protocol; Eq.~\eqref{eq:aggregate-ratio}
+shows that one net ratio permits exact cancellation.  The LOW-side
+inference additionally uses an independently calibrated relaxation
+spectrum, with Eq.~\eqref{eq:planckian-input} needed only for the
+black-hole corollary.  Neither the response nor counting legs remove the
+ordinary-sector Gram-tail assumption by themselves.
 
 There remains a separate temporal question.  For Rindler wedges,
 eternal black holes, and large anti--de Sitter black holes, the exterior
@@ -587,8 +704,9 @@ Eqs.~\eqref{eq:starvation}--\eqref{eq:collective-flux-bound} turn the
 required refill into a low-side response deviation under the
 thermal-scale relaxation assumption.  A generic coherent model can
 still evade the completed certificate through superthermal refill,
-strongly non-Markovian dynamics, a different nonthermal refill class,
-or unresolved multiplexing; the result is a conditional rate bound,
+non-additive, nonlinear/non-Gaussian, or nonstationary dynamics, a different
+nonthermal refill class, signed cancellation in an insufficiently resolved
+protocol, or unresolved multiplexing; the result is a conditional rate bound,
 not a refutation of all collective black-hole models.
 
 The same models also separate participation from latency.  In the

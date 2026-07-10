@@ -2,6 +2,17 @@
 
 Date: 2026-07-06; route-2b dependency update 2026-07-08
 
+Successor correction (2026-07-09): the spectral starvation theorem now
+removes the Markov approximation within stationary linear gauge-invariant
+Gaussian additive channels.  However, `signed_cancellation_and_gram_tail_result.md`
+shows that HIGH- and LOW-side contributions can cancel exactly in one aggregate
+line ratio, even with `N_eff <= 2`.  Consequently, the outlier fractions used
+below require channel/line-shape resolution or a multi-setting response
+protocol; they do not follow separately from one aggregate tolerance.  The same
+successor result proves that static response plus `g2` cannot identify an
+arbitrary ordinary Gram tail.  E' (or tomography/a microscopic coupling-spectrum
+theorem) therefore remains load-bearing for that sector.
+
 Role: shores up the softest formal joint of the Q1b certificate — the
 per-channel cap F_H/F_env ~ cS asserted in
 `participation_pigeonhole_result.md` and inked in

@@ -25,6 +25,24 @@ notes/demarcation_algebra_type_synthesis.md
 
 ## Short Answer
 
+For the evaporation information story at the operational level, the current
+minimal input ledger is best remembered as a **two-plus-one necessity
+trinity**:
+
+```text
+1. state count / equation of state: S(E) ~ E^2;
+2. boundary accessibility: entropy-many source directions participate in
+   emission, N_access ~ S;
+3. typical encoding: sufficient mixing/scrambling for decoupling and recovery.
+```
+
+The first two are specifically black-hole thermodynamic/emission inputs.  The
+third is the quantum-information dynamical condition.  Once all three are
+supplied, Page/island/recovery behavior is largely standard finite quantum
+mechanics.  Algebra/factorization and lived interior geometry remain deeper
+structural demarcation questions; they are not erased by this operational
+trinity.
+
 Once a model supplies a finite black-hole Hilbert space, a radiation algebra or
 factor, unitary dynamics, and enough mixing, ordinary quantum mechanics supplies
 the familiar information-flow structure:
@@ -274,17 +292,19 @@ dimension, global purity, and a split. Hayden-Preskill recovery additionally
 consumes scrambling, access to the emitted radiation, and the relevant
 decoupling estimates.
 
-July 2026 operational update:
+July 2026 operational update (corrected 2026-07-09):
 
 ```text
-The source-rank question now has a conditional exterior certificate.
 Occupation-enhanced rank-one emission gives a HIGH-side calibrated-response
 deviation. A thermal bright collective channel is an exact equilibrium mimic,
-but persistent drain makes it reservoir-starved; with
-Gamma_th <= c_P T it gives a LOW-side deviation proportional to its flux.
-Thus source-rank saturation follows within the weak-emission/refill class only
-after gravity supplies ordinary EFT coupling and an operator-specific
-thermal/QNM relaxation ceiling.
+but persistent drain gives a LOW-side spectral deficit in the stationary
+linear gauge-invariant Gaussian additive class, without a Markov assumption.
+One aggregate ratio is nevertheless insufficient because HIGH and LOW errors
+can cancel exactly. A two-drain protocol separates them exactly in a narrow
+stationary class. Static response plus `g2` also cannot determine an arbitrary
+ordinary thermal Gram tail. Source-rank saturation therefore still needs
+resolved/multi-setting response plus an ordinary-sector envelope, tomography,
+or a microscopic coupling-spectrum theorem.
 ```
 
 The companion latency theorem is one-way: small integrated access to the
@@ -406,9 +426,12 @@ path.
 
 ## Current Best Next Moves
 
-1. Consolidate the two-sided source-rank certificate in
-   `paper_boundary_saturation/main.tex`, retaining the Planckian/QNM,
-   Markovian-refill, finite-accuracy, and multiplexing qualifiers.
+1. Complete the source-rank certificate in
+   `paper_boundary_saturation/main.tex`.  The stationary Gaussian spectral
+   theorem is done and the Markov approximation is no longer needed in that
+   class.  Exact and finite-error two-drain separation is done in the narrow
+   stationary limit; the next calculation is its full spectral generalization,
+   followed by an operational ordinary-tail bound.
 
 2. Treat `notes/demarcation_algebra_type_synthesis.md` as the conceptual
    endpoint: Type I exact/QI, Type III_1 QFT, Type II crossed-product
@@ -424,4 +447,6 @@ path.
 
 5. Avoid new taxonomy or toy numerics unless they answer one of the residues:
    state count/equation of state, exact-to-semiclassical algebra transition, or
-   lived interior, or close a named certificate loophole.
+   lived interior, or close a named certificate loophole.  For the operational
+   trinity, the live loophole is input 2: static aggregate response and `g2`
+   alone do not prove `N_access ~ S`.

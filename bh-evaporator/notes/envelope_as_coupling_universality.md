@@ -34,6 +34,19 @@ below retain the localization argument; section 7 records the updated
 closure.  The Planckian/QNM input, non-Markovian corner, and mixed-
 frequency multiplexing remain explicit qualifiers.
 
+Correction to the successor status (2026-07-09):
+`collective_channel_spectral_starvation_theorem.md` removes the Markov
+approximation for stationary linear gauge-invariant Gaussian additive
+channels.  `signed_cancellation_and_gram_tail_result.md` then shows why this
+does not eliminate E' altogether: one aggregate ratio permits exact HIGH/LOW
+cancellation, and static response plus `g2` is compatible with an arbitrary
+ordinary thermal Gram spectrum.  A two-drain protocol exactly separates HIGH
+and LOW channels in a narrow stationary class, but the ordinary tail still
+requires E', operator tomography, or a microscopic coupling-spectrum theorem.
+The earlier paragraph's non-Markovian qualifier is therefore closed only in
+this exact class; full spectral separation, eigenchannel resolution, and the
+ordinary tail replace it as the live gaps.
+
 ## 1. The two enhancement routes, via the coupling-blind occupation
 
 The generalized occupation (pigeonhole note) is

@@ -8,6 +8,26 @@ It supersedes informal sequencing in the roadmap where they conflict.
 
 ## Decision Summary
 
+### North star: reduce the necessity trinity from three inputs to two
+
+The operational-horizon draft starts from:
+
+```text
+INPUT 1: Schwarzschild state count, S(E) ~ E^2;
+INPUT 2: entropy-sized boundary-accessible emission algebra,
+         N_access ~ S;
+INPUT 3: decoupling/typical encoding of the shrinking channel.
+```
+
+The present closure program targets INPUT 2 only.  Its best-case result
+is to infer `N_access ~ S` from exterior luminosity, calibrated response,
+and an independently measured or operator-specifically calculated
+relaxation spectrum.  Input 1 remains parked.  Q2 sharpens necessary
+conditions for input 3 but does not derive decoupling.  Algebraic
+factorization and the lived interior are completion questions outside
+this factorized necessity theorem, not additional members of the
+trinity.
+
 The next technical target is not a universal proof of Planckian
 dissipation. It is a frequency-resolved starvation theorem written in
 terms of an operator-specific internal relaxation spectrum. The
@@ -30,6 +50,29 @@ This sequence ensures that a failed black-hole/QNM specialization does
 not invalidate the general certificate. The general theorem will remain
 parameterized by a measurable or calculable relaxation spectrum.
 
+### Execution status (2026-07-09)
+
+```text
+Phase 0: complete.
+Phase 1: complete for stationary linear gauge-invariant Gaussian
+         channels with additive self-energies; see
+         collective_channel_spectral_starvation_theorem.md.
+Phase 2a: aggregate signed-cancellation no-go, conditional paired-leg
+          Gram-tail bound, and exact plus finite-error two-drain separation
+          theorems for the narrow stationary class landed.  The finite-error
+          constants require a bounded starvation-ratio scan window.  A static
+          ordinary-tail non-identifiability theorem also shows that
+          aggregate KMS response plus g2=2 permits an arbitrary Gram
+          spectrum; see
+          signed_cancellation_and_gram_tail_result.md.
+```
+
+The remaining active work is the two-drain theorem's full spectral
+generalization and deciding whether response-kernel tomography can replace
+the ordinary-sector envelope.  A purely static Lorenz-tail
+optimization cannot do so because the non-identifiability theorem is
+exact.  The black-hole/QNM gate remains deliberately unopened.
+
 ## Non-Negotiable Scope
 
 1. Keep source participation and recovery latency separate.
@@ -45,6 +88,13 @@ parameterized by a measurable or calculable relaxation spectrum.
    named exits unless a short exact classification falls out naturally.
 8. State finite-accuracy results as participation floors, not full
    entropy-rank measurements unless the required `S` scaling is met.
+9. Do not infer the sum of HIGH- and LOW-side bad fluxes from one net
+   line ratio: signed deviations can cancel.
+10. Audit the full ordinary Gram spectrum, not only its largest
+    eigenvalue; a heavy top-`k` tail can keep rank subextensive.
+11. Call the result an exterior certificate only when the required
+    response kernel or eigenchannel information is operationally
+    identifiable.  Otherwise call it a model-side inference.
 
 ## Dependency Graph
 
@@ -165,7 +215,8 @@ which participation number is bounded.
 
 ### Target class
 
-A bosonic collective eigenchannel coupled to:
+A linear/quadratic, gauge-invariant bosonic collective eigenchannel
+coupled to:
 
 ```text
 an internal stationary Gaussian thermal environment;
@@ -174,7 +225,11 @@ frequency-dependent retarded and Keldysh self-energies;
 weak enough line overlap that a resolved spectral channel exists.
 ```
 
-No flat-spectrum or time-local Markov approximation should be assumed.
+The internal state is thermal rather than squeezed, so the stationary
+Gaussian channel has no anomalous covariance.  No flat-spectrum or
+time-local Markov approximation should be assumed.  A nonlinear or
+interacting collective operator lies outside the exact Gaussian theorem
+unless its exact self-energies close the same relations.
 
 ### Target identity
 
@@ -258,17 +313,46 @@ adversarial problem
 ```text
 minimize    N_eff(omega) = 1/sum_i f_i^2
 subject to  calibrated response bounds,
+            the observed aggregate line ratio,
+            adversarial HIGH/LOW signed cancellation,
             total line flux,
             linewidth/resolution constraints,
             known greybody/input-output data.
 ```
 
 The desired theorem replaces the current equal-split `m` factor by an
-effective participation inequality. If hiding the deficit requires
-many individually dim channels, that multiplicity must itself earn the
-rank floor.
+effective participation inequality.  It must optimize the full ordered
+Gram spectrum, including a possible heavy top-`k` ordinary tail, rather
+than assume that all nonexceptional channels are comparable.  If hiding
+the deficit requires many individually dim channels, that multiplicity
+must itself earn the rank floor.
 
-### 2.2 Mixed frequencies
+### 2.2 Signed-cancellation gate
+
+The aggregate response is absorption-weighted:
+
+```text
+r_tot = sum_i Gamma_abs,i r_i / sum_i Gamma_abs,i.
+```
+
+Occupation-enhanced channels lie above the reference and starved
+collective channels lie below it, so a small net deviation does not by
+itself bound `f_occ + f_coll`.  Test, in order:
+
+```text
+channel/linewidth-resolved response;
+two drain strengths, exploiting the Gamma_out dependence of starvation;
+time-resolved drain switching;
+the paired g2 statistic;
+two detector resolutions;
+response-kernel tomography.
+```
+
+The theorem may use separate `eta_+` and `eta_-` only after one of these
+protocols operationally separates the signed components.  Otherwise
+the optimizer must allow exact cancellation and report the weaker bound.
+
+### 2.3 Mixed frequencies
 
 Apply the line theorem independently to each resolvable bin. Combine
 bins only through `W_B` with declared weights. Include:
@@ -307,6 +391,16 @@ detectable response deviation;
 failure of line resolution/channel assumptions;
 quantitative source-participation floor.
 ```
+
+The acceptance gate also requires one of:
+
+```text
+signed cancellation is closed by a specified protocol;
+or the theorem explicitly reports the cancellation-allowed floor.
+```
+
+Separately report whether entropy-sized rank follows from observables or
+still uses an ordinary-sector ETH/smooth-envelope tail assumption.
 
 If overlapping frequencies cannot be reduced to a direct-sum or
 wave-packet Gram problem, state that scope boundary rather than quoting
@@ -518,16 +612,32 @@ Mitigation: define a finite detector wave-packet family before forming
 Mitigation: use a stated Fock/energy cutoff or an energy-constrained
 diamond norm in the Q2 extension.
 
+### R10. HIGH- and LOW-side defects cancel in aggregate
+
+Mitigation: include signed cancellation in the adversarial optimizer and
+require drain, time, resolution, `g2`, or tomography data before quoting
+separate bad-flux bounds.
+
+### R11. The ordinary sector has a heavy top-k tail
+
+Mitigation: optimize cumulative sorted Gram weight/Lorenz curves.  If
+exterior data do not control the tail, retain the ordinary-sector smooth
+envelope as an explicit remnant of input 2.
+
 ## Immediate Work Packet
 
 The next work session should do only this:
 
-1. Create `collective_channel_spectral_starvation_theorem.md`.
-2. Write the Phase-0 definitions in theorem notation.
-3. Derive the single-channel Keldysh identity.
-4. Verify the Lindblad limit against
-   `sim/collective_channel_starvation_check.py`.
-5. Stop and review the dependency list before starting multiplexing.
+1. Formulate the exact aggregate constraints for response, `g2`, and
+   drain-dependent spectral flux in emission-fraction variables.
+2. Test whether two drain strengths generically close HIGH/LOW
+   cancellation when channel source weights are fixed, and state the
+   precise failure modes when they are not.
+3. Optimize the full sorted Gram spectrum/Lorenz profile rather than
+   only `f_max`.
+4. Decide whether any exterior protocol bounds `Q_O`; if not, lock the
+   ordinary-sector smooth envelope as the residual part of input 2.
+5. Stop for review before opening the black-hole/QNM literature gate.
 
 No literature expansion, new phenomenology, or additional toy models
 belongs in that packet.

@@ -10,6 +10,11 @@ supplied, ordinary quantum mechanics gives Page behavior, decoupling, and
 conditional recovery.  The program asks which supplied structures gravity
 must explain and which can be certified from exterior observables.
 
+The operational evaporation ledger is the two-plus-one necessity trinity:
+`S(E) ~ E^2`, entropy-many emission access `N_access ~ S`, and
+mixing/scrambling sufficient for typical encoding.  The active
+boundary-saturation work tests the second input; it has not yet eliminated it.
+
 The active operational result separates two axes:
 
 ```text
@@ -36,6 +41,10 @@ and Planckian/QNM input; mixed-frequency multiplexing remains open.
   sequence, acceptance gates, and deferred scope.
 - `notes/q1b_static_certificate_theorem.md` — source-rank certificate.
 - `notes/collective_channel_starvation_result.md` — route-2b completion.
+- `notes/collective_channel_spectral_starvation_theorem.md` — exact
+  stationary Gaussian non-Markovian extension.
+- `notes/signed_cancellation_and_gram_tail_result.md` — aggregate
+  cancellation no-go, paired-leg bound, and two-drain separator.
 - `notes/q2_operator_overlap_bridge_theorem.md` — latency obstruction.
 
 ## Active papers
@@ -54,6 +63,8 @@ Run the collective-channel support calculation with:
 
 ```powershell
 python sim/collective_channel_starvation_check.py
+python sim/spectral_starvation_check.py
+python sim/signed_cancellation_optimizer.py
 ```
 
 Build the flagship paper from its directory with a standard

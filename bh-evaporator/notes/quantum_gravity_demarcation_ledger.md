@@ -22,6 +22,19 @@ structures become natural and mutually tied together.
 
 The point is to identify exactly where gravity enters.
 
+Operationally, the evaporation argument currently consumes a two-plus-one
+necessity trinity:
+
+```text
+S(E) ~ E^2                         state count / equation of state;
+N_access ~ S                       entropy-many emission directions;
+mixing/scrambling + typicality     decoupling and recoverability.
+```
+
+The boundary-saturation program tests the second input.  It does not derive
+the first or third, and its present certificate has not yet removed the second
+as an independent gravitational/microscopic input.
+
 Use two categories:
 
 ```text
@@ -412,31 +425,30 @@ zero fixed-sector diary visibility in the strict Hamiltonian.  Its
 occupation-enhanced emission predicts a HIGH-side departure from the
 calibrated emission/absorption ratio.
 
-The worst static loophole is a thermal bright collective channel.  It
-can reproduce KMS response and `g2 = 2` exactly at rank one, confirming
-that equilibrium statics alone do not determine source rank.  The
-explicit deployment in `collective_channel_starvation_result.md` is
-reservoir-starved: persistent drain produces a LOW-side asymmetry
-deficit unless the collective mode refills faster than the thermal
-scale.  Therefore the strongest current source-rank statement is:
+The worst static loopholes are a thermal bright collective channel and an
+unresolved ordinary Gram tail.  Either can reproduce KMS response and
+`g2 = 2`; equilibrium statics alone therefore do not determine source rank.
+Persistent drain gives the collective channel a LOW-side spectral deficit in
+the stationary linear gauge-invariant Gaussian additive class, with no Markov
+assumption.  But a HIGH channel can cancel that deficit in one aggregate
+ratio.  The strongest current source-rank statement is therefore conditional:
 
 ```text
-Schwarzschild luminosity + calibrated two-sided line response
-  + ordinary-sector envelope
-  + EFT coupling universality
-  + operator-specific Planckian/QNM relaxation ceiling
-    => entropy-sized source participation within the stated
-       weak-emission and refill classes.
+Schwarzschild luminosity
+  + channel-resolved response or a sufficient multi-setting separator
+  + paired photon-counting bound on nonordinary channels
+  + ordinary-sector envelope, tomography, or microscopic spectrum theorem
+    => entropy-sized source participation within the stated channel class.
 ```
 
-This sharpens rather than removes the dynamics row of the ledger.  QI
-performs the participation inference after gravity supplies the
-ordinary coupling and thermal-relaxation inputs.  The remaining
-technical gaps are mixed-frequency collective multiplexing,
-strongly non-Markovian refill, and a microscopic bound on the specific
-collective refill operator.  The latency certificate remains the
-assumption-light backstop and supplies only a necessary access
-condition, not a proof that real black holes achieve HP recovery.
+This sharpens rather than removes the emission-access row of the ledger.  The
+remaining technical gaps are finite-error multi-setting separation,
+response-kernel/eigenchannel tomography, mixed-frequency multiplexing, and an
+operational or microscopic bound on the ordinary Gram tail.  A Planckian/QNM
+ceiling remains relevant only when converting the exact spectral identity into
+a black-hole-specific refill bound.  The latency certificate remains the
+assumption-light backstop and supplies only a necessary access condition, not
+a proof that real black holes achieve HP recovery.
 
 ## Search Protocol
 
