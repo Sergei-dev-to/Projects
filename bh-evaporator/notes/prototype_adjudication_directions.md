@@ -371,6 +371,37 @@ Phase 2a: LANDED — one aggregate ratio admits exact HIGH/LOW
           are bounded when the scan has a bounded starvation-ratio window.
 ```
 
+Phase-2b red-team correction (2026-07-09): the flagship target and channel
+class require revision before further passive generalization.
+
+```text
+source target:
+  raw W_mu,nu is not invariant under general compensating refactorizations of
+  O_mu and B_mu; use a canonical coupling-weighted jump/process Choi object or
+  label microscopic source participation model-side;
+
+active route 2c:
+  an anomalous Gaussian attenuator/pair-creation dilation exactly reproduces
+  Hawking flux, positive absorption, KMS response, and g2=2 without passive
+  starvation;
+
+delay statistics:
+  the complete Gaussian g2(tau) is fixed by the aggregate spectrum and permits
+  arbitrary hidden source participation;
+
+time budget:
+  eta~S^-1/2 needs O(S) events, an order-one evaporation fraction on one
+  black hole;
+
+photon counting:
+  hot Gaussian HIGH channels have g2=2 and superbunched channels can cancel
+  antibunched deficits in aggregate.
+```
+
+These results move the active-Gaussian finite-energy dilation, invariant target,
+and protocol resource audit ahead of the full spectral two-drain theorem and
+the QNM gate.
+
 The correction is demarcation-relevant: the current work is trying to
 remove input 2 of the established necessity trinity (boundary-accessible
 rank).  It has not yet done so.  Signed cancellation needs an operational

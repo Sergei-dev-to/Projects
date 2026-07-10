@@ -1,5 +1,14 @@
 # Boundary Operator Count Result
 
+Successor correction (2026-07-09): this note supplies a preferred local
+boundary-cell decomposition and orthogonal/incoherent exterior coupling as
+model structure.  Its `N_A ~ A` count is valid within that canonical
+realization, but it is not reconstructed from exterior data and is not
+invariant under arbitrary compensating refactorizations of source and exterior
+operators.  See `source_gram_invariance_audit.md`.  An anomalous parametric
+channel also supplies a Hawking-flux mimic outside the passive local-emitter
+class; see `anomalous_parametric_channel_result.md`.
+
 ## Question
 
 Can the area-sized emission strength

@@ -207,6 +207,81 @@ themselves prove `Q_O ~ 1/S`.  Unless the ordinary tail is measured or
 derived from a stronger principle, the smooth-envelope statement
 remains the unremoved part of input 2.
 
+### Additional correction: `g2` does not generically control HIGH channels
+
+Equation (3.2) is conditional in two independent ways.
+
+First, a highly occupied **thermal Gaussian** source has
+
+```text
+r_h = n_h/(n_h+1) > R,
+g2_h = 2.
+```
+
+It is HIGH-side but contributes nothing to `2-g2_tot`.  Route 2c supplies an
+active calibrated version of the same Gaussian blindness.
+
+Second, fourth-moment deviations have their own signed cancellation.  Take an
+antibunched HIGH channel with
+
+```text
+g2_h-2 = -kappa
+```
+
+and a superbunched channel with
+
+```text
+g2_s-2 = chi,
+kappa,chi > 0.
+```
+
+For two emitted-flux fractions summing to one, exact aggregate thermal
+counting is obtained at
+
+```text
+f_h = sqrt(chi)/(sqrt(kappa)+sqrt(chi)),
+f_s = sqrt(kappa)/(sqrt(kappa)+sqrt(chi)),                 (3.4)
+```
+
+because
+
+```text
+-kappa f_h^2 + chi f_s^2 = 0.
+```
+
+Again `N_eff <= 2`.  Thus an aggregate `g2_tot=2` does not bound the HIGH L2
+weight if positive fourth-cumulant channels are admitted.
+
+**Correct scope of (3.2).**  The `g2` leg controls `Q_H` only after assuming
+that every HIGH channel has a known subthermal gap and that all other admitted
+channels have no positive fourth-moment contribution capable of cancellation.
+It is corroboration, not a universal HIGH-sector certificate.
+
+A response-based replacement is possible when a resolved or multi-setting
+protocol separately bounds the normalized HIGH balance
+
+```text
+A_H = sum_(i in H) f_i(1-q_i) <= h,
+q_i = R/r_i < 1.
+```
+
+If the classified HIGH sector has a minimum response gap
+
+```text
+1-q_i >= d_H > 0,
+```
+
+then
+
+```text
+F_H <= h/d_H,
+Q_H <= F_H^2 <= (h/d_H)^2.                                (3.5)
+```
+
+This version does not require HIGH channels to be antibunched, but it inherits
+the intervention/resolution and finite-gap assumptions of the response
+protocol.
+
 ### Static ordinary-tail non-identifiability theorem
 
 The limitation is exact, not merely a missing estimate.  Choose any

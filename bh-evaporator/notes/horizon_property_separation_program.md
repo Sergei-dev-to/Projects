@@ -31,6 +31,17 @@ fraction.  The static E' condition is therefore replaced, for this
 subroute, by a named Planckian/QNM relaxation input.  Latency remains
 the assumption-light backstop outside that refill class.
 
+Route-2c and invariance correction (2026-07-09): the passive route-2b result
+does not cover anomalous Bogoliubov pair creation.  An active Gaussian channel
+can exactly reproduce Hawking flux, positive absorption, KMS response, and
+`g2=2` without passive starvation.  In addition, the raw source-only Gram
+participation is not invariant under general compensating refactorizations of
+the physical interaction.  The candidate invariant must now be split into a
+canonical model-side boundary decomposition and an operational jump/process
+map with a temporal diary-visible orbit.  See
+`anomalous_parametric_channel_result.md` and
+`source_gram_invariance_audit.md`.
+
 ## One-sentence target
 
 Thermality, finite horizon entropy, eventual unitary release,

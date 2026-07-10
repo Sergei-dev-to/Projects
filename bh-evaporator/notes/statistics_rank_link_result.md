@@ -13,6 +13,15 @@ separate HIGH/LOW flux tolerances below therefore presumes resolved response or
 a multi-setting protocol; the ordinary tail still needs an envelope,
 tomography, or a microscopic theorem.
 
+Further correction (2026-07-09): aggregate `g2` is also signed and
+conditional.  A hot thermal HIGH channel has `g2=2`, and a superbunched
+channel can exactly cancel an antibunched contribution at `N_eff<=2`.
+Moreover an active anomalous Gaussian route passes both response and `g2`.
+The HIGH L2 bound below therefore requires its stated subthermal-gap and
+no-positive-cumulant assumptions, or replacement by separately resolved
+response.  The raw source Gram target itself also needs the canonical metric
+described in `source_gram_invariance_audit.md`.
+
 Role: Q1b of the current roadmap — close the coherent-enhancement
 escape of the luminosity lemma using per-resolved-mode counting
 statistics. Status: proof skeleton with one exact identity, one

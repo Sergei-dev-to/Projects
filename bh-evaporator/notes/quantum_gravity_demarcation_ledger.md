@@ -35,6 +35,15 @@ The boundary-saturation program tests the second input.  It does not derive
 the first or third, and its present certificate has not yet removed the second
 as an independent gravitational/microscopic input.
 
+July 9 invariance audit: “boundary accessibility” must distinguish a preferred
+microscopic boundary-source decomposition from the invariant emission
+instrument and its temporal diary-visible orbit.  Exterior data does not
+identify an arbitrary decomposition of a shared jump operator.  In addition,
+an anomalous active Gaussian channel can reproduce Hawking flux, positive
+absorption, calibrated response, and thermal counting without passive
+starvation.  The source-rank branch is therefore under target/class revision,
+not ready for a black-hole/QNM specialization.
+
 Use two categories:
 
 ```text

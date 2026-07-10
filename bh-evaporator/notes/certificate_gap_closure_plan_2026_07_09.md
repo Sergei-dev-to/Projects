@@ -19,10 +19,14 @@ INPUT 2: entropy-sized boundary-accessible emission algebra,
 INPUT 3: decoupling/typical encoding of the shrinking channel.
 ```
 
-The present closure program targets INPUT 2 only.  Its best-case result
-is to infer `N_access ~ S` from exterior luminosity, calibrated response,
-and an independently measured or operator-specifically calculated
-relaxation spectrum.  Input 1 remains parked.  Q2 sharpens necessary
+The present closure program targets INPUT 2 only.  Its original best-case
+result was to infer `N_access ~ S` from exterior luminosity, calibrated
+response, and an independently measured or operator-specifically calculated
+relaxation spectrum.  The invariance audit shows that exterior data cannot
+identify an arbitrary microscopic decomposition of a shared jump operator.
+The revised target must be either a canonical model-side boundary structure or
+an invariant jump/process map and its temporal diary-visible orbit.  Input 1
+remains parked.  Q2 sharpens necessary
 conditions for input 3 but does not derive decoupling.  Algebraic
 factorization and the lived interior are completion questions outside
 this factorized necessity theorem, not additional members of the
@@ -34,16 +38,18 @@ terms of an operator-specific internal relaxation spectrum. The
 Planckian/QNM statement should appear only as a black-hole corollary if
 the relevant emission operator and retarded correlator justify it.
 
-The work order is:
+The revised work order after the Phase-2b red-team audit is:
 
 ```text
-0. freeze definitions and the theorem target;
-1. derive stationary Gaussian spectral starvation without a Markov limit;
-2. solve unequal-channel and mixed-frequency multiplexing;
-3. attempt the operator-specific black-hole/QNM specialization;
-4. revise and lock the boundary-saturation flagship;
-5. complete the Q2 latency companion separately;
-6. resume JT/Kerr/dS and phenomenology only after the core locks.
+0. replace or qualify the non-invariant raw source-Gram target;
+1. solve the active Gaussian/Bogoliubov route in a finite-energy dilation;
+2. audit sample complexity, stationarity, and black-hole intervention scope;
+3. repair the HIGH-sector bound and define global multi-time participation;
+4. decide whether any feasible tomography controls the ordinary tail;
+5. only then generalize passive two-drain separation and open the QNM gate;
+6. revise and lock the boundary-saturation flagship;
+7. elevate the Q2 latency companion if static identification remains blocked;
+8. resume JT/Kerr/dS and phenomenology only after the core locks.
 ```
 
 This sequence ensures that a failed black-hole/QNM specialization does
@@ -65,13 +71,27 @@ Phase 2a: aggregate signed-cancellation no-go, conditional paired-leg
           aggregate KMS response plus g2=2 permits an arbitrary Gram
           spectrum; see
           signed_cancellation_and_gram_tail_result.md.
+Phase 2b: red-team audit landed four further results:
+          (i) the raw source-only Gram participation is not invariant under
+          general interaction refactorizations;
+          (ii) an anomalous active Gaussian channel exactly reproduces
+          Hawking flux, positive absorption, KMS response, and g2=2 without
+          passive starvation;
+          (iii) full delay-resolved Gaussian correlations do not identify
+          hidden source rank;
+          (iv) eta~S^-1/2 precision costs O(S) events and therefore an
+          order-one evaporation fraction on one black hole.
 ```
 
-The remaining active work is the two-drain theorem's full spectral
-generalization and deciding whether response-kernel tomography can replace
-the ordinary-sector envelope.  A purely static Lorenz-tail
-optimization cannot do so because the non-identifiability theorem is
-exact.  The black-hole/QNM gate remains deliberately unopened.
+These results change the order of work.  Before the passive two-drain theorem
+is generalized, the program must fix the invariant target, classify the active
+Bogoliubov route in a finite-energy repeated-interaction model, and decide
+whether any proposed exterior protocol fits inside the evaporation/sample
+budget.  Response-kernel tomography cannot be invoked until the reconstructed
+object and its resource cost are explicit.  A purely static Lorenz-tail or
+delay-correlation optimization cannot close the ordinary sector because the
+non-identifiability theorems are exact.  The black-hole/QNM gate remains
+deliberately unopened.
 
 ## Non-Negotiable Scope
 
@@ -95,6 +115,15 @@ exact.  The black-hole/QNM gate remains deliberately unopened.
 11. Call the result an exterior certificate only when the required
     response kernel or eigenchannel information is operationally
     identifiable.  Otherwise call it a model-side inference.
+12. Do not call the source-only `W_mu,nu` an interaction invariant under
+    arbitrary refactorization.  Fix a canonical coupling metric or use the
+    jump-map Choi spectrum.
+13. Treat anomalous/squeezed Gaussian pair creation as a central Hawking-like
+    route, not a peripheral non-Gaussian exit.
+14. Cost every `eta ~ S^-1/2` claim at `O(S)` events and distinguish a
+    one-black-hole protocol from an ensemble or model-side calculation.
+15. Do not use aggregate `g2=2` as a HIGH-sector bound when hot Gaussian or
+    superbunched cancellation channels are admitted.
 
 ## Dependency Graph
 
@@ -262,14 +291,15 @@ in the narrow-line limit.
 3. Check positivity and the zero-drain/zero-refill limits.
 4. State when a bound state, dark pole, or non-additive self-energy
    invalidates the line picture.
-5. Show that Gaussian starvation leaves `g2 = 2` while moving the
+5. Show that passive Gaussian starvation leaves `g2 = 2` while moving the
    response ratio.
 
 ### Named exits
 
 ```text
-coherent drive:
-  test phase coherence, anomalous correlators, stationarity, and g2;
+anomalous/parametric drive:
+  one-use exact calibrated route 2c landed; build the autonomous finite-energy
+  repeated-interaction dilation and compute its process rank;
 
 nonstationary refill:
   use a time-resolved rather than steady spectral certificate;
@@ -628,16 +658,20 @@ envelope as an explicit remnant of input 2.
 
 The next work session should do only this:
 
-1. Formulate the exact aggregate constraints for response, `g2`, and
-   drain-dependent spectral flux in emission-fraction variables.
-2. Test whether two drain strengths generically close HIGH/LOW
-   cancellation when channel source weights are fixed, and state the
-   precise failure modes when they are not.
-3. Optimize the full sorted Gram spectrum/Lorenz profile rather than
-   only `f_max`.
-4. Decide whether any exterior protocol bounds `Q_O`; if not, lock the
-   ordinary-sector smooth envelope as the residual part of input 2.
-5. Stop for review before opening the black-hole/QNM literature gate.
+1. Replace the raw source-list Gram quantity by a canonical coupling-weighted
+   jump/process invariant, or explicitly demote it to a model-side quantity.
+2. Build the finite-energy repeated-interaction version of anomalous route 2c
+   and compute its global process rank, partner/reset cost, and pump drift.
+3. Repair the HIGH-sector theorem without assuming all HIGH channels are
+   antibunched or all positive fourth cumulants vanish.
+4. Cost response, delay-correlation, and tomography protocols in settings,
+   events, and fractional mass drift.
+5. Test an honest finite-S ETH model for completeness at the required
+   calibration scaling.
+6. Decide whether any exterior protocol bounds the operational target; if
+   not, lock microscopic boundary saturation as a structural input and move
+   the exterior theorem emphasis to latency.
+7. Stop for review before opening the black-hole/QNM literature gate.
 
 No literature expansion, new phenomenology, or additional toy models
 belongs in that packet.
@@ -647,7 +681,12 @@ belongs in that packet.
 The closure pass is complete when:
 
 ```text
-the stationary Gaussian spectral theorem is proved;
+the passive stationary Gaussian spectral theorem is proved;
+the anomalous active Gaussian route has a finite-energy yes/no outcome;
+the participation target is invariant under physical interaction
+  refactorization or explicitly labeled model-side;
+the protocol sample budget is compatible with its stationarity claim or
+  explicitly labeled ensemble/model-side;
 unequal same-line multiplexing has an analytic participation bound;
 mixed-frequency scope is defined by a weighted direct-sum theorem or
   an explicit boundary;

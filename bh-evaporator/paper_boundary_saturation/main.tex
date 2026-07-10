@@ -45,27 +45,33 @@
 \begin{abstract}
 How many independent internal sources must feed Hawking radiation in a
 Hamiltonian model of Schwarzschild evaporation?  For a weakly coupled
-finite quantum system, the operators that emit radiation define a
-positive Gram matrix in each microcanonical energy window.  The
-participation ratio of this matrix is a basis-independent effective
-count of independent source directions.
+finite quantum system, a fixed coupling-weighted decomposition of the
+operators that emit radiation defines a positive Gram matrix in each
+microcanonical energy window.  Its participation ratio is an effective
+count of source directions after the physical source and exterior
+metrics are fixed; a source-only list is not invariant under arbitrary
+compensating refactorizations of the same interaction.
 For four-dimensional massless radiation, a Schwarzschild temperature
 law, and smooth ordinary-strength matrix elements, the Schwarzschild
 luminosity law requires this count to be of order the
 Bekenstein--Hawking entropy.  Resolved or multi-setting calibrated
 emission/absorption measurements, supplemented by photon counting, give
-a two-sided test of the main rank-one escapes:
+a two-sided test of the main passive rank-one escapes:
 macroscopic occupation drives the ratio above its thermal value, while
 a drained thermal collective channel with relaxation bounded by the
 temperature is reservoir-starved and drifts below it.  Under the stated
 weak-emission, resolution, relaxation, and channel-separation
 assumptions, the luminosity and paired response give a quantitative lower bound on source
-participation.  By comparison, an ordinary local reservoir
+participation in that passive class.  An anomalous parametric Gaussian
+channel is an exact calibrated Hawking-flux mimic outside the theorem,
+and aggregate Gaussian output data does not identify its hidden source
+decomposition.  By comparison, an ordinary local reservoir
 with finite-range dynamics and surface-supported emission operators has
 effective count bounded by the number of microscopic operators on its
-contact surface.  Thus, in this class of models, the degrees of freedom
-counted by the black-hole entropy appear in the operators that emit
-Hawking quanta.
+contact surface.  Thus the result is a conditional model-side
+participation theorem plus a map of what exterior observables do and do
+not identify, rather than an unconditional source-rank measurement of a
+black hole.
 \end{abstract}
 \end{titlingpage}
 \pagenumbering{arabic}
@@ -158,18 +164,35 @@ where $\lambda_a$ are the eigenvalues of $W$.
 \end{definition}
 
 This is the usual participation ratio of the spectrum of $W$.  It is
-unchanged by a unitary rebasing of the labels $\mu$ and by an overall
-rescaling of the interaction.  If $N$ independent operators contribute
+unchanged by a unitary rebasing of a fixed, coupling-weighted source list and
+by an overall rescaling of the interaction.  It is not invariant under a
+general invertible change $O'=AO$ accompanied by the compensating exterior
+change $B'=A^{-T}B$, which leaves $H_{\rm int}$ fixed but sends
+$W\to AWA^\dagger$.  Thus Eq.~\eqref{eq:neff} is intrinsic only after a
+physical source/exterior metric or canonical microscopic decomposition has
+been specified.  If $N$ independent operators contribute
 with comparable weight, then $\Neff\simeq N$.  If many microscopic
 labels are coherently aligned, the matrix is approximately rank one and
 $\Neff\simeq 1$.
 
-The distinction between source operators and radiation modes is
-important.  At Schwarzschild temperature the typical wavelength is of
-order the black-hole radius, so the number of resolved angular modes per
-thermal time is order one.  The effective rank in Eq.~\eqref{eq:neff}
-counts independent directions in the system operator algebra, not
-instantaneous radiation-mode multiplicity.
+For an operationally invariant jump-map definition, choose an orthonormal
+exterior wave-packet basis and contract the physical interaction to obtain
+$L_k=\Pi_{E-\omega}\langle1_k|H_{\rm int}|0\rangle\Pi_E$.  The Choi operator
+of $\mathcal J_\omega(\rho)=\sum_kL_k\rho L_k^\dagger$ is independent of its
+Kraus representation, so $(\Tr C_{\mathcal J})^2/\Tr C_{\mathcal J}^2$ is a
+well-defined alternative.  With one shared exterior wave packet this one-use
+map can have rank one even when a preferred microscopic model writes $L$ as a
+sum of many local terms.  The latter decomposition is then model-side; the
+temporal Heisenberg orbit of $L$ is the natural operational accessibility
+target.
+
+The distinction between a preferred microscopic source decomposition and
+radiation modes is important.  At Schwarzschild temperature the typical
+wavelength is of order the black-hole radius, so the number of resolved
+angular modes per thermal time is order one.  Equation~\eqref{eq:neff} counts
+independent directions only within the fixed source metric supplied by the
+model; the invariant one-use jump map remains bottlenecked by the resolved
+radiation instrument.  Temporal coupling-orbit growth is a separate object.
 
 \section{Schwarzschild Scaling}
 
@@ -200,12 +223,12 @@ where
 is the weighted mean eigenvalue of the Gram matrix, evaluated in the
 thermal window $\omega\sim T$.
 
-\begin{lemma}[Schwarzschild luminosity and effective rank]
+\begin{lemma}[Schwarzschild luminosity and fixed-metric effective rank]
 \label{lem:schwarzschild}
-Assume four-dimensional massless phase space, $T(E)\propto E^{-1}$,
-and an eigenstate-thermalization-type emission envelope in which
-$\bar\lambda(E,\omega)$
-has no hidden power-law dependence on $E$ across the thermal window.
+Fix a canonical coupling-weighted source decomposition.  Assume
+four-dimensional massless phase space, $T(E)\propto E^{-1}$, and a smooth
+emission envelope.  Require $\bar\lambda(E,\omega)$ to have no hidden
+power-law dependence on $E$ across the thermal window.
 Then the Schwarzschild luminosity law $P(E)\propto E^{-2}$ is equivalent
 to
 \be
@@ -225,9 +248,11 @@ $S_{\rm BH}\propto E^2$.
 The lemma is a statement about the weak-emission class.  Different
 models may put the required powers of $E$ into individual matrix
 elements, coherent enhancement, phase space, or a different
-factorization of the interaction.  Within Eq.~\eqref{eq:power}, the
-luminosity fixes the effective rank of the source operator Gram matrix;
-the number of labels chosen to write the interaction is basis-dependent.
+factorization of the interaction.  Within Eq.~\eqref{eq:power} and the fixed
+source/exterior metric, the luminosity fixes the effective rank of that chosen
+source operator Gram matrix.  A general compensating refactorization can move
+the same scaling between $W$ and the exterior operators, so this lemma is not
+an exterior reconstruction of a hidden microscopic decomposition.
 
 \section{Local Reservoirs With Surface Coupling}
 
@@ -409,6 +434,39 @@ Thus the theorem can be written in terms of an independently calibrated
 internal relaxation spectrum; a Planckian ceiling is needed only for a
 black-hole corollary.
 
+This passive result does not cover anomalous Bogoliubov pair creation, the
+field-theory mechanism underlying Hawking emission
+\cite{Hawking1975,Unruh1981}.  An
+exact one-output Gaussian countermodel is
+\be
+ a_{\rm out}=\rho a_{\rm in}+\ell c+g b^\dagger,
+ \qquad
+ |\rho|^2+|\ell|^2-|g|^2=1,
+\ee
+with independent vacuum loss and partner ports $c,b$.  For any positive net
+absorptivity $\gamma<1$, choose
+\be
+ |\rho|^2=1-\gamma,\qquad
+ |g|^2=\gamma n_\beta,\qquad
+ |\ell|^2=\gamma(n_\beta+1).
+\label{eq:active-hawking-mimic}
+\ee
+The spontaneous flux is $E=|g|^2=\gamma n_\beta$, the anti-normal
+absorption-side coefficient is $B=|\ell|^2$, and hence $E/B=R$ exactly while
+the net absorption is $B-E=\gamma>0$.  The reduced output is circular Gaussian
+and has $g^{(2)}(0)=2$.  There is no occupied passive collective mode to
+starve: energy is supplied by the pump underlying the anomalous coefficient.
+Equation~\eqref{eq:active-hawking-mimic} therefore reproduces Hawking flux,
+positive absorption, calibrated response, and thermal counting outside the
+passive theorem.
+
+This one-use channel does not by itself prove low global black-hole source
+rank.  An autonomous finite-energy dilation must include the pump operator,
+fresh partner modes, their reset or accumulation, and depletion over repeated
+uses.  It does show that passive line response cannot be advertised as a
+certificate for the full Gaussian Hawking mechanism.  The finite-energy
+active-channel process rank is a prerequisite for a black-hole claim.
+
 The drained mode is colder than its refill bath.  Its asymmetry moves
 \emph{below} the calibrated ratio, while a macroscopically occupied
 source moves above it.  Gaussian drain leaves $g^{(2)}(0)=2$, so the
@@ -551,7 +609,7 @@ second-order statistic
   \frac{\langle A^\dagger A^\dagger A A\rangle}
        {\langle A^\dagger A\rangle^2}
 \ee
-therefore supplies an independent leg of the certificate.  A sharp
+therefore supplies an independent conditional diagnostic.  A sharp
 collective source gives $g^{(2)}(0)=1-O(1/S)$, while a thermal Hawking
 mode gives $g^{(2)}(0)=2$.
 
@@ -563,6 +621,22 @@ HIGH-side channel obeys $g_i^{(2)}\leq2-\kappa$, then
   \qquad
   g_{\rm tot}^{(2)}\geq2-\epsilon_g.
 \ee
+This implication is not generic.  A hot thermal HIGH-side channel has
+$r_i>R$ but $g_i^{(2)}=2$.  Moreover a superbunched channel with
+$g_s^{(2)}-2=\chi>0$ cancels an antibunched contribution
+$g_h^{(2)}-2=-\kappa$ exactly when
+\be
+ f_h=\frac{\sqrt\chi}{\sqrt\kappa+\sqrt\chi},\qquad
+ f_s=\frac{\sqrt\kappa}{\sqrt\kappa+\sqrt\chi},
+\ee
+again with $\Neff\leq2$.  The displayed $Q_{\rm H}$ bound therefore assumes
+both a subthermal gap for every admitted HIGH channel and the absence of
+positive fourth-moment contributions that cancel it.  Resolved response can
+replace that assumption: if
+$\sum_{i\in H}f_i(1-R/r_i)\leq h$ and
+$1-R/r_i\geq d_H>0$, then
+$Q_H\leq F_H^2\leq(h/d_H)^2$.
+
 If a separately resolved spectral protocol bounds the total LOW-side
 emitted fraction by $F_C\leq c_-$, then
 $Q_C=\sum_{i\in C}f_i^2\leq c_-^2$.  Finally, the ordinary per-channel
@@ -575,12 +649,14 @@ transparent bound
   \frac{1}{\epsilon_g/\kappa+c_-^2+p}.
 \label{eq:paired-floor}
 \ee
-The first two terms are observable/protocol bounds on the enhanced
-branches.  The last is still the ordinary-sector smooth-envelope input.
-Thus the response calculation closes the dangerous outliers but does
-not, by itself, derive the full ordinary Gram tail.  Removing that last
-input requires response-kernel tomography or another cumulative bound
-on the ordered ordinary eigenvalues.
+The first two terms are conditional resolved/protocol bounds on the enhanced
+passive branches.  The last is still the ordinary-sector smooth-envelope
+input.  The active channel in Eq.~\eqref{eq:active-hawking-mimic} and the
+representation ambiguity of the source-only Gram target lie outside this
+floor.  Thus the response calculation does not, by itself, derive a full
+operational source rank.  Any proposed response-kernel tomography must state
+which invariant jump/process object it reconstructs and whether its resource
+cost fits inside the evaporation history.
 
 \section{Dynamical Counterpart}
 
@@ -623,10 +699,11 @@ is set by decoder resources rather than by the emission algebra.
 
 \section{Discussion}
 
-In a weak Hamiltonian emission model, the Schwarzschild luminosity law
-fixes the effective rank of the emission operator Gram matrix.  With
-ordinary-strength smooth matrix elements and four-dimensional phase
-space, that rank is of order $S_{\rm BH}$.  A local reservoir with
+In a weak Hamiltonian emission model with a fixed physical source metric and
+ordinary-strength smooth matrix elements, the Schwarzschild luminosity law
+fixes the effective rank of the chosen emission-operator Gram matrix.  With
+four-dimensional phase space, that conditional model-side rank is of order
+$S_{\rm BH}$.  A local reservoir with
 surface-supported couplings has effective rank bounded by its surface
 area in microscopic units.  The same surface restriction gives the
 usual power-law locality bound on exterior recovery of bulk-deposited
@@ -651,6 +728,34 @@ spectrum, with Eq.~\eqref{eq:planckian-input} needed only for the
 black-hole corollary.  Neither the response nor counting legs remove the
 ordinary-sector Gram-tail assumption by themselves.
 
+Delay-resolved Gaussian counting does not repair this.  For independent
+circular Gaussian sources with spectra $S_i(\omega)=f_iS(\omega)$, every
+probability vector $\{f_i\}$ gives the same aggregate spectrum, hence the same
+$g^{(1)}(\tau)$ and
+$g^{(2)}(\tau)-1=|g^{(1)}(\tau)|^2$, while the hidden participation
+$1/\sum_i f_i^2$ is arbitrary.  A long bunching tail measures narrow
+aggregate spectral weight, not the number of internal sources, unless a
+per-source flux/linewidth law is separately supplied.
+
+There is also a finite-history limit.  Counting-limited accuracy $\eta$
+requires at least $O(\eta^{-2})$ events.  Since a Schwarzschild black hole has
+$M/T\sim S_{\rm BH}$, collecting that many Hawking-scale quanta changes its
+mass fraction by at least
+\be
+ \frac{\Delta M}{M}\gtrsim
+ \frac{1}{S_{\rm BH}\eta^2}.
+\ee
+The full-rank precision $\eta\sim S_{\rm BH}^{-1/2}$ therefore consumes an
+order-one evaporation fraction on one black hole.  Subextensive participation
+floors can fit in an adiabatic window, but entropy-rank saturation requires an
+ensemble, a cross-mass scaling theorem, or a model-side inference.  Multiple
+drain settings and tomography only increase the optimistic event budget.  If
+the line drift must remain below the same error $\eta$, combining
+$N\gtrsim\eta^{-2}$ with $N/S_{\rm BH}\lesssim\eta$ gives the stronger
+fixed-window condition $\eta\gtrsim S_{\rm BH}^{-1/3}$; a full-rank claim must
+therefore model the nonstationary history rather than merely call it
+adiabatic.
+
 There remains a separate temporal question.  For Rindler wedges,
 eternal black holes, and large anti--de Sitter black holes, the exterior
 state is thermal in the exact KMS sense, and stationary response and
@@ -664,19 +769,22 @@ which long-time spectral data could be referred.  The exterior instead
 receives a single non-stationary record delivering of order one nat per
 coherence time over of order $S$ emissions.  The appropriate reference
 for a resolved transition is therefore the microcanonical density-of-
-states ratio, not a globally stationary canonical bath.  The two-sided
-line-response certificate can bound the source-rank axis within its
-weak-emission and relaxation class, but the access latency of deposited
+states ratio, not a globally stationary canonical bath.  Two-sided line
+response can bound classified passive outlier weights within its
+weak-emission and relaxation class, but it does not reconstruct a hidden
+microscopic source decomposition; the access latency of deposited
 quantum information is still the independent temporal comparison of
 the preceding section.
 
 The Bekenstein--Hawking density of states and the scrambling dynamics
-enter as separate inputs.  Once those inputs are assumed, the entropy
-counted by the black hole is also available to the emission operator
-algebra.  In stretched-horizon language, the entropy is carried by
-degrees of freedom that directly participate in absorption and emission.
-In ordinary local-reservoir language, this is a special surface
-structure beyond thermality alone.
+enter as separate inputs.  The present passive calculation does not prove that
+the entropy they count is available to an invariant exterior emission
+instrument.  A preferred entropy-wide microscopic boundary decomposition is a
+model-side structural statement; operational accessibility is more naturally
+the diary-visible temporal orbit of the physical jump map.  In
+stretched-horizon language, identifying the entropy carriers with the terms of
+the emission Hamiltonian therefore remains special surface structure beyond
+thermality alone, not a consequence of the aggregate radiation data.
 
 There is a distinct coherent branch, however, in which the same coarse
 flux is carried by a collectively enhanced source rather than by
@@ -708,6 +816,15 @@ non-additive, nonlinear/non-Gaussian, or nonstationary dynamics, a different
 nonthermal refill class, signed cancellation in an insufficiently resolved
 protocol, or unresolved multiplexing; the result is a conditional rate bound,
 not a refutation of all collective black-hole models.
+
+More sharply, Eq.~\eqref{eq:active-hawking-mimic} is an exact anomalous
+Gaussian exit already inside linear channel theory.  It promotes squeezed
+pair creation from a peripheral qualifier to a central completion test.  The
+remaining question is whether an autonomous finite-energy realization has a
+low invariant process rank once the pump, partner stream, reset cost, and
+depletion history are included.  Until that calculation and the source-metric
+audit are resolved, the paper's strongest result is the passive-class
+starvation identity and its conditional model-side participation bound.
 
 The same models also separate participation from latency.  In the
 strict prototype the memory-sector occupation is conserved and

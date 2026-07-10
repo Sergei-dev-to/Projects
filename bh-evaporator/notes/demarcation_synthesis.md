@@ -43,6 +43,15 @@ mechanics.  Algebra/factorization and lived interior geometry remain deeper
 structural demarcation questions; they are not erased by this operational
 trinity.
 
+July 9 invariance correction: input 2 now has two inequivalent forms that must
+not be conflated.  A preferred microscopic decomposition into entropy-many
+boundary sources is a structural/model-side claim.  Exterior data naturally
+accesses the invariant emission instrument and the temporal diary-visible
+orbit it generates.  The source-only Gram participation used in the current
+flagship is not invariant under general compensating refactorizations of the
+source and exterior operators unless a physical coupling metric or canonical
+microscopic decomposition is supplied.
+
 Once a model supplies a finite black-hole Hilbert space, a radiation algebra or
 factor, unitary dynamics, and enough mixing, ordinary quantum mechanics supplies
 the familiar information-flow structure:
@@ -426,12 +435,12 @@ path.
 
 ## Current Best Next Moves
 
-1. Complete the source-rank certificate in
-   `paper_boundary_saturation/main.tex`.  The stationary Gaussian spectral
-   theorem is done and the Markov approximation is no longer needed in that
-   class.  Exact and finite-error two-drain separation is done in the narrow
-   stationary limit; the next calculation is its full spectral generalization,
-   followed by an operational ordinary-tail bound.
+1. Rebase the source-rank program before extending it.  The passive stationary
+   Gaussian theorem and narrow two-drain result are done, but an active
+   Bogoliubov channel exactly passes Hawking flux, response, and `g2` without
+   passive starvation.  The raw source-only Gram target also needs a canonical
+   metric or a jump/process-Choi replacement.  Solve those two issues and the
+   single-black-hole sample budget before a full spectral two-drain theorem.
 
 2. Treat `notes/demarcation_algebra_type_synthesis.md` as the conceptual
    endpoint: Type I exact/QI, Type III_1 QFT, Type II crossed-product
@@ -448,5 +457,7 @@ path.
 5. Avoid new taxonomy or toy numerics unless they answer one of the residues:
    state count/equation of state, exact-to-semiclassical algebra transition, or
    lived interior, or close a named certificate loophole.  For the operational
-   trinity, the live loophole is input 2: static aggregate response and `g2`
-   alone do not prove `N_access ~ S`.
+   trinity, the live loophole is input 2: aggregate response, complete Gaussian
+   delay correlations, and `g2` do not prove a hidden microscopic
+   `N_access ~ S`; at full-rank precision a one-black-hole protocol also sits
+   at the evaporation-time boundary.

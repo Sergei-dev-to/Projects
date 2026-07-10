@@ -9,6 +9,14 @@ from `collective_channel_starvation_result.md`. It does not yet close
 signed cancellation, nonlinear/non-Gaussian refill, or the full
 ordinary-sector Gram tail.
 
+Successor scope correction (2026-07-09): “Gaussian” here means passive,
+gauge-invariant, number-conserving Gaussian with no anomalous self-energy.
+`anomalous_parametric_channel_result.md` constructs an active Gaussian channel
+with Hawking flux, positive absorption, exact calibrated response, and `g2=2`
+that has no passive occupation to starve.  The theorem below remains exact in
+its class but cannot represent the full Bogoliubov Hawking mechanism without
+an active-channel extension.
+
 Role in the necessity trinity: this note targets input 2 only,
 
 ```text

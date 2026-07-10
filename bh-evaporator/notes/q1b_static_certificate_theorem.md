@@ -1,5 +1,15 @@
 # Q1b Static Certificate Theorem: Consolidated Statement
 
+Successor correction (2026-07-09): the theorem below is now a conditional
+model-side statement for a fixed canonical source metric and passive channel
+class.  The raw source-only Gram participation is not invariant under general
+interaction refactorization; an anomalous active Gaussian channel passes the
+flux/response/`g2` legs without passive starvation; aggregate `g2` also admits
+hot-Gaussian blindness and signed fourth-moment cancellation.  See
+`source_gram_invariance_audit.md`, `anomalous_parametric_channel_result.md`, and
+`signed_cancellation_and_gram_tail_result.md`.  Do not quote the older theorem
+as an exterior-identifiable black-hole source-rank certificate.
+
 Date: 2026-07-05; dependency update 2026-07-08
 
 Role: paper-form staging note for the Q1b result.  This consolidates

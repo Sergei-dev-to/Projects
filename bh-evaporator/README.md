@@ -19,20 +19,31 @@ The active operational result separates two axes:
 
 ```text
 source participation:
-  how many independent source-Gram directions carry the Hawking line;
+  model-side microscopic source structure versus the invariant physical
+  jump/process map;
 
 recovery latency:
   how quickly arbitrary private information reaches the emitted record.
 ```
 
-The current source-rank certificate uses a calibrated two-sided line
-response.  Occupation enhancement shifts the emission/absorption ratio
-above its thermal reference.  A drained thermal collective channel shifts
-it below the reference when its refill rate is bounded by the thermal/QNM
-scale.  The latter statement is conditional on the stated Markovian refill
-and Planckian/QNM input; mixed-frequency multiplexing remains open.
+The passive source-rank calculation uses calibrated response: occupation
+enhancement shifts the ratio HIGH and a drained thermal collective channel
+shifts it LOW.  The LOW spectral identity is exact for stationary linear
+gauge-invariant Gaussian additive channels, without a Markov or Planckian
+assumption.  However, signed sectors can cancel, the ordinary Gaussian tail is
+not identifiable from aggregate static or delay-resolved Gaussian data, and
+an anomalous parametric Gaussian channel can pass Hawking flux, positive
+absorption, calibrated response, and `g2=2` without passive starvation.
+Moreover the raw source-only Gram participation needs a canonical coupling
+metric to be representation invariant.  The flagship is therefore under
+target/class revision; input 2 has not been exterior-certified.
 
 ## Read first
+
+Status correction: the Q1b staging theorem and boundary-saturation paper are
+under target/channel-class revision after the July 9 source-invariance and
+active-Gaussian audits.  The spectral-starvation theorem is exact only for the
+passive gauge-invariant additive class.
 
 - `notes/demarcation_synthesis.md` — five-row quantum/gravity map.
 - `notes/quantum_gravity_demarcation_ledger.md` — steering ledger.
@@ -47,7 +58,19 @@ and Planckian/QNM input; mixed-frequency multiplexing remains open.
   cancellation no-go, paired-leg bound, and two-drain separator.
 - `notes/q2_operator_overlap_bridge_theorem.md` — latency obstruction.
 
+- `notes/source_gram_invariance_audit.md` — exact representation no-go and
+  jump-map/Choi replacement target.
+- `notes/anomalous_parametric_channel_result.md` — active Gaussian route 2c.
+- `notes/delay_correlation_nonidentifiability_result.md` — full Gaussian
+  delay-correlation no-go for hidden source rank.
+- `notes/certificate_time_budget_result.md` — precision versus evaporation
+  budget.
+
 ## Active papers
+
+`paper_boundary_saturation/` is not locked: its passive theorem survives, but
+the source metric, active Bogoliubov route, and operational resource claim are
+being revised before any black-hole/QNM specialization.
 
 - `paper_boundary_saturation/` — flagship source-participation and
   line-response certificate.
@@ -65,6 +88,8 @@ Run the collective-channel support calculation with:
 python sim/collective_channel_starvation_check.py
 python sim/spectral_starvation_check.py
 python sim/signed_cancellation_optimizer.py
+python sim/active_gaussian_route_check.py
+python sim/delay_correlation_rank_no_go.py
 ```
 
 Build the flagship paper from its directory with a standard

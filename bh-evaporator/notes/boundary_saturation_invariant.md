@@ -9,6 +9,18 @@ survives the shared-mode bottleneck. The first is the Gram-kernel
 participation number below. The second is now the recovery-latency
 criterion of Section 5.5.
 
+**Correction (2026-07-09).**  The source-only Gram participation below is
+invariant under unitary rebasing of a fixed list, but not under general
+compensating refactorizations `O' = A O`, `B' = A^-T B` that leave the physical
+interaction unchanged.  With shared exterior modes, an arbitrary microscopic
+split of the combined jump operator is not exterior-identifiable.  See
+`source_gram_invariance_audit.md`.  The corrected invariant candidate is the
+coupling-weighted jump/process Choi spectrum after a detector basis and shell
+metric are fixed; preferred local boundary-cell participation is model-side
+structure.  This correction reinforces the note's older Section-5.5 conclusion
+that temporal diary-visible accessibility, not static flux/HBT data, is the
+operational route.
+
 ## 0. The claim and the contrast engine
 
 **Claim.** The operational definition of a horizon is a thermal system
