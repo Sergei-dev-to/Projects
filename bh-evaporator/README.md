@@ -32,6 +32,8 @@ and Planckian/QNM input; mixed-frequency multiplexing remains open.
 - `notes/demarcation_synthesis.md` — five-row quantum/gravity map.
 - `notes/quantum_gravity_demarcation_ledger.md` — steering ledger.
 - `notes/prototype_adjudication_directions.md` — current technical roadmap.
+- `notes/certificate_gap_closure_plan_2026_07_09.md` — active closure
+  sequence, acceptance gates, and deferred scope.
 - `notes/q1b_static_certificate_theorem.md` — source-rank certificate.
 - `notes/collective_channel_starvation_result.md` — route-2b completion.
 - `notes/q2_operator_overlap_bridge_theorem.md` — latency obstruction.

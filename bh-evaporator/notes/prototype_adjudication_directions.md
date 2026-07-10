@@ -344,6 +344,17 @@ assumption-light reach into route 2b without the Planckian input
 (backstop role, plus non-Markovian/coherent-refill corners and the
 multiplexed bookkeeping, which are the note's open items).
 
+### Active Gap-Closure Plan (2026-07-09)
+
+The execution sequence for those open items is now fixed in
+`certificate_gap_closure_plan_2026_07_09.md`.  Immediate priority is a
+linewidth-parameterized stationary Gaussian spectral-starvation theorem,
+followed by Gram-eigenchannel multiplexing and only then the
+operator-specific black-hole/QNM gate.  That sequence supersedes the
+broader Post-Completion Horizon ranking for active work until the
+flagship certificate is locked.  Q2 remains a separate companion;
+JT/Kerr/dS and phenomenology are deferred.
+
 ### Q3: Branch-Forcing Think-Pass
 
 After Q1b, stress-test candidate principles that might force real black
@@ -605,6 +616,7 @@ asymmetry_backreaction_escape_result.md
 participation_pigeonhole_result.md
 participation_cap_decomposition_result.md
 collective_channel_starvation_result.md
+certificate_gap_closure_plan_2026_07_09.md
 q1b_static_certificate_theorem.md
 envelope_as_coupling_universality.md
 nearextremal_ds_stress_test.md
