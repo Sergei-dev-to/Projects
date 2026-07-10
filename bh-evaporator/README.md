@@ -5,15 +5,18 @@ mechanisms and specifically gravitational input in black-hole evaporation.
 
 ## Current thesis
 
-Once a finite state count, radiation algebra, and suitable dynamics are
-supplied, ordinary quantum mechanics gives Page behavior, decoupling, and
-conditional recovery.  The program asks which supplied structures gravity
-must explain and which can be certified from exterior observables.
+Once a finite state count, radiation algebra, active emission instrument, and
+suitable diary-mixing dynamics are supplied, ordinary quantum mechanics gives
+Page behavior, decoupling, and conditional recovery. The program asks which
+supplied structures gravity must explain and which can be certified from
+exterior observables.
 
-The operational evaporation ledger is the two-plus-one necessity trinity:
-`S(E) ~ E^2`, entropy-many emission access `N_access ~ S`, and
-mixing/scrambling sufficient for typical encoding.  The active
-boundary-saturation work tests the second input; it has not yet eliminated it.
+The current ledger has three gravitational inputs: (1) the Schwarzschild state
+count and softness, `S(E) ~ E^2`; (2) the physical radiation algebra and active
+emission instrument; and (3) channel-relative temporal encoding of private
+information. The last two meet in the temporal/Krylov orbit of the physical
+emission process. They are not compressed by assuming an entropy-sized static
+interface.
 
 The active operational result separates two axes:
 
@@ -26,7 +29,7 @@ recovery latency:
   how quickly arbitrary private information reaches the emitted record.
 ```
 
-The passive source-rank calculation uses calibrated response: occupation
+The closed static source-rank branch used calibrated response: occupation
 enhancement shifts the ratio HIGH and a drained thermal collective channel
 shifts it LOW.  The LOW spectral identity is exact for stationary linear
 gauge-invariant Gaussian additive channels, without a Markov or Planckian
@@ -35,21 +38,30 @@ not identifiable from aggregate static or delay-resolved Gaussian data, and
 an anomalous parametric Gaussian channel can pass Hawking flux, positive
 absorption, calibrated response, and `g2=2` without passive starvation.
 Moreover the raw source-only Gram participation needs a canonical coupling
-metric to be representation invariant.  The flagship is therefore under
-target/class revision; input 2 has not been exterior-certified.
+metric to be representation invariant. These are closure results: microscopic
+source participation is supplied model data, not a generally exterior-derived
+observable. A finite-energy parametric pump can nevertheless emit `O(S)`
+thermal Hawking/partner records while remaining exactly diary-blind. The live
+question is therefore Q2: when and why does the active emission process acquire
+a diary-visible temporal orbit?
 
 ## Read first
 
-Status correction: the Q1b staging theorem and boundary-saturation paper are
-under target/channel-class revision after the July 9 source-invariance and
-active-Gaussian audits.  The spectral-starvation theorem is exact only for the
-passive gauge-invariant additive class.
+Status correction: the static source-rank certificate is closed as a route to
+a general exterior derivation. The spectral-starvation and two-drain results
+survive as conditional passive-class phenomenology. The finite-pump result is
+the control and launch point for the Q2 temporal-access program.
 
+- `notes/static_source_rank_certificate_tombstone.md` — closure verdict,
+  retained results, and reopening conditions.
+- `notes/finite_energy_parametric_pump_result.md` — persistent thermal,
+  partner-producing, exactly diary-blind active emitter.
+- `notes/demarcation_scoop_audit_2026_07_10.md` — novelty and priority audit.
 - `notes/demarcation_synthesis.md` — five-row quantum/gravity map.
 - `notes/quantum_gravity_demarcation_ledger.md` — steering ledger.
 - `notes/prototype_adjudication_directions.md` — current technical roadmap.
-- `notes/certificate_gap_closure_plan_2026_07_09.md` — active closure
-  sequence, acceptance gates, and deferred scope.
+- `notes/certificate_gap_closure_plan_2026_07_09.md` — superseded closure
+  plan retained as an audit trail.
 - `notes/q1b_static_certificate_theorem.md` — source-rank certificate.
 - `notes/collective_channel_starvation_result.md` — route-2b completion.
 - `notes/collective_channel_spectral_starvation_theorem.md` — exact
@@ -68,12 +80,13 @@ passive gauge-invariant additive class.
 
 ## Active papers
 
-`paper_boundary_saturation/` is not locked: its passive theorem survives, but
-the source metric, active Bogoliubov route, and operational resource claim are
-being revised before any black-hole/QNM specialization.
+`paper_boundary_saturation/` is now a conditional technical paper rather than
+the program's flagship. Its passive theorem survives, but its no-go results and
+active counterexample close the attempted general static inference. Q2 and the
+algebra/temporal-access synthesis are the primary program line.
 
-- `paper_boundary_saturation/` — flagship source-participation and
-  line-response certificate.
+- `paper_boundary_saturation/` — conditional passive source-participation,
+  line-response, and no-go paper.
 - `paper_access_latency_classification/` — access/routing theorem stack.
 - `paper_frozen_routing_witness/` — experimental control-arm proposal.
 
@@ -90,7 +103,8 @@ python sim/spectral_starvation_check.py
 python sim/signed_cancellation_optimizer.py
 python sim/active_gaussian_route_check.py
 python sim/delay_correlation_rank_no_go.py
+python sim/finite_parametric_pump.py
 ```
 
-Build the flagship paper from its directory with a standard
+Build the boundary-saturation paper from its directory with a standard
 `pdflatex`/`bibtex` cycle.

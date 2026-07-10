@@ -2,13 +2,22 @@
 
 Date: 2026-07-09
 
-Status: active execution plan. This is the post-consolidation plan for
-closing the remaining gaps in the source-rank and latency certificates.
-It supersedes informal sequencing in the roadmap where they conflict.
+Status: superseded as an active plan on 2026-07-10. It remains the audit trail
+for the passive certificate results and the tests that closed the static
+source-rank branch. The successor direction is recorded in
+`static_source_rank_certificate_tombstone.md`,
+`finite_energy_parametric_pump_result.md`, and
+`demarcation_synthesis.md`.
+
+Closure verdict: no further passive generalization, tomography proposal, or
+QNM specialization is on the critical path unless a reopening condition in
+the tombstone is met. Microscopic source participation is model-side supplied
+data. The live operational target is the temporal diary-visible orbit of the
+physical active emission instrument, pursued through Q2.
 
 ## Decision Summary
 
-### North star: reduce the necessity trinity from three inputs to two
+### Historical north star: reduce the necessity trinity from three inputs to two
 
 The operational-horizon draft starts from:
 
@@ -19,7 +28,7 @@ INPUT 2: entropy-sized boundary-accessible emission algebra,
 INPUT 3: decoupling/typical encoding of the shrinking channel.
 ```
 
-The present closure program targets INPUT 2 only.  Its original best-case
+This closure program targeted INPUT 2 only. Its original best-case
 result was to infer `N_access ~ S` from exterior luminosity, calibrated
 response, and an independently measured or operator-specifically calculated
 relaxation spectrum.  The invariance audit shows that exterior data cannot
@@ -32,13 +41,13 @@ factorization and the lived interior are completion questions outside
 this factorized necessity theorem, not additional members of the
 trinity.
 
-The next technical target is not a universal proof of Planckian
+The next technical target at the time was not a universal proof of Planckian
 dissipation. It is a frequency-resolved starvation theorem written in
 terms of an operator-specific internal relaxation spectrum. The
 Planckian/QNM statement should appear only as a black-hole corollary if
 the relevant emission operator and retarded correlator justify it.
 
-The revised work order after the Phase-2b red-team audit is:
+The historical work order after the Phase-2b red-team audit was:
 
 ```text
 0. replace or qualify the non-invariant raw source-Gram target;
@@ -52,11 +61,11 @@ The revised work order after the Phase-2b red-team audit is:
 8. resume JT/Kerr/dS and phenomenology only after the core locks.
 ```
 
-This sequence ensures that a failed black-hole/QNM specialization does
+This sequence was designed so that a failed black-hole/QNM specialization did
 not invalidate the general certificate. The general theorem will remain
 parameterized by a measurable or calculable relaxation spectrum.
 
-### Execution status (2026-07-09)
+### Execution status (2026-07-09; branch closed 2026-07-10)
 
 ```text
 Phase 0: complete.
@@ -83,15 +92,15 @@ Phase 2b: red-team audit landed four further results:
           order-one evaporation fraction on one black hole.
 ```
 
-These results change the order of work.  Before the passive two-drain theorem
-is generalized, the program must fix the invariant target, classify the active
-Bogoliubov route in a finite-energy repeated-interaction model, and decide
-whether any proposed exterior protocol fits inside the evaporation/sample
-budget.  Response-kernel tomography cannot be invoked until the reconstructed
-object and its resource cost are explicit.  A purely static Lorenz-tail or
-delay-correlation optimization cannot close the ordinary sector because the
-non-identifiability theorems are exact.  The black-hole/QNM gate remains
-deliberately unopened.
+The July 10 finite-energy dilation completed the decisive active-channel test.
+It can emit `O(S)` approximately thermal Hawking/partner pairs from a finite
+pump while acting exactly as the identity on an arbitrarily large diary
+factor. Its one-use effective process participation remains `O(1)` away from
+depletion. Thus finite pump, partner, reset, and depletion accounting do not
+rescue a static exterior rank inference. Together with the exact invariance,
+non-identifiability, and finite-history results, this closes the branch rather
+than merely reordering it. The QNM gate is closed because its intended target
+is not exterior-identifiable in the required generality.
 
 ## Non-Negotiable Scope
 
@@ -580,7 +589,7 @@ Only the first two belong to Q2's theorem stack.
 
 ## Phase 6: Deferred Stress Tests and Applications
 
-Resume these only after the flagship theorem is locked:
+Historical deferral list at the time of the certificate plan:
 
 ```text
 near-extremal/JT greybody and Schwarzian verification;
@@ -592,8 +601,8 @@ decoder-complexity fourth rung;
 degeneracy-to-access crossover D2.
 ```
 
-These are applications or new programs, not prerequisites for the core
-certificate.
+These remain applications or new programs, but the condition tied to locking a
+static flagship no longer applies because that branch is closed.
 
 ## Risk Register
 

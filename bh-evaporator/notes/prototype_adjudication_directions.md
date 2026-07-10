@@ -344,16 +344,15 @@ assumption-light reach into route 2b without the Planckian input
 (backstop role, plus non-Markovian/coherent-refill corners and the
 multiplexed bookkeeping, which are the note's open items).
 
-### Active Gap-Closure Plan (2026-07-09)
+### Historical Gap-Closure Plan (2026-07-09; superseded 2026-07-10)
 
-The execution sequence for those open items is now fixed in
-`certificate_gap_closure_plan_2026_07_09.md`.  Immediate priority is a
+The execution sequence for those open items was fixed at the time in
+`certificate_gap_closure_plan_2026_07_09.md`. The immediate priority was a
 linewidth-parameterized stationary Gaussian spectral-starvation theorem,
 followed by Gram-eigenchannel multiplexing and only then the
 operator-specific black-hole/QNM gate.  That sequence supersedes the
-broader Post-Completion Horizon ranking for active work until the
-flagship certificate is locked.  Q2 remains a separate companion;
-JT/Kerr/dS and phenomenology are deferred.
+broader Post-Completion Horizon ranking for that closure attempt. Q2 was then
+treated as a separate companion; JT/Kerr/dS and phenomenology were deferred.
 
 Progress update, same day:
 
@@ -398,16 +397,52 @@ photon counting:
   antibunched deficits in aggregate.
 ```
 
-These results move the active-Gaussian finite-energy dilation, invariant target,
-and protocol resource audit ahead of the full spectral two-drain theorem and
-the QNM gate.
+These results initially moved the active-Gaussian finite-energy dilation,
+invariant target, and protocol resource audit ahead of the full spectral
+two-drain theorem and the QNM gate.
 
-The correction is demarcation-relevant: the current work is trying to
-remove input 2 of the established necessity trinity (boundary-accessible
-rank).  It has not yet done so.  Signed cancellation needs an operational
-full spectral multi-setting closure, and the ordinary Gram-tail bound `p ~ 1/S`
-remains the residual part of input 2.  Input 1 (`S(E) ~ E^2`) and input
-3 (decoupling/typical encoding) remain separate.
+At that stage the work was still trying to remove input 2 of the established
+necessity trinity. The July 10 closure below supersedes that interpretation.
+
+### Static-certificate closure and Q2 pivot (2026-07-10)
+
+The July 9 gap-closure plan above is now an audit trail, not the active
+sequence. Four exact obstructions close static exterior microscopic source-rank
+certification: representation noninvariance of the source Gram matrix,
+aggregate/delay nonidentifiability, an active Hawking-like Gaussian exit, and
+an `O(S)` event cost for entropy-sensitive precision on one evaporating object.
+The passive spectral-starvation and two-drain results remain valid within their
+stated class, but microscopic source participation must be supplied model-side.
+
+The finite-energy completion of active route 2c strengthens rather than evades
+the demarcation result. A pump with `O(S)` quanta supports `O(S)` approximately
+thermal Hawking/partner emissions while the one-use effective process
+participation stays `O(1)` away from depletion. Tensoring the exact collision
+with the identity on an arbitrary diary gives a persistent emitter with zero
+diary transfer. Pump energy, partners, and depletion therefore do not force the
+missing information-flow input.
+
+The active roadmap is now:
+
+```text
+1. Q2: prove a stable long-time diary-visibility bound for the temporal orbit
+   of the physical emission process.
+2. Compare the exactly diary-blind finite pump with a minimally diary-mixing
+   emitter on shrinking S(E) ~ E^2 shells.
+3. Join that operational result to the radiation-algebra/factorization seam.
+4. Preserve passive HIGH/LOW, starvation-flash, and two-drain results as
+   phenomenology and possible tabletop diagnostics.
+5. Keep the M-series strict prototype as an adjudicated excluded branch, not
+   as the universal black-hole channel.
+6. Use the novelty audit before choosing the next flagship paper.
+```
+
+Inputs formerly called boundary access and scrambling meet only in the
+representation-invariant temporal/Krylov orbit of the physical instrument.
+This is a definitional compression, not an assumption that a small refreshed
+interface suffices. Input 1 (`S(E) ~ E^2`) remains separately gravitational;
+the radiation algebra and active instrument remain the structural input that
+defines what Q2 acts on.
 
 ### Q3: Branch-Forcing Think-Pass
 

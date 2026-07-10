@@ -22,27 +22,27 @@ structures become natural and mutually tied together.
 
 The point is to identify exactly where gravity enters.
 
-Operationally, the evaporation argument currently consumes a two-plus-one
-necessity trinity:
+Operationally, the evaporation argument now consumes three gravitational
+inputs:
 
-```text
-S(E) ~ E^2                         state count / equation of state;
-N_access ~ S                       entropy-many emission directions;
-mixing/scrambling + typicality     decoupling and recoverability.
-```
+1. **Thermodynamic state count and softness:** `S(E) ~ E^2`, hence
+   `T(E) ~ E^-1`, together with the luminosity/lifetime scaling of the
+   evaporating object.
+2. **Radiation algebra and active emission instrument:** the physical outgoing
+   subsystem, its factorization/algebraic status, and the Hawking-like active
+   channel that creates exterior quanta and partners.
+3. **Channel-relative temporal encoding:** whether the time-ordered orbit of
+   the physical emission process becomes diary-visible, mixes sufficiently,
+   and eventually supports recovery.
 
-The boundary-saturation program tests the second input.  It does not derive
-the first or third, and its present certificate has not yet removed the second
-as an independent gravitational/microscopic input.
-
-July 9 invariance audit: “boundary accessibility” must distinguish a preferred
-microscopic boundary-source decomposition from the invariant emission
-instrument and its temporal diary-visible orbit.  Exterior data does not
-identify an arbitrary decomposition of a shared jump operator.  In addition,
-an anomalous active Gaussian channel can reproduce Hawking flux, positive
-absorption, calibrated response, and thermal counting without passive
-starvation.  The source-rank branch is therefore under target/class revision,
-not ready for a black-hole/QNM specialization.
+Inputs 2 and 3 meet at the invariant object—the temporal/Krylov orbit of the
+physical emission instrument under the dynamics—not at an assumed small
+refreshed interface. The static source-rank certificate branch is closed:
+microscopic source participation is model-side supplied data, not something
+generally derivable from aggregate exterior statics. The finite-energy
+parametric-pump control sharpens the surviving question: an emitter can export
+`O(S)` thermal energy/partner records while remaining exactly diary-blind, so
+persistent emission does not by itself establish information transfer.
 
 Use two categories:
 

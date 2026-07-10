@@ -8,6 +8,14 @@ obstruction to a usable record-channel certificate, but only for a
 bounded-budget source-local class.  It is a necessary condition for
 fast recovery, not a Hayden-Preskill sufficiency theorem.
 
+Pivot update (2026-07-10): `finite_energy_parametric_pump_result.md` is now the
+canonical active Hawking-like test emitter.  Its exact diary-blind branch lies
+at `eps_j=0` and is covered without a bounded-total-budget estimate.  Its
+`O(S)` repeated uses also expose the weakness of the displayed perturbative
+bound away from zero defect: `G_T` grows with the evaporation history, making
+the exponential prefactor useless.  A stable long-time/energy-constrained
+continuous-channel extension is now Q2's primary technical target.
+
 ## Result in One Line
 
 For a source-local record channel built from bounded sequential
@@ -195,6 +203,50 @@ The black-hole mapping can still add rare memory-release channels
 outside the strict algebra.  Those channels are not HP-fast in the
 Dvali 2405.13117 branch and should be treated as a separate exit, not
 as a failure of the strict obstruction.
+
+## Finite-Energy Parametric-Pump Application
+
+The active pivot emitter has pump `P`, fresh Hawking/partner pairs, and a
+spectator diary `D`, with collision isometry
+
+```text
+V_total = V_q tensor I_D.
+```
+
+Choose the diary-blind algebra to contain the pump ladder and pair-number
+operators while acting trivially on `D`.  Then every collision generator or
+isometry is exactly diary blind:
+
+```text
+eps_j = 0,
+N_record(rho_D) = N_record(sigma_D)
+```
+
+for all diary states and for arbitrarily many finite collisions.  The model
+emits `O(S)` thermal Hawking/partner records while its diary-visible temporal
+orbit remains zero. Energy export, Hawking--environment entanglement, explicit
+partner-number correlations, and record-history growth therefore do not imply
+private-information export.
+
+For a perturbed model
+
+```text
+V_j = V_q tensor I_D + diary-mixing correction,
+```
+
+the present telescoping estimate is not adequate over `O(S)` uses because its
+prefactor scales as `exp(C G_T)`.  The needed theorem should exploit channel
+contractivity or a differential interaction-picture comparison to seek a
+bound linear in an energy-constrained integrated diary-visible defect, without
+an exponential in the total blind evolution budget.
+
+This model also separates the three Q2 quantities cleanly:
+
+```text
+arrival of an energy/pair-number record: immediate;
+arrival of private diary information: absent in the control;
+decodability after diary mixing: separate sufficiency problem.
+```
 
 ## Drafting Consequence
 

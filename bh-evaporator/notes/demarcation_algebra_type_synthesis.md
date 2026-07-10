@@ -103,6 +103,31 @@ underneath all of it -- the finite e^{A/4G} state count -- is the gravitational
 fact the algebra types are approximating.
 ```
 
+### July 10 operational join: algebra plus temporal access
+
+The algebra story identifies which radiation subsystem and trace are physically
+meaningful; it does not show that the active emission process ever becomes
+sensitive to a private diary. That second question must be phrased using the
+time-ordered orbit of the physical jump or channel under the dynamics. This is
+the representation-invariant join between the former "access rank" and
+"scrambling" inputs.
+
+An exact finite-energy parametric-pump control makes the distinction sharp. A
+pump with `O(S)` energy can emit `O(S)` approximately thermal Hawking/partner
+records while the total channel is the identity on an arbitrarily large
+spectator diary. Energy flow, partner production, and thermal statistics
+therefore do not establish diary flow. Gravity must supply both the radiation
+algebra/instrument and a reason its temporal orbit becomes diary-visible;
+ordinary quantum information then analyzes recovery conditional on those
+supplied facts.
+
+The literature baseline already contains conditional Page/decoupling recovery,
+Hawking channels, and the broad statement that thermality alone does not fix
+information flow. The potentially distinctive result of this program is
+therefore the assembled no-go boundary and the explicit diary-blind persistent
+emitter, not another conditional Page theorem. See
+`demarcation_scoop_audit_2026_07_10.md`.
+
 ## What gravity owns that the algebra story assumes but does not derive
 
 The crossed product gives a trace and a finite "area + matter" entropy, but it
