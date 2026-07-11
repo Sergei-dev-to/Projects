@@ -88,6 +88,19 @@ participation grows as `O(sqrt(K))` before depletion even while diary-visible
 participation remains zero; global record rank is therefore not the invariant
 the information problem needs.
 
+The long-time necessary side is now closed by a composable hybrid theorem:
+the full record's distance from any diary-blind comparison process is bounded
+by the linear sum of hybrid-reachable step defects, even with a persistent
+pump, accumulated partners, and changing shell dimension. Conversely, reliable
+recovery requires an order-one cumulative defect.
+
+Shrinking shells add one kinematic implication. By no hiding, an exactly blind
+exterior channel can reduce the daughter dimension only by storing the lost
+logical dimension in a hidden partner/remnant archive. Across a blind history
+that archive needs capacity at least `exp(S_initial-S_final)`. Thus unitarity,
+state-count shrinkage, and no entropy-sized remnant force eventual exterior
+information transfer—but not Page-time transfer or sufficient mixing.
+
 Algebra/factorization and lived interior geometry remain deeper structural
 demarcation questions.  In particular, “a well-defined radiation subsystem”
 carries the type-I/type-III/type-II and gravitational-dressing seam rather than
@@ -484,13 +497,24 @@ path.
    static microscopic-certificate branch.  Do not add more static moments,
    drain settings, or tomography unless a listed reopen condition is met.
 
-2. Use `finite_energy_parametric_pump_result.md` as the pivot emitter for Q2.
-   Replace the bounded-total-budget bridge by a stable long-time,
-   energy-constrained diary-visibility bound for `O(S)` active emissions.
+2. Treat `q2_composable_diary_access_theorem.md` as the closed necessary side:
+   long-time record access is bounded by a linear hybrid-process defect, with
+   the finite pump at its exact zero endpoint.
 
-3. Build the diary-mixing comparison branch on shrinking shells with
-   `S(E)~E^2`; ask whether its temporal process satisfies a decoupling
-   condition, not whether a preferred microscopic source list has rank `S`.
+3. Use `shrinking_shell_diary_access_result.md` as the comparison result:
+   no hiding forces a hidden archive in the blind branch; weak access need not
+   recover; a supplied mixing code recovers entirely from locally identical
+   multi-time records. `microcanonical_coded_pump_construction.md` integrates
+   those ingredients into one time-homogeneous finite collision rule. The next
+   positive task is now genuinely dynamical: derive the mixer from a natural
+   autonomous Hamiltonian or verify its temporal design/ETH condition in a
+   named microscopic gravity model.
+
+   The conditional necessary/sufficient bracket is consolidated in
+   `temporal_access_necessary_sufficient_synthesis.md`: composable process
+   distance is necessary; ETH/design decoupling of the physical jump process
+   is sufficient. Further abstract toy construction is no longer the
+   bottleneck.
 
 4. Treat `notes/demarcation_algebra_type_synthesis.md` as the conceptual
    endpoint: Type I exact/QI, Type III_1 QFT, Type II crossed-product

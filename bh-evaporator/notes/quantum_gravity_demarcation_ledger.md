@@ -44,6 +44,21 @@ parametric-pump control sharpens the surviving question: an emitter can export
 `O(S)` thermal energy/partner records while remaining exactly diary-blind, so
 persistent emission does not by itself establish information transfer.
 
+July 10 Q2 completion: for arbitrary long sequential emitters with shared
+memory and changing shell dimensions, hybrid telescoping gives a linear bound
+on full-record distance from a diary-blind comparison comb. Reliable recovery
+requires order-one cumulative diary-visible process defect. Combined with no
+hiding, shrinking state count and the absence of an entropy-sized hidden
+archive force eventual exterior transfer, but still do not fix the transfer
+time or supply decoupling dynamics.
+
+The conditional finite-model bracket is now closed. Order-one cumulative
+distance from every diary-blind comb is necessary; ETH/fourth-moment or
+approximate-design decoupling of the invariant physical jump process is
+sufficient after the record-entropy threshold. The remaining gravitational
+question is whether a named microscopic emitter supplies that process-moment
+condition. No further source-list or abstract-channel refinement answers it.
+
 Use two categories:
 
 ```text

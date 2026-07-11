@@ -2,19 +2,27 @@
 
 Date: 2026-07-05
 
-Status: first theorem-class formulation.  This upgrades
+Status: superseded on 2026-07-10 by
+`q2_composable_diary_access_theorem.md`. This note records the first
+generator-level formulation and its applications. It upgraded
 `operator_overlap_latency_lemma.md` from an exact visible-algebra
 obstruction to a usable record-channel certificate, but only for a
 bounded-budget source-local class.  It is a necessary condition for
 fast recovery, not a Hayden-Preskill sufficiency theorem.
 
-Pivot update (2026-07-10): `finite_energy_parametric_pump_result.md` is now the
-canonical active Hawking-like test emitter.  Its exact diary-blind branch lies
-at `eps_j=0` and is covered without a bounded-total-budget estimate.  Its
-`O(S)` repeated uses also expose the weakness of the displayed perturbative
-bound away from zero defect: `G_T` grows with the evaporation history, making
-the exponential prefactor useless.  A stable long-time/energy-constrained
-continuous-channel extension is now Q2's primary technical target.
+Successor correction: the exponential prefactor below is unnecessary.
+Duhamel's identity for self-adjoint generators has unitary factors, and a
+hybrid argument plus CPTP contractivity gives a linear sum of step defects for
+arbitrarily long shared-memory processes. The successor also defines blindness
+at the full comparison-comb level, avoiding any ambiguity about whether a
+single-time generator test is closed under internal dynamics and multi-time
+products.
+
+Pivot history (2026-07-10): `finite_energy_parametric_pump_result.md` exposed
+the weakness of the displayed perturbative bound away from zero defect:
+`G_T` grows with the evaporation history, making its exponential prefactor
+useless. `q2_composable_diary_access_theorem.md` has now closed that target by
+linear hybrid telescoping on reachable energy sectors.
 
 ## Result in One Line
 

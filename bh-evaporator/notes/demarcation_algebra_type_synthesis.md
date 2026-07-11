@@ -121,6 +121,16 @@ algebra/instrument and a reason its temporal orbit becomes diary-visible;
 ordinary quantum information then analyzes recovery conditional on those
 supplied facts.
 
+The shrinking-shell result ties this operational seam back to the state-count
+and factorization seams. If the exterior algebra remains exactly diary blind
+while the black-hole factor loses dimension, no hiding requires the lost
+logical dimension to accumulate in a complementary partner/remnant algebra.
+Without such an entropy-sized hidden archive, unitarity forces eventual
+information into the exterior algebra. It does not select the Page-time
+channel: an exact five-mode code shows that identical one-wavepacket thermal
+states can carry zero diary information in one branch and complete diary
+information in multi-time correlations in another.
+
 The literature baseline already contains conditional Page/decoupling recovery,
 Hawking channels, and the broad statement that thermality alone does not fix
 information flow. The potentially distinctive result of this program is

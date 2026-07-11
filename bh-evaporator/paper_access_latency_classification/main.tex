@@ -62,6 +62,12 @@ logarithmic or polylogarithmic depth.  A second-moment export criterion
 then reduces the deterministic sparse-dynamics strengthening to a
 specific moment-gap problem.  Freezing the internal dynamics separates
 routed recovery from dressed access operationally.
+For arbitrary long sequential emitters with shared memory, a composable
+hybrid theorem further shows that the distance of the full record from a
+diary-blind comparison process is at most the sum of the stepwise process
+defects, with no exponential in the blind evolution budget.  Applied to
+shrinking microcanonical shells, no hiding implies that exact exterior
+blindness requires an entropy-sized hidden partner or remnant archive.
 \end{abstract}
 
 \section{Introduction}
@@ -1391,6 +1397,117 @@ de-protection, but the Hayden-Preskill decoupling condition fails.
 Thus $\lambda$ is a precursor to recovery, while the
 second-moment/export gap $\gamma_2$ is the recovery-relevant invariant.
 \end{remark}
+
+\section{Composable Process Access}
+
+The locality results above use geometry to bound when a diary can reach a
+record source.  A complementary statement applies to any sequential emitter,
+including a persistent pump with shared memory and changing shell dimension.
+It identifies the representation-independent quantity that replaces a
+single-time list of source operators.
+
+Let an actual evaporation process consist of CPTP maps
+\begin{equation}
+  \Phi_j:M_{j-1}\longrightarrow M_jR_j,
+  \qquad j=1,\ldots,K,
+\end{equation}
+where $M_j$ is the unobserved memory and $R_j$ is the newly emitted record.
+Let $\Psi_j$ be comparison maps with the same interfaces, whose composed
+record channel $\cC_K$ is constant on the diary code.  The comparison is thus
+diary blind at the full process level; individual one-time marginals are not
+enough, because multi-time products can carry information.
+
+For each $j$, consider every state of a diary reference, $M_{j-1}$, and the
+earlier records reachable by any hybrid composition of the first $j-1$ actual
+or comparison maps.  Define $\eta_j$ as the supremum trace-norm difference
+made by replacing $\Psi_j$ with $\Phi_j$ on this hybrid-reachable set,
+including the identity on all spectators.
+
+\begin{theorem}[Composable diary-access bound]
+\label{thm:composable-access}
+Let $\cN_K$ and $\cC_K$ be the actual and diary-blind record channels after
+$K$ steps.  Restricted to the diary code,
+\begin{equation}
+  \lVert\cN_K-\cC_K\rVert_\diamond
+  \le \sum_{j=1}^K \eta_j .
+  \label{eq:composable-access}
+\end{equation}
+If two orthogonal diary states can each be recovered from the record with
+trace-norm error at most $\alpha$, then
+\begin{equation}
+  \sum_{j=1}^K\eta_j\ge 1-\alpha.
+  \label{eq:access-recovery-converse}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Insert the comparison maps one step at a time.  Adjacent hybrid processes differ
+by at most $\eta_j$ immediately after the replaced step.  Every later map and
+the final partial trace are CPTP, so trace-norm contractivity prevents any
+amplification.  The triangle inequality proves
+Eq.~\eqref{eq:composable-access}.  Because $\cC_K$ gives the same record for
+the two diary inputs, their actual record states have trace distance at most
+$2\sum_j\eta_j$.  A decoder with error $\alpha$ must produce states at
+distance at least $2-2\alpha$, proving
+Eq.~\eqref{eq:access-recovery-converse}.
+\end{proof}
+
+For collision unitaries $U_j=e^{-ig_jH_j}$ and blind comparisons
+$U_j^0=e^{-ig_jH_j^0}$, Duhamel's identity contains only unitary left and right
+factors, so
+\begin{equation}
+  \lVert U_j-U_j^0\rVert
+  \le |g_j|\lVert H_j-H_j^0\rVert,
+  \qquad
+  \eta_j\le2|g_j|\lVert H_j-H_j^0\rVert.
+\end{equation}
+There is no exponential in the total blind Hamiltonian budget.  For bosonic
+emitters, the same theorem holds with $\eta_j$ evaluated on hybrid-reachable
+energy sectors, or bounded by an energy-constrained diamond norm.  A finite
+pump with at most $N$ pair-energy units already lies in a finite invariant
+sector, so the result applies for arbitrarily many collisions without an
+unbounded-operator limit.
+
+The shrinking-shell consequence is kinematic.  Let
+\begin{equation}
+  W:\cH_j\longrightarrow\cH_{j+1}\otimes R_j\otimes P_j
+\end{equation}
+be an isometry whose accessible output $R_j$ is exactly constant on the input
+shell.  By no hiding, the complementary system $\cH_{j+1}P_j$ contains a
+reversible copy of the input \citep{BraunsteinPati2007NoHiding}.  Therefore
+\begin{equation}
+  \dim\cH_{j+1}\dim P_j\ge\dim\cH_j.
+  \label{eq:no-hiding-archive}
+\end{equation}
+Across a fully blind shrinking history, the information-carrying hidden
+capacity is at least
+\begin{equation}
+  \frac{\dim\cH_0}{\dim\cH_K}
+  =e^{S_0-S_K}.
+\end{equation}
+Thus unitarity, shell shrinkage, and the absence of an entropy-sized hidden
+archive force eventual exterior information transfer.  They do not determine
+its Page-time onset or imply coherent mixing.  Theorem~\ref{thm:composable-access}
+supplies the necessary process-distance condition; the decoupling results of
+the previous section supply sufficiency only after an appropriate mixer is
+assumed.
+
+An exact finite control shows that the distinction survives equality of every
+one-wave-packet state.  Choose shells with
+$\dim\cH_j=2^{L-j}$ and $S_j=\alpha E_j^2$, so that
+$e^{-\beta_j\omega_j}=\dim\cH_{j+1}/\dim\cH_j=1/2$.
+A repeated collision emits with odds $1/2$ and, on a successful event, exposes
+one physical factor of the perfect $[[5,1,3]]$ code, equivalently a threshold
+quantum-secret-sharing access structure \citep{CleveGottesmanLo1999}.
+Appending the same thermal
+energy qubit to each factor makes every individual wave packet
+$\operatorname{diag}(2/3,1/3)\otimes I_2/2$, independent of the diary.  Any one
+or two emitted code factors have zero mutual information with the diary
+reference, while any three recover the full logical qubit.  A blind comparison
+emits the same local states but routes each removed logical factor to the
+hidden archive required by Eq.~\eqref{eq:no-hiding-archive}.  Thus local
+thermality fixes neither cumulative process access nor coherent export; the
+distinction first appears in multi-time correlations.
 
 \section{Horizon-Interface Separation}
 

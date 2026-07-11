@@ -43,7 +43,10 @@ source participation is supplied model data, not a generally exterior-derived
 observable. A finite-energy parametric pump can nevertheless emit `O(S)`
 thermal Hawking/partner records while remaining exactly diary-blind. The live
 question is therefore Q2: when and why does the active emission process acquire
-a diary-visible temporal orbit?
+a diary-visible temporal orbit? The long-time necessary theorem is now exact:
+full-record distance from a diary-blind comparison process grows at most as the
+linear sum of hybrid-reachable step defects, with no exponential blind-budget
+penalty.
 
 ## Read first
 
@@ -56,6 +59,14 @@ the control and launch point for the Q2 temporal-access program.
   retained results, and reopening conditions.
 - `notes/finite_energy_parametric_pump_result.md` — persistent thermal,
   partner-producing, exactly diary-blind active emitter.
+- `notes/q2_composable_diary_access_theorem.md` — long-time shared-memory
+  access obstruction and recovery converse.
+- `notes/shrinking_shell_diary_access_result.md` — no-hiding archive bound and
+  blind/weak/mixing `S(E)~E^2` shell comparison.
+- `notes/microcanonical_coded_pump_construction.md` — integrated finite-shell
+  collision with thermal event odds and locally identical coded radiation.
+- `notes/temporal_access_necessary_sufficient_synthesis.md` — closed
+  conditional access/decoupling bracket and the remaining gravity target.
 - `notes/demarcation_scoop_audit_2026_07_10.md` — novelty and priority audit.
 - `notes/demarcation_synthesis.md` — five-row quantum/gravity map.
 - `notes/quantum_gravity_demarcation_ledger.md` — steering ledger.
@@ -68,7 +79,8 @@ the control and launch point for the Q2 temporal-access program.
   stationary Gaussian non-Markovian extension.
 - `notes/signed_cancellation_and_gram_tail_result.md` — aggregate
   cancellation no-go, paired-leg bound, and two-drain separator.
-- `notes/q2_operator_overlap_bridge_theorem.md` — latency obstruction.
+- `notes/q2_operator_overlap_bridge_theorem.md` — superseded first
+  generator-level latency formulation.
 
 - `notes/source_gram_invariance_audit.md` — exact representation no-go and
   jump-map/Choi replacement target.
@@ -104,6 +116,8 @@ python sim/signed_cancellation_optimizer.py
 python sim/active_gaussian_route_check.py
 python sim/delay_correlation_rank_no_go.py
 python sim/finite_parametric_pump.py
+python sim/shrinking_shell_diary_channel.py
+python sim/locally_thermal_code_emitter.py
 ```
 
 Build the boundary-saturation paper from its directory with a standard

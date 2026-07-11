@@ -203,3 +203,35 @@ program.  It did not exhaust mesoscopic FDT/source-identification literature or
 all 2024--2026 black-hole channel papers.  Before submission, run a narrower
 full-text search for prior “Hawking source tomography,” process-tensor/Krylov
 accessibility, and finite-pump pair-emission controls.
+
+## Successor Update: Long-Time Q2 and Shrinking Shells
+
+The post-audit calculations sharpen the technical endpoint but do not license
+broad priority claims:
+
+```text
+linear hybrid/composition bound:
+  telescoping plus CPTP contractivity is standard channel methodology;
+  the contribution is its explicit use as the long-time diary-access converse
+  for a memoryful evaporating pump, not invention of hybrid arguments;
+
+shrinking blind archive:
+  the information-routing statement is an application of the established
+  Braunstein--Pati no-hiding theorem, not a new no-hiding principle;
+
+locally identical coded radiation:
+  the [[5,1,3]] code and fixed local marginals are standard quantum error
+  correction; their role is an exact Hawking-channel control;
+
+integrated microcanonical collision:
+  the direct-sum isometry is a new internal synthesis/control unless prior art
+  is found, but it is assembled from standard ingredients and is not yet a
+  natural Hamiltonian model.
+```
+
+The calibrated program claim is therefore stronger in precision, not broader
+in folklore: the work identifies a composable process-distance seam, proves
+that blind shrinkage pays an entropy-sized hidden-archive cost, and supplies
+exact blind versus correlation-only controls with identical one-wavepacket
+states. The open originality-bearing target remains a physically motivated
+Hamiltonian or microscopic gravity channel that supplies the mixing branch.
