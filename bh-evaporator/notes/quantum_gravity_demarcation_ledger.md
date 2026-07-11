@@ -14,6 +14,11 @@ unique gravity/QI boundary. Pending an explicit program decision, this file
 remains authoritative for work sequencing, not for the stronger ontological
 claim.
 
+Conceptual successor: `evaporation_completion_problem_2026_07_11.md` supplies
+the proposed common object. It treats the rows below as projections and
+constraints of an energy-graded sequential evaporation instrument rather than
+as a unique list of gravitational inputs.
+
 ## 1. Program Question
 
 Which inputs must gravity or a microscopic gravity model supply before

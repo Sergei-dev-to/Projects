@@ -10,6 +10,13 @@ an assumption audit and conditional-closure program for exterior recovery.
 The five-row ledger remains the operational map pending an explicit framing
 decision; it should not be read as a unique ontology of gravitational inputs.
 
+Unifying-object update (2026-07-11):
+`notes/evaporation_completion_problem_2026_07_11.md` organizes the constructive
+models, no-go results, and temporal theorem around an energy-graded sequential
+evaporation instrument. The forward problem is to derive a physical completion
+from a microscopic model; the inverse problem is to determine what restricted
+Hawking data can identify about that completion.
+
 ## Current thesis
 
 Once a finite state count, radiation algebra, active emission instrument, and
@@ -62,6 +69,8 @@ information-export calculation is not presently a local project.
 
 ## Read first
 
+- `notes/evaporation_completion_problem_2026_07_11.md` — proposed common
+  mathematical object, completion classes, and forward/inverse program.
 - `notes/program_reassessment_2026_07_10.md` — candid audit of whether the
   demarcation umbrella survives and the proposed conditional-closure reframe.
 

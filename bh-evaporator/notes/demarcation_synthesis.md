@@ -1,5 +1,11 @@
 # Quantum/Gravity Demarcation Synthesis
 
+Framing status (2026-07-11): retained as a dependency and coverage map, not as
+a unique gravity/QI ontology. See `program_reassessment_2026_07_10.md` for the
+framing audit and `evaporation_completion_problem_2026_07_11.md` for the
+proposed successor organized around partial Hawking data and compatible
+sequential evaporation processes.
+
 ## Goal
 
 The demarcation question is:
