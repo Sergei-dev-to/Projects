@@ -71,6 +71,9 @@ information-export calculation is not presently a local project.
 
 - `notes/evaporation_completion_problem_2026_07_11.md` — proposed common
   mathematical object, completion classes, and forward/inverse program.
+- `notes/evaporation_capacity_metadata_deadline_conjectures.md` — corrected
+  research and kill register for local-to-temporal information, constraint
+  metadata, capacity cuts, and single-history estimation.
 - `notes/program_reassessment_2026_07_10.md` — candid audit of whether the
   demarcation umbrella survives and the proposed conditional-closure reframe.
 

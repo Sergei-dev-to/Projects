@@ -2,6 +2,19 @@
 
 Date: 2026-07-10
 
+Successor notes (2026-07-11), in order of authority:
+`evaporation_completion_problem_2026_07_11.md` is the parent framework
+refining this note (completion and identifiability formalism);
+`evaporation_capacity_metadata_deadline_conjectures.md` is the corrected
+research and kill register. It replaces the original targets with
+local-to-temporal process information, charge-header versus fixed-charge
+payload tests, diary-size capacity cuts with explicit uniformity conditions,
+and nonstationary single-history estimation. It treats anonymity as a
+necessary classifier, not a sufficient completion selector;
+`channel_code_separation_reframing.md` is superseded as a thesis and
+retained as the motivation/retro-diction record.  Nothing decided here
+is retired.
+
 Status: program-level reassessment for decision. This note does not invalidate
 the technical results or silently replace the current steering ledger. It asks
 whether the umbrella claim should survive in its present form.

@@ -19,6 +19,10 @@ the proposed common object. It treats the rows below as projections and
 constraints of an energy-graded sequential evaporation instrument rather than
 as a unique list of gravitational inputs.
 
+Research conjectures are gated in
+`evaporation_capacity_metadata_deadline_conjectures.md`; the earlier
+channel/code note is a superseded motivation record, not active steering.
+
 ## 1. Program Question
 
 Which inputs must gravity or a microscopic gravity model supply before
