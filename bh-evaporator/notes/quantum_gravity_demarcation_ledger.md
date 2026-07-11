@@ -8,6 +8,12 @@ six-row/source-rank ledger and the active sequencing in
 `certificate_gap_closure_plan_2026_07_09.md`. Those files remain historical
 audit trails.
 
+Framing review: `program_reassessment_2026_07_10.md` concludes that this map is
+useful as an internal coverage and dependency ledger but does not establish a
+unique gravity/QI boundary. Pending an explicit program decision, this file
+remains authoritative for work sequencing, not for the stronger ontological
+claim.
+
 ## 1. Program Question
 
 Which inputs must gravity or a microscopic gravity model supply before

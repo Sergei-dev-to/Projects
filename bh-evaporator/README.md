@@ -3,6 +3,13 @@
 Research program on the boundary between ordinary quantum-information
 mechanisms and specifically gravitational input in black-hole evaporation.
 
+Program-framing notice (2026-07-10):
+`notes/program_reassessment_2026_07_10.md` finds that a strict, unique
+gravity/QI demarcation is not presently defensible. The proposed successor is
+an assumption audit and conditional-closure program for exterior recovery.
+The five-row ledger remains the operational map pending an explicit framing
+decision; it should not be read as a unique ontology of gravitational inputs.
+
 ## Current thesis
 
 Once a finite state count, radiation algebra, active emission instrument, and
@@ -54,6 +61,9 @@ conditional go only for a design-stage small-`N` bosonic/BMN pilot; a full BFSS
 information-export calculation is not presently a local project.
 
 ## Read first
+
+- `notes/program_reassessment_2026_07_10.md` — candid audit of whether the
+  demarcation umbrella survives and the proposed conditional-closure reframe.
 
 Status correction: the static source-rank certificate is closed as a route to
 a general exterior derivation. The spectral-starvation and two-drain results
