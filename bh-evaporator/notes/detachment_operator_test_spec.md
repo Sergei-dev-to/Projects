@@ -1,5 +1,13 @@
 # Detachment Operator Test Spec
 
+Status update (2026-07-10): retained as a diagnostic reference and proxy audit
+trail. The active feasibility decision is
+`bfss_detachment_feasibility_2026_07_10.md`. The load-bearing target is now the
+gauge-invariant projected transition `Q_m exp(-iHt) P`, its
+radiation-resolved second/fourth process moments, and direct diary decoupling.
+Doorway/Gram participation is a canonical-model diagnostic, not a sufficient
+export theorem and not a replacement for the physical process tensor.
+
 ## Purpose
 
 This is the execution target for the Matrix/black-hole demarcation program.
@@ -253,9 +261,10 @@ The tests are:
    Page/Hayden-Preskill export.
 ```
 
-The core decision is made by Tests 1, 2, and 4. Test 0 identifies the correct
-thermodynamic operator. Test 3 prevents false interpretation. Test 5 is
-validation after the covariance gates pass.
+The current core decision is made by sector/truncation validity, the physical
+process moments in Tests 3--4, and direct decoupling in Test 5. Tests 1--2 are
+supporting diagnostics: they can reject a scarred or common-doorway channel but
+cannot establish export. Test 0 identifies the thermodynamic transition.
 
 Interpretation:
 

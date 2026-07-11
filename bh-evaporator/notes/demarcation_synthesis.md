@@ -427,6 +427,14 @@ matrix-entanglement / emergent-factorization framework, does the actual
 real-time detachment dynamics populate it generically enough for recovery?
 ```
 
+Phase-B feasibility verdict (2026-07-10): a full BFSS process-moment
+calculation is not currently a local project. A design-stage small-`N`
+bosonic/BMN pilot is conditionally viable using Hamiltonian truncation, an
+exact or quantified gauge treatment, a gauge-invariant radial-separation
+projector, and direct process/decoupling diagnostics. The pilot must pass its
+clump/separation and cutoff gates before heavy implementation; see
+`bfss_detachment_feasibility_2026_07_10.md`.
+
 This track can answer:
 
 ```text
@@ -445,13 +453,12 @@ or S=A/4G?
 ```text
 paper_ideal_hamiltonian:
   demonstrates how much exterior phenomenology follows after the state count,
-  emission access, and mixing are supplied. It belongs to the conditional
-  finite-quantum-mechanics layer.
+  physical emission instrument, and ETH/design mixing are supplied. It is the
+  conditional non-gravitational realization.
 
 paper_operational_horizon:
   packages the same conditional lesson around exterior horizon signatures. It
-  should be read as an operational model with the gravitational inputs made
-  explicit.
+  is a historical/secondary operational model unless separately revived.
 
 paper_boundary_saturation:
   records the conditional passive source-participation theorem and the no-go
@@ -459,12 +466,12 @@ paper_boundary_saturation:
   case study rather than the program flagship.
 
 paper_access_latency_classification:
-  studies consequences of locality and access once an algebra and dynamics are
-  specified. It is useful background, but much of the constrained-access
-  machinery overlaps known QI/crypto/scrambling literature.
+  is the technical theorem core for composable process access, locality, and
+  recovery once an algebra and dynamics are specified.
 
 detachment_operator_test_spec:
-  gives the concrete Matrix/BFSS consistency test for row 4.
+  is the diagnostic/proxy audit trail. The active go/no-go and pilot target are
+  in `bfss_detachment_feasibility_2026_07_10.md`.
 ```
 
 ## Rules For Future Work
@@ -493,47 +500,28 @@ path.
 
 ## Current Best Next Moves
 
-1. Treat `static_source_rank_certificate_tombstone.md` as the closure of the
-   static microscopic-certificate branch.  Do not add more static moments,
-   drain settings, or tomography unless a listed reopen condition is met.
+1. Use `quantum_gravity_demarcation_ledger.md` as the sole authoritative plan.
+   The static source-rank branch and long-time conditional QI bracket are
+   closed; legacy roadmaps are history, not active sequencing.
 
-2. Treat `q2_composable_diary_access_theorem.md` as the closed necessary side:
-   long-time record access is bounded by a linear hybrid-process defect, with
-   the finite pump at its exact zero endpoint.
+2. Follow `bfss_detachment_feasibility_2026_07_10.md`. The Phase-B verdict is a
+   conditional go for a **design-only** small-`N` bosonic/BMN pilot using a
+   gauge-invariant separation projector and the physical projected transition
+   `Q_m exp(-iHt)P`. Full BFSS information export is not currently a local
+   calculation.
 
-3. Use `shrinking_shell_diary_access_result.md` as the comparison result:
-   no hiding forces a hidden archive in the blind branch; weak access need not
-   recover; a supplied mixing code recovers entirely from locally identical
-   multi-time records. `microcanonical_coded_pump_construction.md` integrates
-   those ingredients into one time-homogeneous finite collision rule. The next
-   positive task is now genuinely dynamical: derive the mixer from a natural
-   autonomous Hamiltonian or verify its temporal design/ETH condition in a
-   named microscopic gravity model.
+3. Before implementing the pilot, write a compact build specification that
+   constructs the gauge treatment, estimates cutoff dimensions, and exhibits
+   a mass/cutoff window containing both clumped and separated sectors. Stop if
+   that window or the accessible radiation algebra cannot be made robust.
 
-   The conditional necessary/sufficient bracket is consolidated in
-   `temporal_access_necessary_sufficient_synthesis.md`: composable process
-   distance is necessary; ETH/design decoupling of the physical jump process
-   is sufficient. Further abstract toy construction is no longer the
-   bottleneck.
+4. Consolidate publication independently of the BFSS outcome: primary
+   demarcation synthesis, access-theorem technical core, boundary-saturation
+   conditional/no-go companion, and ideal-Hamiltonian conditional realization.
 
-4. Treat `notes/demarcation_algebra_type_synthesis.md` as the conceptual
-   endpoint: Type I exact/QI, Type III_1 QFT, Type II crossed-product
-   semiclassical gravity, with finite `e^{A/4G}` state count and lived interior
-   as residues.
+5. Preserve HIGH/LOW/starvation/two-drain phenomenology only as model
+   discrimination. Do not reopen static source tomography or add generic
+   doorway/channel toys.
 
-5. Reassess the drafts against `demarcation_scoop_audit_2026_07_10.md` and the
-   algebra-type synthesis.  Label standard central-dogma/QI consequences as
-   such; foreground the explicit no-go suite and control models instead.
-
-6. Preserve the cheap phenomenology track: signed HIGH response for the strict
-   burden prototype, LOW starvation/flash diagnostics for passive collective
-   channels, and tabletop two-drain/delay spectroscopy.  These are model
-   discriminators, not universal source-rank measurements.
-
-7. If continuing the Matrix direction, position it as a dynamical-consistency
-   check on an algebra supplied by the matrix-entanglement literature, ideally
-   in contact with that community.
-
-8. Avoid new taxonomy or toy numerics unless they answer one of the residues:
-   state count/equation of state, exact-to-semiclassical algebra transition, or
-   lived interior, or directly advance the temporal diary-access theorem.
+6. Keep the algebra-type synthesis as the structural endpoint and defer
+   geometric/interior completion until a new concrete bridge appears.

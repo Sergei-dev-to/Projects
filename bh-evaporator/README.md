@@ -48,6 +48,11 @@ full-record distance from a diary-blind comparison process grows at most as the
 linear sum of hybrid-reachable step defects, with no exponential blind-budget
 penalty.
 
+The current microscopic evaluation target is the physical, gauge-invariant
+Matrix/BFSS D0-detachment process. A July 10 feasibility audit gives a
+conditional go only for a design-stage small-`N` bosonic/BMN pilot; a full BFSS
+information-export calculation is not presently a local project.
+
 ## Read first
 
 Status correction: the static source-rank certificate is closed as a route to
@@ -69,8 +74,12 @@ the control and launch point for the Q2 temporal-access program.
   conditional access/decoupling bracket and the remaining gravity target.
 - `notes/demarcation_scoop_audit_2026_07_10.md` — novelty and priority audit.
 - `notes/demarcation_synthesis.md` — five-row quantum/gravity map.
-- `notes/quantum_gravity_demarcation_ledger.md` — steering ledger.
-- `notes/prototype_adjudication_directions.md` — current technical roadmap.
+- `notes/quantum_gravity_demarcation_ledger.md` — authoritative five-row
+  program plan and execution gates.
+- `notes/bfss_detachment_feasibility_2026_07_10.md` — Matrix/BFSS go/no-go
+  dossier and smallest faithful pilot.
+- `notes/prototype_adjudication_directions.md` — superseded prototype roadmap
+  retained as a historical audit trail.
 - `notes/certificate_gap_closure_plan_2026_07_09.md` — superseded closure
   plan retained as an audit trail.
 - `notes/q1b_static_certificate_theorem.md` — source-rank certificate.
@@ -100,7 +109,11 @@ algebra/temporal-access synthesis are the primary program line.
 - `paper_boundary_saturation/` — conditional passive source-participation,
   line-response, and no-go paper.
 - `paper_access_latency_classification/` — access/routing theorem stack.
-- `paper_frozen_routing_witness/` — experimental control-arm proposal.
+- `paper_ideal_hamiltonian/` — conditional Hamiltonian/ETH realization.
+
+The primary demarcation synthesis has not yet been consolidated into its own
+paper directory. `paper_frozen_routing_witness/` is a useful control-arm
+proposal but is not on the current core publication path.
 
 The other `paper_*` directories record earlier model-building stages and
 controls.  They should not all be treated as simultaneous submission targets.

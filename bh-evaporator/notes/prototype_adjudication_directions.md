@@ -1,12 +1,13 @@
 # Prototype Adjudication: Current Roadmap
 
 Date started: 2026-07-04
-Updated: 2026-07-08
+Updated: 2026-07-10
 
-Status: current handoff.  M0-M3, Q1, the Q1b proof skeleton (with its
-line-asymmetry upgrade), and the Q2 operator-overlap bridge theorem
-class are now landed at note level.  Use git history and the result
-notes for earlier exploratory details.
+Status: **superseded historical roadmap**. The authoritative plan is now
+`quantum_gravity_demarcation_ledger.md`; the Matrix feasibility decision is in
+`bfss_detachment_feasibility_2026_07_10.md`. This file preserves the M-series,
+Q1/Q1b, and early Q2 adjudication history. Its later source-rank tiers and
+sequencing are not active work instructions.
 
 ## Core Result
 

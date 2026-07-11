@@ -195,3 +195,9 @@ and factorization prescription. The deterministic surrogate route encounters
 the general open problem of proving ETH. Continuing without choosing one would
 only add supplied mixers or circuit-to-Hamiltonian encodings and would no
 longer advance the demarcation.
+
+Phase-B successor: `bfss_detachment_feasibility_2026_07_10.md` gives a
+conditional go for a design-stage small-`N` bosonic/BMN pilot, but a no-go for
+claiming that a full BFSS information-export calculation is locally ready. The
+pilot must establish a gauge-invariant separation algebra and a converged
+clump/escape window before process-moment implementation.
