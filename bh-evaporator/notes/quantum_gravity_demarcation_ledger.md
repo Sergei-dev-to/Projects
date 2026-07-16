@@ -2,20 +2,19 @@
 
 Date: 2026-07-10
 
-Status: **authoritative steering document**. It supersedes the former
-six-row/source-rank ledger and the active sequencing in
-`prototype_adjudication_directions.md` and
-`certificate_gap_closure_plan_2026_07_09.md`. Those files remain historical
-audit trails.
+Final status (2026-07-13): historical execution ledger. It is no longer the
+authoritative steering document. The final program description and endpoint
+are `program_reevaluation_2026_07_12.md`,
+`evaporation_framework_comparison_map_2026_07_12.md`, and
+`program_endpoint_and_standalone_results_2026_07_13.md`.
 
-Framing review: `program_reassessment_2026_07_10.md` concludes that this map is
+Framing review: `program_reassessment_2026_07_10.md` concluded that this map is
 useful as an internal coverage and dependency ledger but does not establish a
-unique gravity/QI boundary. Pending an explicit program decision, this file
-remains authoritative for work sequencing, not for the stronger ontological
-claim.
+unique gravity/QI boundary. The later program decision retained it only as an
+audit trail.
 
-Conceptual successor: `evaporation_completion_problem_2026_07_11.md` supplies
-the proposed common object. It treats the rows below as projections and
+The next historical phase, `evaporation_completion_problem_2026_07_11.md`,
+supplied a proposed common object. It treated the rows below as projections and
 constraints of an energy-graded sequential evaporation instrument rather than
 as a unique list of gravitational inputs.
 
@@ -29,7 +28,7 @@ Which inputs must gravity or a microscopic gravity model supply before
 ordinary quantum mechanics, statistical mechanics, and quantum information
 explain black-hole evaporation?
 
-The current answer is:
+The answer recorded at this stage was:
 
 ```text
 gravity/microscopic theory supplies:
@@ -353,7 +352,7 @@ historical/model controls:
   unless separately revived.
 ```
 
-## 6. Work Selection Rules
+## 6. Historical Work Selection Rules
 
 Every new task must answer at least one:
 
@@ -377,7 +376,7 @@ renames standard Page/decoupling consequences;
 opens Kerr/JT/dS variants before the core package is stable.
 ```
 
-## 7. Current Stop Conditions
+## 7. Stop Conditions Used During This Phase
 
 The Matrix route pauses if:
 

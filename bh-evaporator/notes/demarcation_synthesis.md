@@ -1,10 +1,11 @@
 # Quantum/Gravity Demarcation Synthesis
 
-Framing status (2026-07-11): retained as a dependency and coverage map, not as
-a unique gravity/QI ontology. See `program_reassessment_2026_07_10.md` for the
-framing audit and `evaporation_completion_problem_2026_07_11.md` for the
-proposed successor organized around partial Hawking data and compatible
-sequential evaporation processes.
+Final status (2026-07-13): historical dependency and coverage map, not a unique
+gravity/QI ontology and no longer an active steering document. See
+`program_reevaluation_2026_07_12.md` for the final accessible synthesis,
+`evaporation_framework_comparison_map_2026_07_12.md` for the current framework
+comparison, and `program_endpoint_and_standalone_results_2026_07_13.md` for the
+program endpoint.
 
 ## Goal
 
@@ -16,18 +17,21 @@ statistical mechanics, and quantum information theory explain the black-hole
 evaporation information story?
 ```
 
-This note is the active steering document. The previous Matrix/moment-focused
-version has been archived at:
+This note served as an active steering document during the demarcation phase.
+The previous Matrix/moment-focused version has been archived at:
 
 ```text
 notes/archive/demarcation_synthesis_matrix_moment_archive_2026_06_26.md
 ```
 
-For the current conceptual endpoint, see:
+For the algebra-focused continuation of this historical phase, see:
 
 ```text
 notes/demarcation_algebra_type_synthesis.md
 ```
+
+For the final conceptual endpoint, see
+`notes/evaporation_framework_comparison_map_2026_07_12.md`.
 
 ## Short Answer
 

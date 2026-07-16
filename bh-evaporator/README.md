@@ -1,148 +1,189 @@
 # bh-evaporator
 
-Research program on the boundary between ordinary quantum-information
-mechanisms and specifically gravitational input in black-hole evaporation.
+Status: completed research program. Endpoint recorded 2026-07-13.
 
-Program-framing notice (2026-07-10):
-`notes/program_reassessment_2026_07_10.md` finds that a strict, unique
-gravity/QI demarcation is not presently defensible. The proposed successor is
-an assumption audit and conditional-closure program for exterior recovery.
-The five-row ledger remains the operational map pending an explicit framing
-decision; it should not be read as a unique ontology of gravitational inputs.
+"Completed" refers to this control-model and comparative program, not to the
+black-hole information problem as a whole.
 
-Unifying-object update (2026-07-11):
-`notes/evaporation_completion_problem_2026_07_11.md` organizes the constructive
-models, no-go results, and temporal theorem around an energy-graded sequential
-evaporation instrument. The forward problem is to derive a physical completion
-from a microscopic model; the inverse problem is to determine what restricted
-Hawking data can identify about that completion.
+This project asked whether one ordinary unitary quantum process could reproduce
+the exterior package associated with black-hole evaporation: nearly thermal
+emission, heating and faster power loss as the system shrinks, a decreasing
+internal state capacity, a Page-like entropy turnover, and recoverable quantum
+information in the radiation.
 
-## Current thesis
+The answer is yes. The project's unified control model realizes the
+thermodynamic and information behavior in the same evolving state. Independent
+work in random-unitary, operator-growth, equilibrium, replica, and
+fixed-Hamiltonian models supplies more developed examples in which
+state-dependent radiation dynamics leads to reconstruction. The broad
+model-level compatibility question is therefore answered.
 
-Once a finite state count, radiation algebra, active emission instrument, and
-suitable diary-mixing dynamics are supplied, ordinary quantum mechanics gives
-Page behavior, decoupling, and conditional recovery. The program asks which
-supplied structures gravity must explain and which can be certified from
-exterior observables.
+## Program outcome
 
-The current ledger has three gravitational inputs: (1) the Schwarzschild state
-count and softness, `S(E) ~ E^2`; (2) the physical radiation algebra and active
-emission instrument; and (3) channel-relative temporal encoding of private
-information. The last two meet in the temporal/Krylov orbit of the physical
-emission process. They are not compressed by assuming an entropy-sized static
-interface.
+The program began by looking for a clean boundary between work done by gravity
+and work done by quantum information theory. The comparison showed that no
+unique boundary survives changes of description. A more stable result is a
+list of obligations that any microscopic account of evaporation must meet:
 
-The active operational result separates two axes:
+1. **Thermodynamics:** derive the state count and its dependence on energy and
+   charges.
+2. **Observable structure:** identify the physical radiation algebra and its
+   complement, including constraints and sectors.
+3. **Dynamics:** derive the emission process and show how private-state
+   differences enter the radiation over time.
+4. **Consistency:** maintain unitarity, conservation laws, shrinking capacity,
+   and a complete account of partners, remnants, or other hidden systems.
+
+Once those ingredients are supplied, ordinary quantum mechanics explains much
+of the remaining architecture: Page behavior, decoupling, encoded
+reconstruction, and conditional recovery. A theory of an actual black hole
+must explain why the ingredients exist and why they have their particular
+gravitational form, including the area law and the interior.
+
+The comparison also separated four questions that were often compressed into
+the word *access*:
 
 ```text
-source participation:
-  model-side microscopic source structure versus the invariant physical
-  jump/process map;
-
-recovery latency:
-  how quickly arbitrary private information reaches the emitted record.
+destination:       where the information finally resides;
+dynamical access:  when the emitted record first depends on it;
+algebraic access:  whether it is reconstructible from the radiation in
+                   principle;
+recovery:          whether a specified observer can decode it with controlled
+                   error.
 ```
 
-The closed static source-rank branch used calibrated response: occupation
-enhancement shifts the ratio HIGH and a drained thermal collective channel
-shifts it LOW.  The LOW spectral identity is exact for stationary linear
-gauge-invariant Gaussian additive channels, without a Markov or Planckian
-assumption.  However, signed sectors can cancel, the ordinary Gaussian tail is
-not identifiable from aggregate static or delay-resolved Gaussian data, and
-an anomalous parametric Gaussian channel can pass Hawking flux, positive
-absorption, calibrated response, and `g2=2` without passive starvation.
-Moreover the raw source-only Gram participation needs a canonical coupling
-metric to be representation invariant. These are closure results: microscopic
-source participation is supplied model data, not a generally exterior-derived
-observable. A finite-energy parametric pump can nevertheless emit `O(S)`
-thermal Hawking/partner records while remaining exactly diary-blind. The live
-question is therefore Q2: when and why does the active emission process acquire
-a diary-visible temporal orbit? The long-time necessary theorem is now exact:
-full-record distance from a diary-blind comparison process grows at most as the
-linear sum of hybrid-reachable step defects, with no exponential blind-budget
-penalty.
+Hawking, Page, Hayden--Preskill, islands, replica wormholes, and dynamical
+bridge models answer different parts of this sequence. The comparison map
+records their assumptions and conclusions without treating any one result as
+the entire information problem.
 
-The current microscopic evaluation target is the physical, gauge-invariant
-Matrix/BFSS D0-detachment process. A July 10 feasibility audit gives a
-conditional go only for a design-stage small-`N` bosonic/BMN pilot; a full BFSS
-information-export calculation is not presently a local project.
+## What this project added
 
-## Read first
+The main project-level contributions are:
 
-- `notes/evaporation_completion_problem_2026_07_11.md` — proposed common
-  mathematical object, completion classes, and forward/inverse program.
-- `notes/evaporation_capacity_metadata_deadline_conjectures.md` — corrected
-  research and kill register for local-to-temporal information, constraint
-  metadata, capacity cuts, and single-history estimation.
-- `notes/program_reassessment_2026_07_10.md` — candid audit of whether the
-  demarcation umbrella survives and the proposed conditional-closure reframe.
+- a unified geometry-free evaporator in which Schwarzschild-like
+  thermodynamics and information diagnostics belong to the same radiation
+  history;
+- exact controls showing that thermal emission and partner production can be
+  diary-blind, while recoverable information can also live entirely in
+  multitime correlations;
+- a composable bound showing that a radiation history cannot support accurate
+  recovery while remaining cumulatively close to a diary-blind process;
+- a family of non-identifiability results showing why coarse or static
+  radiation measurements generally do not reveal a hidden microscopic source
+  decomposition;
+- an adjudication of the strict N-portrait/memory-burden prototype, separating
+  its entropy-sized memory degeneracy from the source rank and information
+  routing of its specified radiation vertex.
 
-Status correction: the static source-rank certificate is closed as a route to
-a general exterior derivation. The spectral-starvation and two-drain results
-survive as conditional passive-class phenomenology. The finite-pump result is
-the control and launch point for the Q2 temporal-access program.
+These results establish compatibility, dependencies, controls, and limits of
+inference. They do not select the microscopic process realized by a real black
+hole.
 
-- `notes/static_source_rank_certificate_tombstone.md` — closure verdict,
-  retained results, and reopening conditions.
-- `notes/finite_energy_parametric_pump_result.md` — persistent thermal,
-  partner-producing, exactly diary-blind active emitter.
-- `notes/q2_composable_diary_access_theorem.md` — long-time shared-memory
-  access obstruction and recovery converse.
-- `notes/shrinking_shell_diary_access_result.md` — no-hiding archive bound and
-  blind/weak/mixing `S(E)~E^2` shell comparison.
-- `notes/microcanonical_coded_pump_construction.md` — integrated finite-shell
-  collision with thermal event odds and locally identical coded radiation.
-- `notes/temporal_access_necessary_sufficient_synthesis.md` — closed
-  conditional access/decoupling bracket and the remaining gravity target.
-- `notes/demarcation_scoop_audit_2026_07_10.md` — novelty and priority audit.
-- `notes/demarcation_synthesis.md` — five-row quantum/gravity map.
-- `notes/quantum_gravity_demarcation_ledger.md` — authoritative five-row
-  program plan and execution gates.
-- `notes/bfss_detachment_feasibility_2026_07_10.md` — Matrix/BFSS go/no-go
-  dossier and smallest faithful pilot.
-- `notes/prototype_adjudication_directions.md` — superseded prototype roadmap
-  retained as a historical audit trail.
-- `notes/certificate_gap_closure_plan_2026_07_09.md` — superseded closure
-  plan retained as an audit trail.
-- `notes/q1b_static_certificate_theorem.md` — source-rank certificate.
-- `notes/collective_channel_starvation_result.md` — route-2b completion.
-- `notes/collective_channel_spectral_starvation_theorem.md` — exact
-  stationary Gaussian non-Markovian extension.
-- `notes/signed_cancellation_and_gram_tail_result.md` — aggregate
-  cancellation no-go, paired-leg bound, and two-drain separator.
-- `notes/q2_operator_overlap_bridge_theorem.md` — superseded first
-  generator-level latency formulation.
+## External-readiness status
 
-- `notes/source_gram_invariance_audit.md` — exact representation no-go and
-  jump-map/Choi replacement target.
-- `notes/anomalous_parametric_channel_result.md` — active Gaussian route 2c.
-- `notes/delay_correlation_nonidentifiability_result.md` — full Gaussian
-  delay-correlation no-go for hidden source rank.
-- `notes/certificate_time_budget_result.md` — precision versus evaporation
-  budget.
+The bounded A--D literature-overlap and scope pass is complete. The final
+external-use wording is recorded in
+`notes/standalone_result_passes_2026_07_16.md` and summarized in the endpoint
+note. In particular, Result B's gate is closed: its generic telescoping bound
+is standard comb/hybrid continuity, while its diary-blind evaporation
+comparison, hybrid-reachable defects, and recovery converse are retained as
+application-level content.
 
-## Active papers
+For terminology, the older “three gravitational inputs” ledger is historical:
+state count, physical radiation algebra/emission instrument, and
+channel-relative temporal encoding. The endpoint's current four-obligation
+taxonomy supersedes that ledger by separating thermodynamics, observable
+structure, dynamics, and consistency. These are two levels of description,
+not competing counts.
 
-`paper_boundary_saturation/` is now a conditional technical paper rather than
-the program's flagship. Its passive theorem survives, but its no-go results and
-active counterexample close the attempted general static inference. Q2 and the
-algebra/temporal-access synthesis are the primary program line.
+## Why the program ends here
 
-- `paper_boundary_saturation/` — conditional passive source-participation,
-  line-response, and no-go paper.
-- `paper_access_latency_classification/` — access/routing theorem stack.
-- `paper_ideal_hamiltonian/` — conditional Hamiltonian/ETH realization.
+The original control-model question has been answered, and the comparative
+pass found that effective dynamical bridges already exist in the literature.
+Continuing now would require choosing a particular quantum-gravity theory and
+deriving its physical radiation sector and state-dependent emission dynamics.
+That is worthwhile successor research, but it is a different commitment from
+refining the present control models.
 
-The primary demarcation synthesis has not yet been consolidated into its own
-paper directory. `paper_frozen_routing_witness/` is a useful control-arm
-proposal but is not on the current core publication path.
+The principal successor considered here was BFSS Matrix theory. Existing work
+provides D0-brane evaporation and an effective Page curve, while a complete
+gauge-invariant, state-resolved radiation channel derived from the BFSS
+Hamiltonian remains open. The local feasibility audit did not identify a
+calculation that would close that gap without beginning a substantially new
+Matrix-theory program.
 
-The other `paper_*` directories record earlier model-building stages and
-controls.  They should not all be treated as simultaneous submission targets.
+The observation-facing branches remain documented and are deliberately parked.
+The signed starvation/asymmetry diagnostics remain conditional results for
+declared passive model classes. The frozen-routing witness remains a separate
+experimental control proposal. Neither is needed for the program-level
+conclusion.
+
+## Read in this order
+
+1. `notes/program_reevaluation_2026_07_12.md` -- accessible account of the
+   physical question, the literature, the project models, and the endpoint.
+2. `notes/program_endpoint_and_standalone_results_2026_07_13.md` -- concise
+   wrap-up, retained results, boundaries, parked branches, and successor
+   questions.
+3. `notes/standalone_result_passes_2026_07_16.md` -- completed external-use
+   overlap and scope pass for results A--D.
+4. `notes/evaporation_framework_comparison_map_2026_07_12.md` -- detailed
+   assumption-to-result map across the major frameworks.
+5. `notes/program_reassessment_2026_07_10.md` -- historical reassessment that
+   retired the strict gravity/quantum-information demarcation.
+
+Earlier ledgers, conjecture registers, and steering notes remain in `notes/` as
+the audit trail. Their old sequencing instructions are historical wherever
+they conflict with the endpoint documents above.
+
+## Technical result index
+
+- `notes/unified_sector_isometry_results.md` -- unified thermodynamic and
+  information-return control model.
+- `notes/finite_energy_parametric_pump_result.md` -- thermal, partner-producing,
+  exactly diary-blind active emitter.
+- `notes/microcanonical_coded_pump_construction.md` -- locally thermal coded
+  radiation with information in multitime correlations.
+- `notes/q2_composable_diary_access_theorem.md` -- cumulative temporal-access
+  obstruction.
+- `notes/shrinking_shell_diary_access_result.md` -- shrinking-capacity and
+  no-hiding controls.
+- `notes/static_source_rank_certificate_tombstone.md` -- closure of the general
+  static source-certificate route.
+- `notes/source_gram_invariance_audit.md` -- representation-invariance limit
+  and process-map replacement.
+- `notes/signed_cancellation_and_gram_tail_result.md` -- cancellation,
+  non-identifiability, and conditional two-drain separator.
+- `notes/anomalous_parametric_channel_result.md` -- active Gaussian mimic of
+  the static Hawking package.
+- `notes/delay_correlation_nonidentifiability_result.md` -- delay-resolved
+  Gaussian no-go.
+- `notes/certificate_time_budget_result.md` -- precision cost within one
+  evaporation history.
+- `notes/prototype_m0_m1_results.md`,
+  `notes/prototype_m3_discriminator_table.md`, and
+  `notes/asymmetry_backreaction_escape_result.md` -- strict memory-burden
+  calculation.
+- `notes/bfss_evaporation_literature_status_2026_07_12.md` and
+  `notes/bfss_detachment_feasibility_2026_07_10.md` -- BFSS overlap and
+  feasibility audit.
+
+## Paper and proposal directories
+
+The `paper_*` directories collect possible technical extractions and earlier
+model-building stages. None is the program's flagship, and the completion of
+the research program does not depend on turning each branch into a paper.
+
+- `paper_boundary_saturation/` -- conditional passive diagnostics and static
+  inference limits.
+- `paper_access_latency_classification/` -- temporal-access theorem stack.
+- `paper_ideal_hamiltonian/` -- conditional Hamiltonian/ETH realization.
+- `paper_frozen_routing_witness/` -- separate experimental control proposal.
 
 ## Verification
 
-Run the collective-channel support calculation with:
+The main numerical checks can be rerun with:
 
 ```powershell
 python sim/collective_channel_starvation_check.py
@@ -154,6 +195,3 @@ python sim/finite_parametric_pump.py
 python sim/shrinking_shell_diary_channel.py
 python sim/locally_thermal_code_emitter.py
 ```
-
-Build the boundary-saturation paper from its directory with a standard
-`pdflatex`/`bibtex` cycle.

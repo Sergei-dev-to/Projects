@@ -2,11 +2,13 @@
 
 Date: 2026-07-11
 
-Status: proposed program-level synthesis. This note refines
-`program_reassessment_2026_07_10.md`. It replaces a strict gravity/QI
+Status: historical intermediate synthesis. This note refined
+`program_reassessment_2026_07_10.md` by replacing a strict gravity/QI
 demarcation with a common mathematical object and two concrete questions:
 forward completion by a microscopic model and inverse identification from
-restricted radiation data.
+restricted radiation data. Its formalism remains useful, but its proposed work
+queue is superseded by the final endpoint in
+`program_endpoint_and_standalone_results_2026_07_13.md`.
 
 ## 1. Scope and Central Claim
 
@@ -506,7 +508,7 @@ Each item requires an independent literature and theorem audit before a
 priority claim. The framework is valuable only if it sharpens one or more of
 those technical results; naming the common object is not itself a discovery.
 
-## 15. Program Consequences
+## 15. Proposed Program Consequences at This Stage
 
 The primary question becomes:
 
@@ -514,7 +516,7 @@ The primary question becomes:
 > additional physical principles select the information-routing completion,
 > and what restricted data can distinguish the resulting classes?
 
-Near-term work should be ordered as follows:
+The near-term work proposed at this stage was:
 
 ```text
 1. Consolidate the exact equivalence/separation examples into one canonical

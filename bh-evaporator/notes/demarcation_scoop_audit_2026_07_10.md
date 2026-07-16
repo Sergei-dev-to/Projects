@@ -204,6 +204,25 @@ all 2024--2026 black-hole channel papers.  Before submission, run a narrower
 full-text search for prior “Hawking source tomography,” process-tensor/Krylov
 accessibility, and finite-pump pair-emission controls.
 
+## 2026-07-12 BFSS Overlap Correction
+
+The targeted BFSS pass found substantial prior work that must be incorporated
+before treating Matrix evaporation as an open target. Matrix-theory papers
+already study D0-brane emission and Hawking-rate scaling; real-time matrix
+studies analyze D0 escape and negative specific heat; and Choudhury--Laurenzano
+explicitly construct a BFSS black-0-brane radiation Hilbert space and obtain a
+Page curve with final purification. See
+`bfss_evaporation_literature_status_2026_07_12.md`.
+
+The remaining gap is narrower: the 2024 Page-curve paper states that the full
+BFSS Hamiltonian action on the black-hole state is not known and uses an
+effective factorized Hilbert space with time-dependent emission probabilities.
+The program must therefore not claim that BFSS evaporation or a BFSS Page
+curve is new. A possible contribution would be a process-level audit of the
+assumed factorization and probabilities, or a calculation of the
+gauge-invariant radiation-resolved transition/process data they leave
+unspecified.
+
 ## Successor Update: Long-Time Q2 and Shrinking Shells
 
 The post-audit calculations sharpen the technical endpoint but do not license

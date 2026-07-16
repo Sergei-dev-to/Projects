@@ -2,6 +2,14 @@
 
 Date: 2026-07-10
 
+Final status (2026-07-13): historical decision note. Its central decision --
+retire a unique gravity/quantum-information demarcation -- was adopted. The
+completed program description and endpoint are now
+`program_reevaluation_2026_07_12.md` and
+`program_endpoint_and_standalone_results_2026_07_13.md`. The survival tests
+below record how the program was evaluated; they are no longer an active work
+queue.
+
 Successor notes (2026-07-11), in order of authority:
 `evaporation_completion_problem_2026_07_11.md` is the parent framework
 refining this note (completion and identifiability formalism);
@@ -12,12 +20,12 @@ payload tests, diary-size capacity cuts with explicit uniformity conditions,
 and nonstationary single-history estimation. It treats anonymity as a
 necessary classifier, not a sufficient completion selector;
 `channel_code_separation_reframing.md` is superseded as a thesis and
-retained as the motivation/retro-diction record.  Nothing decided here
-is retired.
+retained as the motivation/retro-diction record. At that stage, the decisions
+in this note remained active; the July 13 endpoint later resolved the work
+queue.
 
-Status: program-level reassessment for decision. This note does not invalidate
-the technical results or silently replace the current steering ledger. It asks
-whether the umbrella claim should survive in its present form.
+Original status: program-level reassessment for decision. The later endpoint
+documents record the decision and supersede its steering role.
 
 ## 1. Bottom Line
 
@@ -180,8 +188,9 @@ ontology:
 
 1. **Thermodynamic obligation:** specify the state count and physical
    energy/charge dependence relevant to emission.
-2. **Subsystem obligation:** define the accessible radiation algebra, its
-   centers/sectors, and the complementary hidden or daughter algebra.
+2. **Observable-structure obligation:** define the accessible radiation
+   algebra, its centers/sectors, and the complementary hidden or daughter
+   algebra.
 3. **Dynamical obligation:** show that the actual time-ordered emission process
    becomes sufficiently diary-visible and isotropically mixing before the
    available evaporation time ends.
@@ -211,7 +220,7 @@ structure from an operationally compressed record. Conversely, a BFSS
 transition-tensor calculation could verify a model condition without being an
 astrophysically feasible experiment. Future claims must label the level.
 
-## 6. Publication Consequences
+## 6. Original Publication Consequences
 
 The work should not be forced into one flagship "demarcation theorem."
 
@@ -237,7 +246,7 @@ the broad thermality-versus-information distinction, quantum-channel language,
 and the algebra-type seam are occupied territory. Its value would be the
 precise dependency and identifiability map, not priority over those ideas.
 
-## 7. Program Survival Test
+## 7. Original Program Survival Test
 
 The reframed umbrella deserves to survive only if at least one of the following
 is established after a full theorem and literature audit:
@@ -261,7 +270,7 @@ If none survives, retire the umbrella and publish only any standalone technical
 lemmas that remain worthwhile. Do not preserve a program merely because it has
 accumulated machinery.
 
-## 8. Recommendation
+## 8. Recommendation at This Stage
 
 ```text
 Strict gravity/QI demarcation:
@@ -282,7 +291,7 @@ Matrix pilot:
   KEEP as a gated application, subordinate to the theorem audit.
 ```
 
-The strongest defensible summary is:
+The strongest summary at this stage was:
 
 > The program audits what a microscopic evaporation model has and has not
 > established when it claims unitary evaporation with exterior information

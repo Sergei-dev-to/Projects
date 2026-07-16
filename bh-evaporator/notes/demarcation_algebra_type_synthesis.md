@@ -7,6 +7,11 @@ the demarcation inquiry lands once the von Neumann algebra language and the June
 2026 literature audit are taken into account. It sits beside
 `demarcation_synthesis.md` (the five-row map) and sharpens its row 3.
 
+Final status (2026-07-13): retained as an algebra-focused understanding note.
+Its type-II/clock conclusions are incorporated, with narrower scope, into
+`evaporation_framework_comparison_map_2026_07_12.md`. It is not the program
+endpoint or an active work queue.
+
 Question: which part of black-hole evaporation phenomenology is irreducibly
 gravitational, versus forced by quantum mechanics, quantum field theory, or
 quantum information?
@@ -288,6 +293,23 @@ direction.
 ```
 
 ## Relation to the prior moment/channel framing
+
+### July 12 clock/access correction
+
+The bounded comparison pass recorded in
+`evaporation_framework_comparison_map_2026_07_12.md` confirms a real connection
+between physical clocks and type-II gravitational observable algebras, but not
+the stronger identification with temporal diary access. Chen--Penington's
+evaporating Schwarzschild--de Sitter construction shows that out-of-equilibrium
+black-hole dynamics can itself act as a clock and yield a type-II algebra,
+without an external clock or asymptotic charge and without always presenting
+the algebra as a manifest crossed product.
+
+What survives is that clock dynamics helps define relational observables and a
+trace suitable for generalized entropy. What does not survive as an established
+claim is that the III-to-II transition marks the onset of state dependence in a
+sequence of emitted records. A separate microscopic radiation channel is still
+required to establish that.
 
 The detachment-operator second-moment program (`K_{ij}^{mn}`) was a
 **type-I-shaped question**: it presupposed a clean radiation factor and asked

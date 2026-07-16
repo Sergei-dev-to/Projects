@@ -2,10 +2,11 @@
 
 Date: 2026-07-11
 
-Status: corrected conjecture and kill register. Parent framework:
-`evaporation_completion_problem_2026_07_11.md`. This note is subordinate to
-that framework and states every target relative to a declared diary code,
-accessible algebra, completion family, and data class.
+Status: historical conjecture and kill register. Parent framework:
+`evaporation_completion_problem_2026_07_11.md`. The distinctions and closure
+tests remain part of the technical audit trail, but this file is no longer an
+active research queue after the program endpoint recorded in
+`program_endpoint_and_standalone_results_2026_07_13.md`.
 
 This version supersedes the thesis role of the earlier channel/code framing.
 It contains no new theorem. It records which attractive conjectures survived
@@ -199,6 +200,16 @@ that exterior observables depend only on total Poincare charges. The strong
 holography-of-information alternative is precisely that this fixed-charge
 privacy fails nonperturbatively or in the correct asymptotic algebra.
 
+The two-arm implementation specification is recorded in
+`dressed_pump_header_payload_spec.md`. The July 12 literature pass changes its
+status: perturbative gravitational splitting already supplies the static core
+of the comparison. Different total charges are asymptotically visible, while
+fixed-charge private subspaces can remain exterior-indistinguishable at leading
+order. A generic pump cannot adjudicate the nonperturbative disagreement with
+strong holography-of-information claims because its observable algebra would
+encode the answer by construction. The two arms are retained as a test to apply
+inside a named gravitational algebra, not as a standalone simulation target.
+
 ### Test
 
 The dressed-pump calculation must contain two separate diary encodings:
@@ -268,19 +279,30 @@ unitarity + shrinkage + no hidden archive
   does not force Page-time access to every small diary.   (C3.3)
 ```
 
-### C3b. Approximate capacity-cut target
+### C3b. Approximate capacity cut — closed as a standard lemma
 
-Derive a quantitative lower bound on distance from diary blindness when the
-complement is too small to preserve the diary approximately:
+The audit is recorded in
+`approximate_capacity_cut_audit.md`. For a full `d_D`-dimensional code and a
+pure completion whose complete hidden complement has dimension
+`x=d_(B_K)d_(P_hidden,K)`, the Schmidt-rank argument gives, for `x<d_D`,
+
+```text
+inf_(C_K diary blind) ||N_K-C_K||_diamond
+  >= 2 (1 - sqrt[x/d_D]).                              (C3.4)
+```
+
+This is a direct finite-dimensional information--disturbance/capacity cut,
+not a new black-hole theorem. It must be stated with the code, complete hidden
+complement, and norm. It does not imply a Page-time deadline for small
+protected diaries, and it does not apply unchanged to a restricted reachable
+state family.
+
+The original target was:
 
 ```text
 inf_(C_K diary blind) ||N_K-C_K||
   >= F(d_D, d_(B_K), d_(P_hidden,K), error criterion).    (C3.4)
 ```
-
-The target should use standard approximate-correctability/information-
-disturbance machinery and state whether the norm is diamond, strategy, or a
-reachable-state restriction.
 
 ### C3c. Uniform-access deadline conjecture
 
@@ -377,17 +399,19 @@ collective-charge channel can retain large private blocks forever.
 ## 6. Task Order
 
 ```text
-1. C3b approximate capacity-cut audit:
-   determine whether it is a direct corollary of standard approximate
-   correctability; do not re-prove occupied machinery.
+1. C3b approximate capacity-cut audit: CLOSED.
+   The full-code diamond-norm lemma is recorded separately; do not present it
+   as a new black-hole theorem or silently extend it to restricted families.
 
-2. C2 two-arm dressed-pump specification:
-   separate charge-varying header from exactly fixed-charge payload before
-   simulating either.
+2. C2 two-arm dressed-pump: LITERATURE-LOCATED; GENERIC SIMULATION PAUSED.
+   Perturbative dressing forces the charge header but not arbitrary
+   fixed-charge payload access. Reopen only inside a derived gravitational
+   algebra with actual emission dynamics; see
+   `evaporation_framework_comparison_map_2026_07_12.md`.
 
-3. C1 local-to-temporal observable package:
-   consolidate the existing exact coded control, then state what a physical
-   emitter would have to calculate.
+3. C1 local-to-temporal observable package: DESIGNED.
+   The exact control and physical-emitter observables are consolidated in
+   `local_to_temporal_observable_package.md`.
 
 4. C4 minimax formulation:
    proceed only for a live certificate and declared nonstationary model class.

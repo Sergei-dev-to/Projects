@@ -19,6 +19,10 @@ unwritten).  The retro-diction ledger below remains the motivation
 record; do not cite the frame as a result or use channel/code shorthand
 in external text.
 
+Final status (2026-07-13): historical reframing note. Its useful distinctions
+feed the final comparison and endpoint, but none of its proposed steering steps
+remain active. See `program_endpoint_and_standalone_results_2026_07_13.md`.
+
 ## 1. Thesis
 
 The program's results, June through today, organize without remainder as
