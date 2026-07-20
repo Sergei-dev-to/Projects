@@ -119,6 +119,35 @@ declared passive model classes. The frozen-routing witness remains a separate
 experimental control proposal. Neither is needed for the program-level
 conclusion.
 
+## Post-endpoint successor proposal
+
+The 2026-07-16 proposal
+`notes/observer_relative_temporal_access_successor_proposal_2026_07_16.md`
+opens a separate, bounded question: whether the natural constraint-dressed
+observer implementation in doubled DSSYK changes the cost of temporal diary
+access relative to an isospectral one-copy control. It gives the original idea
+that `Lambda` may act as a dual cutoff an operational formulation in terms of
+observer-process capacity. This successor does not reopen the completed A--D
+obligations, and
+it expressly does not assume that a bounded spectrum, finite entropy, or
+Type-II algebra is already an operational cutoff or a recovery result.
+
+WP0 and WP1 are complete. The primary-source pass and finite-shell protocol are
+in `notes/dssyk_wp0_protocol_and_overlap_2026_07_16.md`; the exact isometric,
+charge, and twirl controls are in
+`notes/dssyk_wp1_formal_controls_2026_07_16.md`. Their joint verdict pauses WP2:
+exactly transported one-copy and doubled protocols have identical record and
+recovery capacities, while the explicit kinematical relational construction
+uses the full bounded-operator algebra. A DSSYK dynamics probe now requires a
+common, pre-registered implementation or complexity budget on both
+descriptions.
+
+The standalone external-facing draft is in
+`paper_dssyk_observer_access/main.tex`. It presents the result as a DSSYK
+demarcation theorem and two exact controls, without the internal WP history.
+WP2 is parked pending a physically derived resource class rather than a chosen
+operator family.
+
 ## Read in this order
 
 1. `notes/program_reevaluation_2026_07_12.md` -- accessible account of the
@@ -128,9 +157,16 @@ conclusion.
    questions.
 3. `notes/standalone_result_passes_2026_07_16.md` -- completed external-use
    overlap and scope pass for results A--D.
-4. `notes/evaporation_framework_comparison_map_2026_07_12.md` -- detailed
+4. `notes/observer_relative_temporal_access_successor_proposal_2026_07_16.md`
+   -- separate DSSYK/observer-access successor proposal and its stop gates.
+5. `notes/dssyk_wp0_protocol_and_overlap_2026_07_16.md` and
+   `notes/dssyk_wp1_formal_controls_2026_07_16.md` -- completed source,
+   protocol, and formal-control gates for the successor.
+6. `paper_dssyk_observer_access/main.tex` -- standalone short technical draft
+   on isometric equivalence and the missing observer-resource constraint.
+7. `notes/evaporation_framework_comparison_map_2026_07_12.md` -- detailed
    assumption-to-result map across the major frameworks.
-5. `notes/program_reassessment_2026_07_10.md` -- historical reassessment that
+8. `notes/program_reassessment_2026_07_10.md` -- historical reassessment that
    retired the strict gravity/quantum-information demarcation.
 
 Earlier ledgers, conjecture registers, and steering notes remain in `notes/` as

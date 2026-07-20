@@ -1,0 +1,587 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!55!black,
+  breaklinks=true
+]{hyperref}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cP}{\mathcal P}
+\newcommand{\cR}{\mathcal R}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\dist}{\operatorname{dist}}
+
+\title{Observer Access in Doubled DSSYK:\\
+Isometric Equivalence and the Missing Resource Constraint}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We examine whether the equal-energy constraint in doubled double-scaled SYK
+changes the operational information available to a relational observer.  For
+identical disorder and a nondegenerate spectrum within a fixed symmetry
+sector, the constrained physical Hilbert space is spectrally isometric to one
+copy of DSSYK.  We show that
+transporting a diary code and a sequential observer protocol through this
+isometry leaves the complete observer-record channel, its distance from
+diary-blind processes, and optimal recovery fidelity unchanged.  Charge-sector
+and diary-twirl controls separate access to public constraint metadata from
+access to private microscopic payloads.  The currently explicit kinematical
+relational construction permits all bounded system operators and therefore
+does not by itself supply a restricted observer protocol.  We conclude that
+any nontrivial constraint-induced interpretation of the de Sitter scale as an
+observer-process cutoff must derive an additional resource restriction---such
+as an implementation or complexity budget---rather than follow from the
+equal-energy constraint or relational dressing alone.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+Positive cosmological constant is often associated with a finite entropy, a
+bounded static patch, and a finite observer \citep{CLPW}.  These facts motivate several
+inequivalent uses of the phrase ``dual cutoff'': a regulator of a continuum
+dual, a bounded spectrum or finite state count, a finite radial wall, or an
+operational limit on what an observer can distinguish and recover.  The last
+meaning is stronger than the first three.  An entropy or an algebra type does
+not, by itself, specify a channel from microscopic states to an observer's
+records.
+
+Double-scaled SYK (DSSYK) provides a sharp setting in which to separate these
+claims.  Narovlansky and Verlinde proposed a doubled model with identical
+disorder and an equal-energy constraint, together with constraint-preserving
+dressed operators and an observer-detector interpretation
+\citep{NarovlanskyVerlinde2023}.  A relational reconstruction in chord space
+subsequently made the clock and gauge-invariant operator algebra explicit
+\citep{AguilarRelational2025}.  Adjacent work studies thermodynamics,
+correlators, operator growth, complexity, entanglement, and finite-cutoff
+deformations \citep{TiettoVerlinde2025,NarovlanskyDynamics2025,
+AguilarT2,AguilarFiniteCutoff}.  This raises an operational question:
+does the equal-energy constraint change access to microscopic information, or
+does it only change its representation and relational description?
+
+The answer at the level of exact Hilbert-space kinematics is exact.  The
+physical Hilbert space of the doubled equal-energy model is isometric to one
+copy.  If states,
+observer interventions, memories, records, and decoders are transported
+through that isometry, the complete record channel is unchanged.  Every
+record-based access quantity is consequently unchanged.  This is an
+elementary invariance statement, not a new general theorem about quantum
+combs.  Its significance here is diagnostic: the constraint cannot be the
+source of an operational access advantage unless it also selects a protocol
+class that is \emph{not} the isometric transport of the one-copy class.
+
+The currently explicit relational construction does not make that selection.
+In the chord-space kinematical description it builds conditioned observables
+from arbitrary bounded system operators and gives a Type~I$_\infty$ algebra;
+at finite microscopic dimension the corresponding full matrix algebra is
+Type~I$_n$
+\citep{AguilarRelational2025}.  It supplies relational time and dressing, but
+not an implementation budget.  Thus the missing ingredient is not another
+entropy or correlator.  It is a common resource theory for observer
+operations on the one-copy and doubled descriptions.
+
+Section~\ref{sec:dssyk} fixes the doubled kinematics and the distinction
+between algebra and protocol.  Section~\ref{sec:invariance} states the
+isometric no-free-access proposition.  Section~\ref{sec:controls} gives exact
+charge and twirl controls.  Section~\ref{sec:literature} positions the result
+relative to nearby DSSYK work.  Section~\ref{sec:cutoff} states what would be
+required for an operational cutoff claim.  Appendix~\ref{app:shell} gives an
+energy-matched finite-shell diary, and Appendix~\ref{app:comb} records the
+sequential-distance convention.
+
+\section{Equal-energy DSSYK and observer protocols}
+\label{sec:dssyk}
+
+Consider two DSSYK systems with the same disorder realization and Hamiltonians
+$H_L,H_R$.  Fix a common symmetry sector in which the spectrum is
+nondegenerate.  The physical-state condition is
+\begin{equation}
+  (H_L-H_R)|\psi\rangle_{\rm phys}=0.
+  \label{eq:constraint}
+\end{equation}
+For a generic nondegenerate spectrum, every physical energy eigenstate is
+uniquely paired,
+\begin{equation}
+  |E_i\rangle_{\rm phys}=|E_i\rangle_L|E_i\rangle_R,
+  \qquad
+  H_{\rm phys}=\frac{H_L+H_R}{2}.
+  \label{eq:paired}
+\end{equation}
+It follows directly that
+\begin{equation}
+  \rho_{\rm phys}(E)=\rho_{\rm DSSYK}(E),
+  \label{eq:dos}
+\end{equation}
+up to declared shell binning, rather than the square of the one-copy density.
+The map
+\begin{equation}
+  W:\cH_0\longrightarrow \cH_{\rm phys},
+  \qquad W|E_i\rangle=|E_i\rangle_L|E_i\rangle_R,
+  \label{eq:W}
+\end{equation}
+is unitary onto the physical subspace and intertwines the one-copy Hamiltonian
+with $H_{\rm phys}$.  Equations~\eqref{eq:constraint}--\eqref{eq:dos} are the
+kinematic core of the Narovlansky--Verlinde construction
+\citep{NarovlanskyVerlinde2023}.
+
+If an energy eigenspace has multiplicity $g_E>1$, the full kernel of
+$H_L-H_R$ contains $\cH_E^L\otimes\cH_E^R$ and has multiplicity $g_E^2$ at
+that energy.  In that case $W$ identifies a declared diagonal paired subspace,
+not the full kernel, unless an additional pairing or gauge fixing is imposed.
+All statements below therefore apply sector by sector, or to any explicitly
+declared paired image of $W$.
+
+The same work constructs physical scaling operators by averaging products of
+left and right operators over relative time.  One copy can be interpreted as
+a clock for the other, while physical time is generated by
+$H_{\rm phys}$.  Aguilar-Gutierrez derives the corresponding relational
+framework in chord space.  In that kinematical description the invariant
+algebra takes the schematic form
+\begin{equation}
+  \cA_{\rm inv}
+  =\left(\cB(\cH_0^C)\otimes\cB(\cH_0^S)\right)^{\varphi},
+  \qquad A\in\cB(\cH_0^S),
+  \label{eq:relalg}
+\end{equation}
+with relationally conditioned operators obtained by group averaging
+\citep{AguilarRelational2025}.  Equation~\eqref{eq:relalg} is crucial: gauge
+invariance determines how an operator is dressed, but the displayed
+kinematical construction allows every bounded system operator $A$.
+
+An operator algebra and an operational protocol are not identical data.  A
+protocol additionally states which operators can be implemented, at what
+times and strengths, with which memories and ancillas, and under what cost
+budget.  If all bounded operators and arbitrary ancillas are available, the
+isometry~\eqref{eq:W} can transport the complete protocol.  If only ``simple''
+operators are available, simplicity must be defined on both sides before an
+access comparison is meaningful.
+
+\section{Isometric no-free-access}
+\label{sec:invariance}
+
+Let a diary code $D$ be encoded by an isometry $V:D\to\cH_0$.  A general
+$K$-step observer protocol has retained memory $M_j$ and emits records $R_j$:
+\begin{equation}
+  \Phi_j:
+  \cH_0\otimes M_{j-1}\longrightarrow
+  \cH_0\otimes M_j\otimes R_j.
+  \label{eq:protocol}
+\end{equation}
+No Markov assumption is made: $M_j$ can retain all system-observer memory.
+After the final hidden system and memory are traced out, the protocol induces
+a diary-to-record channel
+\begin{equation}
+  \cN_K^{\cP}:D\longrightarrow R_1\cdots R_K.
+  \label{eq:recordchannel}
+\end{equation}
+
+Transport the encoder and every system leg through $W$:
+\begin{align}
+  V'&=WV,\nonumber\\
+  \Phi_j'&=
+  (\Ad_W\otimes\id_{M_jR_j})\circ\Phi_j\circ
+  (\Ad_{W^\dagger}\otimes\id_{M_{j-1}}),
+  \label{eq:transport}
+\end{align}
+where $\Ad_X(\rho)=X\rho X^\dagger$.  The inverse map is needed only on the
+physical image; any channel extension away from that image is operationally
+irrelevant.
+
+\begin{proposition}[Isometric no-free-access]
+\label{prop:isometry}
+The transported protocol has exactly the same diary-to-record channel:
+\begin{equation}
+  \cN_K^{\cP'}=\cN_K^{\cP}.
+  \label{eq:channel-equality}
+\end{equation}
+If the allowed protocol class, diary-blind comparison class, and decoder class
+are transported by the same isometry, then pairwise record
+distinguishability, code-diamond distance from diary blindness, cumulative
+sequential distance from blind comparison protocols, optimal recovery
+fidelity, and unrestricted observer capacity are equal.
+\end{proposition}
+
+\begin{proof}
+Insert~\eqref{eq:transport} at every step.  Each adjacent
+$W^\dagger W$ cancels.  The sole remaining $W$ acts on the final hidden system
+and disappears under partial trace.  This proves
+\eqref{eq:channel-equality} for every diary input, including inputs entangled
+with an arbitrary reference.  Trace and diamond norms are invariant under
+isometric conjugation.  Transport maps blind protocols bijectively to blind
+protocols and preserves every reachable-state step defect.  Taking infima
+over blind comparisons therefore preserves cumulative distance.  Finally,
+transporting a decoder gives the same recovered reference-diary state.
+\end{proof}
+
+For two diary states $\rho_0,\rho_1$, define
+\begin{equation}
+  \delta_K(\cP)
+  =\frac12\left\|
+    \cN_K^{\cP}(\rho_0)-\cN_K^{\cP}(\rho_1)
+  \right\|_1.
+  \label{eq:delta}
+\end{equation}
+A diary-blind record channel is constant on the declared code.  For every such
+channel $\cC_K$, the triangle inequality gives, using the full diamond norm,
+\begin{equation}
+  \left\|\cN_K^{\cP}-\cC_K\right\|_{\diamond,D}
+  \geq \delta_K(\cP).
+  \label{eq:blindlower}
+\end{equation}
+Both sides of~\eqref{eq:blindlower} are invariant under the transport above.
+
+\begin{corollary}[Equal-energy DSSYK]
+\label{cor:dssyk}
+The equal-energy constraint, paired representation, and one-copy physical
+density of states cannot by themselves change diary distinguishability or
+recovery capacity.  The exact one-copy observer operation
+\begin{equation}
+  A_{\rm one}=W^\dagger A_{\rm phys}W
+  \label{eq:operatortransport}
+\end{equation}
+reproduces the complete record channel of the physical doubled operation.
+Any operational difference requires a protocol restriction not related by
+this transport.
+\end{corollary}
+
+The corollary does not say that every transported operator is easy to
+implement.  It says precisely that implementation cost is the additional
+physical datum needed to make the question nontrivial.
+
+\section{Exact controls: metadata and blindness}
+\label{sec:controls}
+
+Two finite controls calibrate what the proposition does and does not exclude.
+
+\subsection{Charge metadata is not fixed-sector payload}
+
+Let
+\begin{equation}
+  \cH=\bigoplus_q\cH_q
+  \label{eq:charge-decomp}
+\end{equation}
+and consider an observer that records only the sector label,
+\begin{equation}
+  \cN_Q(\rho)
+  =\sum_q\Tr(P_q\rho)|q\rangle\langle q|_R.
+  \label{eq:charge-channel}
+\end{equation}
+States in different sectors are perfectly distinguishable:
+\begin{equation}
+  \delta_Q(\rho_q,\rho_{q'})=1\qquad(q\neq q').
+  \label{eq:header}
+\end{equation}
+Within one sector, however,
+\begin{equation}
+  \cN_Q(\rho)=|q\rangle\langle q|_R
+  \quad\text{for all }\rho\text{ supported in }\cH_q.
+  \label{eq:payloadblind}
+\end{equation}
+Thus fixed-sector pairwise distinguishability is zero.  If
+$d_q=\dim\cH_q$ and half of a maximally entangled payload state is sent
+through~\eqref{eq:charge-channel}, every decoder of the constant record has
+entanglement fidelity at most
+\begin{equation}
+  F_e\leq \frac{1}{d_q^2}.
+  \label{eq:Fe}
+\end{equation}
+We use the convention in which fidelity with a pure target is its overlap.
+The control exposes a constraint label perfectly while carrying no private
+payload inside a fixed sector.  Symmetry-constrained recovery can of course
+show richer behavior when the physical channel acts nontrivially within
+sectors \citep{NakataClouded}; the point of
+\eqref{eq:charge-channel} is to calibrate the metadata-only endpoint.
+
+\subsection{Same-shell diary twirl}
+
+For a $d$-dimensional code, let
+\begin{equation}
+  \cT_D(\rho)=\int dU\,U\rho U^\dagger
+  =\frac{I_D}{d}\Tr\rho,
+  \qquad
+  \cC_K^{\rm twirl}=\cN_K\circ\cT_D.
+  \label{eq:twirl}
+\end{equation}
+The control uses the same shell and observer instrument as the actual channel
+but is exactly diary blind, so $\delta_K(\cC_K^{\rm twirl})=0$.
+
+For a binary classical diary with outputs $\sigma_0,\sigma_1$, the uniform
+twirl outputs $\bar\sigma=(\sigma_0+\sigma_1)/2$.  Directly,
+\begin{equation}
+  \left\|\cN_K^{\rm cq}-\cC_K^{\rm twirl}\right\|_\diamond
+  =\frac12\|\sigma_0-\sigma_1\|_1
+  =\delta_K.
+  \label{eq:twirlidentity}
+\end{equation}
+The twirl therefore saturates the pairwise lower bound
+\eqref{eq:blindlower} for the binary cq restriction.  For a coherent quantum
+code, reference-assisted inputs may give a larger channel distance; the
+universal statement remains~\eqref{eq:blindlower}.
+
+The controls establish a three-way distinction:
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{metadata access}: public energy, charge, or clock labels;
+  \item \emph{directional access}: selected microscopic diary directions;
+  \item \emph{payload access}: controlled recovery of a declared code.
+\end{enumerate}
+Nonzero correlators, nontrivial dressing, or a changed algebra type do not by
+themselves determine which branch is realized.
+
+\section{Relation to existing DSSYK results}
+\label{sec:literature}
+
+The doubled equal-energy construction and its simple dressed detector belong
+to Narovlansky and Verlinde \citep{NarovlanskyVerlinde2023}.  The
+Rahman--Susskind line is an independent DSSYK/de Sitter proposal and a
+competing separation-of-scales interpretation, not a co-origin of the
+equal-energy model
+\citep{SusskindSeparation,RahmanDSJT,RahmanSusskindComments}.  This distinction matters
+because our conclusion concerns the doubled constraint, not the validity of
+the broader DSSYK/de Sitter program.
+
+The adjacent literature supplies several parts of the story without the
+record-channel comparison made here.  Relational chord-space work constructs
+the constraint sector, clock states, and invariant algebra
+\citep{AguilarRelational2025}.  Observer and finite-cutoff papers compute
+entropy, thermodynamics, spectra, correlators, OTOCs, Krylov complexity, and
+algebraic entanglement
+\citep{TiettoVerlinde2025,NarovlanskyDynamics2025,AguilarT2,
+AguilarFiniteCutoff}.  Algebraic work characterizes the double-scaled
+operator algebras \citep{XuAlgebras}; recent $q$-Askey deformations further
+show that the resulting factor type depends on which operators are included
+\citep{AguilarQAskey}.  Rajgadia and Xu provide the closest
+access-language near hit: state-adapted dressed operators restore sensitivity
+to the purity of a selected Kourkoulou--Maldacena state and change the
+emergent algebra type \citep{RajgadiaXu}.  That construction does not define
+an equal-energy shell diary, a memoryful record channel, or an isospectral
+recovery comparison.  Single-sided DSSYK reconstruction and commutant results
+are likewise algebraic rather than diary-channel calculations
+\citep{CaoGao}.
+
+A bounded primary-source scan of these works found no computation combining a
+declared microscopic diary code, a sequential observer record, a distance
+from diary blindness or recovery fidelity, and an isospectral equal-energy
+control.  We do not claim that constraints, relational observables, quantum
+combs, or symmetry-modified recovery are individually new.  Nor do we claim
+an exhaustive no-prior-art result beyond the checked DSSYK neighborhood.
+Information recovery has been studied in de Sitter settings by other methods,
+including islands and observer backreaction \citep{AalsmaSybesma}; those
+works answer a different channel question.
+
+\section{The missing resource constraint}
+\label{sec:cutoff}
+
+Corollary~\ref{cor:dssyk} closes the unrestricted mechanism
+\begin{equation}
+  \begin{aligned}
+    &\text{equal-energy constraint}
+      +\text{paired representation}
+      +\text{full relational algebra}
+      \\
+    &\hspace{3cm}\Longrightarrow\quad
+      \text{new operational access}.
+  \end{aligned}
+  \label{eq:deadmechanism}
+\end{equation}
+The implication in~\eqref{eq:deadmechanism} is false: exact transport gives an
+identical record channel.
+
+This null is comparative and specific to the equal-energy constraint.  It
+does not say that the compact one-copy DSSYK spectrum, finite time resolution,
+or $q$-deformation cannot define an intrinsic bandwidth or cutoff.  Any such
+limitation is shared by the isospectral one-copy and paired descriptions and
+must be analyzed as a property of DSSYK itself, rather than as access created
+by the equal-energy constraint.
+
+A narrower question remains.  The constraint may change the \emph{cost} of
+implementing a code-sensitive record.  To state that question without
+choosing the answer, let $V:D\to\cH_0$ be an encoder, let
+$\cR:R_1\cdots R_K\to D$ be a decoder, and introduce a common implementation
+cost $c(V,\cP,\cR)$.  Define
+\begin{equation}
+  C_{\rm obs}(K,\epsilon;B)
+  =\sup_{D,V,\cP,\cR}
+    \left\{\log\dim D:\begin{array}{l}
+      c(V,\cP,\cR)\leq B,\\[-1mm]
+      1-F_e\!\left(\cR\circ\cN_{K,V}^{\cP}\right)\leq\epsilon
+    \end{array}\right\}.
+  \label{eq:Cobs}
+\end{equation}
+Here $\cN_{K,V}^{\cP}$ includes the encoder, and $F_e$ is entanglement fidelity
+on the declared diary code.  A convention that treats encoding or decoding as
+free is allowed only if stated on both sides.  The cost must be defined on the
+one-copy and doubled descriptions before the diary calculation, and the two
+allowed classes must be matched by the same physical rule.  Candidate
+resources include word length in a declared set of simple matter/chord
+generators, allowed numbers and scaling dimensions of insertions, integrated
+detector coupling and contact count, or operator/Krylov complexity relative to
+a fixed generator set.  None is selected here.  Complexity and finite-cutoff
+observables already have a rich DSSYK literature, so adopting one of them as
+an access cost would require an additional operational derivation rather than
+a relabeling of an existing curve.
+
+\subsection*{Objection: scaling operators are physically selected}
+The strongest apparent counterexample is that the Narovlansky--Verlinde
+scaling operators are already physically selected: they are proposed as the
+operators dual to massive bulk fields \citep{NarovlanskyVerlinde2023}.  We
+grant that this supplies physical motivation for an operator family.  It does
+not yet supply the common resource rule required by~\eqref{eq:Cobs}.
+Selection answers which dressed observables the bulk dictionary singles out;
+a resource rule must additionally say which dimensions, compositions,
+couplings, time supports, and accuracies are affordable, using the same
+budgeting principle in both descriptions.  Moreover, every selected doubled
+operator has the transported one-copy representative $W^\dagger O W$, with
+identical record-channel performance under the transported protocol class.
+Consequently, diary sensitivity of a scaling operator would demonstrate
+physically motivated directional sensitivity.  It would demonstrate an
+access advantage caused by the constraint only if the bulk interpretation
+also derived a resource budget that distinguishes the two implementations
+and is not merely imposed after observing the signal.
+
+This identifies the precise burden behind an operational dual-cutoff claim.
+A bounded spectrum, finite entropy, or Type~II limit may motivate a finite
+observer \citep{CLPW,DeVuystObserver}, but it does not fix
+$c(V,\cP,\cR)$.  Conversely, if a microscopic limit
+derives a budget $B(\Lambda)$ and one finds nontrivial scaling of
+$C_{\rm obs}(K,\epsilon;B(\Lambda))$, then the de Sitter scale would control an
+observer-relative access bandwidth.  That would be a defensible operational
+meaning of ``dual cutoff.''  It would still not imply that $\Lambda$ is a
+literal UV regulator of a fundamental dual theory.
+
+The kinematical conclusion also leaves open the possibility that a
+restricted algebra or cost emerges in a controlled thermodynamic,
+semiclassical, or observer-backreaction limit.  What it excludes is deriving
+that restriction from equal-energy pairing alone.  Until such a resource
+class is obtained, computing a nonzero diary signal for a chosen dressed
+operator would establish sensitivity of that operator family, not an access
+advantage caused by the cosmological constraint.
+
+\section{Discussion}
+\label{sec:discussion}
+
+The result is a demarcation rather than a dynamical solution.  The
+equal-energy constraint makes the doubled description relational and selects
+gauge-invariant dressings, but its physical state space remains isometric to
+one DSSYK.  Exact protocol transport therefore preserves every observer
+record and recovery task.  The charge and twirl controls show why public
+constraint labels, selected microscopic sensitivity, and recoverable payload
+must be tested separately.
+
+The conclusion can be stated compactly:
+\begin{quote}
+The doubled equal-energy constraint cannot create information access under
+isometrically transported protocol classes.  Every access difference in the
+explicit construction is therefore a claim about a restriction on observer
+resources, and the current kinematical relational algebra does not derive that
+restriction.
+\end{quote}
+The first sentence is exact under the transported-class hypotheses.  The
+second is bounded to the current kinematical constructions reviewed above.
+This is compatible with DSSYK remaining useful for de Sitter holography.  It
+locates the additional input that an operational interpretation requires.
+
+\appendix
+
+\section{An energy-matched finite-shell diary}
+\label{app:shell}
+
+The no-free-access result does not require a particular diary.  Nevertheless,
+an explicit finite-shell code shows that the access question can be posed
+without changing the energy header.
+
+For each finite-$N$ disorder realization $\omega$, choose the $2m$ paired
+eigenvalues nearest a target energy $E_*$ and let
+\begin{equation}
+  P_\omega
+  =\sum_{a=1}^{2m}|E_a,E_a\rangle\langle E_a,E_a|.
+  \label{eq:shellprojector}
+\end{equation}
+The induced width $\Delta E_\omega$ is reported per realization.  A useful
+microcanonical regime requires the mean level spacing to be much smaller than
+$\Delta E_\omega$, which in turn must be smaller than the scale on which the
+spectral and operator envelopes vary.
+
+Define a binary classical phase diary
+\begin{align}
+  |d_0\rangle_\omega
+    &=\frac{1}{\sqrt{2m}}\sum_{a=1}^{2m}|E_a,E_a\rangle,
+    \nonumber\\
+  |d_1\rangle_\omega
+    &=\frac{1}{\sqrt{2m}}\sum_{a=1}^{2m}(-1)^a
+      |E_a,E_a\rangle.
+  \label{eq:phasecode}
+\end{align}
+The states are orthogonal and have identical fine-grained energy
+probabilities.  Their distinction is a phase pattern.  Ordering by energy
+rank defines the code before observer outcomes and preserves its label per
+realization.  The first calculation, if a resource class is later derived,
+should remain per realization and report the mean and variance of
+$\delta_K(\omega)$; averaging the channel before inserting the code can erase
+the question by definition.
+
+Equation~\eqref{eq:phasecode} is a binary classical code, not yet a protected
+logical qubit.  A quantum payload extension must additionally control
+coherences against the declared public energy algebra.
+
+\section{Sequential blind-process distance}
+\label{app:comb}
+
+For completeness, compare the actual step maps $\Phi_j$ with maps $\Psi_j$
+whose composed record channel is constant on the diary code.  Let $\eta_j$ be
+the supremum trace-norm difference between the two step outputs on all states
+reachable by the hybrid processes that use either actual or comparison maps
+in earlier slots.  The standard telescoping argument for sequential quantum
+strategies \citep{GutoskiWatrous,GutoskiStrategy} gives
+\begin{equation}
+  \|\cN_K-\cC_K\|_{\diamond,D}
+  \leq \sum_{j=1}^K\eta_j.
+  \label{eq:hybrid}
+\end{equation}
+Define
+\begin{equation}
+  A_K=\inf_{\substack{(\Psi_j):\\
+                      \cC_K\,\mathrm{blind}}}
+      \sum_{j=1}^K\eta_j.
+  \label{eq:AK}
+\end{equation}
+Reliable recovery requires an order-one $A_K$, but order-one $A_K$ is not
+sufficient: a channel may expose one charge or one diary direction without
+supporting generic recovery.  Proposition~\ref{prop:isometry} preserves
+$A_K$ because the isometry bijects the reachable sets and blind comparison
+protocols and leaves every $\eta_j$ unchanged.
+
+The full trace and diamond norms used here range from zero to two.  With a
+normalized half-diamond convention, the right side of
+\eqref{eq:blindlower} would be $\delta_K/2$.
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+
+\end{document}

@@ -13,6 +13,19 @@ finite constrained quantum system, that system *is* a candidate dS
 hologram — which is what dS holography would even mean, given that dS
 has no asymptotic boundary to anchor an AdS-style dual.
 
+Successor-gate update (2026-07-16): the active route is
+`notes/observer_relative_temporal_access_successor_proposal_2026_07_16.md`.
+It replaces the earlier `rho_DSSYK(E)^2` control with the correct paired
+one-copy spectral measure and treats DSSYK as a bounded test of
+observer-relative temporal access, not as evidence that `Lambda` is literally
+a UV regulator. WP0 and WP1 are now complete in
+`notes/dssyk_wp0_protocol_and_overlap_2026_07_16.md` and
+`notes/dssyk_wp1_formal_controls_2026_07_16.md`. Their exact isometric null
+parks DSSYK dynamics until a common one-copy/doubled implementation-cost rule
+is physically derived; the equal-energy representation and full relational
+algebra do not by themselves change recovery capacity. The standalone result
+is drafted in `paper_dssyk_observer_access/main.tex`.
+
 **Why dS is the right target for the Gauss-law question.** In AdS/flat
 space the holography-of-information debate leans on an asymptotic
 boundary; our model, having no geometry, looks under-equipped. But dS
