@@ -26,6 +26,19 @@ is physically derived; the equal-energy representation and full relational
 algebra do not by themselves change recovery capacity. The standalone result
 is drafted in `paper_dssyk_observer_access/main.tex`.
 
+Intrinsic-bandwidth update (2026-07-19):
+`notes/dssyk_intrinsic_bandwidth_gate_2026_07_19.md` directly tests the older
+idea that `Lambda` acts as a dual UV cutoff. The native chord bandwidth does
+give a bounded-spectrum speed limit, but in the Narovlansky--Verlinde
+dictionary the de Sitter radius cancels and the resulting time is microscopic,
+of order $G_N$. Promoting this to an observer cutoff would require a separately
+derived bound on the detector interaction or control Hamiltonian. Result B
+already implies that accurate recovery requires order-one integrated
+diary-sensitive detector action, so the missing ingredient is a physical dS
+rule fixing that action, not another generic continuity theorem. That
+conditional extension is the only live route; unrestricted DSSYK dynamics
+remain parked.
+
 **Why dS is the right target for the Gauss-law question.** In AdS/flat
 space the holography-of-information debate leans on an asymptotic
 boundary; our model, having no geometry, looks under-equipped. But dS

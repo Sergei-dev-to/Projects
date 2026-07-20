@@ -1,12 +1,12 @@
 # Observer Access in Doubled DSSYK
 
-Date: 2026-07-16
+Date: 2026-07-19
 
-Status: first standalone technical draft. The paper extracts the completed
-WP0--WP1 result without project-internal sequencing. Its external claim is a
-DSSYK-specific demarcation result: exact isometric transport preserves all
-record and recovery quantities, so an operational access difference requires
-a separately derived resource restriction.
+Status: technically hardened standalone draft. The paper extracts the
+completed WP0--WP1.5 result without project-internal sequencing. Its external
+claim is a DSSYK-specific demarcation result: exact isometric transport
+preserves all record and recovery quantities, so an operational access
+difference requires a separately derived resource restriction.
 
 Build from this directory with:
 
@@ -37,12 +37,34 @@ Regression artifact:
 python ../sim/dssyk_wp1_controls.py
 ```
 
-Before external circulation:
+External source package:
 
 ```text
-- line-edit after technical review;
-- verify bibliographic publication metadata where journal details are added;
-- decide author/affiliation block;
-- retain the bounded wording of the DSSYK overlap claim;
-- do not present the abstract isometry lemma as a new general QI theorem.
+main.tex
+refs.bib
 ```
+
+The source package builds without external figures, data files, or custom
+classes. `main.pdf` is the verified local rendering and is intentionally not
+part of the source package.
+
+Completed external-readiness checks:
+
+```text
+- technical and adversarial claim review;
+- sector/degeneracy and finite-N versus chord-limit scope pass;
+- bounded primary-source overlap pass;
+- stable bibliography with no unresolved citations;
+- clean PDF build with no layout warnings;
+- numerical regression for the exact finite controls;
+- no project-internal WP language in the manuscript.
+```
+
+Remaining human-supplied submission item:
+
+```text
+- author and affiliation block.
+```
+
+The bounded overlap wording and the statement that the general isometry lemma
+is elementary are part of the scientific scope and should be retained.

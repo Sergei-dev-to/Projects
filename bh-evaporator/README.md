@@ -148,6 +148,17 @@ demarcation theorem and two exact controls, without the internal WP history.
 WP2 is parked pending a physically derived resource class rather than a chosen
 operator family.
 
+The follow-on intrinsic-bandwidth gate is complete in
+`notes/dssyk_intrinsic_bandwidth_gate_2026_07_19.md`. It tests the original
+cutoff question without reopening WP2. In the Narovlansky--Verlinde
+normalization, the native DSSYK bandwidth is
+$B=4\mathcal J/\lambda=1/(2\pi G_N)$, so the associated full-band quantum
+speed limit is microscopic and the de Sitter radius cancels. An observer-level
+cutoff remains conditional on a separately derived detector-resource budget.
+The same note applies Result B to show that accurate record recovery requires
+order-one integrated diary-sensitive detector action; native diary-blind
+bandwidth alone does not supply it.
+
 ## Read in this order
 
 1. `notes/program_reevaluation_2026_07_12.md` -- accessible account of the
@@ -164,9 +175,12 @@ operator family.
    protocol, and formal-control gates for the successor.
 6. `paper_dssyk_observer_access/main.tex` -- standalone short technical draft
    on isometric equivalence and the missing observer-resource constraint.
-7. `notes/evaporation_framework_comparison_map_2026_07_12.md` -- detailed
+7. `notes/dssyk_intrinsic_bandwidth_gate_2026_07_19.md` -- bounded analytic
+   test of whether the native DSSYK bandwidth realizes a cosmological
+   operational cutoff.
+8. `notes/evaporation_framework_comparison_map_2026_07_12.md` -- detailed
    assumption-to-result map across the major frameworks.
-8. `notes/program_reassessment_2026_07_10.md` -- historical reassessment that
+9. `notes/program_reassessment_2026_07_10.md` -- historical reassessment that
    retired the strict gravity/quantum-information demarcation.
 
 Earlier ledgers, conjecture registers, and steering notes remain in `notes/` as
