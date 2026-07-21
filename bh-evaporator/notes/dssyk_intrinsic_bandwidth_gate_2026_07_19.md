@@ -8,6 +8,13 @@ cosmological-cutoff reading. A DSSYK-specific detector calculation is
 conditional on new physical input; no unrestricted DSSYK dynamics project is
 authorized by this note.
 
+The bounded follow-up in
+dssyk_detector_backreaction_resource_audit_2026_07_20.md checked that
+condition directly. A constraint-preserving model detector contact exists,
+but the separate observer-energy and Euclidean backreaction bounds do not
+control its Lorentzian integrated action. The detector branch therefore
+remains parked.
+
 ## 1. Question and relation to the completed access result
 
 The original motivating question was whether the cosmological constant can be

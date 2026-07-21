@@ -69,8 +69,12 @@ the CLPW maximum-entropy clock gives a Cauchy one-read density matching the
 tracial two-point kernel, but neither the clock state nor that POVM fixes a
 post-measurement instrument.  Fresh, persistent, and contact-disturbed
 instruments have the same one-read data and different two-record access.
-Every such completed clock process remains identical after isometric
-transport, while detector action remains unpriced.
+Narovlansky--Verlinde do supply a model constraint-preserving detector
+contact, but the separate observer-energy cap does not bound its normalization
+or integrated action.  A recent Euclidean metric-susceptibility bound likewise
+does not select a Lorentzian instrument.  Every completed clock and detector
+process remains identical after isometric transport while detector action
+remains unpriced.
 \end{abstract}
 
 \section{Introduction}
@@ -630,6 +634,97 @@ of these data bounds $\int dt\,\|H_{\rm int}(t)\|$, contact count, allowed
 scaling dimensions, or implementation error.  Current bulk constructions
 therefore do not yet determine an operational observer cutoff.
 
+\subsection*{Why the available detector and backreaction inputs do not compose}
+It is too strong to say that the doubled proposal contains no observer--field
+contact.  Narovlansky and Verlinde couple a model Unruh detector to their
+constraint-preserving dressed operators through
+\begin{equation}
+ S_{\rm int}=\int d\tau\,
+ \left[X^+(\tau)O_\Delta^-(\tau)
+       +X^-(\tau)O_\Delta^+(\tau)\right],
+ \qquad [H_L-H_R,O_\Delta^\pm]=0,
+ \label{eq:nvdetector}
+\end{equation}
+and obtain
+$\dot P(E_i\!\to E_j)=|X_{ij}|^2G_\Delta(E_j-E_i)$
+\citep{NarovlanskyVerlinde2023}.  This gives a physically motivated form for
+a proper-time contact and a response function.  It does not fix the matrix
+elements $X_{ij}$, switching profile, probe readout, retained memory, or
+number of contacts.
+
+Standard localized-probe measurement theory can turn a specified coupling,
+probe state, and readout into a completely positive instrument, including
+causal composition of several coupling regions
+\citep{FewsterVerch2020,PoloGomezGarayMartinMartinez2022}.  Influence-functional
+methods can likewise represent specified open-system dynamics as a multitime
+process tensor \citep{JorgensenPollock2019}.  These constructions provide the
+right formal machinery for completing Eq.~\eqref{eq:nvdetector}; they take the
+coupling, preparation, and readout as input and therefore do not select their
+gravitational cost.
+
+The observer thermodynamics does not supply that cost indirectly.  In a fixed
+deficit-angle sector, Ref.~\citep{TiettoVerlinde2025} imposes
+\begin{equation}
+ 0\leq E_{\rm obs}\leq E(\psi),
+ \label{eq:observerenergycap}
+\end{equation}
+but does not relate this free-observer energy cap to the normalization or
+duration of Eq.~\eqref{eq:nvdetector}.  The logical gap can be isolated as a
+simple proposition.
+
+\begin{proposition}[Energy-cap/action-budget nonimplication]
+\label{prop:energycap}
+Fix a free detector Hamiltonian and a cap
+$E_{\rm obs}\leq E_{\max}$.  Suppose the allowed models contain a nonzero
+constraint-preserving diary-sensitive interaction difference
+\begin{equation}
+ \Delta H(t)=H(t)-H^{(0)}(t)
+ =g(t)X\otimes\Delta O_{\rm phys}(t),
+ \qquad [H_L-H_R,\Delta O_{\rm phys}(t)]=0,
+ \label{eq:resourceinteraction}
+\end{equation}
+and remain admissible under positive rescalings of its overall normalization
+because the same physical construction imposes no normalization bound.
+Then the energy cap alone implies no finite upper bound on
+\begin{equation}
+ G_D(T)=\int_0^Tdt\,\|\Delta H(t)\|.
+ \label{eq:GDcap}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For any $c>0$, replacing $g(t)$ by $cg(t)$ leaves the free detector
+Hamiltonian, its spectrum, the cap, and constraint preservation unchanged.
+It sends $G_D(T)$ to $cG_D(T)$ and sends the detector transition rates in
+Eq.~\eqref{eq:nvdetector} to $c^2$ times their former values.  Hence no finite
+function of $E_{\max}$ alone bounds $G_D(T)$.  Even if additional physics
+later bounds the interaction pointwise, unrestricted duration or contact
+count can still make the integrated action grow.
+\end{proof}
+
+The closest bounded backreaction near-hit is a recent Euclidean Gaussian
+clock-detector with a smeared metric source.  It obeys the sufficient
+stable-channel condition
+\begin{equation}
+ \frac{\Lambda_{\rm clk}^2}{\Omega_0^2}<\delta_P
+ \label{eq:euclideanadmissibility}
+\end{equation}
+for controlled quadratic backreaction on a chosen projected gravitational
+channel \citep{EspindolaAli2026}.  This is a genuine metric-susceptibility
+bound, but its source strength, smearing, and detector gap are model inputs;
+the construction is Euclidean and does not provide a Lorentzian readout,
+matter-diary contact, or relation between
+Eq.~\eqref{eq:euclideanadmissibility} and $G_D(T)$.  Thus the explicit DSSYK
+contact, observer-energy cap, and Euclidean admissibility inequality are
+separately useful but do not compose into the resource law required by
+Eq.~\eqref{eq:Cobs}.
+
+Transporting Eq.~\eqref{eq:nvdetector} through the equal-energy isometry also
+preserves its norm, detector response, every instrument built from the same
+probe preparation and readout, and $G_D(T)$.  A nontrivial doubled advantage
+would still require an independently derived locality or implementation rule
+that is not merely the transported one-copy rule.
+
 \subsection*{A concrete missing resource: contour depth}
 The standard chaos four-point function is a proper 2-OTO functional: its
 alternating early/late ordering requires two forward and two backward contour
@@ -768,6 +863,9 @@ restriction needed for a constraint-induced difference.
 \end{quote}
 The first sentence is exact under the transported-class hypotheses.  The
 second is bounded to the current bulk constructions reviewed above.
+The detector audit makes that scope more precise: a model worldline contact
+exists, but the checked observer-energy and Euclidean backreaction bounds do
+not price its Lorentzian use.
 This is compatible with DSSYK remaining useful for de Sitter holography.  It
 locates the additional input that an operational interpretation requires.
 

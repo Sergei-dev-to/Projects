@@ -22,6 +22,12 @@ two-record access. A finite two-contact detector makes the difference
 operational, while isometric transport reproduces every completed process in
 one-copy DSSYK. The missing inputs are therefore the clock instrument,
 detector action, and compiler cost.
+The follow-up detector-backreaction audit identifies the explicit
+Narovlansky--Verlinde model contact and proves that the separate observer-
+energy cap does not bound its integrated diary-sensitive action. A recent
+Euclidean metric-susceptibility inequality is retained as the closest
+backreaction near-hit, but it supplies neither a Lorentzian instrument nor a
+map to detector action. WP2 therefore remains closed.
 
 Build from this directory with:
 
@@ -47,6 +53,7 @@ Source notes:
 ../notes/dssyk_observer_process_completion_2026_07_19.md
 ../notes/dssyk_observer_process_wp_a3_2026_07_19.md
 ../notes/dssyk_wp2_clock_resource_gate_2026_07_20.md
+../notes/dssyk_detector_backreaction_resource_audit_2026_07_20.md
 ```
 
 Regression artifact:

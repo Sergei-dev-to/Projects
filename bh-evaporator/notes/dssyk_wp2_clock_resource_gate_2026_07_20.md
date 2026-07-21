@@ -11,6 +11,15 @@ statistics give different two-record access, and a finite contact-backreaction
 control gives a third completion. All of them transport exactly to the
 isospectral one-copy model.
 
+A follow-up detector-backreaction audit sharpens the last point without
+reopening the gate. Narovlansky--Verlinde do write a model Unruh-detector
+contact with the constraint-preserving dressed operators. What remains absent
+is not every contact, but a Lorentzian instrument and a physical law pricing
+its normalization, duration, repetition count, or retained memory. The
+separate DSSYK observer-energy cap does not imply such a law; the proof and
+the closest Euclidean backreaction near-hit are recorded in
+`dssyk_detector_backreaction_resource_audit_2026_07_20.md`.
+
 The earlier wording that the CLPW maximum-entropy clock *selects* a Cauchy
 timing-error channel and common temporal memory was too strong. The Cauchy
 formula survives as a canonical positive completion that matches the tracial
@@ -70,9 +79,10 @@ contact model are supplied.
    endpoint in a tracial two-point function. Conditioning on a highly excited
    observer approximately restores the QFT correlator.
 3. **DSSYK observer data.** Narovlansky--Verlinde supply constraint-preserving
-   scaling operators and detector rates; Aguilar-Gutierrez supplies the
-   relational algebra; Tietto--Verlinde supply observer thermodynamics and a
-   model-specific energy cap. None supplies the instrument data in (1.1).
+   scaling operators, a model Unruh-detector contact, and detector rates;
+   Aguilar-Gutierrez supplies the relational algebra; Tietto--Verlinde supply
+   observer thermodynamics and a model-specific energy cap. None supplies the
+   instrument data in (1.1) or relates the cap to detector action.
 4. **Recent anti-scrambling data.** The OTOC and tracial papers sharpen the
    correlator/algebra story, but do not give a positive passive record comb.
    The separate contour audit shows that a proper 2-OTO functional needs a
@@ -91,6 +101,31 @@ both. Sequential experiments therefore compose instruments, not POVM effects
 alone. Covariant observables for half-line generators can be constructed by
 Naimark dilation, but the dilation and its retained degrees of freedom are
 additional operational data.
+
+### 2.3 Detector-backreaction follow-up
+
+Standard localized-probe and influence-functional frameworks can derive a
+quantum instrument or process tensor after a coupling, switching profile,
+probe preparation, and readout have been declared. They do not derive those
+choices or their gravitational price. The closest bounded near-hit is a 2026
+Euclidean Gaussian clock-detector model with a smeared metric source and the
+sufficient saddle-stability condition
+
+$$
+\frac{\Lambda_{\rm clk}^2}{\Omega_0^2}<\delta_P.              \tag{2.2}
+$$
+
+This controls metric susceptibility on a chosen Euclidean channel. It does
+not define a Lorentzian CP instrument, couple the detector to the DSSYK diary
+operator, or bound the integrated diary-sensitive action used below.
+
+The separate observer-energy cap cannot fill that gap. If
+$\Delta H(t)=g(t)X\otimes\Delta O_{\rm phys}(t)$ preserves the constraint,
+then rescaling $g\mapsto cg$ leaves the free observer spectrum and its energy
+cap unchanged while sending $G_D(T)\mapsto cG_D(T)$. Even a future pointwise
+coupling bound would require a duration or contact-count bound before it
+controls accumulated action. Thus the checked contact, energy cap, and
+backreaction inequality are non-composable at the current level of input.
 
 ## 3. General one-time clock overlap
 
@@ -346,7 +381,9 @@ Accordingly:
    instrument.
 4. **Reopen only on new physical input:** an explicit worldline Naimark
    dilation/instrument, retained-memory rule, contact Hamiltonian including
-   backreaction, and a common one-copy/doubled implementation cost.
+   backreaction, and a common one-copy/doubled implementation cost or action
+   bound. A free-observer energy cap or Euclidean saddle-stability condition
+   alone is insufficient.
 
 Allowed external framing:
 
@@ -388,6 +425,14 @@ Not allowed:
   [*Symmetry Sectors in Chord Space and Relational Holography in the DSSYK*](https://arxiv.org/abs/2506.21447).
 - Tietto and Verlinde,
   [*A Microscopic Model of de Sitter Spacetime with an Observer*](https://arxiv.org/abs/2502.03869).
+- Fewster and Verch,
+  [*Quantum Fields and Local Measurements*](https://arxiv.org/abs/1810.06512).
+- Polo-Gomez, Garay, and Martin-Martinez,
+  [*A Detector-Based Measurement Theory for Quantum Field Theory*](https://arxiv.org/abs/2108.02793).
+- Jorgensen and Pollock,
+  [*Exploiting the Causal Tensor Network Structure of Quantum Processes to Efficiently Simulate Non-Markovian Path Integrals*](https://arxiv.org/abs/1902.00315).
+- Espindola and Ali,
+  [*Spectral Admissibility of Real Observers in Euclidean de Sitter Gravity*](https://arxiv.org/abs/2605.30423).
 - Egusquiza and Muga,
   [*Free Motion Time-of-Arrival Operator and Probability Distribution*](https://arxiv.org/abs/quant-ph/9905023).
 - Leppajarvi and Sedlak,

@@ -147,8 +147,10 @@ The standalone external-facing draft is in
 `paper_dssyk_observer_access/main.tex`. It presents the result as a DSSYK
 demarcation theorem and exact controls, without the internal WP history. The
 clock-state/instrument gate of WP2 is complete with a negative verdict; its
-scaling-operator/detector branch remains parked pending a physically derived
-instrument and interaction resource rather than a chosen operator family.
+detector-resource follow-up finds the explicit Narovlansky--Verlinde model
+contact but no physical law pricing its normalization, duration, repetition,
+or retained memory. The branch is closed at the current input rather than
+waiting on a chosen scaling-operator calculation.
 
 The follow-on intrinsic-bandwidth gate is complete in
 `notes/dssyk_intrinsic_bandwidth_gate_2026_07_19.md`. It tests the original
@@ -193,8 +195,21 @@ access. A finite two-contact detector makes this difference operational, and
 extending the equal-energy isometry by the identities on clock and memory
 reproduces every completed process in one-copy DSSYK. The 3D model-specific
 hardest clock scale remains Planckian, with the radius canceled. WP2 is closed
-at the current bulk input; reopening requires a bulk-derived clock instrument,
-detector contact/backreaction rule, and common implementation budget.
+at the current bulk input. The follow-up audit in
+`notes/dssyk_detector_backreaction_resource_audit_2026_07_20.md` proves that
+the separate observer-energy cap does not bound the integrated action of the
+model detector contact. Reopening requires a source-derived Lorentzian
+instrument, retained-memory/backreaction rule, and common implementation
+budget; the existence of an unpriced contact is not enough.
+
+A broader successor is chartered separately in
+`notes/observer_process_capacity_quantum_gravity_charter_2026_07_20.md`. It
+asks whether a self-contained gravitating observer has a derived multitime
+record and recovery capacity bounded by its clock, memory, thermodynamic, and
+geometric resources. This is not a reopened DSSYK WP2: the proposed program
+begins with an abstract process-capacity theorem and a joint Lorentzian
+instrument/backreaction model, and returns to DSSYK only after a bulk process
+budget exists.
 
 ## Read in this order
 
@@ -222,12 +237,17 @@ detector contact/backreaction rule, and common implementation budget.
    slot, contour-depth, and implementation-resource audit; records the stop
    verdict for an exact DSSYK OTOC.
 10. `notes/dssyk_wp2_clock_resource_gate_2026_07_20.md` -- completed negative
-    clock-state/instrument gate, general overlap, explicit inequivalent
-    two-contact combs, and exact one-copy/doubled null.
-11. `notes/evaporation_framework_comparison_map_2026_07_12.md` -- detailed
-   assumption-to-result map across the major frameworks.
-12. `notes/program_reassessment_2026_07_10.md` -- historical reassessment that
-   retired the strict gravity/quantum-information demarcation.
+     clock-state/instrument gate, general overlap, explicit inequivalent
+     two-contact combs, and exact one-copy/doubled null.
+11. `notes/dssyk_detector_backreaction_resource_audit_2026_07_20.md` --
+    explicit model-contact audit and energy-cap/action-budget nonimplication.
+12. `notes/observer_process_capacity_quantum_gravity_charter_2026_07_20.md` --
+    larger successor charter for deriving observer process capacity from
+    self-contained measurement, memory, and gravitational resource laws.
+13. `notes/evaporation_framework_comparison_map_2026_07_12.md` -- detailed
+    assumption-to-result map across the major frameworks.
+14. `notes/program_reassessment_2026_07_10.md` -- historical reassessment that
+    retired the strict gravity/quantum-information demarcation.
 
 Earlier ledgers, conjecture registers, and steering notes remain in `notes/` as
 the audit trail. Their old sequencing instructions are historical wherever

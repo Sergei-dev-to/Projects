@@ -2,34 +2,35 @@
 
 Date: 2026-07-16
 
-Status: corrected successor proposal, with **WP0 and WP1 completed** in
+Status: corrected successor proposal, with **WP0--WP2 completed** in
 `dssyk_wp0_protocol_and_overlap_2026_07_16.md` and
 `dssyk_wp1_formal_controls_2026_07_16.md`. This is a new program built from
 results A--D, not an unfinished obligation of the completed evaporation
 program. It supersedes the `rho_DSSYK(E)^2` kinematics and the
 three-dimensional matched null proposed in
-`dssyk_comb_and_factorized_null_2026_07_16.md`. A bounded WP2
-clock-state/instrument pass is now complete in
-`dssyk_wp2_clock_resource_gate_2026_07_20.md`. Choosing the canonical
-covariant time POVM fixes an exact one-read overlap, but the bulk sources do
-not select its post-measurement instrument. Explicit fresh, persistent, and
-contact-disturbed instruments give different two-record access and all have
-an exact one-copy/doubled isometric null. The detector branch remains parked
-because the relational construction supplies neither that clock instrument
-nor a worldline interaction budget. The external-facing result is extracted
-in `paper_dssyk_observer_access/main.tex`.
+`dssyk_comb_and_factorized_null_2026_07_16.md`. The WP2 clock-instrument and
+detector-resource gates are complete in
+`dssyk_wp2_clock_resource_gate_2026_07_20.md` and
+`dssyk_detector_backreaction_resource_audit_2026_07_20.md`. A clock state plus
+a chosen covariant POVM fixes one-read statistics, not a multitime instrument.
+Narovlansky--Verlinde do supply a constraint-preserving model detector contact,
+but the checked bulk constructions supply no law pricing its normalization,
+duration, repetition count, or retained memory. Every declared completion
+still transports exactly to the isospectral one-copy model. The external-facing
+result is extracted in `paper_dssyk_observer_access/main.tex`.
 
 ## Decision in one paragraph
 
-There is a worthwhile successor project, but its question is not whether
-DSSYK proves that the cosmological constant is literally a UV regulator. The
-defensible question is whether a positive-cosmological-constant-inspired
-constraint selects an observer algebra whose *temporal information access*
-differs from an isospectral unconstrained description. The project should hold
-the physical spectrum and diary code fixed, vary the allowed observer protocol,
-and measure record distinguishability, latency, and recovery. DSSYK is the
-first named test because its equal-energy constraint and dressed operators are
-explicit. It is a flagship example, not the premise or conclusion.
+The successor proved worthwhile, but its result is a demarcation rather than a
+positive identification of the cosmological constant with a UV regulator. The
+test held the physical spectrum and diary code fixed and asked whether the
+positive-cosmological-constant-inspired constraint selected different
+*temporal information access* from an isospectral one-copy description. It did
+not: the constraint, relational algebra, scaling-operator family, clock state,
+and available correlators do not by themselves select a multitime instrument
+and a resource law, while every declared protocol transports isometrically.
+DSSYK is therefore a flagship portability test for the observer-access
+framework, not the premise or conclusion of a general cutoff claim.
 
 ## 1. Reconnecting to the original question
 
@@ -47,10 +48,10 @@ least four different things:
 The literature contains versions of the first three, but not a consensus that
 `Lambda` is literally a universal UV regulator. Finite-cutoff DSSYK work studies
 deformed spectra, thermodynamics, correlators, complexity, entanglement, and
-stretched-horizon interpretations. The present program can contribute most
-cleanly to meaning 4. It asks whether the de Sitter scale controls an
-observer-relative *process capacity*, rather than inferring a cutoff from a
-finite entropy or a bounded spectrum alone.
+stretched-horizon interpretations. The present program contributes most
+cleanly to meaning 4 by identifying what would be needed for the de Sitter
+scale to control an observer-relative *process capacity*, rather than inferring
+a cutoff from finite entropy or a bounded spectrum alone.
 
 The long-term operational quantity is
 
@@ -120,12 +121,15 @@ named constrained holographic model
 + isospectral control.                                    (3.1)
 ```
 
-This is the prospective niche. It is not a claim that constraints, observer
-dependence, DSSYK algebras, or symmetry-modified recovery are individually
-new. Rajgadia--Xu's state-adapted dressed operators are the closest algebraic
-near hit located: they restore access to the purity of a selected KM state,
-but do not define an equal-energy shell diary, memoryful record channel, or
-isospectral recovery control.
+This was the pre-registered niche. The completed gates explain why the
+conjunction is absent: a dressed operator family or observer algebra is not yet
+a multitime instrument, and an explicit detector contact is not yet a priced
+resource class. The resulting contribution is the demarcation itself, not a
+claim that constraints, observer dependence, DSSYK algebras, or
+symmetry-modified recovery are individually new. Rajgadia--Xu's state-adapted
+dressed operators are the closest algebraic near hit located: they restore
+access to the purity of a selected KM state, but do not define an equal-energy
+shell diary, memoryful record channel, or isospectral recovery control.
 
 ## 4. Correct DSSYK kinematics
 
@@ -197,24 +201,33 @@ shell-preserving encoder
 V_omega : H_D -> span{|E_i,E_i> : E_i in I}.             (6.1)
 ```
 
-The first calculation, if authorized past the resource gate, uses the binary
-classical phase diary fixed in WP0. Its two states have identical energy
-probabilities and are defined by energy rank before later observer outcomes.
-A fixed energy eigenvalue is generically nondegenerate and cannot carry the
-code by itself; a multi-level finite shell is load-bearing. A logical-qubit
-extension is later work and requires a stronger fixed-header code condition.
+The pre-registered first calculation would have used the binary classical
+phase diary fixed in WP0. It was not authorized past the completed WP2 resource
+gate, but the code definition remains the correct target for any future
+reopening. Its two states have identical energy probabilities and are defined
+by energy rank before later observer outcomes. A fixed energy eigenvalue is
+generically nondegenerate and cannot carry the code by itself; a multi-level
+finite shell is load-bearing. A logical-qubit extension would require a
+stronger fixed-header code condition.
 
 ### 6.2 Observer protocol
 
-Use the explicit NV simple scaling-operator detector family fixed in WP0, not
-an arbitrarily chosen element of the full relational matrix algebra. At record
-time `tau_j`, couple a fresh record ancilla, while retaining any declared
-observer memory:
+Begin with the explicit NV constraint-preserving scaling-operator contact, not
+an arbitrarily chosen element of the full relational matrix algebra. A finite
+record model may complete that contact by coupling a record ancilla at time
+`tau_j`, while retaining any separately declared observer memory:
 
 ```text
 U_j = exp[-i g_j O_phys(tau_j) tensor X_(R_j)],
 N_K^P : diary code -> R_1 ... R_K.                       (6.2)
 ```
+
+Equation (6.2) is a candidate instrument completion, not something derived by
+NV. The switching profile, coupling normalization `g_j`, probe preparation,
+readout, state update, contact schedule, and retained-memory rule remain extra
+operational inputs. Standard detector measurement theory can construct the
+resulting instrument once those inputs are supplied; it does not select or
+price them.
 
 The native physical evolution is generated by `(H_L+H_R)/2`; one DSSYK copy
 also supplies the relational-time interpretation. Any additional clock
@@ -310,8 +323,9 @@ Completed in `dssyk_wp0_protocol_and_overlap_2026_07_16.md`:
    DSSYK--de Sitter scale program.
 2. No checked DSSYK work computes a diary-dependent record channel, recovery
    fidelity, process distance, or equivalent quantity.
-3. A fixed-rank shell, energy-matched binary phase diary, NV-simple detector,
-   native time, and per-realization disorder rule are specified.
+3. A fixed-rank shell, energy-matched binary phase diary, candidate NV-simple
+   detector family, native time, and per-realization disorder rule are
+   specified.
 4. The protocol gate is conditional because Aguilar-Gutierrez's chord-space
    kinematical relational algebra uses all `B(H_0^S)`, rather than deriving a
    restricted observer instrument.
@@ -335,25 +349,23 @@ Completed in `dssyk_wp1_formal_controls_2026_07_16.md`:
 Deliverable: a control table showing spectrum, protocol algebra, public
 labels, private code, and access witness.
 
-### WP2 -- clock-state/instrument gate (complete negative verdict)
+### WP2 -- clock-instrument and detector-resource gates (complete negative verdict)
 
-The source audit corrects the earlier physical-selection claim. CLPW supply a
+The clock audit corrects the earlier physical-selection claim. CLPW supply a
 lower-bounded clock Hamiltonian and clock states, but no time POVM,
-post-measurement instrument, or repeated detector contacts. Choosing the
-canonical covariant time POVM gives the exact general overlap
+post-measurement instrument, or repeated detector contacts. If one additionally
+chooses the canonical covariant time POVM, the one-read overlap is
 
 ```text
 M_f(omega) = integral dq f(q+omega) f(q)*,                 (8.1)
 ```
 
-and the maximum-entropy state gives the Cauchy completion
-`M_f(omega)=exp(-pi R_dS |omega|)`. This matches the tracial two-point
-kernel, but is not a bulk-derived record channel.
-
-Compatible fresh, persistent, and contact-disturbed instruments have the
-same one-read density and different two-record access. A finite two-contact
-parity-memory detector makes the distinction explicit on the relational
-phase diary:
+and the maximum-entropy clock state gives the Cauchy completion
+`M_f(omega)=exp(-pi R_dS |omega|)`. That kernel matches a tracial two-point
+filter; it is not yet a bulk-derived record channel. Fresh/reset, persistent
+Naimark-memory, and contact-disturbed instruments can have the same one-read
+density and different two-record access. A finite two-contact parity-memory
+detector makes the nonuniqueness explicit:
 
 ```text
 delta_2,persistent = 1,
@@ -362,35 +374,49 @@ delta_2,kicked     = |cos(kappa Delta E)|.                 (8.2)
 ```
 
 Extending the equal-energy isometry by the identities on clock and detector
-memory makes every completed comb exactly identical in one copy and in the
-doubled model. The calculation and source audit are in
-`dssyk_wp2_clock_resource_gate_2026_07_20.md`.
+memory makes every completed comb exactly identical in one-copy and doubled
+DSSYK. The proof, controls, and correction of the earlier common-memory wording
+are in `dssyk_wp2_clock_resource_gate_2026_07_20.md`.
 
-The original scaling-operator/detector probe remains parked until a common
-worldline implementation measure is physically derived and pre-registered on
-the one-copy and doubled sides. Candidate measures are simple-generator word
-length, allowed matter insertions/scaling dimensions, integrated detector
-coupling/contact count, or operator/Krylov complexity with a fixed generator
-set. A clock state or one-read POVM cannot replace one of these: it fixes
-neither the multitime instrument nor interaction strength or contact count.
+The detector follow-up closes the remaining resource-selection question at the
+current input. Narovlansky--Verlinde write the constraint-preserving model
+contact
 
-1. Work per realization on a finite shell.
-2. Evaluate `delta_1` and `delta_2` for a binary diary using the natural dressed
-   operator instrument.
-3. Compare with the isospectral one-copy protocol.
-4. Determine whether the answer is metadata, directional, or payload access.
+```text
+S_int = integral d tau [X^+ O^-_phys + X^- O^+_phys].      (8.3)
+```
 
-Clock deliverable: complete as a negative gate, with a general overlap,
-explicit inequivalent two-slot instruments, a finite detector comb, and zero
-one-copy/doubled differential. The original detector deliverable is not
-authorized without a bulk-selected instrument and implementation budget. A
-known thermal/dressed two-point function without code-state dependence is a
-null result, not success.
+Standard measurement and influence-functional machinery can turn a fully
+specified version of this contact into an instrument or process tensor. The
+model does not, however, fix its normalization, switching, readout, retained
+memory, duration, or repetition count. The Tietto--Verlinde observer-energy cap
+alone does not bound the diary-sensitive accumulated action
+
+```text
+G_D(T) = integral_0^T dt ||H(t)-H^(0)(t)||,                (8.4)
+```
+
+because the cap imposes no contact-normalization condition: in any class that
+remains admissible under positive rescaling, the rescaling leaves the free
+observer-energy cap unchanged while rescaling `G_D`. The Espindola--Ali
+Euclidean metric-susceptibility bound is a useful near hit, but it supplies
+neither a Lorentzian CP instrument nor a map to (8.4). This conditional analytic
+energy-cap/action-budget nonimplication and the bounded source audit are in
+`dssyk_detector_backreaction_resource_audit_2026_07_20.md`.
+
+WP2 deliverable: the clock-state/instrument nonidentifiability proposition,
+three exact two-slot controls, the explicit NV contact audit, and the
+energy-cap/action-budget nonimplication. Scaling-operator numerics and exact
+DSSYK OTOCs are not authorized by the present inputs: they would evaluate a
+chosen, unpriced protocol rather than test a constraint-selected resource law.
 
 ### WP3 -- conditional scaling and recovery
 
-Proceed only if WP2 finds a disorder-stable microscopic signal not reducible
-to public labels:
+Status: **not authorized at the current bulk input.** Reopen only if a future
+construction supplies a Lorentzian instrument, a retained-memory/backreaction
+rule, and a common one-copy/doubled interaction-action, contact, or
+implementation-cost bound. If those inputs produce a disorder-stable
+microscopic signal not reducible to public labels:
 
 1. extend to larger `K` and diary dimension;
 2. estimate `A_K` or bound distance to the full blind-comb class;
@@ -414,18 +440,22 @@ Stop or reframe if any of the following occurs:
   available;
 - the isospectral one-copy control reproduces the same access profile.
 
-The final condition is scientifically useful: it would show that the
-equal-energy description changes representation but not the declared
-operational access.
+The final condition fired exactly in WP1. WP2 further showed that neither the
+clock data nor the currently available contact and backreaction inputs define a
+non-transportable restricted process class. These are scientifically useful
+endpoints: the equal-energy description changes representation, while every
+declared operational completion has the same access.
 
 ## 10. Claims allowed and prohibited
 
-Allowed after successful gates:
+Allowed from the completed gates:
 
 ```text
-The natural constraint-dressed DSSYK observer protocol changes (or does not
-change) a specified temporal diary-access witness relative to an isospectral
-one-copy protocol.
+The equal-energy constraint does not create temporal diary access: every
+declared observer protocol and resource rule transports exactly to an
+isospectral one-copy description. Current DSSYK and de Sitter observer inputs
+do not yet select the Lorentzian multitime instrument and implementation budget
+needed to make a stronger operational cutoff claim.
 ```
 
 Potential later interpretation:
@@ -449,14 +479,23 @@ the result solves the cosmological constant problem.
 ## 11. Go/no-go recommendation
 
 **WP0--WP2 are complete; close the successor at the current bulk input.** Do
-not open a general DSSYK or de Sitter-holography program. Exact transported
-protocols are a null, the full relational algebra supplies no detector
-restriction, and the clock state plus canonical one-read data do not select a
-sequential instrument. Reopen only if the bulk observer construction fixes a
-time instrument, retained-memory/backreaction rule, and common
-interaction-action or contact budget independently of the desired result.
-Until then, the instrument nonidentifiability result plus the WP1 isometric
-demarcation is the endpoint.
+not open a general DSSYK or de Sitter-holography calculation. Exact transported
+protocols are a null; the clock state does not select a multitime instrument;
+and the explicit NV detector contact remains unpriced. Neither the
+Tietto--Verlinde observer-energy cap nor the available Euclidean and Lorentzian
+backreaction results supplies the missing action, duration, contact-count, or
+memory law. Reopen only if a bulk construction jointly derives a Lorentzian
+instrument, retained-memory/backreaction rule, and a common one-copy/doubled
+implementation budget. Until then, the WP1 no-free-access theorem, the
+clock-state/instrument nonidentifiability result, and the
+energy-cap/action-budget nonimplication are the endpoint.
+
+This closes the DSSYK mechanism tested here, not the larger question of finite
+observer capacity in quantum gravity. A separate successor charter is in
+`observer_process_capacity_quantum_gravity_charter_2026_07_20.md`. It seeks a
+process-capacity law derived jointly from a self-contained observer instrument,
+memory, and gravitational resource budget, and returns to DSSYK only after that
+bulk law exists.
 
 ## Primary literature map
 
@@ -474,3 +513,11 @@ demarcation is the endpoint.
 - Aguilar-Gutierrez, Kukolj, and Seitz, [q-Askey Deformations of Double-Scaled SYK](https://arxiv.org/abs/2605.13956).
 - Rahman and Susskind, [Comments on a Paper by Narovlansky and Verlinde](https://arxiv.org/abs/2312.04097).
 - Rajgadia and Xu, [Emergent States and Algebras from the Double-Scaling Limit of Pure States in SYK](https://arxiv.org/abs/2604.14387).
+- Fewster and Verch, [Quantum Fields and Local Measurements](https://arxiv.org/abs/1810.06512).
+- Polo-Gomez, Garay, and Martin-Martinez, [A Detector-Based Measurement Theory for Quantum Field Theory](https://arxiv.org/abs/2108.02793).
+- Jorgensen and Pollock, [Exploiting the Causal Tensor Network Structure of Quantum Processes to Efficiently Simulate Non-Markovian Path Integrals](https://arxiv.org/abs/1902.00315).
+- Raval, Hu, and Anglin, [Stochastic Theory of Accelerated Detectors in a Quantum Field](https://arxiv.org/abs/gr-qc/9510002).
+- Lin and Hu, [Backreaction and Unruh Effect: New Insights from Exact Solutions of Uniformly Accelerated Detectors](https://arxiv.org/abs/gr-qc/0611062).
+- Espindola and Ali, [Spectral Admissibility of Real Observers in Euclidean de Sitter Gravity](https://arxiv.org/abs/2605.30423).
+- Cui and Kolchmeyer, [A de Sitter Anti-Scrambling Algebra](https://arxiv.org/abs/2607.13665).
+- Chen, Stanford, Tang, and Yang, [Negative Shocks versus Static Patch Holography](https://arxiv.org/abs/2607.14042).
