@@ -8,10 +8,15 @@ Status: corrected successor proposal, with **WP0 and WP1 completed** in
 results A--D, not an unfinished obligation of the completed evaporation
 program. It supersedes the `rho_DSSYK(E)^2` kinematics and the
 three-dimensional matched null proposed in
-`dssyk_comb_and_factorized_null_2026_07_16.md`. WP2 is parked at an explicit
-resource-selection gate: exact transported protocols are an isometric null,
-while the literature's explicit kinematical relational construction contains
-all bounded system operators. The external-facing WP0--WP1 result is extracted
+`dssyk_comb_and_factorized_null_2026_07_16.md`. A bounded WP2
+clock-state/instrument pass is now complete in
+`dssyk_wp2_clock_resource_gate_2026_07_20.md`. Choosing the canonical
+covariant time POVM fixes an exact one-read overlap, but the bulk sources do
+not select its post-measurement instrument. Explicit fresh, persistent, and
+contact-disturbed instruments give different two-record access and all have
+an exact one-copy/doubled isometric null. The detector branch remains parked
+because the relational construction supplies neither that clock instrument
+nor a worldline interaction budget. The external-facing result is extracted
 in `paper_dssyk_observer_access/main.tex`.
 
 ## Decision in one paragraph
@@ -330,13 +335,44 @@ Completed in `dssyk_wp1_formal_controls_2026_07_16.md`:
 Deliverable: a control table showing spectrum, protocol algebra, public
 labels, private code, and access witness.
 
-### WP2 -- minimal DSSYK probe (parked)
+### WP2 -- clock-state/instrument gate (complete negative verdict)
 
-Parked until a common resource measure is physically derived and then
-pre-registered on the one-copy and
-doubled sides. Candidate measures are simple-generator word length, allowed
-matter insertions/scaling dimensions, integrated detector coupling/contact
-count, or operator/Krylov complexity with a fixed generator set.
+The source audit corrects the earlier physical-selection claim. CLPW supply a
+lower-bounded clock Hamiltonian and clock states, but no time POVM,
+post-measurement instrument, or repeated detector contacts. Choosing the
+canonical covariant time POVM gives the exact general overlap
+
+```text
+M_f(omega) = integral dq f(q+omega) f(q)*,                 (8.1)
+```
+
+and the maximum-entropy state gives the Cauchy completion
+`M_f(omega)=exp(-pi R_dS |omega|)`. This matches the tracial two-point
+kernel, but is not a bulk-derived record channel.
+
+Compatible fresh, persistent, and contact-disturbed instruments have the
+same one-read density and different two-record access. A finite two-contact
+parity-memory detector makes the distinction explicit on the relational
+phase diary:
+
+```text
+delta_2,persistent = 1,
+delta_2,fresh      = |M_f(Delta E)|^2,
+delta_2,kicked     = |cos(kappa Delta E)|.                 (8.2)
+```
+
+Extending the equal-energy isometry by the identities on clock and detector
+memory makes every completed comb exactly identical in one copy and in the
+doubled model. The calculation and source audit are in
+`dssyk_wp2_clock_resource_gate_2026_07_20.md`.
+
+The original scaling-operator/detector probe remains parked until a common
+worldline implementation measure is physically derived and pre-registered on
+the one-copy and doubled sides. Candidate measures are simple-generator word
+length, allowed matter insertions/scaling dimensions, integrated detector
+coupling/contact count, or operator/Krylov complexity with a fixed generator
+set. A clock state or one-read POVM cannot replace one of these: it fixes
+neither the multitime instrument nor interaction strength or contact count.
 
 1. Work per realization on a finite shell.
 2. Evaluate `delta_1` and `delta_2` for a binary diary using the natural dressed
@@ -344,7 +380,10 @@ count, or operator/Krylov complexity with a fixed generator set.
 3. Compare with the isospectral one-copy protocol.
 4. Determine whether the answer is metadata, directional, or payload access.
 
-Deliverable: one finite-shell curve or analytic expression with variance. A
+Clock deliverable: complete as a negative gate, with a general overlap,
+explicit inequivalent two-slot instruments, a finite detector comb, and zero
+one-copy/doubled differential. The original detector deliverable is not
+authorized without a bulk-selected instrument and implementation budget. A
 known thermal/dressed two-point function without code-state dependence is a
 null result, not success.
 
@@ -409,14 +448,15 @@ the result solves the cosmological constant problem.
 
 ## 11. Go/no-go recommendation
 
-**WP0--WP1 are complete; park WP2 at the resource-selection gate.** Do not open
-a general DSSYK or de Sitter-holography program. Exact transported protocols
-are now proved to be a null, and the full relational algebra supplies no
-restriction. The successor earns a dynamics calculation only after one common
-implementation-cost rule is physically derived and fixed independently of the
-desired result. If no such rule can be justified, WP1 is the clean endpoint:
-the equal-energy model changes representation and relational interpretation,
-but not unrestricted operational access.
+**WP0--WP2 are complete; close the successor at the current bulk input.** Do
+not open a general DSSYK or de Sitter-holography program. Exact transported
+protocols are a null, the full relational algebra supplies no detector
+restriction, and the clock state plus canonical one-read data do not select a
+sequential instrument. Reopen only if the bulk observer construction fixes a
+time instrument, retained-memory/backreaction rule, and common
+interaction-action or contact budget independently of the desired result.
+Until then, the instrument nonidentifiability result plus the WP1 isometric
+demarcation is the endpoint.
 
 ## Primary literature map
 

@@ -59,6 +59,18 @@ any nontrivial constraint-induced interpretation of the de Sitter scale as an
 observer-process cutoff must derive an additional resource restriction---such
 as an implementation or complexity budget---rather than follow from the
 equal-energy constraint or relational dressing alone.
+Recent anti-scrambling results sharpen this missing-resource statement:
+their four-point observable is a proper two-fold out-of-time-order functional,
+whereas a passive observer's reduced record lives on an ordinary
+Schwinger--Keldysh contour.  Converting the former into the latter requires a
+separately priced timefold compiler.  An explicit observer clock does not by
+itself close the resource gap.  Choosing the canonical covariant time POVM for
+the CLPW maximum-entropy clock gives a Cauchy one-read density matching the
+tracial two-point kernel, but neither the clock state nor that POVM fixes a
+post-measurement instrument.  Fresh, persistent, and contact-disturbed
+instruments have the same one-read data and different two-record access.
+Every such completed clock process remains identical after isometric
+transport, while detector action remains unpriced.
 \end{abstract}
 
 \section{Introduction}
@@ -385,6 +397,34 @@ recovery comparison.  Single-sided DSSYK reconstruction and commutant results
 are likewise algebraic rather than diary-channel calculations
 \citep{CaoGao}.
 
+Several contemporaneous papers on observer correlators give the closest
+dynamical comparison.  Observer-dressed de Sitter OTOCs exhibit time advances
+and, at tree level, maximal Lyapunov growth
+\citep{MilekhinNarovlanskyXu2026}.  Including observer recoil
+and gravitational backreaction obstructs a naive tracial interpretation
+through failures of cyclicity or positivity
+\citep{ChenStanfordTangYang2026,CuiKolchmeyer2026}.  Harlow and Zhao show that
+the milder anti-scrambling correlator can instead be represented in a bounded
+quantum system by using folded Euclidean evolution, while emphasizing that no
+general prescription for all correlators is yet selected
+\citep{HarlowZhao2026}.  These results make the distinction at issue here more
+acute: a worldline correlator, even one with a physically motivated dressing
+or time contour, is not yet a sequential diary-to-record channel.  In
+particular, the ordinary forward-time observer evolution discussed in
+Ref.~\citep{CuiKolchmeyer2026} is insensitive to the relevant OTOCs.  The
+cluster does not supply an equal-energy shell diary, a recovery map, or the
+isospectral one-copy control used below.  Conversely, its backreaction
+results caution against promoting a kinematical tracial or Type~II structure
+to a nonperturbative observer-process claim.
+
+Positive higher-order operational representations of OTO experiments are
+also known.  The out-of-time-order tensor packages forward and reversed
+evolution into a quantum process with an information-theoretic interpretation
+\citep{ZonniosEtAl2021}.  It therefore precludes claiming novelty for the
+broad move from an OTOC to a process.  It does not derive the availability or
+cost of reversal, copies, or coherent control from a de Sitter observer
+construction, which is the narrower issue here.
+
 A bounded primary-source scan of these works found no computation combining a
 declared microscopic diary code, a sequential observer record, a distance
 from diary blindness or recovery fidelity, and an isospectral equal-energy
@@ -442,10 +482,210 @@ allowed classes must be matched by the same physical rule.  Candidate
 resources include word length in a declared set of simple matter/chord
 generators, allowed numbers and scaling dimensions of insertions, integrated
 detector coupling and contact count, or operator/Krylov complexity relative to
-a fixed generator set.  None is selected here.  Complexity and finite-cutoff
+a fixed generator set.  None of these detector-level costs is selected here.
+The observer construction does motivate a lower-bounded clock Hamiltonian and
+particular clock states.  We evaluate the canonical covariant-time completion
+below, while keeping separate the instrument that the bulk construction does
+not select.  Complexity and finite-cutoff
 observables already have a rich DSSYK literature, so adopting one of them as
 an access cost would require an additional operational derivation rather than
 a relabeling of an existing curve.
+
+Recent anti-scrambling work supplies two physically motivated structures that
+could enter such a derivation: the observer-energy endpoint produces a
+time-smeared two-point function, and a bounded Hamiltonian permits backwards
+segments of a folded Euclidean correlator
+\citep{ChenStanfordTangYang2026,HarlowZhao2026}.  Neither fact alone fixes a
+deterministic observer comb.  The first is low-point transfer data with
+multiple possible process completions; the second is a nonunitary operation
+if interpreted as direct state evolution.  Turning either into access
+therefore still requires an explicit record protocol and a resource audit.
+
+\subsection*{A clock state fixes a one-read kernel, not an instrument}
+The observer algebra of Ref.~\citep{CLPW} contains a clock with
+$H_{\rm obs}=q\geq0$.  For a normalized wavefunction
+$f\in L^2(\mathbb R_+,dq)$, the canonical covariant time POVM has generalized
+kets and effects
+\begin{equation}
+ |s)=\frac{1}{\sqrt{2\pi}}\int_0^\infty dq\,e^{-iqs}|q\rangle,
+ \qquad E(ds)=|s)(s|\,ds .
+ \label{eq:clockpovm}
+\end{equation}
+Such half-line covariant observables admit Naimark dilations, but a POVM does
+not specify the retained dilation or post-measurement state
+\citep{EgusquizaMuga1999,LeppajarviSedlak2020}.  Its one-read density is
+$p_f(s)=|(s|f)|^2$.  The characteristic function is the exact half-line
+autocorrelation
+\begin{equation}
+ M_f(\omega)
+ =\int_{\max(0,-\omega)}^\infty dq\,f(q+\omega)f(q)^*
+ =\int ds\,p_f(s)e^{i\omega s}.
+ \label{eq:clockoverlap}
+\end{equation}
+
+The maximum-entropy wavefunction used by CLPW is
+$f_\beta(q)=\sqrt\beta e^{-\beta q/2}$.  For the canonical POVM,
+\begin{equation}
+ p_\beta(s)=\frac{\beta/2}{\pi[(\beta/2)^2+s^2]},
+ \qquad M_{f_\beta}(\omega)=e^{-\beta|\omega|/2}.
+ \label{eq:clockcauchy}
+\end{equation}
+With $\beta_{\rm dS}=2\pi R_{\rm dS}$ this matches the transfer factor in the
+tracial two-point function of Ref.~\citep{ChenStanfordTangYang2026}.  The
+origin of that factor there is the observer-energy endpoint integration.  The
+equality therefore identifies a canonical positive completion; it does not
+derive a measurement channel from the correlator.  Moreover, CLPW explicitly
+note that the maximum-entropy clock is not semiclassical: its clock-time
+uncertainty is $O(\beta_{\rm dS})$.  Their semiclassical family instead has
+$f_\epsilon(q)=\sqrt\epsilon g(\epsilon q)$ and
+\begin{equation}
+ M_{f_\epsilon}(\omega)
+ =\int_{\max(0,-\epsilon\omega)}^\infty du\,
+ g(u+\epsilon\omega)g(u)^*,
+ \label{eq:semiclassicaloverlap}
+\end{equation}
+with bandwidth $O(1/\epsilon)$.
+
+To turn $p_f$ into a system channel one may choose the classical random-offset
+completion
+\begin{equation}
+ \Phi_f^H(\rho)=\int ds\,p_f(s)e^{-iHs}\rho e^{iHs}.
+ \label{eq:clockchannel}
+\end{equation}
+This is completely positive, but it is additional instrument data.  Indeed,
+for every normalized family $\{\sigma_s\}$,
+\begin{equation}
+ \mathfrak I^\sigma(ds)(\rho_C)
+ =\Tr[E(ds)\rho_C]\,\sigma_s
+ \label{eq:clockinstrument}
+\end{equation}
+is a valid measure-and-prepare instrument with the same POVM.  After a clock
+interval $\tau$, its two-read law contains
+$\Tr[E(ds_2)e^{-iq\tau}\sigma_{s_1}e^{iq\tau}]$ and therefore depends on
+$\sigma_{s_1}$.
+
+\begin{proposition}[Clock-state/instrument nonidentifiability]
+\label{prop:clockinstrument}
+A lower-bounded clock Hamiltonian, an initial clock state, and a covariant
+time POVM determine the one-read density and overlap~\eqref{eq:clockoverlap}.
+They do not determine a two-slot clock process.  Compatible instruments can
+have identical one-read statistics and different observer-record channels.
+\end{proposition}
+
+Freshly measuring, discarding, and preparing $|f\rangle$ gives independent
+offsets.  Retaining the first Naimark pointer and reusing it without contact
+disturbance gives a common offset.  A detector-induced pointer kick gives a
+third process.  None is selected by Ref.~\citep{CLPW}, which does not specify a
+POVM, instrument, or observer--field contact.
+
+The distinction remains operational after adding a finite detector.  Take two
+energy bins and the temporal diary
+\begin{equation}
+ H_j=\Delta E|1\rangle\!\langle1|_j,
+ \qquad
+ |\chi_\pm\rangle=\frac{|01\rangle\pm|10\rangle}{\sqrt2}.
+ \label{eq:relationaldiary}
+\end{equation}
+A common offset preserves the exchange coherence, while fresh offsets
+multiply it by $|M_f(\Delta E)|^2$.  Let one memory qubit $R$, initially in
+$|0\rangle$, meet each bin through the finite contacts
+\begin{equation}
+ V_j=P_{+,j}\otimes I_R+P_{-,j}\otimes X_R,
+ \qquad P_{\pm,j}=\frac{I\pm X_j}{2}.
+ \label{eq:finitecontacts}
+\end{equation}
+The ordered unitary $V_2V_1$ records $X_1X_2$ parity.  Its two-record diary
+distance is exactly
+\begin{equation}
+ \delta_{2,{\rm common}}=1,
+ \qquad
+ \delta_{2,{\rm fresh}}=|M_f(\Delta E)|^2.
+ \label{eq:instrumentdistances}
+\end{equation}
+An unobserved symmetric pointer kick $\pm\kappa$ between contacts instead
+gives the fixed parity record distance $|\cos(\kappa\Delta E)|$.  These
+positive causal combs have the same pre-contact one-read density and include
+the contact backaction in an explicit unitary dilation; the one-read clock
+data choose none of them.
+
+Every completion is also an exact comparative null.  Extending the equal-energy
+isometry by the identities on clock and memory and transporting
+Eq.~\eqref{eq:finitecontacts} gives
+\begin{equation}
+ \delta_K^{\rm doubled}=\delta_K^{\rm one\ copy}
+ \label{eq:clocknull}
+\end{equation}
+for each fresh, common, or contact-disturbed instrument, with the same equality
+for blind-comb distance and recovery fidelity.  Supplying an instrument makes
+the operational assumption explicit; it does not create a constraint
+advantage.
+
+The clock calculation therefore has a narrower cutoff interpretation.  The
+maximum-entropy state supplies a radius-scale soft kernel only after the
+canonical completion is chosen.  Semiclassical clocks purchase bandwidth
+$O(1/\epsilon)$.  If the model-specific observer-energy cap of
+Ref.~\citep{TiettoVerlinde2025} is additionally imposed, its formal endpoint
+again gives a Planckian hard scale with the de Sitter radius canceled.  None
+of these data bounds $\int dt\,\|H_{\rm int}(t)\|$, contact count, allowed
+scaling dimensions, or implementation error.  Current bulk constructions
+therefore do not yet determine an operational observer cutoff.
+
+\subsection*{A concrete missing resource: contour depth}
+The standard chaos four-point function is a proper 2-OTO functional: its
+alternating early/late ordering requires two forward and two backward contour
+legs \citep{HaehlLoganayagamNarayanRangamani2017}.  This gives a precise
+version of the mismatch between the recent gravitational OTOCs and an
+observer record.
+
+\begin{proposition}[Passive-record contour bound]
+\label{prop:contour}
+Let a detector initially uncorrelated with the static-patch fields interact
+through forward-time unitary couplings, with causal adaptive operations
+dilated into a detector memory and one final POVM.  Every linear statistic of
+that final record depends only on 1-OTO field functionals.  A proper 2-OTO
+four-point functional is not such a statistic unless the protocol class is
+enlarged.
+\end{proposition}
+
+\begin{proof}
+Write the joint propagator as
+$U=\mathcal T\exp[-i\int dt\,H_{\rm int}(t)]$.  A final record probability is
+linear in
+$\Tr_S[U(\rho_D\otimes\rho_S)U^\dagger]$.  The Dyson expansions of $U$ and
+$U^\dagger$ contain field correlators of the form
+\begin{equation}
+ \Tr_S\!\left[
+ \widetilde{\mathcal T}\{\phi(t'_1)\cdots\phi(t'_m)\}
+ \rho_S
+ \mathcal T\{\phi(t_1)\cdots\phi(t_n)\}
+ \right],
+\end{equation}
+which lie on one closed-time Schwinger--Keldysh contour.  Deferred
+measurement absorbs causal adaptivity into a larger forward-evolving memory
+without adding a contour fold.  Proper 2-OTO orderings are absent.
+\end{proof}
+
+This is also the model-specific conclusion of Cui and Kolchmeyer: for an
+ordinary observer--field coupling, the reduced observer density matrix is
+insensitive to the anti-scrambling OTOCs
+\citep{CuiKolchmeyer2026}.  It does not mean that OTOCs are unmeasurable.
+They can be reconstructed after adding Hamiltonian reversal, coherent
+ancillas or copies, randomized measurements, repeated global state
+preparations, or a measurement of the probe's own OTO correlator
+\citep{ChaudhuriLoganayagam2018,BlocherEtAl2020,ZonniosEtAl2021}.  Those are different
+resource declarations.  In particular, the forward-only reconstruction for
+an arbitrary operator in Ref.~\citep{BlocherEtAl2020} uses a basis of prepared
+states and superpositions and up to $2d^2$ expectation values; it is not one
+passive sequential record.
+
+The Euclidean-fold proposal is another such compiler.  It introduces a
+backwards imaginary-time segment, depends on the chosen operator ordering and
+an undetermined integer fold, and is not yet a general correlator rule
+\citep{HarlowZhao2026}.  Directly implementing that nonunitary segment is a
+heralded operation rather than a deterministic channel.  Thus the
+anti-scrambling result identifies the missing resource more sharply---contour
+conversion---but does not itself supply the positive diary-to-record tester
+needed in~\eqref{eq:Cobs}.
 
 \subsection*{Objection: scaling operators are physically selected}
 The strongest apparent counterexample is that the Narovlansky--Verlinde
@@ -511,18 +751,23 @@ gauge-invariant dressings, but its physical state space remains isometric to
 one DSSYK.  Exact protocol transport therefore preserves every observer
 record and recovery task.  The charge and twirl controls show why public
 constraint labels, selected microscopic sensitivity, and recoverable payload
-must be tested separately.
+must be tested separately.  The clock calculation adds an exact general
+one-read overlap and explicit inequivalent process completions.  It shows that
+the missing datum begins one step earlier than detector cost: the bulk input
+does not yet select a clock instrument.  Every chosen instrument and detector
+contact nevertheless transports to the one-copy control unchanged.
 
 The conclusion can be stated compactly:
 \begin{quote}
 The doubled equal-energy constraint cannot create information access under
 isometrically transported protocol classes.  Every access difference in the
 explicit construction is therefore a claim about a restriction on observer
-resources, and the current kinematical relational algebra does not derive that
-restriction.
+resources.  A chosen canonical clock POVM fixes a one-read kernel, but the
+current bulk dictionary does not yet derive the clock instrument or detector
+restriction needed for a constraint-induced difference.
 \end{quote}
 The first sentence is exact under the transported-class hypotheses.  The
-second is bounded to the current kinematical constructions reviewed above.
+second is bounded to the current bulk constructions reviewed above.
 This is compatible with DSSYK remaining useful for de Sitter holography.  It
 locates the additional input that an operational interpretation requires.
 
@@ -615,7 +860,10 @@ The full trace and diamond norms used here range from zero to two.  With a
 normalized half-diamond convention, the right side of
 \eqref{eq:blindlower} would be $\delta_K/2$.
 
+\begingroup
+\raggedright
 \bibliographystyle{unsrtnat}
 \bibliography{refs}
+\endgroup
 
 \end{document}

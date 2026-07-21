@@ -27,9 +27,11 @@ process, and therefore preserves its distinguishability and recovery
 capacities. Any difference requires an additional, independently derived
 resource restriction.
 
-This note tests the second route directly. It is separate from parked WP2: it
-asks first what follows from the already known DSSYK spectrum, before choosing
-an operator family or complexity measure.
+This note tests the second route directly. It is separate from the WP2
+clock-state/instrument gate, which is now closed with a negative verdict; the
+detector-resource branch remains parked. It asks first what follows from the
+already known DSSYK spectrum, before choosing an operator family or complexity
+measure.
 
 ## 2. Bounded primary-source pass
 

@@ -135,7 +135,8 @@ Type-II algebra is already an operational cutoff or a recovery result.
 WP0 and WP1 are complete. The primary-source pass and finite-shell protocol are
 in `notes/dssyk_wp0_protocol_and_overlap_2026_07_16.md`; the exact isometric,
 charge, and twirl controls are in
-`notes/dssyk_wp1_formal_controls_2026_07_16.md`. Their joint verdict pauses WP2:
+`notes/dssyk_wp1_formal_controls_2026_07_16.md`. Their joint verdict makes WP2
+a physical-selection gate:
 exactly transported one-copy and doubled protocols have identical record and
 recovery capacities, while the explicit kinematical relational construction
 uses the full bounded-operator algebra. A DSSYK dynamics probe now requires a
@@ -144,9 +145,10 @@ descriptions.
 
 The standalone external-facing draft is in
 `paper_dssyk_observer_access/main.tex`. It presents the result as a DSSYK
-demarcation theorem and two exact controls, without the internal WP history.
-WP2 is parked pending a physically derived resource class rather than a chosen
-operator family.
+demarcation theorem and exact controls, without the internal WP history. The
+clock-state/instrument gate of WP2 is complete with a negative verdict; its
+scaling-operator/detector branch remains parked pending a physically derived
+instrument and interaction resource rather than a chosen operator family.
 
 The follow-on intrinsic-bandwidth gate is complete in
 `notes/dssyk_intrinsic_bandwidth_gate_2026_07_19.md`. It tests the original
@@ -158,6 +160,41 @@ cutoff remains conditional on a separately derived detector-resource budget.
 The same note applies Result B to show that accurate record recovery requires
 order-one integrated diary-sensitive detector action; native diary-blind
 bandwidth alone does not supply it.
+
+The July anti-scrambling update reopens only a narrower observer-process
+completion problem. It is documented in
+`notes/dssyk_observer_process_completion_2026_07_19.md`. Two exact controls are
+complete there. First, the de Sitter two-point transfer factor
+$e^{-\pi R_{\rm dS}|\omega|}$ has a positive Cauchy random-offset completion;
+within that chosen completion a two-level phase diary has one-record distance
+$e^{-\pi R_{\rm dS}\Delta E}$ and fixed-error record cost scales as
+$e^{2\pi R_{\rm dS}\Delta E}$. Fresh-jitter and shared-offset completions have
+the same one-bin channel but differ by $(1-e^{-2\pi R_{\rm dS}\Delta E})/2$
+on an explicit two-bin input, proving that the low-point filter does not
+select a multitime comb. Second, a direct backwards Euclidean segment has
+optimal worst-case heralding probability $e^{-2\tau B}$; on the full DSSYK
+band and for $\tau=O(R_{\rm dS})$ this is $e^{-O(S_{\rm dS})}$, while a
+physically selected narrow shell can differ. These are observer-process
+controls, not an exact DSSYK OTOC. The gravitational multitime completion
+test is complete in
+notes/dssyk_observer_process_wp_a3_2026_07_19.md. It proves that the
+anti-scrambling functional is proper 2-OTO while a passive reduced observer
+record is 1-OTO. A timefold-to-record compiler is therefore an additional
+resource. The exact DSSYK OTOC remains parked.
+
+The WP2 clock-state/instrument gate is complete in
+`notes/dssyk_wp2_clock_resource_gate_2026_07_20.md`. Choosing the canonical
+covariant time POVM for the CLPW maximum-entropy clock gives an exact Cauchy
+one-read density with scale $\pi R_{\rm dS}$ and a general overlap formula
+$M_f(\omega)$. The source construction does not select that POVM's
+post-measurement instrument. Fresh, persistent, and contact-disturbed
+instruments can have identical one-read data and different two-record diary
+access. A finite two-contact detector makes this difference operational, and
+extending the equal-energy isometry by the identities on clock and memory
+reproduces every completed process in one-copy DSSYK. The 3D model-specific
+hardest clock scale remains Planckian, with the radius canceled. WP2 is closed
+at the current bulk input; reopening requires a bulk-derived clock instrument,
+detector contact/backreaction rule, and common implementation budget.
 
 ## Read in this order
 
@@ -178,9 +215,18 @@ bandwidth alone does not supply it.
 7. `notes/dssyk_intrinsic_bandwidth_gate_2026_07_19.md` -- bounded analytic
    test of whether the native DSSYK bandwidth realizes a cosmological
    operational cutoff.
-8. `notes/evaporation_framework_comparison_map_2026_07_12.md` -- detailed
+8. `notes/dssyk_observer_process_completion_2026_07_19.md` -- July
+   anti-scrambling update, positive Cauchy observer control, direct
+   Euclidean-fold cost, and the gated multitime completion test.
+9. `notes/dssyk_observer_process_wp_a3_2026_07_19.md` -- completed
+   slot, contour-depth, and implementation-resource audit; records the stop
+   verdict for an exact DSSYK OTOC.
+10. `notes/dssyk_wp2_clock_resource_gate_2026_07_20.md` -- completed negative
+    clock-state/instrument gate, general overlap, explicit inequivalent
+    two-contact combs, and exact one-copy/doubled null.
+11. `notes/evaporation_framework_comparison_map_2026_07_12.md` -- detailed
    assumption-to-result map across the major frameworks.
-9. `notes/program_reassessment_2026_07_10.md` -- historical reassessment that
+12. `notes/program_reassessment_2026_07_10.md` -- historical reassessment that
    retired the strict gravity/quantum-information demarcation.
 
 Earlier ledgers, conjecture registers, and steering notes remain in `notes/` as

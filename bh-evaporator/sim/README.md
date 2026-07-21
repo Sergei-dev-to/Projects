@@ -180,6 +180,32 @@ The result is recorded in:
 notes/step2_polished_status.md
 ```
 
+DSSYK observer-process controls
+-------------------------------
+
+Run the finite checks for the CLPW maximum-entropy clock state's canonical
+Cauchy time density and energy overlap, the binary phase-diary distance and
+Chernoff exponent, fresh-versus-persistent two-bin instruments, a finite
+two-contact parity-memory record, a clock-contact kick, exact isometric
+transport, the 3D observer-energy endpoint, direct Euclidean-fold contraction,
+and the DSSYK bandwidth dictionary:
+
+```bash
+python sim/dssyk_observer_process_controls.py
+```
+
+The derivations, scope, and multitime stop gate are recorded in:
+
+```text
+notes/dssyk_observer_process_completion_2026_07_19.md
+notes/dssyk_wp2_clock_resource_gate_2026_07_20.md
+```
+
+This regression is not a DSSYK OTOC calculation. The clock state and
+two-point transfer function do not select a POVM instrument or comb;
+common-offset memory, fresh resets, and contact-disturbed memory are explicit
+alternative completions.
+
 Notes
 - N=12 (dim 4096) uses dense diagonalization for simplicity. Larger N requires
   sparse methods and longer runtime; extend the code if needed.
