@@ -1,0 +1,23 @@
+{
+  "artifact_specs": [
+    {
+      "logical_path": "lrcalc_interp_evaluator.json",
+      "media_type": "application/json",
+      "role": "fixture-evaluator-lrcalc",
+      "sha256": "73656dd11ce194b1038091fd2d471eb7dac85fe8f187e8186cb2bdc9bb961a98"
+    },
+    {
+      "logical_path": "normaliz_ehrhart_evaluator.json",
+      "media_type": "application/json",
+      "role": "fixture-evaluator-normaliz",
+      "sha256": "cd0545f384c051e2b9f7f1ad516a2cdf1edca9cffcf5984c703d12b6b5f8ee7a"
+    },
+    {
+      "logical_path": "fixture_agreement.json",
+      "media_type": "application/json",
+      "role": "fixture-agreement",
+      "sha256": "bb03cd2b183b68149d40430ab6a2f62b97b6a7c2d574cf19130467d55eaf4531"
+    }
+  ],
+  "evidence_root_hint": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports"
+}

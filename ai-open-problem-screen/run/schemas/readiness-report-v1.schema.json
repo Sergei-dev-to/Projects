@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lr-positivity.invalid/schemas/readiness-report-v1.schema.json",
+  "title": "Pre-P2 readiness audit report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "checked_at_utc", "repo_root", "ready_for_p2_adjudication", "p2_launch_authorized", "checks", "blockers", "warnings", "planning_inputs", "next_action"],
+  "properties": {
+    "schema_version": {"const": "lr-readiness-report/v1"},
+    "checked_at_utc": {"type": "string", "minLength": 1},
+    "repo_root": {"type": "string", "minLength": 1},
+    "ready_for_p2_adjudication": {"type": "boolean"},
+    "p2_launch_authorized": {"const": false},
+    "checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+    "blockers": {"type": "array", "items": {"type": "string"}},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "planning_inputs": {"type": "object"},
+    "next_action": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "passed", "required", "detail"],
+      "properties": {
+        "code": {"type": "string", "minLength": 1},
+        "passed": {"type": "boolean"},
+        "required": {"type": "boolean"},
+        "detail": {"type": "string"}
+      }
+    }
+  }
+}

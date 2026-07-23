@@ -1,0 +1,262 @@
+{
+  "checks": [
+    {
+      "actual": {
+        "east_north": 3,
+        "north_northwest": 3,
+        "northwest_west": 3
+      },
+      "expected": {
+        "east_north": 3,
+        "north_northwest": 3,
+        "northwest_west": 3
+      },
+      "name": "three rhombus families have n(n-1)/2 members each",
+      "pass": true
+    },
+    {
+      "actual": [
+        "0"
+      ],
+      "expected": [
+        "0"
+      ],
+      "name": "Normaliz canonical polynomial matches fixture",
+      "pass": true
+    },
+    {
+      "actual": -1,
+      "expected": -1,
+      "name": "Normaliz affine dimension matches fixture",
+      "pass": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "Normaliz lattice count at N=1 matches fixture",
+      "pass": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "lrcalc coefficient at N=1 matches fixture",
+      "pass": true
+    },
+    {
+      "actual": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "expected": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "name": "lrcalc positive-stretch counts match expected polynomial",
+      "pass": true
+    },
+    {
+      "actual": [
+        "0"
+      ],
+      "expected": [
+        "0"
+      ],
+      "name": "independently interpolated lrcalc polynomial matches fixture",
+      "pass": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "lrcalc interpolation matches reserved positive-stretch checks",
+      "pass": true
+    },
+    {
+      "actual": [
+        "0"
+      ],
+      "expected": [
+        "0"
+      ],
+      "name": "lrcalc-interp and normaliz-ehrhart agree exactly",
+      "pass": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "Normaliz quasiperiod collapses to one polynomial",
+      "pass": true
+    },
+    {
+      "actual": "q_1_1",
+      "expected": "q_1_1",
+      "name": "audited variable",
+      "pass": true
+    },
+    {
+      "actual": "6",
+      "expected": "6",
+      "name": "audited lower bound",
+      "pass": true
+    },
+    {
+      "actual": "5",
+      "expected": "5",
+      "name": "audited upper bound",
+      "pass": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "Normaliz CLI exited successfully",
+      "pass": true
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "name": "Normaliz CLI emitted raw .out",
+      "pass": true
+    }
+  ],
+  "e1_lrcalc_interp": {
+    "all_available_samples_verified": true,
+    "canonical_polynomial": [
+      "0"
+    ],
+    "degree_bound": 1,
+    "interpolation_domain": [
+      1,
+      2
+    ],
+    "reserved_check_domain": [
+      3,
+      3
+    ],
+    "samples": {
+      "1": 0,
+      "2": 0
+    }
+  },
+  "e1_lrcalc_positive_stretches": {
+    "1": 0,
+    "2": 0,
+    "3": 0
+  },
+  "e2_normaliz": {
+    "affine_dimension": -1,
+    "canonical_polynomial": [
+      "0"
+    ],
+    "ehrhart_quasipolynomial_raw": [
+      [],
+      1
+    ],
+    "ehrhart_series_raw": [
+      [
+        0
+      ],
+      [],
+      0
+    ],
+    "empty": true,
+    "engine": "PyNormaliz.Cone(inhom_inequalities=rows)",
+    "lattice_points_raw": [],
+    "number_lattice_points": 0,
+    "period_collapses_to_one": true,
+    "raw_common_denominator": 1,
+    "raw_period": 1,
+    "residue_polynomials": [
+      [
+        "0"
+      ]
+    ],
+    "support_hyperplanes_raw": [],
+    "vertices_of_polyhedron_raw": []
+  },
+  "expected_positive_stretches": {
+    "1": 0,
+    "2": 0,
+    "3": 0
+  },
+  "fixture": {
+    "audit": {
+      "lower_bound": 6,
+      "upper_bound": 5,
+      "variable": "q_1_1"
+    },
+    "description": "Valid sizes and containment, but incompatible rhombi q_1_1>=6 and q_1_1<=5; LR coefficient 0.",
+    "expected_affine_dimension": -1,
+    "expected_lr_at_1": 0,
+    "expected_polynomial": [
+      "0"
+    ],
+    "id": "n3_empty_horn_failure",
+    "lam": [
+      2,
+      1
+    ],
+    "mu": [
+      2,
+      1
+    ],
+    "n": 3,
+    "nu": [
+      5,
+      1
+    ]
+  },
+  "input_artifact": {
+    "canonical_payload_sha256": "ca36176d308c12422e720ffda86f7b9b92c3996e1a4472624dad8a8033b1be53",
+    "file_sha256": "f96e817d9caa2ca6973a8993bad65c72785fc2f5a716dbcdcb571e1f540e88b3",
+    "normaliz_input_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/normaliz/n3_empty_horn_failure.in",
+    "path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/inputs/n3_empty_horn_failure.hive.json"
+  },
+  "normaliz_cli": {
+    "command": [
+      "/usr/bin/normaliz",
+      "--BigInt",
+      "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/normaliz/n3_empty_horn_failure"
+    ],
+    "exit": 0,
+    "output_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/normaliz/n3_empty_horn_failure.out",
+    "output_present": true,
+    "output_sha256": "e67c6ccbeb6d7ae09066565a55899a15d13aadfee68137d574240e92ad25c930",
+    "stderr": "",
+    "stdout": ""
+  },
+  "one_variable_audit": {
+    "lower_bound": "6",
+    "lower_bound_witnesses": [
+      {
+        "base": [
+          2,
+          0
+        ],
+        "family": "northwest_west",
+        "row": [
+          1,
+          -6
+        ]
+      }
+    ],
+    "upper_bound": "5",
+    "upper_bound_witnesses": [
+      {
+        "base": [
+          3,
+          0
+        ],
+        "family": "northwest_west",
+        "row": [
+          -1,
+          5
+        ]
+      }
+    ],
+    "variable": "q_1_1"
+  },
+  "pass": true,
+  "report_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/fixtures/n3_empty_horn_failure.report.json",
+  "schema_version": 1
+}

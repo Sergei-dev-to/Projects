@@ -1,0 +1,43 @@
+{
+  "authorized_actions": [],
+  "campaign": "stretched-lr-positivity",
+  "closed_at": "2026-07-23",
+  "disposition": "bounded-negative-screen-with-narrow-structural-result",
+  "outcomes": {
+    "counterexample_found": false,
+    "official_target_frontier_certified": false,
+    "retained_structural_result": "Every four-row hive polytope that is an empty lattice tetrahedron is unimodular."
+  },
+  "reopen_rule": "Require a concrete route to all-four-row positivity or a directly verifiable official-box candidate; scans, ranking gates, and model-review rounds are insufficient.",
+  "retained_artifacts": {
+    "baseline": {
+      "file": "dryrun/frontier_baseline.json",
+      "file_sha256": "118c86270d4432914efb383b519a2b3b179892c4180199a49b7314d2912048fa",
+      "record_count": 7549,
+      "triples_payload_sha256": "b345773c40f2c340808ec20c424b1d33cba59e68bf45796842f1550d742b42d7"
+    },
+    "four_row_certificate": {
+      "file": "p3/four_row_obstruction_certificate.json",
+      "file_sha256": "46b5a6c9dbf54d977c16b926c3f38b80c35fcdc7687f7a88e3bff14133b25b03",
+      "semantic_sha256": "1c6236b8858cf51f860f463e433fc1f8c132989741627d022b5939e82b3f0016"
+    },
+    "four_row_screen": {
+      "file": "p3/four_row_screen_len4_size30.json",
+      "file_sha256": "d3f5ad85581d885b5b87e3ae0f4b7e7ec903387bc8409b0cc5893954fb578117",
+      "mechanism_pool_c1_eq_4": 150316,
+      "n_hits": 0,
+      "nonzero_triples": 4229644,
+      "support_compatible_triples": 9332014
+    },
+    "obstruction_proof": {
+      "file": "p3/FOUR_ROW_OBSTRUCTION.md",
+      "file_sha256": "e7486b0930d8bdd02812da4a7ba3a2121b44248129bec1a656ea1b92cedec1f6"
+    },
+    "obstruction_verifier": {
+      "file": "p3/verify_four_row_obstruction.py",
+      "file_sha256": "6b092a62d71e6fce61e6280268b189096735ff4b545412d72736acf253a52f5f"
+    }
+  },
+  "schema_version": 1,
+  "status": "STOPPED"
+}

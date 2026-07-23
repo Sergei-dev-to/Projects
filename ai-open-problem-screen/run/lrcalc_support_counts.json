@@ -1,0 +1,52 @@
+{
+  "boxes": [
+    {
+      "box": "B0-7",
+      "canonicalization": "swap-only-order2",
+      "max_length": 6,
+      "max_size_each_of_lam_mu": 7,
+      "maximum_lr_coefficient_at_n1": 5,
+      "maximum_nonzero_outputs_for_one_pair": 56,
+      "method": "exact lrcalc.mult Schur-product support enumeration at N=1",
+      "nonzero_canonical_triples_at_n1": 9478,
+      "nonzero_count_by_outer_length": {
+        "0": 1,
+        "1": 35,
+        "2": 468,
+        "3": 1673,
+        "4": 2722,
+        "5": 2650,
+        "6": 1929
+      },
+      "partition_count": 44,
+      "scope_guard": "planning support count only; no stretched polynomials or Normaliz evaluations; not a completed P2 box",
+      "sum_of_lr_coefficients_at_n1": 11115,
+      "unordered_pair_count": 990
+    },
+    {
+      "box": "B1",
+      "canonicalization": "swap-only-order2",
+      "max_length": 6,
+      "max_size_each_of_lam_mu": 12,
+      "maximum_lr_coefficient_at_n1": 36,
+      "maximum_nonzero_outputs_for_one_pair": 305,
+      "method": "exact lrcalc.mult Schur-product support enumeration at N=1",
+      "nonzero_canonical_triples_at_n1": 1074757,
+      "nonzero_count_by_outer_length": {
+        "0": 1,
+        "1": 90,
+        "2": 3997,
+        "3": 42604,
+        "4": 173349,
+        "5": 363220,
+        "6": 491496
+      },
+      "partition_count": 227,
+      "scope_guard": "planning support count only; no stretched polynomials or Normaliz evaluations; not a completed P2 box",
+      "sum_of_lr_coefficients_at_n1": 1920284,
+      "unordered_pair_count": 25878
+    }
+  ],
+  "lrcalc_version": "2.1",
+  "schema_version": "lr-lrcalc-support-counts/v1"
+}

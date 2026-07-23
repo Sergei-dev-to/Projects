@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lr-positivity.invalid/schemas/campaign-state-v1.schema.json",
+  "title": "LR campaign state v1",
+  "description": "Relational transition rules are additionally enforced by p1.control.state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "campaign", "run_id", "phase_state", "revision", "state_owner", "updated_utc", "previous_document_sha256", "last_transition", "transition_history"],
+  "properties": {
+    "schema_version": {"const": "lr-campaign-state/v1"},
+    "campaign": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "phase_state": {
+      "enum": ["P0_READY", "P1_FIXTURES_READY", "P1_ORACLE_VALIDATED", "PILOT_READY", "PILOT_RUNNING", "PILOT_CHECKPOINTED", "PILOT_COMPLETE", "P2_AWAITING_AUTHORIZATION"]
+    },
+    "revision": {"type": "integer", "minimum": 0},
+    "state_owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "id"],
+      "properties": {
+        "role": {"const": "integrator"},
+        "id": {"type": "string", "minLength": 1}
+      }
+    },
+    "updated_utc": {"type": "string", "minLength": 1},
+    "previous_document_sha256": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      ]
+    },
+    "last_transition": {"$ref": "#/$defs/transition"},
+    "transition_history": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/transition"}
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "path", "sha256"],
+      "properties": {
+        "kind": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to", "actor_role", "actor_id", "at_utc", "reason", "evidence"],
+      "properties": {
+        "from": {"type": ["string", "null"]},
+        "to": {"type": "string"},
+        "actor_role": {"const": "integrator"},
+        "actor_id": {"type": "string", "minLength": 1},
+        "at_utc": {"type": "string", "minLength": 1},
+        "reason": {"type": "string", "minLength": 1},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}}
+      }
+    }
+  }
+}

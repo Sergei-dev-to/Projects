@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lr-positivity.invalid/schemas/p1-fixture-agreement-v1.schema.json",
+  "title": "P1 hive-fixture evaluator agreement v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "fixture_count", "all_agree", "fixtures"],
+  "properties": {
+    "schema_version": {"const": "lr-p1-fixture-agreement/v1"},
+    "fixture_count": {"type": "integer", "minimum": 1},
+    "all_agree": {"type": "boolean"},
+    "fixtures": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/fixture"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "coefficient": {"type": "string", "pattern": "^-?(?:0|[1-9][0-9]*)(?:/[1-9][0-9]*)?$"},
+    "evaluator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "poly", "artifact_sha256"],
+      "properties": {
+        "name": {"enum": ["lrcalc-interp", "normaliz-ehrhart"]},
+        "poly": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/coefficient"}},
+        "artifact_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "coverage", "evaluators", "agreement"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "coverage": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "evaluators": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/evaluator"}},
+        "agreement": {"type": "boolean"}
+      }
+    }
+  }
+}

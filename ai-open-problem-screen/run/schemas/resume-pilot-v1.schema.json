@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.lr-positivity.invalid/schemas/resume-pilot-v1.schema.json",
+  "title": "Deterministic checkpoint/resume pilot artifacts v1",
+  "description": "These orchestration-only artifacts are never mathematical evidence.",
+  "oneOf": [
+    {"$ref": "#/$defs/plan"},
+    {"$ref": "#/$defs/result"},
+    {"$ref": "#/$defs/checkpoint"},
+    {"$ref": "#/$defs/checkpointSnapshot"},
+    {"$ref": "#/$defs/completion"}
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "partition": {"type": "array", "items": {"type": "integer", "minimum": 1}},
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lam", "mu", "nu"],
+      "properties": {
+        "lam": {"$ref": "#/$defs/partition"},
+        "mu": {"$ref": "#/$defs/partition"},
+        "nu": {"$ref": "#/$defs/partition"}
+      }
+    },
+    "plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "kind", "not_scientific_evidence", "sort_key", "items", "plan_id"],
+      "properties": {
+        "schema_version": {"const": "lr-resume-pilot-plan/v1"},
+        "kind": {"const": "orchestration-only"},
+        "not_scientific_evidence": {"const": true},
+        "sort_key": {"const": "(len(nu),nu,lam,mu)"},
+        "items": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/item"}},
+        "plan_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "kind", "not_scientific_evidence", "ordinal", "item", "plan_sha256", "work_sha256"],
+      "properties": {
+        "schema_version": {"const": "lr-resume-pilot-result/v1"},
+        "kind": {"const": "orchestration-only"},
+        "not_scientific_evidence": {"const": true},
+        "ordinal": {"type": "integer", "minimum": 0},
+        "item": {"$ref": "#/$defs/item"},
+        "plan_sha256": {"$ref": "#/$defs/sha256"},
+        "work_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "checkpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "kind", "not_scientific_evidence", "plan_sha256", "next_index", "total", "prefix_sha256", "completed"],
+      "properties": {
+        "schema_version": {"const": "lr-resume-pilot-checkpoint/v1"},
+        "kind": {"const": "orchestration-only"},
+        "not_scientific_evidence": {"const": true},
+        "plan_sha256": {"$ref": "#/$defs/sha256"},
+        "next_index": {"type": "integer", "minimum": 0},
+        "total": {"type": "integer", "minimum": 1},
+        "prefix_sha256": {"$ref": "#/$defs/sha256"},
+        "completed": {"type": "boolean"}
+      }
+    },
+    "checkpointSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "kind", "not_scientific_evidence", "plan_sha256", "next_index", "total", "prefix_sha256", "completed", "checkpoint_sha256"],
+      "properties": {
+        "schema_version": {"const": "lr-resume-pilot-checkpoint-snapshot/v1"},
+        "kind": {"const": "orchestration-only"},
+        "not_scientific_evidence": {"const": true},
+        "plan_sha256": {"$ref": "#/$defs/sha256"},
+        "next_index": {"type": "integer", "minimum": 0},
+        "total": {"type": "integer", "minimum": 1},
+        "prefix_sha256": {"$ref": "#/$defs/sha256"},
+        "completed": {"const": false},
+        "checkpoint_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "completion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "kind", "not_scientific_evidence", "may_authorize_p2", "plan_sha256", "prefix_sha256", "artifact_manifest", "artifact_manifest_sha256"],
+      "properties": {
+        "schema_version": {"const": "lr-resume-pilot-completion/v1"},
+        "kind": {"const": "orchestration-only"},
+        "not_scientific_evidence": {"const": true},
+        "may_authorize_p2": {"const": false},
+        "plan_sha256": {"$ref": "#/$defs/sha256"},
+        "prefix_sha256": {"$ref": "#/$defs/sha256"},
+        "artifact_manifest": {"type": "object"},
+        "artifact_manifest_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

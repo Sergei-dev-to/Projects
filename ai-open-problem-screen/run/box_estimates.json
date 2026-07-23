@@ -1,0 +1,58 @@
+{
+  "boxes": [
+    {
+      "box": "B1",
+      "max_length": 6,
+      "max_size_each_of_lam_mu": 12,
+      "method": "exact",
+      "partition_count": 227,
+      "quantity": "support-compatible triple upper bound before LR/Horn tests",
+      "support_compatible_triples": 2501976,
+      "unordered_pair_count": 25878
+    },
+    {
+      "box": "B2",
+      "max_length": 6,
+      "max_size_each_of_lam_mu": 20,
+      "method": "exact",
+      "partition_count": 1513,
+      "quantity": "support-compatible triple upper bound before LR/Horn tests",
+      "support_compatible_triples": 736249709,
+      "unordered_pair_count": 1145341
+    },
+    {
+      "box": "B3",
+      "max_length": 7,
+      "max_size_each_of_lam_mu": 16,
+      "method": "exact",
+      "partition_count": 728,
+      "quantity": "support-compatible triple upper bound before LR/Horn tests",
+      "support_compatible_triples": 103018487,
+      "unordered_pair_count": 265356
+    },
+    {
+      "approx_95pct_interval": [487742182762, 498067750418],
+      "box": "B4",
+      "caveat": "normal-approximation sampling interval, not a completeness certificate",
+      "estimated_support_compatible_triples": 492904966590,
+      "max_length": 7,
+      "max_size_each_of_lam_mu": 30,
+      "mean_compatible_nu_per_pair": 6886.5877,
+      "method": "uniform-unordered-pair-sample",
+      "partition_count": 11964,
+      "quantity": "support-compatible triple upper bound before LR/Horn tests",
+      "sample_standard_error": 36.8017743380011,
+      "samples": 20000,
+      "seed": 20260726,
+      "unordered_pair_count": 71574630
+    }
+  ],
+  "estimator": "p1/estimate_boxes.py",
+  "parameters": {
+    "exact_max_pairs": 1500000,
+    "samples": 20000,
+    "seed": 20260723
+  },
+  "runtime_seconds_observed": 61.9,
+  "schema_version": 1
+}

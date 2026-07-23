@@ -1,0 +1,208 @@
+{
+  "all_agree": true,
+  "fixture_count": 6,
+  "fixtures": [
+    {
+      "agreement": true,
+      "coverage": [
+        "boundary.lambda",
+        "boundary.mu",
+        "boundary.nu",
+        "coefficient.multiple",
+        "dimension.positive",
+        "rhombus.type-a",
+        "rhombus.type-b",
+        "rhombus.type-c"
+      ],
+      "evaluators": [
+        {
+          "artifact_sha256": "73656dd11ce194b1038091fd2d471eb7dac85fe8f187e8186cb2bdc9bb961a98",
+          "name": "lrcalc-interp",
+          "poly": [
+            "1",
+            "1"
+          ]
+        },
+        {
+          "artifact_sha256": "cd0545f384c051e2b9f7f1ad516a2cdf1edca9cffcf5984c703d12b6b5f8ee7a",
+          "name": "normaliz-ehrhart",
+          "poly": [
+            "1",
+            "1"
+          ]
+        }
+      ],
+      "id": "buch_n3_interval"
+    },
+    {
+      "agreement": true,
+      "coverage": [
+        "anchor.degree6",
+        "boundary.lambda",
+        "boundary.mu",
+        "boundary.nu",
+        "coefficient.multiple",
+        "dimension.positive",
+        "rhombus.type-a",
+        "rhombus.type-b",
+        "rhombus.type-c"
+      ],
+      "evaluators": [
+        {
+          "artifact_sha256": "73656dd11ce194b1038091fd2d471eb7dac85fe8f187e8186cb2bdc9bb961a98",
+          "name": "lrcalc-interp",
+          "poly": [
+            "1",
+            "13/4",
+            "37/8",
+            "4",
+            "9/4",
+            "3/4",
+            "1/8"
+          ]
+        },
+        {
+          "artifact_sha256": "cd0545f384c051e2b9f7f1ad516a2cdf1edca9cffcf5984c703d12b6b5f8ee7a",
+          "name": "normaliz-ehrhart",
+          "poly": [
+            "1",
+            "13/4",
+            "37/8",
+            "4",
+            "9/4",
+            "3/4",
+            "1/8"
+          ]
+        }
+      ],
+      "id": "campaign_degree6_anchor"
+    },
+    {
+      "agreement": true,
+      "coverage": [
+        "boundary.lambda",
+        "boundary.mu",
+        "boundary.nu",
+        "coefficient.one",
+        "dimension.zero",
+        "rhombus.type-a",
+        "rhombus.type-b",
+        "rhombus.type-c"
+      ],
+      "evaluators": [
+        {
+          "artifact_sha256": "73656dd11ce194b1038091fd2d471eb7dac85fe8f187e8186cb2bdc9bb961a98",
+          "name": "lrcalc-interp",
+          "poly": [
+            "1"
+          ]
+        },
+        {
+          "artifact_sha256": "cd0545f384c051e2b9f7f1ad516a2cdf1edca9cffcf5984c703d12b6b5f8ee7a",
+          "name": "normaliz-ehrhart",
+          "poly": [
+            "1"
+          ]
+        }
+      ],
+      "id": "n2_no_interior_vertex"
+    },
+    {
+      "agreement": true,
+      "coverage": [
+        "boundary.lambda",
+        "boundary.mu",
+        "boundary.nu",
+        "coefficient.one",
+        "dimension.degenerate",
+        "dimension.zero",
+        "rhombus.type-a",
+        "rhombus.type-b",
+        "rhombus.type-c"
+      ],
+      "evaluators": [
+        {
+          "artifact_sha256": "73656dd11ce194b1038091fd2d471eb7dac85fe8f187e8186cb2bdc9bb961a98",
+          "name": "lrcalc-interp",
+          "poly": [
+            "1"
+          ]
+        },
+        {
+          "artifact_sha256": "cd0545f384c051e2b9f7f1ad516a2cdf1edca9cffcf5984c703d12b6b5f8ee7a",
+          "name": "normaliz-ehrhart",
+          "poly": [
+            "1"
+          ]
+        }
+      ],
+      "id": "n3_degenerate_point"
+    },
+    {
+      "agreement": true,
+      "coverage": [
+        "boundary.lambda",
+        "boundary.mu",
+        "boundary.nu",
+        "coefficient.zero",
+        "dimension.degenerate",
+        "dimension.empty",
+        "rhombus.type-a",
+        "rhombus.type-b",
+        "rhombus.type-c"
+      ],
+      "evaluators": [
+        {
+          "artifact_sha256": "73656dd11ce194b1038091fd2d471eb7dac85fe8f187e8186cb2bdc9bb961a98",
+          "name": "lrcalc-interp",
+          "poly": [
+            "0"
+          ]
+        },
+        {
+          "artifact_sha256": "cd0545f384c051e2b9f7f1ad516a2cdf1edca9cffcf5984c703d12b6b5f8ee7a",
+          "name": "normaliz-ehrhart",
+          "poly": [
+            "0"
+          ]
+        }
+      ],
+      "id": "n3_empty_horn_failure"
+    },
+    {
+      "agreement": true,
+      "coverage": [
+        "boundary.lambda",
+        "boundary.mu",
+        "boundary.nu",
+        "coefficient.multiple",
+        "dimension.positive",
+        "rhombus.type-a",
+        "rhombus.type-b",
+        "rhombus.type-c"
+      ],
+      "evaluators": [
+        {
+          "artifact_sha256": "73656dd11ce194b1038091fd2d471eb7dac85fe8f187e8186cb2bdc9bb961a98",
+          "name": "lrcalc-interp",
+          "poly": [
+            "1",
+            "3/2",
+            "1/2"
+          ]
+        },
+        {
+          "artifact_sha256": "cd0545f384c051e2b9f7f1ad516a2cdf1edca9cffcf5984c703d12b6b5f8ee7a",
+          "name": "normaliz-ehrhart",
+          "poly": [
+            "1",
+            "3/2",
+            "1/2"
+          ]
+        }
+      ],
+      "id": "n4_asymmetric_degree2"
+    }
+  ],
+  "schema_version": "lr-p1-fixture-agreement/v1"
+}

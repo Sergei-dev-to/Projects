@@ -1,0 +1,180 @@
+{
+  "ambient_dimension": 0,
+  "boundary": {
+    "q_0_0": 0,
+    "q_0_1": 2,
+    "q_0_2": 2,
+    "q_1_0": 1,
+    "q_1_1": 2,
+    "q_2_0": 1
+  },
+  "boundary_convention": {
+    "lambda_edge": "q[k,0]=sum(lambda[1..k])",
+    "mu_edge": "q[n-k,k]=|lambda|+sum(mu[1..k])",
+    "nu_edge": "q[0,k]=sum(nu[1..k])"
+  },
+  "coordinate_convention": "q[i,j], i>=0, j>=0, i+j<=n",
+  "lam": [
+    1
+  ],
+  "mu": [
+    1
+  ],
+  "n": 2,
+  "normaliz": {
+    "input_type": "inhom_inequalities",
+    "omitted_constant_tautologies": 3,
+    "row_semantics": "a_1*x_1+...+a_d*x_d+b>=0",
+    "rows": []
+  },
+  "nu": [
+    2
+  ],
+  "padded": {
+    "lam": [
+      1,
+      0
+    ],
+    "mu": [
+      1,
+      0
+    ],
+    "nu": [
+      2,
+      0
+    ]
+  },
+  "rhombi": [
+    {
+      "acute_vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "base": [
+        0,
+        0
+      ],
+      "constant": 1,
+      "direction_a": [
+        1,
+        0
+      ],
+      "direction_b": [
+        0,
+        1
+      ],
+      "family": "east_north",
+      "normaliz_row": [
+        1
+      ],
+      "obtuse_vertices": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "semantic": "sum(obtuse) - sum(acute) >= 0",
+      "terms": {}
+    },
+    {
+      "acute_vertices": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "base": [
+        1,
+        0
+      ],
+      "constant": 1,
+      "direction_a": [
+        0,
+        1
+      ],
+      "direction_b": [
+        -1,
+        1
+      ],
+      "family": "north_northwest",
+      "normaliz_row": [
+        1
+      ],
+      "obtuse_vertices": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "semantic": "sum(obtuse) - sum(acute) >= 0",
+      "terms": {}
+    },
+    {
+      "acute_vertices": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "base": [
+        2,
+        0
+      ],
+      "constant": 0,
+      "direction_a": [
+        -1,
+        1
+      ],
+      "direction_b": [
+        -1,
+        0
+      ],
+      "family": "northwest_west",
+      "normaliz_row": [
+        0
+      ],
+      "obtuse_vertices": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "semantic": "sum(obtuse) - sum(acute) >= 0",
+      "terms": {}
+    }
+  ],
+  "rhombus_convention": "sum(obtuse)-sum(acute)>=0",
+  "rhombus_family_counts": {
+    "east_north": 1,
+    "north_northwest": 1,
+    "northwest_west": 1
+  },
+  "schema_version": 1,
+  "variables": []
+}

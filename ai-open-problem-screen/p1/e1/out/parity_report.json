@@ -1,0 +1,116 @@
+{
+  "actual": {
+    "record_count": 7549,
+    "triples_payload_sha256": "b345773c40f2c340808ec20c424b1d33cba59e68bf45796842f1550d742b42d7"
+  },
+  "anchors": [
+    {
+      "actual": 1,
+      "expected": 1,
+      "id": "asymmetric-raw-order-positive",
+      "note": "raw lrcalc.lrcoef([3], [2], [1])",
+      "pass": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "id": "rotated-raw-order-is-zero",
+      "note": "raw lrcalc.lrcoef([2], [1], [3])",
+      "pass": true
+    },
+    {
+      "actual": 2,
+      "expected": 2,
+      "id": "documented-order-known-two",
+      "note": "lrcoef(out=nu, inn1=lam, inn2=mu)",
+      "pass": true
+    },
+    {
+      "actual": 1,
+      "expected": 1,
+      "id": "empty-partition-normalization",
+      "note": "lrcoef([],[],[])",
+      "pass": true
+    },
+    {
+      "actual": [
+        "1",
+        "13/4",
+        "37/8",
+        "4",
+        "9/4",
+        "3/4",
+        "1/8"
+      ],
+      "expected": [
+        "1",
+        "13/4",
+        "37/8",
+        "4",
+        "9/4",
+        "3/4",
+        "1/8"
+      ],
+      "id": "campaign-degree-six-polynomial",
+      "note": "lam=mu=(4,3,2,1), nu=(6,5,4,3,2)",
+      "pass": true,
+      "values": [
+        1,
+        16,
+        126,
+        616,
+        2200,
+        6336,
+        15631,
+        34336
+      ]
+    }
+  ],
+  "baseline_integrity": {
+    "embedded_payload_sha256": "b345773c40f2c340808ec20c424b1d33cba59e68bf45796842f1550d742b42d7",
+    "errors": [],
+    "record_count": 7549,
+    "sidecar_payload_sha256": "b345773c40f2c340808ec20c424b1d33cba59e68bf45796842f1550d742b42d7",
+    "status": "pass",
+    "triples_payload_sha256": "b345773c40f2c340808ec20c424b1d33cba59e68bf45796842f1550d742b42d7"
+  },
+  "canonicalization": {
+    "name": "order-2 swap-only",
+    "sort": "(len(nu), nu, lam, mu)",
+    "version": "swap-only-v1"
+  },
+  "comparison": {
+    "anchor_failures": 0,
+    "baseline_integrity_errors": 0,
+    "evaluation_errors": 0,
+    "extra_triples": 0,
+    "mismatch_bundle": "mismatches.json",
+    "missing_triples": 0,
+    "polynomial_mismatches": 0
+  },
+  "enumeration": {
+    "nonzero_triple_count": 7549,
+    "structural_candidate_count": 14302
+  },
+  "evaluator": {
+    "arithmetic": "exact integers + fractions.Fraction",
+    "interpolation_mode": "adaptive",
+    "lrcalc_call": "lrcoef(out=nu, inn1=lam, inn2=mu)",
+    "lrcalc_version": "2.1",
+    "name": "lrcalc-interp",
+    "python": "3.12.3",
+    "stability_policy": "empirical top finite-difference stabilization within hive bound"
+  },
+  "expected": {
+    "record_count": 7549,
+    "scope": {
+      "max_length": 5,
+      "max_size": 7
+    },
+    "triples_payload_sha256": "b345773c40f2c340808ec20c424b1d33cba59e68bf45796842f1550d742b42d7"
+  },
+  "gate": "P1_E1_BASELINE_PARITY",
+  "schema_version": 1,
+  "status": "pass",
+  "workers": 4
+}

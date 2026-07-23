@@ -1,0 +1,21 @@
+{
+  "artifacts": [
+    {
+      "bytes": 1668663,
+      "path": "actual_frontier.json",
+      "sha256": "e5db97cac0ef4ec037e3286b410508a004aebbbd3ad83a88f99c6364e1f2cd8b"
+    },
+    {
+      "bytes": 2834,
+      "path": "parity_report.json",
+      "sha256": "004acd113862c85921deb3f75f6cf8ac43097d9d045b7eaf9077e8a5c668b32e"
+    },
+    {
+      "bytes": 97,
+      "path": "mismatches.json",
+      "sha256": "f9ccf37dbeee39d5a5c001171b46370e1ad3b1c6d45c32b7a38d7e01b9d8abb0"
+    }
+  ],
+  "gate": "P1_E1_BASELINE_PARITY",
+  "schema_version": 1
+}

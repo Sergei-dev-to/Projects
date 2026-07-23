@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "fixtures": [
+    {
+      "id": "buch_n3_interval",
+      "description": "Primary hand-audited fixture: the sole interior label x=q_1_1 obeys 4 <= x <= 5.",
+      "source": {
+        "citation": "Anders S. Buch, The Saturation Conjecture (after A. Knutson and T. Tao), Example 1",
+        "url": "https://arxiv.org/abs/math/9810180",
+        "claim": "For n=3, lambda=mu=(2,1), nu=(3,2,1), the rhombus inequalities are 4 <= x <= 5, giving two integral hives."
+      },
+      "n": 3,
+      "lam": [2, 1],
+      "mu": [2, 1],
+      "nu": [3, 2, 1],
+      "expected_lr_at_1": 2,
+      "expected_affine_dimension": 1,
+      "expected_polynomial": ["1", "1"],
+      "audit": {"variable": "q_1_1", "lower_bound": 4, "upper_bound": 5}
+    },
+    {
+      "id": "n3_degenerate_point",
+      "description": "Nominal one-variable hive collapsed to the singleton q_1_1=5; LR coefficient 1 and affine dimension 0.",
+      "n": 3,
+      "lam": [2, 1],
+      "mu": [2, 1],
+      "nu": [4, 2],
+      "expected_lr_at_1": 1,
+      "expected_affine_dimension": 0,
+      "expected_polynomial": ["1"],
+      "audit": {"variable": "q_1_1", "lower_bound": 5, "upper_bound": 5}
+    },
+    {
+      "id": "n3_empty_horn_failure",
+      "description": "Valid sizes and containment, but incompatible rhombi q_1_1>=6 and q_1_1<=5; LR coefficient 0.",
+      "n": 3,
+      "lam": [2, 1],
+      "mu": [2, 1],
+      "nu": [5, 1],
+      "expected_lr_at_1": 0,
+      "expected_affine_dimension": -1,
+      "expected_polynomial": ["0"],
+      "audit": {"variable": "q_1_1", "lower_bound": 6, "upper_bound": 5}
+    },
+    {
+      "id": "n2_no_interior_vertex",
+      "description": "No interior variables: the compatible boundary itself is one zero-dimensional integer hive.",
+      "n": 2,
+      "lam": [1],
+      "mu": [1],
+      "nu": [2],
+      "expected_lr_at_1": 1,
+      "expected_affine_dimension": 0,
+      "expected_polynomial": ["1"]
+    },
+    {
+      "id": "n4_asymmetric_degree2",
+      "description": "Asymmetric n=4 boundary exercising all three edges; three ambient variables and a degree-2 polynomial.",
+      "source": {
+        "citation": "dryrun/frontier_baseline.json, canonical payload b345773c...",
+        "claim": "The independent dry-run polynomial is 1 + 3/2 t + 1/2 t^2."
+      },
+      "n": 4,
+      "lam": [2, 1, 1],
+      "mu": [3, 2, 1],
+      "nu": [4, 3, 2, 1],
+      "expected_lr_at_1": 3,
+      "expected_affine_dimension": 2,
+      "expected_polynomial": ["1", "3/2", "1/2"]
+    },
+    {
+      "id": "campaign_degree6_anchor",
+      "description": "Campaign anchor with six interior variables and full degree 6; integration stress test, not claimed hand-derived.",
+      "source": {
+        "citation": "dryrun/DRYRUN_FINDINGS.md degree-6 anchor, independently recomputed by the dry-run evaluators",
+        "claim": "P(t)=1+13/4 t+37/8 t^2+4 t^3+9/4 t^4+3/4 t^5+1/8 t^6."
+      },
+      "n": 5,
+      "lam": [4, 3, 2, 1],
+      "mu": [4, 3, 2, 1],
+      "nu": [6, 5, 4, 3, 2],
+      "expected_lr_at_1": 16,
+      "expected_affine_dimension": 6,
+      "expected_polynomial": ["1", "13/4", "37/8", "4", "9/4", "3/4", "1/8"]
+    }
+  ]
+}

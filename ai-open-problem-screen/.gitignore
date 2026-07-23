@@ -1,0 +1,30 @@
+# Local execution environments and downloaded tool distributions
+.venv/
+.venv-wsl/
+.tools/
+
+# Python caches and transient test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Interrupted atomic writes
+*.tmp
+
+# Large or transient run products retained locally, not as source artifacts
+run/pilot-frontier/
+run/**/run.lock
+run/archive/
+run/pilot-resume/
+run/p3/**/geometry/items/
+run/p3/empty-reeve-scan/*
+!run/p3/empty-reeve-scan/ATTEMPT_FAILED.md
+run/bringup_report.json
+run/readiness.json
+run/state.json
+p3/screen_out.txt
+p3/screen_progress.txt
+
+# These small raw fixture outputs are part of the P1 evidence manifest. The
+# parent repository ignores *.out globally, so re-include them here.
+!p1/e2/reports/normaliz/*.out

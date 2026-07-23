@@ -1,0 +1,68 @@
+{
+  "all_pass": true,
+  "canonical_payload_sha256": "dfa8b0b3a655aa8131641828ef0634929243c89608071d9b4349527e62476fa6",
+  "controller_adapter": {
+    "all_agree": true,
+    "fixture_agreement_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/fixture_agreement.json",
+    "fixture_agreement_sha256": "bb03cd2b183b68149d40430ab6a2f62b97b6a7c2d574cf19130467d55eaf4531",
+    "lrcalc_evaluator_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/lrcalc_interp_evaluator.json",
+    "lrcalc_evaluator_sha256": "73656dd11ce194b1038091fd2d471eb7dac85fe8f187e8186cb2bdc9bb961a98",
+    "normaliz_evaluator_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/normaliz_ehrhart_evaluator.json",
+    "normaliz_evaluator_sha256": "cd0545f384c051e2b9f7f1ad516a2cdf1edca9cffcf5984c703d12b6b5f8ee7a"
+  },
+  "failed": 0,
+  "fixture_count": 6,
+  "gate": "E2 fixed hive fixtures",
+  "passed": 6,
+  "reports": [
+    {
+      "exception": null,
+      "id": "buch_n3_interval",
+      "pass": true,
+      "report_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/fixtures/buch_n3_interval.report.json",
+      "report_sha256": "b79d0ba39e5a3ba1593e8915da111fb429b7fb68502a6ae628d03244bf806955"
+    },
+    {
+      "exception": null,
+      "id": "n3_degenerate_point",
+      "pass": true,
+      "report_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/fixtures/n3_degenerate_point.report.json",
+      "report_sha256": "cf2363b9bf8332535a675736eef2f8d6e6e2aa6a589a5a44c0bf1cdba5d593e7"
+    },
+    {
+      "exception": null,
+      "id": "n3_empty_horn_failure",
+      "pass": true,
+      "report_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/fixtures/n3_empty_horn_failure.report.json",
+      "report_sha256": "c42d05479fde5ddc0da028d3b1d7862d13fe9ed906ef1849052cf317b415098c"
+    },
+    {
+      "exception": null,
+      "id": "n2_no_interior_vertex",
+      "pass": true,
+      "report_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/fixtures/n2_no_interior_vertex.report.json",
+      "report_sha256": "6b3692d40fa7dfd546c670546a5c8abb5febe9f8f5d38e60f9b1047a8d93b679"
+    },
+    {
+      "exception": null,
+      "id": "n4_asymmetric_degree2",
+      "pass": true,
+      "report_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/fixtures/n4_asymmetric_degree2.report.json",
+      "report_sha256": "2af9ccda06cd9de743ae384c3d2acd08fd6b9adaa15bc365e44a246430181f00"
+    },
+    {
+      "exception": null,
+      "id": "campaign_degree6_anchor",
+      "pass": true,
+      "report_path": "/mnt/c/Users/serge/Projects/ai-open-problem-screen/p1/e2/reports/fixtures/campaign_degree6_anchor.report.json",
+      "report_sha256": "08693e852703945f107876e9fca8ac650911e594ee4e383fca4fa9346bbbc853"
+    }
+  ],
+  "schema_version": 1,
+  "tool_versions": {
+    "lrcalc": "2.1",
+    "normaliz": "Normaliz 3.10.2",
+    "pynormaliz": "2.19",
+    "python": "3.12.3"
+  }
+}

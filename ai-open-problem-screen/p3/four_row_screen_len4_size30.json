@@ -1,0 +1,41 @@
+{
+ "c1_histogram_capped_at_5": {
+  "1": 2622691,
+  "2": 927080,
+  "3": 365496,
+  "4": 150316,
+  "5": 164061
+ },
+ "hits_negative_coefficient": [],
+ "max_c2_in_pool_capped_at_22": 10,
+ "max_c2_witness": [
+  [
+   3,
+   2,
+   1
+  ],
+  [
+   21,
+   2,
+   1
+  ],
+  [
+   23,
+   4,
+   2,
+   1
+  ]
+ ],
+ "mechanism": "empty tetrahedron (Reeve): c(1)==4 and c(2)>21 <=> negative linear coefficient",
+ "mechanism_pool_c1_eq_4": 150316,
+ "n_hits": 0,
+ "nonzero_triples": 4229644,
+ "scope": {
+  "max_length": 4,
+  "max_size_nu": 30,
+  "note": "corrected official domain: |nu|=|lam|+|mu|<=30, all lengths<=4"
+ },
+ "seconds": 477.2,
+ "sha256": "0b7cc315428119942895a88e3d767bfd5fb8e4d38736368ff9e9a701af8ad2c2",
+ "support_compatible_triples": 9332014
+}

@@ -1,0 +1,191 @@
+{
+  "evaluator": "normaliz-ehrhart",
+  "fixtures": [
+    {
+      "affine_dimension": 1,
+      "id": "buch_n3_interval",
+      "input_canonical_payload_sha256": "813b04f06061ff2b57ea00450051f00eea341a8ac48a46a3b8e4f5d80d18e136",
+      "normaliz_cli_output_sha256": "b43e37c24768f1d6a47c970d86e1225c56f9491de6ea02a6a3678afd53c41949",
+      "number_lattice_points": 2,
+      "period_collapses_to_one": true,
+      "poly": [
+        "1",
+        "1"
+      ],
+      "raw_ehrhart_quasipolynomial": [
+        [
+          1,
+          1
+        ],
+        1
+      ],
+      "raw_ehrhart_series": [
+        [
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        0
+      ]
+    },
+    {
+      "affine_dimension": 6,
+      "id": "campaign_degree6_anchor",
+      "input_canonical_payload_sha256": "fc970ecee576364d7a4290aff8ba8e85cffe47e688e6bd73fc5be47b88d3c97e",
+      "normaliz_cli_output_sha256": "2b4e264acd21a8897af38494407b19e120cc24b60c34f3ae95abd52c4b74b58f",
+      "number_lattice_points": 16,
+      "period_collapses_to_one": true,
+      "poly": [
+        "1",
+        "13/4",
+        "37/8",
+        "4",
+        "9/4",
+        "3/4",
+        "1/8"
+      ],
+      "raw_ehrhart_quasipolynomial": [
+        [
+          8,
+          26,
+          37,
+          32,
+          18,
+          6,
+          1
+        ],
+        8
+      ],
+      "raw_ehrhart_series": [
+        [
+          1,
+          9,
+          35,
+          35,
+          9,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        0
+      ]
+    },
+    {
+      "affine_dimension": 0,
+      "id": "n2_no_interior_vertex",
+      "input_canonical_payload_sha256": "fa3996b75814ff3b73cdbfdd9a50b362007515dce205b0823c50dec81a667bba",
+      "normaliz_cli_output_sha256": null,
+      "number_lattice_points": 1,
+      "period_collapses_to_one": true,
+      "poly": [
+        "1"
+      ],
+      "raw_ehrhart_quasipolynomial": [
+        [
+          1
+        ],
+        1
+      ],
+      "raw_ehrhart_series": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        0
+      ]
+    },
+    {
+      "affine_dimension": 0,
+      "id": "n3_degenerate_point",
+      "input_canonical_payload_sha256": "eb54e3733ffb02e3937e5bbaa88a1352e19a5798c06db7d469ef4e8d744260c2",
+      "normaliz_cli_output_sha256": "dc16bb13ad74fe7558cd0810c9c16f8625cb0889a7dc8abefc8c4ae04c8e3193",
+      "number_lattice_points": 1,
+      "period_collapses_to_one": true,
+      "poly": [
+        "1"
+      ],
+      "raw_ehrhart_quasipolynomial": [
+        [
+          1
+        ],
+        1
+      ],
+      "raw_ehrhart_series": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        0
+      ]
+    },
+    {
+      "affine_dimension": -1,
+      "id": "n3_empty_horn_failure",
+      "input_canonical_payload_sha256": "ca36176d308c12422e720ffda86f7b9b92c3996e1a4472624dad8a8033b1be53",
+      "normaliz_cli_output_sha256": "e67c6ccbeb6d7ae09066565a55899a15d13aadfee68137d574240e92ad25c930",
+      "number_lattice_points": 0,
+      "period_collapses_to_one": true,
+      "poly": [
+        "0"
+      ],
+      "raw_ehrhart_quasipolynomial": [
+        [],
+        1
+      ],
+      "raw_ehrhart_series": [
+        [
+          0
+        ],
+        [],
+        0
+      ]
+    },
+    {
+      "affine_dimension": 2,
+      "id": "n4_asymmetric_degree2",
+      "input_canonical_payload_sha256": "5c5a69592faef77626e1945261abea48add72f1146c3a4eaab1c5502201676f8",
+      "normaliz_cli_output_sha256": "9257a1001b212511763706ffdb29faaea3b344976ce20fd8703044bb579e9011",
+      "number_lattice_points": 3,
+      "period_collapses_to_one": true,
+      "poly": [
+        "1",
+        "3/2",
+        "1/2"
+      ],
+      "raw_ehrhart_quasipolynomial": [
+        [
+          2,
+          3,
+          1
+        ],
+        2
+      ],
+      "raw_ehrhart_series": [
+        [
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        0
+      ]
+    }
+  ],
+  "method": "explicit hive inhomogeneous inequalities plus PyNormaliz EhrhartQuasiPolynomial",
+  "schema_version": "lr-p1-normaliz-fixture-evaluator/v1"
+}
