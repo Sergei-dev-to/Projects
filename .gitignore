@@ -134,6 +134,11 @@ wormhole/*.tar
 wormhole/FrolovNovikov1990*.txt
 wormhole/wormhole_paper*.txt
 
+# Downloaded third-party literature (papers, extracted text, arXiv sources).
+# This repo is public; do not redistribute other authors' material from it.
+# Keep local copies on disk, out of version control.
+**/literature/
+
 # Extracted/downloaded arXiv and source scratch folders with malformed filenames.
 # Keep manuscript source and reproducible scripts instead.
 wormhole/_*_src/
