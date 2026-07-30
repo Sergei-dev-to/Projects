@@ -119,6 +119,8 @@ wormhole/*.svg
 !wormhole/fig_channel_schematic.pdf
 !wormhole/fig_thinshell_zero_flux_field.pdf
 !wormhole/fig_worldtube_stokes.pdf
+!wormhole/fig_observer_charge_channels_v7.pdf
+!wormhole/fig_thinshell_fixed_monopole_flux_v7.pdf
 wormhole/*_page*.png
 wormhole/pdf_page*.png
 wormhole/section3_*.png
