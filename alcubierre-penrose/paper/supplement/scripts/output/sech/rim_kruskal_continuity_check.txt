@@ -1,0 +1,30 @@
+Rim Kruskal continuity check
+
+Planar near-horizon model:
+  s = x - x_H
+  v = -1 - kappa s + O(s^2)
+  U = exp(-kappa t),  s = U V
+
+Bent/transitioning front:
+  x = F(Y) + s
+  dx = V dU + U dV + F_Y dY
+  dt = -dU/(kappa U)
+
+Substituting in ds^2=-dt^2+(dx-vdt)^2+dY^2+... gives
+  g_UY = -F_Y/(kappa U) + O(U).
+
+If the planar cap ends smoothly, F_Y may vanish to all orders at the
+rim point Y=0.  But if the cap is finite and the product structure
+really ends, there are points Y_n -> 0 with F_Y(Y_n) != 0.
+
+Then along paths U_n = F_Y(Y_n)^2,
+  |g_UY| ~ 1/(kappa |F_Y(Y_n)|) -> infinity.
+Along paths U_n = F_Y(Y_n),
+  g_UY -> -1/kappa.
+Along paths with Y=0 inside the flat jet,
+  g_UY -> 0.
+
+Conclusion:
+  The product Kruskal extension is not even C0 at the rim as a
+  neighborhood extension unless F_Y vanishes on an open neighborhood,
+  i.e. unless the product structure persists beyond the rim.

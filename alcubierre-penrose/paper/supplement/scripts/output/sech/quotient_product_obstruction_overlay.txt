@@ -1,0 +1,83 @@
+Diagram derivation: quotient versus 3+1 overlay
+
+1+1 quotient metric
+-------------------
+Start with
+
+  ds^2 = -dt^2 + [dx - v(x) dt]^2
+       = -(1-v^2) dt^2 - 2 v dt dx + dx^2.
+
+The two radial null families obey
+
+  dx/dt = v+1,        dx/dt = v-1.
+
+Therefore define null coordinates
+
+  u = t - int dx/(v+1),
+  w = t - int dx/(v-1).
+
+Then u is constant on the first null family and w is constant on the
+second.  Solving for dt and dx gives
+
+  dt = [(1+v)/2] du + [(1-v)/2] dw,
+  dx = [(1-v^2)/2] (dw-du),
+
+and hence
+
+  ds^2 = -(1-v^2) du dw.
+
+The conformal diagram is obtained by replacing u,w by regularized horizon
+coordinates and compactifying them.  The horizons are null because they are
+constant-u or constant-regularized-U lines.
+
+Front endpoint
+--------------
+At the front root x=x2, take v=-1 and v_x=-kappa<0.  With s=x-x2,
+
+  v = -1 - kappa s + O(s^2),
+  1-v^2 = -2 kappa s + O(s^2),
+  u = t + (1/kappa) log|s| + O(1),
+  w = t + O(1).
+
+A local endpoint chart is
+
+  U = exp(kappa u),       V = exp(-kappa w).
+
+Then
+
+  ds^2 = [(1-v^2)/(kappa^2 U V)] dU dV,
+
+and the bracket has a finite nonzero limit after the usual side
+normalization because U V is proportional to s.  The front generator is
+U=0; its future finite-affine endpoint is U=V=0.
+
+3+1 product lift
+----------------
+If the full metric is transversely uniform on an open patch,
+
+  ds^2 = ds^2_1+1 + dy^2 + dz^2,
+
+then the 1+1 extension lifts directly as a product.  The conformal diagram
+is the quotient diagram; each point represents an R^2 transverse plane, or
+a transverse disk if only a finite local planar window is assumed.
+
+Rounded/nonuniform obstruction
+------------------------------
+At a stationary front generator in the full metric
+
+  ds^2 = -dt^2 + [dx - v(x,y,z)dt]^2 + dy^2 + dz^2,
+
+the affine tangent is K=q partial_t with
+
+  q = 1/[kappa(lambda_* - lambda)].
+
+The positive-boost-weight components are
+
+  R_KNK A = -v_xA q,
+  R_KA K B = v_AB q^2,       A,B in {y,z}.
+
+Thus a rounded front wall, or transverse variation of the wall data,
+generically produces a parallel-propagated curvature blow-up at the same
+endpoint where the 1+1 quotient permits a formal extension.  This is why
+the overlay marks the product extension as allowed only for v=v(x), and
+marks the rounded finite-bubble endpoint as obstructed.

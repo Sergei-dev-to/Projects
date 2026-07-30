@@ -1,0 +1,64 @@
+Analytic 3+1 parallel-frame tidal calculation
+
+Metric:
+  ds^2 = -dt^2 + [dx - v(r) dt]^2 + dy^2 + dz^2
+  r = sqrt(x^2+y^2+z^2)
+
+Curvature convention used here:
+  R^a_{bcd} = d_c Gamma^a_{db} - d_d Gamma^a_{cb}
+             + Gamma^a_{ce} Gamma^e_{db}
+             - Gamma^a_{de} Gamma^e_{cb}
+  This matches the numerical script's convention.
+
+General symbolic result:
+  R_tyty = -(v(x, y, z)**2*Derivative(v(x, y, z), y)**2 + 4*v(x, y, z)*Derivative(v(x, y, z), (y, 2)) + 3*Derivative(v(x, y, z), y)**2)/4
+
+Axis specialization at x=R, y=z=0:
+  v_y = v_z = 0
+  v_yy = v_zz = v_r/R
+  so R_tyty = R_tztz = -v v_yy.
+
+At the front horizon tip:
+  v(R) = -1
+  v_r(R) = -kappa
+  R_tyty = R_tztz = -kappa/R
+
+For the sech profile used in our plots:
+  v(r) = 2(sech r - 1)
+  R = acosh(2)
+  kappa = sqrt(3)/2
+  R_tyty = R_tztz = -sqrt(3)/(2*acosh(2))
+           = -6.575953611020e-01
+
+Parallel transverse vectors:
+  The connection components along the generator are
+  Gamma^a_t_y = [-v(x, y, z)*Derivative(v(x, y, z), y)/2, -(v(x, y, z)**2 + 1)*Derivative(v(x, y, z), y)/2, 0, 0]
+  Gamma^a_t_z = [-v(x, y, z)*Derivative(v(x, y, z), z)/2, -(v(x, y, z)**2 + 1)*Derivative(v(x, y, z), z)/2, 0, 0]
+  Since v_y=v_z=0 on the axis, partial_y and partial_z are
+  parallel propagated along the axis generator.
+
+Non-affine versus affine parameter:
+  Gamma^a_tt = [v(x, y, z)**2*Derivative(v(x, y, z), x), (v(x, y, z)**2 - 1)*v(x, y, z)*Derivative(v(x, y, z), x), -v(x, y, z)*Derivative(v(x, y, z), y), -v(x, y, z)*Derivative(v(x, y, z), z)]
+  At the front tip, v=-1 and v_x=-kappa, so
+    nabla_{partial_t} partial_t = -kappa partial_t.
+  If K=(dt/dlambda) partial_t is affine, then
+    dt/dlambda = 1/[kappa(lambda_* - lambda)]
+  as t -> +infinity and lambda -> lambda_*.
+
+Therefore the parallel-frame tidal component is
+  R(K,partial_y,K,partial_y)
+    = (dt/dlambda)^2 R_tyty
+    = R_tyty / [kappa^2 (lambda_* - lambda)^2].
+
+For the sech profile this leading coefficient is
+  R_tyty/kappa^2 = -2*sqrt(3)/(3*acosh(2))
+                  = -8.767938148027e-01
+
+Conclusion:
+  The transverse tidal component diverges like
+    -(const)/(lambda_* - lambda)^2
+  at the finite affine endpoint of the front axis generator.
+  This is not a scalar-curvature blow-up at finite coordinate t;
+  it is a parallel-propagated curvature singularity reached only
+  in the asymptotic limit t -> +infinity.
+  The rear endpoint has the corresponding time-reversed behavior.

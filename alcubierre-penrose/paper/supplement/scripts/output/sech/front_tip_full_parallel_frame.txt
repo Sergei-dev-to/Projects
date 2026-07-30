@@ -1,0 +1,42 @@
+Full parallel null frame at the 3+1 Alcubierre front tip
+
+Assumptions:
+  front tip x=R>0, y=z=0
+  v(R)=-1
+  v_x(R)=-kappa, kappa>0
+  v_xx(R)=mu
+  spherical smoothness gives v_yy=v_zz=-kappa/R at the axis
+
+Parallel frame:
+  q = exp(kappa t) = 1/[kappa(lambda_* - lambda)] up to normalization
+  K = q partial_t
+  N = q^-1 (1/2 partial_t - partial_x)
+  Y = partial_y
+  Z = partial_z
+  g(K,N)=-1, g(Y,Y)=g(Z,Z)=1
+
+Independent nonzero frame Riemann components R_{ABCD}:
+  R_KNKN = -kappa**2 + mu
+  R_KYKY = -kappa*q**2/R
+  R_KZKZ = -kappa*q**2/R
+  R_NYNY = kappa/(4*R*q**2)
+  R_NZNZ = kappa/(4*R*q**2)
+
+Divergent components:
+  R_KYKY = R_KZKZ = -kappa*q^2/R
+  Since q = 1/[kappa(lambda_* - lambda)],
+    R_KYKY = R_KZKZ = -1/[kappa R (lambda_* - lambda)^2].
+
+Finite components:
+  R_KNKN is finite and depends on mu=v_xx(R).
+  Mixed K-Y/N-Y components vanish in this symmetric spherical case.
+  R_YZYZ vanishes at the axis for this metric/profile class.
+
+Sech profile coefficient:
+  R_KYKY/q^2 = -sqrt(3)/(2*acosh(2)) = -6.575953611020e-01
+
+Conclusion:
+  The full parallel-frame contraction confirms that the only leading
+  blow-up in the spherical front-tip calculation is the transverse
+  screen tidal pair R_KYKY=R_KZKZ. The blow-up is quadratic in
+  affine distance to the endpoint and is independent of v_xx(R).

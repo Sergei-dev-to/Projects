@@ -1,0 +1,35 @@
+Einstein tensor in the front-tip parallel frame
+
+Assumptions:
+  front tip x=R>0, y=z=0
+  v(R)=-1
+  v_x(R)=-kappa, kappa>0
+  v_xx(R)=mu
+  spherical smoothness gives v_yy=v_zz=-kappa/R
+
+Parallel frame:
+  K = q partial_t
+  N = q^-1 (1/2 partial_t - partial_x)
+  Y = partial_y
+  Z = partial_z
+  q = 1/[kappa(lambda_* - lambda)] up to normalization
+
+Independent nonzero frame Einstein components G_AB:
+  G_KK = -2*kappa*q**2/R
+  G_NN = kappa/(2*R*q**2)
+  G_YY = -kappa**2 + mu
+  G_ZZ = -kappa**2 + mu
+
+Divergent stress-energy channel:
+  If T_AB = G_AB/(8*pi), then
+    T_KK = -2*kappa*q^2/R / (8*pi)
+         = -1/[4*pi*kappa R (lambda_* - lambda)^2].
+
+Interpretation:
+  The affine null energy density measured along the incomplete
+  generator diverges in the same transverse-curvature channel as
+  the PP Riemann component.
+  The divergence is independent of mu=v_xx(R).
+
+Sech profile coefficient:
+  G_KK/q^2 = -sqrt(3)/acosh(2) = -1.315190722204e+00

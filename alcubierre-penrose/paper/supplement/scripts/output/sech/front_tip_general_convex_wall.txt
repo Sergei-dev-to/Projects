@@ -1,0 +1,67 @@
+Generic convex front-wall tip calculation
+
+Local assumptions at the exact front endpoint:
+  v=-1
+  v_x=-kappa, kappa>0
+  v_y=v_z=0
+  H_AB = v_AB in transverse coordinates A,B=y,z
+
+No spherical symmetry is assumed.  Cross derivatives v_xy=a and v_xz=b
+are kept in the symbolic substitution.
+
+Leading PP curvature components:
+  R_KYKY = H_yy*q**2
+  R_KYKZ = H_yz*q**2
+  R_KZKZ = H_zz*q**2
+  R_KNKN = -kappa**2 + mu
+
+Leading Einstein components:
+  G_KK = q**2*(H_yy + H_zz)
+  G_KY = -a*q
+  G_KZ = -b*q
+
+Wall-curvature interpretation:
+  Let the horizon/front wall v=-1 be x=X(y,z).
+  Since v_x=-kappa and v_A=0, differentiating v(X(y,z),y,z)=-1 gives
+    X_AB = H_AB/kappa.
+  In principal transverse coordinates for a convex front cap,
+    X_yy=-C_1, X_zz=-C_2, C_i>0,
+  hence
+    H_yy=-kappa C_1, H_zz=-kappa C_2, H_yz=0.
+
+Principal-curvature form:
+  R_KYKY = -C_1*kappa*q**2
+  R_KYKZ = 0
+  R_KZKZ = -C_2*kappa*q**2
+  R_KNKN = -kappa**2 + mu
+  G_KK = -kappa*q**2*(C_1 + C_2)
+
+Full nonzero parallel-frame Riemann components in the generic local model:
+  R_KNKN = -kappa**2 + mu
+  R_KNKY = -a*q
+  R_KNKZ = -b*q
+  R_KYKY = H_yy*q**2
+  R_KYKZ = H_yz*q**2
+  R_KZKZ = H_zz*q**2
+  R_NYNY = -H_yy/(4*q**2)
+  R_NYNZ = -H_yz/(4*q**2)
+  R_NZNZ = -H_zz/(4*q**2)
+
+Flat transverse Hessian check H_AB=0:
+  R_KNKN = -kappa**2 + mu
+  R_KNKY = -a*q
+  R_KNKZ = -b*q
+  G_KK = 0
+  G_KY = -a*q
+  G_KZ = -b*q
+
+With q=1/[kappa(lambda_*-lambda)],
+  R_KYKY = -C_1/[kappa(lambda_*-lambda)^2]
+  R_KZKZ = -C_2/[kappa(lambda_*-lambda)^2]
+  G_KK   = - (C_1+C_2)/[kappa(lambda_*-lambda)^2].
+
+Conclusion:
+  The PP singularity is not a spherical artifact.  For any smooth
+  finite-curvature convex front cap with positive principal curvature,
+  the exact front generator has transverse tidal blow-up controlled
+  by the principal curvatures of the wall.

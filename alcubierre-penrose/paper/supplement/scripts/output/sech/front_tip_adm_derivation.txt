@@ -1,0 +1,50 @@
+ADM/Gauss-Codazzi derivation at the Alcubierre front tip
+
+ADM convention:
+  ds^2 = -N^2 dt^2 + gamma_ij (dx^i + beta^i dt)(dx^j + beta^j dt)
+  N=1, gamma_ij=delta_ij, beta^i=(-v,0,0)
+  n = partial_t - beta^i partial_i
+  K_ij = 1/2(D_i beta_j + D_j beta_i)
+
+Front-tip data:
+  v=-1
+  v_x=-kappa
+  v_y=0
+  v_yy=-kappa/R
+
+Extrinsic curvature data:
+  K_xx = -v_x = kappa
+  K_xy = -v_y/2 = 0
+  K_yy = 0
+  D_y K_xy = -v_yy/2 = kappa/(2*R)
+
+Calibrated Gauss-Codazzi pieces in the Riemann convention used by the scripts:
+  R_ijkl = K_il K_jk - K_ik K_jl
+  R_nijk = D_j K_ik - D_k K_ij
+
+Needed components:
+  R_xyxy = K_xy^2 - K_xx K_yy = 0
+  R_nyxy = D_x K_yy - D_y K_yx = -kappa/(2*R)
+  R_nyny = 0
+
+At the front tip beta^x=-v=1, so
+  partial_t = n + partial_x.
+Therefore
+  R_tyty = R(n+x,y,n+x,y)
+          = R_nyny + 2 R_nyxy + R_xyxy
+          = -kappa/R
+
+This matches the full 4D tensor calculation:
+  R_tyty = -kappa/R.
+
+Affine normalization:
+  K_aff = q partial_t
+  q = 1/[kappa(lambda_*-lambda)]
+  R_KYKY = q^2 R_tyty = -kappa*q**2/R
+          = -1/(R*kappa*s**2) with s=lambda_*-lambda
+
+Conclusion:
+  The transverse PP singularity is the Codazzi contribution from
+  the transverse derivative D_y K_xy of the shift-induced extrinsic
+  curvature.  The finite front-wall curvature supplies v_yy, and
+  affine horizon normalization supplies the divergent q^2 factor.

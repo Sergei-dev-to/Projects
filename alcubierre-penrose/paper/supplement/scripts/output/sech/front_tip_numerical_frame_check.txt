@@ -1,0 +1,47 @@
+Numerical finite-difference frame check at the sech front tip
+
+r_h = acosh(2) = 1.316957896925e+00
+kappa = sqrt(3)/2 = 8.660254037844e-01
+expected R_KYKY/q^2 = -kappa/r_h = -6.575953611020e-01
+expected G_KK/q^2 = -2*kappa/r_h = -1.315190722204e+00
+
+Frame:
+  K = q partial_t, so R_KYKY/q^2 = R_tyty
+  and G_KK/q^2 = G_tt at the coordinate tip.
+
+h=8e-04
+  R_KYKY/q^2 = -6.575952106632e-01
+  R_KZKZ/q^2 = -6.575952106632e-01
+  G_KK/q^2   = -1.315191341325e+00
+  Ricci scalar = 5.000016972262e-01
+  R coefficient error = 1.504e-07
+  G coefficient error = -6.191e-07
+
+h=4e-04
+  R_KYKY/q^2 = -6.575953229865e-01
+  R_KZKZ/q^2 = -6.575953229865e-01
+  G_KK/q^2   = -1.315190875973e+00
+  Ricci scalar = 5.000004240658e-01
+  R coefficient error = 3.812e-08
+  G coefficient error = -1.538e-07
+
+h=2e-04
+  R_KYKY/q^2 = -6.575953531707e-01
+  R_KZKZ/q^2 = -6.575953531707e-01
+  G_KK/q^2   = -1.315190763841e+00
+  Ricci scalar = 5.000001072064e-01
+  R coefficient error = 7.931e-09
+  G coefficient error = -4.164e-08
+
+h=1e-04
+  R_KYKY/q^2 = -6.575953614973e-01
+  R_KZKZ/q^2 = -6.575953614973e-01
+  G_KK/q^2   = -1.315190737370e+00
+  Ricci scalar = 5.000000416960e-01
+  R coefficient error = -3.953e-10
+  G coefficient error = -1.517e-08
+
+Conclusion:
+  Direct finite-difference curvature of the original sech metric
+  converges to the analytic frame coefficients once the affine
+  factor q^2 is divided out.

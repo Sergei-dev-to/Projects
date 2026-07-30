@@ -1,0 +1,514 @@
+# Parallel-Propagated Curvature Singularities at the Axial Tips of the 3+1 Alcubierre Geometry
+
+## Abstract
+
+The eternal \(1+1\) reduction of a superluminal Alcubierre warp drive has a
+front Cauchy horizon which admits the usual two-dimensional continuation.  We
+show that this continuation does not lift to a \(C^2\) extension of the
+physical \(3+1\) geometry for a smooth finite-curvature spherical, or more
+generally convex, front cap.  In the stationary comoving form
+\[
+  ds^2=-dt^2+[dx-v(r)dt]^2+dy^2+dz^2,\qquad
+  r=(x^2+y^2+z^2)^{1/2},
+\]
+assume that the front axial root satisfies
+\[
+  x=R>0,\qquad y=z=0,\qquad v(R)=-1,\qquad v_r(R)=-\kappa<0 .
+\]
+The future front-axis null generator reaches \(t=+\infty\) at finite affine
+parameter.  In a parallel-propagated null frame along this generator,
+\[
+  R(K,Y,K,Y)=R(K,Z,K,Z)
+    =-\frac{1}{\kappa R(\lambda_*-\lambda)^2}.
+\]
+The endpoint is therefore a null parallel-propagated curvature singularity.
+The zeroth-order scalar polynomial curvature invariants have finite limits
+along the same incomplete generator, so the singularity is non-scalar.  The
+time-reversed statement holds at the past rear axial endpoint.
+
+## I. Introduction
+
+Alcubierre's warp-drive geometry provides an explicit spacetime in which the
+center of a compact distortion can move with arbitrarily large apparent
+velocity relative to asymptotic observers, at the cost of stress-energy that
+violates the usual energy conditions.  The standard classical discussion gives
+finite negative-energy and NEC-violating source components on ordinary local
+frames.  A separate obstruction appears when the apparent velocity is
+superluminal: in the \(1+1\) axial reduction, horizons form, and quantum
+stress-energy calculations show horizon divergences.
+
+The eternal \(1+1\) problem has a well-known conformal diagram.  In the middle
+stationary region the bubble-center worldline is timelike and complete, while
+the future front null generator reaches a Cauchy endpoint at finite affine
+parameter.  In two dimensions this endpoint can be continued in the usual way.
+The question addressed here is whether that continuation is also a smooth
+local continuation of the physical \(3+1\) Alcubierre metric.
+
+It is not, under the finite-curvature cap assumptions stated below.  The
+transverse geometry suppressed in the \(1+1\) reduction produces a divergent
+parallel-propagated tidal component at the future front axial endpoint.  The
+divergence is already present in the classical background geometry.  It is not
+a calculation of the renormalized stress-energy tensor of a test quantum
+field, and it is not a statement that the bubble-center observer is singular.
+
+The result also refines the higher-dimensional picture suggested by null
+geodesic studies of superluminal warp drives.  In dimensions above \(1+1\),
+the unstable set is localized to the front and rear axial tips rather than an
+entire horizon surface.  Here the exact front axial generator is shown to end
+at a null parallel-propagated curvature singularity of the \(3+1\) metric.
+
+![Schematic location of the calculation in the axial conformal picture.  The center rider remains timelike, while the future front axial generator reaches a finite-affine endpoint where the \(3+1\) transverse PP curvature diverges.](../figures/axial_endpoint_schematic.png)
+
+The paper is organized as follows.  Section II fixes the stationary comoving
+form of the metric and identifies the axial roots.  Section III constructs the
+affine generator and a parallel frame.  Section IV computes the curvature
+blow-up.  Section V records the consequences for \(C^2\) extensions, scalar
+invariants, and the classical source tensor.  Sections VI and VII generalize
+the result to smooth convex caps and describe the singularity strength.
+Section VIII summarizes the interpretation and limitations.  Appendix A gives
+the explicit sech-profile coefficients and the independent checks.
+
+## II. Stationary Alcubierre Geometry
+
+We use the stationary comoving form
+\[
+  ds^2=-dt^2+[dx-v(r)dt]^2+dy^2+dz^2,
+  \qquad r=(x^2+y^2+z^2)^{1/2}.
+\]
+The nonzero metric components are
+\[
+  g_{tt}=v^2-1,\qquad g_{tx}=-v,\qquad
+  g_{xx}=g_{yy}=g_{zz}=1 .
+\]
+
+This is the bubble-comoving convention.  If the standard Alcubierre form is
+written with a nonnegative profile \(v_s f(r)\), with \(f(0)=1\) and
+\(f(\infty)=0\), the coordinate \(x=X-v_s t\) rewrites the shift as
+\[
+  v(r)=v_s[f(r)-1].
+\]
+The bubble center has \(v=0\), the asymptotic exterior has \(v=-v_s\), and the
+front axial root is \(v=-1\).
+
+At a spherical front tip we have
+\[
+  v=-1,\qquad v_x=v_r=-\kappa,\qquad
+  v_y=v_z=0,\qquad
+  v_{yy}=v_{zz}=\frac{v_r}{R}=-\frac{\kappa}{R},\qquad
+  v_{xx}=\mu ,
+\]
+with \(\kappa>0\) and \(\mu=v_{rr}(R)\).  The second radial derivative \(\mu\)
+enters finite curvature components but not the leading divergent transverse
+tidal coefficient.
+
+The surface \(v^2=1\) is not a Killing horizon generated by \(\partial_t\) at
+all of its points.  At \(v=-1\),
+\[
+  \nabla_{\partial_t}\partial_t
+    = v_x\partial_t+v_y\partial_y+v_z\partial_z .
+\]
+Only when \(v_y=v_z=0\) is this proportional to \(\partial_t\).  For a
+spherical profile this selects the two axial tips, not the whole \(v=-1\)
+sphere.
+
+## III. Axial Generator and Parallel Frame
+
+At the front axial root, \(\partial_t\) is null, tangent to the future
+front-axis generator, and Killing.  It is not affinely parametrized:
+\[
+  \nabla_{\partial_t}\partial_t=-\kappa\,\partial_t .
+\]
+Equivalently, in the signed non-affinity convention
+\(\nabla_\xi\xi=-\kappa\xi\), \(\kappa=-v_r(R)>0\).
+
+Let \(K=q\,\partial_t\) be the future-directed affine tangent.  The affine
+condition gives
+\[
+  \frac{dq}{dt}=\kappa q,\qquad q=q_0e^{\kappa t}.
+\]
+Since \(d\lambda/dt=1/q\),
+\[
+  \lambda_*-\lambda=\frac{e^{-\kappa t}}{\kappa q_0},
+  \qquad
+  q=\frac{1}{\kappa(\lambda_*-\lambda)}
+\]
+after fixing the affine normalization.  Thus the generator reaches
+\(t=+\infty\) at finite affine parameter.
+
+A convenient parallel null frame along the generator is
+\[
+  K=q\partial_t,\qquad
+  N=q^{-1}\left(\frac12\partial_t-\partial_x\right),\qquad
+  Y=\partial_y,\qquad Z=\partial_z,
+\]
+with \(g(K,N)=-1\) and \(g(Y,Y)=g(Z,Z)=1\).  Direct connection calculation
+shows that \(K,N,Y,Z\) are parallel transported along \(K\).
+
+## IV. Curvature Blow-Up
+
+The shortest derivation uses the ADM form
+\[
+  ds^2=-N^2dt^2+\gamma_{ij}(dx^i+\beta^i dt)(dx^j+\beta^j dt),
+  \qquad
+  N=1,\quad \gamma_{ij}=\delta_{ij},\quad \beta^i=(-v,0,0).
+\]
+With
+\[
+  n=\partial_t-\beta^i\partial_i,\qquad
+  K_{ij}=\frac12(D_i\beta_j+D_j\beta_i),
+\]
+the front-tip data give
+\[
+  K_{xx}=-v_x=\kappa,\qquad
+  K_{xy}=-\frac12v_y=0,\qquad
+  K_{yy}=0,\qquad
+  D_yK_{xy}=-\frac12v_{yy}=\frac{\kappa}{2R}.
+\]
+
+For the Riemann convention used here,
+\[
+  R_{ijkl}=K_{il}K_{jk}-K_{ik}K_{jl},\qquad
+  R_{nijk}=D_jK_{ik}-D_kK_{ij}.
+\]
+The relevant components are
+\[
+  R_{xyxy}=0,\qquad
+  R_{nyxy}=-\frac{\kappa}{2R},\qquad
+  R_{nyny}=0 .
+\]
+Since \(\beta^x=-v=1\) at the front tip, \(\partial_t=n+\partial_x\).  Hence
+\[
+  R_{tyty}=R(n+x,y,n+x,y)
+    =R_{nyny}+2R_{nyxy}+R_{xyxy}
+    =-\frac{\kappa}{R}.
+\]
+Affine normalization gives
+\[
+  R(K,Y,K,Y)=q^2R_{tyty}
+    =-\frac{\kappa q^2}{R}
+    =-\frac{1}{\kappa R(\lambda_*-\lambda)^2}.
+\]
+The \(Z\)-component is identical.
+
+In the full parallel null frame, the independent nonzero Riemann components at
+the spherical front tip are
+\[
+  R_{KNKN}=\mu-\kappa^2,\qquad
+  R_{KYKY}=R_{KZKZ}=-\frac{\kappa q^2}{R},\qquad
+  R_{NYNY}=R_{NZNZ}=\frac{\kappa}{4Rq^2}.
+\]
+The only leading blow-up in the spherical case is therefore
+\[
+  R_{KYKY}=R_{KZKZ}
+    =-\frac{1}{\kappa R(\lambda_*-\lambda)^2}.
+\]
+The coefficient is independent of \(\mu=v_{rr}(R)\).
+
+The rear axial endpoint is the time reverse.  At \(x=-R\) one has
+\[
+  v=-1,\qquad v_x=+\kappa,\qquad
+  \nabla_{\partial_t}\partial_t=+\kappa\,\partial_t .
+\]
+The incomplete generator is then the past-directed one, with
+\(t\to-\infty\) at finite affine parameter, and the same parallel-propagated
+curvature blow-up is obtained after the corresponding time reversal.
+
+## V. Consequences
+
+### A. \(C^2\) inextendibility
+
+Suppose a \(C^2\) extension existed through the future front endpoint.  The
+incomplete null generator would acquire a future endpoint in the extended
+spacetime.  Since the metric is \(C^2\), the Riemann tensor would be continuous
+there.  A parallel frame along the affine geodesic would have a continuous
+limiting frame, so \(R_{abcd}K^aY^bK^cY^d\) would have a finite limit.  This
+contradicts
+\[
+  |R(K,Y,K,Y)|\sim(\lambda_*-\lambda)^{-2}.
+\]
+Thus no \(C^2\) extension exists through this endpoint.  The statement does
+not rule out \(C^0\), lower-regularity, or distributional extensions.
+
+### B. Scalar polynomial invariants
+
+The singularity is non-scalar.  Since the metric is stationary and the
+generator stays at the fixed spatial point \((R,0,0)\), every zeroth-order
+scalar polynomial curvature invariant is constant along the generator and
+equal to its value at that point.  For the spherical data,
+\[
+  R=2(\kappa^2-\mu),
+\]
+\[
+  R_{ab}R^{ab}
+   =\frac{2[(R\kappa^2-R\mu)^2-\kappa^2]}{R^2},
+\]
+\[
+  R_{abcd}R^{abcd}
+   =\frac{4[(R\kappa^2-R\mu)^2-\kappa^2]}{R^2},
+\]
+and
+\[
+  C_{abcd}C^{abcd}=\frac{4(\kappa^2-\mu)^2}{3}.
+\]
+These are signed Lorentzian contractions and need not be positive.
+
+The finiteness is general at zeroth order.  The coordinate-basis curvature
+components at \((R,0,0)\) are finite and stationary, and scalar polynomial
+invariants are contractions of those finite components with the finite inverse
+metric.  Equivalently, in the parallel null frame, divergent \(K\)-components
+have positive boost weight, while scalar polynomial contractions have total
+boost weight zero.  The \(q\)-factors cancel between \(K\) and \(N\) legs.
+
+### C. Classical source tensor
+
+The Einstein tensor in the same parallel frame has
+\[
+  G_{KK}=-\frac{2\kappa q^2}{R},\qquad
+  G_{NN}=\frac{\kappa}{2Rq^2},\qquad
+  G_{YY}=G_{ZZ}=\mu-\kappa^2 .
+\]
+If the metric is imposed as a classical solution of Einstein's equation, then
+\[
+  T_{KK}=\frac{G_{KK}}{8\pi}
+    =-\frac{1}{4\pi\kappa R(\lambda_*-\lambda)^2}.
+\]
+This is a divergence of the classical source tensor required by the imposed
+\(3+1\) Alcubierre geometry.  It is distinct from the renormalized
+stress-energy tensor of a test quantum field in the \(1+1\) problem.
+
+For a nonspherical wall, mixed longitudinal-transverse derivatives can also
+produce subleading affine-frame source divergences,
+\[
+  G_{KY}=-v_{xy}q,\qquad G_{KZ}=-v_{xz}q.
+\]
+These terms do not change the leading convex-cap behavior \(G_{KK}\sim q^2\).
+
+## VI. General Smooth Convex Caps
+
+The spherical result is not an artifact of the radial profile.  Assume only
+the local data
+\[
+  v=-1,\qquad v_x=-\kappa,\qquad v_y=v_z=0,\qquad
+  H_{AB}=v_{AB},\quad A,B\in\{y,z\}.
+\]
+
+![Local geometry of a smooth convex front cap.  The leading transverse PP curvature is controlled by the principal curvatures \(C_1,C_2\) of the front wall at the axial endpoint.](../figures/front_tip_geometry.png)
+
+Then
+\[
+  R_{KYKY}=H_{yy}q^2,\qquad
+  R_{KYKZ}=H_{yz}q^2,\qquad
+  R_{KZKZ}=H_{zz}q^2,
+\]
+and
+\[
+  G_{KK}=q^2(H_{yy}+H_{zz}).
+\]
+If \(v_{xy}\) or \(v_{xz}\) is nonzero, the subleading components
+\(G_{KY}=-v_{xy}q\) and \(G_{KZ}=-v_{xz}q\) are also present.
+
+Let the front wall \(v=-1\) be \(x=X(y,z)\).  Since \(v_x=-\kappa\) and
+\(v_A=0\), differentiating \(v(X(y,z),y,z)=-1\) twice gives
+\[
+  X_{AB}=\frac{H_{AB}}{\kappa}.
+\]
+In principal transverse coordinates for a smooth convex front cap,
+\[
+  X_{yy}=-C_1,\qquad X_{zz}=-C_2,\qquad C_i>0.
+\]
+Thus
+\[
+  R_{KYKY}=-\frac{C_1}{\kappa(\lambda_*-\lambda)^2},
+  \qquad
+  R_{KZKZ}=-\frac{C_2}{\kappa(\lambda_*-\lambda)^2},
+\]
+and
+\[
+  G_{KK}=-\frac{C_1+C_2}{\kappa(\lambda_*-\lambda)^2}.
+\]
+
+The singularity is controlled by the principal curvatures of the front cap.  A
+smooth finite convex cap with positive principal curvature has the same
+quadratic affine blow-up.  If \(C_1=C_2=0\) at the exact tip, the leading
+coefficient computed here vanishes.  That local cancellation does not by
+itself prove a regular global extension; rather, the convex-cap \(C^2\)
+obstruction must then be replaced by a separate higher-order or off-axis
+analysis.
+
+## VII. Singularity Strength
+
+Write
+\[
+  s=\lambda_*-\lambda,\qquad
+  R_{KYKY}=-\frac{A_y}{s^2},\qquad
+  R_{KZKZ}=-\frac{A_z}{s^2}.
+\]
+For a spherical cap \(A_y=A_z=1/(\kappa R)\).  For a general convex cap
+\(A_i=C_i/\kappa>0\).
+
+In one transverse channel,
+\[
+  \int^1_\epsilon \frac{A}{s^2}\,ds \sim \frac{A}{\epsilon},
+  \qquad
+  \int^1_\epsilon du\int^1_u \frac{A}{s^2}\,ds
+    \sim A\log(1/\epsilon).
+\]
+The transverse Jacobi equation is
+\[
+  \eta''=\frac{A}{s^2}\eta ,
+\]
+with powers
+\[
+  p_\pm=\frac{1\pm\sqrt{1+4A}}{2}.
+\]
+For \(A>0\), \(p_+>1\) and \(p_-<0\).  One solution shrinks while the
+independent solution diverges; generic transverse separations are infinitely
+stretched as the endpoint is approached.
+
+If \(A<0\), the PP component still diverges as \(1/s^2\) when \(A\ne0\), but
+the Jacobi behavior changes.  For \(-1/4<A<0\) both powers are real and
+positive; for \(A<-1/4\) the powers are complex and the solutions oscillate
+logarithmically with an overall \(s^{1/2}\) amplitude.  If \(A=0\), the
+leading term discussed here vanishes and the next nonzero term in the local
+wall expansion must be analyzed separately.
+
+Thus the convex-front endpoint is a strong null PP singularity in the
+curvature-integral and deformational sense.  For the convex case \(A>0\), if
+the phrase "Tipler-strong" is reserved strictly for generic crushing of every
+transverse area element, the more precise description is stretching-strong
+rather than Tipler-crushing.  For the concave range \(-1/4<A<0\), both Jacobi
+modes vanish as \(s\to0\), so the transverse area collapses; this is the
+Tipler-crushing regime.
+
+## VIII. Summary and Discussion
+
+The \(1+1\) continuation of the eternal superluminal warp-drive diagram fails
+to lift to a \(C^2\) continuation of the \(3+1\) Alcubierre geometry at the
+future front axial endpoint of a smooth finite-curvature convex cap.  The
+obstruction is not visible in the reduced metric because it is carried by the
+transverse tidal components.  It is also not visible in the zeroth-order scalar
+polynomial invariants, whose limits remain finite along the incomplete
+generator.
+
+The result is local.  It does not make the bubble-center observer singular and
+does not imply that the whole wall is singular.  The relevant generator is
+selected by the axial condition \(v_y=v_z=0\); away from the axial tips the
+stationary \(v^2=1\) surface is not generated by \(\partial_t\).  The result
+also assumes a finite-curvature convex cap.  If the tip is flattened so that
+the principal curvatures vanish at the exact endpoint, the leading coefficient
+computed here vanishes and a separate higher-order or off-axis analysis is
+required.
+
+The calculation clarifies the relation between the \(1+1\) semiclassical
+instability picture and higher-dimensional geodesic analyses.  Hiscock's
+two-dimensional quantum stress-energy divergence and the Finazzi-Liberati-
+Barcelo \(1+1\) conformal diagram describe the reduced geometry.  The present
+result identifies a classical \(3+1\) endpoint obstruction in the transverse
+curvature channel.  It also sharpens the usual exotic-matter statement: in the
+parallel affine frame approaching the endpoint, the classical source has an
+unbounded negative null component \(T_{KK}\), not merely a bounded local NEC
+violation in ordinary frames.  The localization of the unstable set to the
+front/rear tips in higher dimensions is therefore not merely a harmless
+measure-zero feature of the background: along the exact axial generator, the
+finite-affine endpoint is already a null PP-curvature singularity.
+
+## Appendix A. Checks and Example Profile
+
+For the profile used in the accompanying calculations,
+\[
+  v(r)=2(\operatorname{sech}r-1),
+\]
+the front axial root is
+\[
+  R=\operatorname{arcosh}2,\qquad
+  \kappa=\frac{\sqrt3}{2},\qquad
+  \mu=\frac12 .
+\]
+The leading coefficients are
+\[
+  \frac{R_{KYKY}}{q^2}
+    =-\frac{\kappa}{R}
+    =-\frac{\sqrt3}{2\operatorname{arcosh}2}
+    \simeq -0.657595361102 ,
+\]
+and
+\[
+  \frac{G_{KK}}{q^2}
+    =-\frac{2\kappa}{R}
+    \simeq -1.315190722204 .
+\]
+The scalar invariants at the limiting coordinate location are finite:
+\[
+  R=\frac12,\qquad
+  R_{ab}R^{ab}=\frac18-\frac{3}{2\operatorname{arcosh}^2 2},
+\]
+\[
+  R_{abcd}R^{abcd}=\frac14-\frac{3}{\operatorname{arcosh}^2 2},
+  \qquad
+  C_{abcd}C^{abcd}=\frac1{12}.
+\]
+
+The calculation was checked in several independent ways: direct symbolic
+\(4\)-dimensional Riemann calculation, full symbolic parallel-frame Riemann
+calculation, Einstein tensor calculation in the same frame, the
+ADM/Gauss-Codazzi derivation used above, a generic convex-wall calculation, a
+local Taylor-metric calculation using only front-tip data, a numerical
+finite-difference curvature check for the sech profile, scalar-invariant
+calculation, and Jacobi/curvature-integral bookkeeping.  The generic
+convex-wall check keeps \(v_{xy}\) and \(v_{xz}\) arbitrary and gives the mixed
+Einstein-frame components \(G_{KY}=-v_{xy}q\) and \(G_{KZ}=-v_{xz}q\).
+
+The corresponding local scripts and logs are:
+
+```
+front_tip_parallel_tidal_analytic.py
+front_tip_full_parallel_frame.py
+front_tip_einstein_parallel_frame.py
+front_tip_adm_derivation.py
+front_tip_general_convex_wall.py
+front_tip_scalar_invariants.py
+front_tip_tipler_krolak.py
+front_tip_taylor_metric_check.py
+front_tip_numerical_frame_check.py
+
+output/sech/front_tip_parallel_tidal_analytic.txt
+output/sech/front_tip_full_parallel_frame.txt
+output/sech/front_tip_einstein_parallel_frame.txt
+output/sech/front_tip_adm_derivation.txt
+output/sech/front_tip_general_convex_wall.txt
+output/sech/front_tip_scalar_invariants.txt
+output/sech/front_tip_tipler_krolak.txt
+output/sech/front_tip_taylor_metric_check.txt
+output/sech/front_tip_numerical_frame_check.txt
+```
+
+## References
+
+M. Alcubierre, "The Warp Drive: Hyper-Fast Travel Within General Relativity",
+Class. Quantum Grav. 11, L73-L77 (1994); arXiv repost: gr-qc/0009013.
+
+W. A. Hiscock, "Quantum effects in the Alcubierre warp drive spacetime",
+Class. Quantum Grav. 14, L183-L188 (1997), arXiv:gr-qc/9707024.
+
+Chad Clark, W. A. Hiscock, and S. L. Larson, "Null Geodesics in the
+Alcubierre Warp Drive Spacetime: The View from the Bridge", Class. Quantum
+Grav. 16, 3965-3972 (1999), arXiv:gr-qc/9907019.
+
+S. Finazzi, S. Liberati, and C. Barcelo, "Semiclassical instability of
+dynamical warp drives", Phys. Rev. D 79, 124017 (2009), arXiv:0904.0141.
+
+C. Barcelo, V. Boyanov, L. J. Garay, E. Martin-Martinez, and
+J. M. Sanchez Velazquez, "Warp Drive Aerodynamics", JHEP 2022, 288 (2022),
+arXiv:2207.06458.
+
+B. Mattingly et al., "Curvature Invariants for the Alcubierre and Natario Warp
+Drives", Universe 7, 21 (2021), arXiv:2010.13693.
+
+F. J. Tipler, "Singularities in conformally flat spacetimes", Phys. Lett. A
+64, 8-10 (1977).
+
+C. J. S. Clarke and A. Krolak, "Conditions for the occurrence of strong
+curvature singularities", J. Geom. Phys. 2, 127-143 (1985).
+
+G. F. R. Ellis and B. G. Schmidt, "Singular space-times", Gen. Relativ.
+Gravit. 8, 915-953 (1977).

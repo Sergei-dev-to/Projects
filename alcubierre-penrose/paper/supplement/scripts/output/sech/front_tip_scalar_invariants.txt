@@ -1,0 +1,38 @@
+Scalar polynomial invariants at the 3+1 Alcubierre front tip
+
+Assumptions:
+  front tip x=R>0, y=z=0
+  v(R)=-1
+  v_x(R)=-kappa, kappa>0
+  v_xx(R)=mu
+  spherical smoothness gives v_yy=v_zz=-kappa/R
+
+Generic symbolic scalar invariants:
+  R = 2*(kappa**2 - mu)
+  Ricci2 = 2*(R*kappa**2 - R*mu - kappa)*(R*kappa**2 - R*mu + kappa)/R**2
+  Kretschmann = 4*(R*kappa**2 - R*mu - kappa)*(R*kappa**2 - R*mu + kappa)/R**2
+  Weyl2 = 4*(kappa**2 - mu)**2/3
+  Einstein2 = 2*(R*kappa**2 - R*mu - kappa)*(R*kappa**2 - R*mu + kappa)/R**2
+
+These are signed Lorentzian contractions; Ricci2, Kretschmann,
+and Einstein2 are not positive-definite norms.
+
+Sech profile values:
+  R = 1/2 =  5.000000000000e-01
+  Ricci2 = 1/8 - 3/(2*acosh(2)**2) = -7.398633178858e-01
+  Kretschmann = 1/4 - 3/acosh(2)**2 = -1.479726635772e+00
+  Weyl2 = 1/12 =  8.333333333333e-02
+  Einstein2 = 1/8 - 3/(2*acosh(2)**2) = -7.398633178858e-01
+
+Contrast with PP curvature:
+  The scalar invariants above are finite at the finite coordinate tip.
+  Along the incomplete affine generator, however,
+    K = q partial_t, q = 1/[kappa(lambda_* - lambda)],
+  and
+    R_KYKY = R_KZKZ = -kappa*q^2/R
+             = -1/[kappa R (lambda_* - lambda)^2].
+
+Conclusion:
+  The front endpoint singularity is invisible to these scalar
+  polynomial curvature invariants.  It is a non-scalar
+  parallel-propagated curvature singularity.

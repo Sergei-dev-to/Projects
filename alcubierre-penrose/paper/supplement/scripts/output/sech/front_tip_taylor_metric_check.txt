@@ -1,0 +1,30 @@
+Independent local Taylor-metric check
+
+Local input only:
+  v = -1 - kappa*x - kappa*(y^2+z^2)/(2R) + mu*x^2/2
+  tip is x=y=z=0
+
+This check does not use the sech profile or r=sqrt(x^2+y^2+z^2).
+
+Parallel-frame components at the tip:
+  R_KNKN = -kappa**2 + mu
+  R_KYKY = -kappa*q**2/R
+  R_KZKZ = -kappa*q**2/R
+  R_NYNY = kappa/(4*R*q**2)
+  R_NZNZ = kappa/(4*R*q**2)
+  G_KK = -2*kappa*q**2/R
+  G_NN = kappa/(2*R*q**2)
+  G_YY = -kappa**2 + mu
+  G_ZZ = -kappa**2 + mu
+  R_scalar = 2*(kappa**2 - mu)
+
+Expected matches:
+  R_KYKY = R_KZKZ = -kappa*q^2/R
+  G_KK = -2*kappa*q^2/R
+  R_KNKN = mu-kappa^2
+  R_scalar = 2(kappa^2-mu)
+
+Conclusion:
+  The PP curvature and Einstein-frame divergences follow from the
+  local Taylor geometry alone.  They are not artifacts of the
+  full sech profile or spherical-radius chain rule.

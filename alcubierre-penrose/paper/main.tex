@@ -1,0 +1,867 @@
+\documentclass[10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\begin{document}
+
+\title{A Transverse Curvature Obstruction to the Alcubierre Horizon Extension}
+
+\author{Sergei Slobodov\\\texttt{sergei@slobodov.com}}
+
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+The Alcubierre warp drive is a standard toy model for apparent faster-than-light
+motion in general relativity.  Its causal structure is often studied after
+reducing the geometry to time plus the direction of travel.  In the eternal
+superluminal case, that reduced 1+1-dimensional diagram contains a horizon
+boundary that can be formally continued beyond the original stationary
+warp-drive patch, much as one extends familiar black-hole coordinate patches.
+This formal continuation does not produce a twice-differentiable
+four-dimensional extension of a finite Alcubierre bubble.
+The obstruction appears when the transverse directions are restored.  The
+front axial null generator reaches the boundary of the reduced stationary
+patch at finite affine parameter.  For a smooth finite bubble with a
+finite-curvature convex front wall, the corresponding generator in the full
+3+1 geometry has a parallel-propagated transverse curvature component that
+diverges at that endpoint, while scalar polynomial curvature invariants remain
+finite.  The endpoint is therefore a non-scalar null curvature singularity.  In
+the same affine frame, the classical source tensor has an unbounded negative
+null component, sharpening the standard energy-condition violation of the
+Alcubierre source.  The rear axial generator has the corresponding
+time-reversed finite-affine endpoint and curvature divergence.
+\end{abstract}
+
+\section{Introduction}
+
+Alcubierre's warp-drive geometry provides an explicit spacetime in which the
+center of a compact distortion can move with arbitrarily large apparent
+velocity relative to asymptotic observers, at the cost of stress-energy that
+violates the usual energy conditions, including the null energy condition
+\cite{Alcubierre1994,PfenningFord1997,LoboVisser2004}.  The present result
+sharpens this classical energy-condition statement at the finite-affine
+endpoint: in the affine frame of the relevant null generator, the required
+source has an unbounded negative null component.  Null geodesics
+and horizon structure in superluminal warp bubbles were studied in
+Refs.~\cite{ClarkHiscockLarson1999,BarceloEtAl2022}; quantum stress-energy
+effects in reduced warp-drive models were analyzed in
+Refs.~\cite{Hiscock1997,FinazziLiberatiBarcelo2009}.
+Scalar polynomial curvature invariants of Alcubierre and related warp-drive
+metrics were computed in Ref.~\cite{MattinglyEtAl2021}.  The present result is
+complementary: those scalar invariants remain finite at the endpoint considered
+here, while a parallel-propagated curvature component diverges.
+The same stationary shift geometry is closely related to Painlev\'e-Gullstrand
+and acoustic-horizon metrics, where horizon-regular extensions are standard
+\cite{Visser1998,LemosSilva2021}; analogue warp geometries have also been
+constructed in acoustic systems \cite{FischerVisser2003}.
+
+Finazzi, Liberati, and Barcel\'o draw the eternal \(1+1\) warp-drive diagram
+as a non-maximal patch and identify null boundaries at which the reduced
+geometry can be formally extended, while noting that a maximal extension is not
+uniquely fixed by the original matter distribution
+\cite{FinazziLiberatiBarcelo2009}.  The question addressed here is whether
+that reduced continuation is also a \(C^2\) continuation of the original
+four-dimensional Alcubierre metric.  For a finite bubble the answer is no:
+the endpoint corresponding to the front axial null generator is a null
+parallel-propagated (PP) curvature singularity.
+
+By the \(1+1\) axial reduction we mean the geometry obtained by keeping time
+and the longitudinal direction while suppressing the two transverse spatial
+directions.  In the eternal superluminal case, this reduced spacetime contains
+an original stationary patch bounded by front and rear null horizons.  The
+front axial null generator reaches the boundary of this patch at finite
+affine parameter; equivalently, it is an incomplete null geodesic of the
+stationary patch.  The question is whether that same endpoint is regular in a
+four-dimensional \(C^2\) extension of the original Alcubierre metric.
+Figure~\ref{fig:reduced-patch} shows the reduced stationary patch and the
+finite-affine endpoints.  Only the marked horizon generators reach those
+compactification corners at finite affine parameter; other curves approach the
+same corners only at infinite affine parameter or infinite proper time.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.64\linewidth]{figures/calculated_three_region_endpoint_patch.pdf}
+  \caption{Reduced \(1+1\) stationary patch for the smooth sech profile of
+  Appendix~\ref{app:checks},
+  calculated from closed-form null coordinates.  The green dashed lines are
+  the horizons \(r=r_1,r_2\).  They separate the bubble interior, region II
+  where \(|v|<1\), from the two exterior branches, regions I and III where
+  \(|v|>1\).  Solid gray lines have constant \(r\): they are timelike in
+  region II, spacelike in regions I and III, and null on the horizons.  Dashed
+  gray lines have constant \(t\) and are spacelike.  The red curve is the
+  \(r=0\) center rider.  The black dots mark the compact-coordinate corners at
+  which the past \(r_1\) generator and the future \(r_2\) generator have finite
+  affine parameter.  In the reduced \(1+1\) metric these are the endpoints
+  through which a formal continuation is attached.  For a finite \(3+1\)
+  Alcubierre bubble, that continuation is obstructed by
+  transverse parallel-propagated curvature.}
+  \label{fig:reduced-patch}
+\end{figure}
+
+The obstruction comes from the transverse geometry.  Assume that, near the
+front axial point, the \(v=-1\) surface is smooth, has finite curvature, and is
+convex in the transverse directions.  A parallel-propagated frame along the
+front axial null generator then measures a transverse Riemann component that
+diverges at the endpoint reached at finite affine parameter.  The usual scalar
+polynomial curvature
+invariants remain finite, making this a non-scalar curvature singularity.  A
+\(C^2\) extension through the endpoint would require all Riemann components
+measured in a parallel-propagated frame along the incomplete generator to
+remain finite.  The divergent transverse component therefore rules out such an
+extension.
+
+The blow-up is controlled by the local geometry of the front wall.  Finite
+transverse data of the bubble wall are amplified by the affine tangent to the
+front null generator, which diverges at the finite endpoint.  For a convex
+front these transverse data are the wall curvatures themselves; transverse
+variation of the non-affinity gives a divergent mixed component with one power
+of the affine factor.  A perfectly planar product wall removes
+these transverse terms.  The resulting geometry has an infinite planar front,
+which is an exceptional product spacetime.  Once a finite flat patch reaches a
+rim or transition, the product continuation no longer gives a regular
+four-dimensional neighborhood metric.
+
+The Riemann curvature divergence found here is purely classical.  It occurs in
+the four-dimensional Alcubierre metric before any quantum field is introduced.
+The bubble-center worldline remains timelike and complete in the stationary
+patch; the divergent component is measured along the front axial null generator.
+
+\section{Stationary Geometry and Axial Generators}
+\label{sec:geometry}
+
+The relevant curve is the front null generator, which reaches the boundary of
+the reduced stationary patch at finite affine parameter.  The full
+four-dimensional calculation requires its local data, its affine normalization,
+and a frame parallel transported along it.
+
+The stationary comoving metric is
+\begin{equation}
+  ds^2=-dt^2+[dx-v(r)dt]^2+dy^2+dz^2,
+  \qquad r=(x^2+y^2+z^2)^{1/2}.
+  \label{eq:metric}
+\end{equation}
+We use the bubble-comoving convention.  Starting from the usual Alcubierre
+shift \(v_s f(r)\), with \(f(0)=1\) and \(f(\infty)=0\), the coordinate
+change \(x=X-v_s t\), where \(X\) is the standard lab-frame coordinate, gives
+\begin{equation}
+  v(r)=v_s[f(r)-1].
+\end{equation}
+The bubble center has \(v=0\), while the asymptotic exterior has
+\(v=-v_s\).  For \(v_s>1\) the \(+x\) axis contains one point where \(v=-1\),
+the front axial point; by reflection symmetry, the \(-x\) axis contains the
+rear axial point.  The front point supplies the local data for the endpoint
+analysis.
+
+Subscripts on \(v\) denote partial derivatives, while \(v_r\) denotes the
+radial derivative of the profile \(v(r)\).  Let the front axial point sit at
+\(r=R_F\), so its coordinates are \((R_F,0,0)\).  Define
+\(\kappa=-v_r(R_F)>0\) and \(\mu=v_{rr}(R_F)\).  For a spherical profile, the
+Taylor data at the front point are
+\begin{equation}
+  v=-1,\qquad v_x=v_r=-\kappa,\qquad
+  v_y=v_z=0,\qquad
+  v_{yy}=v_{zz}=\frac{v_r}{R_F}=-\frac{\kappa}{R_F},\qquad
+  v_{xx}=\mu .
+  \label{eq:front-data}
+\end{equation}
+Here \(\mu\) enters finite curvature components but not the leading divergent
+transverse tidal coefficient.
+
+The stationary field \(\partial_t\) is null wherever \(v^2=1\).  This is not
+enough to make the four-dimensional surface a Killing horizon: the integral
+curves of \(\partial_t\) must also be null geodesics.  At \(v=-1\),
+\begin{equation}
+  \nabla_{\partial_t}\partial_t
+    = v_x\partial_t+v_y\partial_y+v_z\partial_z .
+  \label{eq:not-whole-sphere}
+\end{equation}
+Therefore \(\partial_t\) is geodesic on the \(v=-1\) surface only where
+\(v_y=v_z=0\).  For a spherical profile this selects the two points
+\((\pm R_F,0,0)\).  Thus the four-dimensional \(v^2=1\) surface is not a
+Killing horizon generated by \(\partial_t\); only the two axial integral
+curves of \(\partial_t\) are also null geodesics.  At the front point,
+\(\partial_t\) is tangent to the future
+front axial null generator and satisfies
+\begin{equation}
+  \nabla_{\partial_t}\partial_t=-\kappa\,\partial_t .
+  \label{eq:nonaffine}
+\end{equation}
+
+The Killing parameter \(t\) is not an affine parameter on this generator.
+Using Eq.~\eqref{eq:nonaffine} and following
+the standard rescaling of a non-affinely parametrized null generator
+\cite[Sec.~3.3]{Wald1984}, let \(\lambda\) be an affine parameter on this
+generator, with \(\lambda_*\) its finite value as \(t\to+\infty\).  With
+\(q=dt/d\lambda\), the affine tangent is \(K=dx^a/d\lambda=q\,\partial_t\).
+The affine condition gives
+\begin{equation}
+  0=\nabla_KK=q\left(\frac{dq}{dt}-\kappa q\right)\partial_t ,
+\end{equation}
+so \(dq/dt=\kappa q\).  Since \(q=dt/d\lambda\), this integrates to
+\begin{equation}
+  q=\frac{1}{\kappa(\lambda_*-\lambda)},
+  \label{eq:q-affine}
+\end{equation}
+after fixing the affine normalization.  Thus \(t\to+\infty\) is reached at the
+finite affine parameter \(\lambda=\lambda_*\).
+
+The curvature obstruction will be detected in a frame carried by this geodesic.
+We use capital letters as frame labels: \(K\) is the affine null tangent, \(N\)
+is the auxiliary null vector normalized against \(K\), and \(Y,Z\) are the two
+transverse spacelike directions.  A convenient parallel null frame along the
+generator is
+\begin{equation}
+  K=q\partial_t,\qquad
+  N=q^{-1}\left(\frac12\partial_t-\partial_x\right),\qquad
+  Y=\partial_y,\qquad Z=\partial_z,
+  \label{eq:frame}
+\end{equation}
+with \(g(K,N)=-1\) and \(g(Y,Y)=g(Z,Z)=1\).  A direct connection calculation
+shows that \(K,N,Y,Z\) are parallel transported along \(K\).  The next section
+evaluates the Riemann tensor in this frame.
+
+\section{Parallel-Propagated Curvature Divergence}
+
+The curvature is evaluated in two frames.  The coordinate components at the
+front axial point are finite.  The divergent component appears when the same
+curvature is evaluated in the frame carried by the affine null generator of
+Sec.~\ref{sec:geometry}.  The tangent vector \(K=q\partial_t\) is increasingly
+boosted relative to the stationary coordinates as \(\lambda\) approaches
+\(\lambda_*\).
+
+We use the convention
+\begin{equation}
+  (\nabla_c\nabla_d-\nabla_d\nabla_c)V^a
+    =R^a{}_{bcd}V^b .
+\end{equation}
+With this convention, the ADM/Gauss-Codazzi calculation in
+Appendix~\ref{app:adm} gives the transverse coordinate-basis components
+\begin{equation}
+  R_{tyty}=R_{tztz}=-\frac{\kappa}{R_F}.
+  \label{eq:rtyty}
+\end{equation}
+These are finite components at a fixed point of the stationary metric.  The
+coefficient is fixed by two pieces of local geometry: the first radial
+derivative of the shift, \(\kappa=-v_r(R_F)\), and the radius \(R_F\) of the
+spherical wall.
+
+Using Eq.~\eqref{eq:q-affine} and the parallel frame \eqref{eq:frame},
+\begin{equation}
+  R(K,Y,K,Y)=q^2R_{tyty}
+    =-\frac{\kappa q^2}{R_F}
+    =-\frac{1}{\kappa R_F(\lambda_*-\lambda)^2}.
+  \label{eq:main-blowup}
+\end{equation}
+The \(Z\)-component is identical.  The finite coordinate-basis tidal
+component in Eq.~\eqref{eq:rtyty} is converted into an unbounded
+parallel-propagated component by the affine normalization of \(K\).
+A closed-form profile check of these coefficients is given in
+Appendix~\ref{app:checks}.
+Equation~\eqref{eq:main-blowup} also identifies the geometric mechanism.  The transverse curvature
+of the wall supplies a finite coordinate-basis tidal component, while the
+affine tangent to the null generator is increasingly boosted relative to the
+stationary frame.  Since the measured tidal component contains two factors of
+\(K\), the boost contributes the factor \(q^2\).  The \(1+1\) reduction suppresses the
+transverse directions in which this wall-curvature term appears.
+
+Frame labels are used as tensor indices; for example,
+\(R_{KYKY}\equiv R_{abcd}K^aY^bK^cY^d\), and similarly for the other
+components.
+The independent nonzero Riemann components in the full parallel null frame are
+\begin{equation}
+  R_{KNKN}=\mu-\kappa^2,\qquad
+  R_{KYKY}=R_{KZKZ}=-\frac{\kappa q^2}{R_F},\qquad
+  R_{NYNY}=R_{NZNZ}=\frac{\kappa}{4R_Fq^2}.
+\end{equation}
+The transverse \(K\)-components are the divergent components at the future
+endpoint.  The finite component \(R_{KNKN}\) contains \(\mu=v_{rr}(R_F)\), while
+the divergent coefficient in Eq.~\eqref{eq:main-blowup} is independent of
+\(\mu\).  The blow-up is controlled by the transverse wall curvature.
+
+It is important that finite affine parameter is not by itself the obstruction.
+A useful control case is Painlev\'e-Gullstrand Schwarzschild, which has exactly
+the shift form of Eq.~\eqref{eq:metric} with a curved transverse metric,
+\begin{equation}
+  ds^2=-dt^2+[dr-v(r)dt]^2+r^2d\Omega^2,
+  \qquad v(r)=-\left(\frac{2M}{r}\right)^{1/2}.
+  \label{eq:pg-schwarzschild}
+\end{equation}
+Here \(v=-1\) at \(r=2M\), the field \(\partial_t\) is null there, and it is
+non-affinely geodesic with \(\nabla_{\partial_t}\partial_t=v_r\partial_t\) and
+\(|v_r(2M)|=1/4M\), the surface gravity.  The affine rescaling of
+Eq.~\eqref{eq:q-affine} applies verbatim, so the horizon generator again reaches
+a finite affine parameter.  Nevertheless the boost-weight \(+2\) components
+vanish identically on that surface,
+\begin{equation}
+  R_{KAKB}=0
+  \qquad\text{on } r=2M,
+  \label{eq:pg-vanishing}
+\end{equation}
+so no \(q^2\) blow-up occurs and the Kruskal extension is permitted.
+
+The reason is structural, and it is exactly what fails for a finite bubble.  In
+Eq.~\eqref{eq:pg-schwarzschild} the field \(\partial_t\) is geodesic on the
+\emph{whole} surface \(r=2M\), which is therefore a null hypersurface ruled by a
+congruence of null geodesics.  Write \(\xi=\partial_t\).  Since \(\xi\) is
+Killing, \(\nabla_a\xi_b\) is antisymmetric, so the screen projection
+\(B_{AB}\) of \(\nabla_b\xi_a\) is antisymmetric; but \(\xi\) is normal to the
+horizon, so that congruence is hypersurface orthogonal, its twist vanishes and
+\(B_{AB}\) is symmetric.  Hence \(B_{AB}=0\), and the Sachs equation
+\(\partial_\lambda B_{AB}=-B_A{}^CB_{CB}-R_{KAKB}\) forces
+Eq.~\eqref{eq:pg-vanishing}.  For the Alcubierre metric \eqref{eq:metric} the
+surface \(v^2=1\) carries no such congruence: by
+Eq.~\eqref{eq:not-whole-sphere}, \(\partial_t\) is geodesic only at the two
+isolated axial points.  No Sachs constraint applies, and the transverse wall
+curvature \(H_{AB}=v_{AB}\) survives to give
+Eq.~\eqref{eq:main-blowup}.  The obstruction is therefore the transverse
+geometry of the wall, not the finiteness of the affine parameter, and the
+diagnostic \(R_{KAKB}\) separates the two cases.
+
+The rear axial generator is obtained by time reversal.  At \(x=-R_F\) one has
+\begin{equation}
+  v=-1,\qquad v_x=+\kappa,\qquad
+  \nabla_{\partial_t}\partial_t=+\kappa\,\partial_t .
+\end{equation}
+The incomplete generator is then the past-directed one, with \(t\to-\infty\)
+at finite affine parameter, and the same parallel-propagated curvature blow-up
+is obtained after time reversal.
+
+\section{Inextendibility and Source Tensor}
+
+Equation~\eqref{eq:main-blowup} has three immediate consequences.  First, it
+rules out a \(C^2\) extension through the endpoint reached by the affine
+generator.  Second, the singularity is invisible to ordinary scalar polynomial
+curvature invariants.  Third, if the metric is treated as a classical solution
+of Einstein's equation, the source tensor has an unbounded null component in
+the same affine frame.
+
+\subsection{\texorpdfstring{\(C^2\)}{C2} inextendibility}
+
+Suppose a \(C^2\) extension existed through the future front endpoint.  In the
+extended spacetime the incomplete null generator would acquire a future
+endpoint.  Continuity of the Riemann tensor, together with a parallel frame
+along the geodesic, would force \(R_{abcd}K^aY^bK^cY^d\) to have a finite
+limit there.  This is the standard parallel-propagated curvature obstruction
+to a smooth extension \cite{EllisSchmidt1977}.  Equation~\eqref{eq:main-blowup}
+violates that requirement, so no \(C^2\) extension exists through this
+endpoint.  This statement does not rule out extensions of lower regularity,
+for example \(C^{1,1}\), \(C^{0,1}\), \(C^0\), or distributional extensions,
+which would require separate formulations of the curvature obstruction
+\cite{Sbierski2018,GallowayLingSbierski2018}; the argument here uses only the
+standard \(C^2\) criterion.
+
+\subsection{Scalar polynomial invariants}
+
+The singularity is non-scalar.  The metric is stationary and the generator
+stays at the fixed spatial point \((R_F,0,0)\), so every zeroth-order scalar
+polynomial curvature invariant is constant along the generator and equal to
+its value at that point.  Scalar invariants of Alcubierre and related
+warp-drive metrics have been studied explicitly in
+Ref.~\cite{MattinglyEtAl2021}; for the local spherical data used here, writing
+\(\mathcal R=g^{ab}R_{ab}\) for the Ricci scalar and \(C_{abcd}\) for the Weyl
+tensor gives
+\begin{equation}
+  \mathcal R=2(\kappa^2-\mu),
+\end{equation}
+\begin{equation}
+  R_{ab}R^{ab}
+   =\frac{2[(R_F\kappa^2-R_F\mu)^2-\kappa^2]}{R_F^2},
+\end{equation}
+\begin{equation}
+  R_{abcd}R^{abcd}
+   =\frac{4[(R_F\kappa^2-R_F\mu)^2-\kappa^2]}{R_F^2},
+\end{equation}
+and
+\begin{equation}
+  C_{abcd}C^{abcd}=\frac{4(\kappa^2-\mu)^2}{3}.
+\end{equation}
+These are signed Lorentzian contractions and need not be positive.
+
+These examples reflect a general zeroth-order fact.  The coordinate-basis
+curvature components at \((R_F,0,0)\) are finite and stationary, and scalar
+polynomial invariants contract those components with the finite inverse metric.
+Equivalently, in the parallel null frame, divergent
+\(K\)-components have positive boost weight, while scalar polynomial
+contractions have total boost weight zero.  Under a null boost
+\(K\to cK\), \(N\to c^{-1}N\), each \(K\) index contributes one positive power
+of \(c\) and each \(N\) index one negative power; scalar contractions are boost
+invariant, so the \(q\)-factors cancel between \(K\) and \(N\) legs.  The same
+boost-weight argument applies to polynomial
+invariants built from the Riemann tensor and its covariant derivatives, whose
+coordinate-basis components are finite for a smooth stationary metric.
+
+\subsection{Classical source tensor}
+
+In the same frame, the Einstein tensor components relevant to the classical
+source are
+\begin{equation}
+  G_{KK}=-\frac{2\kappa q^2}{R_F},\qquad
+  G_{NN}=\frac{\kappa}{2R_Fq^2},\qquad
+  G_{YY}=G_{ZZ}=\mu-\kappa^2 .
+\end{equation}
+If the metric is imposed as a classical solution of Einstein's equation, then
+\begin{equation}
+  T_{KK}=\frac{G_{KK}}{8\pi}
+    =-\frac{1}{4\pi\kappa R_F(\lambda_*-\lambda)^2}.
+  \label{eq:tkk}
+\end{equation}
+This divergence belongs to the classical source tensor required by the imposed
+\(3+1\) Alcubierre geometry.  In the affine frame, the standard finite
+energy-condition violation of the Alcubierre source is sharpened to an
+unbounded negative null component, \(T_{KK}\).  It is distinct from the
+renormalized stress-energy tensor of a test quantum field in the \(1+1\)
+problem.
+
+For a nonspherical wall, mixed longitudinal-transverse derivatives can also
+produce subleading affine-frame source divergences,
+\begin{equation}
+  G_{KY}=-v_{xy}q,\qquad G_{KZ}=-v_{xz}q.
+\end{equation}
+These terms diverge only as \(q\), slower than the leading \(q^2\) behavior of
+\(G_{KK}\).
+
+\section{General Front Surfaces and the Planar Limit}
+\label{sec:general}
+
+The spherical assumption is not essential.  Near a regular point of the front
+\(v=-1\) surface, choose \(x\) as the longitudinal coordinate and
+\(A\in\{y,z\}\) as the transverse coordinates.  A stationary generator at such
+a point has \(v_A=0\), and with \(\nabla v\ne0\) it has a simple longitudinal
+root \(v_x\ne0\).  The two remaining alternatives to check are an imposed
+degenerate longitudinal root, \(v_x=0\), and a point with \(v_A\ne0\), which
+lies on no stationary generator.  At a simple finite-affine front boundary,
+transverse dependence of the wall produces positive-boost-weight Riemann
+components.  The exact transverse product geometry is the exceptional case in
+which those components vanish; it is not a finite bubble, and a finite flat cap
+loses the product structure at its rim.
+
+\subsection{Planar product fronts}
+
+In the exceptional product case, \(v\) depends only on the longitudinal
+coordinate throughout a transverse neighborhood of the front endpoint.  The
+metric then splits as
+\begin{equation}
+  ds^2=ds^2_{1+1}+dy^2+dz^2 .
+  \label{eq:product-split}
+\end{equation}
+The \(1+1\) factor is the Painlev\'e-Gullstrand form of a stationary horizon
+metric.  Away from \(1-v^2=0\), the time coordinate
+\begin{equation}
+  dT=dt+\frac{v\,dx}{1-v^2},
+\end{equation}
+puts it in the diagonal form
+\begin{equation}
+  ds^2_{1+1}=-(1-v^2)dT^2+\frac{dx^2}{1-v^2}.
+\end{equation}
+Equivalently, with
+\begin{equation}
+  x_*=\int\frac{dx}{1-v^2},\qquad
+  u=T-x_*,\qquad w=T+x_*,
+\end{equation}
+one has \(ds^2_{1+1}=-(1-v^2)du\,dw\).  A simple root of \(1-v^2\) is
+regularized by the usual exponential null coordinates, as in
+Painlev\'e-Gullstrand and acoustic horizons
+\cite{Visser1998,LemosSilva2021}.  The direct product with the flat
+transverse plane is then a smooth (in particular \(C^2\)) four-dimensional
+extension of this local product spacetime.
+
+\subsection{Breakdown at a finite rim}
+
+This product construction cannot be a global continuation of a finite bubble.
+A finite flat cap must either bend or pass into a transition region.  Near the
+planar horizon, with \(x_H\) denoting the horizon location, write
+\begin{equation}
+  s=x-x_H,\qquad v=-1-\kappa s+O(s^2),\qquad
+  U=e^{-\kappa t},\qquad s=UV .
+\end{equation}
+Here \(V\) is the conjugate null coordinate defined by \(s=UV\).  If the front
+surface bends or enters a transition region, write it locally as
+\(x=F(y)+s\), suppressing the second transverse coordinate.  Then
+\begin{equation}
+  dx=V\,dU+U\,dV+F_y\,dy,\qquad
+  dt=-\frac{dU}{\kappa U},
+\end{equation}
+and the metric in this regularized null chart contains
+\begin{equation}
+  g_{Uy}=-\frac{F_y}{\kappa U}+O(U).
+  \label{eq:rim-regularized-null}
+\end{equation}
+For continuity of the lifted metric in a neighborhood of \(U=0\), the
+coefficient \(F_y/U\) must have a path-independent finite limit.  This forces
+\(F_y=0\) throughout an open transverse neighborhood.  A \(C^\infty\)
+bump-function rim can make \(F_y\) vanish to all orders at the exact edge, but
+if the product patch ends, there are still points \(y_n\to0\) with
+\(F_y(y_n)\ne0\).  Along paths \(U_n=F_y(y_n)^2\),
+\eqref{eq:rim-regularized-null} is unbounded.  The product construction gives a
+regular four-dimensional continuation only where the product structure holds
+on an open transverse neighborhood.
+
+\subsection{Stationary generators on general front surfaces}
+
+The same obstruction has an invariant local form at stationary finite-affine
+generators.  Let
+\(A,B\in\{y,z\}\), and assume at such a generator
+\begin{equation}
+  v=-1,\qquad v_x=-\kappa,\qquad v_A=0,\qquad
+  B_A=v_{xA},\qquad H_{AB}=v_{AB}.
+\end{equation}
+The potentially divergent Riemann components in the parallel frame are
+\begin{equation}
+  R_{KNKA}=-B_Aq,
+\end{equation}
+and
+\begin{equation}
+  R_{KAKB}=H_{AB}q^2,
+  \label{eq:screen-general}
+\end{equation}
+with \(R_{KNKN}\) finite.  The corresponding Einstein-frame components include
+\begin{equation}
+  G_{KK}=q^2(H_{yy}+H_{zz}),\qquad
+  G_{KA}=-B_Aq .
+\end{equation}
+Since \(\kappa=-v_x\), \(B_A=-\partial_A\kappa\) is the transverse gradient of
+the non-affinity, while \(H_{AB}\) records the transverse curvature data of
+the front \(v=-1\) surface.  Nonzero \(B_A\) gives a \(q\)-divergent mixed
+component; nonzero \(H_{AB}\) gives the stronger \(q^2\) screen-tidal
+component.  A product patch has \(B_A=H_{AB}=0\) throughout the transverse
+neighborhood, which is why the reduced extension lifts there.
+
+For a regular front \(v=-1\) surface written locally as \(x=F(y,z)\), the
+stationary-generator condition is \(v_A=0\).  Differentiating
+\(v(F(y,z),y,z)=-1\) twice gives
+\begin{equation}
+  F_{AB}=\frac{H_{AB}}{\kappa}.
+\end{equation}
+In principal transverse coordinates for a smooth convex front,
+\begin{equation}
+  F_{yy}=-C_1,\qquad F_{zz}=-C_2,\qquad C_i>0,
+\end{equation}
+where \(F_{AA}<0\) means that the front bends back into the bubble interior as
+one moves transversely away from the axis.  Therefore
+\begin{equation}
+  R_{KYKY}=-\frac{C_1}{\kappa(\lambda_*-\lambda)^2},
+  \qquad
+  R_{KZKZ}=-\frac{C_2}{\kappa(\lambda_*-\lambda)^2},
+\end{equation}
+and
+\begin{equation}
+  G_{KK}=-\frac{C_1+C_2}{\kappa(\lambda_*-\lambda)^2}.
+\end{equation}
+The spherical result is the special case \(C_1=C_2=1/R_F\).
+
+\subsection{Degenerate roots and non-generator points}
+
+This subsection treats those two alternatives: an imposed profile with
+degenerate longitudinal root \(v_x=0\) at the axial point, and a point of the
+\(v^2=1\) surface with \(v_A\ne0\), which lies on no stationary generator.
+Neither evades the \(C^2\) obstruction derived above.  By
+\eqref{eq:not-whole-sphere}, a stationary geodesic generator of a regular
+front surface requires \(v_A=0\).  With \(\nabla v\ne0\), this also forces
+\(v_x\ne0\), so the longitudinal root is simple.  If a degenerate axial root is
+imposed anyway,
+\begin{equation}
+  v(s,y)=-1-a s^m+\frac12 H y^2+\cdots,\qquad m\ge2,\qquad a\ne0,
+\end{equation}
+then the exact stationary generator is not incomplete at finite affine
+parameter, but crossing causal geodesics on the branch \(t\to+\infty\) have
+\begin{equation}
+  \dot t\sim \frac{E}{1+v}\sim -\frac{E}{a s^m},\qquad
+  \dot s\to E .
+\end{equation}
+On the branch that approaches the root, \(E\) has the sign for which \(s\to0\);
+since \(\dot s\) tends to a finite nonzero limit, \(s=0\) is reached at finite
+affine or proper parameter.
+At \(v_y=0\),
+\begin{equation}
+  R_{tyty}=-vH,\qquad R_{tyxy}=\frac{H}{2},\qquad R_{xyxy}=0,
+\end{equation}
+and therefore, with \(\dot\gamma\) denoting the tangent to the crossing
+geodesic, and using that \(\Gamma^a{}_{ty}=\Gamma^a{}_{xy}=0\) wherever
+\(v_y=v_z=0\), so that the unit vector \(\partial_y\) is parallel propagated
+along any geodesic confined to the axis,
+\begin{equation}
+  R(\dot\gamma,Y,\dot\gamma,Y)\sim H\dot t^2
+    \sim \frac{H E^2}{a^2s^{2m}} .
+\end{equation}
+Degeneracy of the longitudinal root does not rescue a transversely
+curved front.
+
+Points with \(v_A\ne0\) fail outright: they do not define stationary null
+geodesic generators and do not provide the finite-parameter causal endpoint of
+the reduced diagram.  Let \(E=-p_t\), \(P=p_x\), and \(Q_A=p_A\).  With
+\(\epsilon=0\) for null geodesics and \(\epsilon=1\) for timelike geodesics,
+the Hamiltonian equations give
+\begin{equation}
+  \dot t=E-vP,\qquad
+  \dot t^2=P^2+Q_AQ_A+\epsilon,
+  \label{eq:rim-causal-constraint}
+\end{equation}
+and
+\begin{equation}
+  \dot P=-v_xP\dot t,\qquad
+  \dot Q_A=-v_AP\dot t .
+  \label{eq:rim-momenta}
+\end{equation}
+If a causal geodesic reached a simple point \(p\) with
+\(v(p)=-1\), \(v_x(p)\ne0\), and some \(v_A(p)\ne0\), while
+\(t\to+\infty\) at finite affine or proper parameter, then
+\eqref{eq:rim-causal-constraint} would force \(P^2+Q_AQ_A\to\infty\).  If
+\(P\) remained bounded, the equations for \(Q_A\) would have locally bounded
+coefficients and at most linear growth in \(Q_A\), so by Grönwall's inequality
+\(Q_A\) could not blow up at finite parameter.  Hence \(P\to\infty\).  Then
+\eqref{eq:rim-momenta} gives, for each transverse direction,
+\begin{equation}
+  \frac{dQ_A}{dP}=\frac{v_A}{v_x}
+  \longrightarrow \frac{v_A(p)}{v_x(p)} ,
+\end{equation}
+so, for each transverse index \(A\) with \(v_A(p)\ne0\), one has
+\(Q_A=c_AP+o(P)\) with \(c_A\ne0\).  The constraint then gives
+\(\dot t\sim |P|\sqrt{1+\sum_A c_A^2}\),
+and \(\dot P=-v_xP\dot t\) implies \(|P|\sim(\lambda_*-\lambda)^{-1}\) near a
+finite-parameter endpoint.  Since \(\dot y^A=Q_A\), at least one transverse
+coordinate diverges logarithmically.  This contradicts the assumption that the
+geodesic reaches the finite spatial point \(p\).  The endpoint present in the
+reduced diagram is a regular four-dimensional endpoint only in the transverse
+product case; a finite bubble with a rim cannot supply such a neighborhood.
+
+\section{Strength of the Singularity}
+
+For the convex case, the \(q^2\) screen-tidal term dominates.  This leading
+term determines the strength of the singularity in the usual curvature-integral
+and Jacobi-field senses, and classifies the endpoint reached by the generator
+analyzed here.
+
+Write
+\begin{equation}
+  s=\lambda_*-\lambda,\qquad
+  R_{KYKY}=-\frac{\mathcal A_y}{s^2},\qquad
+  R_{KZKZ}=-\frac{\mathcal A_z}{s^2}.
+\end{equation}
+For a spherical profile \(\mathcal A_y=\mathcal A_z=1/(\kappa R_F)\).  For a
+general convex front \(v=-1\) surface \(\mathcal A_i=C_i/\kappa>0\).
+
+In one transverse channel, write \(\mathcal A\) for either
+\(\mathcal A_y\) or \(\mathcal A_z\).  Then
+\begin{equation}
+  \int^1_\epsilon \frac{\mathcal A}{s^2}\,ds \sim \frac{\mathcal A}{\epsilon},
+  \qquad
+  \int^1_\epsilon du\int^1_u \frac{\mathcal A}{s^2}\,ds
+    \sim \mathcal A\log(1/\epsilon).
+\end{equation}
+For a transverse Jacobi field component \(\eta\), the leading Jacobi equation is
+\begin{equation}
+  \eta''=\frac{\mathcal A}{s^2}\eta ,
+\end{equation}
+with powers
+\begin{equation}
+  p_\pm=\frac{1\pm\sqrt{1+4\mathcal A}}{2}.
+\end{equation}
+For \(\mathcal A>0\), one power is greater than one and the other is negative.  One
+solution shrinks while the independent solution diverges, so generic
+transverse separations are infinitely stretched as the endpoint is approached.
+
+If \(\mathcal A<0\), the PP component still diverges as \(1/s^2\) when
+\(\mathcal A\ne0\), but the Jacobi behavior changes.  For
+\(-1/4<\mathcal A<0\) both powers are real and positive; for
+\(\mathcal A<-1/4\) the powers are complex and the solutions oscillate
+logarithmically with an overall \(s^{1/2}\) amplitude.  If \(\mathcal A=0\),
+the leading inverse-square term vanishes and the next nonzero term in the
+local wall expansion must be analyzed separately.
+
+The convex-front endpoint is therefore a strong null PP singularity in the
+curvature-integral and deformational sense
+\cite{Tipler1977,ClarkeKrolak1985}.  For the convex case \(\mathcal A>0\), if the phrase
+``Tipler-strong'' is reserved strictly for generic crushing of every transverse
+area element, the more precise description is stretching-strong.  For the
+concave range \(-1/4<\mathcal A<0\), both Jacobi modes vanish as \(s\to0\), so
+the transverse area collapses; this is the Tipler-crushing regime.
+
+\section{Discussion}
+
+The formal continuation of the eternal \(1+1\) warp-drive diagram is not a
+\(C^2\) four-dimensional extension of a finite Alcubierre bubble.  At a smooth
+curved front, the obstruction is the parallel-frame component displayed in
+Eq.~\eqref{eq:screen-general}; for a convex front this gives
+\(R_{KYKY}=-C_1/[\kappa(\lambda_*-\lambda)^2]\) and the analogous
+\(Z\)-component.  These components diverge even though the zeroth-order scalar
+polynomial invariants remain finite.
+
+The flat-front calculation identifies the exceptional geometry in which the
+reduced continuation really does lift: the product metric
+\eqref{eq:product-split} on an open transverse product neighborhood.
+That is the geometry of an infinite planar wall or of a local planar patch,
+not a finite bubble.  When a finite flat cap reaches a rim or transition, the
+metric in the product regularized null chart fails to define a continuous
+four-dimensional neighborhood metric unless the product structure persists on
+an open transverse neighborhood.  At points where \(v_A\ne0\), the
+finite-parameter causal endpoint of the reduced diagram does not occur.
+
+This conclusion is compatible with extension theorems for Killing horizons.
+The R\'acz-Wald theorem applies, in its standard form, to a smooth Killing
+horizon with constant surface gravity and gives a local extension to a regular
+bifurcate Killing horizon \cite{RaczWald1992}.  The four-dimensional
+Alcubierre surface \(v^2=1\) fails the corresponding geometric premise:
+although \(\partial_t\) is null on that surface, it is geodesic there only at
+the axial points \eqref{eq:not-whole-sphere}.  The Painlev\'e-Gullstrand
+Schwarzschild control case \eqref{eq:pg-schwarzschild} shows the contrast
+concretely: there the premise holds, the boost-weight \(+2\) components vanish
+by \eqref{eq:pg-vanishing}, and the extension exists despite the horizon
+generator having finite affine parameter.  Those isolated axial generators
+are precisely where the reduced \(1+1\) diagram has finite-affine endpoints,
+and embedding them in a finite transverse wall produces the PP curvature
+obstruction derived here.  This is consistent with the R\'acz-Wald theorem:
+the calculation identifies why the Alcubierre horizon surface is not a regular
+Killing horizon of the type covered by that theorem.
+
+The analysis is for the eternal stationary Alcubierre geometry.  A
+finite-lifetime bubble has additional creation and destruction regions, so its
+global conformal diagram is a different problem.  The obstruction found here is
+local to a stationary finite-affine front or rear endpoint.  Any dynamical
+configuration that is locally \(C^2\) close to such a stationary endpoint
+inherits this obstruction.  A fully dynamical endpoint with no stationary
+limit requires a separate calculation.
+
+The same calculation separates the present classical effect from the
+semiclassical instability of reduced warp-drive models.  Hiscock's
+two-dimensional quantum stress-energy divergence and the Finazzi-Liberati-
+Barcel\'o \(1+1\) conformal diagram concern the reduced geometry.  Here the
+obstruction is already present in the classical \(3+1\) metric: in the
+parallel affine frame approaching the endpoint, the source required by
+Einstein's equation has the unbounded negative null component given in
+Eq.~\eqref{eq:tkk}.  The front and rear axial points are precisely where the
+reduced \(1+1\) conformal-diagram boundary lifts to a four-dimensional
+curvature singularity.  The bubble-center
+observer remains timelike and complete in the stationary patch; the obstruction
+belongs to the attempted horizon continuation, not to the center worldline.
+
+\appendix
+
+\section{ADM Derivation of the Transverse Curvature}
+\label{app:adm}
+
+This appendix gives the short derivation of Eq.~\eqref{eq:rtyty}.  It fixes the
+sign convention used in the main text and shows explicitly where the factor
+\(-\kappa/R_F\) enters.
+
+The ADM form of Eq.~\eqref{eq:metric} is
+\begin{equation}
+  ds^2=-\mathcal N^2dt^2+\gamma_{ij}(dx^i+\beta^i dt)(dx^j+\beta^j dt),
+  \qquad
+  \mathcal N=1,\quad \gamma_{ij}=\delta_{ij},\quad \beta^i=(-v,0,0).
+\end{equation}
+Let
+\begin{equation}
+  n=\partial_t-\beta^i\partial_i,\qquad
+  \mathcal K_{ij}=\frac12(D_i\beta_j+D_j\beta_i).
+\end{equation}
+Here \(n\) is the future unit normal to the \(t=\mathrm{const.}\) slices,
+\(\mathcal K_{ij}\) is their extrinsic curvature in this sign convention, and
+\(D_i\) is the covariant derivative compatible with \(\gamma_{ij}\).
+At the front axial point, the data \eqref{eq:front-data} give
+\begin{equation}
+  \mathcal K_{xx}=-v_x=\kappa,\qquad
+  \mathcal K_{xy}=-\frac12v_y=0,\qquad
+  \mathcal K_{yy}=0,\qquad
+  D_y\mathcal K_{xy}=-\frac12v_{yy}=\frac{\kappa}{2R_F}.
+\end{equation}
+With the Riemann convention used in the main text,
+\begin{equation}
+  R_{ijkl}=\mathcal K_{il}\mathcal K_{jk}
+    -\mathcal K_{ik}\mathcal K_{jl},\qquad
+  R_{nijk}=D_j\mathcal K_{ik}-D_k\mathcal K_{ij}.
+\end{equation}
+The components entering the transverse tidal term are
+\begin{equation}
+  R_{xyxy}=0,\qquad
+  R_{nyxy}=-\frac{\kappa}{2R_F},\qquad
+  R_{nyny}=0 .
+\end{equation}
+Since \(\beta^x=-v=1\) at the front axial point,
+\(\partial_t=n+\partial_x\), and multilinearity gives
+\begin{equation}
+  R_{tyty}=R_{nyny}+2R_{nyxy}+R_{xyxy}
+    =-\frac{\kappa}{R_F}.
+\end{equation}
+The \(z\)-component is identical by spherical symmetry.
+
+\section{Closed-Form Check Profile}
+\label{app:checks}
+
+As a closed-form check, take the smooth profile
+\begin{equation}
+  v(r)=2(\operatorname{sech}r-1),
+\end{equation}
+for which the front axial point and local Taylor coefficients are
+\begin{equation}
+  R_F=\operatorname{arcosh}2,\qquad
+  \kappa=\frac{\sqrt3}{2},\qquad
+  \mu=\frac12 .
+\end{equation}
+The leading frame coefficients are then
+\begin{equation}
+  \frac{R_{KYKY}}{q^2}
+    =-\frac{\kappa}{R_F}
+    =-\frac{\sqrt3}{2\operatorname{arcosh}2},
+\end{equation}
+and
+\begin{equation}
+  \frac{G_{KK}}{q^2}
+    =-\frac{2\kappa}{R_F}
+    =-\frac{\sqrt3}{\operatorname{arcosh}2}.
+\end{equation}
+The scalar polynomial invariants are finite at the same point:
+\begin{equation}
+  \mathcal R=\frac12,\qquad
+  R_{ab}R^{ab}=\frac18-\frac{3}{2\operatorname{arcosh}^2 2},
+\end{equation}
+\begin{equation}
+  R_{abcd}R^{abcd}=\frac14-\frac{3}{\operatorname{arcosh}^2 2},
+  \qquad
+  C_{abcd}C^{abcd}=\frac1{12}.
+\end{equation}
+These expressions were checked by direct symbolic curvature evaluation in
+coordinate and parallel frames, by the ADM calculation of
+Appendix~\ref{app:adm}, and by the local Taylor expansions used in
+Sec.~\ref{sec:general}.  A numerical finite-difference curvature calculation
+for the same profile gives the same coefficients.
+
+\section*{Data availability}
+
+No observational or experimental datasets were generated or analyzed in this
+work.  Supplementary algebra and figure-generation scripts are provided in the
+supplemental archive included with the arXiv source.
+
+\section*{AI Use Statement}
+
+The preparation of this manuscript made extensive use of generative AI tools.
+OpenAI ChatGPT/Codex and Anthropic Claude were used in an iterative workflow for
+problem formulation, mathematical and editorial critique, consistency checks,
+reference searches, Python/Matplotlib code, figure generation, and drafting and
+rewriting substantial portions of the prose and \LaTeX{} source.  The author
+selected the claims to pursue, checked the calculations, verified citations and
+code outputs, edited the final manuscript, and is solely responsible for all
+arguments, figures, code, and conclusions.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}
+

@@ -1,0 +1,72 @@
+Generic 3+1 Alcubierre front-tip singularity strength
+
+Assumptions:
+  ds^2 = -dt^2 + [dx - v(r) dt]^2 + dy^2 + dz^2
+  r = sqrt(x^2+y^2+z^2)
+  front tip is x=R>0, y=z=0
+  v(R) = -1
+  v_r(R) = -kappa with kappa>0
+  v is smooth and spherical near r=R
+
+Profile-independent local curvature:
+  On the axis, v_y=0 and v_yy=v_r/R.
+  Since R_tyty = -v v_yy, at the front tip
+    R_tyty = -kappa/R.
+
+Affine scaling:
+  partial_t is the null horizon tangent but is not affine:
+    nabla_{partial_t} partial_t = -kappa partial_t.
+  Therefore
+    dt/dlambda = 1/[kappa(lambda_* - lambda)]
+  for a future-directed generator ending at lambda=lambda_*.
+
+Parallel-propagated tidal component:
+  e_y=partial_y and e_z=partial_z are parallel on the axis.
+  Hence
+    R(K,e_y,K,e_y)
+      = -1/(R*kappa*(-lambda + lambda_*)**2)
+  This is generic for any smooth spherical profile with finite R and kappa>0.
+
+Jacobi equation:
+  Let s=lambda_* - lambda and A=1/(kappa R).
+  The transverse deviation equation is
+    d^2 eta/dlambda^2 = -R(K,e,K,e) eta
+  so near the endpoint
+    eta'' = A eta/s^2.
+  Trying eta ~ s^p gives
+    -A + p**2 - p = 0
+    p_+ = sqrt(4*A + 1)/2 + 1/2
+    p_- = 1/2 - sqrt(4*A + 1)/2
+
+Behavior:
+  p_+ > 1 gives one Jacobi solution that shrinks to zero.
+  p_- < 0 gives an independent Jacobi solution that diverges.
+  So a generic transverse separation is infinitely stretched unless
+  tuned onto the shrinking mode.
+
+For the sech profile:
+  A = 1/(kappa R) = 2*sqrt(3)/(3*acosh(2)) = 8.767938148027e-01
+  p_+ = 1/2 + sqrt(9*acosh(2) + 24*sqrt(3))/(6*sqrt(acosh(2))) = 1.561505447373e+00
+  p_- = -sqrt(9*acosh(2) + 24*sqrt(3))/(6*sqrt(acosh(2))) + 1/2 = -5.615054473731e-01
+
+Integrated-strength checks for this transverse channel:
+  For |R(K,e,K,e)| ~ A/s^2, with s -> 0:
+    single integral int A/s^2 ds = -A + A/epsilon
+    diverges like A/s.
+    double integral int int A/s^2 ds ds diverges logarithmically.
+
+Conclusion:
+  This is a genuine integrated tidal divergence in the transverse
+  screen directions, not a removable coordinate effect.
+  The front endpoint is a strong null PP-curvature singularity
+  in this transverse tidal channel.
+  That is enough to rule out a C^2 extension through the endpoint.
+  Mapping the result onto a specific Tipler/Krolak convention is
+  then a bookkeeping task: build the full parallel null frame and
+  evaluate the associated Jacobi area criterion in that convention.
+
+Scope:
+  This is a local result at the axis endpoint. It rules out smooth
+  C^2 extension there. It is not a statement about possible weaker
+  C^0-type extensions, and it does not require scalar polynomial
+  curvature invariants to diverge.

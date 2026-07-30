@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alcubierre Drive Carter-Penrose Diagram</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #15202b;
+      --muted: #55616d;
+      --paper: #f8f5ef;
+      --panel: #ffffff;
+      --grid: #d8d1c4;
+      --null: #c14d3f;
+      --ship: #1f6f8b;
+      --wall: #7d4fa3;
+      --horizon: #0b7a63;
+      --exotic: #d99022;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    main {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+    }
+
+    aside {
+      border-right: 1px solid #d8d1c4;
+      padding: 28px 24px;
+      background: #fffdf8;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      max-width: 12ch;
+      font-size: 34px;
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding-left: 12px;
+      border-left: 3px solid var(--exotic);
+    }
+
+    .controls {
+      display: grid;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 38px;
+      color: #26313c;
+      font-size: 14px;
+      border-bottom: 1px solid #ebe5da;
+    }
+
+    input {
+      accent-color: var(--ship);
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    .legend {
+      display: grid;
+      gap: 10px;
+      margin-top: 28px;
+      font-size: 13px;
+      color: #26313c;
+    }
+
+    .legend div {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .swatch {
+      width: 18px;
+      height: 3px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .canvas-wrap {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .diagram-shell {
+      width: min(100%, 1040px);
+      aspect-ratio: 1.35;
+      min-height: 560px;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #fffcf6 0%, #f3efe7 100%);
+      border: 1px solid #d8d1c4;
+    }
+
+    .frame {
+      fill: #fffaf0;
+      stroke: #2b333b;
+      stroke-width: 2;
+    }
+
+    .grid-line {
+      stroke: var(--grid);
+      stroke-width: 1;
+      stroke-dasharray: 5 8;
+    }
+
+    .axis {
+      stroke: #2b333b;
+      stroke-width: 1.6;
+    }
+
+    .null-line {
+      stroke: var(--null);
+      stroke-width: 2.4;
+      fill: none;
+    }
+
+    .bubble-wall {
+      stroke: var(--wall);
+      stroke-width: 5;
+      fill: rgba(125, 79, 163, 0.09);
+    }
+
+    .bubble-core {
+      fill: rgba(31, 111, 139, 0.08);
+      stroke: rgba(31, 111, 139, 0.38);
+      stroke-width: 1.4;
+    }
+
+    .worldline {
+      stroke: var(--ship);
+      stroke-width: 4;
+      fill: none;
+    }
+
+    .horizon {
+      stroke: var(--horizon);
+      stroke-width: 3;
+      stroke-dasharray: 10 7;
+      fill: none;
+    }
+
+    .exotic {
+      fill: rgba(217, 144, 34, 0.18);
+      stroke: var(--exotic);
+      stroke-width: 1.5;
+    }
+
+    .label {
+      fill: var(--ink);
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .small {
+      fill: var(--muted);
+      font-size: 13px;
+    }
+
+    .math {
+      font-family: "Cambria Math", Cambria, Georgia, serif;
+      font-style: italic;
+    }
+
+    .callout {
+      fill: #fffdf8;
+      stroke: #d3cabc;
+      stroke-width: 1;
+    }
+
+    .arrow {
+      stroke: #3a424a;
+      stroke-width: 1.4;
+      fill: none;
+      marker-end: url(#arrow);
+    }
+
+    .hidden-layer {
+      display: none;
+    }
+
+    @media (max-width: 860px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        border-right: 0;
+        border-bottom: 1px solid #d8d1c4;
+        padding: 22px 18px;
+      }
+
+      h1 {
+        max-width: 20ch;
+        font-size: 28px;
+      }
+
+      .controls {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      label {
+        min-height: 34px;
+      }
+
+      .canvas-wrap {
+        min-height: auto;
+        padding: 14px;
+      }
+
+      .diagram-shell {
+        min-height: 520px;
+        aspect-ratio: 0.76;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <aside>
+      <h1>Alcubierre Drive Carter-Penrose Diagram</h1>
+      <p>Conformal sketch of a superluminal warp-bubble spacetime. The ship remains locally timelike while the engineered bubble wall distorts which null rays can enter or leave the interior.</p>
+      <p class="note">This is a qualitative causal diagram, not a solved compactification of the full Alcubierre metric.</p>
+
+      <section class="controls" aria-label="Diagram layers">
+        <label>Null rays <input data-layer="null-rays" type="checkbox" checked></label>
+        <label>Bubble wall <input data-layer="bubble" type="checkbox" checked></label>
+        <label>Horizons <input data-layer="horizons" type="checkbox" checked></label>
+        <label>Energy condition region <input data-layer="energy" type="checkbox" checked></label>
+      </section>
+
+      <section class="legend" aria-label="Legend">
+        <div style="color: var(--ship)"><span class="swatch"></span><span>Ship worldline</span></div>
+        <div style="color: var(--wall)"><span class="swatch"></span><span>Warp bubble wall</span></div>
+        <div style="color: var(--horizon)"><span class="swatch"></span><span>Apparent horizons</span></div>
+        <div style="color: var(--exotic)"><span class="swatch"></span><span>Negative energy density shell</span></div>
+      </section>
+    </aside>
+
+    <section class="canvas-wrap" aria-label="Alcubierre Carter-Penrose diagram">
+      <div class="diagram-shell">
+        <svg viewBox="0 0 1000 740" role="img" aria-labelledby="title desc">
+          <title id="title">Carter-Penrose style diagram for an Alcubierre warp bubble</title>
+          <desc id="desc">Diamond conformal boundary with null rays, a moving warp-bubble wall, horizons, and a timelike ship worldline.</desc>
+          <defs>
+            <clipPath id="diamond-clip">
+              <path d="M500 36 L926 370 L500 704 L74 370 Z"></path>
+            </clipPath>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0 0 L8 4 L0 8 Z" fill="#3a424a"></path>
+            </marker>
+          </defs>
+
+          <path class="frame" d="M500 36 L926 370 L500 704 L74 370 Z"></path>
+
+          <g clip-path="url(#diamond-clip)">
+            <g id="grid">
+              <path class="grid-line" d="M-40 370 L500 -54 L1040 370"></path>
+              <path class="grid-line" d="M-40 480 L500 56 L1040 480"></path>
+              <path class="grid-line" d="M-40 260 L500 -164 L1040 260"></path>
+              <path class="grid-line" d="M-40 370 L500 794 L1040 370"></path>
+              <path class="grid-line" d="M-40 260 L500 684 L1040 260"></path>
+              <path class="grid-line" d="M-40 480 L500 904 L1040 480"></path>
+            </g>
+
+            <path class="axis" d="M500 36 L500 704"></path>
+            <path class="axis" d="M74 370 L926 370"></path>
+
+            <g id="null-rays">
+              <path class="null-line" d="M155 571 C282 471 372 407 500 370 C627 333 719 269 845 169"></path>
+              <path class="null-line" d="M155 169 C282 269 372 333 500 370 C627 407 719 471 845 571"></path>
+              <path class="null-line" opacity=".55" d="M247 642 C365 520 442 438 503 371 C563 304 640 220 754 98"></path>
+              <path class="null-line" opacity=".55" d="M247 98 C365 220 442 304 503 371 C563 438 640 520 754 642"></path>
+            </g>
+
+            <g id="energy">
+              <path class="exotic" d="M366 542 C290 453 286 293 372 202 C433 137 545 136 612 198 C705 284 712 458 634 550 C561 636 438 626 366 542 Z"></path>
+            </g>
+
+            <g id="bubble">
+              <path class="bubble-wall" d="M382 537 C306 448 306 294 383 207 C448 134 554 139 619 213 C694 298 700 453 620 538 C555 607 444 610 382 537 Z"></path>
+              <ellipse class="bubble-core" cx="501" cy="371" rx="116" ry="176"></ellipse>
+            </g>
+
+            <g id="horizons">
+              <path class="horizon" d="M407 530 C456 463 484 421 500 370 C517 316 543 272 596 207"></path>
+              <path class="horizon" d="M594 532 C543 463 517 421 500 370 C483 316 457 272 404 207"></path>
+            </g>
+
+            <path class="worldline" d="M500 636 C497 532 497 462 501 371 C505 278 505 208 500 106"></path>
+          </g>
+
+          <text class="label math" x="488" y="24">i<tspan baseline-shift="super">+</tspan></text>
+          <text class="label math" x="488" y="728">i<tspan baseline-shift="super">-</tspan></text>
+          <text class="label math" x="35" y="376">i<tspan baseline-shift="0">0</tspan><tspan dx="2"> left</tspan></text>
+          <text class="label math" x="885" y="376">i<tspan baseline-shift="0">0</tspan><tspan dx="2"> right</tspan></text>
+
+          <text class="small math" x="190" y="125">I<tspan baseline-shift="super">-</tspan></text>
+          <text class="small math" x="790" y="125">I<tspan baseline-shift="super">+</tspan></text>
+          <text class="small math" x="190" y="625">I<tspan baseline-shift="super">+</tspan></text>
+          <text class="small math" x="790" y="625">I<tspan baseline-shift="super">-</tspan></text>
+
+          <rect class="callout" x="632" y="62" width="235" height="78" rx="6"></rect>
+          <text class="label" x="650" y="91">forward causal edge</text>
+          <text class="small" x="650" y="116">outgoing signals pile up near the front horizon</text>
+          <path class="arrow" d="M645 138 C612 169 596 189 581 220"></path>
+
+          <rect class="callout" x="96" y="590" width="256" height="78" rx="6"></rect>
+          <text class="label" x="114" y="619">rear causal edge</text>
+          <text class="small" x="114" y="644">incoming control rays fail to reach the full wall</text>
+          <path class="arrow" d="M353 609 C397 578 415 556 432 524"></path>
+
+          <rect class="callout" x="668" y="582" width="236" height="84" rx="6"></rect>
+          <text class="label" x="686" y="611">ship path remains timelike</text>
+          <text class="small" x="686" y="636">superluminal motion is encoded in the bubble geometry</text>
+          <path class="arrow" d="M680 581 C626 526 569 468 515 392"></path>
+
+          <text class="small" x="402" y="371">compressed front</text>
+          <text class="small" x="514" y="371">expanded rear</text>
+          <text class="label math" x="514" y="84">t</text>
+          <text class="label math" x="892" y="352">x</text>
+        </svg>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll("[data-layer]").forEach((box) => {
+      box.addEventListener("change", () => {
+        const layer = document.getElementById(box.dataset.layer);
+        layer.classList.toggle("hidden-layer", !box.checked);
+      });
+    });
+  </script>
+</body>
+</html>
