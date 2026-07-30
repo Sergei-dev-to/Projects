@@ -20,7 +20,7 @@
 
 \begin{document}
 
-\title{A Transverse Curvature Obstruction to the Alcubierre Horizon Extension}
+\title{Conformal Structure and Horizon Inextendibility of the\\Eternal Alcubierre Spacetime}
 
 \author{Sergei Slobodov\\\texttt{sergei@slobodov.com}}
 
@@ -30,24 +30,29 @@
 
 \begin{abstract}
 The Alcubierre warp drive is a standard toy model for apparent faster-than-light
-motion in general relativity.  Its causal structure is often studied after
-reducing the geometry to time plus the direction of travel.  In the eternal
-superluminal case, that reduced 1+1-dimensional diagram contains a horizon
-boundary that can be formally continued beyond the original stationary
-warp-drive patch, much as one extends familiar black-hole coordinate patches.
-This formal continuation does not produce a twice-differentiable
-four-dimensional extension of a finite Alcubierre bubble.
-The obstruction appears when the transverse directions are restored.  The
-front axial null generator reaches the boundary of the reduced stationary
-patch at finite affine parameter.  For a smooth finite bubble with a
-finite-curvature convex front wall, the corresponding generator in the full
-3+1 geometry has a parallel-propagated transverse curvature component that
-diverges at that endpoint, while scalar polynomial curvature invariants remain
-finite.  The endpoint is therefore a non-scalar null curvature singularity.  In
-the same affine frame, the classical source tensor has an unbounded negative
-null component, sharpening the standard energy-condition violation of the
-Alcubierre source.  The rear axial generator has the corresponding
-time-reversed finite-affine endpoint and curvature divergence.
+motion in general relativity.  Its global causal structure is usually described
+after reducing the geometry to time plus the direction of travel.  We first
+construct the conformal diagram of the eternal superluminal geometry directly
+from the metric.  For a smooth sech profile the two null coordinates integrate
+in closed form, so the three-region patch, the horizons at \(|v|=1\), the
+center-rider worldline, and the two corners at which horizon generators reach
+finite affine parameter are all computed rather than sketched.  We then ask
+whether the reduced patch extends through those corners in the full
+four-dimensional geometry.  For a finite bubble it does not.  The mechanism is
+elementary: a finite bubble must have a curved front wall, wall curvature is
+transverse tidal curvature, and the affine frame of the front generator is
+unboundedly boosted relative to the stationary frame, so a finite tidal
+component is measured as an infinite one.  Concretely, the front axial null
+generator carries a parallel-propagated transverse curvature component that
+diverges at the endpoint, while scalar polynomial curvature invariants remain
+finite; the endpoint is a non-scalar null curvature singularity and admits no
+\(C^2\) extension.  Finite affine parameter alone is not the obstruction:
+Painlev\'e-Gullstrand Schwarzschild has the same structure and does extend,
+because its horizon is ruled by a null geodesic congruence that forces the
+relevant curvature components to vanish.  In the same affine frame the
+classical source tensor has an unbounded negative null component, sharpening
+the standard energy-condition violation of the Alcubierre source.  The rear
+axial generator has the corresponding time-reversed endpoint and divergence.
 \end{abstract}
 
 \section{Introduction}
@@ -63,58 +68,53 @@ source has an unbounded negative null component.  Null geodesics
 and horizon structure in superluminal warp bubbles were studied in
 Refs.~\cite{ClarkHiscockLarson1999,BarceloEtAl2022}; quantum stress-energy
 effects in reduced warp-drive models were analyzed in
-Refs.~\cite{Hiscock1997,FinazziLiberatiBarcelo2009}.
+Refs.~\cite{Hiscock1997,FinazziLiberatiBarcelo2009}.  A general formalism for
+the current warp-drive spacetimes, together with a classification and several
+no-go theorems concerning global hyperbolicity and the energy conditions, is
+given in Ref.~\cite{BarzegarBuchertVigneron2026}.
 Scalar polynomial curvature invariants of Alcubierre and related warp-drive
-metrics were computed in Ref.~\cite{MattinglyEtAl2021}.  The present result is
-complementary: those scalar invariants remain finite at the endpoint considered
-here, while a parallel-propagated curvature component diverges.
+metrics were computed in Refs.~\cite{MattinglyEtAl2021,Rodal2023}.  The present
+result is complementary: those scalar invariants remain finite at the endpoint
+considered here, while a parallel-propagated curvature component diverges.
 The same stationary shift geometry is closely related to Painlev\'e-Gullstrand
 and acoustic-horizon metrics, where horizon-regular extensions are standard
 \cite{Visser1998,LemosSilva2021}; analogue warp geometries have also been
 constructed in acoustic systems \cite{FischerVisser2003}.
 
-Finazzi, Liberati, and Barcel\'o draw the eternal \(1+1\) warp-drive diagram
-as a non-maximal patch and identify null boundaries at which the reduced
-geometry can be formally extended, while noting that a maximal extension is not
-uniquely fixed by the original matter distribution
-\cite{FinazziLiberatiBarcelo2009}.  The question addressed here is whether
-that reduced continuation is also a \(C^2\) continuation of the original
-four-dimensional Alcubierre metric.  For a finite bubble the answer is no:
-the endpoint corresponding to the front axial null generator is a null
-parallel-propagated (PP) curvature singularity.
+The global causal structure of the eternal superluminal geometry is
+conventionally presented by the conformal diagram of Finazzi, Liberati, and
+Barcel\'o, who exhibit it as a non-maximal three-region patch bounded by null
+horizons and identify the boundaries through which the reduced geometry
+continues \cite{FinazziLiberatiBarcelo2009}.  That diagram is a schematic, as
+conformal diagrams usually and legitimately are; it is drawn to display the
+causal relations rather than to locate curves quantitatively.  Section
+\ref{sec:diagram} constructs the same patch by computation instead.  For the
+smooth sech profile used throughout this paper, both null coordinates integrate
+to elementary functions, so the horizons, the constant-\(r\) and constant-\(t\)
+families, the center-rider worldline, and the two corners at which horizon
+generators reach finite affine parameter can all be placed exactly.  Locating
+those corners is what the rest of the paper needs, and it is not something a
+schematic can supply.
 
 By the \(1+1\) axial reduction we mean the geometry obtained by keeping time
 and the longitudinal direction while suppressing the two transverse spatial
 directions.  In the eternal superluminal case, this reduced spacetime contains
-an original stationary patch bounded by front and rear null horizons.  The
-front axial null generator reaches the boundary of this patch at finite
-affine parameter; equivalently, it is an incomplete null geodesic of the
-stationary patch.  The question is whether that same endpoint is regular in a
-four-dimensional \(C^2\) extension of the original Alcubierre metric.
-Figure~\ref{fig:reduced-patch} shows the reduced stationary patch and the
-finite-affine endpoints.  Only the marked horizon generators reach those
-compactification corners at finite affine parameter; other curves approach the
-same corners only at infinite affine parameter or infinite proper time.
+a stationary patch bounded by front and rear null horizons, and the reduced
+geometry does continue through those boundaries.  The question addressed here
+is whether that continuation is also a \(C^2\) continuation of the original
+four-dimensional Alcubierre metric.  For a finite bubble the answer is no: the
+endpoint corresponding to the front axial null generator is a null
+parallel-propagated (PP) curvature singularity.
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.64\linewidth]{figures/calculated_three_region_endpoint_patch.pdf}
-  \caption{Reduced \(1+1\) stationary patch for the smooth sech profile of
-  Appendix~\ref{app:checks},
-  calculated from closed-form null coordinates.  The green dashed lines are
-  the horizons \(r=r_1,r_2\).  They separate the bubble interior, region II
-  where \(|v|<1\), from the two exterior branches, regions I and III where
-  \(|v|>1\).  Solid gray lines have constant \(r\): they are timelike in
-  region II, spacelike in regions I and III, and null on the horizons.  Dashed
-  gray lines have constant \(t\) and are spacelike.  The red curve is the
-  \(r=0\) center rider.  The black dots mark the compact-coordinate corners at
-  which the past \(r_1\) generator and the future \(r_2\) generator have finite
-  affine parameter.  In the reduced \(1+1\) metric these are the endpoints
-  through which a formal continuation is attached.  For a finite \(3+1\)
-  Alcubierre bubble, that continuation is obstructed by
-  transverse parallel-propagated curvature.}
-  \label{fig:reduced-patch}
-\end{figure}
+The mechanism is elementary, which is the main reason for stating it.  A finite
+bubble must have a curved front wall; the curvature of that wall is transverse
+tidal curvature; and the affine frame of the front null generator is
+unboundedly boosted relative to the stationary frame, because the generator
+reaches the patch boundary at finite affine parameter while the Killing time
+runs to infinity.  A finite tidal component measured in an infinitely boosted
+frame is infinite.  The \(1+1\) reduction suppresses exactly the transverse
+directions in which that component lives, which is why the reduced diagram
+cannot see the obstruction.
 
 The obstruction comes from the transverse geometry.  Assume that, near the
 front axial point, the \(v=-1\) surface is smooth, has finite curvature, and is
@@ -143,6 +143,127 @@ The Riemann curvature divergence found here is purely classical.  It occurs in
 the four-dimensional Alcubierre metric before any quantum field is introduced.
 The bubble-center worldline remains timelike and complete in the stationary
 patch; the divergent component is measured along the front axial null generator.
+
+\section{The Reduced Conformal Diagram}
+\label{sec:diagram}
+
+This section constructs the conformal diagram of the eternal geometry from the
+metric.  Nothing here is new in principle; the point is that for a smooth
+profile every step is elementary, so the diagram can be computed instead of
+sketched, and in particular the finite-affine corners can be located.
+
+Suppressing the transverse directions, the stationary comoving geometry reduces
+to
+\begin{equation}
+  ds^2_{1+1}=-dt^2+[dx-v(x)dt]^2
+    =-(1-v^2)dt^2-2v\,dt\,dx+dx^2 .
+  \label{eq:reduced-metric}
+\end{equation}
+The two null families satisfy \(dx/dt=v\pm1\), so the retarded and advanced
+null coordinates are
+\begin{equation}
+  u=t-\int\frac{dx}{v+1},\qquad
+  w=t-\int\frac{dx}{v-1},
+  \label{eq:null-coords}
+\end{equation}
+and inverting gives
+\(dt=\tfrac12(1+v)du+\tfrac12(1-v)dw\),
+\(dx=\tfrac12(1-v^2)(dw-du)\), hence the doubly null form
+\begin{equation}
+  ds^2_{1+1}=-(1-v^2)\,du\,dw .
+  \label{eq:double-null}
+\end{equation}
+The horizons are the simple roots of \(1-v^2\).  In the superluminal case
+\(v\) runs from \(0\) at the center to \(-v_s<-1\) asymptotically, so there are
+exactly two, at \(r=r_1<0\) and \(r=r_2>0\) with \(v=-1\).  They divide the
+reduced spacetime into the bubble interior, region II with \(|v|<1\), and the
+two exterior branches, regions I and III with \(|v|>1\).
+
+For the profile of Appendix~\ref{app:checks}, written in the two-parameter form
+\(v(r)=\alpha[\operatorname{sech}(r/a)-1\,]\) with \(\alpha>1\), both integrals
+in Eq.~\eqref{eq:null-coords} are elementary.  With
+\(\beta=\alpha/(\alpha-1)\) and \(\gamma=\alpha/(\alpha+1)\), the horizons are
+at \(r_{1,2}=\mp a\operatorname{arcosh}\beta\), the surface gravity is
+\(\kappa=(\alpha/a)\sqrt{\beta^2-1}/\beta^2\), and, writing
+\(E_i=e^{-(r-r_i)/a}\),
+\begin{equation}
+  u=t+\frac{r}{\alpha-1}
+    -\frac{a\beta}{(\alpha-1)\sqrt{\beta^2-1}}\,\ln\Lambda,
+  \qquad
+  \Lambda=
+  \begin{cases}
+    (E_1-1)/(E_2-1) & \text{region I},\\
+    (1-E_1)/(E_2-1) & \text{region II},\\
+    (1-E_1)/(1-E_2) & \text{region III},
+  \end{cases}
+  \label{eq:u-closed}
+\end{equation}
+\begin{equation}
+  w=t+\frac{r}{\alpha+1}
+    +\frac{2a\gamma}{(\alpha+1)\sqrt{1-\gamma^2}}
+     \arctan\frac{e^{r/a}-\gamma}{\sqrt{1-\gamma^2}} .
+  \label{eq:w-closed}
+\end{equation}
+The coordinate \(u\) diverges logarithmically at both horizons, which is why
+each region carries its own chart.  Regularizing in the standard way and
+compactifying,
+\begin{equation}
+  \mathcal U=
+  \begin{cases}
+    \tfrac12+e^{-\kappa u} & \text{I},\\[2pt]
+    \tfrac12\tanh(\kappa u/2) & \text{II},\\[2pt]
+    -\tfrac12-e^{\kappa u} & \text{III},
+  \end{cases}
+  \qquad
+  \bar{\mathcal U}=\arctan\mathcal U,\quad
+  \bar{\mathcal W}=\arctan w,
+  \label{eq:regularized}
+\end{equation}
+and plotting \(X=(\bar{\mathcal W}-\bar{\mathcal U})/2\),
+\(T=(\bar{\mathcal W}+\bar{\mathcal U})/2\) gives
+Figure~\ref{fig:reduced-patch}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.64\linewidth]{figures/calculated_three_region_endpoint_patch.pdf}
+  \caption{Conformal diagram of the reduced \(1+1\) stationary patch for the
+  sech profile of Appendix~\ref{app:checks}, computed from the closed-form
+  null coordinates \eqref{eq:u-closed}--\eqref{eq:regularized}.  The green
+  dashed lines are the horizons \(r=r_1,r_2\), separating the bubble interior,
+  region II where \(|v|<1\), from the exterior branches I and III where
+  \(|v|>1\).  Solid gray lines have constant \(r\): they are timelike in
+  region II, spacelike in regions I and III, and null on the horizons.  Dashed
+  gray lines have constant \(t\) and are spacelike.  The red curve is the
+  \(r=0\) center rider.  The black dots mark the corners at which the past
+  \(r_1\) generator and the future \(r_2\) generator have finite affine
+  parameter.  In the reduced metric these are the endpoints through which the
+  continuation is attached.  For a finite \(3+1\) bubble, that continuation is
+  obstructed by transverse parallel-propagated curvature.}
+  \label{fig:reduced-patch}
+\end{figure}
+
+The corners are what the rest of the paper is about, so it is worth being
+explicit about where they are and why they are reached at finite affine
+parameter.  In region II the regularized coordinate satisfies
+\(\mathcal U\to\pm\tfrac12\) as \(u\to\pm\infty\), so the future \(r_2\)
+generator sits at \(\bar{\mathcal U}=\arctan\tfrac12\) and terminates where
+\(\bar{\mathcal W}=\pi/2\); the past \(r_1\) generator is its time reverse.
+Near \(r_2\), with \(s=r-r_2\) and \(v=-1-\kappa s+O(s^2)\), one has
+\(1-v^2=-2\kappa s+O(s^2)\) and
+\(u=t+\kappa^{-1}\ln|s|+O(1)\), \(w=t+O(1)\).  The local chart
+\begin{equation}
+  U=e^{\kappa u},\qquad V=e^{-\kappa w}
+  \label{eq:endpoint-chart}
+\end{equation}
+then gives \(ds^2_{1+1}=[(1-v^2)/(\kappa^2UV)]\,dU\,dV\), whose prefactor has a
+finite nonzero limit because \(UV\propto s\).  The front generator is \(U=0\)
+and its future endpoint is \(U=V=0\), at finite affine parameter.  Only the
+marked horizon generators reach these corners at finite affine parameter;
+other curves approach them at infinite affine parameter or infinite proper
+time.  In the reduced geometry \eqref{eq:double-null} the chart
+\eqref{eq:endpoint-chart} is manifestly regular there, and the continuation
+through the corner is the usual one.  Whether it survives restoring the
+transverse directions is the subject of the rest of this paper.
 
 \section{Stationary Geometry and Axial Generators}
 \label{sec:geometry}
@@ -375,7 +496,9 @@ stays at the fixed spatial point \((R_F,0,0)\), so every zeroth-order scalar
 polynomial curvature invariant is constant along the generator and equal to
 its value at that point.  Scalar invariants of Alcubierre and related
 warp-drive metrics have been studied explicitly in
-Ref.~\cite{MattinglyEtAl2021}; for the local spherical data used here, writing
+Refs.~\cite{MattinglyEtAl2021,Rodal2023}; the invariants below were computed
+independently for the present profile and are checked in
+Appendix~\ref{app:checks}.  For the local spherical data used here, writing
 \(\mathcal R=g^{ab}R_{ab}\) for the Ricci scalar and \(C_{abcd}\) for the Weyl
 tensor gives
 \begin{equation}
@@ -696,7 +819,14 @@ the transverse area collapses; this is the Tipler-crushing regime.
 
 \section{Discussion}
 
-The formal continuation of the eternal \(1+1\) warp-drive diagram is not a
+Two things have been done here.  Section~\ref{sec:diagram} computed the
+conformal diagram of the eternal reduced geometry from closed-form null
+coordinates, which fixes the location of the two corners at which horizon
+generators reach finite affine parameter.  The remainder of the paper asked
+whether those corners survive the restoration of the transverse directions.
+
+They do not.  The formal continuation of the eternal \(1+1\) warp-drive
+diagram is not a
 \(C^2\) four-dimensional extension of a finite Alcubierre bubble.  At a smooth
 curved front, the obstruction is the parallel-frame component displayed in
 Eq.~\eqref{eq:screen-general}; for a convex front this gives
