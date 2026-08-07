@@ -41,14 +41,16 @@ At the front root x=x2, take v=-1 and v_x=-kappa<0.  With s=x-x2,
 
 A local endpoint chart is
 
-  U = exp(kappa u),       V = exp(-kappa w).
+  U = +exp(kappa u) in region II,
+  U = -exp(kappa u) in region III,
+  V = exp(-kappa w).
 
 Then
 
   ds^2 = [(1-v^2)/(kappa^2 U V)] dU dV,
 
-and the bracket has a finite nonzero limit after the usual side
-normalization because U V is proportional to s.  The front generator is
+and the bracket has a finite nonzero limit because U V is proportional to
+-s.  The front generator is
 U=0; its future finite-affine endpoint is U=V=0.
 
 3+1 product lift

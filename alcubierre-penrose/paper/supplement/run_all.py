@@ -1,7 +1,7 @@
 """Run the supplementary verification scripts for the Alcubierre paper.
 
 The scripts write human-readable outputs under scripts/output/sech and regenerate
-the conformal-diagram figure under scripts/paper/figures.
+the conformal-diagram figure under the paper's figures directory.
 """
 
 from __future__ import annotations
@@ -16,16 +16,13 @@ SCRIPT_DIR = Path(__file__).resolve().parent / "scripts"
 SCRIPTS = [
     "front_tip_adm_derivation.py",
     "front_tip_full_parallel_frame.py",
-    "front_tip_einstein_parallel_frame.py",
     "front_tip_scalar_invariants.py",
     "front_tip_general_convex_wall.py",
+    "front_tip_einstein_parallel_frame.py",
+    "flat_cap_partial_extension.py",
+    "natario_local_jet.py",
     "front_tip_taylor_metric_check.py",
     "front_tip_numerical_frame_check.py",
-    "front_tip_singularity_strength.py",
-    "front_planar_cap_extension.py",
-    "rim_kruskal_continuity_check.py",
-    "rim_causal_geodesic_check.py",
-    "degenerate_root_causal_tidal_check.py",
     "front_tip_parallel_tidal_analytic.py",
     "diagram_derivation_overlay.py",
 ]

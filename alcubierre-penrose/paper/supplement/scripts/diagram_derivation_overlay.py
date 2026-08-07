@@ -18,11 +18,23 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import numpy as np
 
-from sech_extension import Params, compact, horizons
+from sech_extension import Params, compact, horizons, w_coord
 
 
-OUT = Path("output/sech")
-PAPER_FIGURES = Path("paper/figures")
+matplotlib.rcParams.update(
+    {
+        "font.family": "sans-serif",
+        "font.sans-serif": ["Arial", "Helvetica", "Liberation Sans", "DejaVu Sans"],
+        "mathtext.fontset": "stixsans",
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
+    }
+)
+
+
+BASE_DIR = Path(__file__).resolve().parent
+OUT = BASE_DIR / "output/sech"
+PAPER_FIGURES = BASE_DIR.parent.parent / "figures"
 
 
 def endpoint_coordinates() -> dict[str, tuple[float, float]]:
@@ -33,13 +45,13 @@ def endpoint_coordinates() -> dict[str, tuple[float, float]]:
     # The regularized three-region chart uses
     #   X=(Wbar-Ubar)/2, T=(Wbar+Ubar)/2.
     #
-    # Future front endpoint: r2 bubble-side generator has Ubar=+atan(1/2)
+    # Future front endpoint: r2 bubble-side generator has Ubar=-atan(1/2)
     # and reaches Wbar=+pi/2.
-    c_plus = (0.5 * (b - a0), 0.5 * (b + a0))
+    c_plus = (0.5 * (b + a0), 0.5 * (b - a0))
 
-    # Past rear endpoint: r1 bubble-side generator has Ubar=-atan(1/2)
+    # Past rear endpoint: r1 bubble-side generator has Ubar=+atan(1/2)
     # and reaches Wbar=-pi/2.
-    c_minus = (-0.5 * (b - a0), -0.5 * (b + a0))
+    c_minus = (-0.5 * (b + a0), -0.5 * (b - a0))
     return {"C+": c_plus, "C-": c_minus}
 
 
@@ -191,7 +203,25 @@ def draw_clean_calculated_patch() -> None:
     eps = 1.0e-5 * (r2 - r1)
     endpoints = endpoint_coordinates()
 
-    fig, ax = plt.subplots(figsize=(6.8, 6.4), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(7.2, 6.4), constrained_layout=True)
+
+    b = 0.5 * np.pi
+    a0 = float(np.arctan(0.5))
+
+    def from_null(ubar: np.ndarray | float, wbar: np.ndarray | float) -> tuple[np.ndarray, np.ndarray]:
+        return 0.5 * (np.asarray(wbar) - np.asarray(ubar)), 0.5 * (np.asarray(wbar) + np.asarray(ubar))
+
+    def exact_horizon_point(t0: float, root: float, ubar: float) -> tuple[float, float]:
+        """Return the common chart limit of a constant-t slice at a horizon."""
+        wbar = float(np.arctan(w_coord(np.array([t0]), np.array([root]), p)[0]))
+        x, y = from_null(ubar, wbar)
+        return float(x), float(y)
+
+    boundary_color = "#20242a"
+    const_xi_color = "#59636e"
+    const_t_color = "#9aa1a9"
+    horizon_color = "#0072b2"
+    rider_color = "#d55e00"
 
     grids = {
         "I": np.linspace(-p.r_max, r1 - eps, p.n_grid),
@@ -199,11 +229,24 @@ def draw_clean_calculated_patch() -> None:
         "III": np.linspace(r2 + eps, p.r_max, p.n_grid),
     }
 
-    # Constant-t slices, light enough to identify the chart without dominating it.
+    # Constant-t slices.  Append their exact horizon limits so the separately
+    # evaluated regional pieces meet even where the fixed-epsilon approximation
+    # is nonuniform at large |t|.
     for t0 in np.linspace(-p.t_max, p.t_max, 9):
+        h1 = exact_horizon_point(float(t0), r1, +a0)
+        h2 = exact_horizon_point(float(t0), r2, -a0)
         for region, r in grids.items():
             x, y = compact(region, np.full_like(r, t0), r, p)
-            ax.plot(x, y, color="#8f969d", lw=0.75, ls=(0, (7, 6)), alpha=0.62)
+            if region == "I":
+                x = np.r_[x, h1[0]]
+                y = np.r_[y, h1[1]]
+            elif region == "II":
+                x = np.r_[h1[0], x, h2[0]]
+                y = np.r_[h1[1], y, h2[1]]
+            else:
+                x = np.r_[h2[0], x]
+                y = np.r_[h2[1], y]
+            ax.plot(x, y, color=const_t_color, lw=0.85, ls=(0, (7, 6)))
 
     # Constant-r curves.
     r_samples = {
@@ -212,99 +255,125 @@ def draw_clean_calculated_patch() -> None:
         "III": np.linspace(r2 + 0.32, p.r_max - 0.45, 3),
     }
     t = np.linspace(-p.t_max, p.t_max, 1200)
+    t_rider = np.linspace(-40.0, 40.0, 2000)
     for region, values in r_samples.items():
         for r0 in values:
-            x, y = compact(region, t, np.full_like(t, r0), p)
             rider = region == "II" and abs(r0) < 1.0e-12
+            curve_t = t_rider if rider else t
+            x, y = compact(region, curve_t, np.full_like(curve_t, r0), p)
             ax.plot(
                 x,
                 y,
-                color="#c14d3f" if rider else "#30363d",
-                lw=2.6 if rider else 0.9,
-                alpha=0.95 if rider else 0.75,
+                color=rider_color if rider else const_xi_color,
+                lw=2.8 if rider else 1.0,
             )
 
-    # Horizons, drawn from both sides of the exact closed-form chart.
-    for region, r0 in [("I", r1 - eps), ("II", r1 + eps), ("II", r2 - eps), ("III", r2 + eps)]:
-        x, y = compact(region, t, np.full_like(t, r0), p)
-        ax.plot(x, y, color="#0b7a63", lw=2.2, ls="--", alpha=0.95)
+    # The two horizons are exact constant-Ubar null segments.  Drawing them
+    # analytically avoids the noncommuting fixed-offset and |t|->infinity limits
+    # that make near-horizon constant-xi curves peel toward unrelated boundaries.
+    wbar = np.linspace(-b, b, 500)
+    horizon_curves = {
+        "xi1": from_null(np.full_like(wbar, +a0), wbar),
+        "xi2": from_null(np.full_like(wbar, -a0), wbar),
+    }
+    x_h1, y_h1 = horizon_curves["xi1"]
+    x_h2, y_h2 = horizon_curves["xi2"]
+    assert np.allclose(np.diff(y_h1), np.diff(x_h1))
+    assert np.allclose(np.diff(y_h2), np.diff(x_h2))
+    assert np.allclose((x_h1[0], y_h1[0]), endpoints["C-"])
+    assert np.allclose((x_h2[-1], y_h2[-1]), endpoints["C+"])
+    for x_horizon, y_horizon in horizon_curves.values():
+        ax.plot(
+            x_horizon,
+            y_horizon,
+            color=horizon_color,
+            lw=2.4,
+            ls=(0, (4, 2)),
+            zorder=4,
+        )
 
     # Compactification frame used by the regularized closed-form coordinates.
-    b = 0.5 * np.pi
-    a0 = float(np.arctan(0.5))
-
-    def from_null(ubar: np.ndarray | float, wbar: np.ndarray | float) -> tuple[np.ndarray, np.ndarray]:
-        return 0.5 * (np.asarray(wbar) - np.asarray(ubar)), 0.5 * (np.asarray(wbar) + np.asarray(ubar))
-
     for ubar in (b, -b):
         s = np.linspace(-b, b, 300)
-        ax.plot(*from_null(np.full_like(s, ubar), s), color="#62666a", lw=1.15, alpha=0.85)
+        ax.plot(*from_null(np.full_like(s, ubar), s), color=boundary_color, lw=1.4)
     for umin, umax in [(a0, b), (-a0, a0), (-b, -a0)]:
         s = np.linspace(umin, umax, 300)
-        ax.plot(*from_null(s, np.full_like(s, b)), color="#62666a", lw=1.15, alpha=0.85)
-        ax.plot(*from_null(s, np.full_like(s, -b)), color="#62666a", lw=1.15, alpha=0.85)
+        ax.plot(*from_null(s, np.full_like(s, b)), color=boundary_color, lw=1.4)
+        ax.plot(*from_null(s, np.full_like(s, -b)), color=boundary_color, lw=1.4)
 
     # Standard compactification labels for the outer diamond.
-    ax.text(0.0, b - 0.08, r"$i^+$", ha="center", va="top", fontsize=11)
-    ax.text(0.0, -b + 0.08, r"$i^-$", ha="center", va="bottom", fontsize=11)
-    ax.text(-b + 0.08, 0.0, r"$i^0_L$", ha="left", va="center", fontsize=10)
-    ax.text(b - 0.08, 0.0, r"$i^0_R$", ha="right", va="center", fontsize=10)
+    ax.text(0.0, b - 0.08, r"$i^+$", ha="center", va="top", fontsize=12)
+    ax.text(0.0, -b + 0.08, r"$i^-$", ha="center", va="bottom", fontsize=12)
+    ax.text(-b + 0.08, 0.0, r"$i^0_L$", ha="left", va="center", fontsize=11.5)
+    ax.text(b - 0.08, 0.0, r"$i^0_R$", ha="right", va="center", fontsize=11.5)
 
     # The two finite-affine endpoints in this compact chart.
     for label, xy in endpoints.items():
         ax.scatter([xy[0]], [xy[1]], s=92, color="#111111", zorder=6)
         if label == "C+":
             ax.annotate(
-                "future finite-affine\n$r_2$ endpoint",
+                "future finite-affine\n" + r"$\xi_2$ endpoint",
                 xy=xy,
                 xytext=(xy[0] + 0.28, xy[1] + 0.16),
                 ha="left",
                 va="bottom",
-                fontsize=9,
-                arrowprops=dict(arrowstyle="->", lw=0.9, color="0.2"),
+                fontsize=11.5,
+                arrowprops=dict(arrowstyle="->", lw=1.0, color="0.15"),
             )
         else:
             ax.annotate(
-                "past finite-affine\n$r_1$ endpoint",
+                "past finite-affine\n" + r"$\xi_1$ endpoint",
                 xy=xy,
                 xytext=(xy[0] - 0.34, xy[1] - 0.18),
                 ha="right",
                 va="top",
-                fontsize=9,
-                arrowprops=dict(arrowstyle="->", lw=0.9, color="0.2"),
+                fontsize=11.5,
+                arrowprops=dict(arrowstyle="->", lw=1.0, color="0.15"),
             )
 
-    ax.text(-0.64, 0.02, "I", ha="center", va="center", fontsize=13)
-    ax.text(0.0, 0.03, "II", ha="center", va="center", fontsize=13)
-    ax.text(0.64, 0.02, "III", ha="center", va="center", fontsize=13)
-    ax.text(0.15, 0.48, r"$r=0$", color="#c14d3f", fontsize=10, rotation=60)
-    ax.text(-0.88, -0.55, r"$r=r_1$", color="#0b7a63", fontsize=10, rotation=45)
-    ax.text(0.72, -0.62, r"$r=r_2$", color="#0b7a63", fontsize=10, rotation=45)
+    ax.text(-0.64, 0.02, "I", ha="center", va="center", fontsize=14.5)
+    ax.text(0.0, 0.03, "II", ha="center", va="center", fontsize=14.5)
+    ax.text(0.64, 0.02, "III", ha="center", va="center", fontsize=14.5)
+
+    x1, y1 = from_null(+a0, -0.78)
+    x2, y2 = from_null(-a0, +0.78)
+    horizon_label = dict(
+        color=horizon_color,
+        fontsize=11.5,
+        rotation=45,
+        ha="center",
+        va="bottom",
+        rotation_mode="anchor",
+        bbox=dict(facecolor="white", edgecolor="none", pad=0.6),
+    )
+    ax.text(float(x1), float(y1), r"$\xi=\xi_1$", **horizon_label)
+    ax.text(float(x2), float(y2), r"$\xi=\xi_2$", **horizon_label)
 
     legend_items = [
-        Line2D([0], [0], color="#30363d", lw=1.2, label=r"constant-$r$ lines"),
-        Line2D([0], [0], color="#a1a7ad", lw=1.0, ls=(0, (7, 6)), label=r"constant-$t$ lines"),
-        Line2D([0], [0], color="#0b7a63", lw=2.0, ls="--", label=r"horizons $r=r_1,r_2$"),
-        Line2D([0], [0], color="#c14d3f", lw=2.6, label=r"center rider $r=0$"),
+        Line2D([0], [0], color=const_xi_color, lw=1.2, label=r"constant-$\xi$ lines"),
+        Line2D([0], [0], color=const_t_color, lw=1.0, ls=(0, (7, 6)), label=r"constant-$t$ lines"),
+        Line2D([0], [0], color=horizon_color, lw=2.4, ls=(0, (4, 2)), label=r"horizons $\xi=\xi_1,\xi_2$"),
+        Line2D([0], [0], color=rider_color, lw=2.8, label=r"center rider $\xi=0$"),
     ]
     ax.legend(
         handles=legend_items,
         loc="upper left",
         frameon=True,
-        framealpha=0.92,
+        framealpha=1.0,
         facecolor="white",
         edgecolor="#d8d8d8",
-        fontsize=8.4,
+        fontsize=11.0,
     )
 
     ax.set_aspect("equal", adjustable="box")
     ax.set_xlim(-1.66, 1.66)
     ax.set_ylim(-1.66, 1.66)
-    ax.set_xlabel(r"$X=(\mathcal{W}-\mathcal{U})/2$")
-    ax.set_ylabel(r"$T=(\mathcal{W}+\mathcal{U})/2$")
+    ax.set_xlabel(r"$X=(\bar{\mathcal{W}}-\bar{\mathcal{U}})/2$", fontsize=12)
+    ax.set_ylabel(r"$T=(\bar{\mathcal{W}}+\bar{\mathcal{U}})/2$", fontsize=12)
+    ax.tick_params(labelsize=11)
     ax.grid(False)
 
-    for ext in ("png", "pdf"):
+    for ext in ("png", "pdf", "eps"):
         fig.savefig(OUT / f"calculated_three_region_endpoint_patch.{ext}", dpi=240, bbox_inches="tight")
         PAPER_FIGURES.mkdir(parents=True, exist_ok=True)
         fig.savefig(PAPER_FIGURES / f"calculated_three_region_endpoint_patch.{ext}", dpi=240, bbox_inches="tight")
@@ -356,14 +425,16 @@ At the front root x=x2, take v=-1 and v_x=-kappa<0.  With s=x-x2,
 
 A local endpoint chart is
 
-  U = exp(kappa u),       V = exp(-kappa w).
+  U = +exp(kappa u) in region II,
+  U = -exp(kappa u) in region III,
+  V = exp(-kappa w).
 
 Then
 
   ds^2 = [(1-v^2)/(kappa^2 U V)] dU dV,
 
-and the bracket has a finite nonzero limit after the usual side
-normalization because U V is proportional to s.  The front generator is
+and the bracket has a finite nonzero limit because U V is proportional to
+-s.  The front generator is
 U=0; its future finite-affine endpoint is U=V=0.
 
 3+1 product lift

@@ -1,0 +1,39 @@
+Flat-cap partial-extension check
+
+Input:
+  v(s) = -1 - kappa*s + c2*s^2 + c3*s^3
+  U = exp(-kappa*t),  s = U*V
+
+Transformed 1+1 metric components:
+  g_UU = V**2*(U*V*c3 + c2)*(U**3*V**3*c3 + U**2*V**2*c2 - 2)/kappa**2
+  g_UV = (U**3*V**3*c3 + U**2*V**2*c2 - 1)/kappa
+  g_VV = U**2
+  det(g_1+1) = -1/kappa**2
+
+Limits at U=0:
+  g_UU -> -2*V**2*c2/kappa**2
+  g_UV -> -1/kappa
+  g_VV -> 0
+  det_g -> -1/kappa**2
+
+Conclusion:
+  Every coefficient is smooth at U=0.
+  The determinant is the nonzero constant -1/kappa^2.
+  Adding flat transverse dy^2+dz^2 therefore gives a smooth
+  nondegenerate 3+1 extension through the cap-generator endpoint.
+
+Cap-rim transverse-family check:
+  Gamma^mu_yy = ['0', '0', '0']
+  Thus fixed-(t,x) y-lines are unit spacelike geodesics.
+  R(e0+e1, ey, e0+e1, ey) = -Derivative(v(x, y), y)**2 + Derivative(v(x, y), (y, 2))
+  R(e0+e1, ey, e0+e1, (e0-e1)/2) = (v(x, y)*Derivative(v(x, y), x, y) + 2*Derivative(v(x, y), x)*Derivative(v(x, y), y) - Derivative(v(x, y), x, y))/2
+  On v=-1 with v_y=0, the mixed component reduces to -v_xy.
+  nabla_y(e0+e1) = ['Derivative(v(x, y), y)/2', '(v(x, y) + 1)*Derivative(v(x, y), y)/2', '0']
+  nabla_y((e0-e1)/2) = ['-Derivative(v(x, y), y)/4', '(1 - v(x, y))*Derivative(v(x, y), y)/4', '0']
+  These are +(v_y/2)(e0+e1) and -(v_y/2)(e0-e1)/2,
+  verifying the finite reciprocal transport factors in the rigidity proof.
+  For v=-1-c*phi(y), c>0, phi_y>0, phi_yy>0:
+    R = -c*(c*phi_y**2 + phi_yy) < 0
+  Parallel transport from the rim changes e0+e1 only by the finite
+  factor exp[-(v-v_rim)/2].  An affine endpoint boost q therefore
+  makes this neighboring contraction diverge as q^2.
