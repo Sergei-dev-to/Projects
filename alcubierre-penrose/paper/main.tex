@@ -49,9 +49,9 @@ survives in the full four-dimensional geometry.  We compute the reduced diagram
 explicitly for a smooth hyperbolic-secant profile and locate the finite-affine
 endpoints of its horizon generators.  We then prove a general stationary result:
 a null orbit of a complete Killing field with nonzero inaffinity and transverse
-tidal curvature ends at a parallel-propagated curvature singularity.  For
-stationary scalar-shift warp drives, a global capture argument gives an exact
-alternative.  A proper Hausdorff \(C^2\) extension exists if and only if the
+  tidal curvature ends at a parallel-propagated curvature singularity.  For
+  nonpositive stationary scalar-shift warp drives, a global capture argument gives
+  an exact alternative.  A proper Hausdorff \(C^2\) extension exists if and only if the
 compact regular superluminal wall contains an open planar cap with constant
 nonzero inaffinity.  Such a cap is a genuine Killing-horizon patch, and its
 Kruskal continuation lifts through a finite transverse aperture.  Otherwise
@@ -97,7 +97,7 @@ form with the wall Hessian.  The Alcubierre endpoints therefore satisfy the
 criterion even though all scalar curvature invariants remain finite.
 
 A local singularity does not by itself exclude an extension attached elsewhere.
-Section~\ref{sec:maximality} closes that gap for stationary scalar shifts with a
+Section~\ref{sec:maximality} closes that gap for nonpositive stationary scalar shifts with a
 compact regular superluminal wall.  Any regular extension would force an open
 planar wall patch with constant inaffinity; conversely, such a patch has a
 Kruskal extension.  This exact alternative implies that the reduced sech
@@ -240,6 +240,10 @@ is compact and regular.  Its stationary-generator locus is
   \mathcal G=\{p\in\Sigma:v_y(p)=v_z(p)=0\}
   \label{eq:generator-locus}
 \end{equation}
+The sign condition makes \(\Sigma=\{|v|=1\}\) the entire stationary-limit
+set; it is not a coordinate normalization for profiles taking both signs.
+Regularity implies \(v_x\ne0\) on \(\mathcal G\), so the theorem concerns
+nondegenerate stationary generators.
 Then \((M,g)\) admits a proper Hausdorff \(C^2\) Lorentzian extension if and
 only if there are \(x_H\in\mathbb R\), a nonempty open disk
 \(D\subset\mathbb R^2_{y,z}\), and a constant \(\kappa\ne0\) such that
@@ -333,21 +337,24 @@ cases.
 Suppose \(v=v(r)\) is smooth and radially nonincreasing, with
 \[
   v(0)=0,\qquad -v_s\leq v\leq0,\qquad
-  v=-1\Longleftrightarrow r=R_F,\qquad v_r(R_F)=-\kappa<0,
+  v=-1\Longleftrightarrow r=R_F,
 \]
 and satisfies \eqref{eq:general-scalar-tail}.  Then the corresponding spacetime
-is \(C^2\)-inextendible.
+is \(C^2\)-inextendible.  No nondegeneracy is assumed at \(R_F\).
 \end{corollary}
 
 \begin{proof}
-The wall \(\Sigma\) is the sphere \(r=R_F\), which contains no open planar
-patch, so Theorem~\ref{thm:extension-alternative} applies.  Its height function is
-Morse with only the two poles critical, and at either pole
+Suppose that a proper extension exists.  Proposition~\ref{prop:capture} and the
+transverse-rigidity argument through Eq.~\eqref{eq:forced-planar-wall} use
+compactness of \(\Sigma\), but not its regularity.  They force an open planar
+disk in \(\{v=-1\}\).  Here that level set is the sphere \(r=R_F\), which
+contains no such disk, a contradiction.  For \(\kappa:=-v_r(R_F)\geq0\), the
+wall Hessian at either pole is
 \begin{equation}
   H_{AB}=-\frac{\kappa}{R_F}\delta_{AB}
   \label{eq:radial-hessian}
 \end{equation}
-also records the local tidal obstruction.
+and records the local tidal obstruction when \(\kappa>0\).
 \end{proof}
 
 This includes the sech family used in Section~\ref{sec:diagram} and the usual
@@ -366,7 +373,8 @@ of its coefficient, and a test of the local mechanism on a divergence-free
 vector shift.
 
 \paragraph{The Alcubierre endpoint.}
-In the radial setting of Corollary~\ref{cor:alcubierre-maximality}, the
+For a nondegenerate radial wall in Corollary~\ref{cor:alcubierre-maximality},
+put \(\kappa=-v_r(R_F)>0\).  The
 stationary field is null on \(v^2=1\), but the
 four-dimensional wall is generally not null: there
 \begin{equation}
@@ -694,7 +702,8 @@ The remaining model-specific dynamical statement is isolated below.
 
 \begin{proposition}[Capture of finite-time exits]
 \label{prop:capture}
-Under the hypotheses of Theorem~\ref{thm:extension-alternative}, let \(\gamma\) be
+Under the hypotheses of Theorem~\ref{thm:extension-alternative}, except that
+\(\Sigma\) need only be compact, let \(\gamma\) be
 a future-directed unit timelike geodesic with finite proper-time endpoint that
 cannot be continued in \(M\).  Put \(P=p_x\), \(Q_A=p_A\), and
 \begin{equation}
@@ -911,9 +920,8 @@ gives a subsequence \(t_n\to\infty\) and a point \(p\) such that
   \boldsymbol{x}(t_n)\longrightarrow p\in\mathcal G,
   \label{eq:general-exit-subsequence}
 \end{equation}
-Regularity of \(\Sigma\) gives \(v_x(p)\ne0\).  The full trajectory need not
-converge to one generator; the subsequence is all that the curvature argument
-requires.
+The full trajectory need not converge to one generator; the subsequence is all
+that the curvature argument requires.
 \end{proof}
 
 \subsection{Transverse rigidity at a regular exit}
