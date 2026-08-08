@@ -6,6 +6,8 @@ the boundary relevant to the Maxwell and Iyer--Wald balance laws.
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import matplotlib
 
 matplotlib.use("Agg")
@@ -119,8 +121,10 @@ def main() -> None:
     panel_fixed(axes[0])
     panel_multipoles(axes[1])
     panel_sourced(axes[2])
-    fig.savefig("fig_observer_charge_channels_v7.pdf", bbox_inches="tight")
-    fig.savefig("fig_observer_charge_channels_v7.png", dpi=240, bbox_inches="tight")
+    output_dir = Path("figures")
+    output_dir.mkdir(exist_ok=True)
+    fig.savefig(output_dir / "fig_observer_charge_channels_v7.pdf", bbox_inches="tight")
+    fig.savefig(output_dir / "fig_observer_charge_channels_v7.png", dpi=240, bbox_inches="tight")
 
 
 if __name__ == "__main__":

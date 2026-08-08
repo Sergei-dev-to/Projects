@@ -35,7 +35,10 @@
 \begin{abstract}
 Dai and Stojkovic proposed that a body orbiting near one mouth of a traversable
 wormhole could make the mass seen near the other mouth rise and fall.  We show
-that their static solutions do not establish this signal.  In
+that their static solutions do not establish this signal.  At first order on
+the Schwarzschild background used by DS, nonspherical motion does not evade the
+monopole constraint: in a connected vacuum region, the mass monopole is
+constant.  In
 electromagnetism, Stokes' theorem fixes the charge measured on an observer-side
 surface unless current crosses that surface.  On the stationary background
 used in the proposal, the corresponding first-order gravitational quantity is
@@ -72,9 +75,12 @@ nonspherical and may be viewed as a sequence of monopoles
 \cite{DaiStojkovic2020ReplyObserving}.  The same acceleration law was later
 used in sensitivity estimates \cite{SimonettiEtAl2021SensitiveSearches}.
 
-The $\ell=0$ part of the perturbation in a connected vacuum region is a
-constant mass variation plus gauge, and its normalized surface charge obeys a
-local balance law, which in turn fixes what a genuine signal would require.
+At first order on the Schwarzschild background used by DS, the $\ell=0$ part of
+any perturbation is, in a connected vacuum region, a constant mass variation
+plus gauge, whatever the angular structure of the source motion: the monopole
+sector carries no dynamics of its own.  What remains is to identify that
+constant as an observable and to say what could change it, which is the
+content of the surface-charge balance law.
 The relevant distinction is between a family of static solutions and
 successive states of one on-shell dynamical history.
 
@@ -112,7 +118,7 @@ DaiStojkovic2019ObservingV3} give the observer-side monopole
   \qquad
   h^{\mathrm{our}}_{rr}=\frac{2b r_2}{(r_2-r_g)^2},
   \qquad
-  b=\frac{\mu R}{A},
+  b=\frac{\mu R}{A}.
   \label{eq:ds-observer-mode}
 \end{equation}
 This is the strongest form of the proposal: the observer field is a vacuum mass
@@ -147,21 +153,23 @@ This step replaces $A$ in a static boundary-value solution by $A(t)$.  It is
 valid only if the different static solutions belong to one dynamically
 reachable charge sector.
 
-Substituting $b\to b(t)$ directly into Eq.~\eqref{eq:ds-observer-mode} already
-exposes the difficulty.  The time--radial component of the linearized Einstein
-tensor is then
+Substituting $b\to b(t)$ directly into Eq.~\eqref{eq:ds-observer-mode} settles
+the spherical case at once.  The time--radial component of the linearized
+Einstein tensor is then
 \begin{equation}
   \delta G^{r}{}_{t}=\frac{2\dot b}{r_2^{2}},
   \label{eq:momentum-constraint}
 \end{equation}
-which must vanish in vacuum, forcing $\dot b=0$.  When a source is present,
+which must vanish in vacuum, forcing $\dot b=0$.  This is a pointwise
+consequence of the field equations at the observer's location, not a statement
+about a distant boundary.  When a source is present,
 $\delta G^{r}{}_{t}=8\pi\,\delta T^{r}{}_{t}$ integrates over the sphere to
 $\dot b=\oint\delta T^{r}{}_{t}\,dA$: the coefficient changes at exactly the
-rate energy crosses the measuring sphere.  The rest of this paper reaches the
-same conclusion for a perturbation of any angular dependence, and in a
-manifestly gauge-invariant way, so
-that the varying quantity is an observable rather than a coordinate
-coefficient.  The next two sections do so.%
+rate energy crosses the measuring sphere.
+Sections~\ref{sec:maxwell}--\ref{sec:gravity-application} extend this to a
+perturbation of any angular dependence and to a manifestly gauge-invariant
+statement, so that the varying quantity is an observable rather than a
+coordinate coefficient.%
 \footnote{The calculation assumes a timelike cut $R>r_g$ and a uniform
 linearization.  Since the mode in Eq.~\eqref{eq:ds-observer-mode} is a mass
 perturbation, smallness at the cut requires
@@ -213,7 +221,7 @@ through the throat.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.72\textwidth,trim=0 35 0 55,clip]{fig_worldtube_stokes.pdf}
+  \includegraphics[width=0.72\textwidth,trim=0 35 0 55,clip]{figures/fig_worldtube_stokes.pdf}
   \caption{A measuring surface $S_t$ is compared at $t_1$ and $t_2$ through
   its spacetime history $\mathcal T=\bigcup_tS_t$.  If no current crosses
   $\mathcal T$, Stokes' theorem gives equal Maxwell fluxes on the endpoint
@@ -274,7 +282,7 @@ carries a flux of its own, changed only by current crossing that sphere.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.88\textwidth]{fig_thinshell_fixed_monopole_flux_v7.pdf}
+  \includegraphics[width=0.88\textwidth]{figures/fig_thinshell_fixed_monopole_flux_v7.pdf}
   \caption{Illustrative fixed-sector Maxwell field.  The two panels are the
   two exterior charts, and the black circles represent the same identified
   throat sphere.  A charge in the source chart produces a nonzero field in the
@@ -293,22 +301,31 @@ carries a flux of its own, changed only by current crossing that sphere.
 \label{sec:gravity-charge}
 % ============================================================
 
-For the Einstein--Hilbert Lagrangian four-form
+Let $h_{\alpha\beta}$ denote the metric perturbation.  For any functional $X$
+of the metric, its variation along $h$ is
+\[
+  \delta_hX=\frac{d}{d\lambda}\bigg|_{\lambda=0}X[\bar g+\lambda h].
+\]
+Let $\xi$ be a vector field with
+$\delta_h\xi=0$, so that $\xi$ does not vary with the metric.  We use the
+covariant phase space construction of
+Refs.~\cite{IyerWald1994NoetherCharge,BarnichBrandt2002CovariantTheory}: for
+the Einstein--Hilbert Lagrangian four-form
 $\bm L_{\mathrm{EH}}=(16\pi)^{-1}R[g]\,\bm\varepsilon$, let
-$\bm\theta$ be the symplectic-potential three-form and $\bm Q_\xi$ the
-Noether-charge two-form in
-$\bm J_\xi=\bm C_\xi+d\bm Q_\xi$.  For a field-independent vector field
-$\xi$, write
+$\bm\theta(\bar g,h)$ be the symplectic-potential three-form, $\bm\omega$ the
+symplectic current, and $\bm Q_\xi$ the Noether-charge two-form in the
+decomposition $\bm J_\xi=\bm C_\xi+d\bm Q_\xi$ of the Noether current.  Here
+$\bm C_\xi$ vanishes when the field equations hold.  Write
 \begin{align}
-  \delta\bm L_{\mathrm{EH}}
+  \delta_h\bm L_{\mathrm{EH}}
   &=\bm E^{\alpha\beta}h_{\alpha\beta}+d\bm\theta(\bar g,h),\\
   \bm k_\xi[h;\bar g]
   &=\delta_h\bm Q_\xi-\xi\mathbin{\cdot}\bm\theta(\bar g,h),
   \label{eq:k-definition}
 \end{align}
-where $\bm E^{\alpha\beta}$ is the Euler--Lagrange four-form.  In the conventions of
-Refs.~\cite{IyerWald1994NoetherCharge,BarnichBrandt2002CovariantTheory}, the
-linearized surface-charge two-form $\bm k_\xi$ satisfies
+where $\bm E^{\alpha\beta}$ is the Euler--Lagrange four-form.  Where the
+background equations hold, the linearized surface-charge two-form
+$\bm k_\xi$ satisfies
 \begin{equation}
   d\bm k_\xi[h;\bar g]
   =\bm\omega(\bar g;h,\mathcal L_\xi\bar g)-\delta_h\bm C_\xi.
@@ -318,10 +335,11 @@ linearized surface-charge two-form $\bm k_\xi$ satisfies
 \begin{theorem}[First-order Killing-charge balance]
 \label{thm:gravity}
 Let a smooth timelike three-surface $\mathcal T$ in an observer-side region
-have boundary $S_{t_2}-S_{t_1}$.  Suppose the background is on shell and has an
-exact Killing field $\xi$, normalized to the fixed observer-side unit time
-translation; $\xi$ is held field independent; and $h_{\alpha\beta}$ is a smooth
-solution of the homogeneous linearized Einstein equation near $\mathcal T$.
+have boundary $S_{t_2}-S_{t_1}$.  Suppose that, in a neighborhood of
+$\mathcal T$, the background is on shell and admits an exact Killing field
+$\xi$, and $h_{\alpha\beta}$ is a smooth solution of the homogeneous
+linearized Einstein equation.  Take $\xi$ normalized to the fixed
+observer-side unit time translation, with $\delta_h\xi=0$.
 Fix the surface embeddings and any asymptotic frame, and define
 \begin{equation}
   \delta H_\xi[S;h]=\int_S\bm k_\xi[h;\bar g].
@@ -357,7 +375,7 @@ higher-mode and sourced-flux channels.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.98\textwidth]{fig_observer_charge_channels_v7.pdf}
+  \includegraphics[width=0.98\textwidth]{figures/fig_observer_charge_channels_v7.pdf}
   \caption{Balance-law channels.  With no first-order source flux through the
   observer-side measuring worldtube, the monopole charge is fixed (left).
   Higher multipoles and waves may still respond (center).  First-order matter
@@ -384,7 +402,9 @@ On a round background sphere, harmonics with $\ell\ge1$ integrate to
 zero, so $\delta H_\xi[S;h]$ sees only the $\ell=0$ part of the perturbation;
 and because the linearized Einstein operator commutes with the harmonic
 decomposition on a spherically symmetric background, that part satisfies the
-monopole equations by itself.
+monopole equations by itself.  The angular structure of the perturbation is
+therefore irrelevant to the monopole: nonsphericity populates $\ell\ge1$
+without altering the $\ell=0$ equations.
 
 With the background time normalization fixed, linearized Birkhoff
 classification gives

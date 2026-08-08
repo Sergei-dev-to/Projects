@@ -29,8 +29,8 @@ N_R = 700
 N_THETA = 421
 L_MAX = 80
 
-OUT_PNG = Path("fig_thinshell_fixed_monopole_flux_v7.png")
-OUT_PDF = Path("fig_thinshell_fixed_monopole_flux_v7.pdf")
+OUT_PNG = Path("figures/fig_thinshell_fixed_monopole_flux_v7.png")
+OUT_PDF = Path("figures/fig_thinshell_fixed_monopole_flux_v7.pdf")
 
 
 def integral_sin_pl(ell: int, mu: np.ndarray) -> np.ndarray:
@@ -145,6 +145,7 @@ def draw_panel(
 
 
 def main() -> None:
+    OUT_PNG.parent.mkdir(exist_ok=True)
     r = np.linspace(A, R_MAX, N_R)
     theta = np.linspace(1.0e-4, math.pi - 1.0e-4, N_THETA)
     psi_src, psi_opp = build_stream_functions(r, theta)

@@ -11,6 +11,8 @@ A small inset shows the spatial-Gauss alternative (S = boundary of a
 3-ball V) crossed out, to forestall the wrong intuition explicitly.
 """
 
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Ellipse, FancyArrowPatch, Polygon
@@ -223,8 +225,10 @@ def main():
             style="italic")
 
     fig.tight_layout(pad=0.1)
-    fig.savefig("fig_worldtube_stokes.pdf", bbox_inches="tight")
-    fig.savefig("fig_worldtube_stokes.png", dpi=220, bbox_inches="tight")
+    output_dir = Path("figures")
+    output_dir.mkdir(exist_ok=True)
+    fig.savefig(output_dir / "fig_worldtube_stokes.pdf", bbox_inches="tight")
+    fig.savefig(output_dir / "fig_worldtube_stokes.png", dpi=220, bbox_inches="tight")
 
 
 if __name__ == "__main__":

@@ -144,6 +144,7 @@ wormhole/wormhole_paper*.txt
 # Extracted/downloaded arXiv and source scratch folders with malformed filenames.
 # Keep manuscript source and reproducible scripts instead.
 wormhole/_*_src/
+wormhole/reference-material/
 
 # bh-evaporator local/generated/downloaded artifacts
 bh-evaporator/.codex_tmp/
