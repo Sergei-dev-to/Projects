@@ -58,9 +58,7 @@ Kruskal continuation lifts through a finite transverse aperture.  Otherwise
 the spacetime is \(C^2\)-inextendible.  The usual radial Alcubierre walls have no
 such cap, so each corresponding four-dimensional spacetime is already its own
 maximal Hausdorff \(C^2\) extension: the extra regions of the reduced diagram
-have no regular four-dimensional counterpart.  The same local singular
-mechanism occurs in a divergence-free Nat\'ario shift, showing that it is not
-peculiar to scalar shifts.
+have no regular four-dimensional counterpart.
 \end{abstract}
 
 \section{Introduction}
@@ -357,6 +355,12 @@ wall Hessian at either pole is
 and records the local tidal obstruction when \(\kappa>0\).
 \end{proof}
 
+If \(\kappa=0\), then \(\mathcal G=\Sigma\): the null stationary orbits on the
+wall are affinely complete, so the local finite-affine pp-curvature mechanism
+is absent.  The corollary instead follows from the global capture and
+transverse-rigidity argument, which would force an open planar disk in a
+sphere.  Thus the degenerate radial case is covered for a different reason.
+
 This includes the sech family used in Section~\ref{sec:diagram} and the usual
 smooth compact-transition profiles.  Each four-dimensional spacetime is
 already its own maximal Hausdorff \(C^2\) extension: the larger continuation of
@@ -365,12 +369,11 @@ identity of the sech profile enters the proof, and no claim is made below
 \(C^2\) regularity.
 
 
-\section{Alcubierre, Wall Geometry, and a Nat\'ario Shift}
+\section{Alcubierre Wall Geometry and Source}
 
-The preceding curvature analysis has three immediate applications: an exact
-divergence for radial Alcubierre profiles, a geometric and source interpretation
-of its coefficient, and a test of the local mechanism on a divergence-free
-vector shift.
+The preceding curvature analysis gives an exact divergence for radial
+Alcubierre profiles and a geometric and source interpretation of its
+coefficient.
 
 \paragraph{The Alcubierre endpoint.}
 For a nondegenerate radial wall in Corollary~\ref{cor:alcubierre-maximality},
@@ -443,24 +446,6 @@ Thus transverse wall curvature that produces the local obstruction also gives an
 unbounded negative null projection there.  This source statement is not used in the
 extension theorem: at a saddle generator \(H\ne0\) may hold while
 \(\operatorname{tr}H=0\).
-
-\paragraph{A divergence-free vector-shift comparison.}
-The local obstruction is not confined to scalar shifts.  For the standard
-axisymmetric divergence-free Nat\'ario field \cite{Natario2002}, let the front
-axial root be simple, with \(a(R_F)=1\) and \(\kappa=a'(R_F)>0\).  There
-\(\partial_t\) is a null pregeodesic, \(K=q\partial_t\) has
-\(q\propto e^{\kappa t}\), and direct evaluation of
-Eq.~\eqref{eq:killing-tidal-identity} gives
-\begin{equation}
-  R(K,Y,K,Y)=R(K,Z,K,Z)
-  =-\left(\frac{2\kappa}{R_F}+\frac{3\kappa^2}{4}\right)q^2.
-  \label{eq:natario-screen}
-\end{equation}
-The \(\kappa^2\) term is the transverse strain required by zero expansion, so a
-nontrivial divergence-free wall cannot realize the scalar-shift product exception.
-This establishes the same local \(C^2\) obstruction; the global theorem remains
-a scalar-shift result.  The front-jet calculation is included in the
-Supplemental Material.
 
 \section{Discussion}
 
@@ -924,7 +909,7 @@ The full trajectory need not converge to one generator; the subsequence is all
 that the curvature argument requires.
 \end{proof}
 
-\subsection{Transverse rigidity at a regular exit}
+\subsection{Transverse rigidity at an exit}
 
 We now prove the necessity direction of
 Theorem~\ref{thm:extension-alternative}.  Let \(p\in\mathcal G\) and \(t_n\) be as
@@ -958,30 +943,35 @@ where
   \nu_n=\frac12(e_0-\widehat n_n).
 \end{equation}
 
-This is where the extension topology enters.  In the final convex normal
-neighborhood of Eq.~\eqref{eq:extension-geodesic}, \(u_n\) converges.  The unit
-spheres in \(u_n^\perp\) form a uniformly compact family, so, after taking a
-subsequence, the entire observer frame in
-Eq.~\eqref{eq:observer-null-frame} has bounded components and converges in an
-extension chart.  The coordinate vectors \(e_A\) need not themselves be
-bounded there; this is why the observer's vectors \(s_{A,n}\) are used below.
+This is where the extension topology enters.  Work in the final convex normal
+neighborhood of Eq.~\eqref{eq:extension-geodesic}.  There \(u_n\) converges,
+and the unit spheres in \(u_n^\perp\) form a compact family.  After taking a
+subsequence, the observer frames in Eq.~\eqref{eq:observer-null-frame}
+therefore converge in an extension chart.  The coordinate vectors \(e_A\)
+need not be bounded there; this is why the observer vectors \(s_{A,n}\) are
+used below.
 
-For each sufficiently small \(\zeta=(\zeta^2,\zeta^3)\), launch from the
-\(n\)-th point the spacelike geodesic with initial vector
-\(\zeta^As_{A,n}\), and parallel transport the observer frame along it.  After
-stationary translation, the initial data converge in the smooth original
-metric to \(((0,p),\zeta^Ae_A)\).  The limiting geodesic is exactly
+Choose a closed disk \(B_\delta\subset\mathbb R^2_\zeta\) so small that the
+limiting extension data \((q_*,\zeta^As_{A,*})\), \(\zeta\in B_\delta\), lie
+in the time-one domain of the geodesic flow and their geodesics remain in the
+normal neighborhood.  This domain is open, while the disk of limiting data is
+compact.  Hence the same \(\delta\) works for all large \(n\), and continuous
+dependence of the geodesic and parallel-transport flows gives uniformly
+bounded transported observer frames.
+
+On the original side, stationary translation sends the initial data to a
+family converging uniformly on \(B_\delta\) to
+\(((0,p),\zeta^Ae_A)\).  The limiting geodesic is exactly
 \begin{equation}
   r\longmapsto (0,p_x,p_y+r\zeta^2,p_z+r\zeta^3),
   \label{eq:limiting-transverse-geodesic}
 \end{equation}
-because \(\Gamma^\mu{}_{AB}=0\).  Smooth dependence of the original geodesic
-flow gives a common parameter interval for all large \(n\).  On the extension
-side, convergence of the base points and observer frames gives the same common
-interval and uniformly bounded parallel frames.  Uniqueness identifies the
-two geodesics while they lie in \(M\).  Consequently, at every point of a fixed
-small transverse disk, all curvature components in the transported observer
-frames remain bounded as \(n\to\infty\).
+because \(\Gamma^\mu{}_{AB}=0\).  Shrinking \(\delta\) if necessary, smooth
+dependence in the original metric gives the same common parameter interval.
+For each \(n\), uniqueness identifies the original and extension geodesics
+while they lie in \(M\).  Consequently, at every point of the fixed transverse
+disk, all curvature components in the transported observer frames remain
+bounded as \(n\to\infty\).
 
 Parallel transport along the limiting transverse lines is elementary.  For
 \(\ell=e_0+e_1\), \(\nu=(e_0-e_1)/2\),

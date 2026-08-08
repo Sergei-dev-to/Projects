@@ -52,8 +52,6 @@ paper's `figures/` directory.
 - `flat_cap_partial_extension.py`: smooth Kruskal continuation of an exact
   planar cap, the positive-boost-weight curvature identities used in the
   transverse-rigidity proof, and the distinct cap-rim obstruction.
-- `natario_local_jet.py`: independent local-jet check of the affine screen
-  curvature for Nat\'ario's divergence-free vector shift.
 - `front_tip_taylor_metric_check.py`: local Taylor-metric cross-check near the
   axial endpoint.
 - `front_tip_numerical_frame_check.py`: finite-difference numerical check for
@@ -73,6 +71,5 @@ paper's `figures/` directory.
 
 The supplement reproduces the local algebraic checks and the conformal figure.
 The global extension alternative is proved analytically in the paper; no
-numerical claim is used in that proof.  The Nat\'ario script checks only the local
-comparison stated in the paper, not global vector-shift maximality.  The
-supplement does not model a dynamical warp bubble.
+numerical claim is used in that proof.  The supplement does not model a
+dynamical warp bubble.
