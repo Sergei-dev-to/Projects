@@ -7,12 +7,12 @@ PDF is `wormhole_paper_v7_working.pdf`.
 - `scripts/` — figure generators and symbolic/numerical utilities
 - `notes/` — research, review, planning, and handoff notes
 - `reference-material/` — downloaded papers and extracted source bundles
-- `artifacts/` — visual QA and legacy rendered figures
-- `archive/legacy-drafts/` — superseded manuscript versions
+
+Superseded drafts and visual-review artifacts remain recoverable from Git
+history through commit `2c29f3b`.
 
 Build from this directory with:
 
 ```powershell
 pdflatex -interaction=nonstopmode -halt-on-error wormhole_paper_v7_working.tex
 ```
-
