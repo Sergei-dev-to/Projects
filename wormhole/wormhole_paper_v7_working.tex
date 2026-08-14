@@ -33,20 +33,8 @@
 \date{\today}
 
 \begin{abstract}
-Dai and Stojkovic proposed that a body orbiting near one mouth of a traversable
-wormhole could make the mass seen near the other mouth rise and fall.  We show
-that their static solutions do not establish this signal.  At first order on
-the Schwarzschild background used by DS, nonspherical motion does not evade the
-monopole constraint: in a connected vacuum region, the mass monopole is
-constant.  In
-electromagnetism, Stokes' theorem fixes the charge measured on an observer-side
-surface unless current crosses that surface.  On the stationary background
-used in the proposal, the corresponding first-order gravitational quantity is
-the mass perturbation and obeys the same source balance.  It is local to the
-measuring surface and needs neither an asymptotic end nor a compact interior.
-The mass perturbation therefore cannot track the source's orbital radius unless
-first-order energy crosses the measuring surface.  Higher multipoles, waves,
-and dynamical throat effects remain possible.
+Could a body orbiting near one mouth of a traversable wormhole make the mass
+seen near the other mouth rise and fall?  Monopole rigidity precludes this possibility.  In the Maxwell case, source motion cannot induce a time-varying monopole across the throat, though higher time-varying multipoles can be present.  The same holds for gravity at linear order.  This argument is local and requires neither a compact interior nor a specific asymptotic structure.  Remaining cumulative monopole effects are limited to matter transit and, at second order, to gravitational radiation.
 \end{abstract}
 
 \maketitle
@@ -56,41 +44,41 @@ and dynamical throat effects remain possible.
 \label{sec:introduction}
 % ============================================================
 
-A field sourced near one mouth of a traversable wormhole can influence fields
-near the other.  The narrower question here is whether moving that source can
-change the mass an observer measures near the opposite mouth, when neither
-matter nor the fields supporting the wormhole carry first-order energy across
-the measuring surface.  We answer it for the mass monopole, to first order in
-the source mass $\mu$.
+A wormhole has two mouths.  If a star orbits close to one of them, does the
+mass an observer measures at the other rise and fall with the orbit?  We show
+that it does not.  So long as nothing crosses the sphere where the measurement
+is made, the mass measured there is constant, however the star moves.
 
-Dai and Stojkovic (DS) proposed such a modulation in a short-throat geometry
-made from two Schwarzschild exteriors.  A static matching calculation assigns
-the observer side a mass-like coefficient proportional to the inverse source
-radius.  DS then replace that radius by the radius of an eccentric orbit and
-interpret the resulting periodic $1/r^2$ acceleration as a wormhole signature
-near Sgr~A* \cite{DaiStojkovic2019Observing}.  Krasnikov objected that the
-spherical monopole region is Schwarzschild by Birkhoff's theorem
-\cite{Krasnikov2020CommentObserving}.  DS replied that an eccentric orbit is
-nonspherical and may be viewed as a sequence of monopoles
-\cite{DaiStojkovic2020ReplyObserving}.  The same acceleration law was later
-used in sensitivity estimates \cite{SimonettiEtAl2021SensitiveSearches}.
+Dai and Stojkovic (DS) proposed that it does
+\cite{DaiStojkovic2019Observing}.  They join two Schwarzschild exteriors at a
+sphere of radius $R$, place a body of mass $\mu$ at radius $A$ on one side, and
+solve the static matching problem.  The far side then carries a mass $\mu R/A$.
+Letting $A$ trace an eccentric orbit makes that mass rise and fall, which would
+appear as a periodic $1/r^2$ acceleration near Sgr~A*; sensitivity estimates
+for such a signal followed \cite{SimonettiEtAl2021SensitiveSearches}.  But the
+solutions at different $A$ are separate static
+solutions, not successive states of one evolution, and moving the star does not
+carry the system from one to the next.  See also
+\cite{Krasnikov2020CommentObserving,DaiStojkovic2020ReplyObserving}.
 
-At first order on the Schwarzschild background used by DS, the $\ell=0$ part of
-any perturbation is, in a connected vacuum region, a constant mass variation
-plus gauge, whatever the angular structure of the source motion: the monopole
-sector carries no dynamics of its own.  What remains is to identify that
-constant as an observable and to say what could change it, which is the
-content of the surface-charge balance law.
-The relevant distinction is between a family of static solutions and
-successive states of one on-shell dynamical history.
+In electromagnetism, field lines can thread a wormhole, so each mouth looks
+charged although there is no charge anywhere---Wheeler's ``charge without charge''
+\cite{MisnerWheeler1957ClassicalPhysics}.  The flux through a sphere around one
+mouth is then fixed, and changes only when charge crosses that sphere
+\cite{FrolovNovikov1990PhysicalEffects}.  In
+the DS model, which joins two separate asymptotic regions, the electric
+version gives a position-dependent charge only because both ends are held at
+the same potential, as for a grounded conductor rather than an isolated one.  Higher
+multipoles are not fixed this way, and they do change as the star moves.  In general
+relativity the same holds for first-order perturbations of a Schwarzschild
+background, whose monopole carries no dynamics of its own.
 
-We first state that distinction in Maxwell theory, where it follows
-immediately from Stokes' theorem: each mouth carries a flux of its own,
-changed only by current crossing its own surface.  We then use the Iyer--Wald
-linearized time-translation charge for
-gravity \cite{IyerWald1994NoetherCharge}.  The argument is local to the chosen
-measuring worldtube, and applies equally when that surface bounds no compact
-interior and when the wormhole has a single asymptotic end.
+The paper is organized as follows.  Section~\ref{sec:maxwell} works the
+electric case, where everything can be solved exactly.
+Section~\ref{sec:ds-model} applies the same test to the DS metric.
+Section~\ref{sec:gravity-charge} proves the gravitational balance law for
+perturbations of any shape, and Section~\ref{sec:gravity-application} shows
+that the DS coefficient is the charge that law holds fixed.
 
 We use geometrized units $G=c=1$, denote the background mass by $M$ and write
 $r_g=2M$, and work to first order in the small mass ratio
@@ -99,94 +87,106 @@ $r_g=2M$, and work to first order in the small mass ratio
 \end{equation}
 
 % ============================================================
-\section{The DS static family and its dynamical use}
-\label{sec:ds-model}
-% ============================================================
-
-DS join two copies of the Schwarzschild exterior,
-\begin{equation}
-  d\bar s^2=-f(r)dt^2+f(r)^{-1}dr^2+r^2d\Omega^2,
-  \qquad f(r)=1-\frac{r_g}{r},
-  \label{eq:background}
-\end{equation}
-at spheres $r=R>r_g$.  A small source of mass $\mu$ is placed at radius
-$r_1=A>R$ in the ``other'' exterior, and $r_2$ denotes the observer-side
-radius.  Later arXiv revisions \cite{DaiStojkovic2019ObservingV2,
-DaiStojkovic2019ObservingV3} give the observer-side monopole
-\begin{equation}
-  h^{\mathrm{our}}_{tt}=\frac{2b}{r_2},
-  \qquad
-  h^{\mathrm{our}}_{rr}=\frac{2b r_2}{(r_2-r_g)^2},
-  \qquad
-  b=\frac{\mu R}{A}.
-  \label{eq:ds-observer-mode}
-\end{equation}
-This is the strongest form of the proposal: the observer field is a vacuum mass
-perturbation, while the predicted acceleration is unchanged.  We use it
-throughout.  DS identify $b$ as an effective mass at the observer mouth.%
-\footnote{The journal field instead uses
-$b_{tt}=\mu R/A$ and
-$b_{rr}=\mu A(R-r_g)^2/[R(A-r_g)^2]$
-\cite{DaiStojkovic2019Observing}.  For $A>R$,
-$\delta G^{r}{}_{r}=2(b_{tt}-b_{rr})/[f(r_2)r_2^3]\ne0$, so this field is off
-shell; later revisions set $b_{rr}=b_{tt}$.  Their displayed source-side
-annulus $R<r<A$, with $h_{tt}=2\mu/A$ and $h_{rr}=0$, is also off shell,
-$\delta G^{r}{}_{r}=2\mu r_g/[Af(r)r^3]\ne0$.  Krasnikov likewise notes that
-the source DS cite says the perturbation vanishes inside the orbit
-\cite{Krasnikov2020CommentObserving}.  We therefore grant the strongest
-on-shell completion, with $b$ the $\ell=0$ mass coefficient.}
-
-Far from the mouth, the associated acceleration is
-\begin{equation}
-  a_{\mathrm{DS}}\simeq-\frac{b}{r_2^2}
-  =-\frac{\mu R}{A r_2^2}.
-  \label{eq:ds-acceleration}
-\end{equation}
-For an eccentric orbit with periapsis $r_p$ and apoapsis $r_a$, the proposed
-acceleration amplitude is therefore
-\begin{equation}
-  |\Delta a_{\mathrm{DS}}|
-  =\mu R\left(\frac{1}{r_p}-\frac{1}{r_a}\right)\frac{1}{r_2^2}.
-  \label{eq:ds-delta-a}
-\end{equation}
-This step replaces $A$ in a static boundary-value solution by $A(t)$.  It is
-valid only if the different static solutions belong to one dynamically
-reachable charge sector.
-
-Substituting $b\to b(t)$ directly into Eq.~\eqref{eq:ds-observer-mode} settles
-the spherical case at once.  The time--radial component of the linearized
-Einstein tensor is then
-\begin{equation}
-  \delta G^{r}{}_{t}=\frac{2\dot b}{r_2^{2}},
-  \label{eq:momentum-constraint}
-\end{equation}
-which must vanish in vacuum, forcing $\dot b=0$.  This is a pointwise
-consequence of the field equations at the observer's location, not a statement
-about a distant boundary.  When a source is present,
-$\delta G^{r}{}_{t}=8\pi\,\delta T^{r}{}_{t}$ integrates over the sphere to
-$\dot b=\oint\delta T^{r}{}_{t}\,dA$: the coefficient changes at exactly the
-rate energy crosses the measuring sphere.
-Sections~\ref{sec:maxwell}--\ref{sec:gravity-application} extend this to a
-perturbation of any angular dependence and to a manifestly gauge-invariant
-statement, so that the varying quantity is an observable rather than a
-coordinate coefficient.%
-\footnote{The calculation assumes a timelike cut $R>r_g$ and a uniform
-linearization.  Since the mode in Eq.~\eqref{eq:ds-observer-mode} is a mass
-perturbation, smallness at the cut requires
-$2\mu R/[A(R-r_g)]\ll1$.  Thus the choice $R=r_g$, discussed by DS, lies
-outside this perturbative regime.}
-
-% ============================================================
-\section{Maxwell prototype: a worldtube balance}
+\section{Static families and time evolution}
 \label{sec:maxwell}
 % ============================================================
 
-Let $F$ be the Maxwell field and $j$ the electric current.  For a closed
-two-surface $S$, define
+We take the electrostatic solution DS write down, let the charge move without
+traversing the wormhole, and ask which parts of the field can change with it.
+We show that the monopole part stays constant, first by a concrete
+calculation in the DS setup and then for any measuring surface, with no
+assumption about what it encloses.
+
+\subsection{The DS solution}
+
+DS glue two copies of flat space outside a sphere of radius $R$, with the
+charge $q$ on the axis at radius $r_1=A$ in one copy and the observer at
+$(r_2,\theta_2)$ in the other \cite{DaiStojkovic2019Observing}.  Let $F$ be
+the Maxwell field, $j$ the electric current, and for a closed two-surface $S$
 \begin{equation}
   Q[S]=\frac{1}{4\pi}\int_S\star F.
   \label{eq:maxwell-charge}
 \end{equation}
+The potential in each copy solves Laplace's equation away from the charge,
+and each is defined only up to a constant, $c_1$ and $c_2$.  Matching the potential and its normal
+derivative at $r_1=r_2=R$ gives
+\begin{equation}
+  V_2=c_2+\sum_{\ell\ge0}\frac{B_\ell}{r_2^{\ell+1}}P_\ell(\cos\theta_2),
+  \quad
+  B_{\ell\ge1}=q\,\frac{2\ell+1}{2(\ell+1)}\,\frac{R^{2\ell+1}}{A^{\ell+1}},
+  \quad
+  B_0=\frac{qR}{2A}+\frac{R}{2}(c_1-c_2).
+  \label{eq:ds-multipoles}
+\end{equation}
+The coefficients with $\ell\ge1$ are those of
+Ref.~\cite{DaiStojkovic2019Observing}.  Their expansions drop both constants.
+One of the two can be absorbed into the zero of potential; the other cannot,
+and it enters $B_0$.
+In this static problem every multipole with $\ell\ge1$ is fixed by the position
+of the charge.  The monopole is not.  A constant is itself an $\ell=0$ field, so
+it shifts $B_0$ and nothing else, and one free parameter survives there.
+
+The same choice appears with an ordinary conductor: one may fix its charge or
+fix its potential, not both \cite[Ch.~2]{JacksonClassicalElectrodynamics}.  A
+grounded sphere takes on an induced charge proportional to $1/A$; an isolated
+one keeps its charge and lets its potential float.  The two mouths here behave
+as the plates of a capacitor.  Setting $q=0$ in Eq.~\eqref{eq:ds-multipoles}
+leaves $B_0=-\tfrac12R(c_2-c_1)$, so the capacitance is $R/2$, and $c_2-c_1$ is
+the work needed to carry a unit charge from one end to the other.
+
+Dropping both constants puts the two ends at the same potential, and
+Eq.~\eqref{eq:ds-multipoles} then gives%
+\footnote{DS use an unnormalized flux and a charge parameter differing by the
+same factor of $4\pi$; the ratio $Q_2/q$ is unchanged.}
+\begin{equation}
+  Q_2(A)=B_0=\frac{qR}{2A}.
+  \label{eq:ds-electric}
+\end{equation}
+Imposing that condition afresh at every $A$ makes the charge change with the
+orbit.
+
+Maxwell's equations preserve the charge, not the potential difference.  Now
+let the charge move, so that $A$ depends on time.  With $S$ at rest,
+\begin{equation}
+  \frac{dQ_2}{dt}=\frac{1}{4\pi}\oint_S\partial_t\mathbf E\cdot d\mathbf S
+  =\frac{1}{4\pi}\oint_S(\nabla\times\mathbf B)\cdot d\mathbf S
+   -\oint_S\mathbf J\cdot d\mathbf S
+  =-\oint_S\mathbf J\cdot d\mathbf S,
+  \label{eq:maxwell-concrete}
+\end{equation}
+the curl term vanishing because $S$ is closed.  The charge remains in the
+other space, so $Q_2$ is constant, and by Eq.~\eqref{eq:ds-electric} so is
+$B_0$.  The other coefficients can vary, and
+Fig.~\ref{fig:fixed-sector-field} shows the field they produce.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.88\textwidth]{figures/fig_thinshell_fixed_monopole_flux_v7.pdf}
+  \caption{The zero-flux member of Eq.~\eqref{eq:ds-multipoles}: $B_0=0$,
+  which requires $c_2-c_1=q/A$.  The two panels are the two exterior charts,
+  and the black circles are the same throat sphere, identified.  The charge
+  still produces a field in the opposite chart, from the $B_{\ell\ge1}$ terms
+  alone; these are unchanged from DS.  Lines that cross the throat return
+  through it at other angles, so the net flux is zero.  Matching colors
+  mark the same flux tube in the two charts; the pale source-side lines
+  escape to infinity without reaching the throat.}
+  \label{fig:fixed-sector-field}
+\end{figure}
+
+The constants $c_1$ and $c_2$ are the potentials of two asymptotic regions,
+and they fix which member of the static family DS write down.
+Equation~\eqref{eq:maxwell-concrete} uses only that $S$ is closed and free
+of crossing current.  A wormhole at Sgr~A* would have both mouths in one
+region, where there is no pair of end potentials to compare and a
+single-valued potential becomes an assumption of its own: the loop through
+the throat and back bounds no surface, so $\oint\mathbf E\cdot d\mathbf l$ need
+not vanish.  Assuming that it does is an extra condition, like $c_1=c_2$
+with two ends.  Equation~\eqref{eq:maxwell-concrete} needs neither, so the
+monopole stays constant in either geometry.
+
+\subsection{The balance law}
+
+The same balance holds for any measuring surface.
 Let $S_t$ be a smooth family of measuring surfaces and let
 $\mathcal T=\bigcup_{t\in[t_1,t_2]}S_t$ be the timelike three-surface they
 sweep out.
@@ -194,10 +194,8 @@ sweep out.
 Frolov and Novikov proved the corresponding balance for a static wormhole,
 concluding that the flux through the handle cannot change until charged
 particles pass through it, and that motion of charges in the external space
-leaves it unaltered \cite{FrolovNovikov1990PhysicalEffects}.  The surface that
-matters for the DS claim is a different one---an observer-side sphere
-enclosing a single mouth---so we restate the identity for an arbitrary
-measuring family.
+leaves it unaltered \cite{FrolovNovikov1990PhysicalEffects}.  We restate the
+identity for an arbitrary measuring family.
 
 \begin{theorem}[Measuring-surface balance, after Frolov and Novikov]
 \label{thm:maxwell}
@@ -215,9 +213,8 @@ Integrate $d\star F=4\pi\star j$ over $\mathcal T$ and apply Stokes' theorem.
 Each $S_t$ is arbitrary, and may bound no compact region.
 \end{proof}
 
-Figure~\ref{fig:worldtube} makes explicit which surface is being followed:
-$\mathcal T$ is the history of the observer's measuring surface, not a cut
-through the throat.
+Figure~\ref{fig:worldtube} shows which surface is meant: $\mathcal T$ is the
+history of the observer's measuring sphere, not a cut through the throat.
 
 \begin{figure}[!ht]
   \centering
@@ -231,106 +228,123 @@ through the throat.
   \label{fig:worldtube}
 \end{figure}
 
-In a source-free region, $d\star F=0$ and the flux is a period of the closed
-form $\star F$.  Wormhole topology permits a nonzero source-free period---the
-classical ``charge without charge'' sector
-\cite{MisnerWheeler1957ClassicalPhysics}.  Its value is initial or boundary
-data preserved by source-free evolution.
+In a source-free region $d\star F=0$, so the flux is set by the initial data
+and does not change on its own.  Searches for wormhole candidates already
+treat a mouth's flux as fixed data
+\cite{PiotrovichEtAl2024WormholeCandidates}.%
+\footnote{Being fixed is not the same as being protected.  The flux is subject
+to
+Schwinger-type processes of the kind Gibbons described for charged black holes
+\cite{Gibbons1975VacuumPolarization}, and classically to ionization of any
+polarizable matter supporting the throat.  Both move charge across the
+measuring surface, and are therefore instances of the balance law above rather
+than exceptions to it.}
 
-The magnetic period is fixed more rigidly still.  Since $dF=0$ identically,
-$\int_SF$ is unchanged by any evolution, including transit of charged matter
-through the throat \cite{FrolovNovikov1990PhysicalEffects}.  A wormhole
-threaded by magnetic flux accordingly presents a static monopole field at each
-mouth, and searches in that sector treat the flux as fixed data
-\cite{PiotrovichEtAl2024WormholeCandidates}.
+Which surface one measures on matters.  A charge that crosses the throat
+changes the flux through a cut at the throat, but not through an observer
+sphere further out, so long as it stays between the two.  Once it crosses the
+observer sphere as well, Eq.~\eqref{eq:maxwell-balance} changes the measured
+flux by the ordinary current term.
 
-Fixed monopole flux still permits a nonzero cross-mouth field.
-Figure~\ref{fig:fixed-sector-field} illustrates this distinction in a flat
-spherical thin-shell wormhole formed by identifying two copies of the exterior
-of a ball in flat space at their boundary sphere
-\cite{Visser1995LorentzianWormholes}.  A Legendre expansion with
-the $\ell=0$ harmonic coefficient fixed still contains an angular response on
-the opposite side.
-
-The measuring surface must be specified.  A charge crossing a throat cut can
-change the flux through that cut without changing the flux through a fixed
-observer sphere if the charge remains between the throat and the sphere.  If
-the charge later crosses the observer sphere, Eq.~\eqref{eq:maxwell-balance}
-changes the measured flux by the ordinary current term.
-
-In the DS electrostatic family a point charge $q$ sits at radius $A$ in the
-other space, and the monopole flux through an observer-side sphere is, in the
-normalization of Eq.~\eqref{eq:maxwell-charge},%
-\footnote{DS use an unnormalized flux and a charge parameter differing by the
-same factor of $4\pi$; the ratio $Q_2/q$ in Eq.~\eqref{eq:ds-electric} is
-unchanged.}
-\begin{equation}
-  Q_2^{\mathrm{DS}}(A)=\frac{qR}{2A}.
-  \label{eq:ds-electric}
-\end{equation}
-During motion confined near the other mouth, no current crosses the fixed
-observer-side worldtube.  The theorem therefore holds $Q_2$ constant, whereas
-Eq.~\eqref{eq:ds-electric} varies it with $A$.  The fixed-$A$ fields may be
-valid static boundary-value solutions, but different values of $A$ select
-different conserved-flux data.  They are not successive states of a single
-Maxwell evolution.  This is the local worldtube form of the fixed
-wormhole-charge prescription used in
-Ref.~\cite{Krasnikov2008ElectrostaticInteraction}.
+The fixed-$A$ fields of Eq.~\eqref{eq:ds-multipoles} are valid static
+boundary-value solutions; they are not successive states of a single Maxwell
+evolution.  This is the local worldtube form of the fixed wormhole-charge
+prescription used in Ref.~\cite{Krasnikov2008ElectrostaticInteraction}.
 
 Theorem~\ref{thm:maxwell} applies to a sphere around either mouth, so each
 carries a flux of its own, changed only by current crossing that sphere.
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=0.88\textwidth]{figures/fig_thinshell_fixed_monopole_flux_v7.pdf}
-  \caption{Illustrative fixed-sector Maxwell field.  The two panels are the
-  two exterior charts, and the black circles represent the same identified
-  throat sphere.  A charge in the source chart produces a nonzero field in the
-  opposite chart, but in the chosen zero-flux sector throat-crossing field
-  lines return through another angular band.  The integrated flux and the
-  opposite-side Coulomb monopole are fixed by the chosen sector; the balance
-  theorem shows that they remain fixed under source motion with no crossing
-  current.  Local and higher-multipole response need not vanish.  The example
-  is not used in the proof.}
-  \label{fig:fixed-sector-field}
-\end{figure}
 \FloatBarrier
+
+% ============================================================
+\section{The DS mass perturbation}
+\label{sec:ds-model}
+% ============================================================
+
+We repeat the check for their gravitational construction, now against the
+linearized field equations, asking whether its monopole part can evolve in
+time.
+
+DS join two copies of the Schwarzschild exterior,
+\begin{equation}
+  d\bar s^2=-f(r)dt^2+f(r)^{-1}dr^2+r^2d\Omega^2,
+  \qquad f(r)=1-\frac{r_g}{r},
+  \label{eq:background}
+\end{equation}
+at spheres $r=R>r_g$.  A small source of mass $\mu$ moves at radius
+$r_1=A(t)>R$ in the ``other'' exterior, and $r_2$ denotes the observer-side
+radius.  Matching at fixed $A$ gives the one-parameter family
+\cite{DaiStojkovic2019ObservingV2,
+DaiStojkovic2019ObservingV3}
+\begin{equation}
+  h^{\mathrm{our}}_{tt}=\frac{2b}{r_2},
+  \qquad
+  h^{\mathrm{our}}_{rr}=\frac{2b r_2}{(r_2-r_g)^2},
+  \qquad
+  b(A)=\frac{\mu R}{A},
+  \label{eq:ds-observer-mode}
+\end{equation}
+a vacuum mass perturbation that leaves the predicted acceleration unchanged,
+$\simeq-b/r_2^2$ far from the mouth.  DS identify $b$ as an effective mass at
+the observer mouth.%
+\footnote{The journal field instead uses
+$b_{tt}=\mu R/A$ and
+$b_{rr}=\mu A(R-r_g)^2/[R(A-r_g)^2]$
+\cite{DaiStojkovic2019Observing}.  For $A>R$,
+$\delta G^{r}{}_{r}=2(b_{tt}-b_{rr})/[f(r_2)r_2^3]\ne0$, so this field is off
+shell; later revisions set $b_{rr}=b_{tt}$.  Their displayed source-side
+annulus $R<r<A$, with $h_{tt}=2\mu/A$ and $h_{rr}=0$, is also off shell,
+$\delta G^{r}{}_{r}=2\mu r_g/[Af(r)r^3]\ne0$.  We therefore grant the proposal
+its strongest observer-side form and take $b$ to multiply the on-shell
+$\ell=0$ mass mode.}
+
+DS and Simonetti et al. implement an eccentric orbit by evaluating this family
+along $A\to A(t)$, treating it as a sequence of monopoles
+\cite{DaiStojkovic2019Observing,SimonettiEtAl2021SensitiveSearches}.  For the
+resulting purely $\ell=0$ field, the time--radial component of the linearized
+Einstein tensor is
+\begin{equation}
+  \delta G^{r}{}_{t}=\frac{2\dot b}{r_2^{2}},
+  \label{eq:momentum-constraint}
+\end{equation}
+which must vanish in vacuum, forcing $\dot b=0$.  This is a constraint,
+binding at each instant and at the observer's location rather than at a distant
+boundary.
+When a source is present, $\delta G^{r}{}_{t}=8\pi\,\delta T^{r}{}_{t}$ gives
+$\dot b=\oint\delta T^{r}{}_{t}\,dS$: the change is supplied by energy flux
+through the measuring sphere.%
+\footnote{The calculation assumes a timelike cut $R>r_g$ and a uniform
+linearization.  Since the mode in Eq.~\eqref{eq:ds-observer-mode} is a mass
+perturbation, smallness at the cut requires
+$2\mu R/[A(R-r_g)]\ll1$.  Thus the choice $R=r_g$, discussed by DS, lies
+outside this perturbative regime.}
 
 % ============================================================
 \section{First-order gravitational balance}
 \label{sec:gravity-charge}
 % ============================================================
 
-Let $h_{\alpha\beta}$ denote the metric perturbation.  For any functional $X$
-of the metric, its variation along $h$ is
-\[
-  \delta_hX=\frac{d}{d\lambda}\bigg|_{\lambda=0}X[\bar g+\lambda h].
-\]
-Let $\xi$ be a vector field with
-$\delta_h\xi=0$, so that $\xi$ does not vary with the metric.  We use the
-covariant phase space construction of
-Refs.~\cite{IyerWald1994NoetherCharge,BarnichBrandt2002CovariantTheory}: for
-the Einstein--Hilbert Lagrangian four-form
-$\bm L_{\mathrm{EH}}=(16\pi)^{-1}R[g]\,\bm\varepsilon$, let
-$\bm\theta(\bar g,h)$ be the symplectic-potential three-form, $\bm\omega$ the
-symplectic current, and $\bm Q_\xi$ the Noether-charge two-form in the
-decomposition $\bm J_\xi=\bm C_\xi+d\bm Q_\xi$ of the Noether current.  Here
-$\bm C_\xi$ vanishes when the field equations hold.  Write
-\begin{align}
-  \delta_h\bm L_{\mathrm{EH}}
-  &=\bm E^{\alpha\beta}h_{\alpha\beta}+d\bm\theta(\bar g,h),\\
-  \bm k_\xi[h;\bar g]
-  &=\delta_h\bm Q_\xi-\xi\mathbin{\cdot}\bm\theta(\bar g,h),
-  \label{eq:k-definition}
-\end{align}
-where $\bm E^{\alpha\beta}$ is the Euler--Lagrange four-form.  Where the
-background equations hold, the linearized surface-charge two-form
-$\bm k_\xi$ satisfies
+The gravitational version replaces the Maxwell flux with a linearized Killing
+charge and assumes no symmetry of the perturbation.
+
+Let $h_{\alpha\beta}$ denote the metric perturbation, $\delta_h$ the variation
+along it, and $\xi$ a vector field with $\delta_h\xi=0$.  For the
+Einstein--Hilbert Lagrangian, the covariant phase space construction of
+Refs.~\cite{IyerWald1994NoetherCharge,BarnichBrandt2002CovariantTheory}
+supplies a linearized surface-charge two-form
+$\bm k_\xi[h;\bar g]=\delta_h\bm Q_\xi-\xi\mathbin{\cdot}\bm\theta$, built from
+the Noether-charge two-form $\bm Q_\xi$ and the symplectic potential
+$\bm\theta$.  Where the background equations hold it satisfies
 \begin{equation}
   d\bm k_\xi[h;\bar g]
-  =\bm\omega(\bar g;h,\mathcal L_\xi\bar g)-\delta_h\bm C_\xi.
+  =\bm\omega(\bar g;h,\mathcal L_\xi\bar g)-\delta_h\bm C_\xi,
   \label{eq:iw-identity}
 \end{equation}
+with $\bm\omega$ the symplectic current and the constraint term $\bm C_\xi$
+vanishing on shell.  For a background Killing field a charge of this kind can
+also be built directly from the linearized field equations
+\cite{AbbottDeser1982Stability}; we use the covariant form because it supplies
+the sourced version below.  We apply it to a measuring worldtube.
 
 \begin{theorem}[First-order Killing-charge balance]
 \label{thm:gravity}
@@ -338,9 +352,7 @@ Let a smooth timelike three-surface $\mathcal T$ in an observer-side region
 have boundary $S_{t_2}-S_{t_1}$.  Suppose that, in a neighborhood of
 $\mathcal T$, the background is on shell and admits an exact Killing field
 $\xi$, and $h_{\alpha\beta}$ is a smooth solution of the homogeneous
-linearized Einstein equation.  Take $\xi$ normalized to the fixed
-observer-side unit time translation, with $\delta_h\xi=0$.
-Fix the surface embeddings and any asymptotic frame, and define
+linearized Einstein equation.  Define
 \begin{equation}
   \delta H_\xi[S;h]=\int_S\bm k_\xi[h;\bar g].
   \label{eq:linear-charge}
@@ -370,23 +382,11 @@ Thus matter or wormhole-support stress energy can change the charge by carrying
 first-order Killing energy through $\mathcal T$.  Such a channel is allowed,
 but its magnitude and phase require a dynamical solution.
 
-Figure~\ref{fig:channels} separates the fixed monopole sector from the
-higher-mode and sourced-flux channels.
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=0.98\textwidth]{figures/fig_observer_charge_channels_v7.pdf}
-  \caption{Balance-law channels.  With no first-order source flux through the
-  observer-side measuring worldtube, the monopole charge is fixed (left).
-  Higher multipoles and waves may still respond (center).  First-order matter
-  or support-field flux can change the charge through
-  Eq.~\eqref{eq:sourced-balance} (right).}
-  \label{fig:channels}
-\end{figure}
-
-We use the standard Einstein--Hilbert representative of $\bm\theta$; with the
-normalization of $\xi$ specified above, the charge agrees with the ADM mass
-variation at an asymptotically flat end.
+We use the standard Einstein--Hilbert representative of $\bm\theta$.  When an
+asymptotically flat end is available, choosing $\xi$ to approach its unit time
+translation makes the charge agree with the ADM mass variation.  It is a
+first-order variation; no integrability beyond the linearized theory is
+assumed.
 Gauge invariance here refers to proper diffeomorphisms that preserve the
 measuring surface and any asymptotic frame; a covariantly transformed surface
 embedding is equivalent.  Large boundary time rescalings are not gauge
@@ -397,6 +397,9 @@ for a single-ended handle.
 \section{Application to the DS monopole}
 \label{sec:gravity-application}
 % ============================================================
+
+It remains to identify the DS coefficient $b$ with the charge of
+Theorem~\ref{thm:gravity}.
 
 On a round background sphere, harmonics with $\ell\ge1$ integrate to
 zero, so $\delta H_\xi[S;h]$ sees only the $\ell=0$ part of the perturbation;
@@ -420,20 +423,20 @@ make $\delta M$ constant in a connected first-order solution.  Since
 $\partial_M\bar g$ is itself a vacuum perturbation, $d\bm k_\xi=0$ makes
 $\int_S\bm k_\xi[\partial_M\bar g;\bar g]$ independent of the round sphere $S$
 within the vacuum region.  With the standard Einstein--Hilbert representative
-and the normalization of $\xi$ fixed above, a direct finite-sphere evaluation
-gives this integral as unity.  Hence $\delta H_\xi[S;h]=\delta M$.  No sphere at
-infinity is required for this equality; wherever an asymptotically flat end
-exists, it agrees with the ADM mass variation.
-
-For $r_g=2M$,
+and $\xi=\partial_t$, direct evaluation on any round sphere gives
 \begin{equation}
-  \partial_M\bar g_{tt}=\frac{2}{r},
+  \left.\bm k_{\partial_t}
+  [\delta M\,\partial_M\bar g;\bar g]\right|_{S_r}
+  =\frac{\delta M}{4\pi}\sin\theta\,d\theta\wedge d\phi,
   \qquad
-  \partial_M\bar g_{rr}=\frac{2r}{(r-r_g)^2}.
-  \label{eq:mass-derivatives}
+  \int_{S_r}\bm k_{\partial_t}=\delta M.
+  \label{eq:finite-sphere-mass}
 \end{equation}
-Comparison with Eq.~\eqref{eq:ds-observer-mode} therefore identifies the
-revised DS observer field as
+No sphere at infinity is required; wherever an asymptotically flat end exists,
+this agrees with the ADM mass variation.
+
+For $r_g=2M$, $\partial_M\bar g_{tt}=2/r$ and
+$\partial_M\bar g_{rr}=2r/(r-r_g)^2$, so Eq.~\eqref{eq:ds-observer-mode} is
 \begin{equation}
   h^{\mathrm{our}}_{\alpha\beta}=b\,\partial_M\bar g_{\alpha\beta},
   \qquad
@@ -455,18 +458,12 @@ translation.  Equation~\eqref{eq:ds-is-charge} identifies its surface
 functional with $b$.
 \end{proof}
 
-The prescription
-\begin{equation}
-  b(t)=\frac{\mu R}{A(t)}
-  \label{eq:revised-time-dependent}
-\end{equation}
-instead moves through different mass-charge sectors as the source radius
-changes.  Separate stationary solutions at different $A$ can exist without
-being successive states of one source-free history.  The corresponding
-bookkeeping is already standard: a mouth changes its mass when a body actually
-transits it \cite{FrolovNovikov1990PhysicalEffects}.  Equation
-\eqref{eq:revised-time-dependent} instead transfers mass between the two
-mouths while nothing transits either one.%
+The prescription $b(t)=\mu R/A(t)$ of Eq.~\eqref{eq:ds-observer-mode} instead
+moves through different mass-charge sectors as the source radius changes.
+Separate stationary solutions at different $A$ need not be successive states
+of one source-free history.  A mouth changes its mass when a body actually
+transits it \cite{FrolovNovikov1990PhysicalEffects}; here the proposed variation
+would require equal and opposite mouth-mass changes with no transit.%
 \footnote{The revised static coefficients give
 $\delta M_{\rm source}=\mu-\mu R/A$ and
 $\delta M_{\rm observer}=\mu R/A$, whose sum is $\mu$ when each end uses its
@@ -494,7 +491,7 @@ construction, which treats the monopole alone
 \cite{DaiStojkovic2019Observing}.  Vacuum
 gravitational-wave energy flux is quadratic in first-order wave amplitude, so
 over a fixed orbital time it is $O(\epsilon^2)$ rather than the reversible
-$O(\epsilon)$ monopole modulation proposed in Eq.~\eqref{eq:ds-delta-a}
+$O(\epsilon)$ monopole modulation DS propose
 \cite{BondiVanderBurgMetzner1962Gravitational,Sachs1962Asymptotic}.  A
 first-order matter or support-field flux is a distinct possibility already
 covered by Eq.~\eqref{eq:sourced-balance}.  Nonlinear throat response and
@@ -505,20 +502,21 @@ scalar monopoles lie outside the present claim.
 \label{sec:conclusion}
 % ============================================================
 
-The DS calculation supplies a family of static fields labeled by the source
-position.  For the spherical ansatz, a single component of the linearized
-field equations already forbids the promotion $A\to A(t)$,
-Eq.~\eqref{eq:momentum-constraint}.  Maxwell's equation settles the
-electrostatic version exactly: each mouth carries a flux of its own, and
-redistribution between them requires current across one of the surfaces.  The surface-charge identity gives the
-general gravitational statement, valid for nonspherical perturbations and in
-gauge-invariant form: the corrected DS observer coefficient is a first-order
+In Maxwell theory, each mouth carries a flux of its own, and redistribution
+requires current across the corresponding measuring surface.  The position
+dependence of the electrostatic solution traces to holding both ends at the
+same potential; holding the charge instead removes it.  On the
+stationary Schwarzschild background, the first-order surface-charge identity
+gives the gravitational counterpart without assuming a spherical
+perturbation.  For the DS $\ell=0$ ansatz, one component of the linearized field
+equations already forbids $A\to A(t)$,
+Eq.~\eqref{eq:momentum-constraint}; the corrected observer coefficient is the
 Schwarzschild mass charge, and the worldtube balance holds it fixed in a
 source-free evolution.
 
-Fields still propagate through the wormhole, and the observer-side response is
-nonzero.  Higher multipoles, waves, and explicit matter or support-field
-dynamics remain available.  What does not
+The static constructions still contain nonzero cross-mouth fields.  Dynamical
+higher multipoles, waves, and explicit matter or support-field responses are
+not excluded.  What does not
 follow is the proposed position-dependent $O(\mu)$ mass monopole obtained by
 the replacement $A\to A(t)$.  Establishing such a signal requires either the
 first-order flux that changes the charge or a different gauge-invariant
@@ -536,7 +534,6 @@ revision, consistency checks, reference searches, and figure preparation.  All
 arguments, calculations, citations, figures, and conclusions were reviewed and
 revised by the author, who is solely responsible for the manuscript.
 
-\clearpage
 \bibliographystyle{apsrev4-2}
 \bibliography{references}
 
