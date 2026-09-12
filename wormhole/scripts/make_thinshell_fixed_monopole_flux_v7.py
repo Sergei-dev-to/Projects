@@ -20,6 +20,15 @@ import matplotlib.tri as mtri
 import numpy as np
 from scipy.special import eval_legendre
 
+# The paper is revtex4-2 with lmodern.  Draw at final size (textwidth is
+# 510pt = 7.06in, included at 0.88) so label point sizes are 1:1 on the page.
+plt.rcParams.update(
+    {
+        "font.family": "serif",
+        "mathtext.fontset": "cm",
+    }
+)
+
 
 A = 1.0
 Q = 1.0
@@ -110,14 +119,15 @@ def draw_panel(
     extra_levels: np.ndarray | None,
     title: str,
     has_charge: bool,
+    colors=None,
 ) -> None:
     tri, psi_full = triangulate_panel(r, theta, psi, has_charge)
     ax.tricontour(
         tri,
         psi_full,
         levels=levels,
-        colors="#1f5f8b",
-        linewidths=1.2,
+        colors=colors if colors is not None else "#1f5f8b",
+        linewidths=1.1,
         linestyles="solid",
     )
     if extra_levels is not None and extra_levels.size:
@@ -130,12 +140,13 @@ def draw_panel(
             alpha=0.55,
             linestyles="solid",
         )
-    ax.add_patch(plt.Circle((0, 0), A, fill=False, lw=2.5, color="#111827", zorder=6))
-    ax.text(0, -1.17, "throat", ha="center", va="top", fontsize=10)
+    ax.add_patch(plt.Circle((0, 0), A, fill=False, lw=1.8, color="#111827", zorder=6))
+    ax.text(0, 0, "throat", ha="center", va="center", fontsize=9,
+            color="#374151", zorder=7)
     if has_charge:
         ax.scatter([0], [R0], s=72, color="#b42318", zorder=7)
-        ax.text(0.12, R0 + 0.08, "$q$", fontsize=14, color="#8b1a10")
-    ax.text(0, -4.9, title, ha="center", va="center", fontsize=11, color="#374151")
+        ax.text(0.22, R0 + 0.16, "$q$", fontsize=12, color="#8b1a10")
+    ax.set_title(title, fontsize=9, color="#374151", pad=4)
     ax.set_aspect("equal")
     ax.set_xlim(-4.5, 4.5)
     ax.set_ylim(-5.2, 5.2)
@@ -155,7 +166,7 @@ def main() -> None:
     pmin = max(1.0e-4, float(np.percentile(psi_opp, 1.0)))
     pmax = float(np.percentile(psi_opp, 99.2))
 
-    fig, axes = plt.subplots(1, 2, figsize=(9.6, 5.5), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(6.21, 3.95), constrained_layout=True)
     # Choose every displayed source-side line by its launch angle at the
     # charge.  For a point charge, Psi_q=q(1-cos alpha), where alpha is the
     # local angle measured from the upward symmetry axis through the charge.
@@ -169,22 +180,39 @@ def main() -> None:
     # the throat; the rest go to source-side infinity.
     opposite_from_source = 2.0 * Q - source_angle_levels
     crosses = (opposite_from_source >= pmin) & (opposite_from_source <= pmax)
-    levels = np.sort(opposite_from_source[crosses])
-    source_crossing_levels = source_angle_levels[crosses]
+    src_lv = source_angle_levels[crosses]
+    opp_lv = opposite_from_source[crosses]
     source_to_infinity_levels = source_angle_levels[~crosses]
 
-    draw_panel(axes[0], r, theta, psi_opp, levels, None, "opposite end", False)
+    # One colour per matched flux tube, so the same tube is identifiable
+    # in both charts.  tricontour needs increasing levels, and the two
+    # orderings are reversed, so carry the pairing through argsort.
+    tube_colors = plt.cm.viridis(np.linspace(0.12, 0.82, src_lv.size))
+    idx_s = np.argsort(src_lv)
+    idx_o = np.argsort(opp_lv)
+
+    draw_panel(
+        axes[0],
+        r,
+        theta,
+        psi_opp,
+        opp_lv[idx_o],
+        None,
+        "observer end",
+        False,
+        colors=[tube_colors[i] for i in idx_o],
+    )
     draw_panel(
         axes[1],
         r,
         theta,
         psi_src,
-        source_crossing_levels,
+        src_lv[idx_s],
         source_to_infinity_levels,
         "source end",
         True,
+        colors=[tube_colors[i] for i in idx_s],
     )
-    fig.suptitle("Flat thin-shell wormhole: fixed monopole-flux field lines", fontsize=13)
     fig.savefig(OUT_PNG, dpi=260)
     fig.savefig(OUT_PDF)
 
@@ -192,7 +220,7 @@ def main() -> None:
     f_fixed = -Q * Q * A**3 / (2 * R0**3 * (R0 * R0 - A * A))
     print(f"R0/a = {R0 / A:.3f}, L_MAX={L_MAX}")
     print(f"fixed-zero-flux self-force = {f_fixed:+.8e}")
-    print(f"opposite stream level range = [{levels[0]:+.4e}, {levels[-1]:+.4e}]")
+    print(f"matched flux tubes = {src_lv.size}")
     print(f"source launch angles crossing throat = {np.sum(crosses)} of {ray_angles.size}")
     print(f"wrote {OUT_PNG}")
     print(f"wrote {OUT_PDF}")
