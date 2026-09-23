@@ -1,7 +1,7 @@
 # Wormhole paper
 
-The active manuscript is `wormhole_paper_v7_working.tex`; its latest compiled
-PDF is `wormhole_paper_v7_working.pdf`.
+The active manuscript is `wormhole_paper_v10_working.tex`; its latest compiled
+PDF is `wormhole_paper_v10_working.pdf`.
 
 - `figures/` — figures used by the active manuscript
 - `scripts/` — figure generators and symbolic/numerical utilities
@@ -14,5 +14,8 @@ history through commit `2c29f3b`.
 Build from this directory with:
 
 ```powershell
-pdflatex -interaction=nonstopmode -halt-on-error wormhole_paper_v7_working.tex
+pdflatex -interaction=nonstopmode -halt-on-error wormhole_paper_v10_working.tex
+bibtex wormhole_paper_v10_working
+pdflatex -interaction=nonstopmode -halt-on-error wormhole_paper_v10_working.tex
+pdflatex -interaction=nonstopmode -halt-on-error wormhole_paper_v10_working.tex
 ```
