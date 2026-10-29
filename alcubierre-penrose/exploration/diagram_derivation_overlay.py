@@ -120,8 +120,8 @@ def draw_base_patch(ax: plt.Axes, p: Params, *, light: bool = False) -> None:
     ax.set_aspect("equal", adjustable="box")
     ax.set_xlim(-1.72, 1.72)
     ax.set_ylim(-1.72, 1.72)
-    ax.set_xlabel(r"$X=(\mathcal{W}-\mathcal{U})/2$")
-    ax.set_ylabel(r"$T=(\mathcal{W}+\mathcal{U})/2$")
+    ax.set_xlabel(r"compactified space $X$")
+    ax.set_ylabel(r"compactified time $T$")
     ax.grid(True, alpha=0.14)
 
 
@@ -203,7 +203,7 @@ def draw_clean_calculated_patch() -> None:
     eps = 1.0e-5 * (r2 - r1)
     endpoints = endpoint_coordinates()
 
-    fig, ax = plt.subplots(figsize=(7.2, 6.4), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(7.6, 6.4), constrained_layout=True)
 
     b = 0.5 * np.pi
     a0 = float(np.arctan(0.5))
@@ -213,7 +213,7 @@ def draw_clean_calculated_patch() -> None:
 
     def exact_horizon_point(t0: float, root: float, ubar: float) -> tuple[float, float]:
         """Return the common chart limit of a constant-t slice at a horizon."""
-        wbar = float(np.arctan(w_coord(np.array([t0]), np.array([root]), p)[0]))
+        wbar = float(np.arctan(w_coord(np.array([t0]), np.array([root]), p)[0] / p.a))
         x, y = from_null(ubar, wbar)
         return float(x), float(y)
 
@@ -301,39 +301,53 @@ def draw_clean_calculated_patch() -> None:
         ax.plot(*from_null(s, np.full_like(s, b)), color=boundary_color, lw=1.4)
         ax.plot(*from_null(s, np.full_like(s, -b)), color=boundary_color, lw=1.4)
 
-    # Standard compactification labels for the outer diamond.
-    ax.text(0.0, b - 0.08, r"$i^+$", ha="center", va="top", fontsize=12)
-    ax.text(0.0, -b + 0.08, r"$i^-$", ha="center", va="bottom", fontsize=12)
-    ax.text(-b + 0.08, 0.0, r"$i^0_L$", ha="left", va="center", fontsize=11.5)
-    ax.text(b - 0.08, 0.0, r"$i^0_R$", ha="right", va="center", fontsize=11.5)
+    # Standard compactification labels, offset outside the boundary so they do
+    # not collide with the curves approaching the four vertices.
+    infinity_label = dict(
+        textcoords="offset points",
+        fontsize=12,
+        annotation_clip=False,
+    )
+    ax.annotate(r"$i^+$", xy=(0.0, b), xytext=(0, 7), ha="center", va="bottom", **infinity_label)
+    ax.annotate(r"$i^-$", xy=(0.0, -b), xytext=(0, -7), ha="center", va="top", **infinity_label)
+    ax.annotate(r"$i^0_L$", xy=(-b, 0.0), xytext=(-7, 0), ha="right", va="center", **infinity_label)
+    ax.annotate(r"$i^0_R$", xy=(b, 0.0), xytext=(7, 0), ha="left", va="center", **infinity_label)
 
     # The two finite-affine endpoints in this compact chart.
     for label, xy in endpoints.items():
         ax.scatter([xy[0]], [xy[1]], s=92, color="#111111", zorder=6)
         if label == "C+":
             ax.annotate(
-                "future finite-affine\n" + r"$\xi_2$ endpoint",
+                "future endpoint of " + r"$\xi_2$",
                 xy=xy,
-                xytext=(xy[0] + 0.28, xy[1] + 0.16),
+                xytext=(22, 18),
+                textcoords="offset points",
                 ha="left",
                 va="bottom",
-                fontsize=11.5,
-                arrowprops=dict(arrowstyle="->", lw=1.0, color="0.15"),
+                fontsize=9.5,
+                arrowprops=dict(arrowstyle="->", lw=1.0, color="0.15", shrinkA=2, shrinkB=3),
             )
         else:
             ax.annotate(
-                "past finite-affine\n" + r"$\xi_1$ endpoint",
+                "past endpoint of " + r"$\xi_1$",
                 xy=xy,
-                xytext=(xy[0] - 0.34, xy[1] - 0.18),
+                xytext=(-22, -18),
+                textcoords="offset points",
                 ha="right",
                 va="top",
-                fontsize=11.5,
-                arrowprops=dict(arrowstyle="->", lw=1.0, color="0.15"),
+                fontsize=9.5,
+                arrowprops=dict(arrowstyle="->", lw=1.0, color="0.15", shrinkA=2, shrinkB=3),
             )
 
-    ax.text(-0.64, 0.02, "I", ha="center", va="center", fontsize=14.5)
-    ax.text(0.0, 0.03, "II", ha="center", va="center", fontsize=14.5)
-    ax.text(0.64, 0.02, "III", ha="center", va="center", fontsize=14.5)
+    region_label = dict(
+        ha="center",
+        va="center",
+        fontsize=12.5,
+        bbox=dict(facecolor="white", edgecolor="none", alpha=0.78, pad=0.7),
+    )
+    ax.text(-0.64, 0.02, "I", **region_label)
+    ax.text(0.0, 0.03, "II", **region_label)
+    ax.text(0.64, 0.02, "III", **region_label)
 
     x1, y1 = from_null(+a0, -0.78)
     x2, y2 = from_null(-a0, +0.78)
@@ -346,14 +360,14 @@ def draw_clean_calculated_patch() -> None:
         rotation_mode="anchor",
         bbox=dict(facecolor="white", edgecolor="none", pad=0.6),
     )
-    ax.text(float(x1), float(y1), r"$\xi=\xi_1$", **horizon_label)
-    ax.text(float(x2), float(y2), r"$\xi=\xi_2$", **horizon_label)
+    ax.text(float(x1), float(y1), r"$\xi_1$", **horizon_label)
+    ax.text(float(x2), float(y2), r"$\xi_2$", **horizon_label)
 
     legend_items = [
-        Line2D([0], [0], color=const_xi_color, lw=1.2, label=r"constant-$\xi$ lines"),
-        Line2D([0], [0], color=const_t_color, lw=1.0, ls=(0, (7, 6)), label=r"constant-$t$ lines"),
-        Line2D([0], [0], color=horizon_color, lw=2.4, ls=(0, (4, 2)), label=r"horizons $\xi=\xi_1,\xi_2$"),
-        Line2D([0], [0], color=rider_color, lw=2.8, label=r"center rider $\xi=0$"),
+        Line2D([0], [0], color=const_xi_color, lw=1.2, label=r"constant $\xi$"),
+        Line2D([0], [0], color=const_t_color, lw=1.0, ls=(0, (7, 6)), label=r"constant $t$"),
+        Line2D([0], [0], color=horizon_color, lw=2.4, ls=(0, (4, 2)), label=r"horizons $\xi_1,\xi_2$"),
+        Line2D([0], [0], color=rider_color, lw=2.8, label=r"bubble center $\xi=0$"),
     ]
     ax.legend(
         handles=legend_items,
@@ -362,15 +376,17 @@ def draw_clean_calculated_patch() -> None:
         framealpha=1.0,
         facecolor="white",
         edgecolor="#d8d8d8",
-        fontsize=11.0,
+        fontsize=10.3,
     )
 
     ax.set_aspect("equal", adjustable="box")
-    ax.set_xlim(-1.66, 1.66)
-    ax.set_ylim(-1.66, 1.66)
-    ax.set_xlabel(r"$X=(\bar{\mathcal{W}}-\bar{\mathcal{U}})/2$", fontsize=12)
-    ax.set_ylabel(r"$T=(\bar{\mathcal{W}}+\bar{\mathcal{U}})/2$", fontsize=12)
-    ax.tick_params(labelsize=11)
+    ax.set_xlim(-1.78, 1.78)
+    ax.set_ylim(-1.74, 1.74)
+    ax.set_xlabel(r"$X$", fontsize=12, labelpad=6)
+    ax.set_ylabel(r"$T$", fontsize=12, labelpad=8)
+    ax.tick_params(bottom=False, left=False, labelbottom=False, labelleft=False)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
     ax.grid(False)
 
     for ext in ("png", "pdf", "eps"):

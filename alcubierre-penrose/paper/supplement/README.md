@@ -70,6 +70,6 @@ paper's `figures/` directory.
 ## Scope
 
 The supplement reproduces the local algebraic checks and the conformal figure.
-The global extension alternative is proved analytically in the paper; no
-numerical claim is used in that proof.  The supplement does not model a
-dynamical warp bubble.
+The global rigidity theorem and its sharpness construction are proved
+analytically in the paper; no numerical claim is used in those proofs.  The
+supplement does not model a dynamical warp bubble.

@@ -99,7 +99,7 @@ def compact(region: str, t: np.ndarray, r: np.ndarray, p: Params) -> tuple[np.nd
     w = w_coord(t, r, p)
     U = U_region(region, u, kap)
     ubar = np.arctan(U)
-    wbar = np.arctan(w)
+    wbar = np.arctan(w / p.a)
     return 0.5 * (wbar - ubar), 0.5 * (wbar + ubar)
 
 

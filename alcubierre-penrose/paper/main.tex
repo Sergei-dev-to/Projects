@@ -19,15 +19,14 @@
   urlcolor=blue,
   pdftitle={When Warp Horizons Extend: Curvature Boundaries of Alcubierre Spacetimes},
   pdfauthor={Sergei Slobodov},
-  pdfsubject={Parallel-propagated curvature singularities and the C2 extension alternative for stationary warp-drive spacetimes},
+  pdfsubject={Parallel-propagated curvature singularities and C2 extension rigidity for stationary warp-drive spacetimes},
   pdfkeywords={warp drive, Alcubierre spacetime, curvature singularity, spacetime inextendibility, causal structure}
 }
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
+\newtheorem{lemma}[theorem]{Lemma}
 
 \begin{document}
 
@@ -35,82 +34,73 @@
 Curvature Boundaries of Alcubierre Spacetimes}
 
 \author{Sergei Slobodov\\
-  Independent researcher\\
   \href{mailto:sergei@slobodov.com}{\texttt{sergei@slobodov.com}}}
 
-\date{\today}
+\date{}
 
 \maketitle
 
 \begin{abstract}
-Conformal diagrams of a superluminal Alcubierre warp bubble appear to continue
-beyond its front and rear horizons, but it is unclear whether that continuation
-survives in the full four-dimensional geometry.  We compute the reduced diagram
-explicitly for a smooth hyperbolic-secant profile and locate the finite-affine
-endpoints of its horizon generators.  We then prove a general stationary result:
-a null orbit of a complete Killing field with nonzero inaffinity and transverse
-  tidal curvature ends at a parallel-propagated curvature singularity.  For
-  nonpositive stationary scalar-shift warp drives, a global capture argument gives
-  an exact alternative.  A proper Hausdorff \(C^2\) extension exists if and only if the
-compact regular superluminal wall contains an open planar cap with constant
-nonzero inaffinity.  Such a cap is a genuine Killing-horizon patch, and its
-Kruskal continuation lifts through a finite transverse aperture.  Otherwise
-the spacetime is \(C^2\)-inextendible.  The usual radial Alcubierre walls have no
-such cap, so each corresponding four-dimensional spacetime is already its own
-maximal Hausdorff \(C^2\) extension: the extra regions of the reduced diagram
-have no regular four-dimensional counterpart.
+We study whether the extra regions visible in conformal diagrams of eternal
+superluminal Alcubierre bubbles belong to the full four-dimensional spacetime.
+We first compute the reduced \(1+1\)-dimensional diagram for a smooth
+hyperbolic-secant profile.  Its front and rear horizon rays end after finite
+affine distance, and the reduced metric continues beyond them.  Restoring the
+two suppressed spatial directions changes the result.  The radial spacetimes
+in our class admit no Hausdorff extension with a twice continuously
+differentiable (\(C^2\)) metric.  At nondegenerate walls, freely falling tidal
+curvature diverges at the endpoints even though scalar curvature measures
+remain finite.
+
+We then extend the analysis beyond radial symmetry and determine when a
+four-dimensional continuation is possible.  The wall must contain an open,
+exactly flat patch that already forms a stationary horizon, with the same
+nonzero horizon scale everywhere on it.  We construct the continuation through
+such a patch, showing that the criterion is sharp.  Thus the reduced diagram
+lifts to four dimensions only where a whole open patch---not just one horizon
+ray---remains regular.
 \end{abstract}
 
 \section{Introduction}
 
-Alcubierre's metric realizes apparent superluminal motion of a compact
-distortion at the cost of violations of the usual energy conditions
-\cite{Alcubierre1994,PfenningFord1997,LoboVisser2004}.  Its null geodesics and
-horizon structure have been studied extensively
+A conformal diagram computed after suppressing spatial dimensions need not
+describe an extension of the full spacetime.  Superluminal Alcubierre bubbles
+\cite{Alcubierre1994} provide a concrete test: their reduced diagrams contain
+front and rear horizon
+rays ending at apparently traversable corners.  Scalar curvature measures stay
+finite on smooth Alcubierre walls \cite{MattinglyEtAl2021,Rodal2023}, so they do
+not decide whether these corners survive in four dimensions.
+
+We first compute the reduced diagram and its finite-affine endpoints exactly
+for a smooth hyperbolic-secant (sech) profile.  Restoring the transverse
+directions reveals unbounded tidal curvature in a freely falling frame at a
+nondegenerate rounded front and rear.  Our global result then shows that, within the class
+studied here, an extension exists exactly when the wall contains an open planar
+patch that is already a stationary horizon with a constant nonzero horizon
+scale.  Smooth radial walls have no such patch and are \(C^2\)-inextendible;
+the planar case admits a Kruskal-like extension.  In a compact smooth example,
+bounded curvature on a cap-edge ray is defeated by divergence on arbitrarily
+nearby rays.  Thus the issue hidden by dimensional reduction is regularity
+across a transverse neighborhood, not merely along one ray.
+
+\paragraph{Relation to earlier work.}
+Alcubierre's metric realizes apparent superluminal motion at the cost of
+violating the usual energy conditions
+\cite{Alcubierre1994,PfenningFord1997,LoboVisser2004}.  Its null geodesics,
+horizons, and infinite-blueshift loci have been studied
 \cite{ClarkHiscockLarson1999,BarceloEtAl2022}, as have quantum effects in
-reduced models \cite{Hiscock1997,FinazziLiberatiBarcelo2009}.  The question here
-is classical and global: does the continuation suggested by the reduced causal
-diagram represent a continuation of the full four-dimensional spacetime?
-Scalar polynomial invariants do not decide the issue, because they remain
-finite at the relevant endpoints \cite{MattinglyEtAl2021,Rodal2023}.  A broader
-classification of warp-drive geometries and their energy-condition properties
-is given in Ref.~\cite{BarzegarBuchertVigneron2026}.
-
-The paper has two main parts.  The first is an explicit conformal chart
-for the reduced eternal geometry.  Earlier Kruskal-type and Misner-space
-continuations \cite{GonzalezDiaz2000} and the standard diagram of Finazzi,
-Liberati, and Barcel\'o \cite{FinazziLiberatiBarcelo2009} establish its causal
-structure.  For the smooth hyperbolic-secant (sech) profile used here, both null
-coordinates are elementary, so Section~\ref{sec:diagram} places the horizons,
-representative worldlines, and finite-affine corners exactly.  This calculation
-is independent of the class theorem and supplies its concrete Alcubierre
-application.
-
-The second part is a curvature-boundary and extension theorem.  The reduced geometry
-genuinely continues through the finite-affine ends of its front and rear horizon
-generators.  In four dimensions, however, a nonzero transverse tidal form at a
-null orbit of a complete Killing field is amplified into a parallel-propagated
-curvature singularity.  For scalar shifts, a Killing identity identifies this
-form with the wall Hessian.  The Alcubierre endpoints therefore satisfy the
-criterion even though all scalar curvature invariants remain finite.
-
-A local singularity does not by itself exclude an extension attached elsewhere.
-Section~\ref{sec:maximality} closes that gap for nonpositive stationary scalar shifts with a
-compact regular superluminal wall.  Any regular extension would force an open
-planar wall patch with constant inaffinity; conversely, such a patch has a
-Kruskal extension.  This exact alternative implies that the reduced sech
-diamond extends, whereas the original four-dimensional Alcubierre spacetime
-does not.
+reduced models \cite{Hiscock1997,FinazziLiberatiBarcelo2009}.  Earlier work also
+gave a Misner-space continuation \cite{GonzalezDiaz2000} and the standard
+reduced diagram \cite{FinazziLiberatiBarcelo2009}.  A broader classification of
+warp-drive geometries and their energy-condition properties is given in
+Ref.~\cite{BarzegarBuchertVigneron2026}.  Here we address classical
+four-dimensional extendibility.
 
 \section{The Reduced Conformal Diagram}
 \label{sec:diagram}
 
-This section constructs the conformal diagram of the eternal geometry directly
-from the metric.  For the smooth profile below every step is elementary, so the
-diagram can be computed rather than sketched and the finite-affine corners can
-be located explicitly.  To avoid conflict with the radial coordinate used
-later, write \(\xi=x\) for the signed axial coordinate throughout this section.
-We use the bubble-comoving convention: the usual lab-frame shift \(v_s f\)
+Write \(\xi=x\) for the signed axial coordinate.  In the bubble-comoving
+convention, the usual lab-frame shift \(v_s f\)
 becomes \(v=v_s(f-1)\) under \(x=X-v_st\), so the center has \(v=0\) and the
 asymptotic exterior \(v=-v_s\).
 
@@ -128,9 +118,7 @@ null coordinates are
   w=t-\int\frac{d\xi}{v-1},
   \label{eq:null-coords}
 \end{equation}
-and inverting gives
-\(dt=\tfrac12(1+v)du+\tfrac12(1-v)dw\),
-\(d\xi=\tfrac12(1-v^2)(dw-du)\), hence the doubly null form
+and give the doubly null form
 \begin{equation}
   ds^2_{1+1}=-(1-v^2)\,du\,dw .
   \label{eq:double-null}
@@ -143,40 +131,54 @@ reduced spacetime into the bubble interior, region II with \(|v|<1\), and the
 two exterior branches, regions I and III with \(|v|>1\).
 
 For the representative profile, written in the two-parameter form
-\(v(\xi)=\alpha[\operatorname{sech}(\xi/a)-1\,]\) with \(\alpha>1\), both
+\(v(\xi)=\alpha[\operatorname{sech}(\xi/a)-1]\) with \(\alpha>1\), both
 integrals in Eq.~\eqref{eq:null-coords} are elementary.  With
 \(\beta=\alpha/(\alpha-1)\), the horizons are
-at \(\xi_{1,2}=\mp a\operatorname{arcosh}\beta\), the local peeling scale is
+at \(\xi_{1,2}=\mp a\operatorname{arcosh}\beta\), and the local peeling scale is
 \(\kappa=(\alpha/a)\sqrt{\beta^2-1}/\beta^2\).  The closed-form
-antiderivatives and regionwise compactifying map are recorded in
-Appendix~\ref{app:sech-chart}; applying them gives
-Figure~\ref{fig:reduced-patch}.
+antiderivatives are recorded in Appendix~\ref{app:sech-chart}.  To display all
+three regions in one compact chart, define
+\begin{equation}
+  \mathcal U=
+  \begin{cases}
+    \tfrac12+e^{-\kappa u} & \text{I},\\[2pt]
+    \tfrac12\tanh(\kappa u/2) & \text{II},\\[2pt]
+    -\tfrac12-e^{\kappa u} & \text{III},
+  \end{cases}
+  \quad
+  \mathcal W=w/a,
+  \qquad
+  \bar{\mathcal U}=\arctan\mathcal U,
+  \quad
+  \bar{\mathcal W}=\arctan\mathcal W,
+  \label{eq:regularized}
+\end{equation}
+and
+\begin{equation}
+  X=\frac{\bar{\mathcal W}-\bar{\mathcal U}}2,
+  \qquad
+  T=\frac{\bar{\mathcal W}+\bar{\mathcal U}}2.
+  \label{eq:diagram-coordinates}
+\end{equation}
+Figure~\ref{fig:reduced-patch} plots these compactified coordinates for
+\(\alpha=2\) and \(a=1\).
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=0.82\linewidth]{figures/calculated_three_region_endpoint_patch.pdf}
-  \caption{Calculated conformal diagram of the reduced \(1+1\) stationary
-  patch for \(v(\xi)=2[\operatorname{sech}\xi-1]\).  The dark outer diamond is
-  the compactification boundary.  The two thick short-dashed segments are the
-  exact null horizons \(\xi=\xi_1,\xi_2\); they separate the bubble interior
-  II, where \(|v|<1\), from the exterior branches I and III, where \(|v|>1\).
-  Thin solid curves have constant \(\xi\) and are timelike in II and spacelike
-  outside.  Light long-dashed curves are spacelike constant-\(t\) slices, and
-  the thick solid central curve is the \(\xi=0\) rider.  The black dots mark
-  the finite-affine past end of the \(\xi_1\) generator and future end of the
-  \(\xi_2\) generator; their opposite ends have infinite affine parameter.
-  The reduced metric extends through the marked corners, whereas transverse
-  parallel-propagated curvature obstructs the corresponding continuation for
-  a spatially finite \(3+1\) bubble.}
+  \caption{Compactified conformal diagram of the reduced \(1+1\) patch for
+  \(v(\xi)=2[\operatorname{sech}\xi-1]\).  Blue short-dashed horizons separate
+  the interior II from the exterior branches I and III; gray solid and
+  long-dashed curves have constant \(\xi\) and \(t\), respectively, and the
+  orange curve is \(\xi=0\).  Black points mark the finite-affine past end of
+  the \(\xi_1\) generator and future end of the \(\xi_2\) generator.  The
+  reduced metric extends through these points; the usual rounded
+  four-dimensional geometry does not.}
   \label{fig:reduced-patch}
 \end{figure}
 
-The corners are what the rest of the paper is about, so it is worth being
-explicit about where they are and why they are reached at finite affine
-parameter.  In the compactification of Appendix~\ref{app:sech-chart}, the
-future \(\xi_2\) and past \(\xi_1\) generators terminate at the two marked
-corners of Figure~\ref{fig:reduced-patch}.  Near \(\xi_2\), with
-\(s=\xi-\xi_2\) and \(v=-1-\kappa s+O(s^2)\), one has
+Near the future endpoint at \(\xi_2\), write \(s=\xi-\xi_2\).  Since
+\(v=-1-\kappa s+O(s^2)\), one has
 \(1-v^2=-2\kappa s+O(s^2)\) and
 \(u=t+\kappa^{-1}\ln|s|+O(1)\), \(w=t+O(1)\).  The local chart
 \begin{equation}
@@ -191,27 +193,29 @@ corners of Figure~\ref{fig:reduced-patch}.  Near \(\xi_2\), with
 then gives \(ds^2_{1+1}=[(1-v^2)/(\kappa^2UV)]\,dU\,dV\), whose prefactor has a
 finite nonzero limit because \(UV\propto-s\).  The front generator is \(U=0\)
 and its future endpoint is \(U=V=0\), at finite affine parameter; the
-past-rear corner is analogous.  In the reduced geometry
-\eqref{eq:double-null} the chart
-\eqref{eq:endpoint-chart} is manifestly regular there, and the continuation
-through the corner is the usual one.  Whether it survives restoring the
-transverse directions is the subject of the rest of this paper.
+past-rear corner is analogous.  The chart is regular there, so the reduced
+metric continues through the corner.  For the radial four-dimensional
+application, the profile above is its axial restriction: \(r=|\xi|\),
+\(\xi_{1,2}=\mp R_F\), and \(\kappa=|v_x|\) at the two generators.
 
-\section{Curvature Boundaries and the Global \texorpdfstring{\(C^2\)}{C2} Extension Alternative}
+\clearpage
+\section{When Does the Four-Dimensional Spacetime Extend?}
 \label{sec:maximality}
 
-The reduced diagram raises two distinct extension questions.  Its front and
-rear null generators end at finite affine parameter; a parallel-propagated
-curvature singularity there excludes continuation through those particular
-corners.  Global \(C^2\)-inextendibility is stronger, because a proper extension
-might still attach elsewhere.  The theorem below identifies the two
-possibilities for stationary scalar shifts.  Its global ingredients are a
-controlled superluminal exterior and a compact regular stationary-limit wall.
-The exceptional local geometry is an open piece of that wall which is itself a
-constant-inaffinity Killing horizon.
+The marked rays do not exclude an extension elsewhere.  The result below does:
+for the scalar shifts considered here, any extension requires an open planar
+patch that is already a stationary horizon.
 
-\begin{theorem}[Scalar-shift extension alternative]
-\label{thm:extension-alternative}
+Throughout, a Hausdorff \(C^k\) Lorentzian extension of \((M,g)\) means a
+connected time-oriented smooth Hausdorff manifold \(\widetilde M\) with a
+\(C^k\) Lorentzian metric \(\widetilde g\), together with a smooth
+time-orientation-preserving isometric embedding
+\(\iota:M\to\widetilde M\) whose image is a proper open subset.  We identify
+\(M\) with its image.  The spacetime is \(C^k\)-inextendible if no such
+extension exists.
+
+\begin{theorem}[Global extension rigidity for scalar shifts]
+\label{thm:extension-rigidity}
 Let \(M=\mathbb R^4\) carry the scalar-shift metric
 \begin{equation}
   ds^2=-dt^2+[dx-v(\boldsymbol{x})dt]^2+dy^2+dz^2,
@@ -233,37 +237,52 @@ for some \(R_0,C,\sigma>0\).  Suppose also that
   \Sigma=\{\boldsymbol{x}:v(\boldsymbol{x})=-1\}
   \label{eq:general-wall}
 \end{equation}
-is compact and regular.  Its stationary-generator locus is
+is compact and regular (that is, \(dv\ne0\) on \(\Sigma\)).  Its
+stationary-generator locus is
 \begin{equation}
-  \mathcal G=\{p\in\Sigma:v_y(p)=v_z(p)=0\}
+  \mathcal G=\{p\in\Sigma:v_y(p)=v_z(p)=0\}.
   \label{eq:generator-locus}
 \end{equation}
 The sign condition makes \(\Sigma=\{|v|=1\}\) the entire stationary-limit
-set; it is not a coordinate normalization for profiles taking both signs.
-Regularity implies \(v_x\ne0\) on \(\mathcal G\), so the theorem concerns
-nondegenerate stationary generators.
-Then \((M,g)\) admits a proper Hausdorff \(C^2\) Lorentzian extension if and
-only if there are \(x_H\in\mathbb R\), a nonempty open disk
-\(D\subset\mathbb R^2_{y,z}\), and a constant \(\kappa\ne0\) such that
+set; it is not a normalization for profiles taking both signs.  Regularity
+implies \(v_x\ne0\) on \(\mathcal G\).
+
+If \((M,g)\) admits a Hausdorff \(C^2\) Lorentzian extension, then there are
+\(x_H\in\mathbb R\), a nonempty open disk
+\(D_0\subset\mathbb R^2_{y,z}\), and a constant \(\alpha\ne0\) such that
 \begin{equation}
   v(x_H,y,z)=-1,
-  \qquad v_x(x_H,y,z)=-\kappa
-  \quad ((y,z)\in D).
+  \qquad v_x(x_H,y,z)=\alpha
+  \quad ((y,z)\in D_0).
   \label{eq:planar-cap-criterion}
 \end{equation}
-When \eqref{eq:planar-cap-criterion} holds, the extension can be chosen smooth
-and continues the finite-affine stationary generators through a bifurcate
-Killing horizon over \(D\).  If no such disk exists, \((M,g)\) admits no proper
-Hausdorff \(C^2\) Lorentzian extension.
+Equivalently, for the stationary Killing field \(\chi=\partial_t\), the wall
+worldvolume contains the open Killing-horizon patch
+\begin{equation}
+  \mathcal H=\mathbb R_t\times\{x_H\}\times D_0,
+  \qquad
+  \nabla_\chi\chi=\alpha\chi
+  \quad\hbox{on }\mathcal H .
+  \label{eq:forced-killing-horizon}
+\end{equation}
+In particular, if the wall worldvolume contains no such patch, \((M,g)\) is
+\(C^2\)-inextendible.
 \end{theorem}
 
-The exterior and compactness assumptions capture any hypothetical extension
-boundary.  The necessity of \eqref{eq:planar-cap-criterion} is a rigidity
-statement: the uniform neighborhood of a regular endpoint forces the wall to
-be planar and its inaffinity to be constant.  Its sufficiency is the ordinary
-Kruskal construction, applied over a transverse disk.
+\begin{proposition}[Sharpness of the rigidity condition]
+\label{prop:planar-cap-extension}
+Under the hypotheses of Theorem~\ref{thm:extension-rigidity}, suppose
+there are \(x_H\), a nonempty open disk \(D_0\), and a constant
+\(\alpha\ne0\) satisfying Eq.~\eqref{eq:planar-cap-criterion}.  For every open
+disk \(D\) with \(\overline D\subset D_0\), \((M,g)\) admits a proper smooth
+Hausdorff Lorentzian extension which continues the corresponding finite-affine
+stationary generators through a bifurcate Killing horizon over \(D\).
+\end{proposition}
 
-\paragraph{Local finite-affine obstruction.}
+Within this class, an extension exists exactly when an open flat wall patch has
+a uniform horizon scale.
+
+\paragraph{Why the usual horizon endpoints are singular.}
 For any Killing field \(\chi\), the Killing equation and Ricci identity give
 \begin{equation}
   R(\chi,X,\chi,Y)
@@ -271,6 +290,9 @@ For any Killing field \(\chi\), the Killing equation and Ricci identity give
     -\frac12(\nabla^2\chi^2)(X,Y).
   \label{eq:killing-tidal-identity}
 \end{equation}
+With
+\((\nabla_c\nabla_d-\nabla_d\nabla_c)V^a=R^a{}_{bcd}V^b\), this follows from
+\(\nabla_a\nabla_b\chi_c=R_{cbad}\chi^d\) by differentiating \(\chi^2\).
 For the scalar shift, take \(\chi=\partial_t\) and introduce the stationary
 orthonormal frame
 \begin{equation}
@@ -285,8 +307,8 @@ On \(v=-1\),
   \label{eq:not-whole-sphere}
 \end{equation}
 Thus \(\mathcal G\) is precisely the locus of null pregeodesic stationary
-orbits, and \(e_0+e_1=\chi\) there.  At \(p\in\mathcal G\), the Killing
-identity reduces to
+orbits, and \(e_0+e_1=\chi\) there.  At \(p\in\mathcal G\), the transverse,
+or screen, components of the Killing identity reduce to
 \begin{equation}
   H_{AB}(p):=v_{AB}(p),
   \qquad
@@ -301,36 +323,32 @@ Let the null orbit through \(p\) be parametrized by Killing time and suppose
 its affine tangent \(K=q\chi\) obeys
 \(|q|=[|\alpha|\,|\lambda-\lambda_*|]^{-1}\).  Thus a nonzero transverse tidal
 form produces a parallel-propagated curvature singularity proportional to
-\(|\lambda-\lambda_*|^{-2}\) at a finite-affine endpoint.  Such an endpoint
-cannot be added in a \(C^2\) extension.  Applied to the front and rear generators
-of Section~\ref{sec:diagram}, this shows that the marked corners of
-Figure~\ref{fig:reduced-patch} are genuine four-dimensional curvature
-boundaries, although the reduced metric continues through them.
+\(|\lambda-\lambda_*|^{-2}\).  The Killing flow preserves the screen metric
+and tidal form, so a parallel screen frame changes only its orthonormal basis.
+Lemma~\ref{lem:endpoint-frames} therefore excludes a \(C^2\) endpoint.  The
+marked corners of Figure~\ref{fig:reduced-patch} are consequently
+four-dimensional curvature boundaries.
 
-\paragraph{Proof sketch: from capture to the extension alternative.}
+\paragraph{From the local singularity to a global result.}
 If a proper extension existed, global hyperbolicity and
 Ref.~\cite[Theorem~2]{GallowayLingSbierski2018} would supply a timelike geodesic
 leaving \(M\) in finite proper time.  The capture proposition sends a boosted
 subsequence toward \(p\in\mathcal G\).  Uniform curvature bounds on a small
 transverse disk in the extension then force
 \(v_{AB}-v_Av_B=0\) and \(v_{xA}=0\).  Thus \(e^{-v}\) is affine on the disk;
-its gradient vanishes at \(p\), so \(v=-1\) and \(\kappa=-v_x\) is constant
+its gradient vanishes at \(p\), so \(v=-1\) and \(v_x\) is constant
 there.  This is exactly Eq.~\eqref{eq:planar-cap-criterion}.
 
-Conversely, that criterion makes the disk a constant-inaffinity Killing
-horizon.  The explicit Kruskal coordinates in Appendix~\ref{app:global-proof}
-extend it and give a proper Hausdorff attachment.  The appendix supplies the
-capture, transverse-propagation, gluing, and past-end details.
+Appendix~\ref{app:global-proof} proves the capture and transverse-rigidity
+steps and constructs the proper Hausdorff attachment.
 
 \paragraph{A practical geometric test.}
-The extendible alternative is exceptional: it requires the height function
-\(x|_\Sigma\) to be constant on an open subset, and also requires constant
-\(\kappa\) there.  Thus a Morse height function rules it out immediately.  The
-older pointwise condition \(H_{AB}\ne0\) at every point of \(\mathcal G\) is a
-convenient sufficient test, but is not the exact boundary between the two
-cases.
+The set \(\mathcal G\) is precisely the critical set of the height function
+\(x|_\Sigma\), and an extension requires \(x|_\Sigma\) to be constant on an
+open subset of \(\Sigma\).  A Morse height function has isolated critical
+points, so it rules out an extension immediately.
 
-\begin{corollary}[Radial Alcubierre maximality]
+\begin{corollary}[Radial Alcubierre inextendibility]
 \label{cor:alcubierre-maximality}
 Suppose \(v=v(r)\) is smooth and radially nonincreasing, with
 \[
@@ -346,36 +364,17 @@ Suppose that a proper extension exists.  Proposition~\ref{prop:capture} and the
 transverse-rigidity argument through Eq.~\eqref{eq:forced-planar-wall} use
 compactness of \(\Sigma\), but not its regularity.  They force an open planar
 disk in \(\{v=-1\}\).  Here that level set is the sphere \(r=R_F\), which
-contains no such disk, a contradiction.  For \(\kappa:=-v_r(R_F)\geq0\), the
-wall Hessian at either pole is
-\begin{equation}
-  H_{AB}=-\frac{\kappa}{R_F}\delta_{AB}
-  \label{eq:radial-hessian}
-\end{equation}
-and records the local tidal obstruction when \(\kappa>0\).
+contains no such disk, a contradiction.
 \end{proof}
 
-If \(\kappa=0\), then \(\mathcal G=\Sigma\): the null stationary orbits on the
-wall are affinely complete, so the local finite-affine pp-curvature mechanism
-is absent.  The corollary instead follows from the global capture and
-transverse-rigidity argument, which would force an open planar disk in a
-sphere.  Thus the degenerate radial case is covered for a different reason.
-
-This includes the sech family used in Section~\ref{sec:diagram} and the usual
-smooth compact-transition profiles.  Each four-dimensional spacetime is
-already its own maximal Hausdorff \(C^2\) extension: the larger continuation of
-the stand-alone \(1+1\) metric does not lift to four dimensions.  No special
-identity of the sech profile enters the proof, and no claim is made below
-\(C^2\) regularity.
+The corollary includes the sech family of Section~\ref{sec:diagram} and smooth
+compact-transition profiles satisfying its hypotheses, including the
+degenerate case \(v_r(R_F)=0\).
 
 
-\section{Alcubierre Wall Geometry and Source}
+\section{What Causes the Alcubierre Obstruction?}
 
-The preceding curvature analysis gives an exact divergence for radial
-Alcubierre profiles and a geometric and source interpretation of its
-coefficient.
-
-\paragraph{The Alcubierre endpoint.}
+\paragraph{Tidal forces at the endpoint.}
 For a nondegenerate radial wall in Corollary~\ref{cor:alcubierre-maximality},
 put \(\kappa=-v_r(R_F)>0\).  The
 stationary field is null on \(v^2=1\), but the
@@ -391,50 +390,44 @@ orbits.  At the future front, \(v_x=-\kappa\), so
   \label{eq:nonaffine}
 \end{equation}
 The transverse vectors \(Y=\partial_y\) and \(Z=\partial_z\) are parallel
-along this orbit.  Equations~\eqref{eq:radial-hessian} and
-\eqref{eq:screen-general}, with
-\(q=[\kappa(\lambda_*-\lambda)]^{-1}\), give
+along this orbit, and the wall Hessian is
+\begin{equation}
+  H_{AB}=-\frac{\kappa}{R_F}\delta_{AB}.
+  \label{eq:radial-hessian}
+\end{equation}
+Equation~\eqref{eq:screen-general}, with
+\(q=[\kappa(\lambda_*-\lambda)]^{-1}\), gives
 \begin{equation}
   R(K,Y,K,Y)=R(K,Z,K,Z)
   =-\frac{1}{\kappa R_F(\lambda_*-\lambda)^2}.
   \label{eq:main-blowup}
 \end{equation}
-The isometry \((t,x,y,z)\mapsto(-t,-x,y,z)\) gives the corresponding
-past-rear result.  These are
+The isometry \((t,x,y,z)\mapsto(-t,-x,y,z)\) gives the past-rear result.  These are
 parallel-propagated curvature singularities in the standard sense
 \cite{EllisSchmidt1977}, although the stationary coordinate curvature and
 scalar invariants remain finite.  Finite affine length alone is insufficient:
 the analogous screen tensor vanishes in Painlev\'e--Gullstrand Schwarzschild,
 whose Kruskal extension is regular \cite{LemosSilva2021}.
 
-\paragraph{Wall geometry and source.}
+\paragraph{Wall shape and matter source.}
 Write a regular front locally as \(x=F(y,z)\).  Differentiating its wall
 equation twice at a stationary generator gives
 \begin{equation}
   F_{AB}=\frac{H_{AB}}{\kappa}.
   \label{eq:wall-graph-hessian}
 \end{equation}
-Thus \(H/\kappa\) is the graph Hessian.  In principal transverse coordinates
-for a smooth convex front,
+In principal transverse coordinates for a smooth convex front,
 \begin{equation}
   F_{yy}=-C_1,\qquad F_{zz}=-C_2,\qquad C_i>0,
 \end{equation}
-and the spherical result is \(C_1=C_2=1/R_F\).  Vanishing of \(H\) at one
-point only makes the wall flat to second order and does not ensure an
-extension.  Theorem~\ref{thm:extension-alternative} requires the stronger, exact
-geometry of an open planar cap with constant \(\kappa\).  On such a cap the
-wall worldvolume is a genuine Killing horizon and the reduced continuation
-lifts over its transverse disk.
+and the spherical result is \(C_1=C_2=1/R_F\).  An isolated zero of \(H\) is
+insufficient: Theorem~\ref{thm:extension-rigidity} requires an open planar cap
+with constant \(\kappa\).  Appendix~\ref{app:compact-cap} constructs such a
+compact smooth wall and analyzes its rim.
 
-The exceptional branch is compatible with a smooth compact wall; it is not an
-artifact of the noncompact product \(v=v(x)\).  Appendix~\ref{app:compact-cap}
-constructs a compact connected wall with exact planar caps and a constant
-exterior.  Each cap admits a proper smooth Kruskal-product extension, while its
-rim has no regular \(C^2\) endpoint.  Thus the exception is real but requires
-exact geometry on an open set.
-
-If the Einstein equation is imposed, the same wall tensor also controls the
-affine null source projection (in geometrized units):
+If the Einstein equation is imposed, the same wall curvature determines the
+null energy component along the increasingly boosted light direction (in
+geometrized units):
 \begin{equation}
   8\pi T_{KK}=G_{KK}=q^2\operatorname{tr}H,
   \qquad
@@ -442,69 +435,39 @@ affine null source projection (in geometrized units):
   \quad\text{at a convex future front}.
   \label{eq:null-source}
 \end{equation}
-Thus transverse wall curvature that produces the local obstruction also gives an
-unbounded negative null projection there.  This source statement is not used in the
-extension theorem: at a saddle generator \(H\ne0\) may hold while
-\(\operatorname{tr}H=0\).
+Thus the transverse wall curvature that produces the tidal obstruction also
+gives an unbounded negative null energy component at a convex front.  No energy
+condition enters the extension proof: at a saddle point the full tidal tensor
+may be nonzero even when its trace, and hence this source component, vanishes.
 
 \section{Discussion}
 
-The diagram and the extension theorem answer complementary questions.  The
-first shows that the reduced finite-affine corners are regular; the second says
-exactly when their continuation lifts to the full geometry.  For an ordinary
-rounded wall it does not.  An open planar constant-\(\kappa\) cap instead lifts
-as a finite transverse Kruskal aperture.  The screen tensor controlling the
-local null-orbit divergence is, for scalar shifts, the wall Hessian \(H\).  At a
-convex front, its trace also gives the negative null source projection in
-Eq.~\eqref{eq:null-source}, although no energy condition enters the proof.
+For radial Alcubierre profiles, the extra regions of the stand-alone \(1+1\)
+diamond do not lift to another regular four-dimensional sheet.  A planar cap
+admits a finite transverse Kruskal aperture; in the compact example of
+Appendix~\ref{app:compact-cap}, its rim does not extend because neighboring
+rays develop unbounded curvature.  Strictly subluminal profiles form no
+stationary-limit wall, and the bubble-center worldline remains complete.
 
-For radial Alcubierre profiles, the original four-dimensional spacetime is
-therefore already its own maximal Hausdorff \(C^2\) extension.  The extra
-regions of the stand-alone \(1+1\) diamond do not lift to another regular
-four-dimensional sheet.  Strictly subluminal profiles never form a
-stationary-limit wall, so no extension problem of this type arises.  Nor does
-the theorem imply geodesic incompleteness of the bubble-center worldline, which
-remains complete.
+\paragraph{Why the rounded wall is not an ordinary horizon.}
+The name ``warp horizon'' can mislead.  On a rounded wall the stationary field
+becomes null, but the four-dimensional wall itself is not null, and
+\(\partial_t\) is geodesic only on isolated stationary generators.  It is not
+an ordinary Killing-horizon extension problem \cite{RaczWald1992}.  The planar
+cap is instead a genuine constant-inaffinity Killing horizon with the expected
+bifurcate extension.  The stationary-limit wall is not a Cauchy horizon: the
+bounded-shift argument in Appendix~\ref{app:global-proof} gives global
+hyperbolicity \cite[Theorem~2.1]{ChoquetBruhatCotsakis2002}, since
+\(g^{-1}(dt,dt)=-N^{-2}\) independently of whether \(\partial_t\) is timelike.
+Kerr likewise has a stationary-limit surface in a globally hyperbolic domain
+\cite[Secs.~8.3 and 12.3]{Wald1984}.
 
-Created and destroyed bubbles are simpler.  For a smooth uniformly bounded
-scalar or vector shift, if
-\(\sup_{\boldsymbol{x}}\|\operatorname{sym}D_{\boldsymbol{x}}X(t,\boldsymbol{x})\|\)
-is integrable in time, Theorems~2.1 and 3.2 of
-Ref.~\cite{ChoquetBruhatCotsakis2002} give global hyperbolicity and, in both
-time directions, timelike and null completeness.  Theorem~1 of
-Ref.~\cite{GallowayLingSbierski2018} then gives \(C^0\)-inextendibility.  This
-includes bounded smooth shifts whose uniformly bounded symmetric gradient is
-supported in a finite time interval.  During an exactly stationary segment of
-duration \(T\), a generator
-with fixed entry frequency instead has finite tidal amplification
-\(e^{2\kappa T}\); the eternal divergence is its \(T\to\infty\) limit.
-
-\paragraph{Stationary-limit surfaces.}
-For the rounded walls in the inextendible branch, this is not a Killing-horizon
-extension problem \cite{RaczWald1992}: the four-dimensional wall is not null,
-and \(\partial_t\) is geodesic only on its stationary generators.  The
-exceptional planar cap is precisely where that statement fails; there the wall
-contains a genuine constant-inaffinity Killing horizon and the regular
-bifurcate extension is the expected one.  The stationary-limit wall itself is
-not a Cauchy horizon of the original spacetime.  The causal-speed
-argument in Appendix~\ref{app:global-proof} also verifies the standard
-bounded-slicing criterion \cite[Theorem~2.1]{ChoquetBruhatCotsakis2002}, as
-restated in Ref.~\cite[Theorem~IV.3]{BarzegarBuchertVigneron2026}.  It requires
-only a uniform, not a subluminal, bound on the shift and uses the timelike unit
-normal rather than \(\partial_t\).  This differs from the claim in
-Ref.~\cite[Sec.~IV.1]{BarzegarBuchertVigneron2026} that only the exterior of an
-eternal superluminal R-Warp model is globally hyperbolic.  In ADM variables
-\(g^{-1}(dt,dt)=-N^{-2}\), independently of the shift; the Kerr domain of outer
-communication likewise contains a stationary-limit surface and is globally
-hyperbolic \cite{Wald1984}.
-
-Away from an exceptional cap, \(\kappa=-v_x\) is a local peeling and
+Away from the planar-cap equality case, \(\kappa=-v_x\) is a local peeling and
 inaffinity scale rather than a global Killing-horizon surface gravity
-\cite{CroppLiberatiVisser2013}.  The compact flat-cap example shows why the
-extension alternative cannot be strengthened to unconditional
-inextendibility.
-Persistent general vector shifts and eternal extensions below \(C^2\) require
-different arguments \cite{Sbierski2018}.
+\cite[Secs.~2 and 4.5]{CroppLiberatiVisser2013}.  General vector shifts lie
+outside Theorem~\ref{thm:extension-rigidity}.  At \(C^0\) regularity, where
+curvature is not classically available, different tools are required
+\cite{Sbierski2018}.
 
 \appendix
 
@@ -539,113 +502,22 @@ and
   \label{eq:w-closed}
 \end{equation}
 The regionwise form in Eq.~\eqref{eq:u-closed} keeps the logarithm real and
-positive on each branch.  Since \(u\) diverges logarithmically at both
-horizons, use
-\begin{equation}
-  \mathcal U=
-  \begin{cases}
-    \tfrac12+e^{-\kappa u} & \text{I},\\[2pt]
-    \tfrac12\tanh(\kappa u/2) & \text{II},\\[2pt]
-    -\tfrac12-e^{\kappa u} & \text{III},
-  \end{cases}
-  \qquad
-  \bar{\mathcal U}=\arctan\mathcal U,\quad
-  \bar{\mathcal W}=\arctan w.
-  \label{eq:regularized}
-\end{equation}
+positive on each branch.  The coordinate \(u\) diverges logarithmically at both
+horizons; the regionwise cases in Eq.~\eqref{eq:regularized} absorb this
+divergence.
 In region II, \(\mathcal U\to\pm\tfrac12\) as \(u\to\pm\infty\).  Thus the
 future \(\xi_2\) generator has
 \(\bar{\mathcal U}=-\arctan\tfrac12\) and terminates at
 \(\bar{\mathcal W}=\pi/2\), while the past \(\xi_1\) generator has
 \(\bar{\mathcal U}=\arctan\tfrac12\) and terminates at
 \(\bar{\mathcal W}=-\pi/2\).
-Plotting
-\(X=(\bar{\mathcal W}-\bar{\mathcal U})/2\) and
-\(T=(\bar{\mathcal W}+\bar{\mathcal U})/2\) produces
+Equation~\eqref{eq:diagram-coordinates} then gives the marked points in
 Figure~\ref{fig:reduced-patch}.
 
-\section{Proof of the Global Theorem}
+\section{Proof of Global Rigidity and Sharpness}
 \label{app:global-proof}
 
-This appendix supplies the details behind the proof sketch in
-Section~\ref{sec:maximality}.  It first proves the local amplification lemma,
-then reduces a putative extension to the capture proposition, proves that
-proposition, and finally obtains the curvature contradiction.
-
-\subsection{Stationary tidal amplification}
-
-\begin{proposition}[Stationary tidal amplification]
-\label{prop:tidal-amplification}
-Let \(\chi\) be Killing and null at \(p\), and define the tidal form
-\(\mathcal T_p([V],[W])=R(\chi,V,\chi,W)|_p\) on the screen
-\(\chi_p^\perp/\langle\chi_p\rangle\).
-
-After translating each datum by the Killing flow, suppose \(p_j\to p\), the
-\(u_j\) are unit timelike, \(\gamma_j\to\infty\), and
-\(u_j/\gamma_j\to\chi_p\).  For unit spacelike \(s_{A,j}\perp u_j\) with
-\(s_{A,j}\to E_A\) in the screen,
-\begin{equation}
-  \gamma_j^{-2}R(u_j,s_{A,j},u_j,s_{B,j})
-  \longrightarrow\mathcal T_p(E_A,E_B).
-  \label{eq:boosted-tidal-limit}
-\end{equation}
-
-If, in addition, \(\chi\) is complete, parametrize its orbit through \(p\) by
-Killing time \(t\).  If that orbit is null with
-\(\nabla_\chi\chi=\alpha\chi\), \(\alpha\ne0\), then one end occurs at finite
-affine parameter.  When \(\mathcal T_p\ne0\), that end is a parallel-propagated
-curvature singularity and cannot acquire an endpoint in a \(C^2\) Lorentzian
-extension.
-\end{proposition}
-
-\begin{proof}
-The first limit follows from multilinearity and continuity of the Riemann
-tensor.  For the exact orbit, the affine tangent \(K=q\chi\) satisfies
-\(dq/dt=-\alpha q\).  At the finite-affine end this gives
-\begin{equation}
-  |q|=\frac{1}{|\alpha|\,|\lambda-\lambda_*|}.
-  \label{eq:q-affine}
-\end{equation}
-The Killing flow preserves both the screen metric and \(\mathcal T\).  A
-parallel orthonormal screen frame differs from a Killing-transported one by an
-orthogonal transformation, so in such a frame the matrix norm satisfies
-\(\|(R(K,E_A,K,E_B))_{AB}\|=q^2\|\mathcal T\|\to\infty\).  At a \(C^2\) endpoint,
-the affine tangent, a parallel frame, and the Riemann tensor would all have
-finite limits in a final convex normal neighborhood, a contradiction.
-\end{proof}
-
-For applications, the tidal form follows directly from the norm of the
-Killing field.  With
-\begin{equation}
-  (\nabla_c\nabla_d-\nabla_d\nabla_c)V^a=R^a{}_{bcd}V^b,
-\end{equation}
-the Killing equation and Ricci identity give
-\begin{equation}
-  \nabla_a\nabla_b\chi_c=R_{cbad}\chi^d,
-\end{equation}
-which proves Eq.~\eqref{eq:killing-tidal-identity}.
-
-\subsection{The wall Hessian as tidal curvature}
-We now identify the abstract tidal form in the scalar-shift geometry.  For the
-metric \eqref{eq:general-scalar-shift}, take \(\chi=\partial_t\), so
-\(\chi^2=v^2-1\).  Equation~\eqref{eq:not-whole-sphere} shows that the points
-of \(\mathcal G\) are precisely the null pregeodesic orbits of the stationary
-field on \(\Sigma\); regularity of \(\Sigma\) gives
-\(v_x\ne0\) there.  Choose \(A,B\in\{y,z\}\) transversely at such a point.
-Here \(\nabla_{\partial_A}\chi=0\), \(\chi^2=v^2-1\), and
-\(\Gamma^c{}_{AB}=0\) for the flat transverse coordinate block.  Hence
-Eq.~\eqref{eq:killing-tidal-identity} yields
-Eq.~\eqref{eq:screen-general}.  In the stationary orthonormal frame
-\eqref{eq:stationary-frame}, one has \(e_0+e_1=\chi\) on \(\Sigma\).
-Consequently
-Proposition~\ref{prop:tidal-amplification} identifies \(H\) as both the exact
-null-orbit tidal form and the leading rest-frame tidal tensor for timelike
-directions approaching that orbit.
-
 \subsection{From an extension to a captured exit}
-
-We next show that a proper extension would supply the boosted timelike sequence
-required by Proposition~\ref{prop:tidal-amplification}.
 
 The inverse metric has \(g^{tt}=-1\), so \(t\) is a smooth temporal function.
 If a future-directed causal curve is parametrized by \(t\), its causal
@@ -687,7 +559,7 @@ The remaining model-specific dynamical statement is isolated below.
 
 \begin{proposition}[Capture of finite-time exits]
 \label{prop:capture}
-Under the hypotheses of Theorem~\ref{thm:extension-alternative}, except that
+Under the hypotheses of Theorem~\ref{thm:extension-rigidity}, except that
 \(\Sigma\) need only be compact, let \(\gamma\) be
 a future-directed unit timelike geodesic with finite proper-time endpoint that
 cannot be continued in \(M\).  Put \(P=p_x\), \(Q_A=p_A\), and
@@ -708,12 +580,10 @@ the spatial image of \(\gamma\) is precompact, and there are
 \end{equation}
 \end{proposition}
 
-We prove the proposition next and then complete the contradiction.
-
 \subsection{Proof of the capture proposition}
 
 \begin{proof}[Proof of Proposition~\ref{prop:capture}]\mbox{}\par\smallskip
-\noindent\emph{First integrals and finite Killing time.}
+\noindent\emph{First integrals and divergent Killing time.}
 
 Let \(E=-p_t\), \(P=p_x\) and \(Q_A=p_A\) be the momenta conjugate to the
 coordinates.  For a unit timelike geodesic the Hamiltonian equations read
@@ -767,10 +637,7 @@ fixed positive amount to \(d\tau=dt/\dot t\), contradicting
   \label{eq:p-diverges}
 \end{equation}
 
-Define the spatial direction relative to the unit normal observers by
-\begin{equation}
-  n=\frac{(P,Q_y,Q_z)}{\dot t}.
-\end{equation}
+For the spatial direction \(n\) defined in Proposition~\ref{prop:capture},
 Equations~\eqref{eq:global-first-integrals} and \eqref{eq:p-diverges} give
 \begin{equation}
   |n|\longrightarrow1,
@@ -816,7 +683,6 @@ every returning excursion by
   r(t)\leq R+\frac{2RV}{c}.
   \label{eq:returning-excursion-bound}
 \end{equation}
-No radial monotonicity has been assumed.
 
 If the spatial trajectory were unbounded,
 \eqref{eq:returning-excursion-bound} would force one exterior component to be
@@ -899,20 +765,15 @@ the orbit of any such point; the last equation in
 \(\omega\)-limit set lies in \(\mathcal G\), and
 \(\operatorname{dist}(\boldsymbol{x}(t),\mathcal G)\to0\).
 
-Choose any sequence tending to infinite Killing time.  Spatial precompactness
-gives a subsequence \(t_n\to\infty\) and a point \(p\) such that
-\begin{equation}
-  \boldsymbol{x}(t_n)\longrightarrow p\in\mathcal G,
-  \label{eq:general-exit-subsequence}
-\end{equation}
-The full trajectory need not converge to one generator; the subsequence is all
-that the curvature argument requires.
+Spatial precompactness now gives the subsequence in
+Eq.~\eqref{eq:capture-subsequence}; convergence of the full trajectory is not
+needed.
 \end{proof}
 
 \subsection{Transverse rigidity at an exit}
 
-We now prove the necessity direction of
-Theorem~\ref{thm:extension-alternative}.  Let \(p\in\mathcal G\) and \(t_n\) be as
+We now prove Theorem~\ref{thm:extension-rigidity}.  Let \(p\in\mathcal G\) and
+\(t_n\) be as
 in Eq.~\eqref{eq:capture-subsequence}, and translate the data at \(t_n\) to
 the slice \(t=0\) by the stationary isometry.  The translated points converge
 to \((0,p)\).  In the stationary frame \eqref{eq:stationary-frame}, write
@@ -1019,18 +880,17 @@ Thus \(v_x\), and hence \(\kappa=-v_x\), is constant on the disk.  Regularity
 of \(\Sigma\) gives \(v_x(p)\ne0\), so \(\kappa\ne0\).  This proves
 Eq.~\eqref{eq:planar-cap-criterion} for every future extension.
 
-For a past extension, introduce \(T=-t\), \(X=-x\), and
-\begin{equation}
-  \widehat v(X,Y,Z)=v(-X,Y,Z).
-\end{equation}
-The metric retains the scalar-shift form and all the global hypotheses are
-preserved.  Applying the future argument to \(\widehat v\) and transforming
-back again yields the same planar-cap criterion.  Therefore any proper
-extension, at either time end, forces Eq.~\eqref{eq:planar-cap-criterion}.
+For a past extension, set \(T=-t\), \(X=-x\), and
+\(\widehat v(X,Y,Z)=v(-X,Y,Z)\).  This preserves the metric form and all
+hypotheses, so the future argument gives the same criterion.  This proves
+Theorem~\ref{thm:extension-rigidity}.
+\hfill\(\square\)
 
-\subsection{The planar-cap extension}
+\subsection{Sharpness: the planar-cap extension}
 
-Assume now that Eq.~\eqref{eq:planar-cap-criterion} holds.  Then
+\begin{proof}[Proof of Proposition~\ref{prop:planar-cap-extension}]
+Assume Eq.~\eqref{eq:planar-cap-criterion} holds on \(D_0\), fix an open disk
+\(D\) with \(\overline D\subset D_0\), and put \(\kappa=-\alpha\).  Then
 \(\mathcal N=\mathbb R_t\times D\) at \(x=x_H\) is a Killing horizon whose
 Killing orbits are diffeomorphic to \(\mathbb R\), with smooth cross-section
 \(D\) and constant nonzero inaffinity.  Locally, its regular bifurcate extension
@@ -1044,7 +904,7 @@ smooth function \(d\) such that
   v=-1-\kappa s+s^2d(s,y,z)
   \label{eq:cap-hadamard-form}
 \end{equation}
-near \(s=0\) over a smaller disk with closure in \(D\).  Define
+on a neighborhood of \(s=0\) over \(D\).  Define
 \begin{equation}
   U=e^{-\kappa t},\qquad s=UV.
   \label{eq:cap-kruskal-coordinates}
@@ -1075,30 +935,22 @@ The gluing graph is closed.  Indeed, a sequence with \(U\to0\) has
 \(|t|\to\infty\) and cannot converge in \(M=\mathbb R^4\); all other possible
 limits are handled by continuity.  Since the quotient map is open, the glued
 manifold is Hausdorff.  It is a proper extension because it contains \(U<0\).
+The product patch is time-orientable, and its orientation can be chosen to
+agree with that of \(M\) on the connected overlap.
 Moreover,
 \begin{equation}
   \partial_t=\kappa(V\partial_V-U\partial_U),
 \end{equation}
 so \(U=0\) and \(V=0\) are the two branches of a bifurcate Killing horizon
-and \(U=V=0\) is a bifurcation disk.  This proves sufficiency and completes
-Theorem~\ref{thm:extension-alternative}.
-\hfill\(\square\)
+and \(U=V=0\) is a bifurcation disk.
+\end{proof}
 
 \subsection{A compact flat-cap example}
 \label{app:compact-cap}
 
-The extendible branch occurs within the compact-wall class of the theorem.
-Put \(\rho^2=y^2+z^2\), choose \(0<a<b\) and \(L>0\), and define
-\begin{equation}
- h(u)=\begin{cases}0,&u\leq0,\\ e^{-1/u},&u>0,\end{cases}
- \qquad
- \eta(u)=\int_0^u h(s)\,ds,
- \qquad
- \psi(s)=L^2\frac{\eta(s-a^2)}{\eta(b^2-a^2)}.
- \label{eq:flat-cap-bump}
-\end{equation}
-Then \(\psi=0\) for \(s\leq a^2\), \(\psi\) is strictly increasing for
-\(s>a^2\), and \(\psi(b^2)=L^2\).  The level set
+Put \(\rho^2=y^2+z^2\), choose \(0<a<b\) and \(L>0\), and let \(\psi\) be a
+standard infinitely flat smooth function which vanishes for \(s\leq a^2\),
+satisfies \(\psi',\psi''>0\) for \(s>a^2\), and has \(\psi(b^2)=L^2\).  The level set
 \begin{equation}
   \Sigma=\{\Phi=0\},
   \qquad
@@ -1120,29 +972,89 @@ Then
 satisfies all the global hypotheses and is exactly constant outside a compact
 set.  On \(\rho<a\), it depends only on \(x\).  At the front cap,
 \(v_x=-2cL\), and at the rear cap \(v_x=2cL\), both constant over the disk.
-Theorem~\ref{thm:extension-alternative} therefore gives a proper smooth extension
-through either cap interior.  At the circular rim, every transverse
-neighborhood contains nonplanar wall points, so the necessity argument above
-also shows that the rim itself has no regular \(C^2\) endpoint.  The extension
-is a finite transverse aperture, not a continuation of the entire compact
-wall.
+Proposition~\ref{prop:planar-cap-extension} therefore gives a proper smooth
+extension through either cap interior.
+
+At the infinitely flat seam, every metric jet along the rim generator agrees
+with the neighboring extendible generators.  Its obstruction is transverse.
+
+\begin{lemma}[Endpoint frames]
+\label{lem:endpoint-frames}
+If a future-directed affinely parametrized causal geodesic
+\(\gamma:[0,\lambda_*)\to M\), where \(\lambda_*<\infty\), converges to \(q\)
+in a \(C^2\) extension, then its affine tangent and every parallel vector along
+it have finite limits at \(q\), and the tangent limit is nonzero.
+\end{lemma}
+
+\begin{proof}
+In a relatively compact extension chart with temporal coordinate \(T\), put
+\(K=\dot\gamma\) and \(f=dT(K)>0\).  Compactness of the causal cone section
+\(dT=1\) gives \(|f'|=|\nabla^2T(K,K)|\leq Cf^2\), whereas
+\(\int_\lambda^{\lambda_*}f(\mu)\,d\mu
+  =T(q)-T(\gamma(\lambda))<\infty\).
+If \(f(\lambda_j)\to\infty\), then \(|(1/f)'|\leq C\) implies
+\(1/f(\lambda)\leq C(\lambda_* -\lambda)\).  This would make
+\(\int^{\lambda_*}f\,d\lambda\) diverge.  Thus \(K\) is bounded.  Standard
+coordinate ODE estimates now make \(K\) Lipschitz; the linear
+parallel-transport equation and Gr\"onwall's inequality do the same for every
+parallel vector.  Hence all have limits, and uniqueness of the geodesic equation
+excludes a zero tangent limit.
+\end{proof}
+
+\begin{proposition}[The infinitely flat cap rim]
+\label{prop:flat-cap-rim}
+Each circular cap-rim generator is incomplete at finite affine parameter and
+has bounded parallel-propagated curvature, but it has no endpoint in any
+\(C^2\) Lorentzian extension.
+\end{proposition}
+
+\begin{proof}
+Consider the front rim at \((x,y,z)=(L,a,0)\); rotational symmetry covers its
+circle, and the rear is its time reverse.
+There \(\kappa=-v_x=2cL\ne0\), and an affine tangent to the stationary null
+orbit is \(K=q(e_0+e_1)\), where \(q=q_0e^{\kappa t}\); hence the orbit reaches
+finite affine parameter as \(t\to+\infty\).  Since \(\psi\) is flat at
+\(a^2\), all derivatives of the metric along the rim orbit agree with those of
+the planar product germ.  In the parallel null frame
+\(K,N=q^{-1}(e_0-e_1)/2,e_2,e_3\), the only potentially nonzero independent
+curvature component is therefore
+\(R(K,N,K,N)=v_{xx}-v_x^2\), which is stationary and finite.  The generator's
+parallel-propagated curvature is consequently bounded.
+
+Suppose nevertheless that it converges to an endpoint in a \(C^2\) extension.
+Lemma~\ref{lem:endpoint-frames} gives limits for \(K\) and the parallel vector
+\(e_2\).  The open domain and continuous dependence of the \(C^2\) geodesic
+flow \cite[Sec.~2.3]{Minguzzi2019} then supply a fixed \(\delta>0\), independent
+of sufficiently large \(t\), for the transverse geodesics
+\(\sigma_t(r)=(t,L,a+r,0)\), since \(\Gamma^\mu{}_{yy}=0\).  Their transported
+frames converge, so their curvature components must remain bounded for
+\(|r|<\delta\).
+
+They do not.  Since
+\(\nabla_{e_2}(e_0+e_1)=\tfrac12v_y(e_0+e_1)\), transport from the rim gives
+\begin{align*}
+ \widehat K(r)&=q e^{-[v(L,a+r,0)+1]/2}(e_0+e_1),\\
+ R(\widehat K,e_2,\widehat K,e_2)
+ &=q^2e^{-[v(L,a+r,0)+1]}(-c\phi_{yy}-c^2\phi_y^2),
+ \qquad \phi(y)=\psi(y^2).
+\end{align*}
+For every sufficiently small fixed \(r>0\), one has
+\(\phi_{yy}=2\psi'(y^2)+4y^2\psi''(y^2)>0\).  The last contraction therefore
+diverges as \(t\to+\infty\), contradicting curvature continuity.  Hence the
+rim generator has no \(C^2\) endpoint.
+\end{proof}
 
 \section*{Acknowledgments}
 
-The preparation of this manuscript made extensive use of generative AI tools.
-OpenAI ChatGPT/Codex and Anthropic Claude were used in an iterative workflow for
-problem formulation, mathematical and editorial critique, consistency checks,
-reference searches, Python/Matplotlib code, figure generation, and drafting and
-rewriting substantial portions of the prose and \LaTeX{} source.  The author
-selected the claims to pursue, checked the calculations, verified citations and
-code outputs, edited the final manuscript, and is solely responsible for all
-arguments, figures, code, and conclusions.
+OpenAI ChatGPT/Codex and Anthropic Claude assisted with literature search,
+mathematical and editorial critique, computer-algebra checks, code, figures,
+and drafting.  The author selected the claims, verified the calculations and
+citations, and is solely responsible for the manuscript.
 
 \section*{Data availability}
 
-No observational or experimental datasets were generated or analyzed in this
-work.  The computer-algebra outputs and Python code needed to reproduce the
-calculations and figure are provided in the accompanying Supplemental Material.
+No data were generated or analyzed.  Code and computer-algebra outputs are
+provided in the Supplemental Material.
 
 {\small\raggedright
 \bibliographystyle{unsrtnat}

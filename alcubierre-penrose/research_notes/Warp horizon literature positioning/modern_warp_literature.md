@@ -1,0 +1,61 @@
+# Modern warp drive causality and stability literature
+
+## What does Warp Drive Aerodynamics already establish?
+
+### Takeaway
+The 2022 paper is the closest modern predecessor for the axial endpoint dynamics, transverse shape dependence, and planar-front comparison. Its estimated integrated quantum-energy criterion differs from the proposed paper's classical C2 extension criterion. [Primary full text](https://arxiv.org/html/2207.06458)
+
+### Cited Findings
+- Barceló et al., *Warp Drive Aerodynamics*, JHEP 08 (2022) 288, arXiv:2207.06458, §III.1 Eq. (9), already identifies finite-affine axial limits at infinite stationary time and the time-reversed rear limit. §III.2 isolates the special transverse-gradient-zero points. These observations should be credited rather than presented as discoveries of the new manuscript. [§III](https://arxiv.org/html/2207.06458#S3)
+- §III.3 Eqs. (11), (14), (17)–(21) compares flat and rounded fronts, transverse deflection, and unstable-ray accumulation. Its quantum-energy estimate is heuristic; no exact higher-dimensional RSET is computed. A finite-width flat front is expected to be more susceptible to perturbations, whereas convex fronts disperse generic rays. [§III.3](https://arxiv.org/html/2207.06458#S3.SS3)
+- §IV interprets the wall between the axial special points as more like an ergoregion than a closed inner horizon. The conclusion concerns evidence for tamed semiclassical accumulation, not a theorem of classical four-dimensional extendibility. [§IV](https://arxiv.org/html/2207.06458#S4)
+
+### Inferences
+- Our contribution should be described as upgrading the geometrical diagnosis to an invariant curvature and extension question. A measure-zero set of incomplete rays can obstruct a C2 endpoint even if an energy-density estimate is spatially integrable. That is a difference of criteria, not a refutation of their energy calculation. [Our manuscript, screen-curvature and capture arguments](C:/Users/serge/Projects/alcubierre-penrose/paper/main.tex:284)
+- The cap branch must not be advertised as perturbatively stable: background regularity and the response to added matter are separate. The nonuniform cap-rim obstruction adds a neighborhood-regularity issue absent from merely inspecting a single trajectory. [Our cap-rim proposition](C:/Users/serge/Projects/alcubierre-penrose/paper/main.tex:1004)
+
+### Gaps
+- No direct computation of our transverse PP tidal tensor or scalar-shift iff cap criterion was located in the inspected 2022 full text. This is a bounded search finding, not a proof of priority. [Inspected full text](https://arxiv.org/html/2207.06458)
+
+## How does the 2026 classification affect our global hyperbolicity argument?
+
+### Takeaway
+The 2026 paper requires explicit attention. Its global-hyperbolicity conclusion appears to conflict with the unextended bounded-shift R4 metric used here; the mismatch cannot be dismissed as a change between lab and comoving coordinates. [Primary full text](https://arxiv.org/html/2602.16495)
+
+### Cited Findings
+- Barzegar, Buchert and Vigneron, arXiv:2602.16495, Def. III.1 uses zero comoving shift in the core and -Vs(t) in the exterior. Eqs. (3.25)–(3.27) give unit lapse, Euclidean slices, and superluminality. Their Alcubierre Eq. (3.44) is explicitly comoving. [§III](https://arxiv.org/html/2602.16495#S3)
+- Remark IV.4 infers that increasing-t time orientation requires shift norm below lapse. Theorem IV.7 then concludes that constructed superluminal R-Warp models cannot be globally hyperbolic, using the presence of horizons. [§IV.1](https://arxiv.org/html/2602.16495#S4.SS1)
+- The accessible arXiv record lists only v1, submitted 18 February 2026; no correction/erratum was found in the targeted search. It should be cited as a preprint unless publication status is independently updated. [Version record](https://arxiv.org/abs/2602.16495)
+- Choquet-Bruhat–Cotsakis, *Global Hyperbolicity and Completeness*, Theorem 2.1 assumes complete uniformly controlled slices, bounded lapse, and uniformly bounded shift. It does not require shift norm below lapse. Its proof uses the timelike slice normal to establish increasing t on causal curves. [Original theorem and proof](https://arxiv.org/html/gr-qc/0201057#S2)
+
+### Inferences
+**Direct hypothesis match.** Choose a smooth radial compact-transition profile f=1 near zero and f=0 beyond R, a smooth bounded switching factor a(t) which starts at zero and reaches one, and Vs>1. Then v(t,x)=Vs a(t)[f(|x|)-1] is a bounded unit-lapse flat-slice shift on R4. It satisfies the 2026 paper's stated comoving asymptotics and its dynamic definition. In lab coordinates X=x+integral(Vs a(t)dt), its shift is spatially localized. Thus constant comoving exterior and asymptotic flatness are compatible. [Definitions and Eq. (3.44)](https://arxiv.org/html/2602.16495#S3)
+
+**Independent check, not an attributed claim.** For this prescribed metric, g^{tt}=-1. The normal n=partial_t+v partial_x is timelike, with g(n,n)=-1. A future causal curve obeys |dx/dt-v e_x|<=1, hence |dx/dt|<=1+Vs. If its t-range had a finite endpoint, spatial coordinates would have a finite limit and the curve could continue in the smooth full metric. Therefore every inextendible causal curve crosses every constant-t slice exactly once. The full unextended metric is globally hyperbolic. No energy condition or field-evolution assumption enters. [Same argument in our appendix](C:/Users/serge/Projects/alcubierre-penrose/paper/main.tex:520); [CBC original proof](https://arxiv.org/html/gr-qc/0201057#S2)
+
+**Apparent logical issue.** Increasing t along causal curves is controlled by the timelike covector dt, not by requiring the coordinate vector partial_t to remain timelike. In the full metric, partial_t can become null or spacelike while the slices remain Cauchy. CBC gives sufficient hypotheses, so using failure of an extra coordinate-vector condition as a necessary obstruction also requires justification. Before criticizing, the manuscript should distinguish its original R4 spacetime from an extended reduced diagram containing additional Cauchy horizons, and distinguish prescribed metrics from dynamically realizable matter solutions. [Our definition of extension](C:/Users/serge/Projects/alcubierre-penrose/paper/main.tex:209); [CBC Theorem 2.1](https://arxiv.org/html/gr-qc/0201057#S2)
+
+Recommended measured wording: For the full bounded-shift metric on R4, the stationary-limit set does not prevent the t-slices from being Cauchy; this should be distinguished from the horizon terminology and construction assumptions in BBV §IV.1. A short self-contained lemma is preferable to simply citing BBV for background. [Our causal-speed bound](C:/Users/serge/Projects/alcubierre-penrose/paper/main.tex:522)
+
+### Gaps
+- No author response, erratum, or later revision resolving the apparent GH conflict was found. The physical initial-value problem for specified matter is not settled by our metric counterargument. [Current arXiv version record](https://arxiv.org/abs/2602.16495)
+
+## What is the defensible modern literature position?
+
+### Takeaway
+Lead with classical four-dimensional C2 extension rigidity for a precisely specified scalar-shift class. Do not claim the first warp horizon, first finite-affine endpoint, first higher-dimensional shape dependence, or first planar comparison. [2022 predecessor](https://arxiv.org/html/2207.06458); [our theorem](C:/Users/serge/Projects/alcubierre-penrose/paper/main.tex:221)
+
+### Cited Findings
+- The 2026 classification organizes wider metric classes and energy-condition critiques; its stated scope excludes most horizon analysis beyond global hyperbolicity. It does not supply the planar-cap iff extension theorem in the inspected text. [Introduction and §IV.1](https://arxiv.org/html/2602.16495)
+- A search surfaced Mattingly et al. 2021's invariant-based regularity discussion as especially relevant to why scalar invariants are insufficient. This topic should be checked by the adjacent curvature-literature researcher, using the actual paper rather than the aggregator's strong interpretation. [Primary publisher paper](https://doi.org/10.3390/universe7020021)
+- Searches used Alcubierre inextendible; Alcubierre geodesic incompleteness; warp drive parallel propagated curvature singularity; Alcubierre C2 extension; warp drive flat cap; and Warp Drive Aerodynamics curvature singularity followups. These returned no clearly matching newer primary extension theorem. Several irrelevant speculative propulsion pages were excluded. The search is not exhaustive and does not certify novelty. [Primary corpus inspected](https://arxiv.org/html/2207.06458); [2026 corpus](https://arxiv.org/html/2602.16495)
+
+### Inferences
+Suggested main positioning: This paper gives a classical extension criterion for smooth stationary nonpositive scalar shifts with compact regular superluminal walls and controlled exterior tails. It identifies an open constant-inaffinity planar Killing-horizon patch as necessary and sufficient for a Hausdorff C2 extension, establishes radial inextendibility, and separates raywise bounded curvature from transverse-neighborhood extendibility at a flat cap rim. These claims are stronger than locating blueshift points, while being narrower than a theorem about all warp drives or quantum stability. [Our theorem, corollary and rim proposition](C:/Users/serge/Projects/alcubierre-penrose/paper/main.tex:221)
+
+### Gaps
+- Novelty remains provisional until independent examination of the full earlier extension literature and any unpublished/uncited mathematical relativity work. No general vector-shift theorem, backreaction stability result, or maximal cap completion should be inferred from the current manuscript. [Scope of current theorem](C:/Users/serge/Projects/alcubierre-penrose/paper/main.tex:221)
+### Bounded final cross-check: two numerical geodesic predecessors
+- Mueller and Weiskopf, *Detailed study of null and time-like geodesics in the Alcubierre Warp spacetime*, arXiv:1107.5650, primary HTML inspected at Sections 2, 3 and 3.1. Eq. (1) is the four-dimensional lab-frame Alcubierre metric; Eq. (5) gives an everywhere valid comoving tetrad, while Eqs. (6)-(7) require a timelike coordinate-static observer. Section 3 explicitly reports affine-parameter numerical stiffness near the wall and switches to nonaffine integration. Eq. (11) uses the Jacobi equation and a parallel-transported Sachs screen for optical lensing. Section 3.1 reproduces Clark et al.'s rear apparent visual horizon. This is important optical/geodesic precedent, but the inspected passages give no C2 extension or inextendibility theorem. Full text was accessible, but only the specified relevant sections were closely read. [Primary text, Sections 2-3.1](https://arxiv.org/html/1107.5650)
+- McMonigal, Lewis and O'Byrne, *The Alcubierre Warp Drive: On the Matter of Matter*, arXiv:1202.5708, primary HTML inspected in Sections II, III.0, III.1 and III.2. Section III explicitly restricts the trajectories to the t-x plane. Eq. (14) locates front and rear speed thresholds; Section III.1 treats forward particles asymptoting to the front horizon and exponentially growing time components of velocity. Section III.2 studies bounded variable-speed journeys and release of captured light after slowing below light speed. Their compact polynomial profile in Section II has a derivative jump at the bubble edge, so it does not meet our smooth-background hypotheses. These numerical finite-journey results precede any claimed qualitative observation that switching off releases trapped rays, but do not establish completeness or classify four-dimensional extensions. Full text was accessible; the specified sections, rather than every numerical case, were closely read. [Primary text, Sections II-III.2](https://arxiv.org/html/1202.5708)
+- Positioning inference: cite these papers for optical horizons, particle trapping, blueshift and variable-speed journeys. Avoid claiming the numerical phenomena themselves as new. Our proposed invariant endpoint and transverse-neighborhood theorems address a different question. Their use of the word horizon does not by itself establish a global Cauchy horizon or violate global hyperbolicity of the original bounded-shift R4 background.
