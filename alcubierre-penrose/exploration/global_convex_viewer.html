@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alcubierre spacetime — global conformal metric domain</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,sans-serif;color:#20303b;background:#f5f6f7}
+header{padding:22px 28px 15px;background:white;border-bottom:1px solid #dce2e5}h1{font-size:23px;margin:0 0 6px;font-weight:600}p{margin:4px 0}.sub{max-width:1000px;color:#52636c}
+main{display:grid;grid-template-columns:minmax(0,1fr) 290px;height:calc(100vh - 145px);min-height:560px}.view{position:relative;background:#fbfcfd;overflow:hidden}canvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+aside{padding:20px;background:white;border-left:1px solid #dce2e5;overflow:auto}h2{font-size:15px;margin:18px 0 8px}h2:first-child{margin-top:0}button{border:1px solid #c7d3d8;background:white;padding:7px 10px;border-radius:6px;cursor:pointer;margin:2px}button:hover{background:#e9f1f3}label{display:flex;gap:8px;align-items:center;font-size:13px;margin:7px 0}input{accent-color:#267b86}.swatch{width:10px;height:10px;border-radius:50%;flex:none}.note{font-size:12px;color:#566872;margin-top:13px}.badge{position:absolute;bottom:14px;left:18px;padding:8px 11px;background:#fffffff0;border:1px solid #dce2e5;border-radius:7px;max-width:460px;font-size:12px;pointer-events:none}.math{font-family:Georgia,serif;font-size:16px;margin:12px 0}.ok{color:#237356}a{color:#267b86}
+@media(max-width:800px){main{grid-template-columns:1fr;height:auto}.view{height:65vh;min-height:440px}aside{border-left:0;border-top:1px solid #ddd}header{padding:15px}h1{font-size:20px}}
+</style>
+<header><h1>A global 2+1 conformal metric diagram</h1><p class="sub">One injective coordinate map covers the entire original Alcubierre patch. Blue surfaces are ordinary null infinity; the two small cap strips are regular physical crossings. Other boundary pieces retain approach directions and may be singular.</p></header>
+<main><div class="view"><canvas id="plot"></canvas><div class="badge">Drag to rotate · scroll to zoom · shift-drag to pan.<br>Display height is a coordinate, not a global time function. Null directions are determined by the rescaled metric, not by 45° lines.</div></div>
+<aside><h2>Views</h2><button id="global">Whole spacetime</button><button id="front">Front cap face</button><button id="rear">Rear cap face</button><h2>Visible geometry</h2><div id="layers"></div>
+<h2>What is checked</h2><p class="note ok">Global injectivity follows from strict convexity. The metric is regular and Lorentzian on every finite-cut scri face and every open cap crossing. Both boundary normals are null.</p><p class="math">Z = ∇Φ &nbsp; · &nbsp; ĝ = Ω² J⁻ᵀ g J⁻¹</p>
+<p class="note">Black: the central rider and its two ends. Teal: the stationary-limit wall. Orange and purple generator curves are actual physical null curves. Red lines mark the excluded cap rims.</p>
+<p class="note">The enlarged face is the same global coordinate face. Its stationary points retain different spatial approaches; they are not additional physical events or distinct causal-boundary rider points.</p>
+<p class="note">This is a conformal representation with a singular boundary, not a flat Minkowski diagram, a minimal Penrose completion, or a diagram of a maximal physical extension.</p>
+</aside></main>
+<script>
+const scene=__SCENE_DATA__;
+const canvas=document.getElementById('plot'),ctx=canvas.getContext('2d');
+let az=-.9,el=.38,zoom=1,center=[0,0,0],pan=[0,0],W=0,H=0,scale=1,pending=false;
+const visible={};
+const names=new Map();for(const x of [...scene.meshes,...scene.lines])if(!names.has(x.name))names.set(x.name,x.color);
+for(const [name,color] of names){visible[name]=!['Stationary-limit wall tube','Communication horizons'].includes(name);const l=document.createElement('label'),i=document.createElement('input');i.type='checkbox';i.checked=visible[name];i.onchange=()=>{visible[name]=i.checked;request()};const s=document.createElement('span');s.className='swatch';s.style.background=color;l.append(i,s,document.createTextNode(name));document.getElementById('layers').append(l)}
+function xyz(p){return[p[1],p[2],p[0]]}function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]}
+function project(p){p=xyz(p).map((v,k)=>v-center[k]);const right=[-Math.sin(az),Math.cos(az),0],up=[-Math.sin(el)*Math.cos(az),-Math.sin(el)*Math.sin(az),Math.cos(el)],normal=[Math.cos(el)*Math.cos(az),Math.cos(el)*Math.sin(az),Math.sin(el)];return[W/2+pan[0]+scale*dot(p,right),H/2+pan[1]-scale*dot(p,up),dot(p,normal)]}
+function rgba(hex,alpha,light=1){const n=parseInt(hex.slice(1),16);return`rgba(${Math.round(((n>>16)&255)*light)},${Math.round(((n>>8)&255)*light)},${Math.round((n&255)*light)},${alpha})`}
+function draw(){pending=false;const dpr=Math.min(devicePixelRatio||1,2),r=canvas.getBoundingClientRect();W=r.width;H=r.height;canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);scale=Math.min(W,H)/3.8*zoom;
+const tris=[];for(const m of scene.meshes){if(!visible[m.name])continue;const pp=m.vertices.map(project);for(const f of m.faces){const a=pp[f[0]],b=pp[f[1]],c=pp[f[2]];if(Math.max(a[0],b[0],c[0])<0||Math.min(a[0],b[0],c[0])>W||Math.max(a[1],b[1],c[1])<0||Math.min(a[1],b[1],c[1])>H)continue;tris.push({p:[a,b,c],depth:(a[2]+b[2]+c[2])/3,color:m.color,alpha:m.opacity})}}
+tris.sort((a,b)=>a.depth-b.depth);for(const t of tris){ctx.beginPath();ctx.moveTo(t.p[0][0],t.p[0][1]);ctx.lineTo(t.p[1][0],t.p[1][1]);ctx.lineTo(t.p[2][0],t.p[2][1]);ctx.closePath();ctx.fillStyle=rgba(t.color,t.alpha);ctx.fill()}
+for(const l of scene.lines){if(!visible[l.name])continue;ctx.beginPath();l.points.forEach((p,k)=>{const v=project(p);if(k)ctx.lineTo(v[0],v[1]);else ctx.moveTo(v[0],v[1])});ctx.strokeStyle=l.color;ctx.lineWidth=l.width;ctx.stroke()}
+for(const p of scene.points){const v=project(p.point);if(v[0]<-30||v[0]>W+30||v[1]<-30||v[1]>H+30)continue;ctx.beginPath();ctx.arc(v[0],v[1],4,0,2*Math.PI);ctx.fillStyle=p.color;ctx.fill();ctx.font='12px system-ui';ctx.fillStyle='#27323a';ctx.fillText(p.name,v[0]+8,v[1]-8)}
+ctx.font='12px system-ui';ctx.fillStyle='#697b86';ctx.fillText('Same global Z coordinates in every view',18,25)}
+function request(){if(!pending){pending=true;requestAnimationFrame(draw)}}
+let drag=null;canvas.onpointerdown=e=>{drag=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId)};canvas.onpointerup=()=>drag=null;canvas.onpointermove=e=>{if(!drag)return;const dx=e.clientX-drag[0],dy=e.clientY-drag[1];drag=[e.clientX,e.clientY];if(e.shiftKey){pan[0]+=dx;pan[1]+=dy}else{az-=dx*.008;el=Math.max(-1.5,Math.min(1.5,el+dy*.008))}request()};canvas.onwheel=e=>{e.preventDefault();zoom=Math.max(.35,Math.min(40,zoom*Math.exp(-e.deltaY*.001)));request()};
+document.getElementById('global').onclick=()=>{az=-.9;el=.38;zoom=1;center=[0,0,0];pan=[0,0];request()};
+document.getElementById('front').onclick=()=>{az=0;el=Math.atan(.5);zoom=9;center=[1.45,0,0];pan=[0,0];request()};
+document.getElementById('rear').onclick=()=>{az=Math.PI;el=-Math.atan(.5);zoom=9;center=[-1.45,0,0];pan=[0,0];request()};
+window.addEventListener('resize',request);request();
+</script></html>

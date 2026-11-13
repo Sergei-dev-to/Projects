@@ -1,0 +1,141 @@
+% Supporting geometry and figure data retained outside the main paper.
+% This is a source fragment using the manuscript preamble, notation and
+% bibliography. It is not input by main.tex and is not a second document.
+
+\section*{Matched Spherical and Capped Profiles}
+\label{app:comparison-profile}
+
+The two walls in Figure~\ref{fig:reduced-patch} use
+\begin{equation}
+ v_{\rm sph}=W(x^2+y^2+z^2-1),\qquad
+ v_{\rm cap}=W(x^2+\psi(y^2+z^2)-1).
+ \label{eq:supp-matched-figure-profiles}
+\end{equation}
+For the cap, take \(L=b=\kappa=1\), \(c=1/2\), \(a=3/5\), and
+\[
+ \psi(s)=\frac{H((s-a^2)/d)}{H((1-a^2)/d)},\qquad d=1/5,
+ \qquad
+ H(u)=\begin{cases}\displaystyle\int_0^u e^{-1/z}\,dz&u>0,\\0&u\leq0.
+ \end{cases}
+\]
+Thus \(\psi=0\) for \(\rho\leq a\), \(\psi(1)=1\), and the cap joins
+its curved wall smoothly.  The spatial panels show the sections \(z=0\).
+Both profiles have exactly the same axial shift \(W(x^2-1)\).
+
+Choose \(W\) smooth and nonincreasing, equal to zero for
+\(\phi\leq-0.98\), to \(-1-\phi/2\) on \(|\phi|\leq0.9\), and to
+\(-2\) for \(\phi\geq1.8\).  Smooth monotone interpolation gives such a
+profile; the Supplement supplies an explicit choice.  Its unique
+stationary-limit level is \(\phi=0\).
+The front and rear axial roots are \(x=\pm1\), with \(|v_x|=1\).
+The numerical traveler in panel (a) starts at the bubble center, at
+\(x=\rho=0\), and follows an axial timelike geodesic into the affine cap
+collar and through the crossing.  Its interior trajectory and the orange
+center worldline use the global profile \(W\), matched to the regular cap
+coordinates in the collar.  The plotting script checks normalization,
+conserved energy, matching, and the crossing before drawing the figure.
+Amber shows only the added outward sector \(p>0,q<0\); the continued
+generator \(p=0\) bounds it, and its dotted edges are chart cuts.
+
+\subsection*{Wall shape and matter source}
+
+For a regular front with \(v_x=-\kappa<0\), write \(x=F(y,z)\).
+Differentiating its wall equation twice at a stationary generator gives
+\begin{equation}
+  F_{AB}=\frac{H_{AB}}{\kappa}.
+  \label{eq:wall-graph-hessian}
+\end{equation}
+In principal transverse coordinates for a smooth convex front,
+\begin{equation}
+  F_{yy}=-C_1,\qquad F_{zz}=-C_2,\qquad C_i>0,
+\end{equation}
+and the spherical result is \(C_1=C_2=1/R_F\).  An isolated zero of \(H\) is
+insufficient: Theorem~\ref{thm:extension-rigidity} requires an open planar cap
+with constant \(\kappa\).
+
+If the Einstein equation is imposed, the same wall curvature determines the
+null energy component along the increasingly boosted light direction (in
+geometrized units):
+\begin{equation}
+  8\pi T_{KK}=G_{KK}=q^2\operatorname{tr}H,
+  \qquad
+  G_{KK}=-\kappa(C_1+C_2)q^2<0
+  \quad\text{at a convex future front}.
+  \label{eq:null-source}
+\end{equation}
+Thus the transverse wall curvature that produces the tidal obstruction also
+gives an unbounded negative null energy component at a convex front.  No energy
+condition enters the extension proof: at a saddle point the full tidal tensor
+may be nonzero even when its trace, and hence this source component, vanishes.
+This local source projection is distinct from the integrated matter
+constraints studied in Refs.~\cite{PfenningFord1997,LoboVisser2004}.
+
+
+\subsection*{Transverse geometry at the aperture}
+\label{app:meridional-diagrams}
+
+For the axisymmetric examples, cylindrical coordinates give
+\begin{equation}
+  g=g_3+\rho^2d\phi^2,\qquad
+  g_3=-dt^2+[dx-v(x,\rho)dt]^2+d\rho^2.
+  \label{eq:meridional-quotient}
+\end{equation}
+The spatial panels of Figure~\ref{fig:reduced-patch} show sections of the
+wall rather than a conformal diagram of \(g_3\).  Every four-dimensional causal curve projects
+to a causal curve of \(g_3\), and every causal curve of \(g_3\) lifts at
+constant \(\phi\).  Away from the axis, zero angular momentum geodesics
+remain at constant \(\phi\).  The coordinate edge \(\rho=0\) is the symmetry axis, not a
+physical boundary.
+
+Use the axial shift \(v_0(x)=v(x,0)\) to define \(p,q\) as above, also away
+from the axis.  Put \(\delta=v(x,\rho)-v_0(x)\), and write
+\begin{align}
+  \theta=dt&=\frac{v_0+1}{2\kappa p}\,dp
+                +\frac{v_0-1}{2\kappa q}\,dq,\notag\\
+  \eta=dx-v_0dt&=-\frac{v_0+1}{2\kappa p}\,dp
+                +\frac{v_0-1}{2\kappa q}\,dq.
+  \label{eq:meridional-coframe}
+\end{align}
+Direct pullback gives the full three-dimensional metric
+\begin{equation}
+  g_3=C(pq)\,dp\,dq+d\rho^2-2\delta\,\theta\eta
+                       +\delta^2\theta^2,
+  \qquad \det g_3=-C^2/4.
+  \label{eq:meridional-pullback}
+\end{equation}
+Inside the cap, \(\delta=0\), and its conformal representative in the
+axial conformal coordinates is
+\begin{equation}
+  \Omega^{-2}g_3=-dT^2+dX^2+\Omega^{-2}d\rho^2,
+  \qquad \Omega^2=\frac{3C(pq)(1+p^2)(1+q^2)}4.
+  \label{eq:meridional-conformal-metric}
+\end{equation}
+The transverse cone opening depends on \(\Omega\); the geometry is not an
+extrusion of a Minkowski diamond.  Outside the cap the additional terms in
+Eq.~\eqref{eq:meridional-pullback} must also be retained.  At fixed
+\(\rho>a\), with \(\delta_H=v(L,\rho)+1<0\),
+\[
+  q^2(g_3)_{qq}\longrightarrow
+  \frac{\delta_H^2-2\delta_H}{\kappa^2}>0.
+\]
+For the spherical bubble this happens at every fixed \(\rho>0\); for the
+capped bubble it happens only beyond the aperture.  This identifies failure
+of this chart.  Corollary~\ref{cor:alcubierre-maximality} and
+Proposition~\ref{prop:flat-cap-rim} establish the invariant obstructions.
+
+The finite-time wall sections in Figure~\ref{fig:reduced-patch} are
+\(x=\pm\sqrt{1-y^2}\) and \(x=\pm\sqrt{1-\psi(y^2)}\) at \(z=0\),
+using the profiles specified above.  The plotting script supplies the
+smooth axial factors \(p=P(x)e^{\kappa t}\),
+\(q=Q(x)e^{-\kappa t}\) used for the traveler in panel (a), including their
+horizon limits.  The curve is a unit timelike geodesic on the axis \(\rho=0\),
+with conserved Killing energy \(E\simeq1.1863>1\), so it belongs to the
+core-accessible outgoing branch.  Its normalization and energy conservation
+are checked across \(q=0\).
+
+
+\subsection*{A qualification on earlier axial continuations}
+For example, Eq.~(2.10) of Ref.~\cite{GonzalezDiaz2000}
+reintroduces transverse terms after an axial reduction.  Off axis,
+\(dr=(x\,dx+y\,dy+z\,dz)/r\); the axial identity \(dr=dx\) does not
+establish a four-dimensional isometric pullback.

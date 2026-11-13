@@ -1,0 +1,9 @@
+Exact symbolic flat-germ pullback: passed
+p*q = -(x-L): passed
+Plotted curve: unit timelike geodesic, 0 <= tau <= 0.24
+Crossing: tau=3/25, p=16/25, q=0
+Old Figure 1 endpoint C+: (np.float64(1.0172219678978514), np.float64(0.5535743588970452))
+Old Figure 1 crossing limit: (np.float64(0.8400574303413983), np.float64(0.7307388964534982))
+Crossing is above and left of C+, on the upper-right edge.
+New plotting conformal factor is positive and regular at q=0.
+The added chart is finite; maximality is not asserted.

@@ -1,0 +1,14 @@
+Matched global profiles: spherical W(x^2+y^2+z^2-1), capped W(x^2+psi(y^2+z^2)-1).
+Axial shifts identical; W smooth, bounded, nonincreasing, with flat core and constant exterior.
+Both axial horizons at x=+/-1 with |v_x|=1; cap radius a=0.6, transverse outer radius b=1.
+Timelike geodesic: norm error 2.89e-15, E=1.18630752167, drift 5.77e-15.
+Crossing tau=0.0561839995148, p=0.59406024916; q=0, X+T=pi/2.
+Null lines have 45-degree slopes. The green edge shows q=0, 0<p<infinity, between the axial horizons and disjoint from ordinary future null infinity.
+Spatial sections show the walls at fixed time and z=0.
+The even shift makes (t,x) reversal a time-reversing isometry. Center-normalized null coordinates make it (X,T) reversal in the diagram.
+Reversing the proper-time parameter after applying the isometry fixes the future tangent at the central event, so the reflected curves are one geodesic.
+Proper time between rear and front crossings: 2.357601545.
+The trajectory continues to infinite proper time in both flat exteriors.
+The added axial future null edges are A=pi/6 and B=3pi/2; the past edges are their reflections. Each pair meets at added timelike infinity.
+The A=pi/6 edge and the rear axial horizon have the common limit (pi/6, pi/2).
+Across the blue edges the same cap metric covers all x on each added side. The next axial horizons are regular; dotted segments mark the next cap attachments.

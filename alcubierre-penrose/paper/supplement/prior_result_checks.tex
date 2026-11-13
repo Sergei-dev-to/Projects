@@ -1,0 +1,113 @@
+% Supporting source fragment; not included in main.tex.
+% These are independent checks of prior local results, not additional claims.
+\section*{Checks of the local background results}
+
+The following calculations reproduce the local spherical tidal behavior
+already encoded in the transverse dynamics of
+Ref.~\cite[Secs.~3.1--3.3]{BarceloEtAl2022}.  They fix curvature conventions
+and verify the exact stationary-generator formula; they are not used as
+an independent novelty claim.  The manuscript instead proves global
+four-dimensional inextendibility and the cap criterion.
+
+\subsection*{Spherical stationary-generator check}
+\label{background:sec:obstruction}
+
+The reduced metric omits the curvature measured by transverse separations
+between freely falling trajectories.  For a nondegenerate radial wall
+\(r=R_F\), put
+\(\kappa=-v_r(R_F)>0\) and
+\(\chi=\partial_t\).  Although \(\chi\) is null on the wall, the
+four-dimensional wall worldvolume is generally timelike:
+\begin{equation}
+  g^{ab}\partial_a(v^2-1)\partial_b(v^2-1)=4(v_y^2+v_z^2).
+  \label{background:eq:wall-normal-norm}
+\end{equation}
+On \(v=-1\),
+\begin{equation}
+  \nabla_{\partial_t}\partial_t
+    =v_x\partial_t+v_y\partial_y+v_z\partial_z .
+  \label{background:eq:not-whole-sphere}
+\end{equation}
+Thus only the two axial stationary null orbits are geodesic up to
+reparametrization.  At the future front,
+\begin{equation}
+  \nabla_{\partial_t}\partial_t=-\kappa\partial_t .
+  \label{background:eq:nonaffine}
+\end{equation}
+Here \(\kappa\) measures the exponential rescaling between stationary time
+and affine parametrization on this orbit.  It is a local inaffinity and
+peeling scale \cite{CroppLiberatiVisser2013}.  On a genuine Killing-horizon
+patch, \(-\kappa\) is the signed surface gravity for \(\chi=\partial_t\).
+An affine tangent is \(K=q\chi\), with
+\(q=[\kappa(\lambda_*-\lambda)]^{-1}\).  The transverse vectors
+\(Y=\partial_y\) and \(Z=\partial_z\) are parallel along the orbit, and
+\(H_{AB}:=v_{AB}\), with \(A,B\in\{y,z\}\), satisfies
+\begin{equation}
+  H_{AB}=-\frac{\kappa}{R_F}\delta_{AB}.
+  \label{background:eq:radial-hessian}
+\end{equation}
+A direct curvature calculation gives
+\begin{equation}
+  R(K,Y,K,Y)=R(K,Z,K,Z)
+  =-\frac{1}{\kappa R_F(\lambda_*-\lambda)^2}.
+  \label{background:eq:main-blowup}
+\end{equation}
+The isometry \((t,x,y,z)\mapsto(-t,-x,y,z)\) gives the past-rear result.
+These are parallel-propagated curvature singularities
+\cite{EllisSchmidt1977}.  Lemma~\ref{lem:endpoint-frames} excludes a \(C^2\)
+endpoint.  Scalar curvature measures, studied for these geometries in
+Refs.~\cite{MattinglyEtAl2021,Rodal2023}, remain finite and miss this
+obstruction.  The Killing-field calculation below gives the curvature
+identities and derivation.
+
+Flattening the front removes this transverse tidal term at the chosen
+generator.  A regular extension requires a whole planar patch with constant
+surface gravity, as Theorem~\ref{thm:extension-rigidity} shows.
+
+\subsection*{Killing-field curvature check}
+\label{background:app:local-curvature}
+
+Write \(\Sigma=\{v=-1\}\).  Its stationary-generator locus is
+\begin{equation}
+  \mathcal G=\{p\in\Sigma:v_y(p)=v_z(p)=0\}.
+  \label{background:eq:generator-locus}
+\end{equation}
+For any Killing field \(\chi\), the Killing equation and Ricci identity give
+\begin{equation}
+  R(\chi,X,\chi,Y)
+   =g(\nabla_X\chi,\nabla_Y\chi)
+    -\frac12(\nabla^2\chi^2)(X,Y).
+  \label{background:eq:killing-tidal-identity}
+\end{equation}
+With
+\((\nabla_c\nabla_d-\nabla_d\nabla_c)V^a=R^a{}_{bcd}V^b\), this follows from
+\(\nabla_a\nabla_b\chi_c=R_{cbad}\chi^d\) by differentiating \(\chi^2\).
+For the scalar shift, take \(\chi=\partial_t\) and introduce the stationary
+orthonormal frame
+\begin{equation}
+  e_0=\partial_t+v\partial_x,\qquad e_1=\partial_x,
+  \qquad e_A=\partial_A.
+  \label{background:eq:stationary-frame}
+\end{equation}
+On \(\Sigma\), Eq.~\eqref{background:eq:not-whole-sphere} gives the stationary acceleration.
+Thus \(\mathcal G\) is precisely the locus of null pregeodesic stationary
+orbits, and \(e_0+e_1=\chi\) there.  At \(p\in\mathcal G\), the transverse,
+or screen, components of the Killing identity reduce to
+\begin{equation}
+  H_{AB}(p):=v_{AB}(p),
+  \qquad
+  R_{tAtB}=H_{AB},
+  \qquad R_{KAKB}=H_{AB}q^2
+  \quad\text{for }K=q\partial_t .
+  \label{background:eq:screen-general}
+\end{equation}
+
+Let the null orbit through \(p\) be parametrized by Killing time and suppose
+\(\nabla_\chi\chi=\alpha\chi\), with \(\alpha\ne0\).  At one end of the orbit,
+its affine tangent \(K=q\chi\) obeys
+\(|q|=[|\alpha|\,|\lambda-\lambda_*|]^{-1}\).  Thus a nonzero transverse tidal
+form produces a parallel-propagated curvature singularity proportional to
+\(|\lambda-\lambda_*|^{-2}\).  At \(p\in\mathcal G\), \(v_A=0\) also gives
+\(\nabla_\chi e_A=0\), so the coordinate screen vectors themselves are parallel.
+Lemma~\ref{lem:endpoint-frames} therefore excludes a \(C^2\) endpoint.
+

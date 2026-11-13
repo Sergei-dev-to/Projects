@@ -103,7 +103,7 @@ def transform_for_cqg(tex: str) -> str:
         "\\begin{abstract}"
     )
     cqg_keywords = (
-        "\\keywords{warp drive, Alcubierre spacetime, Cauchy horizon, "
+        "\\keywords{warp drive, Alcubierre spacetime, spacetime inextendibility, "
         "curvature singularity, general relativity}"
     )
     # The canonical (article-class) source places \maketitle before the

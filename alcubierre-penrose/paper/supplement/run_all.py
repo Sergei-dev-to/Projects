@@ -20,10 +20,12 @@ SCRIPTS = [
     "front_tip_general_convex_wall.py",
     "front_tip_einstein_parallel_frame.py",
     "flat_cap_partial_extension.py",
+    "flat_cap_crossing.py",
     "front_tip_taylor_metric_check.py",
     "front_tip_numerical_frame_check.py",
     "front_tip_parallel_tidal_analytic.py",
     "diagram_derivation_overlay.py",
+    "bubble_extension_comparison.py",
 ]
 
 

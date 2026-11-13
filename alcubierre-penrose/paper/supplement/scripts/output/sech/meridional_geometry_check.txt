@@ -1,0 +1,9 @@
+2+1 quotient pullback: exact symbolic checks passed.
+det(g_pq_rho) = -C^2/4; product metric only where v=v0.
+Outside aperture: q^2 g_qq -> (delta^2-2 delta)/kappa^2 > 0.
+cap: tangent null-cone residual <= 8.02e-14; determinant error <= 6.66e-16; T temporal on checked collar (max norm -1).
+rounded: tangent null-cone residual <= 2.78e-14; determinant error <= 1.11e-15; T temporal on checked collar (max norm -1).
+Entire plotted cap collar has -0.2645 <= Phi <= 0.6077; it fits within a smooth global W with affine segment |Phi|<0.9.
+Capped unit timelike geodesic: max norm error 3e-15, crossing proper time 0.0561839995148, p=0.59406024916.
+Geodesic E=1.18630752167>1 (accessible from flat core); energy drift <= 6.22e-15.
+Cap collar R_2=3x^2+1, Cotton_(rho,rho,x)=-3x/2: the 3D chart is not conformally Minkowski.
